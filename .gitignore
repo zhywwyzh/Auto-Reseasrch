@@ -1,0 +1,14 @@
+# Local credentials and environments
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.pyc
+node_modules/
+
+# Generated research runs and large artifacts
+runs/
+datasets/
+checkpoints/
+*.canvas.data.json
