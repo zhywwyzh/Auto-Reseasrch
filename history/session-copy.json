@@ -1,0 +1,17 @@
+{
+  "source_thread_id": "01a1ab5a-5a18-7de2-b3a3-458e56c9c908",
+  "source_cwd": "/home/zhywwyzh/workspace/DiffAgent2-Exploration",
+  "copied_through_turn_id": "01a1ab68-1d72-70c3-a7b4-8e294043c6ee",
+  "copied_thread_id": "01a1ab84-5d5e-71a1-b554-43696abb24e3",
+  "target_cwd": "/home/zhywwyzh/workspace/AutoResearch-UAV",
+  "created_at": "2026-11-05T11:42:21Z",
+  "method": "Codex app-server thread/fork",
+  "verified": true,
+  "title": "Auto Research 方法论研究（独立工作区副本）",
+  "history_path": "/home/zhywwyzh/.codex/sessions/2026/11/05/rollout-2026-11-05T19-42-21-01a1ab84-5d5e-71a1-b554-43696abb24e3.jsonl",
+  "visible_message_count": 15,
+  "attachment_count": 1,
+  "visible_history_verified_equal": true,
+  "transcript_file": "history/auto-research-conversation.md",
+  "transcript_sha256": "ede3b41532f462e9744e28a82470d2abb11b684bb52603312b43bf5f0779575b"
+}

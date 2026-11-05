@@ -14,6 +14,7 @@
 
 - [研究方案与执行路线](docs/research-plan.md)
 - [20 项参考工作及阅读用途](docs/references.md)
+- [本次研究对话历史（含参考图片）](history/auto-research-conversation.md)
 - [完整交互面板源码](artifacts/auto-research-uav-roadmap.tsx)
 - [打开独立工作区](AutoResearch-UAV.code-workspace)
 
@@ -42,3 +43,15 @@
 完整面板中的历史案例链接保留为原始来源引用，指向原工作区的既有文档；阅读本研究方案不依赖这些文件。原工作区及其原面板保留原样。后续研究文件应写入本仓库。
 
 当前仓库仅在本地初始化，没有创建或连接远程仓库。
+
+## Codex 会话副本
+
+已通过 Codex 原生 `thread/fork` 将研究对话复制到本工作目录，包含研究路线、仓库迁移和指标优化的已完成对话。副本名称：**Auto Research 方法论研究（独立工作区副本）**。原会话保留在原工作区。
+
+继续副本：
+
+```sh
+codex resume 01a1ab84-5d5e-71a1-b554-43696abb24e3 -C /home/zhywwyzh/workspace/AutoResearch-UAV
+```
+
+复制回执见 [session-copy.json](history/session-copy.json)。Markdown 对话记录保存用户和助手的可见消息及参考图片；原生副本用于继续会话。
