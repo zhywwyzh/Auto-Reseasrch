@@ -23,3 +23,36 @@ translations/fulltext/translation-*.log
 translations/fulltext/render-report.log
 translations/fulltext/progress.json
 output/*.zip
+
+# Local thesis references and unpublished research materials
+/thesis-reference/
+
+# LaTeX build output; keep the template's bundled PDF figure resources
+/templates/**/build/
+/papers/**/build/
+/templates/**/main.pdf
+/papers/**/main.pdf
+/templates/**/*.aux
+/templates/**/*.log
+/templates/**/*.out
+/templates/**/*.toc
+/templates/**/*.lof
+/templates/**/*.lot
+/templates/**/*.fls
+/templates/**/*.fdb_latexmk
+/templates/**/*.synctex.gz
+/templates/**/*.xdv
+/templates/**/*.bbl
+/templates/**/*.blg
+/papers/**/*.aux
+/papers/**/*.log
+/papers/**/*.out
+/papers/**/*.toc
+/papers/**/*.lof
+/papers/**/*.lot
+/papers/**/*.fls
+/papers/**/*.fdb_latexmk
+/papers/**/*.synctex.gz
+/papers/**/*.xdv
+/papers/**/*.bbl
+/papers/**/*.blg
