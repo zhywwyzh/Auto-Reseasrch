@@ -112,4 +112,10 @@ def main():
     (BASE/'README.md').write_text(readme)
     (BASE/'quality-report.json').write_text(json.dumps(dict(created='2026-11-09',status='complete machine draft' if not sum(x['missing'] for x in index) else 'partial preview',papers=quality),ensure_ascii=False,indent=2)+'\n')
 
-if __name__=='__main__':main()
+if __name__=='__main__':
+    main()
+    # Keep the default reading outputs free of per-unit metadata labels.
+    import sys
+    if '--allow-partial' not in sys.argv:
+        import render_readable_fulltext
+        render_readable_fulltext.main([])

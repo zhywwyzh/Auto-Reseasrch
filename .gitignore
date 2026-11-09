@@ -23,6 +23,8 @@ translations/fulltext/translation-*.log
 translations/fulltext/render-report.log
 translations/fulltext/progress.json
 output/*.zip
+/output/pdf/
+/translations/fulltext/*/assets/original-page-*.jpg
 
 # Local thesis references and unpublished research materials
 /thesis-reference/

@@ -1,0 +1,15 @@
+{
+  "slug": "autoresearch",
+  "math": {},
+  "visuals": {
+    "autoresearch-0003": {
+      "source_id": "progress.png",
+      "html": "<figure><img src=\"assets/progress.png\" alt=\"autoresearch progress chart\" loading=\"lazy\"></figure>",
+      "source_url": "https://raw.githubusercontent.com/karpathy/autoresearch/228791fb499afffb54b46200aca536f79142f117/progress.png",
+      "kind": "figure"
+    }
+  },
+  "suppress": [],
+  "original_pages": {},
+  "downloads": []
+}

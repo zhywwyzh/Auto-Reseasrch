@@ -1,0 +1,283 @@
+{
+  "slug": "ai-scientist-v2",
+  "math": {
+    "\\rightarrow": {
+      "tex": "\\Rightarrow",
+      "html": "<math alttext=\"\\Rightarrow\" class=\"ltx_Math\" display=\"inline\" id=\"A3.I11.i3.p1.m1\" intent=\":literal\"><semantics><mo stretchy=\"false\">⇒</mo><annotation encoding=\"application/x-tex\">\\Rightarrow</annotation></semantics></math>"
+    },
+    "81*k": {
+      "tex": "81*k",
+      "html": "<math alttext=\"81*k\" class=\"ltx_Math\" display=\"inline\" id=\"A3.SSx1.p1.m1\" intent=\":literal\"><semantics><mrow><mn>81</mn><mo lspace=\"0.222em\" rspace=\"0.222em\">∗</mo><mi>k</mi></mrow><annotation encoding=\"application/x-tex\">81*k</annotation></semantics></math>"
+    },
+    "k": {
+      "tex": "k",
+      "html": "<math alttext=\"k\" class=\"ltx_Math\" display=\"inline\" id=\"A3.SSx1.p1.m2\" intent=\":literal\"><semantics><mi>k</mi><annotation encoding=\"application/x-tex\">k</annotation></semantics></math>"
+    },
+    "e_{t}": {
+      "tex": "e_{t}",
+      "html": "<math alttext=\"e_{t}\" class=\"ltx_Math\" display=\"inline\" id=\"A3.SSx2.p2.m1\" intent=\":literal\"><semantics><msub><mi>e</mi><mi>t</mi></msub><annotation encoding=\"application/x-tex\">e_{t}</annotation></semantics></math>"
+    },
+    "h_{t}": {
+      "tex": "h_{t}",
+      "html": "<math alttext=\"h_{t}\" class=\"ltx_Math\" display=\"inline\" id=\"A3.SSx2.p2.m2\" intent=\":literal\"><semantics><msub><mi>h</mi><mi>t</mi></msub><annotation encoding=\"application/x-tex\">h_{t}</annotation></semantics></math>"
+    }
+  },
+  "visuals": {
+    "ai-scientist-v2-0011": {
+      "source_id": "S1.T1",
+      "html": "<figure class=\"ltx_table\" id=\"S1.T1\">\n\n<div class=\"ltx_inline-block ltx_align_center ltx_transformed_outer\" id=\"S1.T1.7\" style=\"width:525.6pt;height:49.2pt;vertical-align:-22.1pt;\"><span class=\"ltx_transformed_inner\" style=\"transform:translate(0.0pt,0.0pt) scale(1,1) ;\">\n<p class=\"ltx_p\" id=\"S1.T1.7.1\"><span class=\"ltx_text\" id=\"S1.T1.7.1.1\">\n<span class=\"ltx_tabular ltx_align_middle\" id=\"S1.T1.7.1.1.1\">\n<span class=\"ltx_tr\" id=\"S1.T1.7.1.1.1.1\">\n<span class=\"ltx_td ltx_align_left ltx_border_tt\" id=\"S1.T1.7.1.1.1.1.1\"><span class=\"ltx_text ltx_font_italic\" id=\"S1.T1.7.1.1.1.1.1.1\">Feature</span></span>\n<span class=\"ltx_td ltx_align_center ltx_border_tt\" id=\"S1.T1.7.1.1.1.1.2\"><span class=\"ltx_text ltx_font_bold\" id=\"S1.T1.7.1.1.1.1.2.1\">Codebase</span></span>\n<span class=\"ltx_td ltx_align_center ltx_border_tt\" id=\"S1.T1.7.1.1.1.1.3\"><span class=\"ltx_text ltx_font_bold\" id=\"S1.T1.7.1.1.1.1.3.1\">Execution</span></span>\n<span class=\"ltx_td ltx_align_center ltx_border_tt\" id=\"S1.T1.7.1.1.1.1.4\"><span class=\"ltx_text ltx_font_bold\" id=\"S1.T1.7.1.1.1.1.4.1\">Parallel</span></span>\n<span class=\"ltx_td ltx_align_center ltx_border_tt\" id=\"S1.T1.7.1.1.1.1.5\"><span class=\"ltx_text ltx_font_bold\" id=\"S1.T1.7.1.1.1.1.5.1\">VLM</span></span>\n<span class=\"ltx_td ltx_align_center ltx_border_tt\" id=\"S1.T1.7.1.1.1.1.6\"><span class=\"ltx_text ltx_font_bold\" id=\"S1.T1.7.1.1.1.1.6.1\">Human Result</span></span></span>\n<span class=\"ltx_tr\" id=\"S1.T1.7.1.1.1.2\">\n<span class=\"ltx_td\" id=\"S1.T1.7.1.1.1.2.1\"></span>\n<span class=\"ltx_td ltx_align_center\" id=\"S1.T1.7.1.1.1.2.2\"><span class=\"ltx_text ltx_font_bold\" id=\"S1.T1.7.1.1.1.2.2.1\">Drafting</span></span>\n<span class=\"ltx_td ltx_align_center\" id=\"S1.T1.7.1.1.1.2.3\"><span class=\"ltx_text ltx_font_bold\" id=\"S1.T1.7.1.1.1.2.3.1\">Planning</span></span>\n<span class=\"ltx_td ltx_align_center\" id=\"S1.T1.7.1.1.1.2.4\"><span class=\"ltx_text ltx_font_bold\" id=\"S1.T1.7.1.1.1.2.4.1\">Experiments</span></span>\n<span class=\"ltx_td ltx_align_center\" id=\"S1.T1.7.1.1.1.2.5\"><span class=\"ltx_text ltx_font_bold\" id=\"S1.T1.7.1.1.1.2.5.1\">Reviewer</span></span>\n<span class=\"ltx_td ltx_align_center\" id=\"S1.T1.7.1.1.1.2.6\"><span class=\"ltx_text ltx_font_bold\" id=\"S1.T1.7.1.1.1.2.6.1\">Evaluation</span></span></span>\n<span class=\"ltx_tr\" id=\"S1.T1.7.1.1.1.3\">\n<span class=\"ltx_td ltx_align_left ltx_border_t\" id=\"S1.T1.7.1.1.1.3.1\"><span class=\"ltx_text ltx_font_smallcaps\" id=\"S1.T1.7.1.1.1.3.1.1\">The AI Scientist-v1</span></span>\n<span class=\"ltx_td ltx_align_center ltx_border_t\" id=\"S1.T1.7.1.1.1.3.2\">Topic-Specific</span>\n<span class=\"ltx_td ltx_align_center ltx_border_t\" id=\"S1.T1.7.1.1.1.3.3\">Linear</span>\n<span class=\"ltx_td ltx_align_center ltx_border_t\" id=\"S1.T1.7.1.1.1.3.4\">✗</span>\n<span class=\"ltx_td ltx_align_center ltx_border_t\" id=\"S1.T1.7.1.1.1.3.5\">✗</span>\n<span class=\"ltx_td ltx_align_center ltx_border_t\" id=\"S1.T1.7.1.1.1.3.6\">Not Submitted</span></span>\n<span class=\"ltx_tr\" id=\"S1.T1.7.1.1.1.4\" style=\"--ltx-bg-color:#E6E6E6;\">\n<span class=\"ltx_td ltx_align_left ltx_border_bb\" id=\"S1.T1.7.1.1.1.4.1\"><span class=\"ltx_text ltx_font_smallcaps\" id=\"S1.T1.7.1.1.1.4.1.1\" style=\"--ltx-bg-color:#E6E6E6;\">The AI Scientist-v2</span></span>\n<span class=\"ltx_td ltx_align_center ltx_border_bb\" id=\"S1.T1.7.1.1.1.4.2\"><span class=\"ltx_text\" id=\"S1.T1.7.1.1.1.4.2.1\" style=\"--ltx-bg-color:#E6E6E6;\">Domain-General</span></span>\n<span class=\"ltx_td ltx_align_center ltx_border_bb\" id=\"S1.T1.7.1.1.1.4.3\"><span class=\"ltx_text\" id=\"S1.T1.7.1.1.1.4.3.1\" style=\"--ltx-bg-color:#E6E6E6;\">Tree-Based</span></span>\n<span class=\"ltx_td ltx_align_center ltx_border_bb\" id=\"S1.T1.7.1.1.1.4.4\"><span class=\"ltx_text\" id=\"S1.T1.7.1.1.1.4.4.1\" style=\"--ltx-bg-color:#E6E6E6;\">✓</span></span>\n<span class=\"ltx_td ltx_align_center ltx_border_bb\" id=\"S1.T1.7.1.1.1.4.5\"><span class=\"ltx_text\" id=\"S1.T1.7.1.1.1.4.5.1\" style=\"--ltx-bg-color:#E6E6E6;\">✓</span></span>\n<span class=\"ltx_td ltx_align_center ltx_border_bb\" id=\"S1.T1.7.1.1.1.4.6\"><span class=\"ltx_text\" id=\"S1.T1.7.1.1.1.4.6.1\" style=\"--ltx-bg-color:#E6E6E6;\">Workshop Acceptance-Worthy</span></span></span>\n</span></span></p>\n</span></div>\n</figure>",
+      "source_url": "https://arxiv.org/html/2504.08066v1",
+      "kind": "original-block"
+    },
+    "ai-scientist-v2-0016": {
+      "source_id": "S2.F1",
+      "html": "<figure class=\"ltx_figure\" id=\"S2.F1\"><img alt=\"Figure 1 : The AI Scientist-v2 Workflow. The workflow consists of several phases covering automated idea generation, experiment execution, figure visualization,\" decoding=\"async\" loading=\"lazy\" src=\"assets/189ba8258af07d17b5b6.png\"/>\n\n</figure>",
+      "source_url": "https://arxiv.org/html/2504.08066v1",
+      "kind": "figure"
+    },
+    "ai-scientist-v2-0040": {
+      "source_id": "S3.F2",
+      "html": "<figure class=\"ltx_figure\" id=\"S3.F2\"><img alt=\"Figure 2 : The AI Scientist-v2 workflow showing different stages of tree-based experimentation.\nStage 1 begins at the root node, where initial experiment code i\" decoding=\"async\" loading=\"lazy\" src=\"assets/680b609e8cfe7ac3f6bd.png\"/>\n\n</figure>",
+      "source_url": "https://arxiv.org/html/2504.08066v1",
+      "kind": "figure"
+    },
+    "ai-scientist-v2-0050": {
+      "source_id": "S4.F3",
+      "html": "<figure class=\"ltx_figure\" id=\"S4.F3\"><img alt=\"Figure 3 : Peer-reviewed ICBINB workshop paper generated by The AI Scientist-v2 . The paper investigates the usage of a temporal consistency regularizer on the \" decoding=\"async\" loading=\"lazy\" src=\"assets/ec37238b95435b64fad6.png\"/>\n\n</figure>",
+      "source_url": "https://arxiv.org/html/2504.08066v1",
+      "kind": "figure"
+    },
+    "ai-scientist-v2-0124": {
+      "source_id": "A1.T2",
+      "html": "<figure class=\"ltx_table\" id=\"A1.T2\">\n\n<table class=\"ltx_tabular ltx_centering ltx_align_middle\" id=\"A1.T2.5\">\n<tr class=\"ltx_tr\" id=\"A1.T2.5.1\">\n<td class=\"ltx_td ltx_align_left ltx_border_tt\" id=\"A1.T2.5.1.1\">Component/Task</td>\n<td class=\"ltx_td ltx_align_left ltx_border_tt\" id=\"A1.T2.5.1.2\">Model Used</td>\n<td class=\"ltx_td ltx_align_center ltx_border_tt\" id=\"A1.T2.5.1.3\">Max Tokens</td>\n<td class=\"ltx_td ltx_nopad_r ltx_align_center ltx_border_tt\" id=\"A1.T2.5.1.4\">Temperature</td></tr>\n<tr class=\"ltx_tr\" id=\"A1.T2.5.2\">\n<td class=\"ltx_td ltx_align_left ltx_border_t\" id=\"A1.T2.5.2.1\">Code Generation (§<a class=\"ltx_ref\" href=\"https://arxiv.org/html/2504.08066v1#S3.SS2\" title=\"3.2 Removing Template Dependency ‣ 3 The AI Scientist-v2 ‣ The AI Scientist-v2: Workshop-Level Automated Scientific Discovery via Agentic Tree Search\"><span class=\"ltx_text ltx_ref_tag\">3.2</span></a>)</td>\n<td class=\"ltx_td ltx_align_left ltx_border_t\" id=\"A1.T2.5.2.2\">Claude 3.5 Sonnet (v2)</td>\n<td class=\"ltx_td ltx_align_center ltx_border_t\" id=\"A1.T2.5.2.3\">8,192</td>\n<td class=\"ltx_td ltx_nopad_r ltx_align_center ltx_border_t\" id=\"A1.T2.5.2.4\">0.5</td></tr>\n<tr class=\"ltx_tr\" id=\"A1.T2.5.3\">\n<td class=\"ltx_td ltx_align_left\" id=\"A1.T2.5.3.1\">LLM/VLM Feedback Agents (§<a class=\"ltx_ref\" href=\"https://arxiv.org/html/2504.08066v1#S3.SS4\" title=\"3.4 Vision-Language Model Reviewer ‣ 3 The AI Scientist-v2 ‣ The AI Scientist-v2: Workshop-Level Automated Scientific Discovery via Agentic Tree Search\"><span class=\"ltx_text ltx_ref_tag\">3.4</span></a>)</td>\n<td class=\"ltx_td ltx_align_left\" id=\"A1.T2.5.3.2\">GPT-4o</td>\n<td class=\"ltx_td ltx_align_center\" id=\"A1.T2.5.3.3\">8,192</td>\n<td class=\"ltx_td ltx_nopad_r ltx_align_center\" id=\"A1.T2.5.3.4\">0.5</td></tr>\n<tr class=\"ltx_tr\" id=\"A1.T2.5.4\">\n<td class=\"ltx_td ltx_align_left ltx_border_bb\" id=\"A1.T2.5.4.1\">Summary Report Agent (§<a class=\"ltx_ref\" href=\"https://arxiv.org/html/2504.08066v1#S3\" title=\"3 The AI Scientist-v2 ‣ The AI Scientist-v2: Workshop-Level Automated Scientific Discovery via Agentic Tree Search\"><span class=\"ltx_text ltx_ref_tag\">3</span></a>)</td>\n<td class=\"ltx_td ltx_align_left ltx_border_bb\" id=\"A1.T2.5.4.2\">GPT-4o</td>\n<td class=\"ltx_td ltx_align_center ltx_border_bb\" id=\"A1.T2.5.4.3\">8,192</td>\n<td class=\"ltx_td ltx_nopad_r ltx_align_center ltx_border_bb\" id=\"A1.T2.5.4.4\">1.0</td></tr>\n</table>\n</figure>",
+      "source_url": "https://arxiv.org/html/2504.08066v1",
+      "kind": "original-block"
+    },
+    "ai-scientist-v2-0126": {
+      "source_id": "A1.T3",
+      "html": "<figure class=\"ltx_table\" id=\"A1.T3\">\n\n<table class=\"ltx_tabular ltx_centering ltx_align_middle\" id=\"A1.T3.5\">\n<tr class=\"ltx_tr\" id=\"A1.T3.5.1\">\n<td class=\"ltx_td ltx_align_left ltx_border_tt\" id=\"A1.T3.5.1.1\">Hyperparameter</td>\n<td class=\"ltx_td ltx_nopad_r ltx_align_center ltx_border_tt\" id=\"A1.T3.5.1.2\">Value</td></tr>\n<tr class=\"ltx_tr\" id=\"A1.T3.5.2\">\n<td class=\"ltx_td ltx_align_left ltx_border_t\" id=\"A1.T3.5.2.1\">Debug Probability</td>\n<td class=\"ltx_td ltx_nopad_r ltx_align_center ltx_border_t\" id=\"A1.T3.5.2.2\">1.0</td></tr>\n<tr class=\"ltx_tr\" id=\"A1.T3.5.3\">\n<td class=\"ltx_td ltx_align_left\" id=\"A1.T3.5.3.1\">Maximum Debug Depth</td>\n<td class=\"ltx_td ltx_nopad_r ltx_align_center\" id=\"A1.T3.5.3.2\">3</td></tr>\n<tr class=\"ltx_tr\" id=\"A1.T3.5.4\">\n<td class=\"ltx_td ltx_align_left\" id=\"A1.T3.5.4.1\">Maximum Experiment Runtime per Node</td>\n<td class=\"ltx_td ltx_nopad_r ltx_align_center\" id=\"A1.T3.5.4.2\">1 hour</td></tr>\n<tr class=\"ltx_tr\" id=\"A1.T3.5.5\">\n<td class=\"ltx_td ltx_align_left\" colspan=\"2\" id=\"A1.T3.5.5.1\"><span class=\"ltx_text ltx_font_italic\" id=\"A1.T3.5.5.1.1\">Node Allocation per Stage:</span></td></tr>\n<tr class=\"ltx_tr\" id=\"A1.T3.5.6\">\n<td class=\"ltx_td ltx_align_left\" id=\"A1.T3.5.6.1\">Stage 1: Preliminary Investigation</td>\n<td class=\"ltx_td ltx_nopad_r ltx_align_center\" id=\"A1.T3.5.6.2\">21 nodes</td></tr>\n<tr class=\"ltx_tr\" id=\"A1.T3.5.7\">\n<td class=\"ltx_td ltx_align_left\" id=\"A1.T3.5.7.1\">Stage 2: Hyperparameter Tuning</td>\n<td class=\"ltx_td ltx_nopad_r ltx_align_center\" id=\"A1.T3.5.7.2\">12 nodes</td></tr>\n<tr class=\"ltx_tr\" id=\"A1.T3.5.8\">\n<td class=\"ltx_td ltx_align_left\" id=\"A1.T3.5.8.1\">Stage 3: Research Agenda Execution</td>\n<td class=\"ltx_td ltx_nopad_r ltx_align_center\" id=\"A1.T3.5.8.2\">12 nodes</td></tr>\n<tr class=\"ltx_tr\" id=\"A1.T3.5.9\">\n<td class=\"ltx_td ltx_align_left ltx_border_bb\" id=\"A1.T3.5.9.1\">Stage 4: Ablation Studies</td>\n<td class=\"ltx_td ltx_nopad_r ltx_align_center ltx_border_bb\" id=\"A1.T3.5.9.2\">12 nodes</td></tr>\n</table>\n</figure>",
+      "source_url": "https://arxiv.org/html/2504.08066v1",
+      "kind": "original-block"
+    },
+    "ai-scientist-v2-0240": {
+      "source_id": "A3.T4",
+      "html": "<figure class=\"ltx_table\" id=\"A3.T4\">\n\n<table class=\"ltx_tabular ltx_centering ltx_align_middle\" id=\"A3.T4.5\">\n<tr class=\"ltx_tr\" id=\"A3.T4.5.1\">\n<td class=\"ltx_td ltx_align_left ltx_border_tt\" id=\"A3.T4.5.1.1\">\n<span class=\"ltx_inline-block ltx_align_top\" id=\"A3.T4.5.1.1.1\">\n<span class=\"ltx_p\" id=\"A3.T4.5.1.1.1.1\"><span class=\"ltx_text ltx_font_bold\" id=\"A3.T4.5.1.1.1.1.1\">Title</span></span>\n</span></td>\n<td class=\"ltx_td ltx_align_center ltx_border_tt\" id=\"A3.T4.5.1.2\"><span class=\"ltx_text ltx_font_bold\" id=\"A3.T4.5.1.2.1\">Workshop Result</span></td>\n<td class=\"ltx_td ltx_nopad_r ltx_align_center ltx_border_tt\" id=\"A3.T4.5.1.3\"><span class=\"ltx_text ltx_font_bold\" id=\"A3.T4.5.1.3.1\">Materials</span></td></tr>\n<tr class=\"ltx_tr\" id=\"A3.T4.5.2\">\n<td class=\"ltx_td ltx_align_left ltx_border_t\" id=\"A3.T4.5.2.1\">\n<span class=\"ltx_inline-block ltx_align_top\" id=\"A3.T4.5.2.1.1\">\n<span class=\"ltx_p\" id=\"A3.T4.5.2.1.1.1\">Compositional Regularization: Unexpected Obstacles in Enhancing Neural Network Generalization</span>\n</span></td>\n<td class=\"ltx_td ltx_align_center ltx_border_t\" id=\"A3.T4.5.2.2\">Accepted (Score: 6.33)</td>\n<td class=\"ltx_td ltx_nopad_r ltx_align_center ltx_border_t\" id=\"A3.T4.5.2.3\"><span class=\"ltx_text\" id=\"A3.T4.5.2.3.1\"></span> <span class=\"ltx_text\" id=\"A3.T4.5.2.3.2\">\n<span class=\"ltx_tabular ltx_align_middle\" id=\"A3.T4.5.2.3.2.1\">\n<span class=\"ltx_tr\" id=\"A3.T4.5.2.3.2.1.1\">\n<span class=\"ltx_td ltx_nopad_r ltx_align_center\" id=\"A3.T4.5.2.3.2.1.1.1\">See <a class=\"ltx_ref\" href=\"https://arxiv.org/html/2504.08066v1#A3.SS1\" title=\"C.1 Compositional Regularization: Unexpected Obstacles in Enhancing Neural Network Generalization ‣ Appendix C AI Generated Papers ‣ The AI Scientist-v2: Workshop-Level Automated Scientific Discovery via Agentic Tree Search\"><span class=\"ltx_text ltx_ref_tag\">Section</span> <span class=\"ltx_text ltx_ref_tag\">C.1</span></a>,</span></span>\n<span class=\"ltx_tr\" id=\"A3.T4.5.2.3.2.1.2\">\n<span class=\"ltx_td ltx_nopad_r ltx_align_center\" id=\"A3.T4.5.2.3.2.1.2.1\"><a class=\"ltx_ref ltx_href\" href=\"https://github.com/SakanaAI/AI-Scientist-ICLR2025-Workshop-Experiment/tree/master/compositional-regularization\" title=\"\">GitHub Repository</a></span></span>\n</span></span><span class=\"ltx_text\" id=\"A3.T4.5.2.3.3\"></span></td></tr>\n<tr class=\"ltx_tr\" id=\"A3.T4.5.3\">\n<td class=\"ltx_td ltx_align_left\" id=\"A3.T4.5.3.1\">\n<span class=\"ltx_inline-block ltx_align_top\" id=\"A3.T4.5.3.1.1\">\n<span class=\"ltx_p\" id=\"A3.T4.5.3.1.1.1\">Unveiling the Impact of Label Noise on Model Calibration in Deep Learning</span>\n</span></td>\n<td class=\"ltx_td ltx_align_center\" id=\"A3.T4.5.3.2\">Rejected</td>\n<td class=\"ltx_td ltx_nopad_r ltx_align_center\" id=\"A3.T4.5.3.3\"><span class=\"ltx_text\" id=\"A3.T4.5.3.3.1\"></span> <span class=\"ltx_text\" id=\"A3.T4.5.3.3.2\">\n<span class=\"ltx_tabular ltx_align_middle\" id=\"A3.T4.5.3.3.2.1\">\n<span class=\"ltx_tr\" id=\"A3.T4.5.3.3.2.1.1\">\n<span class=\"ltx_td ltx_nopad_r ltx_align_center\" id=\"A3.T4.5.3.3.2.1.1.1\">See <a class=\"ltx_ref\" href=\"https://arxiv.org/html/2504.08066v1#A3.SS2.SSS1\" title=\"C.2.1 The AI Scientist-v2 Idea ‣ C.2 Unveiling the Impact of Label Noise on Model Calibration in Deep Learning ‣ Appendix C AI Generated Papers ‣ The AI Scientist-v2: Workshop-Level Automated Scientific Discovery via Agentic Tree Search\"><span class=\"ltx_text ltx_ref_tag\">Section</span> <span class=\"ltx_text ltx_ref_tag\">C.2.1</span></a>,</span></span>\n<span class=\"ltx_tr\" id=\"A3.T4.5.3.3.2.1.2\">\n<span class=\"ltx_td ltx_nopad_r ltx_align_center\" id=\"A3.T4.5.3.3.2.1.2.1\"><a class=\"ltx_ref ltx_href\" href=\"https://github.com/SakanaAI/AI-Scientist-ICLR2025-Workshop-Experiment/tree/master/label-noise\" title=\"\">GitHub Repository</a></span></span>\n</span></span><span class=\"ltx_text\" id=\"A3.T4.5.3.3.3\"></span></td></tr>\n<tr class=\"ltx_tr\" id=\"A3.T4.5.4\">\n<td class=\"ltx_td ltx_align_left ltx_border_bb\" id=\"A3.T4.5.4.1\">\n<span class=\"ltx_inline-block ltx_align_top\" id=\"A3.T4.5.4.1.1\">\n<span class=\"ltx_p\" id=\"A3.T4.5.4.1.1.1\">Real-world Challenges in Pest Detection using Deep Learning: an Investigation into Failures and Solutions</span>\n</span></td>\n<td class=\"ltx_td ltx_align_center ltx_border_bb\" id=\"A3.T4.5.4.2\">Rejected</td>\n<td class=\"ltx_td ltx_nopad_r ltx_align_center ltx_border_bb\" id=\"A3.T4.5.4.3\"><span class=\"ltx_text\" id=\"A3.T4.5.4.3.1\"></span> <span class=\"ltx_text\" id=\"A3.T4.5.4.3.2\">\n<span class=\"ltx_tabular ltx_align_middle\" id=\"A3.T4.5.4.3.2.1\">\n<span class=\"ltx_tr\" id=\"A3.T4.5.4.3.2.1.1\">\n<span class=\"ltx_td ltx_nopad_r ltx_align_center\" id=\"A3.T4.5.4.3.2.1.1.1\">See <a class=\"ltx_ref\" href=\"https://arxiv.org/html/2504.08066v1#A3.SS3.SSS1\" title=\"C.3.1 The AI Scientist-v2 Idea ‣ C.3 Real-world Challenges in Pest Detection using Deep Learning: an Investigation into Failures and Solutions ‣ Appendix C AI Generated Papers ‣ The AI Scientist-v2: Workshop-Level Automated Scientific Discovery via Agentic Tree Search\"><span class=\"ltx_text ltx_ref_tag\">Section</span> <span class=\"ltx_text ltx_ref_tag\">C.3.1</span></a>,</span></span>\n<span class=\"ltx_tr\" id=\"A3.T4.5.4.3.2.1.2\">\n<span class=\"ltx_td ltx_nopad_r ltx_align_center\" id=\"A3.T4.5.4.3.2.1.2.1\"><a class=\"ltx_ref ltx_href\" href=\"https://github.com/SakanaAI/AI-Scientist-ICLR2025-Workshop-Experiment/tree/master/pest-detection\" title=\"\">GitHub Repository</a></span></span>\n</span></span><span class=\"ltx_text\" id=\"A3.T4.5.4.3.3\"></span></td></tr>\n</table>\n</figure>",
+      "source_url": "https://arxiv.org/html/2504.08066v1",
+      "kind": "original-block"
+    },
+    "ai-scientist-v2-0291": {
+      "source_id": "A3.F4",
+      "html": "<figure class=\"ltx_figure\" id=\"A3.F4\"><img alt=\"Figure 4 : Example of the data generating function used in the experiments.\" decoding=\"async\" loading=\"lazy\" src=\"assets/38af684181580e94a233.png\"/>\n\n</figure>",
+      "source_url": "https://arxiv.org/html/2504.08066v1",
+      "kind": "figure"
+    },
+    "ai-scientist-v2-0302": {
+      "source_id": "A3.F5",
+      "html": "<figure class=\"ltx_figure\" id=\"A3.F5\"><img alt=\"Figure 5 : The generated model class shows an embedding layer, a single LSTM layer, and a linear layer head.\" decoding=\"async\" loading=\"lazy\" src=\"assets/a6cd14a2acdf917cad95.png\"/>\n\n</figure>",
+      "source_url": "https://arxiv.org/html/2504.08066v1",
+      "kind": "figure"
+    },
+    "ai-scientist-v2-0309": {
+      "source_id": "A3.F6",
+      "html": "<figure class=\"ltx_figure\" id=\"A3.F6\"><img alt=\"Figure 6 : The generated training loop shows the loss function as well as the proposed regularization.\" decoding=\"async\" loading=\"lazy\" src=\"assets/eee10ba509b14c468505.png\"/>\n\n</figure>",
+      "source_url": "https://arxiv.org/html/2504.08066v1",
+      "kind": "figure"
+    },
+    "ai-scientist-v2-0310": {
+      "source_id": "A3.F7",
+      "html": "<figure class=\"ltx_figure\" id=\"A3.F7\"><img alt=\"Figure 7 : The generated accuracy calculation function uses regression to match an output with a ground truth.\" decoding=\"async\" loading=\"lazy\" src=\"assets/e407ec8d5dd07df06d5d.png\"/>\n\n</figure>",
+      "source_url": "https://arxiv.org/html/2504.08066v1",
+      "kind": "figure"
+    },
+    "ai-scientist-v2-0311": {
+      "source_id": "A3.F8",
+      "html": "<figure class=\"ltx_figure\" id=\"A3.F8\"><img alt=\"Figure 8 : Temperature scaling implementation.\" decoding=\"async\" loading=\"lazy\" src=\"assets/fa8dcdd55da59dcca266.png\"/>\n\n</figure>",
+      "source_url": "https://arxiv.org/html/2504.08066v1",
+      "kind": "figure"
+    },
+    "ai-scientist-v2-0319": {
+      "source_id": "A3.F9",
+      "html": "<figure class=\"ltx_figure\" id=\"A3.F9\">\n<div class=\"ltx_flex_figure\">\n<div class=\"ltx_flex_cell ltx_flex_size_2\"><img alt=\"Figure 9 : Noisy dataset class implementation.\" decoding=\"async\" loading=\"lazy\" src=\"assets/785254c708f5bb13b169.png\"/></div><div class=\"ltx_flex_cell ltx_flex_size_2\"><img alt=\"Figure 9 : Noisy dataset class implementation.\" decoding=\"async\" loading=\"lazy\" src=\"assets/cbdf94b4c000ca00c40e.png\"/></div></div>\n\n</figure>",
+      "source_url": "https://arxiv.org/html/2504.08066v1",
+      "kind": "figure"
+    },
+    "ai-scientist-v2-0452": {
+      "source_id": "A3.F10",
+      "html": "<figure class=\"ltx_figure\" id=\"A3.F10\"><img alt=\"Figure 10 : The implementation for Expected Calibration Error.\" decoding=\"async\" loading=\"lazy\" src=\"assets/0f4dec1074a4da9de3b1.png\"/>\n\n</figure>",
+      "source_url": "https://arxiv.org/html/2504.08066v1",
+      "kind": "figure"
+    },
+    "ai-scientist-v2-0545": {
+      "source_id": "A3.F11",
+      "html": "<figure class=\"ltx_figure\" id=\"A3.F11\">\n<div class=\"ltx_flex_figure\">\n<div class=\"ltx_flex_cell ltx_flex_size_2\"><img alt=\"Figure 11 : Domain discriminator and multi-dataset training loop.\" decoding=\"async\" loading=\"lazy\" src=\"assets/37b5a95ff784a306a0de.png\"/></div><div class=\"ltx_flex_cell ltx_flex_size_2\"><img alt=\"Figure 11 : Domain discriminator and multi-dataset training loop.\" decoding=\"async\" loading=\"lazy\" src=\"assets/c84ce1a9a619d5ea9286.png\"/></div></div>\n\n</figure>",
+      "source_url": "https://arxiv.org/html/2504.08066v1",
+      "kind": "figure"
+    },
+    "ai-scientist-v2-0549": {
+      "source_id": "A3.F12",
+      "html": "<figure class=\"ltx_figure\" id=\"A3.F12\"><img alt=\"Figure 12 : Environment noise simulation implementation.\" decoding=\"async\" loading=\"lazy\" src=\"assets/bb6e24c7eb7e4e6a0333.png\"/>\n\n</figure>",
+      "source_url": "https://arxiv.org/html/2504.08066v1",
+      "kind": "figure"
+    },
+    "ai-scientist-v2-0550": {
+      "source_id": "A3.F13",
+      "html": "<figure class=\"ltx_figure\" id=\"A3.F13\"><img alt=\"Figure 13 : Environmental Robustness Score calculation.\" decoding=\"async\" loading=\"lazy\" src=\"assets/56577eebc7faf78f427e.png\"/>\n\n</figure>",
+      "source_url": "https://arxiv.org/html/2504.08066v1",
+      "kind": "figure"
+    }
+  },
+  "suppress": [
+    "ai-scientist-v2-0012",
+    "ai-scientist-v2-0125",
+    "ai-scientist-v2-0127",
+    "ai-scientist-v2-0128"
+  ],
+  "original_pages": {
+    "1": "assets/original-page-001.jpg",
+    "2": "assets/original-page-002.jpg",
+    "3": "assets/original-page-003.jpg",
+    "4": "assets/original-page-004.jpg",
+    "5": "assets/original-page-005.jpg",
+    "6": "assets/original-page-006.jpg",
+    "7": "assets/original-page-007.jpg",
+    "8": "assets/original-page-008.jpg",
+    "9": "assets/original-page-009.jpg",
+    "10": "assets/original-page-010.jpg",
+    "11": "assets/original-page-011.jpg",
+    "12": "assets/original-page-012.jpg",
+    "13": "assets/original-page-013.jpg",
+    "14": "assets/original-page-014.jpg",
+    "15": "assets/original-page-015.jpg",
+    "16": "assets/original-page-016.jpg",
+    "17": "assets/original-page-017.jpg",
+    "18": "assets/original-page-018.jpg",
+    "19": "assets/original-page-019.jpg",
+    "20": "assets/original-page-020.jpg",
+    "21": "assets/original-page-021.jpg",
+    "22": "assets/original-page-022.jpg",
+    "23": "assets/original-page-023.jpg",
+    "24": "assets/original-page-024.jpg",
+    "25": "assets/original-page-025.jpg",
+    "26": "assets/original-page-026.jpg",
+    "27": "assets/original-page-027.jpg",
+    "28": "assets/original-page-028.jpg",
+    "29": "assets/original-page-029.jpg",
+    "30": "assets/original-page-030.jpg",
+    "31": "assets/original-page-031.jpg",
+    "32": "assets/original-page-032.jpg",
+    "33": "assets/original-page-033.jpg",
+    "34": "assets/original-page-034.jpg",
+    "35": "assets/original-page-035.jpg",
+    "36": "assets/original-page-036.jpg",
+    "37": "assets/original-page-037.jpg",
+    "38": "assets/original-page-038.jpg",
+    "39": "assets/original-page-039.jpg",
+    "40": "assets/original-page-040.jpg",
+    "41": "assets/original-page-041.jpg",
+    "42": "assets/original-page-042.jpg",
+    "43": "assets/original-page-043.jpg",
+    "44": "assets/original-page-044.jpg",
+    "45": "assets/original-page-045.jpg",
+    "46": "assets/original-page-046.jpg",
+    "47": "assets/original-page-047.jpg",
+    "48": "assets/original-page-048.jpg",
+    "49": "assets/original-page-049.jpg",
+    "50": "assets/original-page-050.jpg",
+    "51": "assets/original-page-051.jpg",
+    "52": "assets/original-page-052.jpg",
+    "53": "assets/original-page-053.jpg",
+    "54": "assets/original-page-054.jpg",
+    "55": "assets/original-page-055.jpg",
+    "56": "assets/original-page-056.jpg",
+    "57": "assets/original-page-057.jpg",
+    "58": "assets/original-page-058.jpg",
+    "59": "assets/original-page-059.jpg",
+    "60": "assets/original-page-060.jpg",
+    "61": "assets/original-page-061.jpg",
+    "62": "assets/original-page-062.jpg",
+    "63": "assets/original-page-063.jpg",
+    "64": "assets/original-page-064.jpg",
+    "65": "assets/original-page-065.jpg",
+    "66": "assets/original-page-066.jpg",
+    "67": "assets/original-page-067.jpg",
+    "68": "assets/original-page-068.jpg",
+    "69": "assets/original-page-069.jpg"
+  },
+  "downloads": [
+    {
+      "url": "https://arxiv.org/html/2504.08066v1/figures/conceptual.png",
+      "file": "assets/189ba8258af07d17b5b6.png",
+      "sha256": "4037fb96637314485f2045bb3d457834755dcb93f5b717ed3b1ad523a9a61797"
+    },
+    {
+      "url": "https://arxiv.org/html/2504.08066v1/experiment_tree_v2.png",
+      "file": "assets/680b609e8cfe7ac3f6bd.png",
+      "sha256": "687458381e47755853ce3a9a4f1ad94fd3179bc09533ec401e7176ca9ab2f4b8"
+    },
+    {
+      "url": "https://arxiv.org/html/2504.08066v1/figures/workshop_paper.png",
+      "file": "assets/ec37238b95435b64fad6.png",
+      "sha256": "45390d5c96758fa96bf79d45a52dbe710d31f48feb9f5b89511d1cd1b9cad1d8"
+    },
+    {
+      "url": "https://arxiv.org/html/2504.08066v1/workshop_papers/compositional_regularization/generated_code_samples/data_generating_process.png",
+      "file": "assets/38af684181580e94a233.png",
+      "sha256": "08007bd90a1eca73b508d495a4b03bb11e745c15848d62b0fd477d3d1e85f49f"
+    },
+    {
+      "url": "https://arxiv.org/html/2504.08066v1/workshop_papers/compositional_regularization/generated_code_samples/model_class.png",
+      "file": "assets/a6cd14a2acdf917cad95.png",
+      "sha256": "836fd5fd5c786a82a16c33200b168e551c1ed921ca7f52373cceef81ba66fcf8"
+    },
+    {
+      "url": "https://arxiv.org/html/2504.08066v1/workshop_papers/compositional_regularization/generated_code_samples/train_loop_loss_reg.png",
+      "file": "assets/eee10ba509b14c468505.png",
+      "sha256": "3963902f2adede4bebe1b6962e75c7c3d992e07691e868b42d51a7c0eba0513b"
+    },
+    {
+      "url": "https://arxiv.org/html/2504.08066v1/workshop_papers/compositional_regularization/generated_code_samples/eval_function.png",
+      "file": "assets/e407ec8d5dd07df06d5d.png",
+      "sha256": "d42ca339032e5632ca73a05c61c11a7d8ed6c06e4c799fa450e71c19ecbf9ae8"
+    },
+    {
+      "url": "https://arxiv.org/html/2504.08066v1/workshop_papers/label_noise/generated_code_samples/temperature_scaling.png",
+      "file": "assets/fa8dcdd55da59dcca266.png",
+      "sha256": "ce22bf9b610f683d0556dc59294934852ad528f996104527791958e0e7f0058e"
+    },
+    {
+      "url": "https://arxiv.org/html/2504.08066v1/workshop_papers/label_noise/generated_code_samples/noisy_dataset_class.png",
+      "file": "assets/785254c708f5bb13b169.png",
+      "sha256": "40341d3644ec33e23bfd7708c0c851f775fb1469e2c0875f44461481340ac6c4"
+    },
+    {
+      "url": "https://arxiv.org/html/2504.08066v1/workshop_papers/label_noise/generated_code_samples/noisy_dataset_class_2.png",
+      "file": "assets/cbdf94b4c000ca00c40e.png",
+      "sha256": "25d65a1b173fb722d3b187347718390bb25eff5cd28924e904170874ab915745"
+    },
+    {
+      "url": "https://arxiv.org/html/2504.08066v1/workshop_papers/label_noise/generated_code_samples/ece_calc_func.png",
+      "file": "assets/0f4dec1074a4da9de3b1.png",
+      "sha256": "ce780caa0e0e7a0972eedef4aad4c019d143234ead1cecc1850cc60c8f04e13e"
+    },
+    {
+      "url": "https://arxiv.org/html/2504.08066v1/workshop_papers/pest_prediction/generated_code_samples/domain_discriminator.png",
+      "file": "assets/37b5a95ff784a306a0de.png",
+      "sha256": "2d2a67dee721ad1e86b5ce848ad867e2cf82ccd1df820b9af73e7c9f1ee4ea9e"
+    },
+    {
+      "url": "https://arxiv.org/html/2504.08066v1/workshop_papers/pest_prediction/generated_code_samples/multi_dataset_train_loop.png",
+      "file": "assets/c84ce1a9a619d5ea9286.png",
+      "sha256": "f100d90852dd1897bbadd997870b816d5ac773c27ab35e629fd1b5244ecd4971"
+    },
+    {
+      "url": "https://arxiv.org/html/2504.08066v1/workshop_papers/pest_prediction/generated_code_samples/env_noise_simulation.png",
+      "file": "assets/bb6e24c7eb7e4e6a0333.png",
+      "sha256": "62438d248b40a53d1ff56cf23d28dc96e7f4b6d02e24497ada695b37e5cf91e5"
+    },
+    {
+      "url": "https://arxiv.org/html/2504.08066v1/workshop_papers/pest_prediction/generated_code_samples/ers_calc.png",
+      "file": "assets/56577eebc7faf78f427e.png",
+      "sha256": "c805a62473bf3064960c4eac39754fe6053ef230d303ce93600bcc3bf29c083d"
+    }
+  ]
+}

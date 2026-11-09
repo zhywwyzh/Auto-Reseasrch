@@ -1,0 +1,3 @@
+KaTeX, MIT license.
+https://github.com/KaTeX/KaTeX
+Installed version: 0.19.1

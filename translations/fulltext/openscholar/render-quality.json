@@ -1,0 +1,65 @@
+{
+  "restored_math_units": [
+    "openscholar-0042",
+    "openscholar-0043",
+    "openscholar-0046",
+    "openscholar-0048",
+    "openscholar-0050",
+    "openscholar-0054",
+    "openscholar-0056",
+    "openscholar-0058",
+    "openscholar-0062",
+    "openscholar-0067",
+    "openscholar-0069",
+    "openscholar-0071",
+    "openscholar-0110",
+    "openscholar-0137",
+    "openscholar-0396",
+    "openscholar-0404",
+    "openscholar-0405",
+    "openscholar-0406",
+    "openscholar-0407",
+    "openscholar-0408"
+  ],
+  "appended_source_formulas": [
+    {
+      "id": "openscholar-0041",
+      "formulas": [
+        "\\mathbf{D}",
+        "\\mathcal{R}",
+        "\\mathbf{P}=\\{p_{1},p_{2},\\ldots,p_{N}\\}"
+      ]
+    },
+    {
+      "id": "openscholar-0044",
+      "formulas": [
+        "N",
+        "\\mathcal{G}",
+        "y_{0}"
+      ]
+    },
+    {
+      "id": "openscholar-0053",
+      "formulas": [
+        "N"
+      ]
+    },
+    {
+      "id": "openscholar-0060",
+      "formulas": [
+        "\\mathbf{F}",
+        "f_{k}",
+        "q_{k}"
+      ]
+    },
+    {
+      "id": "openscholar-0112",
+      "formulas": [
+        "\\mathbf{D}"
+      ]
+    }
+  ],
+  "unresolved_formulas": [],
+  "original_visual_blocks": 44,
+  "original_pdf_pages": 0
+}
