@@ -1,0 +1,447 @@
+{
+  "created": "2026-11-09",
+  "status": "complete machine draft",
+  "papers": [
+    {
+      "slug": "autosurvey",
+      "label": "AutoSurvey",
+      "version": "2406.10252v2",
+      "pages": 19,
+      "units": 326,
+      "translated_units": 102,
+      "abstract_reviewed": 1,
+      "missing": 0,
+      "flagged": 5,
+      "sha256": "873bd26a183a8d63ffcd65e63b02b44f5f5de250462f01b20c1d16ea446c2d1d",
+      "extraction": "arXiv HTML (headings, paragraphs, captions, tables and appendices)",
+      "flags": [
+        {
+          "id": "autosurvey-0182",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "autosurvey-0184",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "autosurvey-0186",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "autosurvey-0194",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "autosurvey-0198",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "openscholar",
+      "label": "OpenScholar",
+      "version": "2411.14199v1",
+      "pages": 53,
+      "units": 570,
+      "translated_units": 441,
+      "abstract_reviewed": 1,
+      "missing": 0,
+      "flagged": 9,
+      "sha256": "26a976b9ec342c2b52f940dca68cc017a9bbbf5bef7b436e97233ab72f1a0989",
+      "extraction": "arXiv HTML (headings, paragraphs, captions, tables and appendices)",
+      "flags": [
+        {
+          "id": "openscholar-0039",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "openscholar-0041",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "openscholar-0044",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "openscholar-0050",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "openscholar-0052",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "openscholar-0053",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "openscholar-0060",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "openscholar-0112",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "openscholar-0136",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "surveyforge",
+      "label": "SurveyForge",
+      "version": "ACL 2025 / 2025.acl-long.609",
+      "pages": 22,
+      "units": 208,
+      "translated_units": 180,
+      "abstract_reviewed": 1,
+      "missing": 0,
+      "flagged": 1,
+      "sha256": "8d5963f52a0866b1127261ae95ea2f10e6556b5058dd7a2041505c10a4ad0bf1",
+      "extraction": "PDF text; paragraph reconstruction with page anchors (ACL columns separated)",
+      "flags": [
+        {
+          "id": "surveyforge-0030",
+          "flags": [
+            "little_chinese"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "co-scientist",
+      "label": "Co-Scientist",
+      "version": "2502.18864v2",
+      "pages": 157,
+      "units": 1143,
+      "translated_units": 898,
+      "abstract_reviewed": 1,
+      "missing": 0,
+      "flagged": 1,
+      "sha256": "e603a77c9d2bdfb528313e4cf35405b72261e018a70da724fcebca94c96e4716",
+      "extraction": "PDF text; paragraph reconstruction with page anchors (ACL columns separated)",
+      "flags": [
+        {
+          "id": "co-scientist-0276",
+          "flags": [
+            "little_chinese"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ai-scientist-v2",
+      "label": "AI Scientist-v2",
+      "version": "2504.08066v1",
+      "pages": 69,
+      "units": 576,
+      "translated_units": 501,
+      "abstract_reviewed": 1,
+      "missing": 0,
+      "flagged": 2,
+      "sha256": "53bafd3028e3f8829a3d85220e84dcf0d18934f9b75c092a60de303ff3644bd2",
+      "extraction": "PDF text; paragraph reconstruction with page anchors (ACL columns separated)",
+      "flags": [
+        {
+          "id": "ai-scientist-v2-0141",
+          "flags": [
+            "little_chinese"
+          ]
+        },
+        {
+          "id": "ai-scientist-v2-0403",
+          "flags": [
+            "little_chinese"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "paperbench",
+      "label": "PaperBench",
+      "version": "2504.01848v3",
+      "pages": 30,
+      "units": 350,
+      "translated_units": 266,
+      "abstract_reviewed": 1,
+      "missing": 0,
+      "flagged": 2,
+      "sha256": "2f58f1a6581af9d99432422dccf3cf61f5c263377c1e4550e7333c4a22d7184d",
+      "extraction": "arXiv HTML (headings, paragraphs, captions, tables and appendices)",
+      "flags": [
+        {
+          "id": "paperbench-0101",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "paperbench-0107",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "astabench",
+      "label": "AstaBench",
+      "version": "2510.21652v2",
+      "pages": 88,
+      "units": 702,
+      "translated_units": 586,
+      "abstract_reviewed": 1,
+      "missing": 0,
+      "flagged": 11,
+      "sha256": "5bf79b03472bfb22b7826c62206bd0dfafaa849920888210c1ae31c0eed2df33",
+      "extraction": "PDF text; paragraph reconstruction with page anchors (ACL columns separated)",
+      "flags": [
+        {
+          "id": "astabench-0045",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "astabench-0251",
+          "flags": [
+            "little_chinese"
+          ]
+        },
+        {
+          "id": "astabench-0294",
+          "flags": [
+            "little_chinese"
+          ]
+        },
+        {
+          "id": "astabench-0304",
+          "flags": [
+            "little_chinese"
+          ]
+        },
+        {
+          "id": "astabench-0346",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "astabench-0398",
+          "flags": [
+            "little_chinese"
+          ]
+        },
+        {
+          "id": "astabench-0401",
+          "flags": [
+            "little_chinese"
+          ]
+        },
+        {
+          "id": "astabench-0453",
+          "flags": [
+            "little_chinese"
+          ]
+        },
+        {
+          "id": "astabench-0585",
+          "flags": [
+            "little_chinese"
+          ]
+        },
+        {
+          "id": "astabench-0610",
+          "flags": [
+            "little_chinese"
+          ]
+        },
+        {
+          "id": "astabench-0617",
+          "flags": [
+            "little_chinese"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "epoch",
+      "label": "EPOCH",
+      "version": "2610.06986v1",
+      "pages": 49,
+      "units": 646,
+      "translated_units": 594,
+      "abstract_reviewed": 1,
+      "missing": 0,
+      "flagged": 19,
+      "sha256": "f23812faa52e49e6e5db607ac5d842eb111421de1f6fb8d20afd44a475052294",
+      "extraction": "arXiv HTML (headings, paragraphs, captions, tables and appendices)",
+      "flags": [
+        {
+          "id": "epoch-0036",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "epoch-0060",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "epoch-0144",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "epoch-0291",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "epoch-0345",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "epoch-0370",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "epoch-0395",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "epoch-0456",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "epoch-0481",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "epoch-0491",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "epoch-0521",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "epoch-0528",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "epoch-0564",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "epoch-0584",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "epoch-0585",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "epoch-0592",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "epoch-0601",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "epoch-0612",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        },
+        {
+          "id": "epoch-0617",
+          "flags": [
+            "formula_or_link_placeholder_missing"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "autoresearch",
+      "label": "autoresearch",
+      "version": "228791fb499afffb54b46200aca536f79142f117",
+      "pages": null,
+      "units": 71,
+      "translated_units": 60,
+      "abstract_reviewed": 0,
+      "missing": 0,
+      "flagged": 1,
+      "sha256": null,
+      "extraction": "Pinned README.md and program.md",
+      "flags": [
+        {
+          "id": "autoresearch-0033",
+          "flags": [
+            "little_chinese"
+          ]
+        }
+      ]
+    }
+  ]
+}

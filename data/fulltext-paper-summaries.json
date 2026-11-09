@@ -1,0 +1,128 @@
+[
+  {
+    "slug": "autosurvey",
+    "en": "AutoSurvey turns literature review writing into a retrieval, planning, drafting, and revision pipeline. Its transferable contribution is the workflow decomposition and the attempt to evaluate citations and overall quality separately.",
+    "zh": "AutoSurvey 将文献综述写作组织为检索、规划、起草与修订流程。可借鉴之处是流程分解，以及分别评价引用和整体质量的尝试。",
+    "points": [
+      "研究问题：单次长文本生成容易受输出长度、领域知识和引用可靠性限制。论文试图用分阶段流程生成较长、结构完整的综述。",
+      "方法：先检索主题材料并形成大纲，再为各小节准备材料和生成内容，最后整合修订。论文还设计基于多模型的评价，减少单一评分器偏好。",
+      "输入与输出：输入为研究主题和长度等要求，输出为带参考文献的综述；输出质量依赖检索库、大纲和小节之间的信息一致性。",
+      "证据：原文包含与人工综述、朴素 RAG 等对照，以及引用评价和消融。结果只适用于其原始语料与模型配置，本项目尚未复现。",
+      "局限：把内容分成小节可能造成跨节重复、术语不统一和关系遗漏。语言评分器也可能偏好篇幅与表达，对事实支持和综合深度的评价仍需人工校准。",
+      "本项目可复用：把它作为历史流程基线，在相同当前模型、无人机论文库和预算上运行；重点比较遗漏、引用支持和适用条件，而不只比较流畅度。",
+      "本项目不应直接沿用：旧模型排行榜和成本。本文不能作为“收集论文再写综述”仍具有新颖性的依据。"
+    ]
+  },
+  {
+    "slug": "openscholar",
+    "en": "OpenScholar combines scientific retrieval, reranking, generation, and citation checking. The system separates access to relevant evidence from the language model's writing ability, and evaluates answers using expert scientific questions.",
+    "zh": "OpenScholar 结合科学文献检索、重排、生成和引用核查。系统将相关证据获取与语言模型写作能力区分开，并使用专家科学问题评价回答。",
+    "points": [
+      "研究问题：科学文献问答需要综合多篇论文并给出可核查引用，通用模型的参数知识和表达能力无法保证证据正确。",
+      "方法：建立学术数据存储，先检索相关片段，再重排并生成回答；通过自反馈补充检索和修订，并核查引用。论文还利用推理流程合成训练数据。",
+      "评价：ScholarQABench 覆盖不同学科，区分单篇与多篇文献任务，并评价回答正确性、引用准确性和内容组织；这些维度不能被一个总写作分数替代。",
+      "证据：本次采用的 2024 arXiv v1 报告检索增强模型相对当时模型的优势。它不能说明 2026 年最新模型之间的排序。",
+      "版本：本次全文翻译来自明确标注 CC BY 4.0 的 arXiv v1。2026 年 Nature 正式版另有出版信息和修订；这里没有把两个版本拼接成一篇原文。",
+      "局限：能回答带引用的问题，不等于能完成有原创分类和批判性综合的整篇综述。检索不到关键反例时，引用存在也可能掩盖结论偏差。",
+      "本项目可复用：保存每条主张对应的原文位置、条件和支持关系；评价“引用存在”与“引用足以支持这条主张”之间的差异。"
+    ]
+  },
+  {
+    "slug": "surveyforge",
+    "en": "SurveyForge emphasizes outline design and memory-supported survey writing. Its evaluation separates references, outlines, and content, making failures easier to locate than a single overall preference score would.",
+    "zh": "SurveyForge 强调大纲设计和记忆支持的综述写作。其评价将参考文献、大纲与内容分开，比单一整体偏好分数更便于定位失败。",
+    "points": [
+      "研究问题：自动综述既可能缺少重要参考，也可能大纲范围失衡、层级不合理。只提高文本流畅度难以解决这些问题。",
+      "方法：分析人工综述的大纲组织，并结合领域检索规划结构；通过学术导航和记忆检索支持起草与修订。",
+      "评价：SurveyBench 包含人工综述作为对照，分别检查参考文献、大纲和内容质量。它有利于把检索失败与组织失败分开。",
+      "证据：正式版为 ACL 2025 论文，作者报告相对 AutoSurvey 等原始基线的收益；本项目没有将其复现为当前排行榜。",
+      "原文处理：采用 ACL 正式 PDF，按左右栏顺序提取，避免直接横向拼接两栏。复杂图表仍以原 PDF 为准。",
+      "局限：模仿人工综述结构可能固化既有分类；人工综述本身也并非唯一正确答案。评价需要检查是否忽略新近方向或反对证据。",
+      "本项目可复用：构造适合无人机的分类维度，包括任务、地图、传感器、运动假设、计算位置与实验证据，并用新评价工作补充知识综合能力检查。"
+    ]
+  },
+  {
+    "slug": "co-scientist",
+    "en": "Co-Scientist repeatedly generates, reviews, ranks, and improves scientific hypotheses. It connects internal search with selected external biomedical experiments, illustrating both the promise and the limits of hypothesis-focused automation.",
+    "zh": "Co-Scientist 反复生成、评议、排序和改进科学假设，并将内部搜索与部分外部生物医学实验连接起来，展示了假设自动化的潜力与边界。",
+    "points": [
+      "研究问题：研究者需要结合深入的领域知识与跨领域线索，生成既新颖又可实验检验的假设。系统目标是辅助这类结构化科学思考。",
+      "方法：通过异步框架协调不同角色，以生成、反思、排序、演化等循环改进候选；锦标赛式比较帮助分配后续研究计算。",
+      "输入与输出：输入研究目标、约束与已有知识，输出研究假设和实验建议；研究者仍能提出方向并引导过程。",
+      "证据：v2 包括药物再利用、靶点和耐药机制等应用，以及部分体外实验验证。外部实验与系统内部评分是两类不同证据。",
+      "本次版本：采用 2026-06-29 的 arXiv v2，共 157 页；方法、扩展结果、案例与补充材料中的可提取文本均纳入对照初译。",
+      "局限：内部 Elo 或评审偏好不等于实验成功。生物医学案例不能直接外推为无人机研究能力；假设质量与验证资源也可能高度相关。",
+      "本项目可复用：生成多个竞争性解释，记录其预测，再让同一批仿真测试区分它们；分析内部排名能否预测最终未见场景收益。"
+    ]
+  },
+  {
+    "slug": "ai-scientist-v2",
+    "en": "AI Scientist-v2 connects idea generation to code search, experiments, analysis, and manuscript writing. Its experiment tree is a useful organizational mechanism, while manuscript acceptance provides only a bounded evaluation of research quality.",
+    "zh": "AI Scientist-v2 将想法生成连接到代码搜索、实验、分析和论文写作。实验树是可借鉴的组织机制，而稿件录用只是范围有限的研究质量评价。",
+    "points": [
+      "研究问题：在不依赖预先编写的具体研究模板时，系统如何持续实现、调试和扩展实验，并组织成论文。",
+      "方法：实验管理者调度渐进式树搜索，区分初始实现、改进与研究议程等阶段；结合数据加载、结果分析和视觉语言图表反馈。",
+      "证据：作者报告向 ICLR workshop 提交三篇自主生成稿件，其中一篇达到录用标准。工作坊设置、样本规模和研究任务范围限制了结论。",
+      "附录的重要性：附录展示提示词、生成论文以及团队或 workshop 审查，能观察到评审结果之外的代码、实验与表述问题。",
+      "原文处理：采用 69 页 PDF，以覆盖 HTML 未完整呈现的嵌入稿件。对嵌入稿件的装饰性大水印作文本过滤，并将边注与正文分开提取。",
+      "局限：完成代码执行和完成论文写作，不足以证明主张成立；生成稿件中的评论与失败不应被略去。不能把研究系统论文的发表误认为系统自主发表了同一篇论文。",
+      "本项目可复用：保留候选实现分支、失败原因和实验轨迹；把主张审查独立于代码完成度，并以固定 UAV 指标进行终验。"
+    ]
+  },
+  {
+    "slug": "paperbench",
+    "en": "PaperBench evaluates whether an agent can reconstruct research implementations and experiments from a paper. Hierarchical rubrics expose partial progress, while reproduction and judge evaluation help separate real execution from plausible code.",
+    "zh": "PaperBench 评价 Agent 能否从论文重建研究实现和实验。分层评分让部分进展可见，而重跑与评分器评价有助于区分真实执行和看似合理的代码。",
+    "points": [
+      "研究问题：研究工程能力应通过理解论文、实现贡献和实际运行实验来测量，单纯编码题或文字问答覆盖不足。",
+      "任务：基于 20 篇 ICML 2024 Spotlight/Oral 论文构建复现任务，要求从论文描述出发形成实现和实验结果。",
+      "评价：与作者合作构建细粒度分层评分标准，区分实现和结果等要求；同时研究自动评分器，并通过 JudgeEval 检查评分质量。",
+      "证据：原论文包含不同 Agent 配置和部分人类参考实验。原始成绩属于 2025 年模型、框架与预算，不是当前能力上限。",
+      "局限：复现已知结果与开放式研究发现不同；任务数量有限、复现目标可能描述不充分，评分器本身也会犯错。",
+      "本项目可复用：将 UAV 复现目标拆为环境成立、关键机制实现、实验完成、结果支持结论四层；另报完整任务通过率，避免高部分分数掩盖终验失败。",
+      "基线设计：当前模型应重新运行；如果只考查候选算法调参，必须加入适用的传统搜索对照，避免把一般优化收益归因于科研智能。"
+    ]
+  },
+  {
+    "slug": "astabench",
+    "en": "AstaBench evaluates scientific agents with standardized tools, tasks, and cost accounting. Its broad suite helps reveal the difference between success on individual scientific steps and success across an entire discovery workflow.",
+    "zh": "AstaBench 使用标准化工具、任务和成本记录评价科研 Agent。其广泛任务有助于揭示单个科学步骤成功与完整发现流程成功之间的差异。",
+    "points": [
+      "研究问题：比较 Agent 时，模型、工具权限、成本和实验环境往往不同，导致难以判断进步来自哪里。",
+      "方法：提出较严格的评价原则和工具基础设施，将文献理解、编码、数据分析和端到端发现任务纳入套件，并提供多类 Agent 基线。",
+      "任务与证据：v2 描述 2,400 余个问题和多类 Agent 比较；各子任务的能力差异不能只用整体平均分概括。",
+      "可复现性：标准工具和统一接口使受控比较更可行；正式结果仍需要固定采用的工具版本、语料、模型与预算。",
+      "本次版本：采用 2026-04-21 arXiv v2，对应 ICLR 2026；不把文中旧模型排名标为截至今日的最新排行榜。",
+      "局限：宽泛科研套件无法直接替代无人机任务；不同子任务的分数和资源消耗需要分开观察，尤其关注完整闭环。",
+      "本项目可复用：按研究任务定义成功条件，统一模型、工具、检索库和预算；分别报告质量、成本、人工介入及完整复验通过率。"
+    ]
+  },
+  {
+    "slug": "epoch",
+    "en": "EPOCH governs how search outcomes become accepted scientific claims. It connects task contracts, typed evidence, falsification, and independent replay, making evidence handling a direct component of the discovery process.",
+    "zh": "EPOCH 约束搜索结果如何成为被接受的科学主张。它连接任务契约、类型化证据、反证与独立重跑，使证据处理直接参与发现过程。",
+    "points": [
+      "研究问题：优化评价器分数容易使脆弱候选被当成发现，也容易混淆经验提升、有限证书和定理级主张。",
+      "方法：事先定义任务和可接受结果，用结构化记忆区分证据类型；主动尝试反驳候选，经过准入检查和独立重跑再形成主张。",
+      "评价：论文报告算法优化、超参数相关任务和数学案例等结果；不同任务的“有效证据”并不相同，不能用单一验证器概括。",
+      "证据边界：这是 2026 年预印本的作者报告，本项目尚未安装其实现或独立复现，不将其自报最优成绩视作已确认事实。",
+      "与本选题关系：证据约束、独立重跑和反证已经有直接先例，不能单独作为我们的新贡献。",
+      "可研究差异：机器人实验存在噪声、时延、定位偏差与场景转移，可能需要显式表示文献适用条件，并选择能区分竞争解释的低成本实验。",
+      "比较要求：在同模型同预算下检验新增机制是否减少错误接受、提高留出场景复验成功率，并报告因检查而增加的成本与误拒。"
+    ]
+  },
+  {
+    "slug": "autoresearch",
+    "en": "The repository provides a compact autonomous experiment loop around a constrained training program. Its value is operational clarity: an editable component, a fixed experiment budget, an evaluation metric, and a record of accepted or rejected changes.",
+    "zh": "这个仓库围绕受限训练程序提供紧凑的自动实验循环。其价值是操作边界清楚：可修改组件、固定实验预算、评价指标，以及被接受或拒绝改动的记录。",
+    "points": [
+      "资料性质：这是工程仓库，不是同行评审论文。本次抓取固定 commit 的 README.md 与 program.md，来源记录包含文件校验和。",
+      "方法：人定义研究目标和执行指令，Agent 在允许范围内修改训练程序，运行固定时长实验，根据指标保留或丢弃候选，并持续记录。",
+      "可借鉴边界：准备/评价设施与可编辑训练组件分开，可减少实验过程中随意改变目标的风险。",
+      "证据：README 说明如何运行该循环，但它本身不证明搜索的新颖性、泛化或真实科研生产率。",
+      "适配 UAV：先只开放探索策略的单一接口，保持地图、控制器和评分器固定；为每个候选记录配置、原始日志、异常和终止原因。",
+      "局限：反复观察同一验证指标会过拟合；自动调参的改进应与常规搜索比较。研究指令中对无限运行或权限的建议不能直接照搬到实机实验。",
+      "翻译处理：自然语言指令翻译，命令和代码保持原文，便于准确执行或查阅；本项目没有执行该仓库中的训练或飞行指令。"
+    ]
+  }
+]

@@ -3,6 +3,9 @@
 .env.*
 !.env.example
 .venv/
+.venv-translation/
+.cache/
+tmp/
 __pycache__/
 *.pyc
 node_modules/
@@ -12,3 +15,11 @@ runs/
 datasets/
 checkpoints/
 *.canvas.data.json
+
+# Reproducible translation cache and transient logs
+translations/fulltext/translation-cache.jsonl
+translations/fulltext/*-progress.log
+translations/fulltext/translation-*.log
+translations/fulltext/render-report.log
+translations/fulltext/progress.json
+output/*.zip

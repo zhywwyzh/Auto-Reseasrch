@@ -1,0 +1,19 @@
+{
+  "slug": "epoch",
+  "arxiv": "2610.06986v1",
+  "title": "EPOCH: Reliable Discovery through Evidence-Governed Search",
+  "authors": [
+    "Guo, Binjie",
+    "Mo, Aisheng",
+    "Li, Ruitong",
+    "Deng, Xinle"
+  ],
+  "pdf_url": "https://arxiv.org/pdf/2610.06986v1",
+  "resolved_pdf_url": "https://arxiv.org/pdf/2610.06986v1",
+  "licence": "http://creativecommons.org/licenses/by/4.0/",
+  "source_format": "arXiv pinned version",
+  "html": "https://arxiv.org/html/2610.06986v1",
+  "pages": 49,
+  "sha256": "f23812faa52e49e6e5db607ac5d842eb111421de1f6fb8d20afd44a475052294",
+  "retrieved": "2026-11-09"
+}

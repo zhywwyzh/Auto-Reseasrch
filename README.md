@@ -12,8 +12,14 @@
 
 ## 材料入口
 
+- [指定 8 篇论文及 autoresearch 文档的全文中英对照初译](translations/fulltext/README.md)
+- [全文双语阅读总入口（HTML）](translations/fulltext/index.html)
+- [抓取原文、版本、许可及校验和](sources/fulltext/manifest.json)
 - [研究方案与执行路线](docs/research-plan.md)
-- [20 项参考工作及阅读用途](docs/references.md)
+- [26 项参考工作及当前用途](docs/references.md)
+- [中英对照阅读包与时效性复核（原 20 项＋新增 6 项）](docs/literature-bilingual-2026-11-05.md)
+- [结构化文献阅读卡数据](data/literature-reading-2026-11-05.json)
+- [中英对照交互面板源码](artifacts/auto-research-bilingual-reading.tsx)
 - [本次研究对话历史（含参考图片）](history/auto-research-conversation.md)
 - [完整交互面板源码](artifacts/auto-research-uav-roadmap.tsx)
 - [打开独立工作区](AutoResearch-UAV.code-workspace)
@@ -27,6 +33,8 @@
 `/home/zhywwyzh/.cursor/projects/home-zhywwyzh-workspace-AutoResearch-UAV/canvases/auto-research-uav-roadmap.canvas.tsx`
 
 面板依赖宿主提供的 `cursor/canvas`，不是独立网页。仓库中的 `.tsx` 文件是可版本管理的完整源码副本；其他电脑可将它保存到对应工作区的受管 canvases 目录，并使用 `.canvas.tsx` 后缀打开。
+
+新增的中英对照阅读面板位于同一目录的 `auto-research-bilingual-reading.canvas.tsx`，可按文献选择阅读，也可查看版本与时效性判断。阅读包包含原文短句翻译及原创英文释义/中文对照，不是全文翻译；核查范围见阅读包开头。
 
 ## 已知研究条件
 

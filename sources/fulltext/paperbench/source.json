@@ -1,0 +1,28 @@
+{
+  "slug": "paperbench",
+  "arxiv": "2504.01848v3",
+  "title": "PaperBench: Evaluating AI's Ability to Replicate AI Research",
+  "authors": [
+    "Starace, Giulio",
+    "Jaffe, Oliver",
+    "Sherburn, Dane",
+    "Aung, James",
+    "Chan, Jun Shern",
+    "Maksin, Leon",
+    "Dias, Rachel",
+    "Mays, Evan",
+    "Kinsella, Benjamin",
+    "Thompson, Wyatt",
+    "Heidecke, Johannes",
+    "Glaese, Amelia",
+    "Patwardhan, Tejal"
+  ],
+  "pdf_url": "https://arxiv.org/pdf/2504.01848v3",
+  "resolved_pdf_url": "https://arxiv.org/pdf/2504.01848v3",
+  "licence": "http://creativecommons.org/licenses/by/4.0/",
+  "source_format": "arXiv pinned version",
+  "html": "https://arxiv.org/html/2504.01848v3",
+  "pages": 30,
+  "sha256": "2f58f1a6581af9d99432422dccf3cf61f5c263377c1e4550e7333c4a22d7184d",
+  "retrieved": "2026-11-09"
+}

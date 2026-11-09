@@ -1,0 +1,23 @@
+{
+  "slug": "ai-scientist-v2",
+  "arxiv": "2504.08066v1",
+  "title": "The AI Scientist-v2: Workshop-Level Automated Scientific Discovery via Agentic Tree Search",
+  "authors": [
+    "Yamada, Yutaro",
+    "Lange, Robert Tjarko",
+    "Lu, Cong",
+    "Hu, Shengran",
+    "Lu, Chris",
+    "Foerster, Jakob",
+    "Clune, Jeff",
+    "Ha, David"
+  ],
+  "pdf_url": "https://arxiv.org/pdf/2504.08066v1",
+  "resolved_pdf_url": "https://arxiv.org/pdf/2504.08066v1",
+  "licence": "http://creativecommons.org/licenses/by/4.0/",
+  "source_format": "arXiv pinned version",
+  "html": "https://arxiv.org/html/2504.08066v1",
+  "pages": 69,
+  "sha256": "53bafd3028e3f8829a3d85220e84dcf0d18934f9b75c092a60de303ff3644bd2",
+  "retrieved": "2026-11-09"
+}

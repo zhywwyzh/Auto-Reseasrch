@@ -1,0 +1,1692 @@
+{
+  "source": {
+    "slug": "surveyforge",
+    "arxiv": "2503.04629v1",
+    "title": "SurveyForge: On the Outline Heuristics, Memory-Driven Generation, and Multi-dimensional Evaluation for Automated Survey Writing",
+    "authors": [
+      "Yan, Xiangchao",
+      "Feng, Shiyang",
+      "Yuan, Jiakang",
+      "Xia, Renqiu",
+      "Wang, Bin",
+      "Zhang, Bo",
+      "Bai, Lei"
+    ],
+    "pdf_url": "https://aclanthology.org/2025.acl-long.609.pdf",
+    "resolved_pdf_url": "https://aclanthology.org/2025.acl-long.609.pdf",
+    "licence": "https://creativecommons.org/licenses/by/4.0/",
+    "source_format": "ACL formal version",
+    "html": "https://arxiv.org/html/2503.04629v1",
+    "pages": 22,
+    "sha256": "8d5963f52a0866b1127261ae95ea2f10e6556b5058dd7a2041505c10a4ad0bf1",
+    "retrieved": "2026-11-09"
+  },
+  "extraction": "PDF text; paragraph reconstruction with page anchors (ACL columns separated)",
+  "units": [
+    {
+      "kind": "page",
+      "en": "PDF page 1",
+      "page": 1,
+      "id": "surveyforge-0001",
+      "sha256": "3e9cee4dffc01fd3041514bc3b3d584c5ed4abcae34ffe63c9751ddcb67b6720",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "SURVEYFORGE: On the Outline Heuristics, Memory-Driven Generation,",
+      "page": 1,
+      "id": "surveyforge-0002",
+      "sha256": "19e6c4febf62da63062b460cbe43eab7015eb6900bbe2a91bc553c31c96655aa",
+      "translate": true
+    },
+    {
+      "kind": "table",
+      "en": "and Multi-dimensional Evaluation for Automated Survey Writing\nXiangchao Yan ,* Shiyang Feng , ,* Jiakang Yuan , Renqiu Xia ,\n♣ ♣ ♠ ♣ ♠ ♣ ♢\nBin Wang Lei Bai ,† Bo Zhang ,†\n♠ ♣ ♣\nShanghai Artificial Intelligence Laboratory Fudan University\n♣ ♠\nShanghai Jiao Tong University\n♢\nhttps://github.com/Alpha-Innovator/SurveyForge\nhttps://huggingface.co/datasets/U4R/SurveyBench",
+      "page": 1,
+      "id": "surveyforge-0003",
+      "sha256": "393db138f3d49fcfcdc5b8df8d268d7b03e70674739561f14f36c16f82bd55ab",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "https://huggingface.co/",
+      "page": 1,
+      "id": "surveyforge-0004",
+      "sha256": "453cb49f45b2d3e3003607d9987cfb5ca578753f989a8319ebc27ad4ecfad156",
+      "translate": true
+    },
+    {
+      "kind": "heading",
+      "en": "Abstract",
+      "page": 1,
+      "id": "surveyforge-0005",
+      "sha256": "d21b4a64a2d8656a0fdf7ab2e89a49164ac504686cfa2a3d442e87c209286330",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Survey paper plays a crucial role in scientific research, especially given the rapid growth of research publications. Recently, researchers have begun using LLMs to automate survey generation for better efficiency. However, the quality gap between LLM-generated surveys and those written by human remains signifi- cant, particularly in terms of outline quality and citation accuracy. To close these gaps, we introduce SURVEYFORGE, which first gener- ates the outline by analyzing the logical struc- ture of human-written outlines and referring to the retrieved domain-related articles. Sub- sequently, leveraging high-quality papers re- trieved from memory by our scholar navigation agent, SURVEYFORGE can automatically gen- erate and refine the content of the generated article. Moreover, to achieve a comprehensive evaluation, we construct SurveyBench, which includes 100 human-written survey papers for win-rate comparison and assesses AI-generated survey papers across three dimensions: refer- ence, outline, and content quality. Experiments demonstrate that SURVEYFORGE can outper- form previous works such as AutoSurvey. 1 Introduction With the rapid development of science and tech- nology, the number of published research articles has been growing exponentially, particularly in fast- evolving fields like Artificial Intelligence (AI). The rapid growth of the literature makes it increasingly difficult for researchers to gain in-depth knowledge of a specific scientific field. Survey papers, which systematically integrate existing studies and pro- vide comprehensive developments and trends in the specific domain, have become a vital starting point of the scientific research cycle. However, tra- ditional human-driven survey writing requires re- searchers to review a vast number of articles which *Core Contributor †Corresponding Authors 124 Proceedings of the 63rd Annual Meeting of the Association for Comp July 27 - August 1, 2025 ©2025 Asso",
+      "page": 1,
+      "id": "surveyforge-0006",
+      "sha256": "601aa686f85e6cbc3876a320c496c2373a0dbe782da9314a43869c32b93a9c1f",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "/datasets/U4R/SurveyBench",
+      "page": 1,
+      "id": "surveyforge-0007",
+      "sha256": "4479bb236f53ec3249399c04cfc0c229b67933e516efe7ad80389cbaef591974",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Searching for Draft the outline for Engage in academic relevant references the survey article writing",
+      "page": 1,
+      "id": "surveyforge-0008",
+      "sha256": "4c28148e394e26a7a10ff91dcaf9879a8913be892aac85a93718d135a41cbb59",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "((cc)) OOuuttlliinnee width",
+      "page": 1,
+      "id": "surveyforge-0009",
+      "sha256": "a78a3880d157c66f1fce456f80f42a235fbdcf0a7934f80b9a9c69a3b0bc3b75",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Width： • Too broad -> irrelevant content • Too narrow -> insufficient coverage Depth: • Too deep -> excessive detail • Too shallow -> inadequate analysis",
+      "page": 1,
+      "id": "surveyforge-0010",
+      "sha256": "16f82bf6d789e1e85de42b226b2e637819c7dd6f850b515b196882ed0984f94c",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "putational Linguistics (Volume 1: Long Papers), pages 12444–12465 ociation for Computational Linguistics htped width htped ((bb)) RReeffeerreenncceess rreelleevvaanntt rreeffeerreenncceess rreeffeerreenncceess ccoovveerreedd bbyy AAII ccoorree rreeffeerreenncceess •• RReeffeerreenncceess ccoovveerreedd bbyy AAII mmaayy ccoonnttaaiinn iirrrreelleevvaanntt oonneess •• RReeffeerreenncceess ccoovveerreedd bbyy AAII mmaayy iinncclluuddee oonneess tthhaatt aarree rreellaatteedd bbuutt nnoott ccoorree ttoo tthhee ffiieelldd yevruS detareneG-IA ni segnellahC ((aa)) TThhee RReegguullaarr PPrroocceessss ooff WWrriittiinngg aann AAccaaddeemmiicc SSuurrvveeyy PPaappeerr Figure 1: Compared to human-written surveys, AI- generated surveys face two primary challenges. First, regarding the outline, these papers may often lack co- herent logic and well-structured organization. Second, with respect to references, they frequently fail to include truly relevant and influential literature. is time-consuming and makes it challenging to keep up-to-date with the latest advancements in the field. Inspired by the remarkable advancement and capabilities of Large Language Models (LLMs) (Achiam et al., 2023; Anthropic, 2024; Touvron et al., 2023; Cai et al., 2024), researchers have begun utilizing them to automatically review the literature and generate survey papers. As a pio- neer, GPT-Researcher (Assafelovic, 2023) gener- ates survey papers based on the abstract of topic- relevant articles retrieved from multiple online aca- demic databases. To identify more relevant lit- erature to the survey topic, AutoSurvey (Wang et al., 2024c) constructs a local literature database based on arXiv, establishes vector indices for each literature, and concurrently generates content for each subsection. To further align the writing style of LLM-generated content with that of humans, OpenScholar (Asai et al., 2024) proposes a large- scale scientific literature dataset, and fine-tunes 444",
+      "page": 1,
+      "id": "surveyforge-0011",
+      "sha256": "663244d28180e2548e7f6633972ce8458ded9ba1c64b47c12c415a5503aa6889",
+      "translate": true
+    },
+    {
+      "kind": "page",
+      "en": "PDF page 2",
+      "page": 2,
+      "id": "surveyforge-0012",
+      "sha256": "37a7a4a59ec4871223fca27a7c198130d7a2426931fae89b9388bba1d38ef575",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "the LLMs based on this dataset to obtain a model specifically designed for answering scientific ques- tions. Most of these automated survey generation meth- ods follow the traditional academic survey writing workflow: from literature search, to outline draft- ing, and finally academic writing, as illustrated in Fig. 1. However, despite the promising achieve- ments of the aforementioned methods, several sig- nificant challenges still remain. Firstly, the struc- ture of AI-generated surveys often lacks coherent logic and is often poorly-organized. For example, as shown in Fig. 1, existing works may suffer from structural imbalance in both width and depth, such as overly detailed sectioning or inadequate cover- age of key topics. Secondly, AI-generated surveys often fail to reference key influential literature, re- ducing the overall depth and value of surveys. As shown in Fig. 1, they may cite irrelevant works while overlooking important contributions in the field. Lastly, the evaluation of AI-generated sur- veys mainly relies on LLMs, focusing on the over- all quality of the long-form content. This approach",
+      "page": 2,
+      "id": "surveyforge-0013",
+      "sha256": "792826ac650e7add284470db38ebed95a2a65d1c3fdc7059fcbd1bed959712b4",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "lacks fine-grained analysis of critical aspects such as outline quality, reference relevance, and struc- tural coherence. Moreover, the absence of objec- tive evaluation criteria makes it difficult to establish consistent quality benchmarks or compare different methods effectively. To address the aforementioned challenges, we propose an automated framework for generating survey papers, namely SURVEYFORGE which con- tains two stages: Outline Generation and Content Generation. In the first stage, SURVEYFORGE employs a heuristic learning approach to leverage topic-relevant literature and structural patterns from human-written surveys, generating semantically comprehensive and well-organized outlines. In the second stage, a memory-driven scholar navigation agent, with a temporal-aware reranking engine, re- trieves high-quality literature for each subsection.",
+      "page": 2,
+      "id": "surveyforge-0014",
+      "sha256": "1f7a9b6f412a7be55d58275174417a2b105aae2bdf15a3e29c464acc6f1b7aed",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Then, the content for each section is combined and refined into a coherent and comprehensive survey.",
+      "page": 2,
+      "id": "surveyforge-0015",
+      "sha256": "bd5d04d7160cf5bbd7626ef111c5d4acaf27355421bc5a9d8d8c51f3d7c9677b",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Furthermore, we construct SurveyBench, a multi- dimensional benchmark to facilitate systematic as- sessment of automated survey generation systems.",
+      "page": 2,
+      "id": "surveyforge-0016",
+      "sha256": "f7c3e296b88c85f6b5541c2db1cc1e71d6b765d7ecdf6fbd722827cbe4b68094",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Extensive results highlight the unique strengths",
+      "page": 2,
+      "id": "surveyforge-0017",
+      "sha256": "401a7a174629f7a89be82bf686a0d1c01e81f9662167eae99bac85942da53946",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "of SURVEYFORGE across multiple dimensions, in- cluding its ability to generate well-structured out- lines, retrieve high-quality and highly relevant ref- erences, and produce coherent, comprehensive con- tent. SURVEYFORGE not only delivers measurable 124",
+      "page": 2,
+      "id": "surveyforge-0018",
+      "sha256": "4d01e9ea70df3bc4bb9a47263be5a30b929190b61f8bd8eccd9a8697a1a67b2b",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "improvements in these areas but also demonstrates a remarkable ability to bridge the gap between AI- generated and human-written surveys. These find- ings underscore its potential as a robust framework for automated survey generation, setting a new stan- dard for quality and reliability in this domain. Our contribution can be summarized as follows. • We propose SURVEYFORGE, a novel auto- mated framework for generating high-quality academic survey papers. • We propose a heuristic outline generation method and a memory-driven scholar navi- gation agent, which together ensure a well- structured survey framework and high-quality content generation. • To facilitate objective evaluation, we establish SurveyBench, a comprehensive benchmark featuring quantifiable metrics for assessing outline quality, reference quality, and content",
+      "page": 2,
+      "id": "surveyforge-0019",
+      "sha256": "54f0e1e90c427ee73b33e556631fd747d2ab5f9fb8f048a016076311c2e9622f",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "quality.",
+      "page": 2,
+      "id": "surveyforge-0020",
+      "sha256": "02f4d3394fce132a89faade0e59fbaac0d1d67739b101190312a7bdaf951a411",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "2 Related Work Autonomous Scientific Discovery. With the ad- vancement of LLMs (Achiam et al., 2023; An-",
+      "page": 2,
+      "id": "surveyforge-0021",
+      "sha256": "d01083a83d9bd7f180983d4aa0045c73684a2a2530a5e03d48fdbc3ecabbbd35",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "thropic, 2024; Chen et al., 2024a), an increasing number of researchers have begun exploring their potential for autonomous scientific discovery (Xia et al., 2024b; Li et al., 2024; Xia et al., 2024a; Huang et al., 2024; Ghafarollahi and Buehler, 2024; Chen et al., 2024b). Several studies (Li et al., 2024; Hu et al., 2024a; Kumar et al., 2024; Wang et al., 2024b; Su et al., 2024) have focused on leveraging LLMs for novel scientific idea generation. For in- stance, COI-Agent (Li et al., 2024) introduces an innovative chain-structured literature organization framework. SCIPIP (Wang et al., 2024b) proposes a hybrid approach combining literature-based and brainstorming-based generation to improve both the novelty and feasibility of the generated ideas. Beyond these specific applications, researchers have also developed comprehensive systems for scientific discovery. AI-Scientist (Lu et al., 2024) designs a comprehensive pipeline that covers idea generation, experimental design, and manuscript writing. More recently, Dolphin (Yuan et al., 2025) develops a closed-loop LLM-driven framework to boost the automation level of scientific research.",
+      "page": 2,
+      "id": "surveyforge-0022",
+      "sha256": "bf00d2909e8b584eb747a43017a432a896f2ecd578041e6937d4e494dac37848",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Automated Survey Generation. With the rapid proliferation of scientific papers, it has become increasingly challenging for researchers to track developments in specific fields. Early methods 445",
+      "page": 2,
+      "id": "surveyforge-0023",
+      "sha256": "36e97c3219615ace638a2f17c91664debd7a6defae5e29b56ff97c801b398245",
+      "translate": true
+    },
+    {
+      "kind": "page",
+      "en": "PDF page 3",
+      "page": 3,
+      "id": "surveyforge-0024",
+      "sha256": "62fbf13d76f5eff9d8f9448072456481020cc3ac46a62f8fc6d18096f6731b51",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Input T M La u n lt g i u m a o g d e a M l L o a d r e g ls e Embodied AI",
+      "page": 3,
+      "id": "surveyforge-0025",
+      "sha256": "a921d73f574d6241f22a4d2ef24595ee3bae4a3ba7ffbb85734383e32f79fbc3",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Stage 1: Outline Generation Paper TOPIC Survey Database Database",
+      "page": 3,
+      "id": "surveyforge-0026",
+      "sha256": "d5395cf043d13cd174c68305c64a007cba44d1c47226da2a0ed25bde4c8377fe",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "RAG LLM",
+      "page": 3,
+      "id": "surveyforge-0027",
+      "sha256": "35b7d1d016b6433ae278e28634519e94c4aae9eafb828b5ba46f99918d2543fd",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Paper Outline Refinement & Content Optimization Raw Reference Survey Check … Fin Surv repaP esabataD Database Survey Heuristic Outline Generation TOPIC RAG Related Paper Related Survey C A h b T u s i n t t r l k e a - c 1 t … C A h b T u s i n t t r l k e a - c N t L O e u v t e li l n -1 e … L O e u v t e li l n -1 e LLM Outline Level-1 I. Introduction … II. Method V. Evaluation III. Dataset VI. Applications … VIII. Conclusion RAG Related Paper Related Survey S A e b c T s t i t t i r l o e a n c - t I …Sec A ti b T o s i n t t r l - e a V c I t II O A ut L li L ne … O A ut L li L ne repaP esabataD Database Survey LLM-Parallel Outline Level-2 S S u e b c s t e i c o t n io -I n S S u u S b b e s s c e e t c c i t t o i i o o n n n -I 2 2 I . . 1 2 S S u u S b b e s s c e e t c c i t t o i i o o n n n - I 3 3 I . . 1 2 I … S S e u c b t s io ec n t - i V on II Figure 2: The overview of SURVEYFORGE. The frame and Content Writing. In the Outline Generation stage, well-structured outlines by leveraging topic-relevant litera Content Writing stage, a memory-driven Scholar Naviga each subsection and LLM generates the content of each s into a coherent and comprehensive survey. (Hoang and Kan, 2010; Hu and Wan, 2014; Jha et al., 2015; Chen and Zhuge, 2019) primarily rely on content models to select and organize sentences from papers, often resulting in outputs lacking co- herence and readability. Sun et al. (Sun and Zhuge, 2019) introduce a template tree that generates con- tent recursively based on nodes, which improves coherence but remains inflexible. Recognizing the need for more flexible and coherent solutions, the emergence of LLMs has introduced new opportuni- ties for enhancing the automated survey generation.",
+      "page": 3,
+      "id": "surveyforge-0028",
+      "sha256": "980bc12daa20db83218727e4737e3b5304e3dfb5968c55d58188a9f8ad6bb146",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Researchers have begun to leverage LLMs to facil- itate efficient literature comprehension and review (Wang et al., 2024c; Hu et al., 2024b). Zhu et al. (Zhu et al., 2023) introduce a novel task of hierar- chical catalogue generation for surveys, along with corresponding semantic and structural metrics for evaluation, but it is limited to outline generation with fixed reference papers. AutoSurvey (Wang et al., 2024c) proposes a two-stage LLM-based method for survey generation but fails to focus on the analysis of human academic writing styles and key references, which are crucial for producing high-quality surveys. Subsequently, HiReview (Hu et al., 2024b) introduces a taxonomy-driven frame- work to explore paper relationships hierarchically, enhancing LLMs’ understanding of inter-paper con- nections. However, relying on 2-hop citation net- works from existing surveys instead of commonly- cited papers limits its broader applicability. 3 Method In this section, we propose SURVEYFORGE, a novel framework based on LLMs for automatically 124",
+      "page": 3,
+      "id": "surveyforge-0029",
+      "sha256": "7292c04409cb0c0d102a75181e46fc52cd5130598db98d8b4addd7a610d51718",
+      "translate": true
+    },
+    {
+      "kind": "table",
+      "en": "Topic SANA: Scholar Navigation Agent\nAI for Science ... Outline\nI. Introduction\nPaper II. Method\nStage 2: Content Generation Database 2 2 . . 1 2 M Pr o e d -t a r l a it i y n e e d n c L o L d M er\n2.3 Instruction Tuning\nPaper Outline Parallel MemoryPaperI L d itera P t a u p r er e Id III. T I r V ai . n D i … n a g ta S s t e r t ategy\nMetaData …MetaData V. Evaluation\nTitle Title VI. Applications\nContent Content VIII. Conclusion\nSANA\nLLM-Parallel Subqueries\n…\nCombination Outline 2 Q . 1 1 : M U o n d im al o it d y a e l n fe c a o t d u e r r e extraction\nusing pre-trained models\nQ2: Modality-specific adapters\nLiterature a Q n 3 d : p A r l o i j g e n c i t n io g n a l n a d y e sy rs n chronizing\n& Evaluatio R n aw Survey MemoryP M T C a i o t e p l n t e e a te r D I n d a t ta … P M T C a i o t e p l n t e e a te r D I n d a t ta d 2 Q Q i . 1 2 2 ff : : e P D E r r e n e e n c c - t t o o r m d d a e e i o n r r d - - e D a o d l n e i … t L l c i y e o L s L d M e L r M L s LMs\nReference\nOutline\nn v a e l y Benchmark Content Sub-queries Content Reference\nework consists of two main stages: Outline Generation\n, SURVEYFORGE utilizes heuristic learning to generate\nature and structural patterns from existing surveys. In the\nation Agent (SANA) retrieves high-quality literature for\nsubsection. Finally, the content is synthesized and refined\nretrieving relevant literature and generating comprehensive survey papers. As shown in Fig. 2, our\nframework consists of two main stages: outline generation stage and content writing stage. The outline\ngeneration stage leverages both research papers and\nexisting survey structures through a heuristic learning mechanism, producing academically structured\noutlines. The content generation stage employs a\nmemory-driven scholar navigation agent with key\npaper retrieval strategy to synthesize the content of\nthe survey. Finally, we propose a benchmark SurveyBench for automated survey generation tasks.\nThe details are elaborated in Sec. 3.1, Sec. 3.2 and\nSec. 3.3, respectively.\n3.1 Heuristic Outline Generation\nThe outline of a survey paper is crucial as it defines\nthe logical organization and knowledge structure\nof the entire work. While LLMs excel at generating textual content, they often fall short in crafting well-structured survey outlines. Common issues include a lack of hierarchical depth, insufficient theoretical grounding, and a tendency toward\nreport-like structures rather than scholarly frameworks. These limitations can be attributed to the\nlimited understanding of academic writing conventions and the organizational principles underlying\nsurvey design. To address these challenges, we\npropose a top-down heuristic learning approach,\nenabling LLMs to understand the established theoretical frameworks and organizational paradigms\nfrom human-written survey outlines. Our approach\nis underpinned by two domain-specific knowledge\nbases: a Research Paper Database, which encodes\n446",
+      "page": 3,
+      "id": "surveyforge-0030",
+      "sha256": "5a3097be33416ad7f11442d0021ee1598a91a8c5010ffe440f225d88963ea7cc",
+      "translate": true
+    },
+    {
+      "kind": "page",
+      "en": "PDF page 4",
+      "page": 4,
+      "id": "surveyforge-0031",
+      "sha256": "a92ca8920bf3310f03e1f9a7c25c8021dde9bc09b4927854ddf5e4dd0d83800e",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Algorithm 1: SURVEYFORGE Input: Survey Topic T ; Research Paper Database R; Survey Outline Database S D D Output: Final Survey Document F /* Outline Generation */ Retrieve relevant papers and outlines for T : R, S; P P Generate first-level outline i and queries Q i ; O { } foreach first-level i do Retrieve releva O nt papers and outlines for Q i:",
+      "page": 4,
+      "id": "surveyforge-0032",
+      "sha256": "ca2007af0527dadde1f6162e70b82e0617500d3bface67157b598e0bca5e07ef",
+      "translate": true
+    },
+    {
+      "kind": "table",
+      "en": "P\nRi ,\nP\nSi ;\nGenerate second-level outline ij and queries\nO\nq ij ;\n{ }\nStore\nP\nRi as memory M i;\nStore R as overall memory M;\nP\n/* Content Generation */\nforeach subsection O ij in parallel do\nDecompose query q ij into sub-queries q ijk\n{ }\nusing M i;\nInitialize L ij ;\n← ∅\nforeach sub-query q ijk do\nRetrieve papers L using q and M;\nijk ijk\nL ij L ij L ijk ;\n← ∪\nRerank and select top papers Lreranked;\nij\nGenerate content C ij for O ij using Lr i e j ranked;\nMerge contents { C ij } to form draft F draft ;\nRefine F to produce final document F ;\ndraft\nreturn F ;\ndomain knowledge, and a Survey Outline Database,\nwhich captures established structural patterns (details provided in Appendix. A.1). As shown in\nAlgorithm 1, the framework begins with crossdatabase knowledge fusion, retrieving relevant papers and outlines for the given topic T from and\nR\nD\n. This process identifies key thematic areas and\nS\nD\ntheir interrelations, generating the first-level outline augmented with semantic queries Q that\ni i\nO\nspecify the scope and focus of each heading. For\neach section , we recursively retrieves relevant\ni\nO\nmaterials ( , ) and generates second-level\nP\nRi\nP\nSi\noutlines with sub-queries q . Finally, these\nij ij\nO\nheadings and their associated queries are systematically merged to construct a academically rigorous\nand comprehensive survey outline, serving as a\nfoundation for subsequent content generation.\n3.2 Memory-Driven Content Generation\nThe memory-driven content generation stage consists of two primary steps: literature retrieval and\nparallel content creation. These steps are performed\nsequentially by the proposed Scholar NAvigation\nAgent (SANA) and the LLM, respectively. A detailed explanation of each step is provided below.\n124",
+      "page": 4,
+      "id": "surveyforge-0033",
+      "sha256": "1b966d4139f6c2861ea109182df59e02bac176fe4c989e075e8467d49226a8f9",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "3.2.1 SANA: Scholar Navigation Agent To ensure that the quality and quantity of refer- ences in the generated survey papers, we propose a Scholar Navigation Agent (SANA), equipped with memory and reranking capabilities, designed to fa- cilitate literature retrieval across various generation stages. The SANA includes three modules: Mem- ory for Sub-query (MS), Memory for Retrieval (MR), Temporal-aware Reranking Engine (TRE). Memory for Sub-query. Query decomposition is a common technique that involves breaking down a complex query into smaller sub-queries, thereby en- abling more precise information retrieval. Existing query decomposition methods (Fan et al., 2024) are mostly achieved through naive prompts and LLMs. However, such methods require meticulous tuning of prompts to accommodate different tasks and may cause significant semantic differences be- tween the decomposed sub-queries and the original",
+      "page": 4,
+      "id": "surveyforge-0034",
+      "sha256": "1a279dd3508255f2e88d20f6cc471c06c08012295ad77911a86b4812bbb4d969",
+      "translate": true
+    },
+    {
+      "kind": "table",
+      "en": "query, which could potentially degrade the quality of the references in the AI-generated surveys.\nTherefore, we incorporate the memory mechanism\ninto the query decomposition process of SANA to\nenhance the effectiveness of sub-queries. Specifically, as described in Sec. 3.1, when generating the\nfirst-level outline O , a set of literature is rei\nP\nRi\ntrieved by Retrieval-Augmented Generation (RAG).\nIn the MS module, SANA takes the literature\nP\nRi\nas memory M , the original query consists of the\ni\ntitles t and descriptions d of each subsection:\nOij Oij\nq = [d , t ]. (1)\nij Oij Oij\nTo achieve query decomposition, q and M are\nij i\nused together as part of the instruction to prompt\nthe LLM to decompose q into multiple subij\nqueries q :\nijk\nq = LLM(q , M ). (2)\nijk ij i\nFinally, the sub-query q is used in the subsequent\nijk\nMR module to retrieve literature related to the subsection O .\nij\nMemory for Retrieval. The effectiveness of content generation heavily depends on the quality of\nretrieved information. Traditional retrieval methods (Lewis et al., 2020; Gao et al., 2023), which\ntypically query the entire literature database ,\nR\nD\nare often inefficient and lack contextual focus, particularly in generating complex, multi-section documents. These methods treat each section as an\nisolated unit, failing to account for the global structure and thematic coherence of the document. This\n447",
+      "page": 4,
+      "id": "surveyforge-0035",
+      "sha256": "8e4a379c9973c89c5e6ebc06adfb632f89ffc35e95eaec9a8511bd7f9d9f776c",
+      "translate": true
+    },
+    {
+      "kind": "page",
+      "en": "PDF page 5",
+      "page": 5,
+      "id": "surveyforge-0036",
+      "sha256": "39f3d8241e4084c3740da7e12a4bc6be14111b65d78f5f80928c66ccc009dcbf",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "results in redundant or irrelevant retrievals and lim- its the overall coherence of generated content.",
+      "page": 5,
+      "id": "surveyforge-0037",
+      "sha256": "c8ecb0afa91a7d45b77aa5336409eb7963e6705d08408ad85bbf9ee93bee8e13",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "To address these limitations, we incorporate the memory mechanism into the retrieval process of SANA to bridge the gap between the outline and content generation stages. Specifically, in the MS module, SANA takes the literature related to R P the entire outline as memory M. Based on the em- bedding similarity between each sub-query q and ijk the literature in M, the most relevant literature L ijk for each sub-query of section O is retrieved. Sub- ij sequently, the retrieved literature L is reranked ijk and selected within the following TRE module for content generation. Temporal-aware Reranking Engine. Reranking plays a important role in enhancing the quality and relevance of retrieved information. Existing meth- ods (Glass et al., 2022; Xiao et al., 2023) typically employ advanced scoring mechanisms to measure textual relevance between queries and documents.",
+      "page": 5,
+      "id": "surveyforge-0038",
+      "sha256": "e0faf04e633fb38c3670efdc5589f92c8b26c92a2ab14335077cee39acb6dae5",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "However, these surface-level semantic matching may fall short in capturing the academic impact and quality of publications. Besides, The publication date of a paper plays a critical role in determining its influence and significance within its respective field. Consequently, analyzing papers from differ- ent time periods within the same research domain is a crucial for identifying high-quality contribu- tions in the research field. For papers published within the same time period, there are various met- rics to indicate their impact and quality, such as citation count, Essential Science Indicators (ESI), etc (Clarivate, 2024). Among these, citation count serves as a complementary quality indicator that reflects the scholarly influence and recognition of research works. To address both the limitations of pure semantic matching and the temporal bias in different quality indicators, we propose a temporal- aware reranking engine that integrates textual rel- evance, citation impact, and publication recency.",
+      "page": 5,
+      "id": "surveyforge-0039",
+      "sha256": "8eb672e3d06016b9a734e6e8ef192faffac97327e735a88b64d7fd9ee9d0c4b0",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "This approach ensures not only the topical rele- vance but also the academic quality of the retrieved literature while maintaining a balanced represen- tation of both established and emerging research.",
+      "page": 5,
+      "id": "surveyforge-0040",
+      "sha256": "549e5388889a74c3d7e8c709b40de89cff9dc8fb7928f2e3df7db4a8c74738cb",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Specifically, the retrieved literature L based on ijk embedding similarity is categorized into multiple groups L = n G according to their publi- ijk { g }g=1 cation dates, with each group spanning a period of two years. For each group g, the highly cited literature is retained in a top-k manner as the final output for SANA, and the number of literature to 124",
+      "page": 5,
+      "id": "surveyforge-0041",
+      "sha256": "a8f277c8bdfd5a8aa1cd574735b1d3110552e4519d5589d3b7c4c3cf3d9127dc",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "be retained for each group is: n g k = | | K , (3) g L Oij ijk | | where K is a hyper-parameter that represents Oij the number of literature utilized for generating the content of each subsection. 3.2.2 Parallel Generation and Refinement Due to the constraints of maximum context length and inference speed of LLMs, the content of each section is generated in parallel to reduce the gener- ation time and ensure the length of the generated survey. However, due to the independent genera- tion processes of each section in parallel, there may be repetition or redundancy among the contents of different section. Therefore, we employ LLMs to implement the refinement stage, which is aimed at refining the raw survey obtained by concatenating the contents of each section generated in parallel. 3.3 Multi-dimensional Evaluation Benchmark Evaluating AI-generated surveys is challenging due to the lack of standardized benchmarks. Exist- ing methods largely rely on automated scoring by LLMs, which face limitations: they may not ade- quately assess key literature coverage and depend heavily on internal model judgments without ob- jective metrics. To address these challenges, we introduce SurveyBench, a comprehensive evalu- ation benchmark, along with SAM (Survey As- sessment Metrics), a multi-dimensional evaluation series. SurveyBench consists of approximately 100 human-written survey papers across 10 distinct top- ics, carefully curated by doctoral-level researchers to ensure thematic consistency and academic rigor. For each topic t , we selected one highest-quality i survey S as the reference for comparison with i∗ AI-generated surveys Sˆ . Details of the benchmark i construction process are provided in Appendix. A.2. The SAM series integrate objective metrics, expert knowledge, and multi-dimensional criteria through three core components: SAM-R: Reference Quality Evaluation. A com- prehensive and relevant bibliography is essential for a well-researched survey. Based on Survey- Bench, we extract a reference set for each topic i R t , serving as a reliable benchmark representing i foundational knowledge in the field. To measure reference quality, we define the SAM metric, which quantifies the overlap be- R tween the references in the AI-generated survey Sˆ i 448",
+      "page": 5,
+      "id": "surveyforge-0042",
+      "sha256": "daa55b98390bbaffcb24dc9019d11e500abe7072b1f884b6b16836aecfe35afe",
+      "translate": true
+    },
+    {
+      "kind": "page",
+      "en": "PDF page 6",
+      "page": 6,
+      "id": "surveyforge-0043",
+      "sha256": "7c4cfd1eab956542ccd64865d3742da7cd8aa350977ab7d8af1b669bd55cf71e",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "and : i R R SAM (Sˆ ) = | Sˆ i ∩ R i |, (4) R i R | Sˆ i| where R is the set of references in Sˆ . A higher Sˆ i i rate indicates better coverage of key literature in the topic t . i SAM-O: Outline Quality Evaluation. This com- ponent evaluates the structural quality of AI- generated surveys. A well-structured and logically coherent outline is crucial for content organization and readability. We assess the outline using a sin- gle comprehensive score SAM , ranging from 0 O to 100, where higher scores indicate better quality.",
+      "page": 6,
+      "id": "surveyforge-0044",
+      "sha256": "30f639af686ba9c60e87ac0bba7e29f51ddb09be10d33852c2365269b8cd501d",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "The evaluation is conducted by LLMs following detailed criteria described in Appendix. A.9.",
+      "page": 6,
+      "id": "surveyforge-0045",
+      "sha256": "590f765503f55c8ad81b8e837dd76d91633fda995e62fa43d147fb333402fb29",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "SAM-C: Content Quality Evaluation. The final component measures the generated survey’s qual- ity across three dimensions: structure (SAMstruct), C relevance (SAMrel), and coverage (SAMcov). Us- C C ing the high-quality survey S as reference, we i∗ compute avg score of the overall content :",
+      "page": 6,
+      "id": "surveyforge-0046",
+      "sha256": "62adac670fdffb736b0611d3b415d572c6279d95fd66950e8c5410363960c871",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "SAMstruct + SAMrel + SAMcov SAM avg = C C C . C 3 (5) Scores range from 0 to 100, with higher values indicating better performance. The LLMs assess these criteria while referencing S to ensure align- i∗ ment with expert-level standards. 4 Experiment 4.1 Experimental Settings Evaluation Dataset. To assess the performance of our proposed approach, we construct a dedicated benchmark dataset within the Computer Science (CS) domain, based on the arXiv repository. As mentioned in Sec. 3.3, we manually select approx- imately 100 human-written survey papers across 10 distinct topics, and choose one highest-quality survey for direct comparison with AI-generated surveys for each topic. Implementation Details. To establish a baseline for comparison, we adopt AutoSurvey (Wang et al., 2024c), a state-of-the-art system for automated sur- vey generation. Furthermore, we collect a large- scale dataset from the CS scientific field of arXiv, consisting of approximately 600,000 research pa- pers and 20,000 review articles. We extract the key metadata to construct a retrieval vector database, including titles, abstracts of all papers and outlines 124",
+      "page": 6,
+      "id": "surveyforge-0047",
+      "sha256": "5d99f0ddc21905cdafe68edcab74643da4edf1dc30286b876fb0b48dacdfbb10",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "of the review articles. To ensure a fair compari- son, we align the timeline of our retrieval database with that of AutoSurvey. During the experimental evaluation, we retrieve 1,500 candidate papers for the outline generation stage and 60 relevant papers for each chapter-writing stage, following the same experimental settings as AutoSurvey. For survey generation, we employ two LLMs independently: Claude-3-haiku-20240307 and GPT-4o-mini-2024-07-18. Each model gener- ates surveys for 10 predefined topics, with 10 in- dependent trials conducted for each topic, result- ing in a total of 100 outputs per model. The aver- age performance across these trials is calculated to ensure stable and reliable results. In addition to the closed-source models, we have also experi- mented with the open source model with Deepseek- v3 (Liu et al., 2024), with impressive results, as detailed in Appendix A.5. For evaluation, we leverage more advanced models, GPT-4o-2024- 08-06 and Claude-3.5-sonnet-20241022, to as- sess both the AI-generated outlines and the content of the surveys, ensuring a robust and reliable evalu-",
+      "page": 6,
+      "id": "surveyforge-0048",
+      "sha256": "a82daf6ae181881328390add7c1d5cd47de67988f0f1e3de60ccd2a8c2a95af7",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "ation of their quality. 4.2 Main Results",
+      "page": 6,
+      "id": "surveyforge-0049",
+      "sha256": "83369cd781290e68890ead06516e55dcab1d927016360f0d3360606a3e316440",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "As shown in Table 1, we evaluate the performance of SURVEYFORGE across various dimensions, in- cluding reference quality, outline quality, and con- tent quality, comparing it against the baseline Au- toSurvey. The results demonstrate that SURVEY- FORGE achieves significant improvements in all aspects, showcasing its potential as an advanced automated survey generation framework. Addi- tionally, we conduct a cost analysis of the SUR- VEYFORGE framework, demonstrating that gen- erating a 64k-token overview requires less than $0.50, with detailed cost breakdowns provided in Appendix A.6. Results on Reference Quality. In terms of refer- ence quality, SURVEYFORGE outperforms Auto- Survey on both key metrics: Input Coverage, which measures the relevance of retrieved papers, and Ref- erence Coverage, which evaluates the alignment of the references of surveys with expert-curated benchmarks. Specifically, the Input Coverage score improves from 0.12 to 0.22 when using Claude-3-",
+      "page": 6,
+      "id": "surveyforge-0050",
+      "sha256": "841c39829927b56b6022e731aa23e20f7811dd801939358959d04a5dd9b4977a",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Haiku and from 0.07 to 0.20 with GPT-4o mini. Similarly, the Reference Coverage score increases from 0.23 to 0.40 and from 0.20 to 0.42 for the two respective models, indicating that SURVEYFORGE retrieves and generates references that are not only 449",
+      "page": 6,
+      "id": "surveyforge-0051",
+      "sha256": "8b4ed6c6c292c9cbc62aa20a89aad312a0e011dd6f05a555787e0151da36d456",
+      "translate": true
+    },
+    {
+      "kind": "page",
+      "en": "PDF page 7",
+      "page": 7,
+      "id": "surveyforge-0052",
+      "sha256": "6bcb406fb861a419917ece9f8671d86a981a8554831d880786edd35ffa732377",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Reference Quality Methods Model Input Cov. Reference Cov.",
+      "page": 7,
+      "id": "surveyforge-0053",
+      "sha256": "c60a9a7ed68b1edb1a992819ab4c15abccb8de6bb7ff59ab50f2186c22bfe8b0",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Human-Written - - 0.6294 AutoSurvey Claude-3-Haiku 0.1153 0.2341 SURVEYFORGE Claude-3-Haiku 0.2231 0.3960 AutoSurvey GPT-4o mini 0.0665 0.2035 SURVEYFORGE GPT-4o mini 0.2018 0.4236 Table 1: Comparison of SURVEYFORGE and AutoSurvey (SAM) from three aspects: Reference (SAM-R), Outline means the coverage of input papers, measuring the overl while \"Reference Cov.\" means the coverage of reference, survey and benchmark references.",
+      "page": 7,
+      "id": "surveyforge-0054",
+      "sha256": "359be171dad1dbf223198f1b213ae326e5f76f528f861e6a8d6c76dea3aaa303",
+      "translate": true
+    },
+    {
+      "kind": "table",
+      "en": "Outline C\nMethods\nScore Win Rate Comparat\nAutoSurvey (Wang et al., 2024c) 27.00% 25\nSURVEYFORGE 73.00% 75\nTable 2: Win-rate comparison of automatic and human eva\nreflects the win rate based on individual LLM-scores, wh\nbefore determining the higher-scoring one. \"Comparative\nwhere the LLM directly compares two articles side-byrepresents the win rate derived from expert human evalua\n\u0000/\u0000/\u00000\u0000\u0010\u0000E\u0000D\u0000V\u0000H\u0000G \u0000(\u0000Y\u0000D\u0000O\u0000X\u0000D\u0000W\u0000L\u0000R\u0000Q \u0000/\u0000/\u00000\u0000\u0010\u0000E\u0000D\u0000V\u0000H\u0000G \u0000(\u0000Y\u0000D\u0000O\u0000X\u0000D\u0000W\u0000L\u0000R\u0000Q\n\u00000\u0000X\u0000O\u0000W\u0000L\u0000\u0010\u0000$\u0000J\u0000H\u0000Q\u0000W \u0000R\u0000I\u0000\u0003\u0000/\u0000/\u00000\u0000V \u00000\u0000X\u0000O\u0000W\u0000L\u0000\u0010\u0000$\u0000J\u0000H\u0000Q\u0000W \u0000R\u0000I\u0000\u0003\u0000/\u0000/\u00000\u0000V\n\u0000* \u0000' \u0000H \u00000 \u0000L \u0000Q \u0000I \u0000H \u0000R \u0000I \u0000U \u0000G \u0000X \u0000D \u0000H \u0000V \u0000W \u0000L \u0000O \u0000R \u0000V \u0000L\u0000Y \u0000Q \u0000H \u0000'\u0000H\u0000W \u0000\u0016 \u0000H \u0000' \u0000F \u0000\u0003 \u0000W \u00002 \u0000L\u0000R \u0000E \u0000Q \u0000M \u0000\u0003 \u0000H \u0000L\u0000Q \u0000F \u0000\u0003 \u0000W \u0000$\u0000' \u0000* \u0000' \u0000H \u00000 \u0000L \u0000Q \u0000I \u0000H \u0000R \u0000I \u0000U \u0000G \u0000X \u0000D \u0000H \u0000V \u0000W \u0000L \u0000O \u0000R \u0000V \u0000L\u0000Y \u0000Q \u0000H \u0000'\u0000H\u0000W \u0000\u0016 \u0000H \u0000' \u0000F \u0000\u0003 \u0000W \u00002 \u0000L\u0000R \u0000E \u0000Q \u0000M \u0000\u0003 \u0000H \u0000L\u0000Q \u0000F \u0000\u0003 \u0000W \u0000$\u0000'\n\u0000\u0013\u0000\u0011\u0000\u0016\u0000\u0018 \u0000\u0013\u0000\u0011\u0000\u001b\u0000\u0018\n\u00001 \u00001 \u0000H \u0000* \u0000W \u0000H \u0000U \u0000Z \u0000D \u0000X \u0000R \u0000U \u0000S \u0000D \u0000U \u0000K \u0000N \u0000O \u0000V \u0000\u0013\u0000\u0011\u0000\u0013\u0000\u0018 \u0000\u0013\u0000\u0011\u0000\u0014\u0000\u0018 \u0000\u0013\u0000\u0011\u0000\u0015\u0000\u0018 \u0000\u0016\u0000' \u00006 \u0000\u0003 \u0000S \u0000* \u0000O\u0000D \u0000D \u0000W \u0000X \u0000W \u0000V \u0000L \u0000V \u0000Q \u0000L \u0000J \u0000D\u0000Q \u00001 \u00001 \u0000H \u0000* \u0000W \u0000H \u0000U \u0000Z \u0000D \u0000X \u0000R \u0000U \u0000S \u0000D \u0000U \u0000K \u0000N \u0000O \u0000V \u0000\u0013\u0000\u0011\u0000\u0015\u0000\u0018 \u0000\u0013\u0000\u0011\u0000\u0017\u0000\u0018 \u0000\u0013\u0000\u0011\u0000\u0019 \u0000\u0016 \u0000\u0018 \u0000' \u00006 \u0000\u0003 \u0000S \u0000* \u0000O\u0000D \u0000D \u0000W \u0000X \u0000W \u0000V \u0000L \u0000V \u0000Q \u0000L \u0000J \u0000D\u0000Q\n\u0000+\u0000D\u0000O\u0000O\u0000X\u0000F\u0000L\u0000Q\u0000D\u0000W\u0000L\u0000R\u0000Q \u00009\u0000L\u0000V\u0000L\u0000R\u0000Q \u0000+\u0000D\u0000O\u0000O\u0000X\u0000F\u0000L\u0000Q\u0000D\u0000W\u0000L\u0000R\u0000Q \u00009\u0000L\u0000V\u0000L\u0000R\u0000Q\n\u0000L\u0000Q\u0000\u0003\u0000/\u0000/\u00000\u0000V \u00007\u0000U\u0000D\u0000Q\u0000V\u0000I\u0000R\u0000U\u0000P\u0000H\u0000U\u0000V \u0000L\u0000Q\u0000\u0003\u0000/\u0000/\u00000\u0000V \u00007\u0000U\u0000D\u0000Q\u0000V\u0000I\u0000R\u0000U\u0000P\u0000H\u0000U\u0000V\n\u0000/\u0000D\u0000U \u00000 \u0000J \u0000X \u00000 \u0000H \u0000O \u0000\u0003 \u0000W \u0000R \u0000/ \u0000L \u0000G \u0000P \u0000D \u0000H \u0000Q \u0000R \u0000O \u0000J \u0000G \u0000V \u0000X \u0000D \u0000D \u0000O \u0000J\u0000H \u00005\u0000$ \u0000/\u0000/ \u0000* \u00000 \u0000\u0003\u0000I \u0000V \u0000R\u0000U \u0000$ \u00006\u0000X \u0000X \u0000U \u0000W \u0000Y \u0000R \u0000H \u00006 \u0000\\ \u0000X \u0000) \u0000U \u0000R \u0000Y \u0000U \u0000H \u0000J \u0000\\ \u0000H \u0000/\u0000D\u0000U \u00000 \u0000J \u0000X \u00000 \u0000H \u0000O \u0000\u0003 \u0000W \u0000R \u0000/ \u0000L \u0000G \u0000P \u0000D \u0000H \u0000Q \u0000R \u0000O \u0000J \u0000G \u0000V \u0000X \u0000D \u0000D \u0000O \u0000J\u0000H \u00005\u0000$ \u0000/\u0000/ \u0000* \u00000 \u0000\u0003\u0000I \u0000V \u0000R\u0000U \u0000$ \u00006 \u0000+ \u0000X \u0000X \u0000X \u0000U \u0000W \u0000P \u0000Y \u0000R \u0000D \u0000H \u00006 \u0000Q \u0000\\ \u0000X \u0000) \u0000U \u0000R \u0000Y \u0000U \u0000H \u0000J \u0000\\ \u0000H\n(a) (b)\n\u0000/\u0000/\u00000\u0000\u0010\u0000E\u0000D\u0000V\u0000H\u0000G \u0000(\u0000Y\u0000D\u0000O\u0000X\u0000D\u0000W\u0000L\u0000R\u0000Q \u0000/\u0000/\u00000\u0000\u0010\u0000E\u0000D\u0000V\u0000H\u0000G \u0000(\u0000Y\u0000D\u0000O\u0000X\u0000D\u0000W\u0000L\u0000R\u0000Q\n\u00000\u0000X\u0000O\u0000W\u0000L\u0000\u0010\u0000$\u0000J\u0000H\u0000Q\u0000W \u0000R\u0000I\u0000\u0003\u0000/\u0000/\u00000\u0000V \u00000\u0000X\u0000O\u0000W\u0000L\u0000\u0010\u0000$\u0000J\u0000H\u0000Q\u0000W \u0000R\u0000I\u0000\u0003\u0000/\u0000/\u00000\u0000V\n\u0000* \u0000' \u0000H \u00000 \u0000L \u0000Q \u0000I \u0000H \u0000R \u0000I \u0000U \u0000G \u0000X \u0000D \u0000H \u0000V \u0000W \u0000L \u0000O \u0000R \u0000V \u0000L\u0000Y \u0000Q \u0000H \u0000'\u0000H\u0000W \u0000\u0016 \u0000H \u0000' \u0000F \u0000\u0003 \u0000W \u00002 \u0000L\u0000R \u0000E \u0000Q \u0000M \u0000\u0003 \u0000H \u0000L\u0000Q \u0000F \u0000\u0003 \u0000W \u0000$\u0000' \u0000* \u0000' \u0000H \u00000 \u0000L \u0000Q \u0000I \u0000H \u0000R \u0000I \u0000U \u0000G \u0000X \u0000D \u0000H \u0000V \u0000W \u0000L \u0000O \u0000R \u0000V \u0000L\u0000Y \u0000Q \u0000H \u0000'\u0000H\u0000W \u0000\u0016 \u0000H \u0000' \u0000F \u0000\u0003 \u0000W \u00002 \u0000L\u0000R \u0000E \u0000Q \u0000M \u0000\u0003 \u0000H \u0000L\u0000Q \u0000F \u0000\u0003 \u0000W \u0000$\u0000'\n\u00001 \u00001 \u0000H \u0000* \u0000W \u0000H \u0000U \u0000Z \u0000D \u0000X \u0000R \u0000U \u0000S \u0000D \u0000U \u0000K \u0000N \u0000O \u0000V \u0000\u001a\u0000\u0018 \u0000\u001b\u0000\u0013 \u0000\u001b\u0000\u0018 \u0000\n\u0000\u0013 \u0000\u0016\u0000' \u00006 \u0000\n\u0000\u0003 \u0000S \u0000\u0018 \u0000* \u0000O\u0000D \u0000D \u0000W \u0000X \u0000W \u0000V \u0000L \u0000V \u0000Q \u0000L \u0000J \u0000D\u0000Q \u00001 \u00001 \u0000H \u0000* \u0000W \u0000H \u0000U \u0000Z \u0000D \u0000X \u0000R \u0000U \u0000S \u0000D \u0000U \u0000K \u0000N \u0000O \u0000V \u0000\u001a\u0000\u0013 \u0000\u001a\u0000\u0018 \u0000\u001b\u0000\u0013 \u0000\u0016\u0000' \u00006 \u0000\u001b \u0000\u0003 \u0000S \u0000\u0018 \u0000* \u0000O\u0000D \u0000D \u0000W \u0000X \u0000W \u0000V \u0000L \u0000V \u0000Q \u0000L \u0000J \u0000D\u0000Q\n\u0000+\u0000D\u0000O\u0000O\u0000X\u0000F\u0000L\u0000Q\u0000D\u0000W\u0000L\u0000R\u0000Q \u00009\u0000L\u0000V\u0000L\u0000R\u0000Q \u0000+\u0000D\u0000O\u0000O\u0000X\u0000F\u0000L\u0000Q\u0000D\u0000W\u0000L\u0000R\u0000Q \u00009\u0000L\u0000V\u0000L\u0000R\u0000Q\n\u0000L\u0000Q\u0000\u0003\u0000/\u0000/\u00000\u0000V \u00007\u0000U\u0000D\u0000Q\u0000V\u0000I\u0000R\u0000U\u0000P\u0000H\u0000U\u0000V \u0000L\u0000Q\u0000\u0003\u0000/\u0000/\u00000\u0000V \u00007\u0000U\u0000D\u0000Q\u0000V\u0000I\u0000R\u0000U\u0000P\u0000H\u0000U\u0000V\n\u0000/\u0000D\u0000U \u00000 \u0000J \u0000X \u00000 \u0000H \u0000O \u0000\u0003 \u0000W \u0000R \u0000/ \u0000L \u0000G \u0000P \u0000D \u0000H \u0000Q \u0000R \u0000O \u0000J \u0000G \u0000V \u0000X \u0000D \u0000D \u0000O \u0000J\u0000H \u00005\u0000$ \u0000/\u0000/ \u0000* \u00000 \u0000\u0003\u0000I \u0000V \u0000R\u0000U \u0000$ \u00006 \u0000+ \u0000X \u0000X \u0000X \u0000U \u0000W \u0000P \u0000Y \u0000R \u0000D \u0000H \u00006 \u0000Q \u0000\\ \u0000X \u0000) \u0000U \u0000R \u0000Y \u0000U \u0000H \u0000J \u0000\\ \u0000H \u0000/\u0000D\u0000U \u00000 \u0000J \u0000X \u00000 \u0000H \u0000O \u0000\u0003 \u0000W \u0000R \u0000/ \u0000L \u0000G \u0000P \u0000D \u0000H \u0000Q \u0000R \u0000O \u0000J \u0000G \u0000V \u0000X \u0000D \u0000D \u0000O \u0000J\u0000H \u00005\u0000$ \u0000/\u0000/ \u0000* \u00000 \u0000\u0003\u0000I \u0000V \u0000R\u0000U \u0000$ \u00006\u0000X \u0000X \u0000U \u0000W \u0000Y \u0000R \u0000H \u00006 \u0000\\ \u0000X \u0000) \u0000U \u0000R \u0000Y \u0000U \u0000H \u0000J \u0000\\ \u0000H\n(c) (d)\nFigure 3: Evaluation results on SurveyBench. Evaluation results of (a) Input Coverage, (b) Reference Coverage, (c) Outline Quality, and (d) Content Quality.",
+      "page": 7,
+      "id": "surveyforge-0055",
+      "sha256": "6fd8b2fb9493c03bd3b679f69ceaa49e0ade1910032cb5cf1fa2d0b94a37b0e7",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "more relevant but also more aligned with expert expectations. Notably, high-quality human-written surveys achieve a Reference Coverage score of 0.63, which further validates the reliability of our proposed reference evaluation database, which pro- vides a robust benchmark for reference quality.",
+      "page": 7,
+      "id": "surveyforge-0056",
+      "sha256": "d2cd432c91f702f235220537fe667f33591776cdec837027a53524c26a2d93ed",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Results on Outline Quality. For outline quality, the results show that SURVEYFORGE generates outlines that are more logical, comprehensive, and closer to human-level performance compared to AutoSurvey (Wang et al., 2024c). Using Claude- 3-Haiku, the outline quality score increases from 82.25 to 86.58, while GPT-4o mini achieves a 124",
+      "page": 7,
+      "id": "surveyforge-0057",
+      "sha256": "ab9aec28e2ba3df3ce00849b6031cdc0afe523ec8c73cb6e52b0acdcf3a17e4c",
+      "translate": true
+    },
+    {
+      "kind": "table",
+      "en": "Content Quality\nOutline Quality\nStructure Relevance Coverage Avg\n87.62 - - - -\n82.18 72.83 76.44 72.35 73.87\n86.85 73.82 79.62 75.59 76.34\n83.10 74.66 74.16 76.33 75.05\n86.62 77.10 76.94 77.15 77.06\ny (Wang et al., 2024c) using Survey Assessment Metrics\ne (SAM-O) and Content quality (SAM-C). \"Input Cov.\"\nlap between retrieved papers and benchmark references,\n, evaluating the alignment between cited references of the\nComparison Content Comparison\ntive Win Rate Human Eval Score Win Rate Human Eval\n5.00% 26.00% 31.00% 30.00%\n5.00% 74.00% 69.00% 70.00%\naluations on outline and content quality. \"Score Win Rate\"\nhere the LLM assigns separate score to each survey paper\ne Win Rate\" is derived from LLM pairwise comparisons,\n-side and decides which one is superior. \"Human Eval\"\nations.\nMethod Heuristic Learning Demonstration Outline Outline Quality\nAutoSurvey - 81.78\n×\nSURVEYFORGE ✓ From random surveys 84.58\nSURVEYFORGE ✓ From related surveys 86.67\nTable 3: Ablation study for outline generation. \"Demonstration Outline\" means the source of outlines used for\nheuristic learning.\nsimilar improvement from 83.10 to 86.62. These\nadvancements are driven by the proposed fewshot heuristic learning method, which leverages\nexpert-curated examples from the Survey Outline\nDatabase to guide the LLMs in producing wellstructured and domain-relevant outlines.\nResults on Content Quality. For content quality,\nSURVEYFORGE achieves consistent improvements\nacross all three evaluation dimensions: structure,\nrelevance, and coverage. The average content quality score increases from 73.87 to 76.34 (Claude-3-\nHaiku) and 75.05 to 77.06 (GPT-4o mini). These\nresults confirm that SURVEYFORGE generates content that is better organized, more relevant, and\nmore comprehensive, effectively addressing the\ncritical aspects of the target domain.\nAs shown in Fig. 3, SURVEYFORGE demonstrates substantial improvements over the baseline AutoSurvey across all key evaluation metrics.\nAlthough not yet matching the quality of expertcrafted surveys, SURVEYFORGE significantly narrows the gap, highlighting its potential as a powerful tool for automated survey generation.\n4.3 Comparison with Human Evaluation",
+      "page": 7,
+      "id": "surveyforge-0058",
+      "sha256": "7d18ab164fa79f1fe4745468fcf6fb659ce6ffa291882a06530a854c2bbd6a6e",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "To validate our automated evaluation system, we compare its performance with expert assess- 450",
+      "page": 7,
+      "id": "surveyforge-0059",
+      "sha256": "d53fb1a340966c69a6457dee7703ae3f0fbd23a6568484acfdf4472427d7e848",
+      "translate": true
+    },
+    {
+      "kind": "page",
+      "en": "PDF page 8",
+      "page": 8,
+      "id": "surveyforge-0060",
+      "sha256": "5d872fa350485c153fe48fa37b9d1490b3e3989e73730bc672607d4f98688811",
+      "translate": false
+    },
+    {
+      "kind": "table",
+      "en": "Components Reference Quality\nMR MS TRE Input Cov. Reference Cov.\n- - - 0.1119 0.2340\n✓ - - 0.1694 0.2730\n✓ ✓ - 0.1781 0.2984\n✓ - ✓ 0.1997 0.3542\n✓ ✓ ✓ 0.2224 0.3971\nTable 4: Ablation study for content generation. We\nperform ablation on three components of SANA module:",
+      "page": 8,
+      "id": "surveyforge-0061",
+      "sha256": "300adf4af038c0acb9d3078cee9a0e23d5f6c7eac8434fdcd66a479cc598ed06",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "MR represents Memory for Retrieval, MS represents Memory for Sub-query, and TRE represents Temporal- aware Reranking Engine.",
+      "page": 8,
+      "id": "surveyforge-0062",
+      "sha256": "bd20f56086f224958c903e6b33e1b1d7841912f5e6b95bf363a0cc99331377b4",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "ments using 100 outputs from Claude-3-haiku- 20240307 across 10 topics (Please refer to Ap- pendix A.2 and Appendix A.4 for detail informa- tion). We employ a win rate framework, presenting the anonymized results of SURVEYFORGE and Au- toSurvey (Wang et al., 2024c) to 20 PhD experts in computer science field. These experts were care- fully selected according to the evaluation topic and processes deep expertise in the relevant domain.",
+      "page": 8,
+      "id": "surveyforge-0063",
+      "sha256": "65da8c3a703d32d71fea62895072107fdb6a6e270d4be00fb012e7b23cb61692",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "As shown in Table 2, for outline quality, the automated system achieves a Score Win Rate of 73.00% and a Comparative Win Rate of 75.00%, closely matching the human evaluation rate of",
+      "page": 8,
+      "id": "surveyforge-0064",
+      "sha256": "88894eee62bb4254e4c3dc2c45d50971b95e50ddc1e0111a7768f65872f83f74",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "74.00%. This consistency confirms the system’s robust scoring logic. For content quality, the au- tomated system’s Score Win Rate for SURVEY- FORGE is 69.00%, aligning closely with the human expert rate of 70.00%. In addition, we also con- duct Cohen’s kappa coefficient consistency exper- iment, which shows a strong agreement between automated systems and human assessments, as de- tailed in Appendix A.4. In summary, the automated system aligns well with human assessments for both outline and con- tent quality, validating its effectiveness as a reliable alternative to manual evaluation.",
+      "page": 8,
+      "id": "surveyforge-0065",
+      "sha256": "3963e39e01219756b539767827806ae73173078ee5eaf55edb663b1c44444a62",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "4.4 Ablation Study To better understand the contribution of individ- ual components in our proposed SURVEYFORGE framework, we conduct a comprehensive ablation study. For ablation experiments, we use Claude-3- haiku-20240307 to generate surveys on the same 10 topics, with 3 independent trials per topic to ensure statistical reliability while maintaining com-",
+      "page": 8,
+      "id": "surveyforge-0066",
+      "sha256": "13fabd23d69cb26816d73087cca9e8fd73a70f0efba59efab668b3026b16011e",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "putational efficiency. Specifically, we analyze the memory mechanism, sub-query decomposition, and reranking strategies in the scholar navigation agent module, as well as the impact of the use of the database of survey outlines in the outline 124",
+      "page": 8,
+      "id": "surveyforge-0067",
+      "sha256": "9ab3b35dd1dffcd72a3ea219d0fce42929447d275aeca6e448dd29d15b351acd",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "generation process. The results of the ablation ex- periments are presented in Table 3 and Table 4. Analysis on Outline Generation. Table 3 high- lights the impact of heuristic learning approach on outline quality. The baseline method, which gen- erates outlines solely from retrieved research pa- pers without structural guidance, achieves a score of 81.78. This indicates the absence of organiza- tional cues limits the coherence and logical flow of the outlines. To address this, we first introduce a heuristic approach using outlines from random surveys. These generic outlines, representing com- mon patterns in survey writing, improve the score to 84.58. This shows the effectiveness of struc- tural cues, even without target-domain tailoring. Finally, we retrieve domain-specific outlines, pro- viding both structural guidance and thematic align- ment with the target domain. As a result, the outline quality score significantly rises to 86.67, showing the crucial role of domain-specific structural cues in creating coherent and relevant outlines. Analysis on Content Generation. Based on the experimental results presented in Table 4, it can be",
+      "page": 8,
+      "id": "surveyforge-0068",
+      "sha256": "8d34d830d70cb64e0cc2959be33b53979a721e58dfd23bf80d27d8e13f387068",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "observed that as the quality of literature obtained by SANA improves, the quality of cited references in surveys also correspondingly enhances. This ob- servation highlights the importance of using SANA during the content generation stage to retrieve high- quality literature. Specifically, the integration of a memory mechanism into the query decomposi- tion and retrieval processes significantly enhance the quality of literature. This improvement can be attributed to the incorporation of more compre- hensive sub-query semantics and a retrieval scope better aligned with the sub-queries. Besides, the temporal-aware reranking engine ensures the se- lection of high-quality papers, leading to a more comprehensive and balanced reference collection.",
+      "page": 8,
+      "id": "surveyforge-0069",
+      "sha256": "f3b5f6cff3dc3693b1723cae1df79abefef18ff0a488834c521c75f36cdc76a3",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "5 Conclusion and Outlook We have introduced SURVEYFORGE, an automated framework leveraging a heuristic outline generation and a memory-driven content generation to gener- ate high-quality surveys. We introduce a multi- dimensional evaluation benchmark to comprehen- sively assess the quality of surveys. SURVEY- FORGE significantly outperforms prior approaches",
+      "page": 8,
+      "id": "surveyforge-0070",
+      "sha256": "93aee73bf6054d9bab0d6b1f320dcf154b4a542567e9db0c9a575d5b0897c594",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "across multiple evaluation metrics. We hope to re- duce the learning curve for researchers venturing into unfamiliar fields, providing convenience and thereby promoting the integration and development of cross-disciplinary and cross-domain knowledge. 451",
+      "page": 8,
+      "id": "surveyforge-0071",
+      "sha256": "aefcf43800f587082e116fea9fc939c87c0a34123e6e3b89dd640de42e3be39e",
+      "translate": true
+    },
+    {
+      "kind": "page",
+      "en": "PDF page 9",
+      "page": 9,
+      "id": "surveyforge-0072",
+      "sha256": "2ec7c8d9e628c464b4d7ad23421819c5311b2709e49a9ae89977fe6bfed4031f",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Limitations Despite its strong performance in generating struc- tured and high-quality surveys, SURVEYFORGE has inherent limitations, as discussed in Ap- pendix A.3. While LLMs excel at summarizing existing literature, they face challenges in ana- lyzing and synthesizing relationships across mul- tiple sources, often lacking the critical thinking and originality characteristic of human-authored work, which limits their capability to reflect re-",
+      "page": 9,
+      "id": "surveyforge-0073",
+      "sha256": "f0d7d936f8dffbc479b33071bb2ea8717943b3393125508b4779aee068c84da4",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "search trends or provide forward-looking insights.",
+      "page": 9,
+      "id": "surveyforge-0074",
+      "sha256": "e0d2af712cdbdc3f3c9b03d2499cf948afb2cb8752cef79840d77b8162caf031",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Besides, the accuracy of content and citations is also affected by the hallucination of LLMs. Future work could focus on developing methods to better capture interconnections among references to en- hance the logical coherence, depth, and scholarly value of the generated content.",
+      "page": 9,
+      "id": "surveyforge-0075",
+      "sha256": "e4d7578c39d1ae73f9a0a2340a4f04f885dc1c30c98311fe8c1082bf5ac8eba6",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Ethics Statement This work focuses on the development of an au- tomated framework for survey generation, aiming to assist researchers in efficiently summarizing ex- isting literature. The proposed method relies on publicly available datasets and research papers, en- suring compliance with copyright and intellectual property laws. While the framework is designed to augment human expertise, we encourage users to",
+      "page": 9,
+      "id": "surveyforge-0076",
+      "sha256": "ce2baea9ca46edfe8eb160660abcea88b856c79bdb19e5a8d6f92643831245f2",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "critically evaluate the generated outputs to ensure their alignment with ethical research practices and to mitigate any potential limitations, such as biases or incomplete summaries. Acknowledgement",
+      "page": 9,
+      "id": "surveyforge-0077",
+      "sha256": "6e4a4c408407d17582289f0617b309179152f7de3d87c7b7fc9c18d1bdc0ca75",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "The research was supported by Shanghai Artificial Intelligence Laboratory, a locally commissioned task from the Shanghai Municipal Government, the Shanghai Municipal Science and Technology Major Project, and Shanghai Rising Star Program (Grant No. 23QD1401000).",
+      "page": 9,
+      "id": "surveyforge-0078",
+      "sha256": "d7eb1239cc1fe43b27a1063d507b85ba8a935c009f4ccd2496cb329b7867fa0b",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "References Josh Achiam, Steven Adler, Sandhini Agarwal, Lama Ahmad, Ilge Akkaya, Florencia Leoni Aleman, Diogo Almeida, Janko Altenschmidt, Sam Altman, Shyamal Anadkat, et al. 2023. Gpt-4 technical report.",
+      "page": 9,
+      "id": "surveyforge-0079",
+      "sha256": "fcddb91d18974fa3014d354727f6bc1f641985c7fb109475ab20685164eb9b02",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "arXiv preprint arXiv:2303.08774.",
+      "page": 9,
+      "id": "surveyforge-0080",
+      "sha256": "bac0b192c484be7a0afa59098febe8f682e0ad154c421f815ccb0c9e1839db8b",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Anthropic. 2024. The claude 3 model family: Opus, sonnet, haiku. URL:",
+      "page": 9,
+      "id": "surveyforge-0081",
+      "sha256": "c0c477e269dd1dba267d0d089432a728096027cf7b2d8f6cddd35499f40a8711",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "https://www-cdn.anthropic.com/ de8ba9b01c9ab7cbabf5c33b80b7bbc618857627/ Model_Card_Claude_3.pdf. 124",
+      "page": 9,
+      "id": "surveyforge-0082",
+      "sha256": "eb8be0da791246949b6053770fc92cfcadd33c615588a4b3d21963cbb80b7cd9",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Akari Asai, Jacqueline He, Rulin Shao, Weijia Shi, Amanpreet Singh, Joseph Chee Chang, Kyle Lo, Luca Soldaini, Sergey Feldman, Mike D’arcy, et al. 2024. Openscholar: Synthesizing scientific litera- ture with retrieval-augmented lms. arXiv preprint arXiv:2411.14199. Assafelovic. 2023. gpt-researcher. URL: https:// github.com/assafelovic/gpt-researcher. Zheng Cai, Maosong Cao, Haojiong Chen, Kai Chen, Keyu Chen, Xin Chen, Xun Chen, Zehui Chen, Zhi Chen, Pei Chu, et al. 2024. Internlm2 technical re- port. arXiv preprint arXiv:2403.17297. Jingqiang Chen and Hai Zhuge. 2019. Automatic gener- ation of related work through summarizing citations. Concurrency and Computation: Practice and Experi- ence, 31(3):e4261. Zhe Chen, Weiyun Wang, Hao Tian, Shenglong Ye, Zhangwei Gao, Erfei Cui, Wenwen Tong, Kongzhi Hu, Jiapeng Luo, Zheng Ma, et al. 2024a. How far are we to gpt-4v? closing the gap to commercial multimodal models with open-source suites. arXiv preprint arXiv:2404.16821. Ziru Chen, Shijie Chen, Yuting Ning, Qianheng Zhang, Boshi Wang, Botao Yu, Yifei Li, Zeyi Liao, Chen Wei, Zitong Lu, et al. 2024b. Scienceagentbench: Toward rigorous assessment of language agents for data-driven scientific discovery. arXiv preprint arXiv:2410.05080. Clarivate. 2024. Essential science indicators: Learn the basics. URL: https://clarivate.libguides. com/esi. Wenqi Fan, Yujuan Ding, Liangbo Ning, Shijie Wang, Hengyun Li, Dawei Yin, Tat-Seng Chua, and Qing Li. 2024. A survey on rag meeting llms: Towards retrieval-augmented large language models. In Pro- ceedings of the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining, pages 6491– 6501. Yunfan Gao, Yun Xiong, Xinyu Gao, Kangxiang Jia, Jinliu Pan, Yuxi Bi, Yi Dai, Jiawei Sun, and Haofen Wang. 2023. Retrieval-augmented generation for large language models: A survey. arXiv preprint arXiv:2312.10997. Alireza Ghafarollahi and Markus J Buehler. 2024. Scia- gents: Automating scientific discovery through multi- agent intelligent graph reasoning. arXiv preprint arXiv:2409.05556. Michael Glass, Gaetano Rossiello, Md Faisal Mahbub Chowdhury, Ankita Naik, Pengshan Cai, and Alfio Gliozzo. 2022. Re2G: Retrieve, rerank, generate. In Proceedings of the 2022 Conference of the North American Chapter of the Association for Computa- tional Linguistics: Human Language Technologies, pages 2701–2715, Seattle, United States. Association for Computational Linguistics. 452",
+      "page": 9,
+      "id": "surveyforge-0083",
+      "sha256": "6018c47ddebf5239051ac0b3704caf4a4d82db0d8586d448229dd6944de7f2d3",
+      "translate": true
+    },
+    {
+      "kind": "page",
+      "en": "PDF page 10",
+      "page": 10,
+      "id": "surveyforge-0084",
+      "sha256": "348dcbcd3c9b176fb291677a901406ed7db863dedc9453ca7f4927b86e92999c",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Cong Duy Vu Hoang and Min-Yen Kan. 2010. Towards automated related work summarization. In Coling 2010: Posters, pages 427–435. Xiang Hu, Hongyu Fu, Jinge Wang, Yifeng Wang, Zhikun Li, Renjun Xu, Yu Lu, Yaochu Jin, Lili Pan, and Zhenzhong Lan. 2024a. Nova: An iterative planning and search approach to enhance novelty and diversity of llm generated ideas. arXiv preprint arXiv:2410.14255. Yue Hu and Xiaojun Wan. 2014. Automatic genera- tion of related work sections in scientific papers: an optimization approach. In Proceedings of the 2014 Conference on Empirical Methods in Natural Lan- guage Processing (EMNLP), pages 1624–1633.",
+      "page": 10,
+      "id": "surveyforge-0085",
+      "sha256": "7afecb2582235f882960a6b978c41ba143742b34e74758ba8111866f53b2cc95",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Yuntong Hu, Zhuofeng Li, Zheng Zhang, Chen Ling, Raasikh Kanjiani, Boxin Zhao, and Liang Zhao. 2024b. Hireview: Hierarchical taxonomy-driven au- tomatic literature review generation. arXiv preprint arXiv:2410.03761. Qian Huang, Jian Vora, Percy Liang, and Jure Leskovec. 2024. Mlagentbench: Evaluating language agents on machine learning experimentation. In Forty-first International Conference on Machine Learning.",
+      "page": 10,
+      "id": "surveyforge-0086",
+      "sha256": "963ec3cc180a33a95eaa2d5f22d47d2620dd6a010e7c29d4afd4f52513d72c5f",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Rahul Jha, Catherine Finegan-Dollak, Ben King, Reed Coke, and Dragomir Radev. 2015. Content models for survey generation: a factoid-based evaluation. In Proceedings of the 53rd Annual Meeting of the As- sociation for Computational Linguistics and the 7th International Joint Conference on Natural Language Processing (Volume 1: Long Papers), pages 441–450.",
+      "page": 10,
+      "id": "surveyforge-0087",
+      "sha256": "a13c3105f9a0201d99bea29b1307ebb86bead0726e037feb32c21e9796c15722",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Sandeep Kumar, Tirthankar Ghosal, Vinayak Goyal, and Asif Ekbal. 2024. Can large language models un- lock novel scientific research ideas? arXiv preprint arXiv:2409.06185. Patrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir Karpukhin, Naman Goyal, Hein- rich Küttler, Mike Lewis, Wen-tau Yih, Tim Rock- täschel, et al. 2020. Retrieval-augmented generation for knowledge-intensive nlp tasks. Advances in Neu- ral Information Processing Systems, 33:9459–9474.",
+      "page": 10,
+      "id": "surveyforge-0088",
+      "sha256": "927980bec3d442558fb755f96ff8a0ca27f515df0d655de92328faf24945d0d6",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Long Li, Weiwen Xu, Jiayan Guo, Ruochen Zhao, Xinx- uan Li, Yuqian Yuan, Boqiang Zhang, Yuming Jiang, Yifei Xin, Ronghao Dang, et al. 2024. Chain of ideas:",
+      "page": 10,
+      "id": "surveyforge-0089",
+      "sha256": "34878c61cbc2abe72f27c16244d60b06f8eaf1954d6cc86509a58cd7d91e193f",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Revolutionizing research in novel idea development with llm agents. arXiv preprint arXiv:2410.13185.",
+      "page": 10,
+      "id": "surveyforge-0090",
+      "sha256": "4fb32141aca04801b31340b64ed12f5dfdbd80442135bd3cd744526708aa92c5",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Zehan Li, Xin Zhang, Yanzhao Zhang, Dingkun Long, Pengjun Xie, and Meishan Zhang. 2023. Towards general text embeddings with multi-stage contrastive learning. arXiv preprint arXiv:2308.03281.",
+      "page": 10,
+      "id": "surveyforge-0091",
+      "sha256": "25f69577535a9e95b7e2c4c5ad77b1d4eea5145456c4793445cfb76f712c5bea",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Aixin Liu, Bei Feng, Bing Xue, Bingxuan Wang, Bochao Wu, Chengda Lu, Chenggang Zhao, Chengqi Deng, Chenyu Zhang, Chong Ruan, et al. 2024.",
+      "page": 10,
+      "id": "surveyforge-0092",
+      "sha256": "902f721cc92449033e13b14be12735c8636619b1b8bf09ff4a2ed3721f7ba7d1",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Deepseek-v3 technical report. arXiv preprint arXiv:2412.19437. 124",
+      "page": 10,
+      "id": "surveyforge-0093",
+      "sha256": "f48f89ec3563979354f9389126255647d339efa86e77c78d4040f5e8e9308402",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Chris Lu, Cong Lu, Robert Tjarko Lange, Jakob Fo- erster, Jeff Clune, and David Ha. 2024. The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery . ArXiv, abs/2408.06292. Haoyang Su, Renqi Chen, Shixiang Tang, Xinzhe Zheng, Jingzhe Li, Zhenfei Yin, Wanli Ouyang, and Nanqing Dong. 2024. Two heads are better than one: A multi-agent system has the potential to improve scientific idea generation. arXiv preprint arXiv:2410.09403. Xiaoping Sun and Hai Zhuge. 2019. Automatic gen- eration of survey paper based on template tree. In 2019 15th International Conference on Semantics, Knowledge and Grids (SKG), pages 89–96. IEEE. Hugo Touvron, Thibaut Lavril, Gautier Izacard, Xavier Martinet, Marie-Anne Lachaux, Timothée Lacroix, Baptiste Rozière, Naman Goyal, Eric Hambro, Faisal Azhar, et al. 2023. Llama: Open and effi- cient foundation language models. arXiv preprint arXiv:2302.13971. Bin Wang, Chao Xu, Xiaomeng Zhao, Linke Ouyang, Fan Wu, Zhiyuan Zhao, Rui Xu, Kaiwen Liu, Yuan Qu, Fukai Shang, et al. 2024a. Mineru: An open- source solution for precise document content extrac- tion. arXiv preprint arXiv:2409.18839. Wenxiao Wang, Lihui Gu, Liye Zhang, Yunxiang Luo, Yi Dai, Chen Shen, Liang Xie, Binbin Lin, Xi- aofei He, and Jieping Ye. 2024b. Scipip: An llm- based scientific paper idea proposer. arXiv preprint arXiv:2410.23166. Yidong Wang, Qi Guo, Wenjin Yao, Hongbo Zhang, Xin Zhang, Zhen Wu, Meishan Zhang, Xinyu Dai, Min Zhang, Qingsong Wen, et al. 2024c. Autosur- vey: Large language models can automatically write surveys. arXiv preprint arXiv:2406.10252. Renqiu Xia, Song Mao, Xiangchao Yan, Hongbin Zhou, Bo Zhang, Haoyang Peng, Jiahao Pi, Daocheng Fu, Wenjie Wu, Hancheng Ye, et al. 2024a. Docgenome: An open large-scale scientific document benchmark for training and testing multi-modal large language models. arXiv preprint arXiv:2406.11633. Renqiu Xia, Bo Zhang, Hancheng Ye, Xiangchao Yan, Qi Liu, Hongbin Zhou, Zijun Chen, Min Dou, Botian Shi, Junchi Yan, et al. 2024b. Chartx & chartvlm: A versatile benchmark and founda- tion model for complicated chart reasoning. arXiv preprint arXiv:2402.12185. Shitao Xiao, Zheng Liu, Peitian Zhang, and Niklas Muennighoff. 2023. C-pack: Packaged resources to advance general chinese embedding. Preprint, arXiv:2309.07597. Jiakang Yuan, Xiangchao Yan, Botian Shi, Tao Chen, Wanli Ouyang, Bo Zhang, Lei Bai, Yu Qiao, and Bowen Zhou. 2025. Dolphin: Closed-loop open- ended auto-research through thinking, practice, and feedback. arXiv preprint arXiv:2501.03916. 453",
+      "page": 10,
+      "id": "surveyforge-0094",
+      "sha256": "f43a36e2e71b4e6b675664e6df8be213e67ff4a00b00e1b8659f804d5fcdbe1e",
+      "translate": true
+    },
+    {
+      "kind": "page",
+      "en": "PDF page 11",
+      "page": 11,
+      "id": "surveyforge-0095",
+      "sha256": "373e88f62e099681a4654ec03f5f4ca6707188aa0d4cfa45ad955238148ac2ac",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Kun Zhu, Xiaocheng Feng, Xiachong Feng, Yingsheng Wu, and Bing Qin. 2023. Hierarchical catalogue generation for literature review: A benchmark. arXiv preprint arXiv:2304.03512.",
+      "page": 11,
+      "id": "surveyforge-0096",
+      "sha256": "792e3f2dc21f1cefa5780f59dc3081eb319cee69819c219a0cbbfd56f3531496",
+      "translate": true
+    },
+    {
+      "kind": "page",
+      "en": "PDF page 12",
+      "page": 12,
+      "id": "surveyforge-0097",
+      "sha256": "e145c9dd16c0d3659e290c31f60825d2651aadfd8a046c1b98aacc9e36895000",
+      "translate": false
+    },
+    {
+      "kind": "heading",
+      "en": "A Appendix Due to the page limitation of the manuscript, we provide more details and visualizations from the following aspects:",
+      "page": 12,
+      "id": "surveyforge-0098",
+      "sha256": "72f838387fcc2f8ecfd358b00f5b32b63e4f847ad3df36cbf45221315742d013",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "• Sec. A.1: Database Construction.",
+      "page": 12,
+      "id": "surveyforge-0099",
+      "sha256": "874aca6bd0bc4ddba3cc4d10f438b91fe0ac58e573411b48ec1e6bc5d62d2cf0",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "• Sec. A.2: Details of SurveyBench. • Sec. A.3: Discussion about Generated Sur- veys and Human-written Surveys.",
+      "page": 12,
+      "id": "surveyforge-0100",
+      "sha256": "3dd77a0070152247519224b9d1755d577879d61bf9c974248536bc2b367014bb",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "• Sec. A.4: Details of Human Evaluation and Inter-rater Agreement.",
+      "page": 12,
+      "id": "surveyforge-0101",
+      "sha256": "416fa78065cc0d7488097ef7af5d93aecfb29dba99a88b3c959752bbe0067ba0",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "• Sec. A.5: Additional Experiments with Open- Source Models. • Sec. A.6: Details of Time and Economic Cost.",
+      "page": 12,
+      "id": "surveyforge-0102",
+      "sha256": "3a93cd13e20d9a1149a2ad8b7ed3eb2094cbf2d635e9c83e76eb87d850af14db",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "• Sec. A.7: Qualitative Results.",
+      "page": 12,
+      "id": "surveyforge-0103",
+      "sha256": "08685cec426d3e77f32ec4026ce1dc51846f2dd6c804aa5c6bb8cda7f3d41823",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "• Sec. A.8: Example of Generated Survey.",
+      "page": 12,
+      "id": "surveyforge-0104",
+      "sha256": "faa8a6dccd4b69025c329f3e6752fee9a35d1873620d49b26f043f399b7cb237",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "• Sec. A.9: Prompt Used. A.1 Database Construction",
+      "page": 12,
+      "id": "surveyforge-0105",
+      "sha256": "0043156f8e37de60b543c27121cbcd432f03659c65a8c79fe083345a2ee40922",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "To ensure the quality and relevance of the AI- generated surveys, we construct two key databases:",
+      "page": 12,
+      "id": "surveyforge-0106",
+      "sha256": "a75cce849d83a579073634ac99be7881d163aeb8346883e910583329fa0881de",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "the Research Paper Database and the Survey Outline Database, consisting of approximately 600,000 research papers and 20,000 review arti- cles, which together serve as the foundation for content generation and structural guidance. The Research Paper Database comprises the titles and abstracts of research papers relevant to the survey topic, while the Survey Outline Database contains titles, abstracts, and outlines extracted from pub- lished survey papers. Specifically, we utilize MinerU (Wang et al., 2024a) to extract content from a corpus of survey ar- ticles. Using rule-based extraction techniques, we isolate hierarchical outlines, including section and subsection headings. However, due to variations in formatting and structure across different papers, au- tomatic extraction may introduce noise. To address this, we employ Claude-3.5-sonnet-20241022 to refine and standardize the extracted outlines, ensuring consistency in structure and formatting.",
+      "page": 12,
+      "id": "surveyforge-0107",
+      "sha256": "851ad7fec5d6e4a926ca771866f90f8aaf9f0194e2f5f9d09da129e960d6852c",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "By leveraging the Survey Outline Database in this",
+      "page": 12,
+      "id": "surveyforge-0108",
+      "sha256": "aba5779bdb926977e0fd8b768de03e5100f9220c4df35257e2bf546a8d192ef8",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "way, we provide the LLM with high-quality, expert- crafted outline examples to guide its generation process. Additionally, we encode these documents us- ing the gte-large-en-v1.5 embedding model 124",
+      "page": 12,
+      "id": "surveyforge-0109",
+      "sha256": "c9cfb7d469c33f61d1060f1d12872317eae612aac1784c755f462e38e5439b7f",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "(Li et al., 2023), which captures semantic rela- tionships and enables efficient similarity-based re- trieval. This combination of structured expert ex- amples and semantic encoding ensures a robust foundation for outline generation and content re- trieval.",
+      "page": 12,
+      "id": "surveyforge-0110",
+      "sha256": "efe966ef2656f81772f7ae3d845a1f93015a77ea5dfbcbdfdaedf34047f0c31a",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "A.2 Details of SurveyBench To construct SurveyBench, we select 10 trending topics in the computer science domain, as shown in Table 5. These topics span various cutting-edge ar- eas including multimodal learning, language mod- els, computer vision, and autonomous systems. For each topic, a set of high-quality, human-written surveys is carefully curated by a panel of 20 re- searchers. Each of these researchers holds doc- toral degrees and possesses extensive expertise in the aforementioned 10 trending topics in the com- puter science domain. This rigorous selection pro- cess ensures strong thematic alignment and guar- antees the inclusion of authoritative and relevant surveys. Besides, the development of our assess- ment metrics (e.g. SAM-O and SAM-C) is inspired by peer review guidelines from top-tier computer",
+      "page": 12,
+      "id": "surveyforge-0111",
+      "sha256": "7f59d99432baae35d2d8138ad32de9727dd8d34f8aa6e99c3b2756b1fdd45eee",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "science venues. However, we observed that tra- ditional review criteria often rely heavily on re- viewers’ implicit knowledge and experience, mak- ing them challenging to implement in automated evaluation systems. To address this limitation, we systematically decomposed these high-level review guidelines into more specific, measurable compo- nents that can be reliably assessed by LLMs while maintaining consistency with expert human eval- uation. For example, in our outline assessment criteria, abstract concepts like \"topic organization\" were broken down into concrete, assessable ele- ments such as \"topic uniqueness\" (checking for duplicate topics, content overlap) and \"structural balance\" (examining section development and pro- portionality). This granular approach, developed through discussions with researchers who have at least two years of reviewing experience for top CS venues, enables more consistent and reliable au- tomated evaluation across different survey topics while preserving the essential quality standards of academic peer review. The curated surveys, predominantly published",
+      "page": 12,
+      "id": "surveyforge-0112",
+      "sha256": "4305784c1eeca531f90afa0c6ed931331709cc685128f2b8838308faba8b9cdb",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "within the last two years, are chosen to ensure both timeliness and relevance. From each selected sur- vey, we extract the references cited to construct a dedicated reference database for each topic, result- ing in comprehensive reference collections ranging 455",
+      "page": 12,
+      "id": "surveyforge-0113",
+      "sha256": "5321c31e62d01d93832d35e5d6ba92f4a8fa80ddb7fc85e4a182f16d54a35daf",
+      "translate": true
+    },
+    {
+      "kind": "page",
+      "en": "PDF page 13",
+      "page": 13,
+      "id": "surveyforge-0114",
+      "sha256": "b8a17bff5d956be73d8eaee7a5620c5cc65f6073c56797117be570ca2bb31550",
+      "translate": false
+    },
+    {
+      "kind": "table",
+      "en": "Topic Ref Num Selected S\nMultimodal Large Language Models 912 A Survey\nEvaluation of Large Language Models 714 A Survey\n3D Object Detection in Autonomous Driving 441 3D Object\nVision Transformers 563 A Survey\nHallucination in Large Language Models 500 Siren’s So\nGenerative Diffusion Models 994 A Survey\n3D Gaussian Splatting 330 A Survey\nLLM-based Multi-Agent 823 A Survey\nGraph Neural Networks 670 Graph Ne\nRetrieval-Augmented Generation for Large Language Models 608 Retrieval-\nTable 5: Overview of selected topics and the representati\nwe show the total number of unique references (Ref Num\nselected high-quality surveys that serve as our evaluation\nfrom 330 to 994 references per topic, as detailed in\nTable 5. Furthermore, to facilitate robust content\nevaluation,we identify the highest-quality survey\nfor each topic to serve as the evaluation reference,\nwith these selected surveys demonstrating significant impact through their citation counts (ranging\nfrom 128 to 1,690 citations). SurveyBench provides a comprehensive and reliable foundation for\nassessing the quality of AI-generated surveys, ensuring both reference coverage and content relevance are rigorously evaluated.",
+      "page": 13,
+      "id": "surveyforge-0115",
+      "sha256": "88b08b3b65af96b61689951b07748e968b772799bf747cfa8462216a9bb2151f",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "A.3 Discussion about Generated Surveys and Human-written Surveys",
+      "page": 13,
+      "id": "surveyforge-0116",
+      "sha256": "6081d649575955cedf87ee6a723db851ea7ce78b1c6cc707a705b603e6b17501",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "While our extensive evaluation of SURVEYFORGE demonstrates its effectiveness in automated survey generation, our analysis reveals several fundamen- tal challenges that warrant further investigation.",
+      "page": 13,
+      "id": "surveyforge-0117",
+      "sha256": "d945400358a6f82c39a89ec9429caf7d7c11c3e2f64779a3a3353eb18aad11f8",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Through systematic examination of the generated surveys, we identify two primary limitations of the current system. The first limitation lies in the depth of academic analysis. Although the system effectively extracts and organizes information from individual papers, it exhibits constraints in establishing profound con- nections across multiple publications. Specifically, the system’s capability falls short in comparative analysis of temporal innovations and methodologi- cal evolution patterns, often defaulting to mechan- ical reference listing rather than providing the nu- anced synthesis characteristic of expert-written sur- veys. This limitation stems primarily from chal- lenges in the accurate identification of the core literature and the construction of deep logical rela-",
+      "page": 13,
+      "id": "surveyforge-0118",
+      "sha256": "bac8686879d4b57132282382e521b8945bf491355b7bb93e052e6f4d88e875d4",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "tionships during the processing of long-form knowl- edge. The second challenge concerns the accuracy of content and citation. Despite our implementation of multiple verification mechanisms, the system occa- 124",
+      "page": 13,
+      "id": "surveyforge-0119",
+      "sha256": "bf996bcf39d06c2a60826aec9f6eb98c2ccfa115864985eef79af203c077c6f1",
+      "translate": true
+    },
+    {
+      "kind": "table",
+      "en": "Survey Title Citation\non Multimodal Large Language Models 979\non Evaluation of Large Language Models 1690\nt Detection for Autonomous Driving: A Comprehensive Survey 172\nof Visual Transformers 405\nong in the AI Ocean: A Survey on Hallucination in Large Language Models 808\non Generative Diffusion Models 367\non 3D Gaussian Splatting 128\non Large Language Model Based Autonomous Agents 765\neural Networks: Taxonomy, Advances, and Trends 129\n-Augmented Generation for Large Language Models: A Survey 953\nive surveys in our evaluation benchmark. For each topic,\nm) collected from SurveyBench, and the citation count of\nreferences.\nEvaluation Pair Aspect κ\nLLM vs. Human Outline 0.7177\nLLM vs. Human Content 0.6462\nHuman Cross-Validation Outline 0.7921\nHuman Cross-Validation Content 0.7098\nTable 6: Inter-rater agreement between LLM and human\nevaluations. κ means the Cohen’s kappa coefficient.\nsionally produces inaccurate citations or academic\nclaims, potentially affecting the survey’s reliability. This remains a critical area for improvement in\nautomated survey generation systems.\nTo address these limitations, future work could\nfocus on developing comprehensive knowledge\nassociation networks through core entity extraction and citation graph construction, which may\nenhance the system’s capability to identify deep\ninter-publication connections.",
+      "page": 13,
+      "id": "surveyforge-0120",
+      "sha256": "749fc9915c660aa34377948b7e44d2e352d3de7d401a4e0fcfa033a0c5d7f1de",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "A.4 Details of Human Evaluation and Inter-rater Agreement",
+      "page": 13,
+      "id": "surveyforge-0121",
+      "sha256": "d990eb0cc62298596f10e0579fa78f664057f201231d96dbb5943cdfbd1adc97",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "For the human evaluation across the selected 10 top- ics, we recruited 20 PhD experts in computer sci- ence from various prestigious institutions, includ- ing several QS Top 50 universities and renowned re- search institutes within our country. The selection of these experts followed strict criteria to ensure their expertise and qualifications. All evaluators hold PhD degrees in computer science or closely related fields, and each expert has published at least one peer-reviewed paper in the specific topic they were assigned to evaluate. Moreover, all selected experts are currently active researchers in their re- spective fields. To maintain evaluation quality and consistency,",
+      "page": 13,
+      "id": "surveyforge-0122",
+      "sha256": "439087d8b4015660d242d05a141a0a5e67b2543649bcf7a02075dbf24322c9b5",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "each expert was provided with a comprehensive evaluation guideline manual, identical to the one used in our LLM evaluation system, ensuring con- sistent assessment criteria across all evaluators. Be- fore the formal evaluation, we conducted a training 456",
+      "page": 13,
+      "id": "surveyforge-0123",
+      "sha256": "653213ec00836502579fec2c9539416970a94dd2c589a6f7e68bddc119db3ff3",
+      "translate": true
+    },
+    {
+      "kind": "page",
+      "en": "PDF page 14",
+      "page": 14,
+      "id": "surveyforge-0124",
+      "sha256": "f147762ea89ca38fbf51ca5035f9d6aab64618ba36a94e8f3443993c90bb41aa",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "session to familiarize the experts with the evalu- ation criteria and scoring rubrics. The evaluation process was conducted in a double-blind manner to minimize potential biases. Regarding compensa- tion, experts were paid $50 per hour, commensurate with their expertise level. The average evaluation time per survey was approximately 1-3 hours, en- suring thorough and reliable assessment.",
+      "page": 14,
+      "id": "surveyforge-0125",
+      "sha256": "0a5b5130f7da9b0bb27aa7d1d5417b2f32cb0b1e498bec94e27921dffc74c99b",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "To further verify the reliability of the evaluation system, we further conducted Cohen’s kappa coef- ficient experiment to measure the inter-rater agree- ment between automatic and human evaluations and evaluations inter-rater agreement among hu- man annotators. Specifically, as shown in Table 6, we conducted a systematic evaluation of 100 gen- erated survey papers across 10 different research topics. We used Cohen’s kappa coefficient as our evaluation metric, covering two core dimensions:",
+      "page": 14,
+      "id": "surveyforge-0126",
+      "sha256": "479bf2ee948ad15e173d09c128f38ccc5ada56359778460db4b7519274af97b3",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "outline and content. In the outline dimension, based on the evalua- tion of these 100 surveys, the kappa coefficient between LLM evaluation and human evaluation reached 0.7177, indicating significant agreement",
+      "page": 14,
+      "id": "surveyforge-0127",
+      "sha256": "9a8c3cc3284fb8bd2f8dd0d6ea7ae630c410b0c34d4d818593bf8dd69b1fb393",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "between the two. Meanwhile, the cross-validation kappa coefficient between human evaluators was 0.7921. This high level of agreement not only val- idates the reliability of human evaluation but also supports the effectiveness of our automated evalua- tion method. In the content dimension, based on the same sam- ple size, the kappa coefficient between LLM evalu- ation and human evaluation was 0.6462, while the cross-validation kappa coefficient between human evaluators was 0.7098. These results demonstrate that even in the more complex task of evaluating extra-long text content, our evaluation framework still shows good consistency.",
+      "page": 14,
+      "id": "surveyforge-0128",
+      "sha256": "9598e12d78cf4d9d7fe48014db407bbae1e6ba7b10c27e1f2c38f7801608b9d4",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "A.5 Additional Experiments with Open-Source Models To validate the generalizability of our frame- work, we conduct additional experiments using DeepSeek-v3 (Liu et al., 2024), a state-of-the-art open-source language model. As shown in Ta- ble 7, the experimental results demonstrate re- markable performance across all evaluation met- rics. Specifically, DeepSeek-v3 achieved an Input",
+      "page": 14,
+      "id": "surveyforge-0129",
+      "sha256": "712d6506a095d5a3328d4d631390894df3b2e0a87e3f84c414e4124a418eb3a9",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Coverage of 0.2554 and a Reference Coverage of 0.4553, surpassing other baseline models in liter- ature coverage assessment. In the outline quality evaluation, DeepSeek-v3 attains a score of 87.42, which not only exceeds other models but also ap- 124",
+      "page": 14,
+      "id": "surveyforge-0130",
+      "sha256": "23334a7b012930fa11547a058dcd7ba7fa2b0c0fc9bc13b22fc9633477883e74",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "proaches the benchmark set by human-written sur- veys (87.62). Furthermore, across the three dimen- sions of content quality structure, relevance, and coverage, DeepSeek-v3 demonstrates exceptional performance with scores of 79.20, 80.17, and 81.07 respectively, yielding a mean score of 80.15 that outperforms other comparative models. These empirical results not only corroborate the effectiveness of our methodology but also establish its applicability to open-source models. Notably, DeepSeek-v3 (Liu et al., 2024) exhibits superior performance at a lower operational cost ($0.37 per survey) compared to GPT-4o-mini ($0.43 per sur- vey). Such advancement has substantial implica- tions for the sustainable development of automated research tools and methodologies.",
+      "page": 14,
+      "id": "surveyforge-0131",
+      "sha256": "b1feeb8dc4b9918ec505b6e4a79c434ccc0d7237e23c17434583bcbe48c7eef3",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "A.6 Details of Time and Economic Cost",
+      "page": 14,
+      "id": "surveyforge-0132",
+      "sha256": "5ab3b117390bc7bd532e12b147225894e020a304e2af16e3e5fb1c20dbfa3aeb",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "The SURVEYFORGE framework generates com- prehensive survey papers with approximately 64k tokens in length, comparable to human-written sur- veys. The generation process requires an average input of 2.37M tokens and produces 0.13M tokens of output. Taking GPT-4-mini-2024-07-18 as an example, the economic cost amounts to merely $0.43. Regarding the temporal efficiency, the entire framework completes the generation within approx- imately 10 minutes (note that the actual duration may vary depending on API rate limits). These met- rics demonstrate that the SURVEYFORGE frame- work enables researchers to efficiently acquire do- main knowledge at a remarkably low cost.",
+      "page": 14,
+      "id": "surveyforge-0133",
+      "sha256": "6dfd78d77ec64fd1bde06103c98afaa3a4de00ca7f12c4abc837e6d53972c306",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "A.7 Qualitative Results",
+      "page": 14,
+      "id": "surveyforge-0134",
+      "sha256": "e0b7b7b1aa225d29bcd21ad218c8041544be9ec3fe7ee8455a302a9228cfc606",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "In this section, we present qualitative comparisons to demonstrate the effectiveness of our proposed framework in generating academically structured survey outlines. Specifically, we compare the out- lines generated by our method with those produced by baseline approaches, as shown in Fig. 4. The baseline outlines exhibit several notable is- sues. First, the logical organization of sections and subsections is often suboptimal, with limited hier- archical depth and coherence. Additionally, there is a tendency to treat individual studies or papers as standalone subsections, resulting in fragmented",
+      "page": 14,
+      "id": "surveyforge-0135",
+      "sha256": "7762cd76da0439e288818a4ef8190e1351aee0fa0691210403973aacfb508081",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "and overly granular structures. Furthermore, re- dundancy is frequently observed, with similar or overlapping topics appearing in multiple sections, which reduces clarity and disrupts the logical flow of the outline. 457",
+      "page": 14,
+      "id": "surveyforge-0136",
+      "sha256": "00e4e02aada2ee7ad0cce522c8c38356bda7aa83e553c4a41bfb0eae1374a8ab",
+      "translate": true
+    },
+    {
+      "kind": "page",
+      "en": "PDF page 15",
+      "page": 15,
+      "id": "surveyforge-0137",
+      "sha256": "0dc2f2aef1b947cba61220d59193805f88af7e157d3a9036c32cdcb1764edd63",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Reference Quality Methods Model Input Cov. Reference Cov.",
+      "page": 15,
+      "id": "surveyforge-0138",
+      "sha256": "c60a9a7ed68b1edb1a992819ab4c15abccb8de6bb7ff59ab50f2186c22bfe8b0",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Human-Written - - 0.6294 SURVEYFORGE Claude-3-Haiku 0.2231 0.3960 SURVEYFORGE GPT-4o mini 0.2018 0.4236 SURVEYFORGE Deepseek-v3 0.2554 0.4553 Table 7: Comparison of open source and In contrast, the outlines generated by our frame- work effectively address these issues. By leverag- ing a heuristic learning approach and incorporat- ing domain-specific structural patterns, our method produces well-organized outlines that align with academic writing standards. The generated out- lines demonstrate clear hierarchical organization, thematic coherence, and appropriate grouping of related topics, providing a solid foundation for com- prehensive and logically structured surveys.",
+      "page": 15,
+      "id": "surveyforge-0139",
+      "sha256": "d4024eb35cbebc8d938db74e643556e4d7e8ae11bc26f8802858836fcaa05f73",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "A.8 Example of Generated Survey As shown in Fig. 5, we have provided the example of the generated survey by SUR- VEYFORGE, more complete examples can be found at https://anonymous.4open.science/ r/survey_example-7C37/. Specifically, by ob-",
+      "page": 15,
+      "id": "surveyforge-0140",
+      "sha256": "7f70a5f091b6efd359bc14ade48d4fd116cca66bb47981896fad3b9be8ba6b30",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "serving the generated survey paper, we found that SURVEYFORGE is not only capable of summariz- ing knowledge within a specific academic field based on logical structures but also excels at pro- viding insights and recommendations for some po- tential research directions. For instance, in a survey paper generated by SURVEYFORGE titled \"Comprehensive Survey on Multimodal Large Language Models: Advances, Challenges, and Future Directions\", Section 8 of- fers a detailed outlook on several potential fu- ture technological pathways for Multimodal Large Language Models (MLLMs), such as scalability enhancements, cross-modal interaction and inte- gration, and efficient training and inference solu- tions. Besides, the survey paper also raises con- cerns about the ethical and societal implications of the excessive use of MLLMs, including their potential impact on issues such as gender, race, ethnicity, and socioeconomic status. Furthermore, SURVEYFORGE has outlined numerous application scenarios for MLLMs, including AI-driven agents, interactive systems, Augmented Reality (AR), and specialized domains such as healthcare and educa-",
+      "page": 15,
+      "id": "surveyforge-0141",
+      "sha256": "e0157a74b2a27158e29644eb5fdccf9c43e283915e9c09076f0701a4f6504b72",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "tion. In addition, SURVEYFORGE further analyzes the challenges that need to be addressed to apply MLLMs to these practical scenarios. For instance, addressing computational limitations and tackling privacy concerns associated with systems that rely 124",
+      "page": 15,
+      "id": "surveyforge-0142",
+      "sha256": "3bd0520b2c43cb3dbe794fbe5abe470290cb6fdba66e591d1d79c594ab69d4c2",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Content Quality Outline Quality Structure Relevance Coverage Avg 87.62 - - - - 86.85 73.82 79.62 75.59 76.34 86.62 77.10 76.94 77.15 77.06 87.42 79.20 80.17 81.07 80.15 d closed source models on SurveyBench. on large amounts of data, which require robust frameworks for data management and obtaining user consent.",
+      "page": 15,
+      "id": "surveyforge-0143",
+      "sha256": "47c7b836fe3f4ea35d91fbe9c1e046f2ef86a769f3fb3b1ad35987283af52a8a",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "A.9 Prompt Used This section outlines the key prompts employed in SURVEYFORGE, covering those for outline genera- tion, content generation, and evaluation. The outline generation prompt incorporates two key elements: the structure of human-written sur- vey papers and relevant literature on the topic. This prompt ensures that the generated outline adheres to academic conventions, with section titles aligned to the survey topic, maintaining logical connections between sections while avoiding redundancy. The content generation prompt guides LLMs in drafting individual sections of a survey paper. It requires",
+      "page": 15,
+      "id": "surveyforge-0144",
+      "sha256": "c0be81df3ded911d45951f185b732ef07926bab285d8e8a3369e30400b8e7ce1",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "the generated content to be supported by references from relevant literature and specifies length con- straints to ensure clarity and precision. For the prompts used for evaluation, we design the evaluation rules from both the outline and the content. Regarding outline evaluation, LLMs are instructed to score from the aspects of topic unique- ness, structural balance, hierarchical clarity and logical organization, with the total score for each as- pect serving as the overall score for the outline. For content evaluation, the process references human- written surveys: LLMs first review such surveys on the same topic to establish context before evaluat- ing AI-generated content. This approach grounds the evaluation in established academic writing prac- tices, enhancing the reliability of the assessment.",
+      "page": 15,
+      "id": "surveyforge-0145",
+      "sha256": "0600f2ecc2f4bbdf97e6e0e82832e9a00dc1d64aa5d85c6d324a40962033e6b0",
+      "translate": true
+    },
+    {
+      "kind": "page",
+      "en": "PDF page 16",
+      "page": 16,
+      "id": "surveyforge-0146",
+      "sha256": "038a29eb5c867a7df6f94ec20abc5a72df21f6613eb6d61b8a524803fab384a2",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "OOuuttlliinnee GGeenneerraatteedd bbyy AAuuttooSSuurrvveeyy",
+      "page": 16,
+      "id": "surveyforge-0147",
+      "sha256": "9033d80af25b947da9b6940bffc488f49164f37644c3b3f149c42bdb3bcb8f64",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "A Comprehensive Survey on Vision Transformers 1. Introduction to Vision Transformers 1.1 Introduction to Vision Transformers 1.2 From Transformers to Vision Transformers 1.3 Architecture of Vision Transformers 1.4 Advantages and Limitations of Vision Transformers 2. Vision Transformer Architectures and Advancements 2.1 Dual Vision Transformer (Dual-ViT) 2.2 SpectFormer 2.3 FcaFormer 2.4 Demystify Transformers & Convolutions in Modern Image Deep Networks 2.5 ViTALiTy 2.6 UniNeXt 3. Vision Transformer Applications and Benchmarks 3.1 Image Classification 3.2 Object Detection 3.3 Semantic Segmentation 3.4 Video Understanding 3.5 Multimodal Tasks 4. Efficiency and Optimization of Vision Transformers 4.1 Model Compression Techniques for Vision Transformers 4.2 Hardware-Aware Optimization of Vision Transformers 4.3 Efficient Training Strategies for Vision Transformers 5. Robustness and Interpretability of Vision Transformers 5.1 Robustness to Adversarial Attacks 5.2 Handling Distribution Shifts 5.3 Visualization and Interpretability 6. Vision Transformer Pretraining and Transfer Learning 6.1 Self-supervised Learning for Vision Transformers 6.2 Knowledge Distillation for Vision Transformers 6.3 Transfer Learning and Fine-tuning of Vision Transformers 7. Future Trends and Challenges 7.1 Integrating Vision Transformers with Other Deep Learning Approaches 7.2 Self-Supervised and Unsupervised Learning with Vision Transformers 7.3 Extending Vision Transformers to Other Modalities OOuuttlliinnee GGeenneerraatteedd bbyy AAuuttooSSuurrvveeyy Multimodal Large Language Models: A Comprehensive Survey 1 Introduction to Multimodal Large Language Models 1.1 The Emergence and Importance of Multimodal Large Language Models 1.2 Multimodal Modeling Approaches 1.3 Applications and Use Cases of Multimodal Large Language Models 1.4 Challenges and Limitations of Multimodal Large Language Models 1.5 Ethical Considerations and Safety Concerns 1.6 Future Directions and Conclusions 2 Multimodal Datasets and Benchmarks 2.1 Multimodal Datasets and Benchmarks 2.2 SEED-Bench-2 - Benchmarking Multimodal Large Language Models 2.3 Charting New Territories - Exploring the Geographic and Geospatial Capabilities of Multimodal LLMs 2.4 Multimodal Datasets and Benchmarks - A Survey 2.5 Beyond Text - Unveiling Multimodal Proficiency of Large Language Models with MultiAPI Benchmark 2.6 MME - A Comprehensive Evaluation Benchmark for Multimodal Large Language Models 2.7 MLLM-as-a-Judge - Assessing Multimodal LLM-as-a-Judge with Vision-Language Benchmark 2.8 MULTI - Multimodal Understanding Leaderboard with Text and Images 3 Architectural Advancements and Training Strategies 3.1 Architectural Components 3.2 Training Strategies 3.3 Modality-Specific Encoders 3.4 Joint Representation Learning 3.5 Multimodal Fusion 3.6 Pretraining Objectives 4 Applications and Use Cases 4.1 Healthcare Applications 4.2 Education and Training 4.3 Accessibility and Inclusion 4.4 Multimodal Biomedical Research 4.5 Ethics and Responsible Development 5 Challenges and Limitations 5.1 Multimodal Hallucination 5.2 Cross-Modal Alignment 5.3 Interpretability and Explainability 5.4 Evaluation and Benchmarking 5.5 Mitigation Strategies 5.6 Ethical Considerations 5.7 Future Directions and Conclusions 6 Ethical Considerations and Safety 6.1 Bias, Privacy, and User Consent 6.2 Potential for Misuse and Malicious Use Cases 6.3 Transparency and Interpretability 6.4 Environmental and Societal Impact 6.5 Governance and Regulatory Frameworks 6.6 Future Challenges and Research Directions 7 Future Directions and Conclusions 7.1 The Transformative Potential of Multimodal Large Language Models 7.2 Emerging Trends and Innovative Applications 7.3 Addressing Challenges and Mitigating Limitations 7.4 Responsible Development and Ethical Considerations 7.5 Towards Artificial General Intelligence Figure 4: Comparisons of survey outlines generated by the The baseline displays a fragmented structure, whereas o organized outline. 124",
+      "page": 16,
+      "id": "surveyforge-0148",
+      "sha256": "f15786e633fa84f224f36df13376209ff1b56915cc4d87a35ca622874d7e63f2",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "OOuuttlliinnee GGeenneerraatteedd bbyy SSuurrvveeyyFFoorrggee",
+      "page": 16,
+      "id": "surveyforge-0149",
+      "sha256": "7c8b8f1feacd831dd3668a5b4dc9c58750ba096a23b3a3470908b656d10a5351",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "A Comprehensive Survey of Vision Transformers 1. Introduction 2. Vision Transformer Architectures 2.1 The Original Vision Transformer 2.2 Hybrid Vision Transformer Architectures 2.3 Efficient and Lightweight Vision Transformers 2.4 Multi-scale and Hierarchical Vision Transformers 3. Vision Transformer Training and Optimization 3.1 Pre-training and Transfer Learning Techniques 3.2 Data Augmentation for Vision Transformers 3.3 Regularization Techniques for Vision Transformer Training 3.4 Efficient Training and Fine-tuning Strategies for Vision Transformers 3.5 Addressing Challenges in Vision Transformer Training 3.6 Emerging Trends in Vision Transformer Training 4. Vision Transformer Applications 4.1 Image Classification and Recognition 4.2 Object Detection, Segmentation, and Instance Segmentation 4.3 Video Understanding Tasks 4.4 Multimodal and Cross-modal Applications 5. Interpretability and Explainability of Vision Transformers 5.1 Attention Visualization and Interpretation 5.2 Probing and Analyzing Learned Representations 5.3 Generating Human-Interpretable Explanations 5.4 Challenges and Opportunities in Interpretability 6. Efficient and Scalable Vision Transformers 6.1 Architectural Innovations for Efficient Vision Transformers 6.2 Token Reduction and Sparsification Techniques 6.3 Hardware-Aware Optimization and Acceleration 6.4 Quantization and Precision Reduction 6.5 Efficient Training and Fine-Tuning Strategies 6.6 Benchmarking and Deployment Considerations 7. Conclusion OOuuttlliinnee GGeenneerraatteedd bbyy SSuurrvveeyyFFoorrggee A Comprehensive Survey on Multimodal Large Language Models 1 Introduction 2 Multimodal Model Architectures and Learning Frameworks 2.1 Multimodal Model Architectures 2.2 Multimodal Learning Frameworks 2.3 Multimodal Reasoning and Interpretation 2.4 Multimodal Alignment and Connecting Modalities 2.5 Efficient Multimodal Model Design 3 Multimodal Pretraining and Datasets 3.1 Multimodal Pretraining Objectives and Tasks 3.2 Large-scale Multimodal Datasets 3.3 Multimodal Data Preprocessing and Representation 3.4 Multimodal Data Augmentation and Synthesis 3.5 Multimodal Pretraining Strategies and Techniques 4 MLLM Evaluation and Benchmarking 4.1 Multimodal Task Taxonomies and Benchmark Suites 4.2 Evaluation Metrics and their Suitability for MLLM Assessment 4.3 Challenges and Limitations of Existing MLLM Evaluation Approaches 4.4 Strategies for Developing Robust and Generalized MLLM Evaluation Frameworks 4.5 Towards Standardized and Automated MLLM Evaluation 4.6 Emerging Evaluation Frontiers for Multimodal Large Language Models 5 Multimodal Applications and Case Studies 5.1 Multimodal Language Generation 5.2 Multimodal Understanding and Reasoning 5.3 Multimodal Task-Oriented Applications 5.4 Emerging Multimodal Domains and Novel Applications 6 Limitations and Future Research Directions 6.1 Limitations in MLLM Multimodal Understanding and Reasoning Capabilities 6.2 Scalability and Computational Efficiency Challenges in MLLM Training and Deployment 6.3 Advancing Multimodal Knowledge Representation and Reasoning 6.4 Enhancing MLLM Generalization and Few-shot Learning Abilities 6.5 Integrating MLLMs with Other AI Systems for Comprehensive Multimodal Intelligence 7 Conclusion baseline method (left) and our proposed framework (right). our method yields a more comprehensive, systematically 459",
+      "page": 16,
+      "id": "surveyforge-0150",
+      "sha256": "77563eb629c83a49185a2a0ef27690150e5363cd8b92647f69801723d34e3f81",
+      "translate": true
+    },
+    {
+      "kind": "page",
+      "en": "PDF page 17",
+      "page": 17,
+      "id": "surveyforge-0151",
+      "sha256": "ee596bc8daf3cd60447ae52a013759e28bb028c2adef3a5f13ad9d6759c803c3",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "SSuurrvveeyy PPaappeerr GGeenneerraa",
+      "page": 17,
+      "id": "surveyforge-0152",
+      "sha256": "a0c035b66bd80b8a6e58285f62a6a63411e58830a567082cb876ffc41227f672",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Figure 5: Example of the survey generated by SURVE science/r/survey_example-7C37/ for more auto-gene",
+      "page": 17,
+      "id": "surveyforge-0153",
+      "sha256": "a493c81ebfd47b9e1fafc07f905cd307d93e396d3f473e2238f109dd6cb14e64",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "aatteedd bbyy SSuurrvveeyyFFoorrggee",
+      "page": 17,
+      "id": "surveyforge-0154",
+      "sha256": "9f589d3c8319824e4cfae413c34928834158b702d98bf10aaa39f3639ac98401",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "EYFORGE. Please refer to https://anonymous.4open. erated results.",
+      "page": 17,
+      "id": "surveyforge-0155",
+      "sha256": "606e26ba63b30baf1f9dfb58453647a1945e894beacb52cd2e5233dca0f16863",
+      "translate": true
+    },
+    {
+      "kind": "page",
+      "en": "PDF page 18",
+      "page": 18,
+      "id": "surveyforge-0156",
+      "sha256": "21cdcfb15500966a748212d0258afd6a28ef97412c6005846ffe153c57f6f3a9",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Generati",
+      "page": 18,
+      "id": "surveyforge-0157",
+      "sha256": "f6dadc679dea6893c67c258876eb3453b18729c80d73295d77bf7d63a6527f93",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Outline:",
+      "page": 18,
+      "id": "surveyforge-0158",
+      "sha256": "07e36b2a48639d3be6f2026b1e8d3dcc026af850240a688f5a727cbfca5b91cd",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "SUBSECTION_OUTLINE_WITH_SURVEY_PROMPT = ''' You are an expert in artificial intelligence writing a comprehensive outline of You have created the following overall outline: --- [OVERALL OUTLINE] --- You need to enrich the section **[SECTION NAME]**, described as: **[SECT **Main task:** Generate a comprehensive framework for **[SECTION NAME]** by creating content importance and complexity). Each subsection should focus on a specif **Resources provided:** 1. **A list of [RAG NUM] relevant papers with titles, abstracts, publication --- [PAPER LIST] --- 2. **Titles, abstracts, top-second outlines and publication dates of human-w --- [SURVEY LIST] --- *Note:* These surveys may not be directly about **[TOPIC]**. Only us typical of academic survey papers written by humans. **How to use the provided resources:** - Use the relevant papers to identify key themes, recent developments, and - Refer to the human-written surveys to understand typical structures and a to **[TOPIC]** and **[SECTION NAME]**. - Synthesize information from both sources to create a comprehensive and up - Prioritize recent developments and emerging trends when creating your outl **Guidelines:** 1. **Relevance:** Each subsection must be related to **[SECTION NAME]** 2. **Originality:** Learn from the human-written surveys to inform your stru 3. **Logical Flow:** Arrange subsections in a logical order that builds upon note that there is no overlap between subsection and its bullet points, which 4. **Flexibility:** The number of subsections should be determined by the typical, prioritize comprehensive coverage over adhering to a strict number. 5. **Separability:** Each subsection should have **an informative description description**, which do not duplicate and fit the subsection**, the number subtract according to the actual scope of the section. Each bullet point sh informative description. ** Output format: ** <format> Subsection 1: [NAME OF SUBSECTION 1] Description 1: [INFORMATIVE DESCRIPTION OF SUBSECTION 1] 1. [Informative description of Key aspect or sub-domain 1 of SUBSECTION 2. ... Subsection 2: [NAME OF SUBSECTION 2] Description 2: [INFORMATIVE DESCRIPTION OF SUBSECTION 2] 1. [Informative description of Key aspect or sub-domain 1 of SUBSECTION ... N. [Informative description of Key aspect or sub-domain N of SUBSECTION ... Subsection K: [NAME OF SUBSECTION K] Description K: [INFORMATIVE DESCRIPTION OF SUBSECTION K] 1. [Informative description of Key aspect or sub-domain 1 of SUBSECTION 2. ... </format> Note: The number of subsections (K) should be appropriate for the conten terminology, and provide clear guidance for detailed content creation.",
+      "page": 18,
+      "id": "surveyforge-0159",
+      "sha256": "9926c77d26f6bc11186e1bc0bf5be088c149994c9fc52cc0a826f330d54fb095",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Only return the outline without any other informations: ''' Content: You are writing the subsection \"[SUBSECTION NAME]\" under the section [TOPIC]. As a distinguished expert, deliver content that combines academic r The overall outline of your survey is as follows:\\n --- [OVERALL OUTLINE] --- 124",
+      "page": 18,
+      "id": "surveyforge-0160",
+      "sha256": "9d0b0077b07ff428a3f0428068cecce9a63c6d5810f6a75d9de8c1660bc45eff",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "ion Prompt",
+      "page": 18,
+      "id": "surveyforge-0161",
+      "sha256": "c064e85514f94b72f761d957a9a38ee4126145876aea7e22b62f9cd89f815c38",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "the survey about **[TOPIC]**.",
+      "page": 18,
+      "id": "surveyforge-0162",
+      "sha256": "fa973d85ad91e16568805e8f540ca2525390a5e3b41d9f9dd57a2ee65b15147a",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "TION DESCRIPTION]** g an appropriate number of subsections (typically 3-6, but adjust based on ic aspect and be followed by a Informative description.",
+      "page": 18,
+      "id": "surveyforge-0163",
+      "sha256": "d8fc62a78eb36d096588175a97ce29178c9d0c65dfc2edbd85b6294fdebc0895",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "dates for this section:**",
+      "page": 18,
+      "id": "surveyforge-0164",
+      "sha256": "804b7621cc4368223145c52bc987ba73f3283c8fd432a5d079fc92e105394e93",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "written surveys** that may be related to [TOPIC].",
+      "page": 18,
+      "id": "surveyforge-0165",
+      "sha256": "c15e9582c9dedfa3d1adc42481b40ed33421275fc223c6ca8829646460854698",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "se these to understand the logical structure, style, and academic phrasing",
+      "page": 18,
+      "id": "surveyforge-0166",
+      "sha256": "be96e92bd4e5df11144ae58e06096702ff44926a91733d7a29affd868d1ef052",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "important concepts within **[SECTION NAME]**. academic phrasing, but ensure your outline is original and specifically tailored p-to-date framework for the section. line, while also acknowledging foundational concepts. * and align with its description. ucture, but be careful to avoid plagiarism. previous ones, ensuring a coherent progression of ideas. It is important to represent different aspects of the section. content requirements of **[SECTION NAME]**. While 3-6 subsections are n** and **several (no more than 3) sub-domain points with informative sub- r of points per subsection does not need to be consistent. You can add or hould represent a key aspect or sub-domain of the section, followed by a 1]",
+      "page": 18,
+      "id": "surveyforge-0167",
+      "sha256": "be0fe11c006e8935b8bd92046305f2dc589d6a8b6115124eb3d349442ac2aca0",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "2] N 2]",
+      "page": 18,
+      "id": "surveyforge-0168",
+      "sha256": "87cead5255b8ef61a46641d4d0776228b6b77b8e2a0df936b089d14c35565661",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "K]",
+      "page": 18,
+      "id": "surveyforge-0169",
+      "sha256": "0f76137dc8b7abb16cbb9272c95bc5ef0b4f04898c893f0b54518150eaaf5b4e",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "nt of **[SECTION NAME]**. Ensure descriptions are specific, contain key",
+      "page": 18,
+      "id": "surveyforge-0170",
+      "sha256": "3ddf3da4748b11ece028806e297aa077b1b29a4a3653ef7716e4e4436f181351",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "n \"[SECTION NAME]\" for a top-tier and comprehensive survey paper on rigor with innovative insights.",
+      "page": 18,
+      "id": "surveyforge-0171",
+      "sha256": "82d1b03c1ae88950b88bf1144dcce48106bcbd7d34be9499ec756331c03d6add",
+      "translate": true
+    },
+    {
+      "kind": "page",
+      "en": "PDF page 19",
+      "page": 19,
+      "id": "surveyforge-0172",
+      "sha256": "dc597a6fa1b7d6a84c04be34e96da08c592a9bb4d37bf5a7effaec45270a396a",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Below are a list of papers for references:\\n --- [PAPER LIST] --- <instruction> Now, focus on writing the content for the subsection \"[SUBSECTION NAM [WORD NUM] words. Subsection Focus: --- [DESCRIPTION] --- Core Requirements: 1. Content Structure - Begin with a concise overview of the subsection's scope - Maintain logical flow with clear transitions - Conclude with synthesis and future directions - Balance breadth and depth of coverage 2. Academic Analysis - Provide comparative analysis of different approaches - Evaluate strengths, limitations, and trade-offs - Identify emerging trends and challenges - Present technical details with precision - Include equations/formal definitions where necessary 3. Citation Guidelines - You should cite as many relevant paper as possible related to \"[SUBSECTIO - When writing sentences that are based on specific papers above, you cite t - Note that the \"paper_title\" is not allowed to appear without a '[]' format. - Remember that you can only cite the paper provided above and only cite th - Integration: Support key claims with relevant citations - Example: \"Lin et al. [paper_title1] have shown... Further studies [paper_t 4. Critical Insights - Synthesize information rather than summarize - Draw connections between different approaches - Highlight practical implications - Offer innovative perspectives or future directions - Support arguments with empirical evidence - Maintain scholarly tone throughout Quality Markers: - Demonstrates deep technical understanding - Provides novel insights and analysis - Maintains objective academic tone - Presents coherent narrative flow - Supports all key claims with citations Remember, the quality of your work should reflect the standards expected arguments well-supported, and your insights valuable to the academic comm field depends on the quality of this subsection. </instruction> Provide the content for subsection \"[SUBSECTION NAME]\" in this format: <format> [CONTENT OF SUBSECTION] </format> Only return the content more than [WORD NUM] words you write for the s provides a comprehensive, in-depth analysis that meets the high academic st merit, analytical depth, and potential contribution to the field.",
+      "page": 19,
+      "id": "surveyforge-0173",
+      "sha256": "a9d0af2320771ce580278d74bb13edbd9708d31cdd79fe7a44471bf94629c096",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Do not repeat the subsection title at the beginning of your response. Start d ''' 124",
+      "page": 19,
+      "id": "surveyforge-0174",
+      "sha256": "13fae1ab18209478819db2deb851045a44ba9aa497ea0c87039d1671bb3b2e4d",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "ME]\" under \"[SECTION NAME]\". The content you write must be more than",
+      "page": 19,
+      "id": "surveyforge-0175",
+      "sha256": "625f7dda5dd095127fd49ca34f3d0576074f9035976b7fe95d214a4ec85f010b",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "ON NAME]\". the \"paper_title\" in a '[]' format to support your content. Once you mention the 'paper_title', it must be included in '[]'. he \"paper_title\"!!! title2; paper_title3] confirm...\"",
+      "page": 19,
+      "id": "surveyforge-0176",
+      "sha256": "c056ef0a223628d7473016a5b96303ccf20c9438e0156e22eb6fc64d7040313d",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "d in top-tier academic publications. Your analysis should be thorough, your munity. Approach this task as if your reputation as a leading expert in the",
+      "page": 19,
+      "id": "surveyforge-0177",
+      "sha256": "93b6bd6a1e55efabeed057c491f7084da28d25c33e9085bb0fde184fb7154e44",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "subsection [SUBSECTION NAME] without any other information, ensuring it tandards described above. Your work will be evaluated based on its scholarly directly with the content of the subsection.",
+      "page": 19,
+      "id": "surveyforge-0178",
+      "sha256": "a23d4785d5f80fe169adb7afda574553f14031436858c34e0e74550fdd4b9ab2",
+      "translate": true
+    },
+    {
+      "kind": "page",
+      "en": "PDF page 20",
+      "page": 20,
+      "id": "surveyforge-0179",
+      "sha256": "4c5aa79cb9d2f83ae8cac11f6b264d087a302ff6285bc9c3ae0e152494a4860f",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Evaluation",
+      "page": 20,
+      "id": "surveyforge-0180",
+      "sha256": "163e44b102626149bbbfb058eee4fcfa7748b40949629e0a1a4ff058f3bb548b",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Outline:",
+      "page": 20,
+      "id": "surveyforge-0181",
+      "sha256": "07e36b2a48639d3be6f2026b1e8d3dcc026af850240a688f5a727cbfca5b91cd",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Task: As a rigorous academic evaluator about {topic}, assess the can serve as an outline for a high-quality academic review paper.",
+      "page": 20,
+      "id": "surveyforge-0182",
+      "sha256": "cf5b3134862fcdfb26ef0986188b5c9861204bf81caedbaa5ca4249b536393de",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Subject for Evaluation: {ai_outline} <Instruction> Your job is to assess how well the outline of the generated literat Evaluation Focus: **OUTLINE QUALITY ONLY** Outline Assessment Criteria (100 points total): 1. Topic Uniqueness (30 points) - No duplicate topics across sections/subsections - Each section contains unique content - No redundant future/conclusion sections - Clear distinction between related topics 2. Structural Balance (30 points) - Reasonably balanced number of subsections across main content - No obviously under-developed sections - No overly detailed sections that dominate the outline - Variations in subsection numbers should align with topic importan 3. Hierarchical Clarity (20 points) - Clear parent-child relationships - Appropriate topic levels for each section's role - Logical subdivision aligned with academic conventions - Consistent granularity where appropriate 4. Logical Organization (20 points) - Natural topic progression following academic norms - Clear relationships between sections - Coherent topic grouping - Purposeful content flow matching section functions Score Classifications: 90-100: Exceptional - Zero content duplication - Perfect structural balance - Clear hierarchy - Logical flow 70-79: Adequate 60-69: Weak - Some topic repetition - Notable redundancy - Slightly uneven structure - Imbalanced sections - Basic hierarchy maintained - Unclear hierarchy - Basic logical flow - Poor topic progression Content Coverage: **Task:** As an expert literature review evaluator, assess on compared to a human-written reference on {topic}. **Note:** The human-written review serves only as a reference p **Coverage Quality Definition:** Coverage quality refers to the comprehensiveness, depth, and ba breadth of relevant concepts covered and the proportional attenti Human-Written Review (Reference): --- {human_review} --- Generated Review for Evaluation: --- {ai_review} --- 124",
+      "page": 20,
+      "id": "surveyforge-0183",
+      "sha256": "ace03aa8ea82f048537cc8bd2757215156d4d67706b55a2f831c8e871461fc80",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "n Prompt",
+      "page": 20,
+      "id": "surveyforge-0184",
+      "sha256": "233781e8defaaa3d0e0a90f000263d9ecaa9fb85ac4c85496ab7e1d2f5542eaf",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "quality of an AI-generated outline. You need to judge whether it",
+      "page": 20,
+      "id": "surveyforge-0185",
+      "sha256": "009a13460d9c62fda247055d9651649cb0cd056a3386436d1ccc477979f5e4da",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "ture review.",
+      "page": 20,
+      "id": "surveyforge-0186",
+      "sha256": "79f0a730585d49a9f2379a63d39cba0c40b654ecd105c35fe0a5ed7d9e3455db",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "chapters nce/complexity",
+      "page": 20,
+      "id": "surveyforge-0187",
+      "sha256": "bc0cda22dd760fada1247a05bd4bd7e14848c80f23d605cbe7e122ed8743b787",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "80-89: Strong - Minimal content overlap - Generally balanced structure - Good hierarchical organization - Clear progression Below 60: Poor - Extensive duplication - Severely imbalanced - Confused hierarchy n - No logical organization nly the **coverage quality** of a generated literature review",
+      "page": 20,
+      "id": "surveyforge-0188",
+      "sha256": "037fed78dc9319a596dc486b4a95142b9bbd707c9c8e1b717a445ae976de4622",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "point, not as the absolute standard. alance of topic treatment within a literature review, including the ion given to each area.",
+      "page": 20,
+      "id": "surveyforge-0189",
+      "sha256": "bf790e83a85e42af9a269d35b472e1f9550ec6f0838889103f29bed54a8a6b02",
+      "translate": true
+    },
+    {
+      "kind": "page",
+      "en": "PDF page 21",
+      "page": 21,
+      "id": "surveyforge-0190",
+      "sha256": "b6025d910012c8dfacef11d02571672bb97127eee88005bd875f46b6cc24dbd3",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "**Coverage Evaluation Criteria (100 points total):** 1. **Topic Comprehensiveness (35 points)** - Range of essential topics covered - Inclusion of emerging areas - Identification of key concepts Scoring Guide: - 30-35: Comprehensive coverage with emerging topics - 20-29: Good coverage with minor gaps - 0-19: Significant omissions or major gaps 3. **Content Balance (30 points)** - Proportional coverage of topics - Appropriate emphasis distribution - Logical allocation of space Scoring Guide: - 25-30: Well-balanced coverage throughout - 15-24: Generally balanced with minor issues - 0-14: Significant imbalance issues **Scoring Requirements:** - Prioritize accuracy over conservatism - AVOID \"safe\" middle-range scores that don't reflect true qualit - Each score must reflect precise performance level, not range ave - Use full scoring range (0-100) - Base scores on objective comparison to human reference - Acknowledge that best practices may evolve **Output Format:** Return only a single numerical score (0-100). No additional commen ''' Content Relevance: **Task:** As an expert literature review evaluator, assess only t to a human-written reference on {topic}. **Note:** The human-written review serves only as a reference po **Relevance Quality Definition:** Relevance quality in a literature review refers to how well the co information, and the focus of the discussion on key aspects of the **Reference Materials:** Human-Written Review (Reference): --- {human_review} --- Generated Review for Evaluation: --- {ai_review} --- **Relevance Evaluation Criteria (100 points total):** 1. **Topic Alignment (35 points)** - Coverage of core aspects - Alignment with research focus - Depth of relevant discussion Scoring Guide: - 30-35: Excellent alignment with comprehensive coverage - 20-29: Good alignment with minor gaps - 0-19: Significant misalignment or major gaps 3. **Information Focus (30 points)** - Concentration on key points - Absence of tangential content - Purposeful content selection Scoring Guide: - 25-30: Sharp focus with minimal deviation - 15-24: Adequate focus with some tangential content - 0-14: Poor focus or excessive deviation 124",
+      "page": 21,
+      "id": "surveyforge-0191",
+      "sha256": "34e75d0af69dc221eb8f83de501bb32a03417d9334a561031da7546fde541960",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "2. **Discussion Depth (35 points)** - Detail level of concept analysis - Development of key arguments - Thoroughness of explanations Scoring Guide: - 30-35: Exceptional depth across topics - 20-29: Good depth with some variation - 0-19: Consistently superficial treatment",
+      "page": 21,
+      "id": "surveyforge-0192",
+      "sha256": "0d572739c60c61092c50218e7b4d35dc605ed9d82142b00c0970ba3e125b00ce",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "ty. Score based purely on merit, not on scoring \"comfort zones\" erages (e.g., 25 for 20-29 range)",
+      "page": 21,
+      "id": "surveyforge-0193",
+      "sha256": "3d2d3f3038a4386b802a8dd863585179a06410774664808c74085a379b6bcece",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "ntary.",
+      "page": 21,
+      "id": "surveyforge-0194",
+      "sha256": "5357fc3fa4be79a2757c68fc7f4a4b459153e2a01575d10218396c395e3ed72a",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "the **relevance quality** of a generated literature review compared oint, not as the absolute standard.",
+      "page": 21,
+      "id": "surveyforge-0195",
+      "sha256": "b7bd95dfc469e36bb1e6aef4fc521f76bd58894fcea9f28fdbc5f262ad847c65",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "ontent aligns with the stated topic, the appropriateness of included e subject matter.",
+      "page": 21,
+      "id": "surveyforge-0196",
+      "sha256": "bad414965bd3ee770da9d5f0f33d10edaaa728180a6e63e859783cc4d8aa011f",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "2. **Content Appropriateness (35 points)** - Relevance of examples and evidence - Precision of discussion - Connection to main topic Scoring Guide: - 30-35: Highly relevant with precise discussion - 20-29: Generally relevant with minor inconsistencies - 0-19: Multiple irrelevant elements or poor precision",
+      "page": 21,
+      "id": "surveyforge-0197",
+      "sha256": "f0c00b16c7edca673cc7e5bb096de08182efe2883b0bf747371b668783043b44",
+      "translate": true
+    },
+    {
+      "kind": "page",
+      "en": "PDF page 22",
+      "page": 22,
+      "id": "surveyforge-0198",
+      "sha256": "d8f5104f27e5ec3fcfc623e5b04171534f2e523b60807bd7f314629ad67d61aa",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "**Scoring Requirements:** - Prioritize accuracy over conservatism - AVOID \"safe\" middle-range scores that don't reflect true qualit - Each score must reflect precise performance level, not range ave - Use full scoring range (0-100) - Base scores on objective comparison to human reference - Acknowledge that best practices may evolve **Output Format:** Return only a single numerical score (0-100). No additional commen ''' Content Structure: **Task:** As an expert literature review evaluator, assess only th to a human-written reference on {topic}.",
+      "page": 22,
+      "id": "surveyforge-0199",
+      "sha256": "4c246554512c3236691467eb1fb8a20abc7b4beda894a18461fd8bdb81d92863",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Note: The human-written review serves only as a reference point, **Structural Quality Definition:** Structural quality in a literature review refers to the organization well the review is organized, how ideas are connected and develo topic. **Reference Materials:** Human-Written Review (Reference): --- {human_review} --- Generated Review for Evaluation: --- {ai_review} --- **Structural Evaluation Criteria (100 points total):** 1. **Logical Flow & Organization (35 points)** - Progressive development of ideas - Effective transitions between concepts - Clear argumentative thread Scoring Guide: - 30-35: Exceptional logical progression with seamless transition - 20-29: Generally logical with minor flow issues - 0-19: Significant organizational problems 2. **Hierarchical Structure (35 points)** - Section/subsection organization - Topic hierarchy clarity - Internal coherence Scoring Guide: - 30-35: Well-defined structure enhancing comprehension - 20-29: Adequate structure with some inconsistencies - 0-19: Poor hierarchical organization 3. **Format & Presentation (30 points)** - Heading/subheading usage - Academic formatting consistency - Visual organization Scoring Guide: - 25-30: Consistent, professional formatting - 15-24: Minor formatting inconsistencies - 0-14: Major formatting issues **Scoring Requirements:** - Prioritize accuracy over conservatism - AVOID \"safe\" middle-range scores that don't reflect true qualit - Each score must reflect precise performance level, not range ave - Use full scoring range (0-100) - Base scores on objective comparison to human reference - Acknowledge that best practices may evolve **Output Format:** Return only a single numerical score (0-100). No additional commen 124",
+      "page": 22,
+      "id": "surveyforge-0200",
+      "sha256": "0038d272e2a43a35c15312e9d4397a60fec38feed9d09c9d090b4af499e2e577",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "ty. Score based purely on merit, not on scoring \"comfort zones\" erages (e.g., 25 for 20-29 range)",
+      "page": 22,
+      "id": "surveyforge-0201",
+      "sha256": "3d2d3f3038a4386b802a8dd863585179a06410774664808c74085a379b6bcece",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "ntary.",
+      "page": 22,
+      "id": "surveyforge-0202",
+      "sha256": "5357fc3fa4be79a2757c68fc7f4a4b459153e2a01575d10218396c395e3ed72a",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "he **structural quality** of a generated literature review compared",
+      "page": 22,
+      "id": "surveyforge-0203",
+      "sha256": "58175339a7fd9f88fdccc262e44dc9b7b0d983d0b413ea429e70196135e279a0",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "not as the absolute standard.",
+      "page": 22,
+      "id": "surveyforge-0204",
+      "sha256": "024d6348baedaeb9e881c352a745921724fcaddd7453a9e07bd8af0d2564cd0e",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "n, logical flow, and presentation of information. It encompasses how oped, and how the overall structure enhances understanding of the",
+      "page": 22,
+      "id": "surveyforge-0205",
+      "sha256": "929e219de1f046231120da9be2742cc828daeaaa9f520b4527b40ca19e645ac4",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "ns",
+      "page": 22,
+      "id": "surveyforge-0206",
+      "sha256": "7bfba6e0021f1fd1183dfefe60216f13140365788780f2a26fd8fc1f08b2aa2c",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "ty. Score based purely on merit, not on scoring \"comfort zones\" erages (e.g., 25 for 20-29 range)",
+      "page": 22,
+      "id": "surveyforge-0207",
+      "sha256": "3d2d3f3038a4386b802a8dd863585179a06410774664808c74085a379b6bcece",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "ntary.",
+      "page": 22,
+      "id": "surveyforge-0208",
+      "sha256": "5357fc3fa4be79a2757c68fc7f4a4b459153e2a01575d10218396c395e3ed72a",
+      "translate": true
+    }
+  ],
+  "translation_status": "prepared, not translated"
+}

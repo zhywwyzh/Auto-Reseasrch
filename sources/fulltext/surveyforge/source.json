@@ -1,0 +1,22 @@
+{
+  "slug": "surveyforge",
+  "arxiv": "2503.04629v1",
+  "title": "SurveyForge: On the Outline Heuristics, Memory-Driven Generation, and Multi-dimensional Evaluation for Automated Survey Writing",
+  "authors": [
+    "Yan, Xiangchao",
+    "Feng, Shiyang",
+    "Yuan, Jiakang",
+    "Xia, Renqiu",
+    "Wang, Bin",
+    "Zhang, Bo",
+    "Bai, Lei"
+  ],
+  "pdf_url": "https://aclanthology.org/2025.acl-long.609.pdf",
+  "resolved_pdf_url": "https://aclanthology.org/2025.acl-long.609.pdf",
+  "licence": "https://creativecommons.org/licenses/by/4.0/",
+  "source_format": "ACL formal version",
+  "html": "https://arxiv.org/html/2503.04629v1",
+  "pages": 22,
+  "sha256": "8d5963f52a0866b1127261ae95ea2f10e6556b5058dd7a2041505c10a4ad0bf1",
+  "retrieved": "2026-11-09"
+}

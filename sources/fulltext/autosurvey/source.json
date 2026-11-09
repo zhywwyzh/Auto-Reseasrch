@@ -1,0 +1,28 @@
+{
+  "slug": "autosurvey",
+  "arxiv": "2406.10252v2",
+  "title": "AutoSurvey: Large Language Models Can Automatically Write Surveys",
+  "authors": [
+    "Wang, Yidong",
+    "Guo, Qi",
+    "Yao, Wenjin",
+    "Zhang, Hongbo",
+    "Zhang, Xin",
+    "Wu, Zhen",
+    "Zhang, Meishan",
+    "Dai, Xinyu",
+    "Zhang, Min",
+    "Wen, Qingsong",
+    "Ye, Wei",
+    "Zhang, Shikun",
+    "Zhang, Yue"
+  ],
+  "pdf_url": "https://arxiv.org/pdf/2406.10252v2",
+  "resolved_pdf_url": "https://arxiv.org/pdf/2406.10252v2",
+  "licence": "http://creativecommons.org/licenses/by/4.0/",
+  "source_format": "arXiv pinned version",
+  "html": "https://arxiv.org/html/2406.10252v2",
+  "pages": 19,
+  "sha256": "873bd26a183a8d63ffcd65e63b02b44f5f5de250462f01b20c1d16ea446c2d1d",
+  "retrieved": "2026-11-09"
+}

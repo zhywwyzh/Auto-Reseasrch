@@ -3,7 +3,7 @@ import { H1, H2, H3, Text, Stack, Row, Grid, Card, CardHeader, CardBody, Table, 
 const papers = [
   {group:'文献综合', name:'AutoSurvey', year:'NeurIPS 2024', url:'https://papers.nips.cc/paper_files/paper/2024/hash/d07a9fc7da2e2ec0574c38d5f504d105-Abstract-Conference.html', learn:'检索→大纲→分节写作→整合评估，是综述流水线的直接基线。', limit:'自动生成综述不等于完成系统性文献审查，也不能单靠语言质量证明可靠。', order:'第一轮'},
   {group:'文献综合', name:'OpenScholar', year:'2024 预印本；Nature 2026 论文版', url:'https://arxiv.org/abs/2411.14199', learn:'学习检索、证据片段与带引用的科学问答；先做小语料复现。', limit:'问答评测与完整综述、原创研究是不同任务。历史模型得分不代表当前前沿水平。', order:'第一轮'},
-  {group:'文献综合', name:'SurveyForge / SurveyBench', year:'2025 预印本', url:'https://arxiv.org/abs/2503.04629', learn:'观察大纲、记忆与引文质量如何分别评价。', limit:'人工综述不是唯一正确答案；需要单独检查证据支持和遗漏。', order:'第二轮'},
+  {group:'文献综合', name:'SurveyForge / SurveyBench', year:'ACL 2025 正式版', url:'https://aclanthology.org/2025.acl-long.609/', learn:'观察大纲、记忆与引文质量如何分别评价。', limit:'人工综述不是唯一正确答案；需要单独检查证据支持和遗漏。', order:'第二轮'},
   {group:'科研闭环', name:'The AI Scientist-v2', year:'2025 预印本', url:'https://arxiv.org/abs/2504.08066', learn:'树搜索实验管理、运行代码、分析结果、生成论文。', limit:'论文报告的 workshop 评审结果不能外推为稳定达到主会水平。', order:'第一轮'},
   {group:'科研闭环', name:'Towards end-to-end automation of AI research', year:'Nature，2026-03-25', url:'https://www.nature.com/articles/s41586-026-10265-5', learn:'综合理解有模板与无模板的研究自动化及其评测。', limit:'与 AI Scientist 系列有延续关系，不作为独立重复验证计算。', order:'第二轮'},
   {group:'科研闭环', name:'Co-Scientist', year:'2025；2026-06 修订', url:'https://arxiv.org/abs/2502.18864', learn:'生成、批评、改进假设与锦标赛式选择；有生物医学实验案例。', limit:'案例来自特定应用；系统内部排名不能直接替代无人机实验。', order:'第二轮'},
@@ -12,12 +12,12 @@ const papers = [
   {group:'评测与可信性', name:'PaperBench', year:'2025 预印本', url:'https://arxiv.org/abs/2504.01848', learn:'从论文复现任务学习细分评分标准与可执行验收。', limit:'复现能力不能直接推断发现新知识的能力。', order:'第一轮'},
   {group:'评测与可信性', name:'AstaBench', year:'ICLR 2026；2026-04 修订', url:'https://arxiv.org/abs/2510.21652', learn:'统一工具、预算、任务接口，比较文献到研究闭环的能力。', limit:'整体平均分不能替代你自己的无人机任务评测。', order:'第一轮'},
   {group:'评测与可信性', name:'PAPERBENCHX', year:'2026-10-29 预印本', url:'https://arxiv.org/abs/2610.39744', learn:'跨学科复现与从干净环境重跑后评分的设计。', limit:'新近预印本；局部步骤得分和完整复现率需要分开报告。', order:'第二轮'},
-  {group:'评测与可信性', name:'Can LLMs Generate Novel Research Ideas?', year:'2024 预印本', url:'https://arxiv.org/abs/2409.04109', learn:'学习专家盲评、可行性与新颖性分开评价的设计。', limit:'想法被认为新颖，不等于实施后有收益。', order:'第二轮'},
+  {group:'评测与可信性', name:'Can LLMs Generate Novel Research Ideas?', year:'2024 首发；ICLR 2025 正式版', url:'https://arxiv.org/abs/2409.04109', learn:'学习专家盲评、可行性与新颖性分开评价的设计。', limit:'想法被认为新颖，不等于实施后有收益。', order:'第二轮'},
   {group:'评测与可信性', name:'EPOCH', year:'2026-10-04 预印本', url:'https://arxiv.org/abs/2610.06986', learn:'研究任务契约、证据记忆、主动反证与独立重跑。', limit:'与拟议方向高度相关；不能把“加入证据审核”直接当作原创贡献。', order:'第一轮'},
   {group:'评测与可信性', name:'Sound Agentic Science Requires Adversarial Experiments', year:'ICLR 2026 workshop', url:'https://arxiv.org/abs/2604.22080', learn:'建立能推翻主张的测试，识别选择性分析与正结果偏好。', limit:'方法论主张需要在具体任务上进行受控验证。', order:'第二轮'},
   {group:'无人机实验', name:'EGO-Planner', year:'RA-L 2021', url:'https://arxiv.org/abs/2008.08835', learn:'固定为局部轨迹规划基础，辨明与高层探索决策的接口。', limit:'局部规划能力不能单独代表完整探索或语言导航能力。', order:'领域基础'},
   {group:'无人机实验', name:'FUEL', year:'RA-L / ICRA 2021', url:'https://github.com/HKUST-Aerial-Robotics/FUEL', learn:'frontier、视点和分层探索规划；适合几何探索基线。', limit:'统一传感器、动力学、速度和地图设置后才可比较。', order:'领域基础'},
-  {group:'无人机实验', name:'FlightBench', year:'2024 预印本；论文版本需按采用版冻结', url:'https://arxiv.org/abs/2406.05687', learn:'局部视觉导航评测与场景难度维度。', limit:'它不是语义探索或指令跟随的直接替代基准。', order:'领域基础'},
+  {group:'无人机实验', name:'FlightBench', year:'2025-05 v3；关联 RA-L 2025 DOI', url:'https://arxiv.org/abs/2406.05687', learn:'局部视觉导航评测与场景难度维度。', limit:'它不是语义探索或指令跟随的直接替代基准。', order:'领域基础'},
   {group:'无人机实验', name:'OpenUAV / UAV-Need-Help', year:'ICLR 2025', url:'https://proceedings.iclr.cc/paper_files/paper/2025/hash/15ce8e7afe5ee95bad56e3b9be28d3d1-Abstract-Conference.html', learn:'真实感 UAV 仿真、目标搜索与不同级别指导信息。', limit:'与纯几何覆盖、局部避障任务分别评价。', order:'第二阶段'},
   {group:'无人机实验', name:'VLN on the Fly', year:'IMAV 2026', url:'https://vln-on-the-fly.github.io/', learn:'Orin NX 上的视觉语言模块与 EGO-Planner 组合。', limit:'项目报告使用室内动捕，不能等同于无外部定位的野外自主飞行。', order:'第二阶段'},
   {group:'无人机实验', name:'LightVLN', year:'2026-10-04 预印本', url:'https://arxiv.org/abs/2610.05024', learn:'紧凑历史表示与计算约束，供 Orin NX 部署研究参考。', limit:'报告的 Orin NX 结果是 real-to-sim HIL，不能当作自由飞行实证。', order:'拓展'},
@@ -54,6 +54,8 @@ export default function AutoResearchRoadmap() {
       <Text size="small" tone="secondary">研究启动方案 · 2026-11-05 · 定向检索与方案建议，非穷尽式系统综述</Text>
       <H1>让 Auto Research 在无人机实验中接受检验</H1>
       <Text>以已有探索/导航系统为实验对象，先建可靠的研究助手，再验证它能否在固定预算下发现可复现、可部署的改进。</Text>
+      <Text>文献清单已补充近期工作并修正阅读顺序，原始 20 项不代表当前最强方法。</Text>
+      <Link href="/home/zhywwyzh/.cursor/projects/home-zhywwyzh-workspace-AutoResearch-UAV/canvases/auto-research-bilingual-reading.canvas.tsx">打开 26 项中英对照阅读与时效性复核</Link>
       <Row gap={8} wrap>{tabs.map(x=><Pill key={x} active={tab===x} onClick={()=>setTab(x)}>{x}</Pill>)}</Row>
     </Stack>
 

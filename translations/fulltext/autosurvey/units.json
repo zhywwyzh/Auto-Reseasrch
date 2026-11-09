@@ -1,0 +1,2642 @@
+{
+  "source": {
+    "slug": "autosurvey",
+    "arxiv": "2406.10252v2",
+    "title": "AutoSurvey: Large Language Models Can Automatically Write Surveys",
+    "authors": [
+      "Wang, Yidong",
+      "Guo, Qi",
+      "Yao, Wenjin",
+      "Zhang, Hongbo",
+      "Zhang, Xin",
+      "Wu, Zhen",
+      "Zhang, Meishan",
+      "Dai, Xinyu",
+      "Zhang, Min",
+      "Wen, Qingsong",
+      "Ye, Wei",
+      "Zhang, Shikun",
+      "Zhang, Yue"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2406.10252v2",
+    "resolved_pdf_url": "https://arxiv.org/pdf/2406.10252v2",
+    "licence": "http://creativecommons.org/licenses/by/4.0/",
+    "source_format": "arXiv pinned version",
+    "html": "https://arxiv.org/html/2406.10252v2",
+    "pages": 19,
+    "sha256": "873bd26a183a8d63ffcd65e63b02b44f5f5de250462f01b20c1d16ea446c2d1d",
+    "retrieved": "2026-11-09"
+  },
+  "extraction": "arXiv HTML (headings, paragraphs, captions, tables and appendices)",
+  "units": [
+    {
+      "kind": "heading",
+      "en": "AutoSurvey: Large Language Models Can Automatically Write Surveys",
+      "anchor": "",
+      "id": "autosurvey-0001",
+      "sha256": "80707e13b0b1de54f30e2baf43ab55fb496fd3a4b9fc43ac857b1b68c0f51ac7",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Yidong Wang",
+      "anchor": "",
+      "id": "autosurvey-0002",
+      "sha256": "8e22c3cfc72c2fd7d611b9e632b96992e401d03d58168a82cb75f716cab62fab",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "†",
+      "anchor": "",
+      "id": "autosurvey-0003",
+      "sha256": "8efeb7661b801b1f4f1286b262b89ec8550bfbb4b438fe9fb31be551e747a547",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "†",
+      "anchor": "",
+      "id": "autosurvey-0004",
+      "sha256": "8efeb7661b801b1f4f1286b262b89ec8550bfbb4b438fe9fb31be551e747a547",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "thanks:",
+      "anchor": "",
+      "id": "autosurvey-0005",
+      "sha256": "0d1f729fb04dfb03ed812e5fb46ad0fea0433468b4448a1ac8cdcc3ce4778273",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Equal contribution. yidongwang37@gmail.com, qguo@smail.nju.edu.cn; Yidong Wang did this work during his internship at Squirrel AI.",
+      "anchor": "",
+      "id": "autosurvey-0006",
+      "sha256": "97c82728f22f9a9db4e2ad7587d83da8b72a9c188180cd6c342bc3f62c446e01",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Affiliation:",
+      "anchor": "",
+      "id": "autosurvey-0007",
+      "sha256": "26cf46d6a24358c83d2e812dfa15c3bd2e532e3ec75bba8bec13d6c01d4288af",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "1",
+      "anchor": "id2.1",
+      "id": "autosurvey-0008",
+      "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Westlake University,",
+      "anchor": "id3",
+      "id": "autosurvey-0009",
+      "sha256": "23d060acbe332f579cc06d3ed2be854b24757a175f8a238d09524fa003dc3ac7",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "2",
+      "anchor": "id3.1.1",
+      "id": "autosurvey-0010",
+      "sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Peking University,",
+      "anchor": "id3",
+      "id": "autosurvey-0011",
+      "sha256": "aa5cce052eceb83e08b12a70c0f9bdeacbf11e98c58a41aed282902ba1883735",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "3",
+      "anchor": "id3.2.1",
+      "id": "autosurvey-0012",
+      "sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Nanjing University,",
+      "anchor": "id3",
+      "id": "autosurvey-0013",
+      "sha256": "864b5db1aae65e10ff71d4208023e6f4b3bed25026e5240eea68c8fe85e3fd6e",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "4",
+      "anchor": "id3.3.1",
+      "id": "autosurvey-0014",
+      "sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Harbin Institute of Technology,\nShenzhen,",
+      "anchor": "id3",
+      "id": "autosurvey-0015",
+      "sha256": "1d3778b95f257658764a578bc93f4d5286c92c174975cd125fa08627c65cb92f",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "5",
+      "anchor": "id3.4.1",
+      "id": "autosurvey-0016",
+      "sha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Squirrel AI",
+      "anchor": "id3",
+      "id": "autosurvey-0017",
+      "sha256": "c1a7327ce6a0df06412533e6c3871465d61cd509064d033b1d6c1e70486db6c0",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Qi Guo",
+      "anchor": "",
+      "id": "autosurvey-0018",
+      "sha256": "ec8cc228831048499544e2f1ac4b2d25d42a4ae2c97fbbd9bd9d35ddff30c67d",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Affiliation:",
+      "anchor": "",
+      "id": "autosurvey-0019",
+      "sha256": "26cf46d6a24358c83d2e812dfa15c3bd2e532e3ec75bba8bec13d6c01d4288af",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "1",
+      "anchor": "id4.1",
+      "id": "autosurvey-0020",
+      "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Westlake University,",
+      "anchor": "id5",
+      "id": "autosurvey-0021",
+      "sha256": "23d060acbe332f579cc06d3ed2be854b24757a175f8a238d09524fa003dc3ac7",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "2",
+      "anchor": "id5.1.1",
+      "id": "autosurvey-0022",
+      "sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Peking University,",
+      "anchor": "id5",
+      "id": "autosurvey-0023",
+      "sha256": "aa5cce052eceb83e08b12a70c0f9bdeacbf11e98c58a41aed282902ba1883735",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "3",
+      "anchor": "id5.2.1",
+      "id": "autosurvey-0024",
+      "sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Nanjing University,",
+      "anchor": "id5",
+      "id": "autosurvey-0025",
+      "sha256": "864b5db1aae65e10ff71d4208023e6f4b3bed25026e5240eea68c8fe85e3fd6e",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "4",
+      "anchor": "id5.3.1",
+      "id": "autosurvey-0026",
+      "sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Harbin Institute of Technology,\nShenzhen,",
+      "anchor": "id5",
+      "id": "autosurvey-0027",
+      "sha256": "1d3778b95f257658764a578bc93f4d5286c92c174975cd125fa08627c65cb92f",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "5",
+      "anchor": "id5.4.1",
+      "id": "autosurvey-0028",
+      "sha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Squirrel AI",
+      "anchor": "id5",
+      "id": "autosurvey-0029",
+      "sha256": "c1a7327ce6a0df06412533e6c3871465d61cd509064d033b1d6c1e70486db6c0",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Wenjin Yao",
+      "anchor": "",
+      "id": "autosurvey-0030",
+      "sha256": "e627437116590c28bb67025e50b6febcc1a04548bc31ecbb0fd568510721cf1d",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Affiliation:",
+      "anchor": "",
+      "id": "autosurvey-0031",
+      "sha256": "26cf46d6a24358c83d2e812dfa15c3bd2e532e3ec75bba8bec13d6c01d4288af",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "1",
+      "anchor": "id6.1",
+      "id": "autosurvey-0032",
+      "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Westlake University,",
+      "anchor": "id7",
+      "id": "autosurvey-0033",
+      "sha256": "23d060acbe332f579cc06d3ed2be854b24757a175f8a238d09524fa003dc3ac7",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "2",
+      "anchor": "id7.1.1",
+      "id": "autosurvey-0034",
+      "sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Peking University,",
+      "anchor": "id7",
+      "id": "autosurvey-0035",
+      "sha256": "aa5cce052eceb83e08b12a70c0f9bdeacbf11e98c58a41aed282902ba1883735",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "3",
+      "anchor": "id7.2.1",
+      "id": "autosurvey-0036",
+      "sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Nanjing University,",
+      "anchor": "id7",
+      "id": "autosurvey-0037",
+      "sha256": "864b5db1aae65e10ff71d4208023e6f4b3bed25026e5240eea68c8fe85e3fd6e",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "4",
+      "anchor": "id7.3.1",
+      "id": "autosurvey-0038",
+      "sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Harbin Institute of Technology,\nShenzhen,",
+      "anchor": "id7",
+      "id": "autosurvey-0039",
+      "sha256": "1d3778b95f257658764a578bc93f4d5286c92c174975cd125fa08627c65cb92f",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "5",
+      "anchor": "id7.4.1",
+      "id": "autosurvey-0040",
+      "sha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Squirrel AI",
+      "anchor": "id7",
+      "id": "autosurvey-0041",
+      "sha256": "c1a7327ce6a0df06412533e6c3871465d61cd509064d033b1d6c1e70486db6c0",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Hongbo Zhang",
+      "anchor": "",
+      "id": "autosurvey-0042",
+      "sha256": "70a3aaaa32ff12d337b10cea9b4c21f57b4446e31650b53f650f725b79ed95c8",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Affiliation:",
+      "anchor": "",
+      "id": "autosurvey-0043",
+      "sha256": "26cf46d6a24358c83d2e812dfa15c3bd2e532e3ec75bba8bec13d6c01d4288af",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "1",
+      "anchor": "id8.1",
+      "id": "autosurvey-0044",
+      "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Westlake University,",
+      "anchor": "id9",
+      "id": "autosurvey-0045",
+      "sha256": "23d060acbe332f579cc06d3ed2be854b24757a175f8a238d09524fa003dc3ac7",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "2",
+      "anchor": "id9.1.1",
+      "id": "autosurvey-0046",
+      "sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Peking University,",
+      "anchor": "id9",
+      "id": "autosurvey-0047",
+      "sha256": "aa5cce052eceb83e08b12a70c0f9bdeacbf11e98c58a41aed282902ba1883735",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "3",
+      "anchor": "id9.2.1",
+      "id": "autosurvey-0048",
+      "sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Nanjing University,",
+      "anchor": "id9",
+      "id": "autosurvey-0049",
+      "sha256": "864b5db1aae65e10ff71d4208023e6f4b3bed25026e5240eea68c8fe85e3fd6e",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "4",
+      "anchor": "id9.3.1",
+      "id": "autosurvey-0050",
+      "sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Harbin Institute of Technology,\nShenzhen,",
+      "anchor": "id9",
+      "id": "autosurvey-0051",
+      "sha256": "1d3778b95f257658764a578bc93f4d5286c92c174975cd125fa08627c65cb92f",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "5",
+      "anchor": "id9.4.1",
+      "id": "autosurvey-0052",
+      "sha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Squirrel AI",
+      "anchor": "id9",
+      "id": "autosurvey-0053",
+      "sha256": "c1a7327ce6a0df06412533e6c3871465d61cd509064d033b1d6c1e70486db6c0",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Xin Zhang",
+      "anchor": "",
+      "id": "autosurvey-0054",
+      "sha256": "ae5df8082db6f5c4967decf3a441ac1d9be888ff2c12d1ca6c12a6cfe74218d4",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Affiliation:",
+      "anchor": "",
+      "id": "autosurvey-0055",
+      "sha256": "26cf46d6a24358c83d2e812dfa15c3bd2e532e3ec75bba8bec13d6c01d4288af",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "1",
+      "anchor": "id10.1",
+      "id": "autosurvey-0056",
+      "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Westlake University,",
+      "anchor": "id11",
+      "id": "autosurvey-0057",
+      "sha256": "23d060acbe332f579cc06d3ed2be854b24757a175f8a238d09524fa003dc3ac7",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "2",
+      "anchor": "id11.1.1",
+      "id": "autosurvey-0058",
+      "sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Peking University,",
+      "anchor": "id11",
+      "id": "autosurvey-0059",
+      "sha256": "aa5cce052eceb83e08b12a70c0f9bdeacbf11e98c58a41aed282902ba1883735",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "3",
+      "anchor": "id11.2.1",
+      "id": "autosurvey-0060",
+      "sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Nanjing University,",
+      "anchor": "id11",
+      "id": "autosurvey-0061",
+      "sha256": "864b5db1aae65e10ff71d4208023e6f4b3bed25026e5240eea68c8fe85e3fd6e",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "4",
+      "anchor": "id11.3.1",
+      "id": "autosurvey-0062",
+      "sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Harbin Institute of Technology,\nShenzhen,",
+      "anchor": "id11",
+      "id": "autosurvey-0063",
+      "sha256": "1d3778b95f257658764a578bc93f4d5286c92c174975cd125fa08627c65cb92f",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "5",
+      "anchor": "id11.4.1",
+      "id": "autosurvey-0064",
+      "sha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Squirrel AI",
+      "anchor": "id11",
+      "id": "autosurvey-0065",
+      "sha256": "c1a7327ce6a0df06412533e6c3871465d61cd509064d033b1d6c1e70486db6c0",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Zhen Wu",
+      "anchor": "",
+      "id": "autosurvey-0066",
+      "sha256": "33165f5c4430806af9ddca664d20201b0298d9d27a75620c2cc20c8c96ff1c4c",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Affiliation:",
+      "anchor": "",
+      "id": "autosurvey-0067",
+      "sha256": "26cf46d6a24358c83d2e812dfa15c3bd2e532e3ec75bba8bec13d6c01d4288af",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "1",
+      "anchor": "id12.1",
+      "id": "autosurvey-0068",
+      "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Westlake University,",
+      "anchor": "id13",
+      "id": "autosurvey-0069",
+      "sha256": "23d060acbe332f579cc06d3ed2be854b24757a175f8a238d09524fa003dc3ac7",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "2",
+      "anchor": "id13.1.1",
+      "id": "autosurvey-0070",
+      "sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Peking University,",
+      "anchor": "id13",
+      "id": "autosurvey-0071",
+      "sha256": "aa5cce052eceb83e08b12a70c0f9bdeacbf11e98c58a41aed282902ba1883735",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "3",
+      "anchor": "id13.2.1",
+      "id": "autosurvey-0072",
+      "sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Nanjing University,",
+      "anchor": "id13",
+      "id": "autosurvey-0073",
+      "sha256": "864b5db1aae65e10ff71d4208023e6f4b3bed25026e5240eea68c8fe85e3fd6e",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "4",
+      "anchor": "id13.3.1",
+      "id": "autosurvey-0074",
+      "sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Harbin Institute of Technology,\nShenzhen,",
+      "anchor": "id13",
+      "id": "autosurvey-0075",
+      "sha256": "1d3778b95f257658764a578bc93f4d5286c92c174975cd125fa08627c65cb92f",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "5",
+      "anchor": "id13.4.1",
+      "id": "autosurvey-0076",
+      "sha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Squirrel AI",
+      "anchor": "id13",
+      "id": "autosurvey-0077",
+      "sha256": "c1a7327ce6a0df06412533e6c3871465d61cd509064d033b1d6c1e70486db6c0",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Meishan Zhang",
+      "anchor": "",
+      "id": "autosurvey-0078",
+      "sha256": "7a984d267167df1470294e79dddbbfe0e6f9a7a0ec612b59101cbf35dae5fdfb",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Affiliation:",
+      "anchor": "",
+      "id": "autosurvey-0079",
+      "sha256": "26cf46d6a24358c83d2e812dfa15c3bd2e532e3ec75bba8bec13d6c01d4288af",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "1",
+      "anchor": "id14.1",
+      "id": "autosurvey-0080",
+      "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Westlake University,",
+      "anchor": "id15",
+      "id": "autosurvey-0081",
+      "sha256": "23d060acbe332f579cc06d3ed2be854b24757a175f8a238d09524fa003dc3ac7",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "2",
+      "anchor": "id15.1.1",
+      "id": "autosurvey-0082",
+      "sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Peking University,",
+      "anchor": "id15",
+      "id": "autosurvey-0083",
+      "sha256": "aa5cce052eceb83e08b12a70c0f9bdeacbf11e98c58a41aed282902ba1883735",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "3",
+      "anchor": "id15.2.1",
+      "id": "autosurvey-0084",
+      "sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Nanjing University,",
+      "anchor": "id15",
+      "id": "autosurvey-0085",
+      "sha256": "864b5db1aae65e10ff71d4208023e6f4b3bed25026e5240eea68c8fe85e3fd6e",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "4",
+      "anchor": "id15.3.1",
+      "id": "autosurvey-0086",
+      "sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Harbin Institute of Technology,\nShenzhen,",
+      "anchor": "id15",
+      "id": "autosurvey-0087",
+      "sha256": "1d3778b95f257658764a578bc93f4d5286c92c174975cd125fa08627c65cb92f",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "5",
+      "anchor": "id15.4.1",
+      "id": "autosurvey-0088",
+      "sha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Squirrel AI",
+      "anchor": "id15",
+      "id": "autosurvey-0089",
+      "sha256": "c1a7327ce6a0df06412533e6c3871465d61cd509064d033b1d6c1e70486db6c0",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Xinyu Dai",
+      "anchor": "",
+      "id": "autosurvey-0090",
+      "sha256": "584e1d5d04384d7a410bfb644bd755e09470b590d4f3bccd5349146e478e73c4",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Affiliation:",
+      "anchor": "",
+      "id": "autosurvey-0091",
+      "sha256": "26cf46d6a24358c83d2e812dfa15c3bd2e532e3ec75bba8bec13d6c01d4288af",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "1",
+      "anchor": "id16.1",
+      "id": "autosurvey-0092",
+      "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Westlake University,",
+      "anchor": "id17",
+      "id": "autosurvey-0093",
+      "sha256": "23d060acbe332f579cc06d3ed2be854b24757a175f8a238d09524fa003dc3ac7",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "2",
+      "anchor": "id17.1.1",
+      "id": "autosurvey-0094",
+      "sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Peking University,",
+      "anchor": "id17",
+      "id": "autosurvey-0095",
+      "sha256": "aa5cce052eceb83e08b12a70c0f9bdeacbf11e98c58a41aed282902ba1883735",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "3",
+      "anchor": "id17.2.1",
+      "id": "autosurvey-0096",
+      "sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Nanjing University,",
+      "anchor": "id17",
+      "id": "autosurvey-0097",
+      "sha256": "864b5db1aae65e10ff71d4208023e6f4b3bed25026e5240eea68c8fe85e3fd6e",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "4",
+      "anchor": "id17.3.1",
+      "id": "autosurvey-0098",
+      "sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Harbin Institute of Technology,\nShenzhen,",
+      "anchor": "id17",
+      "id": "autosurvey-0099",
+      "sha256": "1d3778b95f257658764a578bc93f4d5286c92c174975cd125fa08627c65cb92f",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "5",
+      "anchor": "id17.4.1",
+      "id": "autosurvey-0100",
+      "sha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Squirrel AI",
+      "anchor": "id17",
+      "id": "autosurvey-0101",
+      "sha256": "c1a7327ce6a0df06412533e6c3871465d61cd509064d033b1d6c1e70486db6c0",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Min Zhang",
+      "anchor": "",
+      "id": "autosurvey-0102",
+      "sha256": "5bc1a098c68602bca4913ef8effbf4bfef6e779444131e873aded7ff47a62911",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Affiliation:",
+      "anchor": "",
+      "id": "autosurvey-0103",
+      "sha256": "26cf46d6a24358c83d2e812dfa15c3bd2e532e3ec75bba8bec13d6c01d4288af",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "1",
+      "anchor": "id18.1",
+      "id": "autosurvey-0104",
+      "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Westlake University,",
+      "anchor": "id19",
+      "id": "autosurvey-0105",
+      "sha256": "23d060acbe332f579cc06d3ed2be854b24757a175f8a238d09524fa003dc3ac7",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "2",
+      "anchor": "id19.1.1",
+      "id": "autosurvey-0106",
+      "sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Peking University,",
+      "anchor": "id19",
+      "id": "autosurvey-0107",
+      "sha256": "aa5cce052eceb83e08b12a70c0f9bdeacbf11e98c58a41aed282902ba1883735",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "3",
+      "anchor": "id19.2.1",
+      "id": "autosurvey-0108",
+      "sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Nanjing University,",
+      "anchor": "id19",
+      "id": "autosurvey-0109",
+      "sha256": "864b5db1aae65e10ff71d4208023e6f4b3bed25026e5240eea68c8fe85e3fd6e",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "4",
+      "anchor": "id19.3.1",
+      "id": "autosurvey-0110",
+      "sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Harbin Institute of Technology,\nShenzhen,",
+      "anchor": "id19",
+      "id": "autosurvey-0111",
+      "sha256": "1d3778b95f257658764a578bc93f4d5286c92c174975cd125fa08627c65cb92f",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "5",
+      "anchor": "id19.4.1",
+      "id": "autosurvey-0112",
+      "sha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Squirrel AI",
+      "anchor": "id19",
+      "id": "autosurvey-0113",
+      "sha256": "c1a7327ce6a0df06412533e6c3871465d61cd509064d033b1d6c1e70486db6c0",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Qingsong Wen",
+      "anchor": "",
+      "id": "autosurvey-0114",
+      "sha256": "68c2b452630d8f405bfadddb8cd9f0fb9cde557907ad9f254a4c27ebb209e308",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Affiliation:",
+      "anchor": "",
+      "id": "autosurvey-0115",
+      "sha256": "26cf46d6a24358c83d2e812dfa15c3bd2e532e3ec75bba8bec13d6c01d4288af",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "1",
+      "anchor": "id20.1",
+      "id": "autosurvey-0116",
+      "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Westlake University,",
+      "anchor": "id21",
+      "id": "autosurvey-0117",
+      "sha256": "23d060acbe332f579cc06d3ed2be854b24757a175f8a238d09524fa003dc3ac7",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "2",
+      "anchor": "id21.1.1",
+      "id": "autosurvey-0118",
+      "sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Peking University,",
+      "anchor": "id21",
+      "id": "autosurvey-0119",
+      "sha256": "aa5cce052eceb83e08b12a70c0f9bdeacbf11e98c58a41aed282902ba1883735",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "3",
+      "anchor": "id21.2.1",
+      "id": "autosurvey-0120",
+      "sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Nanjing University,",
+      "anchor": "id21",
+      "id": "autosurvey-0121",
+      "sha256": "864b5db1aae65e10ff71d4208023e6f4b3bed25026e5240eea68c8fe85e3fd6e",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "4",
+      "anchor": "id21.3.1",
+      "id": "autosurvey-0122",
+      "sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Harbin Institute of Technology,\nShenzhen,",
+      "anchor": "id21",
+      "id": "autosurvey-0123",
+      "sha256": "1d3778b95f257658764a578bc93f4d5286c92c174975cd125fa08627c65cb92f",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "5",
+      "anchor": "id21.4.1",
+      "id": "autosurvey-0124",
+      "sha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Squirrel AI",
+      "anchor": "id21",
+      "id": "autosurvey-0125",
+      "sha256": "c1a7327ce6a0df06412533e6c3871465d61cd509064d033b1d6c1e70486db6c0",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Wei Ye",
+      "anchor": "",
+      "id": "autosurvey-0126",
+      "sha256": "8c11f6fa82b8b8f9f676427058e20bac8f0686f0e10a43ed3917dc82e93edcb4",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "†",
+      "anchor": "",
+      "id": "autosurvey-0127",
+      "sha256": "8efeb7661b801b1f4f1286b262b89ec8550bfbb4b438fe9fb31be551e747a547",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "†",
+      "anchor": "",
+      "id": "autosurvey-0128",
+      "sha256": "8efeb7661b801b1f4f1286b262b89ec8550bfbb4b438fe9fb31be551e747a547",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "thanks:",
+      "anchor": "",
+      "id": "autosurvey-0129",
+      "sha256": "0d1f729fb04dfb03ed812e5fb46ad0fea0433468b4448a1ac8cdcc3ce4778273",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Correspondence to: wye@pku.edu.cn, zhangsk@pku.edu.cn, zhangyue@westlake.edu.cn.",
+      "anchor": "",
+      "id": "autosurvey-0130",
+      "sha256": "7b32e962abf2f85450ce2832dbd36a7adc99cb1873f86b38867e729449c9e31c",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Affiliation:",
+      "anchor": "",
+      "id": "autosurvey-0131",
+      "sha256": "26cf46d6a24358c83d2e812dfa15c3bd2e532e3ec75bba8bec13d6c01d4288af",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "1",
+      "anchor": "id23.1",
+      "id": "autosurvey-0132",
+      "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Westlake University,",
+      "anchor": "id24",
+      "id": "autosurvey-0133",
+      "sha256": "23d060acbe332f579cc06d3ed2be854b24757a175f8a238d09524fa003dc3ac7",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "2",
+      "anchor": "id24.1.1",
+      "id": "autosurvey-0134",
+      "sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Peking University,",
+      "anchor": "id24",
+      "id": "autosurvey-0135",
+      "sha256": "aa5cce052eceb83e08b12a70c0f9bdeacbf11e98c58a41aed282902ba1883735",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "3",
+      "anchor": "id24.2.1",
+      "id": "autosurvey-0136",
+      "sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Nanjing University,",
+      "anchor": "id24",
+      "id": "autosurvey-0137",
+      "sha256": "864b5db1aae65e10ff71d4208023e6f4b3bed25026e5240eea68c8fe85e3fd6e",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "4",
+      "anchor": "id24.3.1",
+      "id": "autosurvey-0138",
+      "sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Harbin Institute of Technology,\nShenzhen,",
+      "anchor": "id24",
+      "id": "autosurvey-0139",
+      "sha256": "1d3778b95f257658764a578bc93f4d5286c92c174975cd125fa08627c65cb92f",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "5",
+      "anchor": "id24.4.1",
+      "id": "autosurvey-0140",
+      "sha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Squirrel AI",
+      "anchor": "id24",
+      "id": "autosurvey-0141",
+      "sha256": "c1a7327ce6a0df06412533e6c3871465d61cd509064d033b1d6c1e70486db6c0",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Shikun Zhang",
+      "anchor": "",
+      "id": "autosurvey-0142",
+      "sha256": "08865db9059dbce019c65583f849f0c05029f92a6bd1a6804528dfb31f840911",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Affiliation:",
+      "anchor": "",
+      "id": "autosurvey-0143",
+      "sha256": "26cf46d6a24358c83d2e812dfa15c3bd2e532e3ec75bba8bec13d6c01d4288af",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "1",
+      "anchor": "id25.1",
+      "id": "autosurvey-0144",
+      "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Westlake University,",
+      "anchor": "id26",
+      "id": "autosurvey-0145",
+      "sha256": "23d060acbe332f579cc06d3ed2be854b24757a175f8a238d09524fa003dc3ac7",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "2",
+      "anchor": "id26.1.1",
+      "id": "autosurvey-0146",
+      "sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Peking University,",
+      "anchor": "id26",
+      "id": "autosurvey-0147",
+      "sha256": "aa5cce052eceb83e08b12a70c0f9bdeacbf11e98c58a41aed282902ba1883735",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "3",
+      "anchor": "id26.2.1",
+      "id": "autosurvey-0148",
+      "sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Nanjing University,",
+      "anchor": "id26",
+      "id": "autosurvey-0149",
+      "sha256": "864b5db1aae65e10ff71d4208023e6f4b3bed25026e5240eea68c8fe85e3fd6e",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "4",
+      "anchor": "id26.3.1",
+      "id": "autosurvey-0150",
+      "sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Harbin Institute of Technology,\nShenzhen,",
+      "anchor": "id26",
+      "id": "autosurvey-0151",
+      "sha256": "1d3778b95f257658764a578bc93f4d5286c92c174975cd125fa08627c65cb92f",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "5",
+      "anchor": "id26.4.1",
+      "id": "autosurvey-0152",
+      "sha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Squirrel AI",
+      "anchor": "id26",
+      "id": "autosurvey-0153",
+      "sha256": "c1a7327ce6a0df06412533e6c3871465d61cd509064d033b1d6c1e70486db6c0",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Yue Zhang",
+      "anchor": "",
+      "id": "autosurvey-0154",
+      "sha256": "57b7630b9206f6c7cfccc86019b4b1fd7a464300e0a6c0f807ba1aa0bd9e01a2",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Affiliation:",
+      "anchor": "",
+      "id": "autosurvey-0155",
+      "sha256": "26cf46d6a24358c83d2e812dfa15c3bd2e532e3ec75bba8bec13d6c01d4288af",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "1",
+      "anchor": "id27.1",
+      "id": "autosurvey-0156",
+      "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Westlake University,",
+      "anchor": "id28",
+      "id": "autosurvey-0157",
+      "sha256": "23d060acbe332f579cc06d3ed2be854b24757a175f8a238d09524fa003dc3ac7",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "2",
+      "anchor": "id28.1.1",
+      "id": "autosurvey-0158",
+      "sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Peking University,",
+      "anchor": "id28",
+      "id": "autosurvey-0159",
+      "sha256": "aa5cce052eceb83e08b12a70c0f9bdeacbf11e98c58a41aed282902ba1883735",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "3",
+      "anchor": "id28.2.1",
+      "id": "autosurvey-0160",
+      "sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Nanjing University,",
+      "anchor": "id28",
+      "id": "autosurvey-0161",
+      "sha256": "864b5db1aae65e10ff71d4208023e6f4b3bed25026e5240eea68c8fe85e3fd6e",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "4",
+      "anchor": "id28.3.1",
+      "id": "autosurvey-0162",
+      "sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Harbin Institute of Technology,\nShenzhen,",
+      "anchor": "id28",
+      "id": "autosurvey-0163",
+      "sha256": "1d3778b95f257658764a578bc93f4d5286c92c174975cd125fa08627c65cb92f",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "5",
+      "anchor": "id28.4.1",
+      "id": "autosurvey-0164",
+      "sha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Squirrel AI",
+      "anchor": "id28",
+      "id": "autosurvey-0165",
+      "sha256": "c1a7327ce6a0df06412533e6c3871465d61cd509064d033b1d6c1e70486db6c0",
+      "translate": true
+    },
+    {
+      "kind": "heading",
+      "en": "Abstract",
+      "anchor": "",
+      "id": "autosurvey-0166",
+      "sha256": "d21b4a64a2d8656a0fdf7ab2e89a49164ac504686cfa2a3d442e87c209286330",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "This paper introduces AutoSurvey, a speedy and well-organized methodology for automating the creation of comprehensive literature surveys in rapidly evolving fields like artificial intelligence. Traditional survey paper creation faces challenges due to the vast volume and complexity of information, prompting the need for efficient survey methods. While large language models (LLMs) offer promise in automating this process, challenges such as context window limitations, parametric knowledge constraints, and the lack of evaluation benchmarks remain. AutoSurvey addresses these challenges through a systematic approach that involves initial retrieval and outline generation, subsection drafting by specialized LLMs, integration and refinement, and rigorous evaluation and iteration. Our contributions include a comprehensive solution to the survey problem, a reliable evaluation method, and experimental validation demonstrating AutoSurvey’s effectiveness. We open our resources at https://github.com/AutoSurveys/AutoSurvey .",
+      "anchor": "abstract1.1",
+      "id": "autosurvey-0167",
+      "sha256": "f6058fce7d76664921c31d2075454533d4a749269ef4c787bde514665d91e134",
+      "translate": true
+    },
+    {
+      "kind": "heading",
+      "en": "1 Introduction",
+      "anchor": "",
+      "id": "autosurvey-0168",
+      "sha256": "c9234967b670c32478644b4236ec8fd2f351225696cacbcd0fad1f1838b95170",
+      "translate": true
+    },
+    {
+      "kind": "table",
+      "en": "(a) #Paper about LLM. (b) #Survey about LLM. | (c) T-SNE visualization of surveys and papers about LLMs. Clusters represent groups of papers identified through clustering, which currently lack comprehensive survey coverage.",
+      "anchor": "S1.F1.3",
+      "id": "autosurvey-0169",
+      "sha256": "522018a6756e94c190702b1155cf6204a022fb181d64ae02622a6ccd912a9e3d",
+      "translate": true
+    },
+    {
+      "kind": "caption",
+      "en": "Figure 1 : Depicting growth trends from 2019 to 2024 in the number of LLMs-related papers (a) and surveys (b) on arXiv, accompanied by a T-SNE visualization. The data for 2024 is up to April, with a red bar representing the forecasted numbers for the entire year. While the number of surveys is increasing rapidly, the visualization reveals areas where comprehensive surveys are still lacking, despite the overall growth in survey numbers. The research topics of the clusters in the T-SNE plot are generated using GPT-4 to describe their primary focus areas. These clusters of research voids can be addressed using AutoSurvey at a cost of $1.2 (cost analysis in Appendix 7 ) and 3 minutes per survey. An example survey focused on Emotion Recognition using LLMs is in Appendix F .",
+      "anchor": "",
+      "id": "autosurvey-0170",
+      "sha256": "1455e703fa9cf48887d20f708f11e1fd83a92e0445e339ca6f92d40795596193",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Survey papers provide essential academic resources, offering comprehensive overviews of recent research developments, highlighting ongoing trends, and identifying future directions [ 1 , 2 , 3 , 4 ] . However, crafting these surveys is increasingly challenging, especially in the fast-paced domain of Artificial Intelligence including large language models(LLMs) [ 5 , 6 , 7 , 8 ] . Figure 1(a) illustrates a significant trend: in just the first four months of 2024 alone, over 4,000 papers containing the phrase \"Large Language Model\" in their titles or abstracts were submitted to arXiv. This surge highlights a critical academic issue: the rapid accumulation of new information often outpaces the capacity for comprehensive scholarly review and synthesis, emphasizing the growing need for more efficient methods to synthesize the expanding literature. Moreover, as depicted in Figure 1(b) , while the number of survey papers has rapidly increased, the growing difficulty of producing traditional human-authored survey papers—due to the sheer volume and complexity of data—remains a significant challenge. This challenge is evidenced by the lack of comprehensive surveys in many fields (Figure 1(c) ), which hinders knowledge transfer and makes it difficult for new researchers to efficiently navigate the vast amount of available information.",
+      "anchor": "S1.p1.1",
+      "id": "autosurvey-0171",
+      "sha256": "abbdd2d27859a538350ba1535cf1108324a813d8a0d818bc0d2a2c9abd4ed150",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "The advent of LLMs [ 7 , 9 ] presents a promising avenue for addressing these challenges. These models, trained on extensive text corpora, demonstrate remarkable capabilities in understanding and generating human-like text, even in long-context scenarios [ 10 , 11 , 12 ] . Despite these advancements, the practical application of LLMs to survey generation is fraught with challenges. Firstly, context window limitations : LLMs encounter inherent restrictions in output length due to limited processing windows [ 13 , 14 , 15 , 16 , 17 ] . While several advanced large models, including GPT-4 and Claude 3, support inputs exceeding 100k tokens, their output is still limited to fewer than 8k tokens (the output length of GPT-4 is 8k, and the output length of Claude 3 is 4k). Writing a comprehensive survey typically requires reading hundreds of papers, resulting in input sizes far beyond the capacity of even the most advanced models. Moreover, a well-written survey itself spans tens of thousands of tokens, making it highly challenging to generate such extensive content directly with large models.\nSecondly, parametric knowledge constraints : Sole reliance on an LLM’s internal knowledge is insufficient for producing surveys that require comprehensive and accurate references [ 18 , 19 , 20 ] . LLMs may generate content based on inaccuracies or even non-existent “hallucinated” references. Moreover, these models cannot incorporate the latest studies not included in their training data, which limits the breadth and depth of the surveys they generate. Thirdly, the lack of evaluation benchmark: after production, reliable metrics to evaluate the quality of outputs from LLMs are lacking. Relying on human review for quality assessment is not only resource-intensive but also lacks scalability [ 21 , 22 , 23 ] . This presents a significant obstacle to the widespread adoption of LLMs for academic synthesis, where rigorous standards of accuracy and reliability are paramount.",
+      "anchor": "S1.p2.1",
+      "id": "autosurvey-0172",
+      "sha256": "89ece8e8f420fedd5810144b819e8f3236634685b539a7bc40f7236ccb163dbb",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "In response to these challenges, we introduce AutoSurvey: a speedy and well-organized methodology for conducting comprehensive literature surveys. Specifically, AutoSurvey’s primary innovations include: logical parallel generation : AutoSurvey employs a two-stage generation approach to parallelly generate survey content efficiently. Initially, multiple LLMs work concurrently to create detailed outlines. A final, comprehensive outline is then synthesized from these individual outlines, setting a clear framework for content development. Subsequently, each subsection of the survey is generated in parallel and guided by the outline, which significantly accelerates the process. To overcome potential transition and consistency issues due to segmented generation phases, AutoSurvey integrates a systematic revision phase. After the initial parallel generation, each section undergoes thorough revision and polishing, ensuring smooth transitions and enhanced overall document consistency. The sections are then seamlessly merged to produce a cohesive and well-organized final document. Real-time knowledge update : AutoSurvey incorporates a Real-time Knowledge Update mechanism using a Retrieval-Augmented Generation (RAG) approach [ 24 , 25 , 26 ] . This feature ensures that every aspect of the survey reflects the most current studies. When a survey topic is input by the user, AutoSurvey leverages the RAG system to retrieve the latest relevant papers, forming the basis for generating a structured and informed outline. During subsection writing, the system dynamically pulls in new research articles relevant to the specific content under development. This approach ensures that citations are current and the survey content is aligned with the latest developments in the field, significantly enhancing the accuracy and depth of the literature review. Muti-LLM-as-judge evaluation : AutoSurvey employs the Multi-LLM-as-Judge strategy, leveraging the LLM-as-Judge method for text evaluation [ 22 , 21 , 23 ] . This approach generates initial evaluation metrics using multiple large language models, which process a substantial corpus of high-quality surveys. These metrics are refined by human experts to ensure precision and adherence to academic standards. The Multi-LLM-as-Judge method assesses generated content across two main dimensions: (1) Citation Quality, verifying the accuracy and reliability of the information presented, with sub-indicators for Recall and Precision. (2) Content Quality, consisting of Coverage (assessing the extent of topic encapsulation), Structure (evaluating logical organization and coherence), and Relevance (ensuring alignment with the main topic). By utilizing multiple LLMs, this strategy minimizes bias and ensures a balanced and comprehensive assessment, upholding rigorous academic standards.",
+      "anchor": "S1.p3.1",
+      "id": "autosurvey-0173",
+      "sha256": "0cb6962568b551103b4a402a68088bb260eb0fa4e5856299e642bf4cf8f405af",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Extensive experimental results across different survey lengths (8k, 16k, 32k, and 64k tokens) demonstrate that AutoSurvey consistently achieves high citation and content quality scores. At 64k tokens, AutoSurvey achieves 82.25% recall and 77.41% precision in citation quality, outperforming naive RAG-based LLMs (68.79% recall and 61.97% precision) and approaching human performance (86.33% recall and 77.78% precision). In content quality at 64k tokens, AutoSurvey scores 4.73 in coverage, 4.33 in structure, and 4.86 in relevance, closely aligning with human performance (5.00, 4.66, and 5.00 respectively). At shorter lengths (8k, 16k, and 32k tokens), AutoSurvey also maintains strong performance across all metrics. Furthermore, the Spearman’s rho values indicate a moderate positive correlation between the rankings provided by the LLMs and those given by human experts. The mixture of models achieves the highest correlation at 0.5429, indicating a strong alignment with human preferences. These results reinforce the effectiveness of our multi-LLM scoring mechanism, providing a reliable proxy for human judgment across varying survey lengths.",
+      "anchor": "S1.p4.1",
+      "id": "autosurvey-0174",
+      "sha256": "c9e7a770a92015809019360c048b124993c7d8069d80a29d4dfd6da427e93611",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "In conclusion, to the best of our knowledge, AutoSurvey is the first system to explore the potential of large model agents in writing extensive academic surveys. It proposes evaluation criteria for surveys that align with human preferences, providing a valuable reference for future related research.",
+      "anchor": "S1.p5.1",
+      "id": "autosurvey-0175",
+      "sha256": "73ca6ebac1dcba52cdd72dcf27a42b9e0b3f37d7eec1777a48fc3849b71c8d84",
+      "translate": true
+    },
+    {
+      "kind": "heading",
+      "en": "2 Methodology",
+      "anchor": "",
+      "id": "autosurvey-0176",
+      "sha256": "e0ed460551033e640fc0861f769be622fc13430d3cb3245214528cd5a48a4b28",
+      "translate": true
+    },
+    {
+      "kind": "caption",
+      "en": "Figure 2 : The AutoSurvey Pipeline for Generating Comprehensive Surveys.",
+      "anchor": "",
+      "id": "autosurvey-0177",
+      "sha256": "6fae38236e4fc64ac7bdf8d890d5c66e30e4656af71369594d02384469c7835c",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "In this section, we describe the methodology employed by AutoSurvey to automate the creation of comprehensive literature surveys. Our approach systematically progresses through four distinct phases—Initial Retrieval and Outline Generation, Subsection Drafting, Integration and Refinement, and Rigorous Evaluation and Iteration. Each phase is meticulously designed to address specific challenges associated with survey creation, thereby enhancing the efficiency and quality of the resulting survey document. The pseudo code of AutoSurvey can be found at Algorithm 1 .",
+      "anchor": "S2.p1.1",
+      "id": "autosurvey-0178",
+      "sha256": "9f03410f444f940e0be81156dc7af1a49cbf9cec06254badf4adc7557ea25b74",
+      "translate": true
+    },
+    {
+      "kind": "caption",
+      "en": "Algorithm 1 AutoSurvey : Automated Survey Creation Using LLMs.",
+      "anchor": "",
+      "id": "autosurvey-0179",
+      "sha256": "72b66ff3d491e676c02ec65fbb892fe8e09b2676e14a579aad7e9c0c31f83f4f",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "1:\n\n \n \n  \nInput:\n Survey topic \n $T$ \n, publications database \n $D$ \n\n\n\n\n\n\n2:\n\n \n \n  \nOutput:\n Final refined and evaluated survey document \n $F_{best}$ \n\n\n\n\n\n\n3:\n\n \n \n  \nfor\n each survey generation trial \n $t=1$ \n to \n $N$ \n \ndo\n\n\n\n\n\n\n4:\n\n \n \n   \nPhase 1: Initial Retrieval and Outline Generation\n\n\n\n\n\n\n5:\n\n \n \n   Retrieve initial pool of publications \n $P_{\\text{init}}\\leftarrow\\text{Retrieve}(T,D)$ \n\n\n\n\n\n\n6:\n\n \n \n   Generate outline \n $O\\leftarrow\\text{Outline}(T,P_{\\text{init}})$ \n\n\n\n\n\n\n7:\n\n \n \n   \nPhase 2: Subsection Drafting\n\n\n\n\n\n\n8:\n\n \n \n   \nfor\n each section \n $O_{i}$ \n in \n $O$ \n \nin parallel\n \ndo\n\n\n\n\n\n\n9:\n\n \n \n    Retrieve relevant publications \n $P_{\\text{sec}}\\leftarrow\\text{Retrieve}(O_{i},D)$ \n\n\n\n\n\n\n10:\n\n \n \n    Draft subsection \n $S_{i}\\leftarrow\\text{Draft}(O_{i},P_{\\text{sec}})$ \n\n\n\n\n\n\n11:\n\n \n \n   \nend\n \nfor\n\n\n\n\n\n\n12:\n\n \n \n   \nPhase 3: Integration and Refinement\n\n\n\n\n\n\n13:\n\n \n \n   Refine the merged document to improve coherence \n $R_{i}\\leftarrow\\text{Refine}(S_{i})$ \n\n\n\n\n\n\n14:\n\n \n \n   Merge subsection drafts into a single document \n $F_{t}\\leftarrow\\text{Merge}(R_{1},R_{2},\\ldots,R_{n})$ \n\n\n\n\n\n\n15:\n\n \n \n  \nend\n \nfor\n\n\n\n\n\n\n16:\n\n \n \n  \nPhase 4: Rigorous Evaluation and Iteration\n\n\n\n\n\n\n17:\n\n \n \n  Evaluate and select the best survey document \n $F_{\\text{best}}\\leftarrow\\text{Evaluate}({F_{1},F_{2},\\ldots,F_{N}})$ \n\n\n\n\n\n\n18:\n\n \n \n  \nReturn:\n Refined and evaluated survey \n $F_{\\text{best}}$",
+      "anchor": "alg1.6",
+      "id": "autosurvey-0180",
+      "sha256": "5082fad92d2a4da91c60f756a6cf3b557db7b4c57515086806d3ef7cb9bed43f",
+      "translate": true
+    },
+    {
+      "kind": "heading",
+      "en": "Initial Retrieval and Outline Generation",
+      "anchor": "",
+      "id": "autosurvey-0181",
+      "sha256": "40d9e4b64de05a2280c6b12398353e0c345f137222378551afd353a1220f0ec2",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "The process begins with the Initial Retrieval and Outline Generation phase. Utilizing an embedding-based retrieval technique, AutoSurvey scans a database of publications to identify papers most pertinent to the specified survey topic $T$ . This phase is crucial for ensuring that the survey is grounded in the most relevant and recent research. The retrieved publications $P_{\\text{init}}$ are then used to generate a structured outline $O$ , which ensures comprehensive coverage of the topic and logical structuring of the survey. To provide more detailed guidance for writing subsections, the outline generation includes not only titles for each subsection but also brief descriptions. These descriptions convey the main idea of each subsection, aiding in the overall clarity and direction of the survey. Given the extensive amount of relevant papers extracted during this stage, the total length of $P_{\\text{init}}$ often exceeds the context window size of the LLM. To address this, papers are randomly divided according to the LLM’s context window size, resulting in the creation of multiple outlines. The model then consolidates these outlines to form the final comprehensive outline. Finally, the outline $O$ of the entire survey is represented as $O=\\text{Outline}(T,P_{\\text{init}}).$",
+      "anchor": "S2.SS0.SSS0.Px1.p1.1",
+      "id": "autosurvey-0182",
+      "sha256": "b4474f0c0d3ed4653ec94baa5fcc3f87037ccc349c6e137ec6afabde1b6f5b26",
+      "translate": true
+    },
+    {
+      "kind": "heading",
+      "en": "Subsection Drafting",
+      "anchor": "",
+      "id": "autosurvey-0183",
+      "sha256": "1299b6c74b801b63660b65bfd399750655fa1111b7749e5cd41cb6b2940fd430",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "With the structured outline in place, the Subsection Drafting phase commences. During this phase, specialized LLMs draft each section of the outline in parallel. This method not only accelerates the drafting process but also ensures detailed and focused content generation for each survey section, adhering to the thematic boundaries established by the outline. When writing the content of each subsection, the sub-outline $O_{i}$ of that subsection will be used to retrieve the necessary relevant reference papers $P_{\\text{sec}}$ to provide information that aligns more closely with the main idea of the subsection. During the writing process, the model is required to cite the provided reference papers to support the generated content. The references in the generated content will be extracted and mapped to the corresponding arXiv papers (see Appendix B for details). The $i_{th}$ subsection $S_{i}$ can be expressed as: $S_{i}=\\text{Draft}(O_{i},P_{\\text{sec}}).$",
+      "anchor": "S2.SS0.SSS0.Px2.p1.1",
+      "id": "autosurvey-0184",
+      "sha256": "c31c52edcc519c705f1b28e0be4b8ff4ed72c1b1af20d56a36f14135435fdba5",
+      "translate": true
+    },
+    {
+      "kind": "heading",
+      "en": "Integration and Refinement",
+      "anchor": "",
+      "id": "autosurvey-0185",
+      "sha256": "fdb12458150c257c2c8438be7ca1cf709705503e8a42a9b17f81a269961f5df1",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Following the drafting phase, each section $S_{i}$ is individually refined to enhance readability, eliminate redundancies, and ensure a seamless narrative. The refined sections $R_{i}$ are then merged into a cohesive document $F$ , which is essential for maintaining a logical flow and coherence throughout the survey. During the refinement process, the model needs to polish each subsection based on the local context (considering the previous and following subsections) to improve readability, eliminate redundancies, and enhance coherency. Additionally, the model is required to check the correctness of the cited references in the content and correct any errors in the citations. This procedure can be represented by: $F=\\text{Merge}(R_{1},R_{2},\\ldots,R_{n}),\\text{where}\\ R_{i}=\\text{Refine}(S_{i}).$",
+      "anchor": "S2.SS0.SSS0.Px3.p1.1",
+      "id": "autosurvey-0186",
+      "sha256": "e1ed1ecfaeff556e7426d3a49fd773bdb6781043b002c72a8879f685df226cdc",
+      "translate": true
+    },
+    {
+      "kind": "heading",
+      "en": "Rigorous Evaluation and Iteration",
+      "anchor": "",
+      "id": "autosurvey-0187",
+      "sha256": "4eebe067fea617ba2c816c1d9c0e59066d0be5789f7414b16ae6e39217fb6102",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "The final phase involves a rigorous evaluation and iteration process, where the survey document is assessed through a Multi-LLM-as-Judge strategy. This evaluation critically examines the survey in several aspects. The insights gained from this evaluation are used to guide further refinements, ensuring the survey meets the highest academic standards. The best survey is chosen from $N$ candidates. The final output of AutoSurvey is $F_{\\text{best}}=\\text{Evaluate}(\\{F_{1},F_{2},\\ldots,F_{N}\\}).$",
+      "anchor": "S2.SS0.SSS0.Px4.p1.1",
+      "id": "autosurvey-0188",
+      "sha256": "fc83c5dbefb6659c5daeff90ee39edcc2a34dc93c2b82df3b147dcc9cd75ecf1",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "The methodology outlined here—from initial data retrieval to sophisticated multi-faceted evaluation—ensures that AutoSurvey effectively addresses the complexities of survey creation in evolving research fields using advanced LLM technologies.",
+      "anchor": "S2.SS0.SSS0.Px4.p2.1",
+      "id": "autosurvey-0189",
+      "sha256": "b7caed59141b9b214d4bc596940b3dfa6426826155eee407b63bac85f57d4f8e",
+      "translate": true
+    },
+    {
+      "kind": "heading",
+      "en": "3 Experiments",
+      "anchor": "",
+      "id": "autosurvey-0190",
+      "sha256": "d07c67786ccb2e88551fde5117121dd804fddfc5ad4915fd48a6ea392e0c1826",
+      "translate": true
+    },
+    {
+      "kind": "heading",
+      "en": "Setup",
+      "anchor": "",
+      "id": "autosurvey-0191",
+      "sha256": "7013af4c42fe43802a9e8b0affc4f521fcd126160569969fb2ec09e1b7c422b1",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "We conduct comprehensive experiments to evaluate the performance of AutoSurvey, comparing it against traditional methods for generating survey papers. For the drafting phase of AutoSurvey, we utilize Claude-3-Haiku, known for its speed and cost-effectiveness, capable of handling 200K tokens. For evaluations, we employ a combination of GPT-4, Claude-3-Haiku, and Gemini-1.5-Pro 1 1 1 Specifically, we use gpt-4-0125-preview, claude-3-haiku-20240307 and Gemini-1.5-pro-preview. . The evaluation covers the following key performance metrics:",
+      "anchor": "S3.SS0.SSS0.Px1.p1.1",
+      "id": "autosurvey-0192",
+      "sha256": "5a727afa9e3198dff0614925829cee007e415246e36608382651545693273d8f",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "•",
+      "anchor": "",
+      "id": "autosurvey-0193",
+      "sha256": "4f8865abeddbfab37520d0c56eed1bf17f37e3778e1a55e6dc54895d2ae17849",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Survey Creation Speed : To estimate the time it takes for humans to write a document, we use a mathematical model with the following parameters: $L$ (the length of the document), $E$ (the number of experts), $M$ (the writing speed of each expert), $T_{r}$ (the preparation time for research and data collection), $T_{w}$ (the actual writing time, $T_{w}=\\frac{L}{E\\times M}$ ), and $T_{e}$ (the editing and revision time, $T_{e}=\\frac{1}{2}T_{w}$ ). Assuming an ideal situation where $E=10$ , $M=2000$ tokens/hour, $T_{r}=5$ hours, and $T_{e}=\\frac{1}{2}T_{w}$ , the total time $Time$ is calculated as:",
+      "anchor": "S3.I1.i1.p1.1",
+      "id": "autosurvey-0194",
+      "sha256": "27405e89349e1311c013477b0b90510a3442a0cae453aca3ad1bc42d92a6e999",
+      "translate": true
+    },
+    {
+      "kind": "table",
+      "en": "| $Time=T_{r}+T_{w}+T_{e}=T_{r}+\\frac{L}{E\\times M}+\\frac{1}{2}\\times\\frac{L}{E\\times M}.$ | | (1)",
+      "anchor": "S3.E1",
+      "id": "autosurvey-0195",
+      "sha256": "c4654e32cda6805ea5b398681faff8052a7ca0112e3dd5219c0ada68724bc97f",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "For naive RAG-based LLM generation and AutoSurvey, we count all the time of API calls. The speed is calculated as $Speed=\\frac{1}{Time(\\text{hours})}$ .",
+      "anchor": "S3.I1.i1.p1.2",
+      "id": "autosurvey-0196",
+      "sha256": "7c0f74b6f95aebad719986b18f7a2e4f9e3348f761b20754f46d0e2fa3724dd0",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "•",
+      "anchor": "",
+      "id": "autosurvey-0197",
+      "sha256": "4f8865abeddbfab37520d0c56eed1bf17f37e3778e1a55e6dc54895d2ae17849",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Citation Quality : Adopted from [ 27 ] , this metric assesses the accuracy and relevance of citations in the survey. Assuming a set of claims $C=\\{c_{1},c_{2},\\ldots\\}$ extracted from the survey, the metric utilizes an NLI model $h$ to decide whether a claim $c_{i}$ is supported by its references $\\text{Ref}_{i}=\\{r_{i_{1}},r_{i_{2}},\\ldots\\}$ , where each $r_{i_{k}}$ represents one paper cited. $h(c_{i},\\text{Ref}_{i})=1$ means that the references can support the claim, and $h(c_{i},\\text{Ref}_{i})=0$ otherwise. Refer to Appendix C for more details. Citation quality encompasses two sub-metrics:",
+      "anchor": "S3.I1.i2.p1.1",
+      "id": "autosurvey-0198",
+      "sha256": "a899b7ec82870b4d7e9a009c3fb9dc7888b893aeb64d6d3ba3b13cab2fa38fb6",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "–",
+      "anchor": "S3.I1.i2.I1.i1.1",
+      "id": "autosurvey-0199",
+      "sha256": "d4f85d36757c12f0c6dab57721287f327efbfc46ea8c0f820301067f8627fc0f",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Citation Recall : Measures whether all statements in the generated text are fully supported by the cited passages, which is calculated as",
+      "anchor": "S3.I1.i2.I1.i1.p1.1",
+      "id": "autosurvey-0200",
+      "sha256": "afcfc3eee03dbcddc4493d43ede40faf0d00029c0f6e21736ff4386864bf17c0",
+      "translate": true
+    },
+    {
+      "kind": "table",
+      "en": "| $\\text{Recall}=\\frac{\\sum_{i=1}^{|C|}h(c_{i},\\text{Ref}_{i})}{|C|}.$ | | (2)",
+      "anchor": "S3.E2",
+      "id": "autosurvey-0201",
+      "sha256": "f4e0b68476db9e24f9297ddf98a66629cf742d29966352da4ea5a2a1c2a70485",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "–",
+      "anchor": "S3.I1.i2.I1.i2.1",
+      "id": "autosurvey-0202",
+      "sha256": "d4f85d36757c12f0c6dab57721287f327efbfc46ea8c0f820301067f8627fc0f",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Citation Precision : Identifies irrelevant citations, ensuring that the provided citations are pertinent and directly support the statements. Before listing the formula for precision, a function $g$ is defined as $g(c_{i},r_{i_{k}})=(h(c_{i},\\{r_{i_{k}}\\})=1)\\cup(h(c_{i},\\text{Ref}_{i}\\setminus\\{r_{i_{k}}\\})=0)$ , which measures whether the paper $r_{i_{k}}$ is related to the claim $c_{i}$ . The precision is",
+      "anchor": "S3.I1.i2.I1.i2.p1.1",
+      "id": "autosurvey-0203",
+      "sha256": "b5406eedb1f3338e86c9255eb0d79b4a9cc58e1fc50ac0b878b4c5e32033a2e5",
+      "translate": true
+    },
+    {
+      "kind": "table",
+      "en": "| $\\text{Precision}=\\frac{\\sum_{i=1}^{|C|}\\sum_{k=1}^{|\\text{Ref}_{i}|}h(c_{i},\\text{Ref}_{i})\\cap g(c_{i},r_{i_{k}})}{\\sum_{i=1}^{|C|}|\\text{Ref}_{i}|}.$ | | (3)",
+      "anchor": "S3.E3",
+      "id": "autosurvey-0204",
+      "sha256": "2e1049b8c9da144614a469ab8153b729bd90f2461c7ab2026a693b2955059e99",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "•",
+      "anchor": "",
+      "id": "autosurvey-0205",
+      "sha256": "4f8865abeddbfab37520d0c56eed1bf17f37e3778e1a55e6dc54895d2ae17849",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Content Quality : An overarching metric evaluating the excellence of the written survey, encompassing three sub-indicators. Each sub-indicator is judged by LLMs according to a 5-point rubric, calibrated by human experts to meet academic standards. Note that the detailed scoring criteria are provided in Table 1 .",
+      "anchor": "S3.I1.i3.p1.1",
+      "id": "autosurvey-0206",
+      "sha256": "b9a148e96bea496ff4d3f7db006227cc60c4cad74ae9358e193eb2ea991e18af",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "–",
+      "anchor": "S3.I1.i3.I1.i1.1",
+      "id": "autosurvey-0207",
+      "sha256": "d4f85d36757c12f0c6dab57721287f327efbfc46ea8c0f820301067f8627fc0f",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Coverage : Assesses the extent to which the survey encapsulates all aspects of the topic.",
+      "anchor": "S3.I1.i3.I1.i1.p1.1",
+      "id": "autosurvey-0208",
+      "sha256": "c6269295a59ecaeae8d663f6da72a613c103a31e9b31d23691037395d049f3ad",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "–",
+      "anchor": "S3.I1.i3.I1.i2.1",
+      "id": "autosurvey-0209",
+      "sha256": "d4f85d36757c12f0c6dab57721287f327efbfc46ea8c0f820301067f8627fc0f",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Structure : Evaluates the logical organization and coherence of each section.",
+      "anchor": "S3.I1.i3.I1.i2.p1.1",
+      "id": "autosurvey-0210",
+      "sha256": "862c7a770481e7a919583b9220c64c8c37c2c010848bd6eca7a3027ea9aa75e2",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "–",
+      "anchor": "S3.I1.i3.I1.i3.1",
+      "id": "autosurvey-0211",
+      "sha256": "d4f85d36757c12f0c6dab57721287f327efbfc46ea8c0f820301067f8627fc0f",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "Relevance : Measures how well the content aligns with the research topic.",
+      "anchor": "S3.I1.i3.I1.i3.p1.1",
+      "id": "autosurvey-0212",
+      "sha256": "932ae94754bb88cf22fbea77d566a3f8364d37425d71b5a1a2e5d7a8650a0ae9",
+      "translate": true
+    },
+    {
+      "kind": "caption",
+      "en": "Table 1 : Content Quality Criteria.",
+      "anchor": "",
+      "id": "autosurvey-0213",
+      "sha256": "3355df5e77e03018ea38c81b806824b5f553b2edeafe8f06631f91f484ed1e16",
+      "translate": true
+    },
+    {
+      "kind": "table",
+      "en": "Criteria | Scores\nCoverage | Score 1 : The survey has very limited coverage, only touching on a small portion of the topic and lacking discussion on key areas.\n | Score 2 : The survey covers some parts of the topic but has noticeable omissions, with significant areas either underrepresented or missing.\n | Score 3 : The survey is generally comprehensive in coverage but still misses a few key points that are not fully discussed.\n | Score 4 : The survey covers most key areas of the topic comprehensively, with only very minor topics left out.\n | Score 5 : The survey comprehensively covers all key and peripheral topics, providing detailed discussions and extensive information.\nStructure | Score 1 : The survey lacks logic, with no clear connections between sections, making it difficult to understand the overall framework.\n | Score 2 : The survey has weak logical flow with some content arranged in a disordered or unreasonable manner.\n | Score 3 : The survey has a generally reasonable logical structure, with most content arranged orderly, though some links and transitions could be improved such as repeated subsections.\n | Score 4 : The survey has good logical consistency, with content well arranged and natural transitions, only slightly rigid in a few parts.\n | Score 5 : The survey is tightly structured and logically clear, with all sections and content arranged most reasonably, and transitions between adjacent sections smooth without redundancy.\nRelevance | Score 1 : The content is outdated or unrelated to the field it purports to review, offering no alignment with the topic.\n | Score 2 : The survey is somewhat on topic but with several digressions; the core subject is evident but not consistently adhered to.\n | Score 3 : The survey is generally on topic, despite a few unrelated details.\n | Score 4 : The survey is mostly on topic and focused; the narrative has a consistent relevance to the core subject with infrequent digressions.\n | Score 5 : The survey is exceptionally focused and entirely on topic; the article is tightly centered on the subject, with every piece of information contributing to a comprehensive understanding of the topic.",
+      "anchor": "S3.T1.5",
+      "id": "autosurvey-0214",
+      "sha256": "a9200397255114e756ade980003cad8512f5b362628cc65afbc75795087097b3",
+      "translate": true
+    },
+    {
+      "kind": "heading",
+      "en": "Baselines",
+      "anchor": "",
+      "id": "autosurvey-0215",
+      "sha256": "b5a4beff7c69355014c278f7c352f80c3ae78a2b205aaff4ad29d40a543b697f",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "We compare AutoSurvey with surveys authored by human experts (collected from Arxiv) and naive RAG-based LLMs across 20 different computer science topics across 20 different topics in the field of LLMs (see Table 6 ). For the naive RAG-based LLMs, we begin with a title and a survey length requirement, then iteratively prompt the model to write the content until completion. Note that we also provide the model with the same number of reference papers with AutoSurvey.",
+      "anchor": "S3.SS0.SSS0.Px2.p1.1",
+      "id": "autosurvey-0216",
+      "sha256": "47525df1679b818d9f4c33b51b2985abfa1c434182dbc01207c44877d40bf1cc",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "For AutoSurvey, we utilize a corpus of 530,000 computer science papers from arXiv as the retrieval database. During the initial drafting stage, we retrieve 1200 papers relevant to the given topic and split them into several chunks with a window size of 30,000 tokens. The model generates an outline for each chunk and merges these outlines into a final comprehensive outline, using only the abstracts of the papers at this stage. The outline predetermines the number of sections as 8. For subsection drafting, the models generate specific sections using the outline and 60 papers retrieved based on the subsection descriptions, focusing on the main body of each paper (up to the first 1,500 tokens). During the reflection and polishing stage, the same reference papers are provided to the model to ensure consistency and accuracy. The iteration number N is set to 2. Note that human writing surveys used for evaluation are excluded during the retrieval process. For more details of implementations, see Appendix B , and the prompts are presented in Appendix F .",
+      "anchor": "S3.SS0.SSS0.Px2.p2.1",
+      "id": "autosurvey-0217",
+      "sha256": "cb5d1262fe9159a6676594c305cdbbd259a59d1f0aa7da4b2eec8860327a40e1",
+      "translate": true
+    },
+    {
+      "kind": "heading",
+      "en": "Main Results",
+      "anchor": "",
+      "id": "autosurvey-0218",
+      "sha256": "d3bbf7a3b69fda086eb46d1b477438d76391bdebb4093dff5c223424075b6cbf",
+      "translate": true
+    },
+    {
+      "kind": "caption",
+      "en": "Table 2 : Results of naive RAG-based LLM generation, Human writing and AutoSurvey. Note that AutoSurvey and naive RAG-based LLM generation both use Claude-haiku as the writer. Note that human writing surveys used for evaluation are excluded during the retrieval process.",
+      "anchor": "",
+      "id": "autosurvey-0219",
+      "sha256": "a9342ee070091b980d724119c278af53fb752f4a552bde443ac5bf4f9d0af8dc",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Survey Length (#tokens) Methods Speed Citation quality Content Quality Recall Precision Coverage Structure Relevance Avg. 8k Human writing $0.16$ $80.00$ $87.50$ $4.50$ $4.16$ $5.00$ $4.52$ Naive RAG-based LLM generation $79.67$ $78.14_{\\pm 5.23}$ $71.92_{\\pm 6.83}$ $4.40_{\\pm 0.48}$ $3.86_{\\pm 0.71}$ $4.86_{\\pm 0.33}$ $4.33$ AutoSurvey $107.00$ $82.48_{\\pm 2.77}$ $77.42_{\\pm 3.28}$ $4.60_{\\pm 0.48}$ $4.46_{\\pm 0.49}$ $4.8_{\\pm 0.39}$ $4.61$ 16k Human writing $0.14$ $88.52$ $79.63$ $4.66$ $4.38$ $5.00$ $4.66$ Naive RAG-based LLM generation $43.41$ $71.48_{\\pm 12.50}$ $65.31_{\\pm 15.36}$ $4.46_{\\pm 0.49}$ $3.66_{\\pm 0.69}$ $4.73_{\\pm 0.44}$ $4.23$ AutoSurvey $95.51$ $81.34_{\\pm 3.65}$ $76.94_{\\pm 1.93}$ $4.66_{\\pm 0.47}$ $4.33_{\\pm 0.59}$ $4.86_{\\pm 0.33}$ $4.60$ 32k Human writing $0.10$ $88.57$ $77.14$ $4.66$ $4.50$ $5.00$ $4.71$ Naive RAG-based LLM generation $22.64$ $79.88_{\\pm 4.35}$ $65.03_{\\pm 8.39}$ $4.41_{\\pm 0.64}$ $3.75_{\\pm 0.72}$ $4.66_{\\pm 0.47}$ $4.23$ AutoSurvey $91.46$ $83.14_{\\pm 2.44}$ $78.04_{\\pm 3.14}$ $4.73_{\\pm 0.44}$ $4.26_{\\pm 0.69}$ $4.8_{\\pm 0.54}$ $4.58$ 64k Human writing $0.07$ $86.33$ $77.78$ $5.00$ $4.66$ $5.00$ $4.88$ Naive RAG-based LLM generation $12.56$ $68.79_{\\pm 11.00}$ $61.97_{\\pm 13.45}$ $4.4_{\\pm 0.61}$ $3.66_{\\pm 0.47}$ $4.66_{\\pm 0.47}$ $4.19$ AutoSurvey $73.59$ $82.25_{\\pm 3.64}$ $77.41_{\\pm 3.84}$ $4.73_{\\pm 0.44}$ $4.33_{\\pm 0.47}$ $4.86_{\\pm 0.33}$ $4.62$",
+      "anchor": "S3.T2.6.1",
+      "id": "autosurvey-0220",
+      "sha256": "b92ba226c4941df18892af78dc93c90f025e4c5a0d594f8eb785a16ccc1fa7c0",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "The results of our experiments comparing human writing, naive RAG-based LLM generation, and AutoSurvey for generating academic surveys are summarized in Table 2 . The key findings are:",
+      "anchor": "S3.SS0.SSS0.Px3.p1.1",
+      "id": "autosurvey-0221",
+      "sha256": "1f93dfd8e7e075e43d5be68100feb3c6e9b8e67e136bc470b35bc2440e9b1d7b",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "•",
+      "anchor": "",
+      "id": "autosurvey-0222",
+      "sha256": "4f8865abeddbfab37520d0c56eed1bf17f37e3778e1a55e6dc54895d2ae17849",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "AutoSurvey significantly outperforms both human writing and naive RAG-based LLM generation in terms of speed. For instance, AutoSurvey achieves a speed of 73.59 surveys per hour for a 64k-token survey, compared to 0.07 for human writing and 12.56 for naive RAG-based LLM generation, highlighting the larger gap in speed for longer context generation.",
+      "anchor": "S3.I2.i1.p1.1",
+      "id": "autosurvey-0223",
+      "sha256": "7f100d39b8201ecafac3ab14279c25f2eea6ac8d0169f15b9a90876dae52c29e",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "•",
+      "anchor": "",
+      "id": "autosurvey-0224",
+      "sha256": "4f8865abeddbfab37520d0c56eed1bf17f37e3778e1a55e6dc54895d2ae17849",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "AutoSurvey demonstrates superior citation quality compared to naive RAG-based LLM generation, with performance close to human writing. For an 8k-token survey, AutoSurvey achieves citation recall and precision scores of 82.48 and 77.42, respectively, surpassing naive RAG-based LLM generation (78.14 recall, 71.92 precision). While human writing achieves the best performance, ours is close to human’s across different lengths.",
+      "anchor": "S3.I2.i2.p1.1",
+      "id": "autosurvey-0225",
+      "sha256": "21413b4661193a03c28609a8c66207135d677467d85ee650b1b3054a89c67e5f",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "•",
+      "anchor": "",
+      "id": "autosurvey-0226",
+      "sha256": "4f8865abeddbfab37520d0c56eed1bf17f37e3778e1a55e6dc54895d2ae17849",
+      "translate": false
+    },
+    {
+      "kind": "prose",
+      "en": "AutoSurvey excels in content quality, scoring 4.60 on average for a 16k-token survey. It achieves 4.66 for coverage, 4.33 for structure, and 4.86 for relevance, matching human writing and surpassing naive RAG-based LLM generation.",
+      "anchor": "S3.I2.i3.p1.1",
+      "id": "autosurvey-0227",
+      "sha256": "04da5b03d75f255e563e59cf6e69564d571e39377b3d91d5ded09315885c9932",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "The experiments indicate that AutoSurvey provides a balanced trade-off between quality and efficiency. It achieves near-human levels of coverage, relevance, and citation quality while maintaining a significantly lower time cost. While human writing still leads in structure and overall quality, the efficiency and performance of AutoSurvey make it a compelling alternative for generating academic surveys. Naive RAG-based LLM, though effective, falls short in several key areas compared to both human writing and AutoSurvey, making it the least preferred method among the three for generating high-quality academic surveys, particularly in terms of structure, due to the lack of outline.",
+      "anchor": "S3.SS0.SSS0.Px3.p3.1",
+      "id": "autosurvey-0228",
+      "sha256": "74c567e59b90294608bed0f312eba9f0cf2a0d890623089bcf3827f5b0755d6a",
+      "translate": true
+    },
+    {
+      "kind": "heading",
+      "en": "Meta Evaluation",
+      "anchor": "",
+      "id": "autosurvey-0229",
+      "sha256": "e8316b3e4d30f8ac653de280239053e0339172368df9ffa5e7ed02fc88e231ba",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "To verify the consistency between our evaluation method and human evaluation, we conduct a meta-evaluation involving human experts and our automated evaluation system. Human experts judge pairs of generated surveys to determine which one is superior. This process, referred to as a \"which one is better\" game, serves as the golden standard for evaluation. We compare the judgments made by our evaluation method against those made by human experts. Specifically, we provide the experts with the same scoring criteria used in our evaluation for reference. The experts rank the generated 20 surveys, and we compare these rankings with those generated by LLM using Spearman’s rank correlation coefficient to measure consistency between human and LLM evaluations.",
+      "anchor": "S3.SS0.SSS0.Px4.p1.1",
+      "id": "autosurvey-0230",
+      "sha256": "006353f6c58d44b3ad83dae2b5b0ba16f1c6a603dae38affba6ea8bed64df468",
+      "translate": true
+    },
+    {
+      "kind": "caption",
+      "en": "Figure 3 : Spearman’s rho values indicating the degree of correlation between rankings given by LLMs and human experts. Note that A value over 0.3 indicates a positive correlation and over 0.5 indicates a strong positive correlation.",
+      "anchor": "",
+      "id": "autosurvey-0231",
+      "sha256": "c256b6d729eaa8478d7d8bca3277b85b2204e0f29059f4793424fbb110f35883",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "The results of this meta-evaluation are presented in Figure 3 . The table shows the Spearman’s rho values, indicating the degree of correlation between the rankings given by each LLM and the human experts. The Spearman’s rho values indicate a moderate positive correlation between the rankings provided by the LLMs and those given by the human experts, with the mixture of models achieving the highest correlation at 0.5429. These results suggest that our evaluation method aligns well with human preferences, providing a reliable proxy for human judgment.",
+      "anchor": "S3.SS0.SSS0.Px4.p2.1",
+      "id": "autosurvey-0232",
+      "sha256": "805ea9438f3693f0ccd121153aed3207d8ca83561cce6705108b35b7d9e36842",
+      "translate": true
+    },
+    {
+      "kind": "heading",
+      "en": "Ablation study",
+      "anchor": "",
+      "id": "autosurvey-0233",
+      "sha256": "e77cb9e9262dfee3cfecf39d130573094069cef36a13cb43544f3c20b7762d6f",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "To assess the impact of various components on the performance of AutoSurvey, we conduct an ablation study by systematically removing key components: the retrieval mechanism, the reflection phase, and iterations. Additionally, we evaluate the influence of using different base LLMs to demonstrate that even with a less optimal LLM like Claude-haiku, AutoSurvey’s performance remains comparable to human-generated surveys.",
+      "anchor": "S3.SS0.SSS0.Px5.p1.1",
+      "id": "autosurvey-0234",
+      "sha256": "aa8bb30619032a2e7021ffb9ac5cedf416dcc0c5dc68be9afb21b0b3e7806b14",
+      "translate": true
+    },
+    {
+      "kind": "caption",
+      "en": "Table 3 : Ablation study results for AutoSurvey with different components removed.",
+      "anchor": "",
+      "id": "autosurvey-0235",
+      "sha256": "b458655c2d1b11f234c09cd7541c59150c231e4bf50aec2aa6da70e5b2780a1d",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Methods Citation Quality Content Quality Recall Precision Coverage Structure Relevance Avg. AutoSurvey $83.48_{\\pm 5.05}$ $77.15_{\\pm 6.05}$ $4.7_{\\pm 0.45}$ $4.16_{\\pm 0.73}$ $4.93_{\\pm 0.30}$ $4.57$ AutoSurvey w/o retrieve $60.11_{\\pm 6.42}$ $51.65_{\\pm 6.33}$ $4.51_{\\pm 0.49}$ $4.01_{\\pm 0.74}$ $4.88_{\\pm 0.32}$ $4.44$ AutoSurvey w/o reflection $83.23_{\\pm 3.82}$ $76.36_{\\pm 4.08}$ $4.76_{\\pm 0.42}$ $4.13_{\\pm 0.76}$ $4.88_{\\pm 0.32}$ $4.56$",
+      "anchor": "S3.T3.5.1",
+      "id": "autosurvey-0236",
+      "sha256": "27fc24679c01b6e14a93a3297e0d68dfbb958c8f21ea6880b56dc1da6681c365",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Table 3 demonstrates that removing the retrieval mechanism significantly degrades citation quality, highlighting its critical role in ensuring accurate and relevant references. The absence of the reflection phase slightly impacts the overall content quality, particularly in structure and coherence.",
+      "anchor": "S3.SS0.SSS0.Px5.p2.1",
+      "id": "autosurvey-0237",
+      "sha256": "da5b8977d54413a210b2dc512529e7d2e9fc763577c88e135561ecb220e2b864",
+      "translate": true
+    },
+    {
+      "kind": "caption",
+      "en": "Table 4 : Performance of AutoSurvey with different base LLM writers.",
+      "anchor": "",
+      "id": "autosurvey-0238",
+      "sha256": "5aa195c9d67f3ccfdc562a1c7e00a8c75d588fc6e52791a17a5b929119e4b53b",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Base LLM writer Citation Quality Content Quality Recall Precision Coverage Structure Relevance Avg. GPT-4 $80.25_{\\pm 4.19}$ $78.83_{\\pm 7.00}$ $4.8_{\\pm 0.54}$ $4.46_{\\pm 0.49}$ $4.86_{\\pm 0.33}$ $4.70$ Claude-haiku $82.45_{\\pm 2.77}$ $76.31_{\\pm 2.18}$ $4.66_{\\pm 0.47}$ $4.26_{\\pm 0.67}$ $4.86_{\\pm 0.33}$ $4.58$ Gemini-1.5-pro $78.13_{\\pm 2.39}$ $71.24_{\\pm 3.28}$ $4.86_{\\pm 0.33}$ $4.33_{\\pm 0.78}$ $4.93_{\\pm 0.25}$ $4.69$ Human $85.86$ $80.51$ $4.71$ $4.43$ $5$ $4.70$",
+      "anchor": "S3.T4.5.1",
+      "id": "autosurvey-0239",
+      "sha256": "9c975a008a8894d28d532b9e4dca89e20b3bca7e3f244a27b7b9140f9b1bfa99",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Table 4 shows the performance of AutoSurvey when using different LLMs as the base writer. The results indicate that all three LLMs (GPT-4, Claude-haiku, and Gemini-1.5-Pro) perform well, with GPT-4 slightly outperforming the others in terms of overall content quality. Importantly, even with the less optimal Claude-haiku, AutoSurvey’s performance remains competitive with human standards.",
+      "anchor": "S3.SS0.SSS0.Px5.p3.1",
+      "id": "autosurvey-0240",
+      "sha256": "09da06d993e5d6f4d8f52809922e10e15f3dfabeb93816b7e8d6fba2e2934709",
+      "translate": true
+    },
+    {
+      "kind": "caption",
+      "en": "Figure 4 : Impact of Iteration on AutoSurvey Performance.",
+      "anchor": "",
+      "id": "autosurvey-0241",
+      "sha256": "809eb287a367d1bcf9267e204332d89dbb22f7cb940d52749ec4dcc764c675f3",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Figure 4 presents the effect of different iteration counts on the performance of AutoSurvey. The results show that increasing the number of iterations from 1 to 5 leads to a slight improvement in overall content quality, with diminishing returns after the second iteration.",
+      "anchor": "S3.SS0.SSS0.Px5.p4.1",
+      "id": "autosurvey-0242",
+      "sha256": "7b2ad43d0ebad334a7ecd19f2c509cfc5fe0d8ffc8ba95268f7b090eed6210bc",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "To assess whether the generated survey can provide useful information to enrich the knowledge, we created 50 multiple-choice questions about 5 topics. These questions primarily involve knowledge related to literature, such as identifying which paper proposed a particular method. We compared the accuracy of the Claude model under the following conditions: (1) directly chooses the answer without providing any reference materials, (2) has access to a 32k survey generated by naive RAG-based LLMs, (3) has access to a 32k survey generated by AutoSurvey, and (4) can refer to 20 papers (30k tokens in total) retrieved using the options provided (Upper-bound, directly retrieving the answers).",
+      "anchor": "S3.SS0.SSS0.Px5.p5.1",
+      "id": "autosurvey-0243",
+      "sha256": "f84d7fd0c012c3cc4f5847bb889850a697b19c13c183066defcbe7a4a8e4aa90",
+      "translate": true
+    },
+    {
+      "kind": "caption",
+      "en": "Table 5 : Performances given different references.",
+      "anchor": "",
+      "id": "autosurvey-0244",
+      "sha256": "ae822eb29e1470d44c5a416625392e25059b14726a8419bc6198736225a89c85",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Methods Accuracy Direct $58.40_{\\pm{4.96}}$ Naive RAG-based LLMs $65.20_{\\pm{8.06}}$ Upper-bound $73.60_{\\pm{3.44}}$ AutoSurvey $67.60_{\\pm{4.96}}$",
+      "anchor": "S3.T5.5.1",
+      "id": "autosurvey-0245",
+      "sha256": "21d07cef9680fc787b69a92bf7f91c1d22d4af269e7de59da5d9d2110255c0fc",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "The results are shown in Table 5 and we find providing topic-related materials can effectively improve the accuracy of answers. Providing option-related papers can be considered an upper bound for performance (73.60%). AutoSurvey improves accuracy by 9.2% compared to directly answering and is 2.4% higher than using naive RAG-based LLM-generated surveys. This demonstrates that our method can effectively provide topic knowledge.",
+      "anchor": "S3.SS0.SSS0.Px5.p6.1",
+      "id": "autosurvey-0246",
+      "sha256": "5d6eb1ee2cbbcd0ae6ce0f3492e4767faa7996de90ed899063015140c4ed660a",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "In summary, the ablation study underscores the critical role of the retrieval mechanism and reflection phase in AutoSurvey. Furthermore, the performance is influenced by using different LLMs as the base writer and varying the iteration count. Nevertheless, AutoSurvey consistently performs well across various configurations, showcasing its robustness and efficiency.",
+      "anchor": "S3.SS0.SSS0.Px5.p7.1",
+      "id": "autosurvey-0247",
+      "sha256": "1a6325e3b615e1785a807848ce5706cbfeee659663067e6f6d05dd77d91b4674",
+      "translate": true
+    },
+    {
+      "kind": "heading",
+      "en": "4 Related Work",
+      "anchor": "",
+      "id": "autosurvey-0248",
+      "sha256": "feacf8372ba97973875f93663765a5b18375483d1fa766b5ecaabd0746e5ed47",
+      "translate": true
+    },
+    {
+      "kind": "heading",
+      "en": "Long-form Text Generation",
+      "anchor": "",
+      "id": "autosurvey-0249",
+      "sha256": "dddeff8d7d0ab6b98bdf59e253b67150e4f082bdcd15bbdff564a981c0a64302",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "The ability to effectively process and generate long-form text is a critical challenge for large language models (LLMs) due to the need to maintain coherence and logical flow over extended passages of text [ 28 , 29 , 30 , 31 ] . Several works try to address the challenge by directly extending the context window with different Positional Encoding Techniques [ 32 , 33 ] . However, modifying position encoding strategies requires retraining the model, which is costly. Another solution is using memory-augmented techniques. RecurrentGPT [ 34 ] enables the generation of arbitrarily long texts by simulating the recurrence mechanism of RNNs using natural language prompts to store previous contextual information. Temp-Lora [ 35 ] enables long text generation by embedding context information into a temporary Lora module updated progressively during generation rather than relying on an extensive context window. These methods effectively establish relationships among tokens and maintain contextual understanding, but still face the issue of long generation times. To further accelerate the generation process, Hierarchical Modeling Techniques have been explored extensively to capture the inherent hierarchical nature of long-form text [ 36 , 37 ] . Despite such efficiency, it ignores the long dependency of text and may degrade the content quality [ 38 ] . To tackle the drawbacks, AutoSurvey, similarly using a Hierarchical generation paradigm, creates a well-organized outline for guidance and refines the generated content to improve the quality.",
+      "anchor": "S4.SS0.SSS0.Px1.p1.1",
+      "id": "autosurvey-0250",
+      "sha256": "9d922d2a9772aae38ebe5b03d803fbee8caf0f12358a6bb0e93f38c4ef5fcf32",
+      "translate": true
+    },
+    {
+      "kind": "heading",
+      "en": "Automatic Writing",
+      "anchor": "",
+      "id": "autosurvey-0251",
+      "sha256": "573dfb133c6cc39ea1ff6b6f4d3a23a0be0ad133fe53b9e6722dd76fb92a966a",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Due to the high costs associated with manual writing, automated writing has attracted substantial research interest in recent years. Compared to traditional methods, which primarily focus on training models to generate linguistically coherent text [ 39 , 40 ] , the emergency of large language models (LLMs) has opened up new possibilities for automated writing, drawing more attention to broader aspects like faithfulness, logical structure, style, and ethics [ 41 , 42 , 43 , 44 ] . For example, Retrieval-Augmented Generation techniques are useful for generating claims with citations [ 27 , 45 ] . IRP framework [ 46 ] generates expository text by iteratively performing content planning, fact retrieval, and paraphrasing to ensure factuality and stylistic consistency. Several works focus on the outline creation to improve the structure of generated content. PaperRobot [ 47 ] incrementally writes key elements to generate a paper abstract. STORM [ 20 ] designs a refined outline based on multiple rounds of wiki-page-related Q&A to facilitate wiki-like article generations. These methods have only been explored in shorter texts (<4k). In contrast, Autosurvey shows its effectiveness in generating long content (64k), with a focus on academic reviews.",
+      "anchor": "S4.SS0.SSS0.Px2.p1.1",
+      "id": "autosurvey-0252",
+      "sha256": "d6ea179d062af80f2354605d4a24b2a3c477ca268c7ae0c272178371da245c13",
+      "translate": true
+    },
+    {
+      "kind": "heading",
+      "en": "5 Limitation",
+      "anchor": "",
+      "id": "autosurvey-0253",
+      "sha256": "f9e5a2a71b2d94d2c02d4b9f3095705991c06b6cfaac42e2df090a958b388ea5",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "In addition to directly using recall and precision to evaluate citations, we also perform a manual analysis, providing a more comprehensive view of the citation quality. We examine 100 unsupported claims and their corresponding references and find that the errors mainly fall into three categories: (1) Misalignment, (2) Misinterpretation, and (3) Overgeneralization. Misalignment occurs when the connection between them is incorrectly made, such as an irrelevant citation. Misinterpretation happens when the claim and source are related, but the claim incorrectly represents the information from the source. Overgeneralization occurs when a claim extends the conclusions of the source material to a broader context than is supported. Among the three types of errors, overgeneralization accounts for the largest proportion (51%), indicating that LLMs still rely heavily on their parametric knowledge for writing. Misinterpretation has a small proportion (10%), suggesting that LLMs are capable of understanding the content of the references in most cases, avoiding the creation of claims that significantly deviate from the references.",
+      "anchor": "S5.p1.1",
+      "id": "autosurvey-0254",
+      "sha256": "ab16d5a4548e6bae9a6a6127bea450df9a8671e3752b281092957cf5d0fc00a9",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Misalignment (39%) : An example is citing the \"General Data Protection Regulation (GDPR)\" in a context where the referenced paper does not propose GDPR but merely mentions it in the content.",
+      "anchor": "S5.p2.1",
+      "id": "autosurvey-0255",
+      "sha256": "36852e104b1779dea9b9739490fcc57aef699e2667038dde3dfb02fe47b804fd",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Misinterpretation (10%) : An example is claiming that \"In-context learning allows LLMs to adapt to new tasks by simply conditioning on a few demonstration examples, without the need for any parameter updates or fine-tuning,\" based on a paper that focuses on meta-out-of-context learning and mentions the limitations of in-context learning.",
+      "anchor": "S5.p3.1",
+      "id": "autosurvey-0256",
+      "sha256": "4aaffef737f36f08a3b0d5480624f2a08a846734fbd2068b5bf6a076dfe76c14",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Overgeneralization (51%) : An example is that \"in-context learning can also benefit from advancements in other learning paradigms, such as multi-task learning,\" based on a paper that discusses multi-task few-shot learning but does not explicitly address its influence on in-context learning.",
+      "anchor": "S5.p4.1",
+      "id": "autosurvey-0257",
+      "sha256": "88f8cf1cf8c2b1eb0d8b0b832fba48162cdfc109e976ae39b4985d39ea6831b8",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "Among the three types of errors, overgeneralization accounts for the largest proportion (51%), indicating that LLMs still rely heavily on their parametric knowledge for writing. Misinterpretation has a small proportion (10%), suggesting that LLMs are capable of understanding the content of the references in most cases, avoiding the creation of claims that significantly deviate from the references. Additional potential societal impact and ethical considerations are discussed in Appendix E .",
+      "anchor": "S5.p5.1",
+      "id": "autosurvey-0258",
+      "sha256": "e2d3c527a6d66c27485c33c54dcd9578dba86c837ed724d1258a187269d55209",
+      "translate": true
+    },
+    {
+      "kind": "heading",
+      "en": "6 Conclusion",
+      "anchor": "",
+      "id": "autosurvey-0259",
+      "sha256": "35f7d23fd70cfc85a80573db030804aded85b3a023614232c8cbfd6b5bbda70f",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "In this paper, we introduce AutoSurvey, a novel methodology leveraging large language models to automate the creation of comprehensive literature surveys. AutoSurvey addresses key challenges such as context window limitations and parametric knowledge constraints through a systematic approach involving initial retrieval, outline generation, parallel subsection drafting, integration, and rigorous evaluation. Our experiments show that AutoSurvey significantly outperforms naive RAG-based LLM generation and matches human performance in content and citation quality, while also being highly efficient. This advancement offers a scalable and effective solution for synthesizing research literature, providing a valuable tool for researchers in rapidly evolving fields like artificial intelligence.",
+      "anchor": "S6.p1.1",
+      "id": "autosurvey-0260",
+      "sha256": "0488eaeecc243a7b270b3d70b3f4a3b6a22afe07379688c2256a4b6863cf292e",
+      "translate": true
+    },
+    {
+      "kind": "heading",
+      "en": "References",
+      "anchor": "",
+      "id": "autosurvey-0261",
+      "sha256": "69824d3b0e70ca6aaa0da1613b65fd914c442bf1f7ad1bb22bcdfbdfe1a05e39",
+      "translate": true
+    },
+    {
+      "kind": "reference",
+      "en": "[1] Samira Pouyanfar, Saad Sadiq, Yilin Yan, Haiman Tian, Yudong Tao, Maria Presa Reyes, Mei-Ling Shyu, Shu-Ching Chen, and Sundaraja S Iyengar. A survey on deep learning: Algorithms, techniques, and applications. ACM Computing Surveys (CSUR) , 51(5):1–36, 2018.",
+      "anchor": "bib.bib1",
+      "id": "autosurvey-0262",
+      "sha256": "7f8ec36739eb6c3a14e503c0394a9449e0e31ce45209111eb29e2987bec24ca7",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[2] Yupeng Chang, Xu Wang, Jindong Wang, Yuan Wu, Linyi Yang, Kaijie Zhu, Hao Chen, Xiaoyuan Yi, Cunxiang Wang, Yidong Wang, et al. A survey on evaluation of large language models. ACM Transactions on Intelligent Systems and Technology , 2023.",
+      "anchor": "bib.bib2",
+      "id": "autosurvey-0263",
+      "sha256": "f3869162b9fb1aed49ca4c937fcaf7f1426362e6fd49b91683da10ba0c9b4636",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[3] Wayne Xin Zhao, Kun Zhou, Junyi Li, Tianyi Tang, Xiaolei Wang, Yupeng Hou, Yingqian Min, Beichen Zhang, Junjie Zhang, Zican Dong, et al. A survey of large language models. arXiv preprint arXiv:2303.18223 , 2023.",
+      "anchor": "bib.bib3",
+      "id": "autosurvey-0264",
+      "sha256": "87067c10bc98f652227a2cc55fff3ae95f711d59f452b9bb2843a7d5dac83a7f",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[4] Salman Khan, Muzammal Naseer, Munawar Hayat, Syed Waqas Zamir, Fahad Shahbaz Khan, and Mubarak Shah. Transformers in vision: A survey. ACM computing surveys (CSUR) , 54(10s):1–41, 2022.",
+      "anchor": "bib.bib4",
+      "id": "autosurvey-0265",
+      "sha256": "bc8a742998dbce9e56530cfec399487ad30480b7d970dd195a9933780fe5beee",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[5] Yann LeCun, Yoshua Bengio, and Geoffrey Hinton. Deep learning. nature , 521(7553):436–444, 2015.",
+      "anchor": "bib.bib5",
+      "id": "autosurvey-0266",
+      "sha256": "d27a585cbb84d7fe594904618b71d69018cf9c915605b46e1bbe948fd3e5fe53",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[6] Ian Goodfellow, Yoshua Bengio, and Aaron Courville. Deep learning . MIT press, 2016.",
+      "anchor": "bib.bib6",
+      "id": "autosurvey-0267",
+      "sha256": "cc99045600c68282b4d4d9d4ccc10ed0f24e760e9161d73cc8fb8debfc4fd4ef",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[7] Josh Achiam, Steven Adler, Sandhini Agarwal, Lama Ahmad, Ilge Akkaya, Florencia Leoni Aleman, Diogo Almeida, Janko Altenschmidt, Sam Altman, Shyamal Anadkat, et al. Gpt-4 technical report. arXiv preprint arXiv:2303.08774 , 2023.",
+      "anchor": "bib.bib7",
+      "id": "autosurvey-0268",
+      "sha256": "faf3a7984245ddd44bd1c26a18b7b21839e48b2f543eeffca5f7b07987845015",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[8] Alexander Kirillov, Eric Mintun, Nikhila Ravi, Hanzi Mao, Chloe Rolland, Laura Gustafson, Tete Xiao, Spencer Whitehead, Alexander C Berg, Wan-Yen Lo, et al. Segment anything. In Proceedings of the IEEE/CVF International Conference on Computer Vision , pages 4015–4026, 2023.",
+      "anchor": "bib.bib8",
+      "id": "autosurvey-0269",
+      "sha256": "e6320f5e4897512b95288e0e6828453ceed22ea5ca2ce9dc1267243e92da95c4",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[9] Hugo Touvron, Thibaut Lavril, Gautier Izacard, Xavier Martinet, Marie-Anne Lachaux, Timothée Lacroix, Baptiste Rozière, Naman Goyal, Eric Hambro, Faisal Azhar, et al. Llama: Open and efficient foundation language models. arXiv preprint arXiv:2302.13971 , 2023.",
+      "anchor": "bib.bib9",
+      "id": "autosurvey-0270",
+      "sha256": "b6e8e9991d5cad603313a68ff537b46a3f68b35a7343520f293898c5491b51a9",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[10] Shouyuan Chen, Sherman Wong, Liangjian Chen, and Yuandong Tian. Extending context window of large language models via positional interpolation. arXiv preprint arXiv:2306.15595 , 2023.",
+      "anchor": "bib.bib10",
+      "id": "autosurvey-0271",
+      "sha256": "f90e9ef5e68e620db2592ab12a4447de6cf29d3e0d4022dc2cf308dcf1df0174",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[11] Yukang Chen, Shengju Qian, Haotian Tang, Xin Lai, Zhijian Liu, Song Han, and Jiaya Jia. Longlora: Efficient fine-tuning of long-context large language models. In The Twelfth International Conference on Learning Representations , 2023.",
+      "anchor": "bib.bib11",
+      "id": "autosurvey-0272",
+      "sha256": "3e891d3ae363e9c30d2f2379ae2076aee637dd7bb1557198205cd57a373af92f",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[12] Weizhi Wang, Li Dong, Hao Cheng, Xiaodong Liu, Xifeng Yan, Jianfeng Gao, and Furu Wei. Augmenting language models with long-term memory. Advances in Neural Information Processing Systems , 36, 2024.",
+      "anchor": "bib.bib12",
+      "id": "autosurvey-0273",
+      "sha256": "c519f5ba812837735e11283145925be50795449a8417ac3fa0b74cb1a2a274e4",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[13] Nelson F Liu, Kevin Lin, John Hewitt, Ashwin Paranjape, Michele Bevilacqua, Fabio Petroni, and Percy Liang. Lost in the middle: How language models use long contexts. Transactions of the Association for Computational Linguistics , 12:157–173, 2024.",
+      "anchor": "bib.bib13",
+      "id": "autosurvey-0274",
+      "sha256": "02f2c0627999a7d14c483dd277ba0ed327ac41447c39fcfa397db5b422eb50db",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[14] Jean Kaddour, Joshua Harris, Maximilian Mozes, Herbie Bradley, Roberta Raileanu, and Robert McHardy. Challenges and applications of large language models. arXiv preprint arXiv:2307.10169 , 2023.",
+      "anchor": "bib.bib14",
+      "id": "autosurvey-0275",
+      "sha256": "756a62301ed82c8b9a8c4da03f1f3bbb86030471d6fb83106e01188a99273950",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[15] Freda Shi, Xinyun Chen, Kanishka Misra, Nathan Scales, David Dohan, Ed H Chi, Nathanael Schärli, and Denny Zhou. Large language models can be easily distracted by irrelevant context. In International Conference on Machine Learning , pages 31210–31227. PMLR, 2023.",
+      "anchor": "bib.bib15",
+      "id": "autosurvey-0276",
+      "sha256": "2374b938cdbdf927903c3c3f1354bada760bc14c09fc04221207f7c81ddf8cbc",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[16] Dacheng Li, Rulin Shao, Anze Xie, Ying Sheng, Lianmin Zheng, Joseph Gonzalez, Ion Stoica, Xuezhe Ma, and Hao Zhang. How long can context length of open-source llms truly promise? In NeurIPS 2023 Workshop on Instruction Tuning and Instruction Following , 2023.",
+      "anchor": "bib.bib16",
+      "id": "autosurvey-0277",
+      "sha256": "c9cfd293e9731257aed7685064598b6345ac071ff32f0528cb103a3b6c93ef08",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[17] Tianle Li, Ge Zhang, Quy Duc Do, Xiang Yue, and Wenhu Chen. Long-context llms struggle with long in-context learning. arXiv preprint arXiv:2404.02060 , 2024.",
+      "anchor": "bib.bib17",
+      "id": "autosurvey-0278",
+      "sha256": "550591b69c3922d387bf8d3c7c613c5c6da1896044eb34f6adf5e4fedf6ab493",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[18] Cunxiang Wang, Xiaoze Liu, Yuanhao Yue, Xiangru Tang, Tianhang Zhang, Cheng Jiayang, Yunzhi Yao, Wenyang Gao, Xuming Hu, Zehan Qi, et al. Survey on factuality in large language models: Knowledge, retrieval and domain-specificity. arXiv preprint arXiv:2310.07521 , 2023.",
+      "anchor": "bib.bib18",
+      "id": "autosurvey-0279",
+      "sha256": "a79438b5831f330e609cbe15c9a11700a9f9c05b4a9e1b38e0fb54939ba85cd5",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[19] Ziwei Ji, Nayeon Lee, Rita Frieske, Tiezheng Yu, Dan Su, Yan Xu, Etsuko Ishii, Ye Jin Bang, Andrea Madotto, and Pascale Fung. Survey of hallucination in natural language generation. ACM Computing Surveys , 55(12):1–38, 2023.",
+      "anchor": "bib.bib19",
+      "id": "autosurvey-0280",
+      "sha256": "60fcb85065aab87939788227b803c9633d818808866b5271567fda8f441d32ae",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[20] Yijia Shao, Yucheng Jiang, Theodore A. Kanell, Peter Xu, Omar Khattab, and Monica S. Lam. Assisting in Writing Wikipedia-like Articles From Scratch with Large Language Models. In Proceedings of the 2024 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers) , 2024.",
+      "anchor": "bib.bib20",
+      "id": "autosurvey-0281",
+      "sha256": "afdbc11dfc101f2aa08bb178f4075202b4a81a90cae850af32f767b6c5636422",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[21] Yidong Wang, Zhuohao Yu, Zhengran Zeng, Linyi Yang, Cunxiang Wang, Hao Chen, Chaoya Jiang, Rui Xie, Jindong Wang, Xing Xie, Wei Ye, Shikun Zhang, and Yue Zhang. Pandalm: An automatic evaluation benchmark for llm instruction tuning optimization. 2024.",
+      "anchor": "bib.bib21",
+      "id": "autosurvey-0282",
+      "sha256": "9cc7181003a5488d8034c5f1b8a00ae8117196069c73c2bdec39206337501d9a",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[22] Lianmin Zheng, Wei-Lin Chiang, Ying Sheng, Siyuan Zhuang, Zhanghao Wu, Yonghao Zhuang, Zi Lin, Zhuohan Li, Dacheng Li, Eric Xing, et al. Judging llm-as-a-judge with mt-bench and chatbot arena. Advances in Neural Information Processing Systems , 36, 2024.",
+      "anchor": "bib.bib22",
+      "id": "autosurvey-0283",
+      "sha256": "248babf693e17091b3b84e1035d17aa49577d7f2c01e3ff964185b5f18e34373",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[23] Zhuohao Yu, Chang Gao, Wenjin Yao, Yidong Wang, Wei Ye, Jindong Wang, Xing Xie, Yue Zhang, and Shikun Zhang. Kieval: A knowledge-grounded interactive evaluation framework for large language models. 2024.",
+      "anchor": "bib.bib23",
+      "id": "autosurvey-0284",
+      "sha256": "ae69da61fd5dd0a891311cd343d5b1f54e5635370407bccefe830aaf5cf776a9",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[24] Yunfan Gao, Yun Xiong, Xinyu Gao, Kangxiang Jia, Jinliu Pan, Yuxi Bi, Yi Dai, Jiawei Sun, and Haofen Wang. Retrieval-augmented generation for large language models: A survey. arXiv preprint arXiv:2312.10997 , 2023.",
+      "anchor": "bib.bib24",
+      "id": "autosurvey-0285",
+      "sha256": "c99586e1aef7d9025395a337b74c330c13d47af21621fb522d6f60bb3af69fa4",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[25] Patrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir Karpukhin, Naman Goyal, Heinrich Küttler, Mike Lewis, Wen-tau Yih, Tim Rocktäschel, et al. Retrieval-augmented generation for knowledge-intensive nlp tasks. Advances in Neural Information Processing Systems , 33:9459–9474, 2020.",
+      "anchor": "bib.bib25",
+      "id": "autosurvey-0286",
+      "sha256": "45bb4feee58403b6ab6cf3a8a210dc74c444711f7883d0a71126d41c6a1d9c4b",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[26] Zhengbao Jiang, Frank F Xu, Luyu Gao, Zhiqing Sun, Qian Liu, Jane Dwivedi-Yu, Yiming Yang, Jamie Callan, and Graham Neubig. Active retrieval augmented generation. In Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing , pages 7969–7992, 2023.",
+      "anchor": "bib.bib26",
+      "id": "autosurvey-0287",
+      "sha256": "b8228fa89ab3437b81e84c1953ba3b95b91bb1164f546718c23179bebcbc32ea",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[27] Tianyu Gao, Howard Yen, Jiatong Yu, and Danqi Chen. Enabling large language models to generate text with citations. In Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing , 2023.",
+      "anchor": "bib.bib27",
+      "id": "autosurvey-0288",
+      "sha256": "88c2a7178c53e4ef0874cb7b266b63a0a8307775c0d61cf0e663ba1e8b12c0f3",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[28] Bowen Tan, Zichao Yang, Maruan Al-Shedivat, Eric P. Xing, and Zhiting Hu. Progressive generation of long text with pretrained language models. In Kristina Toutanova, Anna Rumshisky, Luke Zettlemoyer, Dilek Hakkani-Tür, Iz Beltagy, Steven Bethard, Ryan Cotterell, Tanmoy Chakraborty, and Yichao Zhou, editors, Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, NAACL-HLT 2021, Online, June 6-11, 2021 , pages 4313–4324. Association for Computational Linguistics, 2021.",
+      "anchor": "bib.bib28",
+      "id": "autosurvey-0289",
+      "sha256": "20eaee78215f5f7d063e99004f0c77ae5028ab0ec01129e22e7fd43b414e1bc9",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[29] Yushi Bai, Xin Lv, Jiajie Zhang, Hongchang Lyu, Jiankai Tang, Zhidian Huang, Zhengxiao Du, Xiao Liu, Aohan Zeng, Lei Hou, Yuxiao Dong, Jie Tang, and Juanzi Li. Longbench: A bilingual, multitask benchmark for long context understanding. CoRR , abs/2308.14508, 2023.",
+      "anchor": "bib.bib29",
+      "id": "autosurvey-0290",
+      "sha256": "31e6be64852322ff846c731ec8cbcfb974967c4f288b952e1583a5c4ec9bd3c4",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[30] Zican Dong, Tianyi Tang, Junyi Li, Wayne Xin Zhao, and Ji-Rong Wen. BAMBOO: A comprehensive benchmark for evaluating long text modeling capacities of large language models. CoRR , abs/2309.13345, 2023.",
+      "anchor": "bib.bib30",
+      "id": "autosurvey-0291",
+      "sha256": "b3145e634c758510ae05d9bda21bf983be66d02fa6d599e130305e2b0b376e92",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[31] Jiaqi Li, Mengmeng Wang, Zilong Zheng, and Muhan Zhang. Loogle: Can long-context language models understand long contexts? CoRR , abs/2311.04939, 2023.",
+      "anchor": "bib.bib31",
+      "id": "autosurvey-0292",
+      "sha256": "70898962fdc731ff28d1f21ec719284a3ccbad7ec0196a4ad28305df012b81ac",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[32] Peter Shaw, Jakob Uszkoreit, and Ashish Vaswani. Self-attention with relative position representations. In Marilyn A. Walker, Heng Ji, and Amanda Stent, editors, Proceedings of the 2018 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, NAACL-HLT, New Orleans, Louisiana, USA, June 1-6, 2018, Volume 2 (Short Papers) , pages 464–468. Association for Computational Linguistics, 2018.",
+      "anchor": "bib.bib32",
+      "id": "autosurvey-0293",
+      "sha256": "8603b7ecf1782e5633a2b15b3d78f13b0800b7b97289dc490a47e6b2841c9552",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[33] Xing Wang, Zhaopeng Tu, Longyue Wang, and Shuming Shi. Self-attention with structural position representations. In Kentaro Inui, Jing Jiang, Vincent Ng, and Xiaojun Wan, editors, Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing, EMNLP-IJCNLP 2019, Hong Kong, China, November 3-7, 2019 , pages 1403–1409. Association for Computational Linguistics, 2019.",
+      "anchor": "bib.bib33",
+      "id": "autosurvey-0294",
+      "sha256": "3b59cbc3e89368d997918b4250ab44256fff8196f60a413812a445b33097a237",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[34] Wangchunshu Zhou, Yuchen Eleanor Jiang, Peng Cui, Tiannan Wang, Zhenxin Xiao, Yifan Hou, Ryan Cotterell, and Mrinmaya Sachan. Recurrentgpt: Interactive generation of (arbitrarily) long text. arXiv preprint arXiv:2305.13304 , 2023.",
+      "anchor": "bib.bib34",
+      "id": "autosurvey-0295",
+      "sha256": "883d4242f6afafe74d9b352b101e1dd4d9f669eda984a6f3baa17195cdb17c56",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[35] Y Wang, D Ma, and D Cai. With greater text comes greater necessity: Inference-time training helps long text generation. arXiv preprint arXiv:2401.11504 , 2024.",
+      "anchor": "bib.bib35",
+      "id": "autosurvey-0296",
+      "sha256": "893faa4fbce4992506e6ac2e92a8f868f4a54a73c2ec3e36baa7d5ef7844c705",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[36] Angela Fan, Mike Lewis, and Yann Dauphin. Hierarchical neural story generation. arXiv preprint arXiv:1805.04833 , 2018.",
+      "anchor": "bib.bib36",
+      "id": "autosurvey-0297",
+      "sha256": "610417ba332431a2c07ebc020b74eb0c198166b7e0a83b7c9c38b085e2bdc33c",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[37] Jeff Wu, Long Ouyang, Daniel M Ziegler, Nisan Stiennon, Ryan Lowe, Jan Leike, and Paul Christiano. Recursively summarizing books with human feedback. arXiv preprint arXiv:2109.10862 , 2021.",
+      "anchor": "bib.bib37",
+      "id": "autosurvey-0298",
+      "sha256": "2d70847eb0fe3448d4dafe1318bec35c58999ad71b022e9b47c05ec83674c2c8",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[38] Yapei Chang, Kyle Lo, Tanya Goyal, and Mohit Iyyer. Booookscore: A systematic exploration of book-length summarization in the era of llms. arXiv preprint arXiv:2310.00785 , 2023.",
+      "anchor": "bib.bib38",
+      "id": "autosurvey-0299",
+      "sha256": "a6cbf41fdcb210097c6b0e8b061265957bb212cd7eafd6bd67199ad673ffafb2",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[39] Woon Sang Cho, Pengchuan Zhang, Yizhe Zhang, Xiujun Li, Michel Galley, Chris Brockett, Mengdi Wang, and Jianfeng Gao. Towards coherent and cohesive long-form text generation. arXiv preprint arXiv:1811.00511 , 2018.",
+      "anchor": "bib.bib39",
+      "id": "autosurvey-0300",
+      "sha256": "f81f5ffa345bad0206eb33c890924c2791fe35cf4f4da83da848f04bd7ca63cf",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[40] Antoine Bosselut, Asli Celikyilmaz, Xiaodong He, Jianfeng Gao, Po-Sen Huang, and Yejin Choi. Discourse-aware neural rewards for coherent text generation. arXiv preprint arXiv:1805.03766 , 2018.",
+      "anchor": "bib.bib40",
+      "id": "autosurvey-0301",
+      "sha256": "d51baa118cb7c7eec398c39cdc339f6f5eeebf460888c8a281daf1dfacd1e28e",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[41] Wenxuan Zhou, Sheng Zhang, Hoifung Poon, and Muhao Chen. Context-faithful prompting for large language models. arXiv preprint arXiv:2303.11315 , 2023.",
+      "anchor": "bib.bib41",
+      "id": "autosurvey-0302",
+      "sha256": "accd02d781b008a34aabab06a1ebae9b18f33137cd61355271ac0a202207b28f",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[42] Jinxin Liu, Shulin Cao, Jiaxin Shi, Tingjian Zhang, Lei Hou, and Juanzi Li. Probing structured semantics understanding and generation of language models via question answering. arXiv preprint arXiv:2401.05777 , 2024.",
+      "anchor": "bib.bib42",
+      "id": "autosurvey-0303",
+      "sha256": "bbea871bbdea2054759008de4fe9facebabdf8659dd4debc35620f957437091d",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[43] Chiyu Zhang, Honglong Cai, Yuexin Wu, Le Hou, Muhammad Abdul-Mageed, et al. Distilling text style transfer with self-explanation from llms. arXiv preprint arXiv:2403.01106 , 2024.",
+      "anchor": "bib.bib43",
+      "id": "autosurvey-0304",
+      "sha256": "d4e74a7a52f9bedf87597aa70105ee63b5d04964808a2f7ed4c368d2f6b64f9e",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[44] Patrick Schramowski, Cigdem Turan, Nico Andersen, Constantin A Rothkopf, and Kristian Kersting. Large pre-trained language models contain human-like biases of what is right and wrong to do. Nature Machine Intelligence , 4(3):258–268, 2022.",
+      "anchor": "bib.bib44",
+      "id": "autosurvey-0305",
+      "sha256": "7936b66d449a117d5a96f20a8e040c01b989d40cf3fa867400567a766a6b5d3e",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[45] Jacob Menick, Maja Trebacz, Vladimir Mikulik, John Aslanides, Francis Song, Martin Chadwick, Mia Glaese, Susannah Young, Lucy Campbell-Gillingham, Geoffrey Irving, et al. Teaching language models to support answers with verified quotes. arXiv preprint arXiv:2203.11147 , 2022.",
+      "anchor": "bib.bib45",
+      "id": "autosurvey-0306",
+      "sha256": "d7caa581fc2bd40bec22d8db526bbbbe767005aa509e0a22d02a2d5955a1d7fa",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[46] Nishant Balepur, Jie Huang, and Kevin Chen-Chuan Chang. Expository text generation: Imitate, retrieve, paraphrase. arXiv preprint arXiv:2305.03276 , 2023.",
+      "anchor": "bib.bib46",
+      "id": "autosurvey-0307",
+      "sha256": "6a93af513a180c55a2b893c842aa930524984d0ea7a76cff743374f8ecd76cc8",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[47] Qingyun Wang, Lifu Huang, Zhiying Jiang, Kevin Knight, Heng Ji, Mohit Bansal, and Yi Luan. Paperrobot: Incremental draft generation of scientific ideas. arXiv preprint arXiv:1905.07870 , 2019.",
+      "anchor": "bib.bib47",
+      "id": "autosurvey-0308",
+      "sha256": "4a4492060e708c064429bb81f553c4b756a2e7918e703eb18c0f80a2d1cf9f8c",
+      "translate": false
+    },
+    {
+      "kind": "reference",
+      "en": "[48] Zach Nussbaum, John X. Morris, Brandon Duderstadt, and Andriy Mulyar. Nomic embed: Training a reproducible long context text embedder, 2024.",
+      "anchor": "bib.bib48",
+      "id": "autosurvey-0309",
+      "sha256": "401c32f5b223173e54a408940ccc82fd40002018bb6382b88445a98f3f0febd2",
+      "translate": false
+    },
+    {
+      "kind": "heading",
+      "en": "Appendix A Detail of Topics and Human-writing Surveys",
+      "anchor": "",
+      "id": "autosurvey-0310",
+      "sha256": "27f50be68d061a19aa960152591de26e5ba95288fe6242fd5ce7df1a4982e8e0",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "We select 20 surveys from different topics within the LLM field. During the selection process, we prioritize both the breadth of the topics and the citation count (from google scholar) of the surveys. The basic information of surveys are listed in Table 6 .",
+      "anchor": "A1.p1.1",
+      "id": "autosurvey-0311",
+      "sha256": "f354a1e3843e4deae04de77b1021d4a417a2cb63af9a567c5ed9e79b947453fe",
+      "translate": true
+    },
+    {
+      "kind": "caption",
+      "en": "Table 6 : Survey Table",
+      "anchor": "",
+      "id": "autosurvey-0312",
+      "sha256": "0f554b1a06fa7ea47660bc599d413d8b3db9615815a27c15aa3acd38af0ffc6c",
+      "translate": true
+    },
+    {
+      "kind": "table",
+      "en": "Topic | Survey Title | Citations\nIn-context Learning | A survey for in-context learning | 323\nLLMs for Recommendation | A Survey on Large Language Models for Recommendation | 55\nLLM-Generated Texts Detection | A Survey of Detecting LLM-Generated Texts | 42\nExplainability for LLMs | Explainability for Large Language Models | 25\nEvaluation of LLMs | A Survey on Evaluation of Large Language Models | 183\nLLMs-based Agents | A Survey on Large Language Model based Autonomous Agents | 101\nLLMs in Medicine | A Survey of Large Language Models in Medicine | 234\nDomain Specialization of LLMs | Domain Specialization as the Key to Make Large Language Models Disruptive | 14\nChallenges of LLMs in Education | Practical and Ethical Challenges of Large Language Models in Education | 53\nAlignment of LLMs | Aligning Large Language Models with Human | 53\nChatGPT | A Survey on ChatGPT and Beyond | 144\nInstruction Tuning for LLMs | Instruction Tuning for Large Language Models | 45\nLLMs for Information Retrieval | Large Language Models for Information Retrieval | 22\nSafety in LLMs | Towards Safer Generative Language Models: Safety Risks, Evaluations, and Improvements | 17\nChain of Thought | A Survey of Chain of Thought Reasoning | 13\nHallucination in LLMs | A Survey on Hallucination in Large Language Models | 116\nBias and Fairness in LLMs | Bias and Fairness in Large Language Models | 12\nLarge Multi-Modal Language Models | Large-scale Multi-Modal Pre-trained Models | 61\nAcceleration for LLMs | A Survey on Model Compression and Acceleration for Pretrained Language Models | 22\nLLMs for Software Engineering | Large Language Models for Software Engineering | 49",
+      "anchor": "A1.T6.7",
+      "id": "autosurvey-0313",
+      "sha256": "d0e53504d7a09f65e2cd58152abc0bb589f62ac34c8f0b8d308e03f711348e19",
+      "translate": true
+    },
+    {
+      "kind": "heading",
+      "en": "Appendix B Details of Implementations",
+      "anchor": "",
+      "id": "autosurvey-0314",
+      "sha256": "93e3f8d883e46edf47507bbe1a8eeedbd5e31d1ce078246cb34947e3d93464c1",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "We adopt nomic-embed-text-v1.5 [ 48 ] , a widely used embedding model in RAG applications. To build our database, we store the embeddings of the title and abstract for each paper. Since the context window length is 8k, which is longer than any individual abstract, we embed the raw text directly without chunkings. During generation, related papers are retrieved by the abstract and ranked by their similarity to the query.\nWhen generating subsection content, the model needs to write the corresponding paper titles where citations are required. After generation, each title will be embedded as a query and be mapped to the closest paper title in our database. This approach allows the LLMs to use their own parameter knowledge to generate citations without references while ensuring the existence of the generated citations. When calling API, we set temperature = 1 and other parameters as default.\nEven with the same parameters, the final length of the generated surveys can vary. Therefore, papers with lengths from 8k to 16k are classified into the 8k category, those from 16k to 32k into the 16k category, and so on.",
+      "anchor": "A2.p1.1",
+      "id": "autosurvey-0315",
+      "sha256": "2c9f32c28aa970bdb8cf6303e7dcf5e5f32ccd926b03dd7ef14bf6e4272149e4",
+      "translate": true
+    },
+    {
+      "kind": "heading",
+      "en": "Appendix C Details of Evaluation",
+      "anchor": "",
+      "id": "autosurvey-0316",
+      "sha256": "e9218f4ce0a904b38c8a9135fb6f91abd6e9c4ab31fd0bab597ec85e4d40f61e",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "For citation quality, we define a sentence with at least one citation as a claim and extract all the claims from the generated survey. For human evaluations, we invite three PhD students and all of them have experience in writing LLMs-related surveys. We provide them with the same scoring criteria, along with explanations of the specific metrics. They are asked to score based on these criteria, and the final rankings of the generated surveys are determined by the total scores.",
+      "anchor": "A3.p1.1",
+      "id": "autosurvey-0317",
+      "sha256": "44a7dd39a0f5950f6b39d86510f19122f28ac1a08b94a9360eda50adf15407c7",
+      "translate": true
+    },
+    {
+      "kind": "heading",
+      "en": "Appendix D Cost Analysis",
+      "anchor": "",
+      "id": "autosurvey-0318",
+      "sha256": "0031d5dcaf72c52057f505c43030d9c7ca5ffbc04cdc6728d2d837c01565a020",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "We present the average number of tokens to generate a 32k-tokens survey, along with the cost of using different LLMs in Table 7 .",
+      "anchor": "A4.p1.1",
+      "id": "autosurvey-0319",
+      "sha256": "0880a4eea4ddad7c8139d7719d0894cf6e3dd492daae7a133d5a94f5e125f5ed",
+      "translate": true
+    },
+    {
+      "kind": "caption",
+      "en": "Table 7 : Cost of AutoSurvey",
+      "anchor": "",
+      "id": "autosurvey-0320",
+      "sha256": "dfa82dac061c5b1b7a5341b2619d94598953c52d15896efce1d1e344605c905b",
+      "translate": true
+    },
+    {
+      "kind": "table",
+      "en": "Input tokens | Output tokens | Claude-haiku | Gemini-1.5-pro | GPT-4\n3009.7K | 112.9K | 0.89$ | 11.72$ | 33.48$",
+      "anchor": "A4.T7.5",
+      "id": "autosurvey-0321",
+      "sha256": "3dde560932cbfac25ddb69e336f4b373f9a9f4c93f15c27fc2d46f2a4fd54864",
+      "translate": true
+    },
+    {
+      "kind": "heading",
+      "en": "Appendix E Societal Impact and Ethical\nConsiderations",
+      "anchor": "",
+      "id": "autosurvey-0322",
+      "sha256": "7327dae2282e135e22c443b1629ca64f9585deb9975bfd3bca3f2fcb7886d8b0",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "By integrating various specialized databases, our approach can generate academic surveys across different fields, potentially filling the gaps in existing reviews. However, as our method relies on the performance of large models, it inevitably contains citation errors. Therefore, the generated survey content is intended for reference only.\nAll personnel involved in the evaluation process participated voluntarily and received ample compensation. All data used in our experiment is sourced from arXiv and is allowed for non-commercial use.",
+      "anchor": "A5.p1.1",
+      "id": "autosurvey-0323",
+      "sha256": "1a7833d11bf2593e9750ca1021f576a98863b92346eb552afd99e397c7e08600",
+      "translate": true
+    },
+    {
+      "kind": "heading",
+      "en": "Appendix F Prompt used in AutoSurvey",
+      "anchor": "",
+      "id": "autosurvey-0324",
+      "sha256": "01d7ec6ddf70950933267fdfb66f2cd774e74202ad5f7e25f88cec36f171a079",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "⬇\n\n\nROUGH_OUTLINE_PROMPT\n \n=\n\n\n\n\n \n’’\n’\n\n\n\n\n \nYou\n \nwant\n \nto\n \nwrite\n \na\n \noverall\n \nand\n \ncomprehensive\n \nacademic\n \nsurvey\n \nabout\n \n[TOPIC].\n\n\n\n\n \nYou\n \nare\n \nprovided\n \nwith\n \na\n \nlist\n \nof\n \npapers\n \nrelated\n \nto\n \nthe\n \ntopic\n \nbelow:\n\n\n\n\n \n---\n\n\n\n\n \n[PAPER\n \nLIST]\n\n\n\n\n \n---\n\n\n\n\n \nYou\n \nneed\n \nto\n \ndraft\n \na\n \noutline\n \nbased\n \non\n \nthe\n \ngiven\n \npapers.\n\n\n\n\n \nThe\n \noutline\n \nshould\n \ncontains\n \na\n \ntitle\n \nand\n \nseveral\n \nsections.\n\n\n\n\n \nEach\n \nsection\n \nfollows\n \nwith\n \na\n \nbrief\n \nsentence\n \nto\n \ndescribe\n \nwhat\n \nto\n \nwrite\n \nin\n \nthis\n \nsection.\n\n\n\n\n \nThe\n \noutline\n \nis\n \nsupposed\n \nto\n \nbe\n \ncomprehensive\n \nand\n \ncontains\n \n[SECTION\n \nNUM]\n \nsections.\n\n\n\n\n\n\n\n\n \nReturn\n \nin\n \nthe\n \nformat:\n\n\n\n\n \n<format>\n\n\n\n\n \nTitle:\n \n[TITLE\n \nOF\n \nTHE\n \nSURVEY]\n\n\n\n\n \nSection\n \n1:\n \n[NAME\n \nOF\n \nSECTION\n \n1]\n\n\n\n\n \nDescription\n \n1:\n \n[DESCRIPTION\n \nOF\n \nSENTCTION\n \n1]\n\n\n\n\n\n\n\n\n \n...\n\n\n\n\n\n\n\n\n \nSection\n \nK:\n \n[NAME\n \nOF\n \nSECTION\n \nK]\n\n\n\n\n \nDescription\n \nK:\n \n[DESCRIPTION\n \nOF\n \nSENTCTION\n \nK]\n\n\n\n\n \n</format>\n\n\n\n\n \nThe\n \noutline:\n\n\n\n\n \n’\n’’\n\n\n\n\n\n\n\n\nSUBSECTION_OUTLINE_PROMPT\n \n=\n\n\n\n\n \n’’\n’\n\n\n\n\n \nYou\n \nwant\n \nto\n \nwrite\n \na\n \noverall\n \nsurvey\n \nabout\n \n[TOPIC].\n\n\n\n\n \nYou\n \nhave\n \ncreated\n \na\n \noverall\n \noutline\n \nbelow:\n\n\n\n\n \n---\n\n\n\n\n \n[OVERALL\n \nOUTLINE]\n\n\n\n\n \n---\n\n\n\n\n \nThe\n \noutline\n \ncontains\n \na\n \ntitle\n \nand\n \nseveral\n \nsections.\n\n\n\n\n \nEach\n \nsection\n \nfollows\n \nwith\n \na\n \nbrief\n \nsentence\n \nto\n \ndescribe\n \nwhat\n \nto\n \nwrite\n \nin\n \nthis\n \nsection.\n\n\n\n\n \nYou\n \nneed\n \nto\n \nenrich\n \nthe\n \nsection\n \n[SECTION\n \nNAME].\n\n\n\n\n \nThe\n \ndescription\n \nof\n \n[SECTION\n \nNAME]:\n \n[SECTION\n \nDESCRIPTION]\n\n\n\n\n \nYou\n \nneed\n \nto\n \ngenerate\n \nthe\n \nframwork\n \ncontaining\n \nseveral\n \nsubsections\n \nbased\n \non\n \nthe\n \noverall\n \noutlines.\n\n\n\n\n \nEach\n \nsubsection\n \nfollows\n \nwith\n \na\n \nbrief\n \nsentence\n \nto\n \ndescribe\n \nwhat\n \nto\n \nwrite\n \nin\n \nthis\n \nsubsection.\n\n\n\n\n \nThese\n \npapers\n \nprovided\n \nfor\n \nreferences:\n\n\n\n\n \n---\n\n\n\n\n \n[PAPER\n \nLIST]\n\n\n\n\n \n---\n\n\n\n\n \nReturn\n \nthe\n \noutline\n \nin\n \nthe\n \nformat:\n\n\n\n\n \n<format>\n\n\n\n\n \nSubsection\n \n1:\n \n[NAME\n \nOF\n \nSUBSECTION\n \n1]\n\n\n\n\n \nDescription\n \n1:\n \n[DESCRIPTION\n \nOF\n \nSUBSENTCTION\n \n1]\n\n\n\n\n\n\n\n\n \n...\n\n\n\n\n\n\n\n\n \nSubsection\n \nK:\n \n[NAME\n \nOF\n \nSUBSECTION\n \nK]\n\n\n\n\n \nDescription\n \nK:\n \n[DESCRIPTION\n \nOF\n \nSUBSENTCTION\n \nK]\n\n\n\n\n \n</format>\n\n\n\n\n \nOnly\n \nreturn\n \nthe\n \noutline\n \nwithout\n \nany\n \nother\n \ninformations:\n\n\n\n\n \n’\n’’\n\n\n\n\n\n\n\n\nMERGING_OUTLINE_PROMPT\n \n=\n\n\n\n\n \n’’\n’\n\n\n\n\n \nYou\n \nwant\n \nto\n \nwrite\n \na\n \noverall\n \nsurvey\n \nabout\n \n[TOPIC].\n\n\n\n\n \nYou\n \nare\n \nprovided\n \nwith\n \na\n \nlist\n \nof\n \noutlines\n \nas\n \ncandidates\n \nbelow:\n\n\n\n\n \n---\n\n\n\n\n \n[OUTLINE\n \nLIST]\n\n\n\n\n \n---\n\n\n\n\n \nEach\n \noutline\n \ncontains\n \na\n \ntitle\n \nand\n \nseveral\n \nsections.\n\n\n\n\n \nEach\n \nsection\n \nfollows\n \nwith\n \na\n \nbrief\n \nsentence\n \nto\n \ndescribe\n \nwhat\n \nto\n \nwrite\n \nin\n \nthis\n \nsection.\n\n\n\n\n \nYou\n \nneed\n \nto\n \ngenerate\n \na\n \nfinal\n \noutline\n \nbased\n \non\n \nthese\n \nprovided\n \noutlines\n \nto\n \nmake\n \nthe\n \nfinal\n \noutline\n \nshow\n \ncomprehensive\n \ninsights\n \nof\n \nthe\n \ntopic\n \nand\n \nmore\n \nlogical.\n\n\n\n\n \nReturn\n \nthe\n \nin\n \nthe\n \nformat:\n\n\n\n\n \n<format>\n\n\n\n\n \nTitle:\n \n[TITLE\n \nOF\n \nTHE\n \nSURVEY]\n\n\n\n\n \nSection\n \n1:\n \n[NAME\n \nOF\n \nSECTION\n \n1]\n\n\n\n\n \nDescription\n \n1:\n \n[DESCRIPTION\n \nOF\n \nSENTCTION\n \n1]\n\n\n\n\n\n\n\n\n \n...\n\n\n\n\n\n\n\n\n \nSection\n \nK:\n \n[NAME\n \nOF\n \nSECTION\n \nK]\n\n\n\n\n \nDescription\n \nK:\n \n[DESCRIPTION\n \nOF\n \nSENTCTION\n \nK]\n\n\n\n\n \n</format>\n\n\n\n\n \nOnly\n \nreturn\n \nthe\n \nfinal\n \noutline\n \nwithout\n \nany\n \nother\n \ninformations:\n\n\n\n\n \n’\n’’\n\n\n\n\n\n\n\n\nSUBSECTION_WRITING_PROMPT\n \n=\n\n\n\n\n \n’’\n’\n\n\n\n\n \nYou\n \nwants\n \nto\n \nwrite\n \na\n \noverall\n \nand\n \ncomprehensive\n \nsurvey\n \nabout\n \n[TOPIC].\n\n\n\n\n \nYou\n \nhave\n \ncreated\n \na\n \noverall\n \noutline\n \nbelow:\n\n\n\n\n \n---\n\n\n\n\n \n[OVERALL\n \nOUTLINE]\n\n\n\n\n \n---\n\n\n\n\n \nBelow\n \nare\n \na\n \nlist\n \nof\n \npapers\n \nfor\n \nreference:\n\n\n\n\n \n---\n\n\n\n\n \n[PAPER\n \nLIST]\n\n\n\n\n \n---\n\n\n\n\n\n\n\n\n \nNow\n \nyou\n \nneed\n \nto\n \nwrite\n \nthe\n \ncontent\n \nfor\n \nthe\n \nsubsection:\n\n\n\n\n \n\"[SUBSECTION\n \nNAME]\".\n\n\n\n\n \nThe\n \ndetails\n \nof\n \nwhat\n \nto\n \nwrite\n \nin\n \nthis\n \nsubsection\n \ncalled\n \n[SUBSECTION\n \nNAME]\n \nis\n \nin\n \nthis\n \ndescripition:\n\n\n\n\n \n---\n\n\n\n\n \n[DESCRIPTION]\n\n\n\n\n \n---\n\n\n\n\n \nHere\n \nis\n \nthe\n \nrequirement\n \nyou\n \nmust\n \nfollow:\n\n\n\n\n \n1.\n \nThe\n \nsubsection\n \nis\n \nrecommended\n \nto\n \ncontain\n \nmore\n \nthan\n \n[WORD\n \nNUM]\n \nwords.\n\n\n\n\n \n2.\n \nWhen\n \nwriting\n \nsentences\n \nthat\n \nare\n \nbased\n \non\n \nspecific\n \npapers\n \nabove,\n \nyou\n \ncite\n \nthe\n \n\"paper_title\"\n \nin\n \na\n \n’\n[]\n’\n \nformat\n \nto\n \nsupport\n \nyour\n \ncontent.\n\n\n\n\n\n\n\n\n \nHere’\ns\n \na\n \nconcise\n \nguideline\n \nfor\n \nwhen\n \nto\n \ncite\n \npapers\n \nin\n \na\n \nsurvey\n:\n\n\n\n\n \n---\n\n\n\n\n \n1.\n \nSummarizing\n \nResearch\n:\n \nCite\n \nsources\n \nwhen\n \nsummarizing\n \nthe\n \nexisting\n \nliterature\n.\n\n\n\n\n \n2.\n \nUsing\n \nSpecific\n \nConcepts\n \nor\n \nData\n:\n \nProvide\n \ncitations\n \nwhen\n \ndiscussing\n \nspecific\n \ntheories\n,\n \nmodels\n,\n \nor\n \ndata\n.\n\n\n\n\n \n3.\n \nUsing\n \nEstablished\n \nMethods\n:\n \nCite\n \nthe\n \ncreators\n \nof\n \nmethodologies\n \nyou\n \nemploy\n \nin\n \nyour\n \nsurvey\n.\n\n\n\n\n \n4.\n \nSupporting\n \nArguments\n:\n \nCite\n \nsources\n \nthat\n \nback\n \nup\n \nyour\n \nconclusions\n \nand\n \narguments\n.\n\n\n\n\n \n---\n\n\n\n\n \nOnly\n \nreturn\n \nthe\n \ncontent\n \nmore\n \nthan\n \n[\nWORD\n \nNUM\n]\n \nwords\n \nyou\n \nwrite\n \nfor\n \nthe\n \nsubsection\n \n[\nSUBSECTION\n \nNAME\n]\n \nwithout\n \nany\n \nother\n \ninformation\n:\n\n\n\n\n \n’’\n’\n\n\n\n\n\n\n\n\nCITATION_REFLECTION_PROMPT\n \n=\n\n\n\n\n \n’\n’’\n\n\n\n\n \nYou\n \nwant\n \nto\n \nwrite\n \na\n \noverall\n \nand\n \ncomprehensive\n \nsurvey\n \nabout\n \n[\nTOPIC\n].\n\n\n\n\n \nBelow\n \nare\n \na\n \nlist\n \nof\n \npapers\n \nfor\n \nreferences\n:\n\n\n\n\n \n---\n\n\n\n\n \n[\nPAPER\n \nLIST\n]\n\n\n\n\n \n---\n\n\n\n\n \nYou\n \nhave\n \nwritten\n \na\n \nsubsection\n \nbelow\n:\n\n\n\n\n \n---\n\n\n\n\n \n[\nSUBSECTION\n]\n\n\n\n\n \n---\n\n\n\n\n \nThe\n \nsentences\n \nthat\n \nare\n \nbased\n \non\n \nspecific\n \npapers\n \nabove\n \nare\n \nfollowed\n \nwith\n \nthe\n \ncitation\n \nof\n \n\"paper_title\"\n \nin\n \n\"[]\"\n.\n\n\n\n\n \nFor\n \nexample\n \n’the\n \nemergence\n \nof\n \nlarge\n \nlanguage\n \nmodels\n \n(LLMs)\n \n[PaLM:\n \nScaling\n \nlanguage\n \nmodeling\n \nwith\n \npathways]’\n\n\n\n\n\n\n\n\n \nHere\n’s\n \na\n \nconcise\n \nguideline\n \nfor\n \nwhen\n \nto\n \ncite\n \npapers\n \nin\n \na\n \nsurvey:\n\n\n\n\n \n---\n\n\n\n\n \n1.\n \nSummarizing\n \nResearch:\n \nCite\n \nsources\n \nwhen\n \nsummarizing\n \nthe\n \nexisting\n \nliterature.\n\n\n\n\n \n2.\n \nUsing\n \nSpecific\n \nConcepts\n \nor\n \nData:\n \nProvide\n \ncitations\n \nwhen\n \ndiscussing\n \nspecific\n \ntheories,\n \nmodels,\n \nor\n \ndata.\n\n\n\n\n \n3.\n \nUsing\n \nEstablished\n \nMethods:\n \nCite\n \nthe\n \ncreators\n \nof\n \nmethodologies\n \nyou\n \nemploy\n \nin\n \nyour\n \nsurvey.\n\n\n\n\n \n4.\n \nSupporting\n \nArguments:\n \nCite\n \nsources\n \nthat\n \nback\n \nup\n \nyour\n \nconclusions\n \nand\n \narguments.\n\n\n\n\n \n---\n\n\n\n\n\n\n\n\n \nNow\n \nyou\n \nneed\n \nto\n \ncheck\n \nwhether\n \nthe\n \ncitations\n \nof\n \n\"paper_title\"\n \nin\n \nthis\n \nsubsection\n \nis\n \ncorrect.\n\n\n\n\n \nOnce\n \nthe\n \ncitation\n \ncan\n \nnot\n \nsupport\n \nthe\n \nsentence\n \nyou\n \nwrite,\n \ncorrect\n \nthe\n \npaper_title\n \nin\n \n’\n[]\n’\n \nor\n \njust\n \nremove\n \nit.\n\n\n\n\n\n\n\n\n \nDo\n \nnot\n \nchange\n \nany\n \nother\n \nthings\n \nexcept\n \nthe\n \ncitations.\n\n\n\n\n \nOnly\n \nreturn\n \nthe\n \nsubsection\n \nwith\n \ncorrect\n \ncitations:\n\n\n\n\n \n’\n’’\n\n\n\n\n\n\n\n\nCOHERENCY_REFINEMENT_PROMPT\n \n=\n\n\n\n\n \n’’\n’\n\n\n\n\n \nYou\n \nwant\n \nto\n \nwrite\n \na\n \noverall\n \nand\n \ncomprehensive\n \nsurvey\n \nabout\n \n[TOPIC].\n\n\n\n\n\n\n\n\n \nNow\n \nyou\n \nneed\n \nto\n \nhelp\n \nto\n \nrefine\n \none\n \nof\n \nthe\n \nsubsection\n \nto\n \nimprove\n \nth\n \necoherence\n \nof\n \nyour\n \nsurvey.\n\n\n\n\n\n\n\n\n \nYou\n \nare\n \nprovied\n \nwith\n \nthe\n \ncontent\n \nof\n \nthe\n \nsubsection\n \nalong\n \nwith\n \nthe\n \nprevious\n \nsubsections\n \nand\n \nfollowing\n \nsubsections.\n\n\n\n\n\n\n\n\n \nPrevious\n \nSubsection:\n\n\n\n\n \n---\n\n\n\n\n \n[PREVIOUS]\n\n\n\n\n \n---\n\n\n\n\n\n\n\n\n \nFollowing\n \nSubsection:\n\n\n\n\n \n---\n\n\n\n\n \n[FOLLOWING]\n\n\n\n\n \n---\n\n\n\n\n\n\n\n\n \nSubsection\n \nto\n \nRefine:\n\n\n\n\n \n---\n\n\n\n\n \n[SUBSECTION]\n\n\n\n\n \n---\n\n\n\n\n\n\n\n\n \nNow\n \nrefine\n \nthe\n \nsubsection\n \nto\n \nenhance\n \ncoherence,\n \nand\n \nensure\n \nthat\n \nit\n \nconnects\n \nmore\n \nfluidly\n \nwith\n \nthe\n \nprevious\n \nand\n \nfollowing\n \nsubsections.\n\n\n\n\n \nRemember\n \nthat\n \nkeep\n \nall\n \nthe\n \nessence\n \nand\n \ncore\n \ninformation\n \nof\n \nthe\n \nsubsection\n \nintact.\n \nDo\n \nnot\n \nmodify\n \nany\n \ncitations\n \nin\n \n[]\n \nfollowing\n \nthe\n \nsentences!!!!\n\n\n\n\n \nOnly\n \nreturn\n \nthe\n \nwhole\n \nrefined\n \ncontent\n \nof\n \nthe\n \nsubsection\n \nwithout\n \nany\n \nother\n \ninformations:\n\n\n\n\n \n’\n’’",
+      "anchor": "A6.p1.1",
+      "id": "autosurvey-0325",
+      "sha256": "eea09fbb46a2d8fbabf42880ec710b9c9af11a2251399e48a8748bdaf141b502",
+      "translate": true
+    },
+    {
+      "kind": "prose",
+      "en": "⬇\n\n\n#\n \nComprehensive\n \nSurvey\n \non\n \nEmotion\n \nRecognition\n \nusing\n \nLarge\n \nLanguage\n \nModels\n\n\n\n\n\n\n\n\n##\n \n1.\n \nIntroduction\n \nto\n \nEmotion\n \nRecognition\n \nand\n \nLarge\n \nLanguage\n \nModels\n\n\n\n\n \nEmotion\n \nrecognition\n \nhas\n \nbeen\n \na\n \ncrucial\n \nand\n \nactive\n \nresearch\n \narea\n \nin\n \nthe\n \nfield\n \nof\n \naffective\n \ncomputing\n,\n \nwhich\n \naims\n \nto\n \nenable\n \nmachines\n \nto\n \nunderstand\n,\n \ninterpret\n,\n \nand\n \nrespond\n \nto\n \nhuman\n \nemotions\n \n[1].\n \nEmotions\n \nplay\n \na\n \nfundamental\n \nrole\n \nin\n \nhuman\n \ncognition\n,\n \ndecision\n-\nmaking\n,\n \nand\n \nsocial\n \ninteraction\n \n[2],\n \nand\n \nthe\n \nability\n \nto\n \nautomatically\n \nrecognize\n \nand\n \ninterpret\n \nemotions\n \nhas\n \na\n \nwide\n \nrange\n \nof\n \napplications\n,\n \nincluding\n \nhealthcare\n,\n \neducation\n,\n \nentertainment\n,\n \nand\n \nhuman\n-\ncomputer\n \ninteraction\n \n[3].\n \nThe\n \nimportance\n \nof\n \nemotion\n \nrecognition\n \nis\n \nevident\n \nin\n \nvarious\n \nreal\n-\nworld\n \napplications\n.\n \nIn\n \nhealthcare\n,\n \nemotion\n \nrecognition\n \ncan\n \nbe\n \nused\n \nto\n \nmonitor\n \npatient\n \nmental\n \nhealth\n,\n \nprovide\n \npersonalized\n \ntherapy\n,\n \nand\n \nimprove\n \ndoctor\n-\npatient\n \ncommunication\n \n[4].\n \nIn\n \neducation\n,\n \nemotion\n \nrecognition\n \ncan\n \nhelp\n \nidentify\n \nstudent\n \nengagement\n \nand\n \nfrustration\n \nlevels\n,\n \nenabling\n \nadaptive\n \nlearning\n \nenvironments\n \nthat\n \ncater\n \nto\n \nindividual\n \nneeds\n \n[5].\n \nIn\n \nthe\n \nentertainment\n \nindustry\n,\n \nemotion\n \nrecognition\n \ncan\n \nbe\n \nused\n \nto\n \nanalyze\n \nviewer\n \nresponses\n \nand\n \ntailor\n \ncontent\n \nto\n \nevoke\n \ndesired\n \nemotional\n \nresponses\n \n[6].\n \nDespite\n \nthe\n \nsignificant\n \nbenefits\n \nof\n \nemotion\n \nrecognition\n,\n \nthe\n \nfield\n \nfaces\n \nseveral\n \nchallenges\n \nthat\n \nhave\n \nhindered\n \nits\n \nwidespread\n \nadoption\n \nand\n \nimplementation\n \n[7].\n \nOne\n \nof\n \nthe\n \nprimary\n \nchallenges\n \nis\n \nthe\n \ninherent\n \ncomplexity\n \nand\n \nsubjectivity\n \nof\n \nemotions\n,\n \nwhich\n \ncan\n \nvary\n \nacross\n \nindividuals\n,\n \ncultures\n,\n \nand\n \ncontexts\n \n[8].\n \nEmotions\n \nare\n \noften\n \nexpressed\n \nthrough\n \nmultiple\n \nmodalities\n,\n \nincluding\n \nfacial\n \nexpressions\n,\n \nvocal\n \ncues\n,\n \nbody\n \nlanguage\n,\n \nand\n \nphysiological\n \nsignals\n,\n \nand\n \nintegrating\n \nthese\n \ndiverse\n \nsources\n \nof\n \ninformation\n \nis\n \na\n \nsignificant\n \nchallenge\n \n[9].\n \nAdditionally\n,\n \nthe\n \navailability\n \nof\n \nhigh\n-\nquality\n,\n \ndiverse\n,\n \nand\n \nannotated\n \nemotion\n \ndatasets\n \nis\n \na\n \npersistent\n \nchallenge\n \nin\n \nthe\n \nfield\n \n[10].\n \nMany\n \nexisting\n \ndatasets\n \nare\n \nlimited\n \nin\n \nsize\n,\n \nlack\n \ndiversity\n,\n \nor\n \nhave\n \ninconsistent\n \nor\n \nsubjective\n \nemotion\n \nlabeling\n,\n \nwhich\n \ncan\n \nlead\n \nto\n \nbiases\n \nand\n \npoor\n \ngeneralization\n \nof\n \nemotion\n \nrecognition\n \nmodels\n \n[11].\n\n\n\n\n \n...\n\n\n\n\n###\n \n1.1\n \nBackground\n \non\n \nEmotion\n \nRecognition\n\n\n\n\n\n\n\n\n###\n \n1.2\n \nLarge\n \nLanguage\n \nModels\n \nand\n \ntheir\n \nCapabilities\n\n\n\n\n\n\n\n\n###\n \n1.3\n \nEmotion\n \nRepresentation\n \nin\n \nLLMs\n\n\n\n\n\n\n\n\n###\n \n1.4\n \nMultimodal\n \nEmotion\n \nRecognition\n \nusing\n \nLLMs\n\n\n\n\n\n\n\n\n##\n \n2.\n \nTechniques\n \nand\n \nApproaches\n \nfor\n \nEmotion\n \nRecognition\n \nusing\n \nLLMs\n\n\n\n\n\n\n\n\n###\n \n2.1\n \nFine-tuning\n \nLLMs\n \non\n \nEmotion\n \nDatasets\n\n\n\n\n\n\n\n\n###\n \n2.2\n \nLLM-based\n \nPrompting\n \nMethods\n \nfor\n \nEmotion\n \nRecognition\n\n\n\n\n\n\n\n\n###\n \n2.3\n \nIntegrating\n \nLLMs\n \nwith\n \nOther\n \nModalities\n \nfor\n \nMultimodal\n \nEmotion\n \nRecognition\n\n\n\n\n\n\n\n\n##\n \n3.\n \nEnhancing\n \nLLM-based\n \nEmotion\n \nRecognition\n\n\n\n\n\n\n\n\n###\n \n3.1\n \nData\n \nAugmentation\n \nfor\n \nImproving\n \nEmotion\n \nRecognition\n\n\n\n\n\n\n\n\n###\n \n3.2\n \nPrompt\n \nEngineering\n \nfor\n \nEmotion\n \nRecognition\n\n\n\n\n\n\n\n\n###\n \n3.3\n \nIntegrating\n \nExternal\n \nKnowledge\n \nfor\n \nEmotion\n \nRecognition\n\n\n\n\n\n\n\n\n##\n \n4.\n \nChallenges,\n \nLimitations,\n \nand\n \nEthical\n \nConsiderations\n\n\n\n\n\n\n\n\n###\n \n4.1\n \nModel\n \nBiases\n \nand\n \nHallucinations\n\n\n\n\n\n\n\n\n###\n \n4.2\n \nInterpretability\n \nand\n \nExplainability\n\n\n\n\n\n\n\n\n###\n \n4.3\n \nEthical\n \nConsiderations\n\n\n\n\n\n\n\n\n##\n \n5.\n \nApplications\n \nand\n \nFuture\n \nDirections\n\n\n\n\n\n\n\n\n###\n \n5.1\n \nAssistive\n \nRobotics\n\n\n\n\n\n\n\n\n###\n \n5.2\n \nMental\n \nHealth\n \nAssessment\n\n\n\n\n\n\n\n\n###\n \n5.3\n \nCustomer\n \nService\n \nand\n \nUser\n \nExperience\n\n\n\n\n\n\n\n\n###\n \n5.4\n \nSymbolic\n \nReasoning\n \nand\n \nLong-tailed\n \nEmotions\n\n\n\n\n\n\n\n\n###\n \n5.5\n \nRobust\n \nEvaluation\n \nFrameworks\n\n\n\n\n\n\n\n\n##\n \nReferences\n\n\n\n\n\n\n\n\n[1]\n \nAffective\n \nComputing\n \nfor\n \nLarge\n-\nScale\n \nHeterogeneous\n \nMultimedia\n \nData\n \nA\n \nSurvey\n\n\n\n\n[2]\n \nEmotion\n \nRecognition\n \nin\n \nConversation\n \nResearch\n \nChallenges\n,\n \nDatasets\n,\n \nand\n \nRecent\n \nAdvances\n\n\n\n\n[3]\n \nA\n \nComprehensive\n \nSurvey\n \non\n \nAffective\n \nComputing\n;\n \nChallenges\n,\n \nTrends\n,\n \nApplications\n,\n \nand\n \nFuture\n \nDirections\n\n\n\n\n[4]\n \nAffective\n \nComputing\n \nfor\n \nHealthcare\n \nRecent\n \nTrends\n,\n \nApplications\n,\n \nChallenges\n,\n \nand\n \nBeyond\n\n\n\n\n[5]\n \nAutomatic\n \nSensor\n-\nfree\n \nAffect\n \nDetection\n \nA\n \nSystematic\n \nLiterature\n \nReview\n\n\n\n\n[6]\n \nAffective\n \nVideo\n \nContent\n \nAnalysis\n \nDecade\n \nReview\n \nand\n \nNew\n \nPerspectives\n\n\n\n\n[7]\n \nEmotion\n \nRecognition\n \nfrom\n \nMultiple\n \nModalities\n \nFundamentals\n \nand\n \nMethodologies\n\n\n\n\n[8]\n \nThe\n \nAmbiguous\n \nWorld\n \nof\n \nEmotion\n \nRepresentation\n\n\n\n\n[9]\n \nMultimodal\n \nAffective\n \nAnalysis\n \nUsing\n \nHierarchical\n \nAttention\n \nStrategy\n \nwith\n \nWord\n-\nLevel\n \nAlignment\n\n\n\n\n[10]\n \nExpression\n,\n \nAffect\n,\n \nAction\n \nUnit\n \nRecognition\n \nAff\n-\nWild2\n,\n \nMulti\n-\nTask\n \nLearning\n \nand\n \nArcFace\n\n\n\n\n[11]\n \nFeature\n \nDimensionality\n \nReduction\n \nfor\n \nVideo\n \nAffect\n \nClassification\n \nA\n \nComparative\n \nStudy",
+      "anchor": "A6.p2.1",
+      "id": "autosurvey-0326",
+      "sha256": "ed5492f8b567e863b8e54035b0b3e703eb859b2414d7b277a8e2831175aac831",
+      "translate": true
+    }
+  ],
+  "translation_status": "prepared, not translated"
+}

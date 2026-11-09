@@ -1,0 +1,599 @@
+import { H1, H2, H3, Text, Stack, Row, Grid, Card, CardHeader, CardBody, Table, Link, Pill, Button, Divider, useCanvasState, useHostTheme } from 'cursor/canvas';
+
+type Entry = { id:string; name:string; title:string; titleZh:string; group:string; first:string; latest:string; tier:string; decision:string; url:string; extra?:string; quote:string; quoteZh:string; en:string; zh:string; method:string; evidence:string; limit:string; use:string };
+const entries: Entry[] = [
+  {
+    "id": "01",
+    "name": "AutoSurvey",
+    "title": "AutoSurvey: Large Language Models Can Automatically Write Surveys",
+    "titleZh": "AutoSurvey：大语言模型能够自动撰写综述",
+    "group": "文献综合",
+    "first": "2024",
+    "latest": "NeurIPS 2024 正式版",
+    "tier": "历史对照",
+    "decision": "保留流程基线；不再承担当前最优方法的角色。",
+    "url": "https://papers.nips.cc/paper_files/paper/2024/hash/d07a9fc7da2e2ec0574c38d5f504d105-Abstract-Conference.html",
+    "quote": "initial retrieval and outline generation",
+    "quoteZh": "初始检索与大纲生成。",
+    "en": "AutoSurvey divides survey writing into retrieval, outline planning, section drafting, and revision. It is useful for understanding how a large writing task becomes a sequence of smaller tasks with supporting literature.",
+    "zh": "AutoSurvey 将综述写作拆为检索、大纲规划、分节起草和修订。它有助于理解如何将大型写作任务分解成由文献支持的较小任务序列。",
+    "method": "先收集领域材料再组织结构，按小节生成并整合，配套评价与迭代。",
+    "evidence": "NeurIPS 2024 论文提供方法和实验；本次未重跑代码，不能据此断言其在当前模型上仍占优。",
+    "limit": "早期上下文限制与模型能力会影响设计。不要直接沿用旧提示词、模型排名或质量分数。",
+    "use": "在同一批无人机论文与同一基础模型上复现其流程，作为历史对照；补读 21–24。"
+  },
+  {
+    "id": "02",
+    "name": "OpenScholar",
+    "title": "OpenScholar: Synthesizing Scientific Literature with Retrieval-augmented LMs",
+    "titleZh": "OpenScholar：利用检索增强语言模型综合科学文献",
+    "group": "文献综合",
+    "first": "2024-11-21",
+    "latest": "Nature 论文版 2026-02-04；arXiv 仍为 2024 v1",
+    "tier": "方法基础",
+    "decision": "保留证据检索与综合方法；优先核对正式版，旧排行榜只作历史记录。",
+    "url": "https://arxiv.org/abs/2411.14199",
+    "extra": "https://www.nature.com/articles/s41586-025-10072-4",
+    "quote": "synthesizing citation-backed responses",
+    "quoteZh": "综合生成有引用支持的回答。",
+    "en": "OpenScholar retrieves relevant scientific passages and uses them to construct cited answers. Its main lesson is that literature access and evidence grounding must be evaluated separately from a model's ability to write fluent explanations.",
+    "zh": "OpenScholar 检索相关科学文献片段，并据此构建带引用的回答。其主要启示是：文献获取和证据支撑应与模型撰写流畅解释的能力分别评价。",
+    "method": "大规模学术检索、证据片段与反馈迭代结合；ScholarQABench 用于评价科学文献问答。",
+    "evidence": "核对预印本摘要及 Nature 正式版元数据。两个版本的数据口径应各自引用，不混用；本次未做全文版本差异审计。",
+    "limit": "历史 GPT-4o 对比不代表 2026 年模型能力；长答案问答也不等于完整综述。",
+    "use": "为每条无人机研究结论保存证据位置，区分引用存在与引用支持该结论。"
+  },
+  {
+    "id": "03",
+    "name": "SurveyForge / SurveyBench",
+    "title": "SurveyForge: On the Outline Heuristics, Memory-Driven Generation, and Multi-dimensional Evaluation for Automated Survey Writing",
+    "titleZh": "SurveyForge：自动综述写作中的大纲启发式、记忆驱动生成与多维评价",
+    "group": "文献综合",
+    "first": "2025-03-06",
+    "latest": "ACL 2025 正式版（2025-07）",
+    "tier": "历史对照",
+    "decision": "纠正此前仅标为预印本的记录；保留大纲和记忆基线，补充新评价。",
+    "url": "https://aclanthology.org/2025.acl-long.609/",
+    "quote": "outline quality and citation accuracy",
+    "quoteZh": "大纲质量和引用准确性。",
+    "en": "SurveyForge uses existing survey structures and retrieved papers to plan and write a review. SurveyBench separates reference, outline, and content assessment, making it easier to diagnose why a generated survey is weak.",
+    "zh": "SurveyForge 利用已有综述的结构及检索论文来规划和撰写综述。SurveyBench 分别评价参考文献、大纲和内容，便于定位生成综述质量不佳的原因。",
+    "method": "参考人工大纲的组织方式，由学术导航与记忆检索支持内容生成和修订。",
+    "evidence": "论文使用包含 100 篇人工综述的 SurveyBench；报告优于当时的 AutoSurvey 等对照。",
+    "limit": "不能把当时的胜率当作现在的最优结论；模仿人工大纲也可能限制新的分类方式。",
+    "use": "分别评价结构、证据与综合深度；使用 SurveyLens、Bloom-Eval 扩展评价。"
+  },
+  {
+    "id": "04",
+    "name": "The AI Scientist-v2",
+    "title": "The AI Scientist-v2: Workshop-Level Automated Scientific Discovery via Agentic Tree Search",
+    "titleZh": "AI Scientist-v2：通过智能体树搜索实现工作坊水平的自动科学发现",
+    "group": "科研闭环",
+    "first": "2025-04-10",
+    "latest": "arXiv v1；另有 2026 年系列综合论文",
+    "tier": "历史对照",
+    "decision": "保留实验树搜索入门；正式比较需加入近期闭环系统。",
+    "url": "https://arxiv.org/abs/2504.08066",
+    "quote": "eliminates the reliance on human-authored code templates",
+    "quoteZh": "消除对人工编写代码模板的依赖。",
+    "en": "AI Scientist-v2 organizes research as a search over experimental implementations, connecting hypotheses, code execution, analysis, and manuscript writing. It demonstrates an end-to-end workflow, while its workshop results provide limited evidence about general research quality.",
+    "zh": "AI Scientist-v2 将研究组织为对实验实现的搜索，连接假设、代码执行、分析与论文写作。它展示了端到端流程，但工作坊评审结果对普遍科研质量的证明范围有限。",
+    "method": "实验管理 Agent 调度渐进式树搜索，并通过视觉语言反馈改进图表。",
+    "evidence": "作者报告向 ICLR workshop 提交三份自主生成稿件，其中一份达到录用标准。",
+    "limit": "三个案例不能说明稳定产出主会论文；是否运行了实验与论断是否正确仍需独立核验。",
+    "use": "借鉴候选分支与实验状态管理，不沿用其论文评分替代无人机指标。"
+  },
+  {
+    "id": "05",
+    "name": "AI Scientist / Nature 综合版",
+    "title": "Towards end-to-end automation of AI research",
+    "titleZh": "迈向 AI 研究的端到端自动化",
+    "group": "科研闭环",
+    "first": "2026-03-25（正式论文）",
+    "latest": "Nature 651, 914–919 (2026)",
+    "tier": "方法基础",
+    "decision": "作为 AI Scientist 系列综合阅读入口；与 v2 按同一研究谱系处理。",
+    "url": "https://www.nature.com/articles/s41586-026-10265-5",
+    "quote": "Only one of three submissions was accepted",
+    "quoteZh": "三份投稿中只有一份被录用。",
+    "en": "This paper brings together template-based and more open-ended AI research workflows. It helps compare levels of automation, but a publication about an AI scientist is different from a paper produced by that scientist.",
+    "zh": "这篇论文综合讨论基于模板和更开放的 AI 科研流程，有助于比较自动化程度。但研究 AI 科学家的论文，与 AI 科学家自身产出的论文，是不同的评价对象。",
+    "method": "贯通想法生成、实验、分析、写作和审稿，并比较不同模型与计算投入。",
+    "evidence": "正式出版日期已核对；本次全文直达受站点跳转影响，使用出版方索引与前次已核对内容，未重新精读全文。",
+    "limit": "Nature 出版的是系统研究；不能说该系统自主产出了这篇 Nature 论文。",
+    "use": "厘清“系统论文”“系统产物”“外部验证”三个层级，避免混为成功证据。"
+  },
+  {
+    "id": "06",
+    "name": "Co-Scientist",
+    "title": "Accelerating scientific discovery with Co-Scientist",
+    "titleZh": "借助 Co-Scientist 加速科学发现",
+    "group": "科研闭环",
+    "first": "2025-02-26",
+    "latest": "2026-06-29 v2；页面标注 Nature 2026",
+    "tier": "核心更新",
+    "decision": "应读 2026 修订版；不能仅按 2025 首发判断其时效性。",
+    "url": "https://arxiv.org/abs/2502.18864v2",
+    "quote": "a tournament evolution process for self-improving hypotheses generation",
+    "quoteZh": "通过锦标赛式演化改进假设生成的过程。",
+    "en": "Co-Scientist repeatedly generates, critiques, ranks, and revises hypotheses in response to a research objective. Its biomedical validations illustrate why hypothesis selection should eventually connect to external experiments rather than remain an internal debate.",
+    "zh": "Co-Scientist 围绕研究目标反复生成、批评、排序和修订假设。其生物医学验证说明，假设筛选最终应连接外部实验，而不能停留在系统内部讨论。",
+    "method": "异步多 Agent 协作与锦标赛演化，增加推理时计算以改进候选假设。",
+    "evidence": "作者在药物再利用、靶点与耐药机制等应用中验证，并报告部分体外实验。",
+    "limit": "生物医学案例不能直接证明无人机适用性；内部排名也不是实际实验收益。",
+    "use": "让多个候选解释接受相同实验检验，记录排名与最终复验结果是否一致。"
+  },
+  {
+    "id": "07",
+    "name": "Kosmos",
+    "title": "Kosmos: An AI Scientist for Autonomous Discovery",
+    "titleZh": "Kosmos：面向自主发现的 AI 科学家",
+    "group": "科研闭环",
+    "first": "2025-11-04",
+    "latest": "2025-11-05 v2",
+    "tier": "方法基础",
+    "decision": "保留长期研究记忆案例；与 EvoScientist 等近期工作比较。",
+    "url": "https://arxiv.org/abs/2511.02824v2",
+    "quote": "a structured world model",
+    "quoteZh": "结构化世界模型。",
+    "en": "Kosmos connects literature search and data analysis through shared structured research state. Here, world model refers to organized scientific knowledge and findings, not necessarily a learned physical simulator for robot control.",
+    "zh": "Kosmos 通过共享的结构化研究状态连接文献检索与数据分析。这里的世界模型指组织起来的科学知识与发现，并不必然是机器人控制中的学习式物理仿真器。",
+    "method": "围绕目标与数据交替检索、提出假设、运行分析，并保存支持报告的文献或代码来源。",
+    "evidence": "论文报告多个领域案例；其效率换算主要来自合作研究者评价，不能当作统一受控生产率结论。",
+    "limit": "报告可追溯不意味着所有陈述正确；其研究记忆也不能直接替代导航世界模型。",
+    "use": "建立假设、实验、负结果之间的研究记忆，而不是把所有日志塞进上下文。"
+  },
+  {
+    "id": "08",
+    "name": "karpathy/autoresearch",
+    "title": "autoresearch: AI agents running research on single-GPU nanochat training automatically",
+    "titleZh": "autoresearch：让 AI 智能体自动开展单 GPU 训练实验",
+    "group": "科研闭环",
+    "first": "README 说明日期为 2026-03",
+    "latest": "仓库页面核对于 2026-11-05；未固定 commit",
+    "tier": "工程入口",
+    "decision": "保留作轻量闭环入口；它不是同行评审论文。",
+    "url": "https://github.com/karpathy/autoresearch",
+    "quote": "keeps or discards, and repeats",
+    "quoteZh": "保留或丢弃，然后重复。",
+    "en": "The repository gives an agent a constrained training experiment and a fixed evaluation metric. The agent changes code, runs a short training cycle, and keeps or rejects the result, providing a compact example of automated empirical search.",
+    "zh": "这个仓库为 Agent 提供受限训练实验和固定评价指标。Agent 修改代码、运行短训练周期并保留或拒绝结果，构成紧凑的自动经验搜索示例。",
+    "method": "README 区分固定准备/评价文件、Agent 可修改训练文件和人编写的研究指令；每次训练预算五分钟。",
+    "evidence": "作者仓库说明了工程循环；没有将其作为科研新颖性的同行评审证据。",
+    "limit": "同一验证指标反复优化可能过拟合；代码可运行不等于发现新知识。",
+    "use": "借鉴受限修改和结果日志，把训练指标换成固定仿真评价，并独立留出终验集。"
+  },
+  {
+    "id": "09",
+    "name": "PaperBench",
+    "title": "PaperBench: Evaluating AI's Ability to Replicate AI Research",
+    "titleZh": "PaperBench：评价 AI 复现 AI 研究的能力",
+    "group": "评测",
+    "first": "2025-04-02",
+    "latest": "2025-04-07 v3",
+    "tier": "方法基础",
+    "decision": "保留任务拆解和评分设计；废止将原始模型分数当作当前能力上限。",
+    "url": "https://arxiv.org/abs/2504.01848v3",
+    "quote": "replicate 20 ICML 2024 Spotlight and Oral papers from scratch",
+    "quoteZh": "从零复现 20 篇 ICML 2024 Spotlight 和 Oral 论文。",
+    "en": "PaperBench evaluates whether agents can turn research papers into working implementations and experiments. Its hierarchical rubrics make partial progress observable, but partial implementation scores must not be confused with complete scientific reproduction.",
+    "zh": "PaperBench 评价 Agent 能否将论文转化为可运行实现和实验。分层评分标准让部分进展可见，但部分实现得分不能等同于完整的科学复现。",
+    "method": "与论文作者协作定义细粒度任务，并检验自动评分器。",
+    "evidence": "论文包含 20 篇研究、8,316 个可评分子任务；历史模型成绩属于当时的配置。",
+    "limit": "复现任务不直接衡量原创发现；应重新运行当前模型并检查评分器误差。",
+    "use": "将无人机复现拆为环境、关键机制、结果重现及结论支持四层。"
+  },
+  {
+    "id": "10",
+    "name": "AstaBench",
+    "title": "AstaBench: Rigorous Benchmarking of AI Agents with a Scientific Research Suite",
+    "titleZh": "AstaBench：利用科学研究任务套件严格评测 AI 智能体",
+    "group": "评测",
+    "first": "2025-10-24",
+    "latest": "2026-04-21 v2；ICLR 2026",
+    "tier": "核心更新",
+    "decision": "保留为受控评测核心；排行榜是时点数据，不作为永久排名。",
+    "url": "https://arxiv.org/abs/2510.21652v2",
+    "extra": "https://allenai.org/blog/astabench-update-spring-2026",
+    "quote": "model cost and tool access",
+    "quoteZh": "模型成本与工具访问权限。",
+    "en": "AstaBench evaluates scientific agents across literature, coding, analysis, and discovery tasks. Its emphasis on standardized tools and costs helps distinguish improvements in agent design from advantages caused by better models or extra resources.",
+    "zh": "AstaBench 跨文献、编码、分析和发现任务评价科研 Agent。它强调标准化工具和成本，有助于区分 Agent 设计改进与更强模型、更多资源带来的优势。",
+    "method": "统一科学工具环境、任务接口和多类基线；覆盖 2,400 余个问题。",
+    "evidence": "v2 与 ICLR 2026 状态已核对；官方 2026-04-30 更新另报告新模型评测。",
+    "limit": "综合分数掩盖任务差异；尚不能直接预测无人机研究能力。",
+    "use": "冻结工具权限、文献时间范围和预算，分别报告各研究子任务表现。"
+  },
+  {
+    "id": "11",
+    "name": "PAPERBENCHX",
+    "title": "PAPERBENCHX: Can AI Reproduce Science Across Disciplines?",
+    "titleZh": "PAPERBENCHX：AI 能否跨学科复现科学研究？",
+    "group": "评测",
+    "first": "2026-10-29",
+    "latest": "2026-10-29 v1 预印本",
+    "tier": "近期候选",
+    "decision": "优先读重跑评分机制；新结果仍需独立复核。",
+    "url": "https://arxiv.org/abs/2610.39744",
+    "quote": "score only regenerated evidence",
+    "quoteZh": "仅对重新生成的证据评分。",
+    "en": "PAPERBENCHX asks agents to reconstruct experiments using domain-specific scientific environments. Submissions are rerun and judged on regenerated evidence, making the distinction between plausible reports and reproducible results central to evaluation.",
+    "zh": "PAPERBENCHX 要求 Agent 使用领域科学环境重建实验。提交物需重新运行，并按重新生成的证据评分，因此评价重点是区分看似合理的报告与可复现结果。",
+    "method": "覆盖 93 项任务、12 个研究方向，使用领域环境和专家标准。",
+    "evidence": "作者报告最优配置仅有约 14% 任务达到其 90% 完整复现阈值；不能换算成所有科研任务成功率。",
+    "limit": "新近预印本；任务和计算预算与无人机实验未必匹配。",
+    "use": "候选必须在干净环境中重跑，再读取日志评分，不接受报告自述成绩。"
+  },
+  {
+    "id": "12",
+    "name": "Can LLMs Generate Novel Research Ideas?",
+    "title": "Can LLMs Generate Novel Research Ideas? A Large-Scale Human Study with 100+ NLP Researchers",
+    "titleZh": "大语言模型能否提出新颖研究想法？一项涉及百余位 NLP 研究者的人类研究",
+    "group": "评测",
+    "first": "2024-09-06",
+    "latest": "ICLR 2025 正式版",
+    "tier": "方法基础",
+    "decision": "纠正仅列预印本的记录；保留盲评设计，不沿用旧能力判断。",
+    "url": "https://proceedings.iclr.cc/paper_files/paper/2025/hash/ea94957d81b1c1caf87ef5319fa6b467-Abstract-Conference.html",
+    "quote": "slightly weaker on feasibility",
+    "quoteZh": "在可行性方面略弱。",
+    "en": "This study compares human and AI research proposals using expert blind reviews. It separates perceived novelty from feasibility, showing why an attractive idea should be evaluated again after implementation and experimentation.",
+    "zh": "该研究通过专家盲评比较人类与 AI 的研究提案，并区分感知到的新颖性与可行性。这说明一个吸引人的想法仍应在实现和实验后再次评价。",
+    "method": "招募百余位 NLP 研究者生成与盲审想法，控制比较中的混杂。",
+    "evidence": "在该设置中 AI 想法被评为更新颖、可行性略弱；它没有证明 AI 全流程科研优于人类。",
+    "limit": "基于文本提案的偏好受呈现与评审影响；也不能外推到无人机。",
+    "use": "新颖性、可实现性、实验价值分开打分，再跟踪这些评分能否预测实际结果。"
+  },
+  {
+    "id": "13",
+    "name": "EPOCH",
+    "title": "EPOCH: Reliable Discovery through Evidence-Governed Search",
+    "titleZh": "EPOCH：通过证据约束的搜索实现可靠发现",
+    "group": "科研闭环",
+    "first": "2026-10-04",
+    "latest": "2026-10-04 v1 预印本",
+    "tier": "近期候选",
+    "decision": "与拟议课题高度相关；作为最近邻检查对象，不先验认定有效。",
+    "url": "https://arxiv.org/abs/2610.06986",
+    "quote": "active falsification, admission checks, and independent replay",
+    "quoteZh": "主动反证、准入检查和独立重跑。",
+    "en": "EPOCH adds explicit rules for how search results become accepted claims. It combines evidence tracking, falsification, and replay so that a promising score is not automatically treated as a scientific discovery.",
+    "zh": "EPOCH 明确规定搜索结果如何成为被接受的主张。它结合证据追踪、反证和重跑，避免自动把有希望的分数当作科学发现。",
+    "method": "任务契约、类型化记忆、反证、主张准入与独立重放构成闭环。",
+    "evidence": "作者在算法优化和数学等任务上报告收益；本次未复现实验，不将作者的最优主张视为独立确认。",
+    "limit": "无需再以“加入证据审核”为创新；计算任务验证器也未必适合噪声较大的机器人任务。",
+    "use": "研究条件化证据和实验选择的额外价值，并在固定预算下与这种机制对照。"
+  },
+  {
+    "id": "14",
+    "name": "Sound Agentic Science Requires Adversarial Experiments",
+    "title": "Sound Agentic Science Requires Adversarial Experiments",
+    "titleZh": "可靠的智能体科学需要对抗性实验",
+    "group": "评测",
+    "first": "2026-04-23",
+    "latest": "2026-05-20 v2；ICLR 2026 workshop",
+    "tier": "方法基础",
+    "decision": "保留研究设计原则；不将立场论文当作充分性能证据。",
+    "url": "https://arxiv.org/abs/2604.22080v2",
+    "quote": "A fluent explanation or a significant result on a single dataset is not verification.",
+    "quoteZh": "流畅的解释或单一数据集上的显著结果，并不构成验证。",
+    "en": "The paper argues that agents should search for ways a claim can fail. This reframes scientific assistance from constructing persuasive narratives toward designing challenges that expose weak assumptions and selective analysis.",
+    "zh": "论文主张让 Agent 主动寻找主张可能失败的方式，从而将科研辅助的重心由构造有说服力的叙述转向设计能暴露薄弱假设与选择性分析的检验。",
+    "method": "提出以反证优先的标准评价 Agent 辅助产生的科学主张。",
+    "evidence": "属于方法论与立场性质的 workshop 论文；不能以其观点替代你的受控实验。",
+    "limit": "“做反证”本身已经是现有原则；还需量化其收益和额外成本。",
+    "use": "每个候选附带失败预测，且记录淘汰了多少无效改进、误拒了多少有效改进。"
+  },
+  {
+    "id": "15",
+    "name": "EGO-Planner",
+    "title": "EGO-Planner: An ESDF-free Gradient-based Local Planner for Quadrotors",
+    "titleZh": "EGO-Planner：一种无需 ESDF 的四旋翼梯度式局部规划器",
+    "group": "无人机",
+    "first": "2020-08-20",
+    "latest": "2020-12-07 v2；RA-L 2021",
+    "tier": "领域基线",
+    "decision": "因你的系统基础而保留；从 Auto Research 前沿清单中分离。",
+    "url": "https://arxiv.org/abs/2008.08835v2",
+    "quote": "only extract necessary obstacle information",
+    "quoteZh": "只提取必要的障碍信息。",
+    "en": "EGO-Planner avoids maintaining a full signed distance field for local trajectory optimization. It uses obstacle information relevant to the current trajectory, providing an efficient planning component rather than a complete autonomous exploration system.",
+    "zh": "EGO-Planner 避免为局部轨迹优化维护完整的有符号距离场，而使用与当前轨迹相关的障碍信息。它提供的是高效规划组件，而非完整自主探索系统。",
+    "method": "利用碰撞轨迹与无碰撞引导路径构造碰撞代价，并调整时间分配与轨迹。",
+    "evidence": "论文包含基准和实机实验；仅说明当时设置下的方法表现。",
+    "limit": "局部规划与全局探索、语义导航是不同任务；旧方法也不应自动认定为现今最强基线。",
+    "use": "在研究高层决策时固定它，减少同时修改多层系统引入的混杂。"
+  },
+  {
+    "id": "16",
+    "name": "FUEL",
+    "title": "FUEL: Fast UAV Exploration Using Incremental Frontier Structure and Hierarchical Planning",
+    "titleZh": "FUEL：利用增量前沿结构和分层规划实现快速无人机探索",
+    "group": "无人机",
+    "first": "2021（正式版年份）",
+    "latest": "RA-L 2021；仓库提供后续多机工作链接",
+    "tier": "领域基线",
+    "decision": "保留几何探索参照；不作为科研 Agent 方法论文。",
+    "url": "https://github.com/HKUST-Aerial-Robotics/FUEL",
+    "quote": "maintains crucial information for exploration planning incrementally",
+    "quoteZh": "以增量方式维护探索规划所需的关键信息。",
+    "en": "FUEL maintains frontier information and plans exploration at several levels, from coverage routes to viewpoints and trajectories. It supplies a concrete exploration architecture against which research-generated changes can be tested.",
+    "zh": "FUEL 维护前沿信息，并从覆盖路径、视点到轨迹多个层级规划探索。它为检验科研系统生成的改动提供了具体的探索架构。",
+    "method": "增量 Frontier Information Structure 与分层路径、视点、轨迹规划。",
+    "evidence": "作者仓库对应 RA-L 2021 论文，并报告当时的比较结果；本次未测当前环境。",
+    "limit": "历史倍数提升不适用于新平台；必须统一传感器、地图和运动条件。",
+    "use": "用于组织探索决策任务及对照，但修改模块边界要与已有系统对齐。"
+  },
+  {
+    "id": "17",
+    "name": "FlightBench",
+    "title": "FlightBench: Benchmarking Learning-based Methods for Ego-vision-based Quadrotors Navigation",
+    "titleZh": "FlightBench：第一视角四旋翼导航中学习式方法的基准评测",
+    "group": "无人机",
+    "first": "2024-06-09",
+    "latest": "2025-05-19 v3；页面关联 RA-L 2025 DOI",
+    "tier": "领域基线",
+    "decision": "补齐最新版本与正式发表关联；保留场景难度和公平比较思路。",
+    "url": "https://arxiv.org/abs/2406.05687v3",
+    "quote": "sharp corners or view occlusion",
+    "quoteZh": "急转角或视野遮挡。",
+    "en": "FlightBench compares learned and optimization-based navigation methods across scenarios with different difficulty factors. Its value for this project is the evaluation design: overall averages alone can hide systematic failures in particular geometries.",
+    "zh": "FlightBench 在具有不同难度因素的场景中比较学习式与优化式导航方法。对本项目的价值在于评价设计：总体平均值可能掩盖特定几何条件下的系统性失败。",
+    "method": "定义场景难度因素，结合多指标、仿真以及全文版本中报告的硬件验证进行比较。",
+    "evidence": "v3 报告学习式方法在速度与推理上有优势，但在急转弯和遮挡条件下仍有困难。",
+    "limit": "这些是被测方法的结论，不是所有学习式导航的永久结论；不直接评价语言任务。",
+    "use": "把场景族与难度作为实验选择变量，报告分组失败而不只报总体分数。"
+  },
+  {
+    "id": "18",
+    "name": "OpenUAV / UAV-Need-Help",
+    "title": "Towards Realistic UAV Vision-Language Navigation: Platform, Benchmark, and Methodology",
+    "titleZh": "迈向真实的无人机视觉语言导航：平台、基准与方法",
+    "group": "无人机",
+    "first": "2025（本次核对正式版）",
+    "latest": "ICLR 2025 正式版",
+    "tier": "领域基线",
+    "decision": "保留 UAV 语义导航任务入口；平台版本与新方法需另行核对。",
+    "url": "https://proceedings.iclr.cc/paper_files/paper/2025/hash/15ce8e7afe5ee95bad56e3b9be28d3d1-Abstract-Conference.html",
+    "quote": "provides varying levels of guidance information",
+    "quoteZh": "提供不同程度的引导信息。",
+    "en": "This work adapts vision-language navigation to aerial movement and realistic control through a platform, task data, and navigation method. Its assistance-based search task is different from both geometric coverage and simple local collision avoidance.",
+    "zh": "这项工作通过平台、任务数据和导航方法，使视觉语言导航更贴近空中运动与真实控制。其带辅助信息的搜索任务不同于几何覆盖，也不同于简单的局部避障。",
+    "method": "OpenUAV 平台、目标导向数据、UAV-Need-Help 搜索任务与多模态分层轨迹生成。",
+    "evidence": "正式版介绍约 12k 轨迹数据；报告方法相对当时基线的收益及与人类表现的差距。",
+    "limit": "不同指导信息会改变任务难度；不能跨设置直接比较成功率。",
+    "use": "在几何探索闭环稳定后引入，固定辅助信息、传感器与动作接口。"
+  },
+  {
+    "id": "19",
+    "name": "VLN on the Fly",
+    "title": "VLN on the Fly: An Onboard Vision-Language Navigation Stack for Aerial Robots",
+    "titleZh": "VLN on the Fly：面向空中机器人的机载视觉语言导航系统",
+    "group": "无人机",
+    "first": "2026",
+    "latest": "作者项目页标注 IMAV 2026",
+    "tier": "近期候选",
+    "decision": "因 Orin NX 与 EGO 组合而优先检查；新近不代表覆盖了所有任务。",
+    "url": "https://vln-on-the-fly.github.io/",
+    "quote": "using an external motion-capture system",
+    "quoteZh": "使用外部动作捕捉系统。",
+    "en": "The system combines onboard visual-language object grounding with depth-based goal estimation and local planning. It is directly relevant to an Orin NX platform, but its motion-capture experiments establish a narrower capability than general outdoor autonomy.",
+    "zh": "该系统结合机载视觉语言目标定位、基于深度的目标位置估计和局部规划，与 Orin NX 平台直接相关。但其动捕实验支持的能力范围比一般室外自主飞行更窄。",
+    "method": "视觉语言模块选择图像区域，深度生成三维目标，EGO-Planner 规划，控制策略执行。",
+    "evidence": "作者页面报告室内有/无障碍飞行，视觉语言与规划运行于 Orin NX，定位使用外部动捕。",
+    "limit": "当前视野与深度范围有限；不能把它视作完整未知环境长程搜索解法。",
+    "use": "借鉴模块接口与目标核验，将定位来源和机载/站端计算分别列入对照条件。"
+  },
+  {
+    "id": "20",
+    "name": "LightVLN",
+    "title": "LightVLN: Efficient Aerial Vision-and-Language Navigation with Compact Memory and History-Guided Local Aggregation",
+    "titleZh": "LightVLN：利用紧凑记忆与历史引导局部聚合实现高效空中视觉语言导航",
+    "group": "无人机",
+    "first": "2026-10-04",
+    "latest": "2026-10-04 v1 预印本",
+    "tier": "近期候选",
+    "decision": "保留端侧效率参考；正式实验前检查代码和可重现性。",
+    "url": "https://arxiv.org/abs/2610.05024",
+    "quote": "real-to-sim hardware-in-the-loop (HIL) evaluation",
+    "quoteZh": "从真实硬件接入仿真的硬件在环（HIL）评价。",
+    "en": "LightVLN reduces observation tokens and stores compact visual history to lower navigation computation. Its deployment evidence concerns onboard-compute hardware-in-the-loop evaluation, which should be distinguished from unrestricted physical flight experiments.",
+    "zh": "LightVLN 通过减少观测 token 和保存紧凑视觉历史降低导航计算。其部署证据属于机载计算的硬件在环评价，应与真实自由飞行实验区分。",
+    "method": "小型语言骨干、单 token 历史帧表示，以及由历史和指令条件化的局部聚合。",
+    "evidence": "作者报告 OpenFly、AerialVLN-S 数据集结果以及 Orin NX 16GB 的 HIL 性能。",
+    "limit": "数据集与 HIL 结果不能证明你现有飞行系统上的闭环收益。",
+    "use": "比较端到端时延、内存与任务表现；不只比较模型推理频率。"
+  },
+  {
+    "id": "21",
+    "name": "SurGE",
+    "title": "SurGE: A Benchmark and Evaluation Framework for Scientific Survey Generation",
+    "titleZh": "SurGE：科学综述生成的基准与评价框架",
+    "group": "文献综合",
+    "first": "2025-08-21",
+    "latest": "2026-05-02 v5",
+    "tier": "核心更新",
+    "decision": "新增；作为检索与生成联合评价的主要参考之一。",
+    "url": "https://arxiv.org/abs/2508.15658v5",
+    "quote": "comprehensiveness, citation accuracy, structural organization, and content quality",
+    "quoteZh": "全面性、引用准确性、结构组织和内容质量。",
+    "en": "SurGE evaluates survey generation as both literature retrieval and synthesis. Topic descriptions, expert surveys, reference sets, and a large paper corpus provide a more explicit task setup than evaluating generated text in isolation.",
+    "zh": "SurGE 同时评价综述生成中的文献检索与综合。主题说明、专家综述、参考文献集合和大型论文库，使任务设置比单独评价生成文本更加明确。",
+    "method": "将主题、人工综述及引用集作为测试实例，配合百万级论文库和四维评价。",
+    "evidence": "v5 日期已核对；作者比较多种方法并报告仍存在明显能力差距。",
+    "limit": "参考综述不是唯一正确答案；引用覆盖需要结合相关性和新增文献考虑。",
+    "use": "将无人机综述的检索覆盖与生成质量分别测量，再观察误差如何传播。"
+  },
+  {
+    "id": "22",
+    "name": "SurveyLens",
+    "title": "SurveyLens: A Discipline-Aware Benchmark for Automatic Survey Generation",
+    "titleZh": "SurveyLens：面向学科差异的自动综述生成基准",
+    "group": "文献综合",
+    "first": "2026-02（预印本）",
+    "latest": "EMNLP 2026 正式版（2026-10）",
+    "tier": "核心更新",
+    "decision": "新增；优先于仅用通用写作评分的评价方案。",
+    "url": "https://aclanthology.org/2026.emnlp-main.2616/",
+    "quote": "reference coverage and relevance remain a shared bottleneck",
+    "quoteZh": "参考文献覆盖与相关性仍是共同瓶颈。",
+    "en": "SurveyLens evaluates whether survey systems meet the standards of different research disciplines. It combines discipline-sensitive criteria with comparison to human surveys, showing that strong performance in one style of survey need not generalize everywhere.",
+    "zh": "SurveyLens 评价综述系统是否满足不同研究学科的标准。它结合学科相关标准与人工综述对照，说明在某种综述风格上表现好未必能泛化到所有领域。",
+    "method": "1,000 篇人工综述、10 个学科；学科评价标准与参考对齐构成双重评价。",
+    "evidence": "正式版比较 11 个系统，发现不同范式各有所长，文献覆盖与相关性仍有不足。",
+    "limit": "学科权重仍需人工校准；跨学科结果不能直接给出 UAV 专题的最佳系统。",
+    "use": "为机器人综述增加运动假设、传感器、算力和实验证据等领域评价维度。"
+  },
+  {
+    "id": "23",
+    "name": "Bloom-Eval",
+    "title": "Bloom-Eval: A Hierarchical Evaluation Benchmark for Automatic Survey Generation Based on Bloom's Taxonomy",
+    "titleZh": "Bloom-Eval：基于布鲁姆分类学的自动综述生成分层评价基准",
+    "group": "文献综合",
+    "first": "2026（本次核对正式版）",
+    "latest": "ACL 2026 正式版（2026-07）",
+    "tier": "核心更新",
+    "decision": "新增；用于区分格式组织与知识综合能力。",
+    "url": "https://aclanthology.org/2026.acl-long.1315/",
+    "quote": "proficient format organizers",
+    "quoteZh": "熟练的格式组织者。",
+    "en": "Bloom-Eval evaluates survey quality through multiple cognitive levels rather than presentation alone. It favors deterministic checks where possible and reserves model-based assessment for harder qualities, encouraging clearer separation between organization and understanding.",
+    "zh": "Bloom-Eval 从多个认知层级评价综述质量，而不只关注呈现。它尽可能采用确定性检查，对更难的能力再使用模型评价，以更清晰地区分组织形式与理解能力。",
+    "method": "采用六层评价，结合确定性算法与 GRADE 方法，面向跨学科材料。",
+    "evidence": "论文构建三千余篇论文的数据集；作者认为被测系统的知识整合能力落后于格式组织能力。",
+    "limit": "这不是所有系统都缺乏理解的普遍证明；复杂维度仍要检查与专家的一致性。",
+    "use": "让综述评分关注比较、条件解释、矛盾与研究缺口，不奖励篇幅本身。"
+  },
+  {
+    "id": "24",
+    "name": "SurveyGraph",
+    "title": "SurveyGraph: Generating Academic Surveys via Methods-Entity Knowledge Graphs",
+    "titleZh": "SurveyGraph：通过方法实体知识图谱生成学术综述",
+    "group": "文献综合",
+    "first": "2026-10-22",
+    "latest": "arXiv v1；作者页面标注 EMNLP 2026 Findings 接收",
+    "tier": "近期候选",
+    "decision": "新增；结构化证据选题的重要最近邻，须核查图关系质量。",
+    "url": "https://arxiv.org/abs/2610.31317",
+    "quote": "follow-on, competition, and shared-resource relations",
+    "quoteZh": "后续发展、竞争与共享资源关系。",
+    "en": "SurveyGraph organizes papers around relationships between methods and uses that structure during retrieval and writing. It is relevant to evidence-based survey design, but the graph's own relations must also be checked rather than assumed correct.",
+    "zh": "SurveyGraph 围绕方法之间的关系组织论文，并在检索和写作时利用这些结构。它与证据驱动综述设计相关，但图中关系本身也需要核查，不能默认正确。",
+    "method": "方法实体图支持核心论文发现、检索、混合大纲和带证据检查的综合。",
+    "evidence": "作者报告同预算检索、关系标注和生成句子审核；明确部分跨系统比较并非相同后端的端到端对照。",
+    "limit": "图结构不自动等于事实；部分支持和充分支持应分别统计。",
+    "use": "比较“适用条件关系”是否比普通方法关系带来额外价值，而非仅提出用图谱。"
+  },
+  {
+    "id": "25",
+    "name": "EvoScientist",
+    "title": "EvoScientist: Towards Multi-Agent Evolving AI Scientists for End-to-End Scientific Discovery",
+    "titleZh": "EvoScientist：迈向用于端到端科学发现的多智能体演化 AI 科学家",
+    "group": "科研闭环",
+    "first": "2026-03-09",
+    "latest": "2026-10-05 v2 预印本",
+    "tier": "核心更新",
+    "decision": "新增；作为持续记忆与研究闭环的近期实现候选。",
+    "url": "https://arxiv.org/abs/2603.08127v2",
+    "extra": "https://github.com/EvoScientist/EvoScientist",
+    "quote": "persistent memory and self-evolution",
+    "quoteZh": "持久记忆与自我演化。",
+    "en": "EvoScientist separates idea generation, implementation, and experience management. It stores lessons from successful and failed attempts so later research can reuse strategies, offering a direct comparison point for systems that learn across experiments.",
+    "zh": "EvoScientist 将想法生成、实现和经验管理分开。它保存成功与失败尝试中的经验，使后续研究能复用策略，因此可作为跨实验学习系统的直接比较对象。",
+    "method": "研究者、工程师、演化管理者三类 Agent；分别保存想法记忆与实验记忆。",
+    "evidence": "v2 报告想法评价和代码执行方面的提升；官方仓库已核对，尚未安装或复现。",
+    "limit": "更高执行成功率不等于有效发现更多；记忆也可能传播错误或跨任务泄漏。",
+    "use": "用留出研究任务检验经验迁移，并消融失败记忆和成功记忆的作用。"
+  },
+  {
+    "id": "26",
+    "name": "Into the Unknown",
+    "title": "Into the Unknown: Benchmarking AI agents on open scientific research problems",
+    "titleZh": "Into the Unknown：在开放科学研究问题上评测 AI 智能体",
+    "group": "评测",
+    "first": "2026-10-13",
+    "latest": "2026-10-13 v1；在审预印本",
+    "tier": "近期候选",
+    "decision": "新增；与你的“已有成果后续研究”需求最直接相关。",
+    "url": "https://arxiv.org/abs/2610.19159",
+    "quote": "None of the 135 submissions satisfies all the conditions",
+    "quoteZh": "135 份提交中没有一份满足全部条件。",
+    "en": "The benchmark gives agents an existing paper and an unpublished follow-up direction. Domain scientists define necessary conditions without supplying a reference solution, allowing evaluation of open research and consistency between claims and recorded work.",
+    "zh": "该基准向 Agent 提供已有论文和未发表的后续方向。领域科学家定义必要条件而不提供参考解，从而评价开放研究，以及主张与实际记录工作的一致性。",
+    "method": "由领域研究者提供后续问题和必要条件，评价研究产物并检查证据完整性。",
+    "evidence": "作者在 15 个方向、9 个 Agent 的 135 份提交中报告无完整通过，114 份未通过其诚信检查。",
+    "limit": "只适用于这批任务、配置和标准；不能据此外推所有 AI 科研都失败。",
+    "use": "把你的已有导航成果转成开放后续研究任务，先写必要条件和证据核验规则。"
+  }
+];
+const groups=['全部','文献综合','科研闭环','评测','无人机'];
+export default function LiteratureReading() {
+  const {tokens:t}=useHostTheme();
+  const [tab,setTab]=useCanvasState('literature-review-tab','逐篇阅读');
+  const [group,setGroup]=useCanvasState('literature-review-group','全部');
+  const [selected,setSelected]=useCanvasState('literature-review-selected','26');
+  const shown=entries.filter(e=>group==='全部'||e.group===group);
+  const p=entries.find(e=>e.id===selected)||entries[0];
+  return <Stack gap={20} style={{padding:24,maxWidth:1280,margin:'0 auto',color:t.text.primary,background:t.bg.editor}}>
+    <Stack gap={8}>
+      <Text size="small" tone="secondary">2026-11-05 复核 · 原清单 20 项 + 新增 6 项 · 摘要/元数据/作者说明层级核查</Text>
+      <H1>Auto Research 中英对照阅读与时效性复核</H1>
+      <Text>区分原文短句翻译与自行撰写的英文释义。每项保留方法、证据、局限和项目用途；本阅读包不等同于全文翻译或复现实验。</Text>
+      <Row wrap gap={8}>{['逐篇阅读','文献索引','时效性与路线'].map(x=><Pill key={x} active={tab===x} onClick={()=>setTab(x)}>{x}</Pill>)}</Row>
+    </Stack>
+    {tab==='逐篇阅读'&&<Stack gap={16}>
+      <Row wrap gap={8}>{groups.map(g=><Pill key={g} active={group===g} onClick={()=>{setGroup(g);setSelected(entries.find(e=>g==='全部'||e.group===g)!.id);}}>{g}</Pill>)}</Row>
+      <Grid columns="repeat(auto-fit,minmax(290px,1fr))" gap={24} align="start">
+        <Stack gap={8} style={{maxHeight:760,overflowY:'auto'}}>
+          <H3>阅读目录 · {shown.length} 项</H3>
+          {shown.map(e=><div key={e.id} style={{padding:'8px 0',borderBottom:'1px solid '+t.stroke.tertiary}}>
+            <Button variant={p.id===e.id?'primary':'ghost'} onClick={()=>setSelected(e.id)} style={{height:'auto',whiteSpace:'normal',textAlign:'left',padding:'6px 8px'}}>{e.id} · {e.name}</Button>
+            <Text size="small" tone="secondary">{e.tier} · {e.latest}</Text>
+          </div>)}
+        </Stack>
+        <Stack gap={16}>
+          <Stack gap={6}><H2>{p.name}</H2><Text>{p.title}</Text><Text weight="semibold">{p.titleZh}</Text><Row wrap><Pill>{p.group}</Pill><Pill>{p.tier}</Pill></Row></Stack>
+          <Text size="small" tone="secondary">首发：{p.first}。采用/核对版本：{p.latest}。</Text>
+          <Row wrap><Link href={p.url}>原始来源</Link>{p.extra&&<Link href={p.extra}>补充原始来源</Link>}</Row>
+          <Text weight="semibold">{p.decision}</Text>
+          <Card><CardHeader>原文短句与翻译</CardHeader><CardBody><Stack gap={8}><Text italic>{p.quote}</Text><Text>{p.quoteZh}</Text><Text size="small" tone="secondary">位置：{['08','16','19'].includes(p.id)?'作者项目页或 README 正文':p.id==='05'?'出版方索引正文片段':'原始来源摘要'}。</Text></Stack></CardBody></Card>
+          <H3>核心内容中英对照</H3>
+          <Text size="small" tone="secondary">以下英文为自行撰写的释义，中文为对应翻译；非原文摘要。</Text>
+          <Text>{p.en}</Text><Text>{p.zh}</Text>
+          <Divider/>
+          <H3>方法总结</H3><Text>{p.method}</Text>
+          <H3>验证证据</H3><Text>{p.evidence}</Text>
+          <H3>局限与时效性判断</H3><Text>{p.limit}</Text>
+          <H3>对本项目的建议</H3><Text>{p.use}</Text>
+        </Stack>
+      </Grid>
+    </Stack>}
+    {tab==='文献索引'&&<Stack gap={16}>
+      <H2>26 项资料的当前用途</H2>
+      <Text>这里的类别是阅读与实验选型判断，不是性能排名。条目 21–26 是本次新增，15–20 是无人机领域资料。</Text>
+      <Table headers={['编号 / 工作','采用版本','用途','本次判断']} rows={entries.map(e=>[<Button key={e.id} variant="ghost" style={{height:'auto',whiteSpace:'normal',textAlign:'left'}} onClick={()=>{setSelected(e.id);setGroup('全部');setTab('逐篇阅读');}}>{e.id} · {e.name}</Button>,e.latest,e.tier,e.decision])}/>
+    </Stack>}
+    {tab==='时效性与路线'&&<Stack gap={20}>
+      <H2>此前清单适合入门，但不能直接充当前沿方法清单</H2>
+      <Text>早期条目并非都因为“经典”而保留：有的是历史对照，有的是评价设计，有的是与你已有系统对应的领域基线。是否过时需要在相同模型、工具、任务与预算下检查。</Text>
+      <Table headers={['检查对象','容易失效的部分','仍可能有用的部分']} rows={[
+        ['模型与成绩','旧模型排名、API 成本、执行成功率','任务定义、评价原则、失败分类'],
+        ['方法与工程','为旧模型局限设计的复杂流程、旧依赖','模块分解、证据接口、可复现协议'],
+        ['日期与版本','只看首次 arXiv 年份；把正式发表当全新方法','首发/修订/正式发表分开记录'],
+        ['近期工作','只因更新就认定领先或可靠','核查同预算对照、原始日志、独立复验'],
+      ]}/>
+      <H2>修订后的阅读次序</H2>
+      <Text>综述：SurveyLens → Bloom-Eval → SurGE → OpenScholar → SurveyGraph。AutoSurvey / SurveyForge 保留历史对照。</Text>
+      <Text>科研闭环：Into the Unknown → AstaBench → PAPERBENCHX → EvoScientist → EPOCH → Co-Scientist 最新版。</Text>
+      <Text>工程起步：autoresearch。无人机领域文献单列，用于实验对象与部署约束。</Text>
+      <H2>本次纠正</H2>
+      <Text>SurveyForge 已有 ACL 2025 正式版；研究想法盲评工作已发表于 ICLR 2025；FlightBench 的 arXiv v3 关联 RA-L 2025 DOI。OpenScholar 正式版为 2026-02；Co-Scientist 修订于 2026-06；EvoScientist 修订于 2026-10。</Text>
+      <H2>核查的实际范围</H2>
+      <Text>本次核对摘要、版本记录、会议/期刊元数据与作者项目说明；未逐篇完成全文精读、代码运行或实验复现。Nature 两个页面直达受跳转限制，结合出版方索引和可用预印本/前次已核对内容处理。</Text>
+      <Text>最新不等于可靠，代码公开不等于可复现。尤其不能把系统研究论文发表在 Nature，解释为系统自主产出了那篇 Nature 论文。</Text>
+      <H2>维护规则</H2>
+      <Text>建议每月按问题检索更新，并在正式实验与投稿前重新核对。保存模型版本、工具权限、文献时间范围和代码 commit。本次没有建立定时自动化。</Text>
+    </Stack>}
+    <Divider/><Text size="small" tone="secondary">来源链接位于每项阅读卡。方法与证据摘要来自原始来源；局限、用途与时效性分层是本次分析。所有原文引文保持简短。</Text>
+  </Stack>;
+}
