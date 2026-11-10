@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>4.2 创新性复评 · 面向 2026–2027 投稿</title>
+<meta name="description" content="UCS-GenRL 创新边界、经典与2026年近邻、三条改进路线及可否证实验设计。研究计划，未启动实现。">
+<style>
+:root{color-scheme:light;--bg:#f5f6f2;--ink:#1d2b2a;--muted:#526361;--line:#d9e1dd;--green:#176457;--soft:#e8f0eb}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.8 system-ui,"Noto Sans CJK SC","Microsoft YaHei",sans-serif}a{color:var(--green);text-underline-offset:3px}aside{position:fixed;inset:0 auto 0 0;width:235px;padding:25px 20px;background:white;border-right:1px solid var(--line);overflow:auto}nav{display:grid;gap:10px;margin:24px 0}nav a{text-decoration:none}.eyebrow,small,.meta{font-size:13px;color:var(--muted)}.eyebrow{letter-spacing:1px;color:var(--green);font-weight:700}aside h2{font-size:22px;line-height:1.5}main{margin-left:235px;max-width:1330px;padding:30px 44px 70px}header{border-bottom:1px solid var(--line);padding-bottom:24px}h1{font-size:31px;line-height:1.4;max-width:900px}h2{font-size:24px;line-height:1.5;margin:12px 0}h3{font-size:19px;margin:22px 0 8px}p{margin:10px 0}section{padding:30px 0;border-bottom:1px solid var(--line);scroll-margin-top:15px}.lead{font-size:19px}.notice{background:var(--soft);border-left:3px solid var(--green);padding:17px 22px;margin:20px 0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}.box{background:white;border:1px solid var(--line);padding:20px}.box h3{margin-top:0}.scroll{overflow-x:auto}table{width:100%;min-width:660px;border-collapse:collapse;background:white;font-size:14px}th,td{text-align:left;vertical-align:top;padding:13px;border-bottom:1px solid var(--line)}th{background:var(--soft)}ul,ol{padding-left:23px}li{margin:7px 0}.formula{background:white;border:1px solid var(--line);padding:18px;overflow-wrap:anywhere;font:16px/1.8 ui-monospace,monospace}.status{display:inline-block;font-size:12px;border:1px solid var(--line);padding:2px 7px;margin-right:7px}.source{border-bottom:1px solid var(--line);padding:16px 0}.source h3{font-size:17px;margin:0 0 6px}details{padding:12px 0}summary{cursor:pointer;font-weight:650}button,select{font:inherit;background:white;color:var(--ink);border:1px solid var(--line);padding:7px 12px;border-radius:3px}button{cursor:pointer}.tools{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.muted{color:var(--muted)}:focus-visible{outline:3px solid #ba862e;outline-offset:3px}[hidden]{display:none!important}footer{font-size:13px;color:var(--muted);padding-top:25px}@media(max-width:800px){aside{position:static;width:auto;padding:18px}aside h2{margin:6px 0}nav{display:flex;overflow:auto;gap:18px;margin:10px 0}nav a{white-space:nowrap}main{margin:0;padding:20px}.grid{grid-template-columns:1fr}h1{font-size:26px}}@media print{aside,.tools{display:none}main{margin:0;max-width:none;padding:0}body{background:white;font-size:11pt}h1{font-size:22pt}h2{font-size:17pt}.source[hidden]{display:block!important}.box,.notice{break-inside:avoid}table{min-width:0}a{color:inherit}}
+</style>
+</head>
+<body>
+<aside><div class="eyebrow">AUTORESEARCH / TR-001</div><h2>4.2 创新性复评</h2><p class="meta">检索与判断：2026-11-10<br>目标：2026–2027 年投稿<br>状态：讨论稿，无新增实验</p><nav aria-label="复评章节"><a href="#verdict">01　明确判断</a><a href="#original">02　原章节贡献</a><a href="#boundaries">03　已有工作边界</a><a href="#routes">04　三条改进路线</a><a href="#theory">05　理论怎么设计</a><a href="#experiments">06　最小判别实验</a><a href="#paper">07　论文与决策</a><a href="#sources">08　来源与阅读深度</a></nav><p><a href="thesis-guide.html">先读学位论文导读</a><br><a href="index.html">返回设计工作区</a></p></aside>
+<main>
+<header><div class="eyebrow">NOVELTY REVIEW / EVIDENCE BEFORE CLAIMS</div><h1>原样论文化风险较高。<br>应先找到现有课程方法失效的具体原因。</h1><p class="lead">4.2 提供了可继承的场景、生成流程和初步验证；目前可核验材料尚未建立足以支撑新稿的独立方法贡献。推荐先审查“简化任务是否删掉关键依赖”，再决定是否投入复杂的迁移选择器。</p><div class="tools"><button id="print" type="button">打印完整复评</button><a href="#routes">直接看改进建议</a><a href="#experiments">直接看实验讨论</a></div></header>
+
+<section id="verdict"><div class="eyebrow">分析判断 · 不是录用预测</div><h2>1. 这次判断比首轮更严格</h2>
+<div class="notice"><strong>不建议把 4.2 原样整理、换新 LLM、补几条性能曲线后直接投稿。</strong><p>框架层面的重合证据较强；UAV 专属算法贡献仍待建立。该结论针对 2026–2027 年新投稿的贡献要求，不涉及对学位论文历史价值或研究来源的判断。</p></div>
+<div class="grid"><div><h3>已经能判断的部分</h3><ul><li>LLM 生成配置、子任务训练、原任务反馈的循环，不能作为新稿的独立核心创新。</li><li>失败诊断、迁移感知、安全课程、多机数量课程和因果结构课程均有近邻。</li><li>此前建议的“成对迁移探测＋Hoeffding 界”是评估工具，尚不足以独立构成强方法贡献。</li></ul></div><div class="box"><h3>仍值得研究的部分</h3><p>无人机采集、充电、避障与协同的依赖，会不会使“更容易的训练任务”反而不教目标任务需要的行为？如果能证明具体失败机制，并设计可计算、低成本的修正方法，就可能形成新稿。</p><p><strong>这是候选假设，尚未确认该现象在原 4.2 中实际发生。</strong></p></div></div>
+<p>本轮补查包括 2026 年 TAC、TRACE、Trainee-to-Trainer、PAC，以及 UAV 路径规划、能耗与多机覆盖课程；也补上此前遗漏的 CACL、SCG、轨迹约束课程等关键近邻。检索截至本日，不声称覆盖 2026 全年、未来 2027 年或所有中文数据库。</p>
+</section>
+
+<section id="original"><div class="eyebrow">原文事实 → 分析判断</div><h2>2. 4.2 到底还剩下什么贡献空间</h2>
+<p>原文定位：4.2，PDF 98–106 / 印刷 81–89；图 4.3，PDF 104 / 印刷 87，已渲染核对；实验依据为 PDF 116、118、123 / 印刷 99、101、106。4.3 已发表且开源的状态来自用户确认，不能把它重新算作本稿的新方法。</p>
+<div class="scroll"><table><thead><tr><th>组成部分</th><th>原文内容</th><th>本次判断与依据</th></tr></thead><tbody>
+<tr><td>生成接口</td><td>任务、指标、Gym 配置、约束和 JSON 模板输入 LLM，生成 PoI、障碍、无人机等配置。</td><td>通用接口模式与 <a href="#s-envgen">EnvGen</a> 接近。新增参数名称和场景语义不足以单独支持算法创新。</td></tr>
+<tr><td>训练与反思</td><td>子任务多任务训练 → 原环境短程训练及反馈 → 更新环境，迭代进行。</td><td>四步结构已有直接近邻。<a href="#s-trainee">2026 环境工程</a>还使用失败分类和历史配置，泛化“反思”说法更难成立。</td></tr>
+<tr><td>无人机耦合</td><td>同时涉及采集、充电、障碍和多机调度。</td><td>有应用意义；当前未发现 4.2 提供明确的依赖保持判据、可验证的候选证书或成本感知选择算法。此处是对已读章节的判断，不代表原作者没有未提供的研究材料。</td></tr>
+<tr><td>少样本与性能</td><td>用原任务训练样本少、采集与能效提升说明收益。</td><td>属于需重新验证的经验主张。不能替代对 <a href="#s-scg">SCG</a>、经典课程和最新迁移选择的比较。</td></tr>
+<tr><td>已有消融</td><td>表 4.2 已去除生成/反思；随机扰动对照也含基于表现的保留/重采样。</td><td>不能把“有改善才保留任务”当作完全空白，也不能把补同样消融算新贡献。</td></tr>
+<tr><td>预算公平性</td><td>PDF 123 已说明生成环境与原环境训练步数，并给基线补训练步数。</td><td>原文已经考虑训练步数公平。新稿需补全探测、评价、失败候选、墙钟与生成成本，不能声称原文完全没做预算控制。</td></tr>
+</tbody></table></div>
+<p class="muted">原章节的基础量化验证可作为动机，不能写成本项目新实验。没有代码和原始日志，无法审计数值复现、独立训练重复及最终测试隔离。原奖励含即时采集、充电和碰撞项（PDF 103 / 印刷 86），不宜用“整个任务纯稀疏奖励”建立论证。</p>
+</section>
+
+<section id="boundaries"><div class="eyebrow">主动反证 · 包括对先前建议的反证</div><h2>3. 哪些说法不能继续当成创新点</h2>
+<div class="scroll"><table><thead><tr><th>拟议主张</th><th>已有覆盖</th><th>需要收缩到的具体问题</th></tr></thead><tbody>
+<tr><td>LLM 生成任务并依据表现反思</td><td><a href="#s-envgen">EnvGen</a>；<a href="#s-eureka">Eurekaverse</a>；<a href="#s-trainee">Trainee-to-Trainer（2026）</a></td><td>生成器究竟改变什么可验证机制？怎样排除“只是更容易”的解释？</td></tr>
+<tr><td>发现失败原因，针对性补训</td><td><a href="#s-trace">TRACE（2026）</a></td><td>语言诊断是否正确？干预后是否改善指定 UAV 行为，且不破坏其他必要行为？</td></tr>
+<tr><td>按目标迁移收益选择任务</td><td><a href="#s-portal">PORTAL</a>；<a href="#s-tac">TAC（2026）</a>；<a href="#s-pac">PAC（2026）</a>的进展调度</td><td>何时廉价代理不足，实际训练探测的额外成本才值得付出？这些方法并非相同算法，不能只改术语。</td></tr>
+<tr><td>加能量/安全约束，逐渐增加难度</td><td><a href="#s-scg">SCG（ICLR 2025）</a>；<a href="#s-trajectory">轨迹约束课程（NeurIPS 2025）</a>；<a href="#s-isac">UAV-ISAC（2026）</a></td><td>任务合法、存在可行解、策略安全、训练迁移有效是四个不同命题；新机制要说明究竟保证哪一个。</td></tr>
+<tr><td>保留因果结构或利用结构差异</td><td><a href="#s-cacl">CACL（ICLR 2024，arXiv 2025）</a>；<a href="#s-cpdrl">CP-DRL（2025）</a></td><td>不能声称首次结构感知课程。候选切口是资源补给的时序必要性及其可计算证书；仍须证明超出已知方法的增量。</td></tr>
+<tr><td>多机规模泛化和参数课程</td><td><a href="#s-marl">ICML 2025 多智能体课程</a>；<a href="#s-coverage">2026 多 UAV 动态覆盖</a>；<a href="#s-parametric">2026 参数化环境课程</a></td><td>未见组合、交互依赖和机制失效边界，比只增加无人机数量更有判别力。</td></tr>
+</tbody></table></div>
+<p><strong>方法论修正：</strong>标准集中不等式、独立测试、预算账本、开源、现代模型替换均可提高研究质量，但不是自动成立的科学创新。“加入世界模型／多 Agent／因果图”也需要明确解决的问题和净收益证据。</p>
+</section>
+
+<section id="routes"><div class="eyebrow">候选建议 · 均未验证，不能视为已选定课题</div><h2>4. 三条改进路线，建议有先后顺序</h2>
+<h3>A · 优先讨论：保持关键资源依赖的课程生成</h3>
+<p><strong>问题：</strong>目标任务要求无人机先补能才能完成远端采集；若生成器把 PoI 移近、增设充电站或改变起点，训练成绩可能提高，却减少了练习必要行为的机会。障碍绕行也可能出现类似问题。这是待验证的失败机制，不是对现有实验的既成诊断。</p>
+<p><strong>机制草案：</strong>对目标任务建立“可行性＋必要事件”签名；LLM 只提议环境改动，程序检查改动是否保留当前要训练的依赖。允许简化无关因素，允许其他课程阶段专门练局部技能，不要求每个子任务都保持所有原任务结构。为每次接受/拒绝保存可核对的证据。</p>
+<div class="box"><strong>真正可能成为贡献的部分</strong><p>不是“因果课程”这个名称，而是：把补能与路径的时序依赖变成可计算判据，设计仍有足够任务多样性的生成算子，并证明它能预测、减少一类负迁移。与 CACL 的因果图可编辑性、SCG 的代价优先、轨迹预算渐进课程作正面对照。</p></div>
+<p><strong>最小检验：</strong>在源任务难度大体匹配的前提下，比较保留与移除关键依赖的课程；采用“随机/LLM 生成 × 无/有依赖检查”的四组设计，区分检查器和 LLM 的贡献。所有难度匹配仅用开发数据；报告匹配误差，不把相近成功率当作所有混杂因素已消除。</p>
+<p><strong>放弃条件：</strong>若不存在稳定的依赖丢失现象，或简单几何规则、CACL/SCG 的合理适配就能同等解决，应撤回复杂生成机制的主张。若随机生成＋检查器已足够，应删除 LLM 核心贡献。<strong>风险：</strong>证书计算昂贵；保持必要行为不保证策略迁移；过度过滤可能失去有用的局部练习。</p>
+
+<h3>B · 条件性扩展：决定“何时值得花钱测迁移”</h3>
+<p><strong>问题：</strong>此前给每个候选做固定长度训练探测，可能把课程收益消耗在测量上。TAC 使用低成本梯度信号，PAC 使用已有训练中的进展信号，均提高了昂贵探测的比较门槛。</p>
+<p><strong>机制草案：</strong>先用任务结构、学习进展或梯度相似性做便宜筛选；仅对代理信号分歧大、可能改变选择的候选分配短/中程探测。保留“本轮不探测、直接训练原任务”的选择。对最终少量冻结候选做独立确认；记录模型生成、全部分支和评价的成本。</p>
+<p><strong>需新增的科学问题：</strong>在策略持续变化、短程与长程可能排序反转的条件下，怎样分配探测预算，何时应停止采样？<a href="#s-hyperband">Hyperband</a> 和 <a href="#s-cs">置信序列</a>是可借鉴工具，直接串联并非新算法。不同训练长度对应不同策略和估计目标，不能将其样本直接合并套同一个置信界。</p>
+<p><strong>最小检验：</strong>固定候选和骨干，对比无探测的代理选择、固定探测、自适应探测、相同预算直接训练；看最终留出表现—总成本曲线，而不是仅看探测准确率。若探测成本无法回收或只挑到短期见效任务，淘汰该路线。<strong>建议：</strong>A 有证据之后再考虑 B，不在第一版同时加入世界模型和复杂贝叶斯控制器。</p>
+
+<h3>C · 备选独立主线：生成式课程的组合泛化与失效边界</h3>
+<p><strong>问题：</strong>训练中分别见过充电压力、障碍绕行和不同机群规模，是否就能处理这些因素的新组合？普通随机地图留出可能掩盖这一问题。</p>
+<p><strong>方案：</strong>围绕资源依赖建立有可行性标签的任务族，分别留出地图、因素组合、机群规模与模型扰动；冻结课程后评估。对 EnvGen 式生成、非 LLM 课程、约束/结构课程做机制一致的比较，并报告在哪些压力区间排序发生变化。可由 A 中的检查器提供可解释诊断。</p>
+<p><strong>论文价值条件：</strong>发现可复现、跨骨干的失效规律，提供独立设计的任务集、透明成本和有解释力的修正，而不是仅发布新地图。2026 UAV 覆盖工作已报告跨规模泛化，不能声称首次 UAV 泛化评估。若结果只是“训练多样性越高越好”，证据贡献仍不足。</p>
+<div class="notice"><strong>推荐顺序：先 A 的问题与判据 → 再最小实验 → 按结果选 A 或 C；B 仅在成本瓶颈明确时加入。</strong><p>保留一个中心问题。候选题目可暂写为“面向资源依赖保持的无人机群体感知课程生成与迁移”，避免在题目中预先承诺 LLM 必不可少或迁移保证。</p></div>
+</section>
+
+<section id="theory"><div class="eyebrow">理论设计草案 · 没有宣称新定理已完成</div><h2>5. 理论应解释任务结构，而不只是包一层统计界</h2>
+<h3>第一层：定义“必要补能”，排除无解任务造成的假象</h3>
+<p>先在已知、确定性、有限时域的离散模型中讨论。令 P<sub>g</sub> 是在任务 g 中达到预先固定采集目标 q、满足能量和碰撞约束的轨迹集合；P<sub>g</sub><sup>¬charge</sup> 是其中不含充电事件的轨迹集合。</p>
+<div class="formula">σ<sub>charge</sub>(g) = 1 ⇔ P<sub>g</sub> ≠ ∅ 且 P<sub>g</sub><sup>¬charge</sup> = ∅</div>
+<p>含义是“任务有解，并且完成指定目标必须充电”。这是一个拟议定义，不是原创定理。目标 q、返回要求和时限需先按原环境语义确认，不能为得到结论而修改。实际 UAV 有随机性时，应另行定义概率/鲁棒版本，不能沿用确定性证书。</p>
+<h3>第二层：研究可计算的生成约束与证书</h3>
+<p>小实例可用资源扩展图上的完整搜索提供可行轨迹和无充电不可达证据；大实例研究可计算上下界、局部必要条件和保守筛选。找不到路径不等于证明无解；超时或界不充分返回 unknown。联合多机与多 PoI 访问会显著增加求解规模。</p>
+<p>拟验证的命题仅限：在声明的图模型、离散化和精确求解条件下，接受的任务保持指定事件的必要性。必须进一步讨论允许怎样改变地图和能量参数、判定复杂度与保守性；一个把 σ 相等写成约束的重述，不能算有力度的理论贡献。</p>
+<h3>第三层：把必要性与学习收益分开</h3>
+<p>σ 相同不意味着最优策略相同，也不保证函数逼近下的正迁移。CACL 已研究特定因果图条件下的决策规则保持，不能重述为本稿的新结论。我们的研究需说明资源时序判据与其条件的关系，并用最小反例及受控实验辨别两者。</p>
+<p>已有成对探测与置信界可以用作验证环节。若自适应增加同一冻结策略对的评价样本，可研究有效的序贯界；若策略继续训练，评价对象已改变。短期收益推向最终收益仍需要额外条件与实证，不能靠置信区间代替。</p>
+</section>
+
+<section id="experiments"><div class="eyebrow">实验与代码设计讨论 · 所有阶段均未启动</div><h2>6. 先做能决定去留的小实验</h2>
+<div class="scroll"><table><thead><tr><th>阶段</th><th>拟议操作与比较</th><th>支持什么／何时停止</th></tr></thead><tbody>
+<tr><td>D0 原义核验</td><td>核对 4.3 环境代码、许可证和版本；明确充电、终止、采集阈值与奖励。建立可人工核查的小任务和签名定义。</td><td>若没有明确依赖或无法判定可行性，先缩小问题，不开始大规模训练。</td></tr>
+<tr><td>D1 依赖丢失诊断</td><td>在开发任务比较原生成方案、规则生成和随机生成，记录合法率、可行率、关键依赖保留率与 unknown 比例。实际 LLM 调用需后续授权。</td><td>若原方案很少破坏依赖，则 A 的问题动机不成立；不得只挑反例地图。</td></tr>
+<tr><td>D2 最小机制判别</td><td>两种生成源 × 两种检查条件；同骨干、同奖励、同环境步数。另设纯原任务训练，以及简单规则检查的竞争解释。</td><td>比较最终目标任务改善、耗尽率、必要行为完成率。生成器无净贡献则删除 LLM；检查器无改善则暂停 A。</td></tr>
+<tr><td>D3 强近邻比较</td><td>与随机化、ALP-GMM/PLR、EnvGen、约束课程及结构课程做适配比较；研究 B 时再加入 TAC/PAC 思路与逐步淘汰。</td><td>一次只比较课程模块；无法保持原算法前提的适配必须标明，不称原论文复现。全文和代码核验后裁剪基线数量。</td></tr>
+<tr><td>D4 组合与边界</td><td>因素单独出现于训练，联合组合留出；再分开做地图、规模和动力学扰动测试。只对有希望路线加第二骨干。</td><td>报告最差组、性能—成本曲线、负迁移及反例。组合失效可支持 C，但必须稳定且可解释。</td></tr>
+<tr><td>D5 冻结后复验</td><td>冻结配置，使用全新测试任务和独立训练种子重跑；保留代码、环境、模型版本与失败记录。</td><td>独立评价回合不替代独立训练重复。依据试验方差和最小有意义差异设计正式样本量。</td></tr>
+</tbody></table></div>
+<p><strong>控制口径：</strong>训练、开发、确认、测试的信息用途隔离；两种生成源使用相同任务参数权限和反馈信息；各方法获得可比较的调参预算。环境交互数、评价数、GPU 墙钟、模型调用费用分别报告，不任意折成一个数。确认集不能反复给生成器优化后仍称独立。</p>
+<details><summary>相应的代码设计需要增加什么（仅接口讨论）</summary><ul><li><strong>DependencySpec：</strong>原任务目标、待保持事件、适用假设和事件提取规则。</li><li><strong>CertificateChecker：</strong>输入任务与依赖定义，输出 certified / rejected / unknown、可行见证、不可达依据和求解成本。</li><li><strong>InterventionRecord：</strong>记录更改参数、生成源、保留/破坏的依赖；解释与机器验证分开。</li><li><strong>SplitManifest：</strong>固定因素组合、地图、训练种子、开发/测试用途，防止课程看到测试。</li><li><strong>ProbeScheduler（可选）：</strong>仅 B 通过评审后设计，区分训练长度、评价样本数和学习状态版本。</li></ul><p>这些接口尚未实现。既有 TaskSpec、快照、评价器和账本可保留；先不安装仿真框架、不写训练循环。</p></details>
+</section>
+
+<section id="paper"><div class="eyebrow">研究决策建议</div><h2>7. 能形成什么样的论文</h2>
+<p><strong>建议评审 A 的问题定义，而不是直接批准整套算法。</strong>当前有理由开展可行性研究，尚无理由承诺创新成立、达到某一档次或能够录用。自动化学报继续作为模板和基础目标；更高目标须等机制与系统证据出现后再定。</p>
+<ol><li><strong>引言：</strong>生成课程可能改变目标任务的资源依赖；明确这是待证的问题。</li><li><strong>相关工作：</strong>生成式课程、迁移选择、约束/因果课程、UAV 课程，逐项划定增量。</li><li><strong>问题与失效分析：</strong>定义任务族、必要事件与最小反例，说明哪些结构可简化。</li><li><strong>方法：</strong>依赖检查、受限生成及课程更新；B 只有确有必要才作为扩展。</li><li><strong>验证：</strong>检查器准确性、机制消融、强基线、组合泛化、总成本及失败边界。</li><li><strong>讨论：</strong>证书与迁移保证的区别、仿真局限、LLM 可替代性和部署外推范围。</li></ol>
+<p>若只有简单检查器就解决问题，论文应围绕明确的新现象和扎实证据写作；若既无新机制，也无可重复的新规律，则应停止把原 4.2 包装成独立方法论文。更换投稿模板不能解决贡献问题。</p>
+<p class="muted">本轮按既有 Auto Research 规程执行“主张拆解—近邻检索—主动反证—候选竞争—停止条件”，没有启动多 Agent 科研系统或研究实验。下一步仍由用户评估研究计划。</p>
+</section>
+
+<section id="sources"><div class="eyebrow">主要来源 · 直接支持上文比较</div><h2>8. 经典与近期工作：版本、阅读深度、用途</h2>
+<p>以下只列入作者、出版方或官方会议来源。摘要足以限制宽泛“首次”主张，但不足以证明所有算法细节重合。论文自报数值未作复现，本页不以它们为本项目结果。</p>
+<div class="tools"><label for="source-filter">筛选来源年份 </label><select id="source-filter"><option value="all">全部来源</option><option value="2026">2026 年工作</option><option value="earlier">2025 年及更早</option></select><span id="source-count" aria-live="polite"></span></div>
+<article class="source" id="s-envgen" data-year="2024"><h3>EnvGen: Generating and Adapting Environments via LLMs for Training Embodied Agents</h3><p><span class="status">2024 · arXiv v2</span><span class="status">本轮读方法 §2.2 与实验设计</span>配置生成、子环境训练、原环境训练与无更新评价、反馈改环境，与 4.2 的通用流程高度接近；原任务为 Crafter/Heist。其未解决何种 UAV 特定问题需由我们证明。<a href="https://arxiv.org/html/2403.12014v2">作者全文</a></p></article>
+<article class="source" id="s-eureka" data-year="2025"><h3>Eurekaverse / Environment Curriculum Generation via Large Language Models</h3><p><span class="status">CoRL · PMLR 2025</span><span class="status">出版方摘要</span>渐进、多样、可学习环境的代码生成及四足跑酷验证；限制“多样化难度递增生成”的宽泛新颖性。不能将其机器人结论直接移到 UCS。<a href="https://proceedings.mlr.press/v270/liang25a.html">会议论文页</a></p></article>
+<article class="source" id="s-portal" data-year="2024"><h3>PORTAL: Automatic Curricula Generation for Multiagent Reinforcement Learning</h3><p><span class="status">AAAI 2024</span><span class="status">出版方检索方法片段；全文直接访问受限</span>结合目标相关性与难度、共享语义表示安排课程。当前证据不足以逐项核对全部选择公式，不能声称其等同实际成对训练探测。另核对了 AAMAS 2023 扩展摘要。<a href="https://ojs.aaai.org/index.php/AAAI/article/download/29524/30870">AAAI 原文</a> · <a href="https://ifmas.csc.liv.ac.uk/Proceedings/aamas2023/pdfs/p2460.pdf">AAMAS 扩展摘要</a></p></article>
+<article class="source" id="s-trace" data-year="2026"><h3>TRACE: Capability-Targeted Agentic Training</h3><p><span class="status">2026-07-02 · arXiv v2，按预印本处理</span><span class="status">本轮读 §3.2–3.3</span>以成功/失败轨迹识别能力、生成能力专属可验证环境，后续训练与组合适配器。已覆盖广义失败驱动补训；语言代理的能力条件不等于多无人机物理资源约束。<a href="https://arxiv.org/html/2604.05336v2">作者全文</a></p></article>
+<article class="source" id="s-trainee" data-year="2026"><h3>From Trainee to Trainer: LLM-Designed Training Environment for RL with Multi-Agent Reasoning</h3><p><span class="status">2026-06-16 · arXiv v1，按预印本处理</span><span class="status">本轮读 §3.2、算法 1</span>当前学习器利用失败分类、配置历史等调整下一轮配置，并投影到约束内；验证域为 MAPF-FrozenLake 的语言推理。配置检查和历史反思均不能直接当成我们首创。<a href="https://arxiv.org/html/2606.17682v1">作者全文</a></p></article>
+<article class="source" id="s-tac" data-year="2026"><h3>TAC / Transferability for General Reasoning: An Automated Curriculum for Multi-Domain RLVR</h3><p><span class="status">2026-06-27 · arXiv v2，按预印本处理</span><span class="status">本轮读 §3.1–3.2</span>组合局部可学习性与投影梯度方向的跨域迁移信号进行调度。估计对象、领域和成本不同于 UAV 成对探测；仍足以排除“首次迁移感知课程”。移植梯度代理后需重算开销。<a href="https://arxiv.org/html/2606.25178v2">作者全文</a></p></article>
+<article class="source" id="s-pac" data-year="2026"><h3>PAC: Progress-Augmented Advantage Curriculum for Multi-Task Reinforcement Learning of LLMs</h3><p><span class="status">2026-08-31 · arXiv v1，按预印本处理</span><span class="status">本轮读 §3.2–3.3</span>把优势信号与近期奖励趋势结合，以 Thompson Sampling 分配任务采样。其历史进展仍是代理，非同检查点反事实训练；“加 bandit、看真实进展”的一般思路已有近邻。<a href="https://arxiv.org/html/2608.30528v1">作者全文</a></p></article>
+<article class="source" id="s-cacl" data-year="2024"><h3>Causally Aligned Curriculum Learning（CACL）</h3><p><span class="status">ICLR 2024；arXiv 上传于 2025</span><span class="status">本轮读 §2、定理 1、附录 I</span>利用输入因果图的可编辑性条件保持部分最优决策规则；因果图不可得或不准确是适用限制。不能把“保留结构”声称为新原则，也不能把时序必要事件等同其决策保持定理。年份按正式会议，非 arXiv 编号。<a href="https://proceedings.iclr.cc/paper_files/paper/2024/hash/e035dfb4daa3b57908cdd0b213a2e0fc-Abstract-Conference.html">会议页</a> · <a href="https://arxiv.org/html/2503.16799v1">作者全文</a></p></article>
+<article class="source" id="s-cpdrl" data-year="2025"><h3>Causal-Paced Deep Reinforcement Learning（CP-DRL）</h3><p><span class="status">2025 · arXiv v1；本页不认定主会录用</span><span class="status">本轮读摘要与方法概述</span>用交互数据的模块模型分歧近似结构差异，结合学习进展和最优传输构建课程。无需已知图的结构感知也非空白；分歧代理与资源不可达证书的差别仍需全文细化。<a href="https://arxiv.org/html/2507.02910v1">作者全文</a></p></article>
+<article class="source" id="s-scg" data-year="2025"><h3>Safety-Prioritizing Curricula for Constrained Reinforcement Learning（SCG）</h3><p><span class="status">ICLR 2025</span><span class="status">本轮读正式 PDF §3、§5、算法 1、局限</span>先优先低代价，再提升收益，并在成本/性能条件下向目标分布移动。已有约束课程的直接机制；作者不提供累计约束违反的普遍保证。任务可行性、策略安全与必要事件保持须分别比较。<a href="https://proceedings.iclr.cc/paper_files/paper/2025/hash/120ed726cf129dbeb8375b6f8a0686f8-Abstract-Conference.html">会议页</a></p></article>
+<article class="source" id="s-trajectory" data-year="2025"><h3>Curriculum Design for Trajectory-Constrained Agent: Compressing Chain-of-Thought Tokens in LLMs</h3><p><span class="status">NeurIPS 2025</span><span class="status">本轮读正式摘要与作者版 §1–2</span>逐步收紧轨迹资源预算；包含二叉树 MDP 理论及导航/推理验证。仅给满足整条轨迹预算的结果记奖励，不应据此理解为任何策略都不会违约。一般约束渐进不再是可宣称空白。<a href="https://papers.nips.cc/paper_files/paper/2025/hash/1ca2050ec92b6cb17621599e680e58cd-Abstract-Conference.html">会议页</a> · <a href="https://arxiv.org/html/2511.02690v1">作者全文</a></p></article>
+<article class="source" id="s-egp" data-year="2026"><h3>EGP2: A sample-efficient and generalizable reinforcement learning framework for UAV path planning</h3><p><span class="status">Robotics and Autonomous Systems · 2026-07-31 online</span><span class="status">出版方检索摘要；直接访问 403</span>结合内在动机和课程式域随机化，以进展调整复杂度与多样性。作为 UAV 泛化/采样效率近邻；尚未完整核验方法，不能认定与 UCS 或依赖检查同问题。<a href="https://www.sciencedirect.com/science/article/pii/S0921889026003428">出版方</a></p></article>
+<article class="source" id="s-isac" data-year="2026"><h3>Curriculum-Guided Reinforcement Learning for Energy-Efficient UAV-ISAC in Post-Disaster Search-and-Rescue Operations</h3><p><span class="status">2026-09-01 · arXiv，按预印本处理</span><span class="status">作者摘要</span>推进能耗与轨迹/通信感知联合优化，采用渐进约束课程。说明 2026 年已有 UAV 能量耦合课程；与多机充电依赖生成仍有任务差别。<a href="https://arxiv.org/abs/2609.01764">作者页面</a></p></article>
+<article class="source" id="s-coverage" data-year="2026"><h3>Curriculum learning-enhanced MARL with attention for multi-UAV coverage in dynamic environments with moving targets</h3><p><span class="status">Internet of Things 40 · 2026-11 卷期</span><span class="status">出版方检索摘要/引言；直接访问 403</span>场景规模与目标运动概率的分阶段课程、注意力多机覆盖及跨规模泛化。是本轮新增领域近邻；不是已核验的能量补给课程，也未审计其性能数字。<a href="https://doi.org/10.1016/j.iot.2026.102124">出版方 DOI</a></p></article>
+<article class="source" id="s-marl" data-year="2025"><h3>Learning Progress Driven Multi-Agent Curriculum</h3><p><span class="status">ICML 2025</span><span class="status">出版方摘要</span>以 TD 误差学习进展调度智能体数量分布，关注回报方差和数量变化引起的信用分配。控制数量本身不构成新贡献，资源依赖与数量效应需拆分。<a href="https://proceedings.mlr.press/v267/zhao25o.html">会议页</a></p></article>
+<article class="source" id="s-epc" data-year="2024"><h3>Age of information minimization in UAV-assisted data harvesting networks by multi-agent deep reinforcement curriculum learning</h3><p><span class="status">ESWA 2024</span><span class="status">沿用 11-09 出版方摘要/片段记录，全文待补</span>课程已用于 UAV 数据采集和 AoI；需核对 EPC 的扩展方式及能量设置，作为比普通视觉导航更近的应用基线。<a href="https://doi.org/10.1016/j.eswa.2024.124379">出版方 DOI</a></p></article>
+<article class="source" id="s-ucs" data-year="2024"><h3>Multi-Task-Oriented UAV Crowd Sensing with Charging Budget Constraint</h3><p><span class="status">MobiHoc 2024</span><span class="status">沿用 11-09 ACM 摘要记录，全文待补</span>多任务群体感知和充电预算已有研究；应用约束不能直接列为首次。其约束与泛化定义，以及与用户已有成果的关系需以完整文献映射核对。<a href="https://doi.org/10.1145/3641512.3686367">出版方 DOI</a></p></article>
+<article class="source" id="s-parametric" data-year="2026"><h3>Curriculum Generation under Structured Parametric Environments for Robust Navigation Policies</h3><p><span class="status">2026-08-09 · arXiv，按预印本处理</span><span class="status">作者摘要</span>结构化连续环境参数的梯度式课程和分布变化正则；验证于车辆/步行控制，不是 UCS。保留为近期非 LLM 课程比较线索。<a href="https://arxiv.org/abs/2608.08545">作者页面</a></p></article>
+<article class="source" id="s-alpgmm" data-year="2020"><h3>ALP-GMM / Teacher Algorithms for Curriculum Learning of Deep RL in Continuously Parameterized Environments</h3><p><span class="status">CoRL · PMLR 2020</span><span class="status">沿用首轮出版方摘要</span>基于学习进展采样参数化任务的经典参照。随机化与这种非 LLM 自适应课程都应保留，避免只与固定训练比较。<a href="https://proceedings.mlr.press/v100/portelas20a.html">会议页</a></p></article>
+<article class="source" id="s-plr" data-year="2021"><h3>Prioritized Level Replay（PLR）</h3><p><span class="status">ICML 2021</span><span class="status">沿用首轮出版方摘要</span>重放已有高学习潜力关卡，检验“需要新生成任务”还是“更好重用任务”的竞争解释。<a href="https://proceedings.mlr.press/v139/jiang21b.html">会议页</a></p></article>
+<article class="source" id="s-accel" data-year="2022"><h3>Evolving Curricula with Regret-Based Environment Design（ACCEL）</h3><p><span class="status">ICML 2022</span><span class="status">沿用首轮出版方摘要</span>环境演化和重放的经典近邻，提示生成算子、候选选择与重放应分开比较；当前不要求把所有经典基线一次实现。<a href="https://proceedings.mlr.press/v162/parker-holder22a.html">会议页</a></p></article>
+<article class="source" id="s-hyperband" data-year="2018"><h3>Hyperband: A Novel Bandit-Based Approach to Hyperparameter Optimization</h3><p><span class="status">JMLR 18(185) · 页面标注 2018</span><span class="status">出版方摘要</span>自适应分配资源与提前终止的经典方法。用于 B 的预算分配比较；超参数固定配置与不断变化的 RL 课程状态并不相同，不能直接继承其保证。<a href="https://jmlr.org/papers/v18/16-558.html">期刊页</a></p></article>
+<article class="source" id="s-cs" data-year="2021"><h3>Time-uniform, nonparametric, nonasymptotic confidence sequences</h3><p><span class="status">Annals of Statistics 2021</span><span class="status">作者摘要/作者主页</span>序贯评价可借鉴随时有效的置信序列；不提供跨训练长度的自动泛化保证，也不能作为本项目原创定理。<a href="https://arxiv.org/abs/1810.08240">作者页面</a> · <a href="https://www.stevehoward.org/">作者出版记录</a></p></article>
+<h3>检索范围与剩余盲点</h3><p>组合检索覆盖 LLM environment generation、UAV curriculum/crowdsensing、transfer-aware selection、constraint-preserving curricula、causal curricula、multi-fidelity selection，追查 2026 年及 10–11 月相关结果。按题名追踪主来源，剔除非学术聚合页、合成占位文章和无关命中。</p><p>出版方部分页面受访问限制，已标明“检索片段”；未系统遍历全部引文网络或中文数据库，尚未审计全部代码。2026-11 卷期不代表已检索该月所有论文。投稿和修回前还需更新。检索记录见 <a href="design/novelty-search-2026-11-10.json">范围与来源清单</a>。</p>
+</section>
+<footer>2026-11-10 · 设计与分析文档 · 原文、截图及全文缓存仍位于 Git 忽略的 thesis-reference/ · 无新增研究实验</footer>
+</main>
+<script>
+'use strict';
+const sources=[...document.querySelectorAll('.source')];
+const filter=document.getElementById('source-filter');
+function filterSources(){const f=filter.value;sources.forEach(s=>{s.hidden=f==='2026'?s.dataset.year!=='2026':f==='earlier'?s.dataset.year==='2026':false;});document.getElementById('source-count').textContent=`显示 ${sources.filter(s=>!s.hidden).length} / ${sources.length} 项`;}
+filter.addEventListener('change',filterSources);filterSources();
+document.getElementById('print').addEventListener('click',()=>window.print());
+let printState=[];window.addEventListener('beforeprint',()=>{printState=[...document.querySelectorAll('details')].map(d=>d.open);document.querySelectorAll('details').forEach(d=>d.open=true);});window.addEventListener('afterprint',()=>document.querySelectorAll('details').forEach((d,i)=>d.open=printState[i]??d.open));
+</script>
+</body></html>

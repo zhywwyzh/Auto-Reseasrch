@@ -1,0 +1,17 @@
+{
+  "folders": [
+    { "name": "UCS-GenRL · 理论与实验设计", "path": "." },
+    { "name": "TR-001 · 文献与论文方案", "path": "../../docs/topics/TR-001-thesis-uav-crowdsensing" }
+  ],
+  "settings": {},
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [{
+      "label": "启动研究 Web UI 服务（本机 18767）",
+      "type": "process",
+      "command": "python3",
+      "args": ["-m", "http.server", "18767", "--bind", "127.0.0.1", "--directory", "${workspaceFolder:UCS-GenRL · 理论与实验设计}"],
+      "problemMatcher": []
+    }]
+  }
+}

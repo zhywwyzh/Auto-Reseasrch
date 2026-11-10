@@ -14,6 +14,12 @@
 
 当前课题：[TR-001：第 4.2 节论文化可行性](docs/topics/TR-001-thesis-uav-crowdsensing/README.md)。阅读[论文方案与大纲](docs/topics/TR-001-thesis-uav-crowdsensing/paper-feasibility-plan.md)、[代码与实验讨论稿](docs/topics/TR-001-thesis-uav-crowdsensing/experiment-design.md)及[经典与近期文献评估](docs/topics/TR-001-thesis-uav-crowdsensing/literature-review.md)。
 
+**阅读第0步：** [学位论文导读——全篇主线与各章介绍](workspaces/ucs-genrl/thesis-guide.html)。操作者先了解原文，再评估研究方案。
+
+**最新研究判断（2026-11-10）：** [4.2 创新性复评与三条改进路线](workspaces/ucs-genrl/novelty-review.html)。纳入 2026 年近邻，先评估关键资源依赖是否在课程简化中丢失；迁移准入草案保留为候选工具，尚未开始实验。
+
+**理论与实验设计工作区：** [Web UI 主入口](workspaces/ucs-genrl/index.html) · [编辑器工作区](workspaces/ucs-genrl/UCS-GenRL.code-workspace) · [启动与文件说明](workspaces/ucs-genrl/README.md)。后续理论推导、实验矩阵及代码接口优先在此维护；当前仍处于设计讨论，尚未启动研究实现。
+
 ## 研究目标
 
 基于领域文献、已有导航系统及失败日志，提出可证伪假设、选择实验、实现候选改进，并通过独立重跑判断结论是否成立。

@@ -1,0 +1,79 @@
+{
+  "date": "2026-11-10",
+  "artifact": "../thesis-guide.html",
+  "source_path": "thesis-reference/theses/3120215520_答辩修改后论文0830.pdf",
+  "source_sha256": "faec3234cb5189adf347724db50446b64f9b3b3645d13071076591708fc51588",
+  "pdf_pages": 166,
+  "chapters": [
+    {
+      "id": 1,
+      "printed": [
+        1,
+        12
+      ],
+      "pdf": [
+        18,
+        29
+      ]
+    },
+    {
+      "id": 2,
+      "printed": [
+        13,
+        45
+      ],
+      "pdf": [
+        30,
+        62
+      ]
+    },
+    {
+      "id": 3,
+      "printed": [
+        46,
+        79
+      ],
+      "pdf": [
+        63,
+        96
+      ]
+    },
+    {
+      "id": 4,
+      "printed": [
+        80,
+        108
+      ],
+      "pdf": [
+        97,
+        125
+      ]
+    },
+    {
+      "id": 5,
+      "printed": [
+        109,
+        129
+      ],
+      "pdf": [
+        126,
+        146
+      ]
+    },
+    {
+      "id": "conclusion",
+      "printed": [
+        130,
+        131
+      ],
+      "pdf": [
+        147,
+        148
+      ]
+    }
+  ],
+  "reading_scope": "摘要、目录、1.3–1.4、各章引言与小结、关键方法、应用验证及结论；非全部推导/实验审计",
+  "visual_check": "已渲染并查看PDF26/印刷9的研究内容图；截图保留于忽略目录",
+  "publication_status_source": "用户2026-11-09明确确认",
+  "research_experiments_executed": false
+}

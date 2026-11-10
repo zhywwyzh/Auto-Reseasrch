@@ -1,0 +1,5 @@
+# Upstream reading checkouts are restored from sources.json + fetch_sources.py.
+# Keep foreign git histories, bundled papers/data, weights and secrets local.
+/upstream/
+__pycache__/
+*.pyc

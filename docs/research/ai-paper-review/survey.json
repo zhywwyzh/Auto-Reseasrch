@@ -1,0 +1,160 @@
+{
+  "title": "AI 论文评价与打分：开源工作及公开报告",
+  "checked": "2026-11-10",
+  "scope": "面向作者的写作自查；优先核对官方论文页、作者仓库、模型卡及会议政策。不是穷尽检索，也不是工具效果复现。",
+  "conclusion": "已有可用的论文预审、评分和评审质量评价工作。写作时优先利用有原文定位、有相关工作依据的批评清单；总分仅作同一量表下的辅助信号。",
+  "verification": "核对公开页面、README、部分代码与许可证；未安装或运行这些工具，未上传用户稿件，未调用付费模型。论文阅读深度逐项标记，作者自报结果不视作本项目验证。GitHub API 遭限流，未用提交时间或星数判断维护质量；在线额度和可用性未实测。",
+  "policy": [
+    {"title":"ICML 2026 的 PAT 是作者预审服务", "fact":"会议官方说明：作者自愿获取私密、可操作的投稿前反馈；这些反馈独立于正式评审，不用于评审流程。", "implication":"这是值得参考的写作辅助模式，不能据此推断 ICML 用 AI 分数决定录用。", "url":"https://blog.icml.cc/2026/01/14/icml-experimental-program-using-googles-paper-assistant-tool-pat/"},
+    {"title":"ICML 2026 采用两种评审政策", "fact":"Policy A 禁止 LLM 评审使用；Policy B 允许帮助理解论文、相关工作和润色，但禁止让 LLM 生成优缺点、评审要点、提纲或完整评审。", "implication":"实际使用、被允许的使用、官方录用决策是三个不同问题。", "url":"https://icml.cc/Conferences/2026/LLM-Policy"},
+    {"title":"ICLR 2027 要求独立判断与披露", "fact":"允许有限、负责任的 AI 辅助；使用时需提交原始人工评估及 LLM 交互，原始自评不能由 AI 代填。", "implication":"不能将顶会的 AI 辅助政策概括为普遍接受自动打分。此次未找到足以支持各大顶刊普遍用 AI 作录用决策的证据。", "url":"https://iclr.cc/Conferences/2027/AIPolicyForReviewers"}
+  ],
+  "items": [
+    {
+      "id":"deepreviewer", "category":"写作工具", "name":"DeepReviewer 2.0", "venue":"2026 技术报告及公开代码；前作 DeepReview 为 ACL 2025", "priority":"优先考察",
+      "openness":"v2 代码与技术报告公开；代码 MIT。前作代码/权重另用 CycleResearcher License，不能混用许可结论。",
+      "function":"PDF 经 MinerU 解析，审稿代理调用原文读取、批注、论文检索等工具，输出 Markdown/PDF 报告。",
+      "use":"适合完整初稿的深度预审，重点看批评能否指向原文、引用和具体修改。",
+      "limits":"本地部署仍需模型、解析及检索服务；开源不等于推理免费。前作的模型胜率不能直接当作 v2 的实测效果。",
+      "depth":"已读 v2 README、许可证及前作官方摘要；v2 PDF 仅确认有公开入口，未全文精读。",
+      "links":[["v2 代码 / README","https://github.com/ResearAI/DeepReviewer-v2"],["v2 技术报告","https://github.com/ResearAI/DeepReviewer-v2/blob/main/technical_report/DeepReviewer-v2.pdf"],["v2 MIT 许可","https://github.com/ResearAI/DeepReviewer-v2/blob/main/LICENSE"],["前作 DeepReview · ACL 2025","https://aclanthology.org/2025.acl-long.1420/"],["前作许可","https://github.com/zhu-minjun/Researcher/blob/main/LICENSE.md"],["在线平台（未提交稿件实测）","https://deepscientist.cc"]]
+    },
+    {
+      "id":"cmu", "category":"写作工具", "name":"CMU Paper Reviewer", "venue":"2026；关联 Nature-family 论文评审的专家标注研究", "priority":"优先考察",
+      "openness":"代码 Apache-2.0；同时公开 PeerReview Bench 数据与评价框架。",
+      "function":"结合稿件、可选补充材料和文献检索，默认集中反馈最关键的五项问题。",
+      "use":"适合把一长串泛泛审稿意见压缩成需要优先修正的实质问题。",
+      "limits":"专家研究主要覆盖自然科学，迁移到无人机/RL 的效果未验证。代码开源，但 OCR、LLM、搜索仍可能有成本；仓库所述每日免费额度未实测。",
+      "depth":"已读 README；关联论文 HTML 定位到 §2、§3、§6.1–6.2；未独立复验。",
+      "links":[["代码 / 评价框架","https://github.com/prometheus-eval/cmu-paper-reviewer"],["在线入口（未提交稿件实测）","https://prometheus-eval.github.io/cmu-paper-reviewer/"],["专家标注研究","https://arxiv.org/abs/2605.20668"]]
+    },
+    {
+      "id":"openreviewer", "category":"写作工具", "name":"OpenReviewer / Llama-OpenReviewer-8B", "venue":"NAACL 2025 · System Demonstrations", "priority":"模型方案",
+      "openness":"训练、数据处理代码及 8B 模型权重公开。模型卡标为 llama3.1；仓库根目录未见明确独立代码许可证，复用前需确认。",
+      "function":"根据 PDF 和会议评审模板生成结构化审稿意见；作者用约 79,000 条专家评审微调模型。",
+      "use":"适合考察专用审稿模型及可控部署，也可参考其模板组织优缺点和问题。",
+      "limits":"作者在 400 篇测试稿上报告评分分布更接近人工；分布接近不能证明每篇都评得准。训练数据偏 ML/AI，不是自动化学报专用模型。",
+      "depth":"已读官方论文摘要、README 和模型卡；未核查全部训练集划分及污染风险。",
+      "links":[["论文","https://aclanthology.org/2025.naacl-demo.44/"],["代码","https://github.com/maxidl/openreviewer"],["权重与许可","https://huggingface.co/maxidl/Llama-OpenReviewer-8B"],["演示入口（未提交稿件实测）","https://huggingface.co/spaces/maxidl/openreviewer"]]
+    },
+    {
+      "id":"ai-scientist", "category":"打分代码", "name":"The AI Scientist · Automated Reviewer", "venue":"2024 起的公开研究系统", "priority":"评分模板",
+      "openness":"审稿代码公开；当前主分支使用 2025-12 的 The AI Scientist Source Code License，属于自定义许可，不能沿用旧的 MIT 印象。",
+      "function":"perform_review.py 输出结构化评审，包括 Soundness、Presentation、Contribution（各 1–4）、Overall（1–10）、Confidence（1–5）；支持多份评审汇总和反思。",
+      "use":"最适合研究评分字段、提示词和量表锚点，也便于日后单独抽取预审流程。",
+      "limits":"LLM 文本评价不能证明定理、实验或引用正确；Overall 不是录用概率。当前仅阅读代码，没有启动自动科研系统。",
+      "depth":"已读评审代码：字段约 L47–58，量表 L85–122，流程 L125 起；已核对当前 LICENSE。",
+      "links":[["审稿代码","https://github.com/SakanaAI/AI-Scientist/blob/main/ai_scientist/perform_review.py"],["仓库","https://github.com/SakanaAI/AI-Scientist"],["当前许可证","https://raw.githubusercontent.com/SakanaAI/AI-Scientist/main/LICENSE"]]
+    },
+    {
+      "id":"revieweval", "category":"评审评价", "name":"ReviewEval + ReviewAgent", "venue":"Findings of EMNLP 2025", "priority":"优先阅读",
+      "openness":"代码 Apache-2.0；公开评审生成与评审评价流程。",
+      "function":"ReviewAgent 按目标 venue 生成反馈；ReviewEval 检查分析深度、可执行性、规范遵循、事实正确性及与人工评审的一致性。",
+      "use":"适合回答“这条 AI 批评是否有用、是否有原文支持”，也适合为自己的写作检查表定义维度。",
+      "limits":"这是评价审稿意见质量的框架，不等于论文质量的真值；其中也使用模型评判及检索，需防止循环自评。",
+      "depth":"已读官方摘要、README、评价模块说明和 LICENSE；未运行指标。",
+      "links":[["论文","https://aclanthology.org/2025.findings-emnlp.1120/"],["代码","https://github.com/madhavkrishangarg/ReviewEval"],["许可证","https://github.com/madhavkrishangarg/ReviewEval/blob/main/LICENSE"]]
+    },
+    {
+      "id":"agentreview", "category":"评审模拟", "name":"AgentReview", "venue":"EMNLP 2024 · Main Track Oral", "priority":"补充阅读",
+      "openness":"官方实现公开，Apache-2.0。",
+      "function":"用 reviewer、author、area chair 等角色模拟评审、讨论和决定过程，研究偏见及交互影响。",
+      "use":"适合设计不同视角的质疑与 rebuttal 演练；优先级低于直接面向作者改稿的工具。",
+      "limits":"模拟人的角色不代表获得独立领域专长；多个代理达成一致也不是结论正确的证明。",
+      "depth":"已读项目页、官方摘要及仓库许可；未精读全部实验。",
+      "links":[["项目与论文入口","https://agentreview.github.io/"],["代码","https://github.com/Ahren09/AgentReview"],["论文","https://aclanthology.org/2024.emnlp-main.70/"]]
+    },
+    {
+      "id":"coco", "category":"评审评价", "name":"CoCoReviewBench", "venue":"ICML 2026（论文页与官方仓库标注）", "priority":"优先阅读",
+      "openness":"代码、基准及模型入口公开；仓库许可证标为 CC-BY-4.0，具体数据和模型仍按各自条款核对。",
+      "function":"以 3,900 篇 ICLR/NeurIPS 论文构建评价，利用讨论信息过滤不可靠评审，同时关注完整性和正确性。",
+      "use":"提醒我们不能仅用“与人工评审措辞相似”来验证 AI 评审；人工评审也可能遗漏或误判。",
+      "limits":"该工作评价 AI reviewer，不直接给你的稿件一个可信录用分数。作者仍观察到幻觉和正确性不足。",
+      "depth":"已读论文摘要、仓库结构与许可标识；未下载基准和重跑。",
+      "links":[["论文","https://arxiv.org/abs/2605.07905"],["代码与基准","https://github.com/hexuandeng/CoCoReviewBench"]]
+    },
+    {
+      "id":"peerread", "category":"人工评审数据", "name":"PeerRead", "venue":"NAACL 2018", "priority":"历史参照",
+      "openness":"AI2 官方公开数据与代码；此次未完成各子数据集许可审计。",
+      "function":"提供论文、人工评审和评分等数据，支持论文接受预测与评审研究。",
+      "use":"可参考真实评审的组织与措辞；写作时，更应配合 OpenReview 上同领域的近期稿件、评审及 rebuttal 阅读。",
+      "limits":"数据较旧、领域覆盖有限；它不是现成的现代 LLM 预审工具，也不能代表当前期刊标准。",
+      "depth":"已读官方仓库概述与目录；未下载语料。",
+      "links":[["官方数据与代码","https://github.com/allenai/PeerRead"]]
+    },
+    {
+      "id":"pat", "category":"公开报告", "name":"Google PAT → Deep Review", "venue":"2026 公开技术报告；Google Research 2026-10-14 发布说明", "priority":"优先阅读",
+      "openness":"有公开报告和服务发布说明；此次未核验到完整系统代码，不能作为已确认开源项目列入。",
+      "function":"深度检查技术文档；Google 自报在 STOC、ICML、NeurIPS、ICLR 四个试点为超过 16,000 份自愿提交稿件提供私密投稿前反馈。",
+      "use":"最接近你希望的“边写边获得审稿式反馈”；可参考错误定位、理论检查和修改建议的组织。",
+      "limits":"这里是作者预审规模，不是 AI 自动录用规模。Google Deep Review 与西湖大学团队的 DeepReview / DeepReviewer 不是同一项目。",
+      "depth":"已读 Google 官方发布与论文摘要，并与 ICML 官方试点说明交叉核对；未试用服务。",
+      "links":[["技术报告","https://arxiv.org/abs/2606.28277"],["Google 2026-10 发布说明","https://research.google/blog/analyzing-technical-documents-with-deep-review/"],["ICML 试点边界","https://blog.icml.cc/2026/01/14/icml-experimental-program-using-googles-paper-assistant-tool-pat/"]]
+    },
+    {
+      "id":"stanford", "category":"公开报告", "name":"Stanford Agentic Reviewer / PaperReview.ai", "venue":"Yixing Jiang、Andrew Ng 的公开技术说明", "priority":"方法参照",
+      "openness":"技术流程和在线入口公开；此次未核验到官方完整代码或权重发布，不能等同开源。",
+      "function":"检索 arXiv 相关工作后形成评审；评分变体先评估七个维度，再映射总分。",
+      "use":"可参考其相关工作检索层次和七维量表，而不是只照搬一个总分。",
+      "limits":"官方报告 AI 对单个人工评分的 Spearman 为 0.42、人工间为 0.41；这是特定 ICLR 数据上的相关性，不是 42% 准确率，也不足以证明普遍达到专家水平。",
+      "depth":"已读完整网页技术说明；未复验其数据划分与评分校准。",
+      "links":[["技术说明","https://paperreview.ai/tech-overview"],["在线入口（未提交稿件实测）","https://paperreview.ai"]]
+    },
+    {
+      "id":"icml-study", "category":"实证报告", "name":"Use and Effects of LLMs in Peer Review", "venue":"ICML 2026 的随机实验及问卷；2026-09 预印本", "priority":"优先阅读",
+      "openness":"公开论文；此次未核验代码及完整数据开放情况。",
+      "function":"研究不同 LLM 政策下评审行为和结果；问卷 N=1,486，禁用组 22.5% 自报仍使用，宽松组 36.5% 自报至少一种明确不允许的用法。",
+      "use":"为“评审人确实使用 AI”提供实证参考，也说明政策和实际行为不能混为一谈。",
+      "limits":"这些比例来自问卷受访者，不能外推为所有顶会顶刊的使用率；作者报告政策分配对评分和录用结果的效应接近零。",
+      "depth":"已读作者与摘要；未精读随机化、响应偏差及稳健性分析。",
+      "links":[["论文","https://arxiv.org/abs/2609.19420"]]
+    },
+    {
+      "id":"nature-study", "category":"实证报告", "name":"On the limits and opportunities of AI reviewers", "venue":"2026-05 预印本；Nature-family 论文评审研究", "priority":"优先阅读",
+      "openness":"公开论文；关联 CMU 代码及 PeerReview Bench。不是 Nature 刊发或官方全面采用 AI 的证明。",
+      "function":"45 位领域科学家对 82 篇 Nature-family 论文的 2,960 条人类/AI 批评，从正确性、重要性和证据充分性进行标注。",
+      "use":"比单看总分相关性更接近作者真正需要的证据：每条批评是否正确、重要且有根据。",
+      "limits":"作者发现 AI 能补充人类遗漏，也会有共同盲点；结论依赖样本、具体模型与标注协议，不能直接迁移成 UAV/RL 写作效果。",
+      "depth":"已读摘要及 HTML 的研究设计与平台章节；未逐项审计专家标注。",
+      "links":[["论文","https://arxiv.org/abs/2605.20668"],["HTML · §2 / §3 / §6","https://arxiv.org/html/2605.20668v1"],["代码与基准","https://github.com/prometheus-eval/cmu-paper-reviewer"]]
+    },
+    {
+      "id":"cross-community", "category":"实证报告", "name":"AI-Assisted Peer Review Across Research Communities", "venue":"2026-08 预印本", "priority":"局限证据",
+      "openness":"公开论文；此次未核验完整代码和数据发布。",
+      "function":"调查 111 个会议/医学期刊的评审人 AI 政策，并比较 ICLR 2026 与 Nature Communications 稿件的机器/人工评审。",
+      "use":"帮助理解跨领域政策差异，以及为什么流畅、详细的评审仍可能不可靠。",
+      "limits":"作者指出过度正面推荐、泛泛批评和证据依据不均衡；汇总质量分数可能高估评审质量。样本不能代表全部顶刊。",
+      "depth":"已读摘要；未全文精读和核查数据授权。",
+      "links":[["论文","https://arxiv.org/abs/2608.03581"]]
+    },
+    {
+      "id":"reviewrl", "category":"公开论文", "name":"ReviewRL", "venue":"EMNLP 2025", "priority":"开放状态待核对",
+      "openness":"论文公开；官方摘要仍写 implementation will be released。此次没有核验到匹配作者和论文的官方代码，不能列为已开源实现。",
+      "function":"结合文献检索、监督微调和强化学习，尝试同时改善批评依据及评分一致性。",
+      "use":"值得阅读方法，但暂不作为可以直接部署的首选。",
+      "limits":"同名 GitHub 仓库不自动等于官方实现；不能把承诺开放写成已经开放。",
+      "depth":"已读 ACL 官方摘要和论文首页；未精读实验。",
+      "links":[["论文","https://aclanthology.org/2025.emnlp-main.857/"]]
+    }
+  ],
+  "workflow": [
+    {"stage":"选题和大纲", "action":"先查最近邻工作，要求预审指出具体重叠点、引用原文和差异；仅根据标题或摘要的意见先不采信。", "deliverable":"主张—最近邻—实质差异—所需证据清单。"},
+    {"stage":"方法与实验设计", "action":"分别检查定义和假设、理论推导、对照公平性、消融和复现信息；把尚未完成的实验标为计划。", "deliverable":"最关键的可证伪问题及对应验证办法。"},
+    {"stage":"完整初稿", "action":"优先用 DeepReviewer 2.0 或 CMU 方式形成有原文定位的批评清单；如需打分，冻结模型、提示词和量表，记录各维度理由与波动。", "deliverable":"问题位置、严重性、依据、修正建议；总分仅作辅助。"},
+    {"stage":"修改后复核", "action":"先人工判断每条意见是否成立，再修改；用未见旧分数的独立复核检查是否真的补齐证据。不要因同一模型给高分就停止核查。", "deliverable":"采纳/驳回理由和证据变化，而非单纯分数上涨。"}
+  ],
+  "topic_advice": [
+    "以下是面向 UCS-GenRL 的检查建议，不是已经完成的稿件评价，也不改变当前研究门槛。",
+    "贡献边界：是否把 4.2 的环境/子任务生成机制与 4.3 已有训练骨干明确区分？未发表状态本身不构成新颖性。",
+    "最近邻与反证：是否有比当前方案更直接的生成课程、环境设计、迁移选择工作？每项新颖性批评须给出可核对来源。",
+    "公平比较：生成、检索、迁移探测及 RL 训练是否计入相同预算？是否纳入适当的非 LLM 基线？",
+    "泛化证据：任务划分、模型选择和最终留出测试是否分离？是否区分在目标任务上继续训练与零样本迁移？",
+    "写作证据：既有学位论文结果、当前方案、后续假设与真实新实验分别标注；AI 评审不得将计划误认成已经完成。"
+  ],
+  "prompt": "请按目标期刊/会议的公开标准，对我的稿件或方案进行预审。先判断输入是计划、初稿还是含真实实验结果的完整稿。每条意见必须包含：具体位置；对原文主张的准确复述；问题为何成立；原文证据或可核对的外部来源；严重性；最小修正或验证办法；你的不确定性。无法核实的内容标为待核对，区分已确认缺陷、合理疑问和可选扩展。不要求作者完成与核心主张无关的无限扩展，不编造引用、实验或统计。最后才按给定量表提供分项评价；不要把总分解释为录用概率。",
+  "further": [
+    ["LLM-as-a-Reviewer：评分偏差与注入鲁棒性（898 篇 / 12 模型；摘要级阅读）","https://arxiv.org/abs/2605.25415"],
+    ["ScholarPeer：Google 的文献核验式多代理方案（公开报告；代码开放未核实）","https://research.google/pubs/scholarpeer-a-multi-agent-framework-for-automated-peer-review/"],
+    ["ReviewAgents / Review-CoT / ReviewBench（公开预印本；官方实现开放未核实；勿与 GitHub 同名代码评审基准混淆）","https://arxiv.org/abs/2503.08506"]
+  ]
+}

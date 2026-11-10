@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="UCS-GenRL 理论、实验和代码接口设计工作区；计划讨论，未启动研究实现。"><title>UCS-GenRL · 研究设计工作区</title><link rel="stylesheet" href="assets/styles.css"><script src="assets/design-data.js" defer></script><script src="assets/app.js" defer></script></head>
+<body>
+<aside>
+<div class="brand">AUTORESEARCH / TR-001</div><div class="project">UCS-GenRL<br>研究设计工作区</div><p class="sidebar-note">从第 4.2 节出发<br>理论 → 判别实验 → 接口契约</p>
+<nav aria-label="研究设计章节"><a href="#overview" aria-current="page">01　讨论总览</a><a href="#theory">02　理论与推导</a><a href="#experiments">03　实验矩阵</a><a href="#architecture">04　代码设计</a><a href="#review">05　评审与记录</a></nav>
+<div class="side-links"><a href="novelty-review.html">创新性复评与改进建议 · 11-10</a><a href="UCS-GenRL.code-workspace" download>下载编辑器工作区配置</a><a href="design/decisions.json">设计决策记录 · JSON</a><span>版本 2026-11-10 / v0.3</span><span>规划文档 · 无实验结果</span></div>
+</aside>
+<main>
+<div class="top"><a href="thesis-guide.html">先读：学位论文与各章介绍 →</a><span class="tag">研究方案评审中</span><button class="quiet" id="print">打印完整讨论稿</button></div>
+<noscript><p class="notice">此页面需要 JavaScript 切换章节、显示实验矩阵和接口设计。请启用浏览器脚本后阅读。</p></noscript>
+<section class="page" id="overview" aria-labelledby="overview-title">
+<div class="brand">RESEARCH QUESTION</div><h1 id="overview-title">简化了训练环境，<br>是否还保留了必须学会的任务依赖？</h1>
+<p class="lead">2026 年相关工作已纳入重新检索。当前优先讨论资源依赖保持的课程生成；迁移探测与预算控制保留为候选工具，最终路线待用户评估。</p>
+<div class="notice"><strong>2026-11-10 复评：原样论文化的创新性风险较高</strong><p>通用生成/反思循环、约束课程、因果结构课程和迁移感知均有近邻。先验证“简化任务删掉关键依赖”的具体问题，再判断是否值得扩展。<a href="novelty-review.html"><strong>阅读完整复评、2026 年来源与三条改进路线 →</strong></a></p><p>本页其余理论、实验矩阵和接口保留为首轮迁移探测草案；它们没有通过创新性审查，不代表最新推荐路线已确定或获准实施。</p></div>
+<div class="notice"><strong>当前边界</strong><p>用户已确认 4.2 尚无论文、代码与开源。这个工作区保存理论、实验和接口设计；本轮没有实现研究算法、启动仿真、训练或付费模型调用。</p></div>
+<div class="cols"><div><h2>保留的候选工具</h2><p><strong>目标迁移判定与成本权衡。</strong>有限样本判定可支持评价；短期信号的长期预测价值和探测成本仍需实证。标准统计界不能独立承担论文创新。</p><p>LLM 提供候选，不作为收益真值来源。若随机生成配合同一选择器同样有效，应接受删除 LLM 的结论。</p></div><div class="pane"><h3>这轮需要形成的三种证据</h3><ol><li><strong>形式证据：</strong>判据依赖什么假设，能够保持哪些任务依赖。</li><li><strong>机制证据：</strong>依赖丢失是否导致迁移失效，简单规则能否解决。</li><li><strong>系统证据：</strong>计全成本后，未见组合与留出任务表现是否改善。</li></ol></div></div>
+<h2>从理论到实现的顺序</h2><div class="flow"><span>任务与指标</span><b>→</b><span>有限样本判定</span><b>→</b><span>短期/长期关联</span><b>→</b><span>等预算对照</span><b>→</b><span>冻结后复验</span></div>
+<h2>三个问题，分别作答</h2><div class="table-wrap"><table><thead><tr><th>问题</th><th>需要的实验</th><th>不能混淆的解释</th></tr></thead><tbody><tr><td>选择器有用吗？</td><td>同候选源：直接训练 vs 迁移准入</td><td>更多探测、更多训练、容易任务</td></tr><tr><td>LLM 有额外价值吗？</td><td>同选择器：随机候选 vs LLM 候选</td><td>检查器或信息权限的贡献</td></tr><tr><td>对无人机耦合问题有用吗？</td><td>不同充电依赖、多机配置及留出组合</td><td>仅记住反馈地图或更换评价口径</td></tr></tbody></table></div>
+<h2>已有研究限定了创新范围</h2><p><a href="https://arxiv.org/html/2403.12014v2">EnvGen</a> 已有环境生成与性能反馈循环；<a href="https://arxiv.org/abs/2604.05336v2">TRACE</a> 已有失败诊断后的能力补训；<a href="https://arxiv.org/abs/2606.25178v2">TAC</a> 已研究迁移感知课程。我们需解释具体判定机制、成本与 UAV 耦合带来的差异，当前不声称完整新颖性已成立。</p>
+<div class="notice"><strong>按 2026–2027 年实际投稿标准评估</strong><p>2026 年相关工作必须纳入新颖性审查，学位论文完成时间不降低新稿的创新要求。原 4.2 与所有拟新增机制均须对照最近邻全文。</p><p>本轮定向检索更新至 2026-11-10；阅读深度、正式发表/预印本及访问限制见<a href="novelty-review.html#sources">来源卡片</a>。不声称覆盖 2026 全年或未来 2027 年；选题定稿、投稿及修回前仍需更新。</p></div>
+<p class="muted">既有详细文献与论文方案保留在仓库 docs/topics/TR-001-thesis-uav-crowdsensing/。本页是后续理论、实验与代码设计的主要阅读入口。</p>
+</section>
+<section class="page" id="theory" aria-labelledby="theory-title" hidden>
+<div class="brand">FORMALIZATION / CLAIM BOUNDARIES</div><h1 id="theory-title">先证明有限的事，<br>把无法保证的部分交给实验。</h1>
+<p class="notice">本节保留首轮迁移评价工具。最新建议先定义资源依赖及可计算判据，见<a href="novelty-review.html#theory">复评中的理论设计</a>；下述标准集中界不是论文核心创新。</p>
+<p class="lead">推荐把理论组织成“问题定义 → 条件性准入界 → 预算与误判权衡”。标准集中界只是工具，论文贡献应在具体机制及它解决的问题。</p>
+<h2>1. 把环境、学习器与课程分开</h2><p>目标任务族 M(ξ) 包含地图、PoI、无人机与充电配置，任务可按有限时域 Dec-POMDP 描述。策略 π 执行联合决策；训练状态 x 包括模型、优化器、归一化、缓冲区与随机状态。课程教师选择任务参数 z，学习算子 A<sub>h</sub>(x,z;ω) 在 h 个全局环境步后输出新状态。</p>
+<div class="formula">max<sub>课程规则 μ</sub>　E[J<sub>P目标</sub>(π<sub>xB</sub>)]<br>s.t.　C<sub>训练+探测+生成</sub> ≤ B，　V<sub>j</sub>(π<sub>xB</sub>) ≤ b<sub>j</sub><small>J：归一化有效采集比例，取值 [0,1]；Vj：预先声明的违规/成本指标。B 可以是全局交互预算，墙钟和费用另行报告，不能未经权重定义直接相加。测试分布只用于最终报告。</small></div>
+<p>这是研究目标的定义，不是已经求解的最优控制问题。有限样本评价只能支持分布意义的判断，不能证明每条无人机轨迹硬安全。</p>
+<h2>2. 定义“净迁移”，先排除额外训练的收益</h2><div class="formula">π<sub>z,h</sub> = policy(A<sub>h</sub>(x,z;ω<sub>z</sub>))<br>π<sub>0,h</sub> = policy(A<sub>h</sub>(x,z<sub>控制</sub>;ω<sub>0</sub>))<br>Δ<sub>h</sub>(z | x) = J<sub>P确认</sub>(π<sub>z,h</sub>) − J<sub>P确认</sub>(π<sub>0,h</sub>)</div>
+<p>同一完整检查点、相同训练步数；控制分支继续学习固定原任务。先把两条训练轨迹固定，再讨论这两个策略的评价差异。若要声称“重新训练平均也有效”，还要在外层重复训练种子，不能靠多跑评价回合替代。</p>
+<h2>3. 草案命题：固定候选的有限样本准入</h2><div class="pane"><strong>明确假设</strong><ol><li>本轮 K 对候选/控制策略已冻结；它们未利用本轮确认样本生成、更新或筛选。</li><li>对每对策略，n 个评价场景及随机数独立同分布抽自预先固定的 P确认。每个样本内部两策略使用相同场景，形成配对。</li><li>每回合主得分在 [0,1]，因此配对差 D<sub>z,i</sub> 在 [−1,1]。不同候选可共享评价场景；不要求候选间独立。</li><li>τ ≥ 0 是预先声明的最小有意义改善，不根据观察到的结果反向选择。</li></ol></div>
+<div class="formula">Δ̂<sub>z</sub> = (1/n) Σ<sub>i</sub> D<sub>z,i</sub><br>r(n,K,δ) = √[2 ln(2K/δ) / n]<br>L<sub>z</sub> = Δ̂<sub>z</sub> − r<br>接纳条件：L<sub>z</sub> ≥ τ</div>
+<p><strong>能得到的结论：</strong>在上述条件下，以至少 1−δ 的概率，本轮所有被接纳的冻结策略对均有 Δ<sub>h</sub> ≥ τ。它只对 P确认、当前检查点与短程训练后的策略成立，不保证未来训练、最终测试分布或重新训练的平均收益。</p>
+<details><summary>展开推导与适用边界</summary><p>配对差范围长度为 2。Hoeffding 不等式给出 P(|Δ̂<sub>z</sub>−Δ<sub>z</sub>|≥r) ≤ 2 exp(−nr²/2)。对 K 对策略取并集界，总失败概率不超过 2K exp(−nr²/2)。令其等于 δ，即得上式。该推导使用标准集中不等式，不是本文原创理论。</p><p>如果候选是在确认样本上选出来的，条件不成立；同一张固定地图的重复评价也不自动代表任务分布中的独立抽样。训练策略的随机性已被条件化，需要另外做独立训练重复。</p><p>多轮自适应选择可在每轮使用新的确认样本，并分配 δ<sub>t</sub>=δ/[t(t+1)]。条件于过去，各轮仍需满足当前候选与新确认样本的独立性；再对轮次取并集界。反复复用相同确认集不能套用此论证。</p><p>如果还同时声明 G 个约束差异的界，需要将这些事件一起纳入失败概率分配。主得分改善不能推出碰撞率或耗尽率不变；约束差异也不等于绝对约束满足。</p></details>
+<h2>4. 统计界限计算器</h2><p>以下只进行公式计算，不运行仿真。它展示分布无关保证可能非常保守：小样本支持的可靠改善幅度，往往比预期大。</p>
+<div class="pane"><div class="controls"><label>固定候选对数 K<input id="bound-k" type="number" min="1" max="1000" value="8"></label><label>每对策略的独立评价数 n<input id="bound-n" type="number" min="1" max="10000000" value="100"></label><label>总失败概率 δ<input id="bound-delta" type="number" min="0.0001" max="0.5" step="any" value="0.05"></label><label>期望界半径 ε（归一化得分）<input id="bound-eps" type="number" min="0.001" max="1" step="any" value="0.05"></label></div><div class="result-row" aria-live="polite"><div><output id="bound-radius"></output><small>当前半径 r（得分单位）</small></div><div><output id="bound-required"></output><small>使 r ≤ ε 的充分样本量 n / 策略对</small></div></div><p id="bound-message" class="muted"></p><small>n ≥ ⌈2 ln(2K/δ) / ε²⌉。这是该保守界给出的充分数量，不是任何估计方法的必要下界；也不是训练种子数量。</small></div>
+<h2>5. 短期为何不等于长期</h2><p>仅有 Δ<sub>h</sub> &gt; 0 不能推出 Δ<sub>H</sub> &gt; 0。后续训练可能遗忘、过拟合、改变协作行为，或者让控制策略后来追上。</p><div class="formula">若另有假设 |Δ<sub>H</sub> − Δ<sub>h</sub>| ≤ ε<sub>漂移</sub><br>则 Δ<sub>H</sub> ≥ Δ̂<sub>h</sub> − r − ε<sub>漂移</sub><small>这是条件性推论。ε漂移目前未知；不能从同批训练数据估一个数，再称已获得无条件的长期保证。</small></div><p>第一项机制实验 E1 就是检验短期与长期的符号一致性、排序相关和错误接受率。若这个联系很弱，迁移探测的核心动机需要调整。</p>
+<h2>6. 成本使准入规则真正成为研究问题</h2><p>候选数 K、探测长度 h、训练重复 q 和评价数 n 同时增加证据与开销。应先研究固定上限的选择规则，再考虑自适应分配；直接引入复杂 bandit 或贝叶斯优化会增加新的比较负担。</p><p>建议评价器先做启发式开发筛选，再对少数冻结候选用新样本确认；确认失败则回退。为了保留“所有候选同时有效”的论证，确认多候选时依实际 K 校正。与不用探测的方法比较时，允许对方将省下的步数投入训练。</p>
+<div class="notice"><strong>理论定位建议</strong><p>把有限样本界作为透明的判定依据，把“如何以有限成本选出有长期价值的 UAV 子任务”作为待验证贡献。暂不承诺通用 RL 收敛、全局最优或完备飞行安全。</p></div>
+</section>
+<section class="page" id="experiments" aria-labelledby="experiments-title" hidden>
+<div class="brand">EVIDENCE PLAN / NOT RESULTS</div><h1 id="experiments-title">每个实验，都对应一个<br>可以被否定的研究判断。</h1>
+<p class="notice">以下 E0–E5 是首轮迁移探测方案。最新优先顺序为原义核验、依赖丢失诊断及最小机制判别，见<a href="novelty-review.html#experiments">D0–D5 讨论稿</a>。两套方案不要求同时执行，均待用户评估。</p>
+<p class="lead">优先顺序是环境语义 → 短期信号 → 六组对照 → 耦合机制 → 泛化 → 复验。确认样本、最终测试和独立训练种子承担不同职责。</p>
+<div class="cols"><div class="pane"><h3>评价数据分工</h3><p><strong>训练：</strong>策略更新。<br><strong>开发/筛选：</strong>生成反馈与候选排序。<br><strong>确认：</strong>冻结候选后的新样本，支撑准入判定。<br><strong>测试：</strong>最终冻结后报告，不参与循环。</p><small>这些是角色，不保证一定需要四套文件格式；隔离的是信息使用权限。</small></div><div class="pane"><h3>主指标与约束</h3><p>固定期限和能量模型下的有效采集比例为主；覆盖、碰撞、耗尽、充电开销及最差场景组表现同时报告。</p><p>配对/分层统计以独立训练种子为外层；地图和回合不是独立训练重复。</p></div></div>
+<label style="max-width:320px;margin-top:24px">筛选实验阶段<select id="experiment-filter"><option value="全部">全部阶段</option><option>规范</option><option>机制</option><option>主对照</option><option>泛化</option><option>复验</option></select></label><div id="experiment-list"></div>
+<h2>训练预算讨论器</h2><p>这里的每次运行步数已包含候选、控制和失败分支的训练/探测；评价单独记录。下方乘法不包含 E1 专项研究、额外消融、调参、API 费用或重跑。</p><div class="pane"><div class="controls"><label>方法组数<input id="budget-methods" type="number" min="1" max="30" value="6"></label><label>独立训练种子<input id="budget-seeds" type="number" min="1" max="100" value="3"></label><label>每次运行预算（百万全局步）<input id="budget-steps" type="number" min="0.01" max="1000" step="any" value="0.5"></label><label>骨干数 × 训练分布数<input id="budget-suites" type="number" min="1" max="100" value="1"></label></div><div class="result-row"><div><output id="budget-total"></output><small>主比较训练/探测步数</small></div><div><output id="budget-runs"></output><small>独立运行数</small></div></div><small>全局步：所有无人机的一次联合动作和转移。并行环境按实际步数求和。尚未标定 steps/s，不能换算成 GPU 天数。</small></div>
+</section>
+<section class="page" id="architecture" aria-labelledby="architecture-title" hidden>
+<div class="brand">INTERFACE DESIGN / NO TRAINING CODE</div><h1 id="architecture-title">让代码结构直接对应<br>理论假设和实验对照。</h1>
+<p class="lead">首先研究 4.3 已开源环境与骨干能否复用。4.2 无原始实现，后续应明确标为依据原文重实现；当前只定义接口，不创建训练程序。</p>
+<div class="flow"><span>TaskSpec</span><b>→</b><span>Generator / Checker</span><b>→</b><span>Snapshot / Probe</span><b>→</b><span>Confirm / Admit</span><b>→</b><span>Ledger / Manifest</span></div>
+<h2>模块契约</h2><p class="muted">以下内容由 assets/design-data.js 渲染，是后续实施的接口设计，函数尚未实现。</p><div id="contract-list"></div>
+<h2>一次迭代的设计伪流程</h2><pre class="code">1. 冻结目标指标、允许参数、开发/确认/测试权限及本轮预算
+2. 保存完整学习状态 x；由开发证据提出 K 个候选
+3. 格式/必要可行性检查；unknown 不宣称已证明可行
+4. 从 x 克隆：候选训练 h 步；控制训练 h 步；全分支记账
+5. 开发筛选后冻结待确认策略；使用本轮新的确认样本
+6. 按当前统计前提、约束和成本作准入决定；失败则回退
+7. 保留胜出检查点（建议）；保存失败候选、依据与全部成本
+8. 测试仅在完整方法及配置冻结后调用</pre>
+<p>如果更改为“只保留配置，再从统一检查点重训”，第 5 步对冻结策略的确认不自动适用于重训策略；需要重新评价，并计入重训成本。该实现选择会改变理论能支持的结论。</p>
+<h2>第一版实现边界</h2><ul><li>生成器只输出受限配置；不修改环境动力学、奖励、评价器或任意可执行脚本。</li><li>随机生成器与 LLM 生成器共享检查器及字段权限，课程选择器可互换。</li><li>原4.3骨干与现代骨干分开对待；移植收益不能归因于新课程。</li><li>研究代码将放入本工作区后续的 src/、configs/、tests/，本轮尚未创建；runs/、datasets/、checkpoints/ 沿用忽略规则。</li></ul>
+<p>代码阅读入口：<a href="https://github.com/aszala/envgen">EnvGen</a>、<a href="https://github.com/flowersteam/TeachMyAgent">TeachMyAgent</a>、<a href="https://github.com/eureka-research/eurekaverse">Eurekaverse</a>。仅作为结构和机制参照，尚未安装或运行；原4.3的确切地址与版本仍待提供或定位。</p>
+</section>
+<section class="page" id="review" aria-labelledby="review-title" hidden>
+<div class="brand">DECISIONS / DISCUSSION</div><h1 id="review-title">现在讨论哪几个决定，<br>才会改变论文和实验？</h1>
+<div class="question"><h3>D1 · 理论主线</h3><p><strong>推荐：</strong>有限样本迁移判定与预算权衡。替代方向是 UAV 约束保证或通用学习收敛；后两者需要更多建模与证明，不能仅增加一个“理论分析”小节。</p><small>状态：建议，等待用户选择。</small></div>
+<div class="question"><h3>D2 · 首先要证伪什么</h3><p><strong>推荐：</strong>先做 E1 检验短探测信号。若信号不预测长期迁移，再扩大 LLM 端到端比较的收益有限。</p><small>状态：实验设计建议；未执行。</small></div>
+<div class="question"><h3>D3 · 最小有意义改善与约束</h3><p>τ 应以实际采集收益及成本定义，不能在看结果后选择。碰撞、能量耗尽和最差场景组退化容忍度需分别明确，不能靠综合分数抵消。</p><small>状态：待讨论，当前不填任意“通过阈值”。</small></div>
+<div class="question"><h3>D4 · 确认成本与实现策略</h3><p>使用独立确认样本，优先保留已评价的胜出策略；预算账本包含所有失败分支。若成本过高，可研究更紧的界或更便宜的代理，但须重新说明假设和比较。</p><small>状态：建议；不把理论计算器的充分样本量直接当成训练方案。</small></div>
+<h2>本地讨论笔记</h2><p>可记录对理论、实验和代码接口的修改意见。笔记只保存在当前浏览器；下载后才可作为文件交给协作者，不会自动提交或写回仓库。</p>
+<label>你的评审意见<textarea id="review-notes" placeholder="例如：先关注充电依赖；主实验采用原4.3骨干；希望理论覆盖多轮选择……"></textarea></label><div class="actions"><button class="primary" id="download-notes">下载讨论记录 JSON</button></div><p class="note-status" id="note-status" aria-live="polite">尚未编辑。</p>
+<h2>本次设计依据</h2><ul><li>用户已确认的成果状态与根目录 AGENTS.md。</li><li>原文 4.2：PDF 98–106 / 印刷81–89；原实验：PDF115–118、123 / 印刷98–101、106。原始资料保留在被忽略的 thesis-reference/，不由此页面服务。</li><li><a href="https://arxiv.org/html/2403.12014v2">EnvGen</a>、<a href="https://arxiv.org/abs/2606.25178v2">TAC</a> 等：帮助限定新颖性，不能替代本方法实验。</li><li>本页 Hoeffding + 并集界推导为标准工具的直接应用；条件性长期推论尚需漂移假设，未形成新理论成果。</li></ul>
+<div class="notice">进入实现前需要用户评估研究计划，并定位4.3代码及可用资源。本工作区已具备讨论内容，但没有把任何候选自动批准为论文贡献。</div>
+</section>
+<footer class="footer">AutoResearch-UAV · UCS-GenRL · 本地静态研究文档 · 公式计算与预算示例均非实验结果</footer>
+</main></body></html>

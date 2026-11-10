@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-09",
+  "scope": "仅文档与Web UI，不属于UAV研究实验",
+  "passed": [
+    "HTML本地资源及导航锚点",
+    "工作区JSON与目录引用",
+    "JavaScript语法",
+    "临时本机HTTP 200",
+    "jsdom：5章节切换、实验筛选、10接口渲染",
+    "jsdom：统计界限计算及非法输入、9M/120M预算计算",
+    "jsdom：浏览器本地笔记和JSON导出",
+    "git diff --check"
+  ],
+  "not_verified": [
+    "浏览器实际渲染、截图、移动端视觉排版；CUA无可用浏览器"
+  ],
+  "research_training_runs": 0,
+  "preview": "校验用HTTP服务已在交付前停止；可直接以浏览器打开index.html，或按README启动本机服务"
+}

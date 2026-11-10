@@ -1,0 +1,25 @@
+{
+  "date": "2026-11-10",
+  "artifact": "../novelty-review.html",
+  "document_version": "2026-11-10-draft-3",
+  "checks": {
+    "source_cards": 23,
+    "sources_2026": 8,
+    "unique_ids_and_local_links": "passed",
+    "year_filters": "passed: 8 recent, 15 earlier, 23 all",
+    "print_button_and_details_restore": "passed",
+    "standalone_no_external_assets": "passed",
+    "json_and_javascript_syntax": "passed",
+    "existing_workspace_five_section_navigation": "passed",
+    "chrome_desktop_and_mobile_render": "passed; screenshots inspected",
+    "chrome_document_horizontal_overflow": "none at emulated widths 390 and 1440",
+    "git_diff_check": "passed",
+    "original_pdf_and_rendered_page_git_ignore": "passed"
+  },
+  "preview_scope": "HTML 可在持有文件的同机浏览器直接打开；没有启动持续服务或公开发布",
+  "research_experiments": 0,
+  "limits": [
+    "界面验证不等于研究实验、文献全部全文核验或算法复现",
+    "没有确认来源站点今后始终可访问；当前访问限制见检索清单"
+  ]
+}

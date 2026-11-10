@@ -1,0 +1,164 @@
+{
+  "collected_on": "2026-11-10",
+  "purpose": "收纳 AI 论文预审、打分、评审评价及相关参考方案；仅源码阅读归档，尚未部署或验证工具效果。",
+  "papers_directory": "thesis-reference/related-papers/ai-paper-review/",
+  "survey": "docs/research/ai-paper-review/index.html",
+  "checkout_policy": "上游浅克隆位于本目录 upstream/，由 Git 忽略；保留来源、版本和许可证。默认稀疏检出，省略根目录 data/datasets/checkpoints/model_weights；不下载 LFS 内容或单独模型权重。",
+  "projects": [
+    {
+      "id": "deepreviewer-v2",
+      "name": "DeepReviewer 2.0",
+      "kind": "作者预审",
+      "repository": "https://github.com/ResearAI/DeepReviewer-v2.git",
+      "license_note": "MIT；依赖和外部服务按各自条款。",
+      "paper_ids": [
+        "deepreviewer-v2",
+        "deepreview"
+      ],
+      "commit": "1c19a232c0620b0f24e56d5965258dde00a702ae",
+      "status": "downloaded",
+      "local_directory": "upstream/deepreviewer-v2",
+      "license_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "id": "cmu-paper-reviewer",
+      "name": "CMU Paper Reviewer / PeerReview Bench",
+      "kind": "作者预审与评审评价",
+      "repository": "https://github.com/prometheus-eval/cmu-paper-reviewer.git",
+      "license_note": "Apache-2.0；数据与模型另核条款。",
+      "paper_ids": [
+        "ai-reviewers-nature-family"
+      ],
+      "commit": "41b3ffa528ec811761350027d874c2cfb6649ca3",
+      "status": "downloaded",
+      "local_directory": "upstream/cmu-paper-reviewer",
+      "license_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "id": "openreviewer",
+      "name": "OpenReviewer",
+      "kind": "专用审稿模型",
+      "repository": "https://github.com/maxidl/openreviewer.git",
+      "license_note": "模型卡为 llama3.1；代码独立许可证待确认。公开源码不代表任意复用许可。",
+      "paper_ids": [
+        "openreviewer"
+      ],
+      "commit": "31798b43b5fc7a20b28e38821a6684fa0e8ca3f8",
+      "status": "downloaded",
+      "local_directory": "upstream/openreviewer",
+      "license_files": []
+    },
+    {
+      "id": "ai-scientist",
+      "name": "The AI Scientist · Automated Reviewer",
+      "kind": "评分模块参考",
+      "repository": "https://github.com/SakanaAI/AI-Scientist.git",
+      "license_note": "当前主分支为 The AI Scientist Source Code License；自定义许可。",
+      "paper_ids": [
+        "ai-scientist"
+      ],
+      "commit": "1de1dbc1f4ee2c5f61e9c94348d55eb51d7fa2eb",
+      "status": "downloaded",
+      "local_directory": "upstream/ai-scientist",
+      "license_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "id": "revieweval",
+      "name": "ReviewEval / ReviewAgent",
+      "kind": "评审生成与质量评价",
+      "repository": "https://github.com/madhavkrishangarg/ReviewEval.git",
+      "license_note": "Apache-2.0。",
+      "paper_ids": [
+        "revieweval"
+      ],
+      "commit": "fb61fbba3cc2fec10cbe55b1774fb351e33ae5b8",
+      "status": "downloaded",
+      "local_directory": "upstream/revieweval",
+      "license_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "id": "agentreview",
+      "name": "AgentReview",
+      "kind": "评审过程模拟",
+      "repository": "https://github.com/Ahren09/AgentReview.git",
+      "license_note": "Apache-2.0。",
+      "paper_ids": [
+        "agentreview"
+      ],
+      "commit": "9ce5ec762eaba2d1cdff2f965ce11430b5be9361",
+      "status": "downloaded",
+      "local_directory": "upstream/agentreview",
+      "license_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "id": "cocoreviewbench",
+      "name": "CoCoReviewBench",
+      "kind": "评审质量基准",
+      "repository": "https://github.com/hexuandeng/CoCoReviewBench.git",
+      "license_note": "仓库标为 CC-BY-4.0；数据和模型按各自条款。",
+      "paper_ids": [
+        "cocoreviewbench"
+      ],
+      "commit": "2580687ee5d4ad2ac4b9730afb8f1dfda22e40db",
+      "status": "downloaded",
+      "local_directory": "upstream/cocoreviewbench",
+      "license_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "id": "researcher",
+      "name": "DeepReview / CycleReviewer / CycleResearcher",
+      "kind": "前作与审稿模型参考",
+      "repository": "https://github.com/zhu-minjun/Researcher.git",
+      "license_note": "CycleResearcher License；有附加条件，不能套用 DeepReviewer v2 的 MIT。",
+      "paper_ids": [
+        "deepreview"
+      ],
+      "commit": "8c1b253092f3f41b3efc414fb189004855bb49f8",
+      "status": "downloaded",
+      "local_directory": "upstream/researcher",
+      "license_files": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "id": "peerread",
+      "name": "PeerRead",
+      "kind": "人工评审数据与基线代码参考",
+      "repository": "https://github.com/allenai/PeerRead.git",
+      "license_note": "代码与各子数据集许可待分别核验。",
+      "paper_ids": [
+        "peerread"
+      ],
+      "commit": "9bb37751781a900cee9e74ec3105997732c8e8e5",
+      "status": "downloaded",
+      "local_directory": "upstream/peerread",
+      "license_files": []
+    }
+  ],
+  "not_cloned": [
+    {
+      "name": "Google PAT / Deep Review",
+      "reason": "公开报告与服务；此前未核验到完整官方开源实现。"
+    },
+    {
+      "name": "Stanford Agentic Reviewer",
+      "reason": "公开技术说明；此前未核验到完整官方开源实现。"
+    },
+    {
+      "name": "ReviewRL / ScholarPeer / ReviewAgents",
+      "reason": "论文已列入本地收集；官方实现开放状态仍待核对。"
+    }
+  ]
+}

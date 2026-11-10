@@ -1,0 +1,352 @@
+{
+  "date": "2026-11-10",
+  "submission_window": "2026–2027",
+  "status": "定向新颖性复评；非系统综述、非实验报告",
+  "canonical_review": "../novelty-review.html",
+  "queries": [
+    "\"LLM\" \"environment generation\" \"curriculum\" reinforcement learning 2026",
+    "\"UAV\" \"curriculum\" \"2026\" reinforcement learning",
+    "\"transfer-aware curriculum\" reinforcement learning 2026",
+    "\"curriculum\" \"counterfactual\" \"environment\" reinforcement learning 2025 2026",
+    "\"curriculum\" \"constraint\" \"preserving\" reinforcement learning environment generation",
+    "\"curriculum\" \"multi-fidelity\" reinforcement learning task selection",
+    "\"UAV\" \"LLM\" \"curriculum\" 2026 crowdsensing",
+    "\"Safety-Prioritizing Curricula for Constrained Reinforcement Learning\" openreview",
+    "\"Curriculum Design for Trajectory-Constrained Agent\" 2025",
+    "\"curriculum\" \"prerequisite\" \"environment\" \"2026\" reinforcement",
+    "\"curriculum\" \"causal\" \"environment generation\" reinforcement learning",
+    "UAV crowdsensing large language model environment generation curriculum 2026 2025",
+    "reinforcement learning curriculum causal task structure preserving prerequisite 2026 2025",
+    "reinforcement learning curriculum transfer evaluation budget adaptive task selection 2026",
+    "\"Causally Aligned Curriculum Learning\" ICLR 2025",
+    "\"Causal-Paced Deep Reinforcement Learning\" 2026",
+    "\"Curriculum learning-enhanced MARL with attention\" \"2026\" DOI",
+    "\"PORTAL\" \"Automatic Curricula Generation\" Wu 2024 pdf",
+    "\"Hyperband\" \"A Novel Bandit-Based Approach\" jmlr",
+    "\"Time-uniform, nonparametric, nonasymptotic confidence sequences\"",
+    "\"curriculum\" \"environment generation\" \"2026\" \"October\"",
+    "\"curriculum\" \"UAV\" \"November\" \"2026\"",
+    "\"curriculum\" \"transfer\" \"2611\" reinforcement"
+  ],
+  "primary_source_policy": "仅以作者、出版方、正式会议或作者机构内容支持技术判断；第三方聚合用于发现时必须回查主来源。",
+  "source_cards": [
+    {
+      "id": "s-envgen",
+      "year": "2024",
+      "title": "EnvGen: Generating and Adapting Environments via LLMs for Training Embodied Agents",
+      "reading_labels": [
+        "2024 · arXiv v2",
+        "本轮读方法 §2.2 与实验设计"
+      ],
+      "urls": [
+        "https://arxiv.org/html/2403.12014v2"
+      ]
+    },
+    {
+      "id": "s-eureka",
+      "year": "2025",
+      "title": "Eurekaverse / Environment Curriculum Generation via Large Language Models",
+      "reading_labels": [
+        "CoRL · PMLR 2025",
+        "出版方摘要"
+      ],
+      "urls": [
+        "https://proceedings.mlr.press/v270/liang25a.html"
+      ]
+    },
+    {
+      "id": "s-portal",
+      "year": "2024",
+      "title": "PORTAL: Automatic Curricula Generation for Multiagent Reinforcement Learning",
+      "reading_labels": [
+        "AAAI 2024",
+        "出版方检索方法片段；全文直接访问受限"
+      ],
+      "urls": [
+        "https://ojs.aaai.org/index.php/AAAI/article/download/29524/30870",
+        "https://ifmas.csc.liv.ac.uk/Proceedings/aamas2023/pdfs/p2460.pdf"
+      ]
+    },
+    {
+      "id": "s-trace",
+      "year": "2026",
+      "title": "TRACE: Capability-Targeted Agentic Training",
+      "reading_labels": [
+        "2026-07-02 · arXiv v2，按预印本处理",
+        "本轮读 §3.2–3.3"
+      ],
+      "urls": [
+        "https://arxiv.org/html/2604.05336v2"
+      ]
+    },
+    {
+      "id": "s-trainee",
+      "year": "2026",
+      "title": "From Trainee to Trainer: LLM-Designed Training Environment for RL with Multi-Agent Reasoning",
+      "reading_labels": [
+        "2026-06-16 · arXiv v1，按预印本处理",
+        "本轮读 §3.2、算法 1"
+      ],
+      "urls": [
+        "https://arxiv.org/html/2606.17682v1"
+      ]
+    },
+    {
+      "id": "s-tac",
+      "year": "2026",
+      "title": "TAC / Transferability for General Reasoning: An Automated Curriculum for Multi-Domain RLVR",
+      "reading_labels": [
+        "2026-06-27 · arXiv v2，按预印本处理",
+        "本轮读 §3.1–3.2"
+      ],
+      "urls": [
+        "https://arxiv.org/html/2606.25178v2"
+      ]
+    },
+    {
+      "id": "s-pac",
+      "year": "2026",
+      "title": "PAC: Progress-Augmented Advantage Curriculum for Multi-Task Reinforcement Learning of LLMs",
+      "reading_labels": [
+        "2026-08-31 · arXiv v1，按预印本处理",
+        "本轮读 §3.2–3.3"
+      ],
+      "urls": [
+        "https://arxiv.org/html/2608.30528v1"
+      ]
+    },
+    {
+      "id": "s-cacl",
+      "year": "2024",
+      "title": "Causally Aligned Curriculum Learning（CACL）",
+      "reading_labels": [
+        "ICLR 2024；arXiv 上传于 2025",
+        "本轮读 §2、定理 1、附录 I"
+      ],
+      "urls": [
+        "https://proceedings.iclr.cc/paper_files/paper/2024/hash/e035dfb4daa3b57908cdd0b213a2e0fc-Abstract-Conference.html",
+        "https://arxiv.org/html/2503.16799v1"
+      ]
+    },
+    {
+      "id": "s-cpdrl",
+      "year": "2025",
+      "title": "Causal-Paced Deep Reinforcement Learning（CP-DRL）",
+      "reading_labels": [
+        "2025 · arXiv v1；本页不认定主会录用",
+        "本轮读摘要与方法概述"
+      ],
+      "urls": [
+        "https://arxiv.org/html/2507.02910v1"
+      ]
+    },
+    {
+      "id": "s-scg",
+      "year": "2025",
+      "title": "Safety-Prioritizing Curricula for Constrained Reinforcement Learning（SCG）",
+      "reading_labels": [
+        "ICLR 2025",
+        "本轮读正式 PDF §3、§5、算法 1、局限"
+      ],
+      "urls": [
+        "https://proceedings.iclr.cc/paper_files/paper/2025/hash/120ed726cf129dbeb8375b6f8a0686f8-Abstract-Conference.html"
+      ]
+    },
+    {
+      "id": "s-trajectory",
+      "year": "2025",
+      "title": "Curriculum Design for Trajectory-Constrained Agent: Compressing Chain-of-Thought Tokens in LLMs",
+      "reading_labels": [
+        "NeurIPS 2025",
+        "本轮读正式摘要与作者版 §1–2"
+      ],
+      "urls": [
+        "https://papers.nips.cc/paper_files/paper/2025/hash/1ca2050ec92b6cb17621599e680e58cd-Abstract-Conference.html",
+        "https://arxiv.org/html/2511.02690v1"
+      ]
+    },
+    {
+      "id": "s-egp",
+      "year": "2026",
+      "title": "EGP2: A sample-efficient and generalizable reinforcement learning framework for UAV path planning",
+      "reading_labels": [
+        "Robotics and Autonomous Systems · 2026-07-31 online",
+        "出版方检索摘要；直接访问 403"
+      ],
+      "urls": [
+        "https://www.sciencedirect.com/science/article/pii/S0921889026003428"
+      ]
+    },
+    {
+      "id": "s-isac",
+      "year": "2026",
+      "title": "Curriculum-Guided Reinforcement Learning for Energy-Efficient UAV-ISAC in Post-Disaster Search-and-Rescue Operations",
+      "reading_labels": [
+        "2026-09-01 · arXiv，按预印本处理",
+        "作者摘要"
+      ],
+      "urls": [
+        "https://arxiv.org/abs/2609.01764"
+      ]
+    },
+    {
+      "id": "s-coverage",
+      "year": "2026",
+      "title": "Curriculum learning-enhanced MARL with attention for multi-UAV coverage in dynamic environments with moving targets",
+      "reading_labels": [
+        "Internet of Things 40 · 2026-11 卷期",
+        "出版方检索摘要/引言；直接访问 403"
+      ],
+      "urls": [
+        "https://doi.org/10.1016/j.iot.2026.102124"
+      ]
+    },
+    {
+      "id": "s-marl",
+      "year": "2025",
+      "title": "Learning Progress Driven Multi-Agent Curriculum",
+      "reading_labels": [
+        "ICML 2025",
+        "出版方摘要"
+      ],
+      "urls": [
+        "https://proceedings.mlr.press/v267/zhao25o.html"
+      ]
+    },
+    {
+      "id": "s-epc",
+      "year": "2024",
+      "title": "Age of information minimization in UAV-assisted data harvesting networks by multi-agent deep reinforcement curriculum learning",
+      "reading_labels": [
+        "ESWA 2024",
+        "沿用 11-09 出版方摘要/片段记录，全文待补"
+      ],
+      "urls": [
+        "https://doi.org/10.1016/j.eswa.2024.124379"
+      ]
+    },
+    {
+      "id": "s-ucs",
+      "year": "2024",
+      "title": "Multi-Task-Oriented UAV Crowd Sensing with Charging Budget Constraint",
+      "reading_labels": [
+        "MobiHoc 2024",
+        "沿用 11-09 ACM 摘要记录，全文待补"
+      ],
+      "urls": [
+        "https://doi.org/10.1145/3641512.3686367"
+      ]
+    },
+    {
+      "id": "s-parametric",
+      "year": "2026",
+      "title": "Curriculum Generation under Structured Parametric Environments for Robust Navigation Policies",
+      "reading_labels": [
+        "2026-08-09 · arXiv，按预印本处理",
+        "作者摘要"
+      ],
+      "urls": [
+        "https://arxiv.org/abs/2608.08545"
+      ]
+    },
+    {
+      "id": "s-alpgmm",
+      "year": "2020",
+      "title": "ALP-GMM / Teacher Algorithms for Curriculum Learning of Deep RL in Continuously Parameterized Environments",
+      "reading_labels": [
+        "CoRL · PMLR 2020",
+        "沿用首轮出版方摘要"
+      ],
+      "urls": [
+        "https://proceedings.mlr.press/v100/portelas20a.html"
+      ]
+    },
+    {
+      "id": "s-plr",
+      "year": "2021",
+      "title": "Prioritized Level Replay（PLR）",
+      "reading_labels": [
+        "ICML 2021",
+        "沿用首轮出版方摘要"
+      ],
+      "urls": [
+        "https://proceedings.mlr.press/v139/jiang21b.html"
+      ]
+    },
+    {
+      "id": "s-accel",
+      "year": "2022",
+      "title": "Evolving Curricula with Regret-Based Environment Design（ACCEL）",
+      "reading_labels": [
+        "ICML 2022",
+        "沿用首轮出版方摘要"
+      ],
+      "urls": [
+        "https://proceedings.mlr.press/v162/parker-holder22a.html"
+      ]
+    },
+    {
+      "id": "s-hyperband",
+      "year": "2018",
+      "title": "Hyperband: A Novel Bandit-Based Approach to Hyperparameter Optimization",
+      "reading_labels": [
+        "JMLR 18(185) · 页面标注 2018",
+        "出版方摘要"
+      ],
+      "urls": [
+        "https://jmlr.org/papers/v18/16-558.html"
+      ]
+    },
+    {
+      "id": "s-cs",
+      "year": "2021",
+      "title": "Time-uniform, nonparametric, nonasymptotic confidence sequences",
+      "reading_labels": [
+        "Annals of Statistics 2021",
+        "作者摘要/作者主页"
+      ],
+      "urls": [
+        "https://arxiv.org/abs/1810.08240",
+        "https://www.stevehoward.org/"
+      ]
+    }
+  ],
+  "thesis_evidence": {
+    "path": "thesis-reference/theses/3120215520_答辩修改后论文0830.pdf",
+    "method_pdf_pages": [
+      98,
+      99,
+      103,
+      104,
+      105,
+      106
+    ],
+    "experimental_pdf_pages": [
+      116,
+      118,
+      123
+    ],
+    "printed_page_offset": 17,
+    "visually_checked_figure": {
+      "figure": "4.3",
+      "pdf_page": 104,
+      "printed_page": 87
+    }
+  },
+  "limits": [
+    "2026-11-10之后的工作未覆盖；2026-11卷期不表示全年或整月已穷尽",
+    "PORTAL直接页面受限；依据官方检索片段及AAMAS扩展摘要",
+    "EGP2、CL-CMA-MAPPO仅出版方检索片段；全文访问403",
+    "SCG正式PDF已下载至Git忽略目录，只读部分章节与算法",
+    "CACL会议年份核对为ICLR2024，arXiv2025不能当作首次发表年份",
+    "部分经典卡片沿用11-09阅读，已逐项标注",
+    "没有全部引文网络、中文数据库、代码或数值复现审计",
+    "与单智能体或LLM课程的比较属于机制边界；适配到UAV前须核对算法前提"
+  ],
+  "excluded_evidence": [
+    "未核验的聚合站会议标签",
+    "声称使用合成占位引用/数字的非学术文章",
+    "检索中的课程学分、军事对抗等无关结果"
+  ],
+  "research_runs": 0
+}
