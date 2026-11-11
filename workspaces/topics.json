@@ -1,0 +1,68 @@
+{
+  "date": "2026-11-11",
+  "scope": "课题目录登记与导航，不代替各课题最新研究记录。三课题仍共享同一Git工作树，目录/编辑器分组不是权限隔离。",
+  "audit": "只读核对当前工作空间相关本地Codex会话的元数据及可见用户消息，并与三个课题README、内容源和生成脚本交叉核对；未导出会话全文，未改动Codex历史。此检查不等于三个研究内容的全面学术审计。",
+  "shared": [
+    "docs/research/ai-paper-review/",
+    "docs/research/autonomous-science-2026-11-10/",
+    "templates/acta-automatica-sinica/"
+  ],
+  "topics": [
+    {
+      "id": "TR-001",
+      "title": "UCS-GenRL 学术论文化",
+      "input": "thesis-reference/theses/3120215520_答辩修改后论文0830.pdf",
+      "focus": "第4.2节；原任务内部的课程组织与训练机制研究",
+      "workspace": "workspaces/ucs-genrl",
+      "docs": "docs/topics/TR-001-thesis-uav-crowdsensing",
+      "entry": "index.html",
+      "latest": "experiment-specification.html",
+      "editor": "UCS-GenRL.code-workspace",
+      "sources": [
+        "design/implementation-specification.json",
+        "design/theory-experiment-2026-11-11.json"
+      ],
+      "notes": "thesis-reference/notes/thesis-uav-crowdsensing",
+      "paper_reserved": "papers/ucs-genrl",
+      "boundary": "UCS的D/F/η/χ、训练预算和任务语义仅属本课题；不是方位角互定位。"
+    },
+    {
+      "id": "TR-002",
+      "title": "方位角互定位与协同规划补强",
+      "input": "thesis-reference/theses/博士论文.pdf",
+      "focus": "王英建学位论文第4章；匹配arXiv:2401.07784v1",
+      "workspace": "workspaces/bearing-swarm-review",
+      "docs": "docs/topics/TR-002-bearing-swarm",
+      "entry": "index.html",
+      "latest": "benchmark.html",
+      "editor": "TR-002-bearing-swarm.code-workspace",
+      "sources": [
+        "review.json",
+        "novelty.json",
+        "plan.json",
+        "research-progress.json",
+        "benchmark.json"
+      ],
+      "notes": "thesis-reference/notes/TR-002-bearing-swarm",
+      "paper_reserved": "papers/bearing-swarm",
+      "boundary": "保持bearing/里程计目标；当前先做仿真，实机后置。与UCS训练/课程分配无关。"
+    },
+    {
+      "id": "TR-003",
+      "title": "几何表征与整身运动规划综述",
+      "input": "thesis-reference/theses/zjuthesis.pdf",
+      "focus": "王钱浩学位论文背景下的新综述；几何约束转换及保证边界",
+      "workspace": "workspaces/geometry-planning-survey",
+      "docs": "docs/topics/TR-003-geometry-planning-survey",
+      "entry": "index.html",
+      "latest": "index.html",
+      "editor": "TR-003-geometry-survey.code-workspace",
+      "sources": [
+        "survey.json"
+      ],
+      "notes": "thesis-reference/notes/TR-003-zjuthesis-survey",
+      "paper_reserved": "papers/geometry-planning-survey",
+      "boundary": "综述证据编码、正文和解析示例归本课题；不是TR-002的新定位算法或TR-001训练实验。"
+    }
+  ]
+}

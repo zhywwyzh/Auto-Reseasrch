@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-11",
+  "checked": "Topic directories, local visible-session context, source/generator ownership, editor roots, links and ignore rules",
+  "finding": "Three distinct research directories already existed; root README/AGENTS incorrectly presented TR-001 as repository-wide only topic. Corrected routing and added navigation/editor entries without moving research content.",
+  "registry_sha256": "ae07ab63bc7ce058b47022b846f1cd9b932db176fb43942e8231291ad921c426",
+  "pages": {
+    "workspaces/index.html": {
+      "anchors": 3,
+      "links": 19,
+      "http": 200
+    },
+    "workspaces/bearing-swarm-review/index.html": {
+      "anchors": 18,
+      "links": 42,
+      "http": 200
+    },
+    "workspaces/bearing-swarm-review/plan.html": {
+      "anchors": 24,
+      "links": 31,
+      "http": 200
+    },
+    "workspaces/bearing-swarm-review/benchmark.html": {
+      "anchors": 26,
+      "links": 40,
+      "http": 200
+    }
+  },
+  "verified": [
+    "Three unique design roots and three unique topic-doc roots",
+    "All registered content-source files and editor folders exist",
+    "Each topic .venv/datasets/runs paths match Git ignore rules",
+    "All local navigation links/anchors resolve and HTTP content matches generated files"
+  ],
+  "not_verified": [
+    "No complete academic-content or full conversation audit",
+    "No browser interaction or IDE workspace opening test",
+    "No hard filesystem/Git isolation; common worktree remains"
+  ],
+  "history": "Read-only local session metadata and visible user messages; raw history neither copied nor edited",
+  "research_execution": "None; no dependencies installed or experiments started"
+}

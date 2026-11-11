@@ -1,0 +1,10 @@
+---
+description: Distinguish the three thesis research topics in this repository before reading or writing research artifacts.
+alwaysApply: true
+---
+
+# 研究课题隔离
+
+- 先按用户指定的论文和本会话任务，在 `workspaces/topics.json` 定位课题；遵循根 `AGENTS.md` 的课题路由。
+- 只在该课题登记的设计、记录、稿件路径内维护研究内容。共用资料仅作明确引用，不混用研究状态、测试集、结果或执行授权。
+- 公共导航不是共同实验目录；目录隔离不等于Git分支隔离。保留其他会话工作，不批量暂存其他课题。

@@ -6,13 +6,17 @@
 
 ## 当前仓库契约
 
-仓库工作遵循 [AGENTS.md](AGENTS.md)。当前聚焦本地学位论文 `thesis-reference/theses/3120215520_答辩修改后论文0830.pdf` 第 4.2 节 UCS-GenRL 的学术论文化。用户已确认该节尚无论文和代码，其他方法节已有论文与开源；当前只讨论研究计划，待用户评估后再开展实现和实验。
+仓库工作遵循 [AGENTS.md](AGENTS.md)。当前有三项独立论文研究，统一从[研究课题总入口](workspaces/index.html)进入；路径与原论文对应关系由 [topics.json](workspaces/topics.json)维护。三项共享仓库和方法资料，但分别保存研究正文、设计与状态，不能互相继承结果或实验授权。
+
+- [TR-001 / UCS-GenRL](workspaces/ucs-genrl/index.html)：`3120215520_答辩修改后论文0830.pdf` 第4.2节的学术论文化。
+- [TR-002 / 方位角互定位与协同规划](workspaces/bearing-swarm-review/index.html)：`博士论文.pdf` 与匹配预印本的补强；当前先做仿真设计。
+- [TR-003 / 几何表征与整身规划综述](workspaces/geometry-planning-survey/index.html)：`zjuthesis.pdf` 背景下的综述研究。
 
 - `thesis-reference/`：本地学位论文、相关论文和阅读笔记，整体由 Git 忽略。
 - [自动化学报 LaTeX 模板](templates/acta-automatica-sinica/README.md)：已从用户提供的 ZIP 解压，位于可上传目录。
 - `papers/<课题名>/`：后续按需创建的稿件目录，从模板副本开展写作。
 
-当前课题：[TR-001：第 4.2 节论文化可行性](docs/topics/TR-001-thesis-uav-crowdsensing/README.md)。阅读[论文方案与大纲](docs/topics/TR-001-thesis-uav-crowdsensing/paper-feasibility-plan.md)、[代码与实验讨论稿](docs/topics/TR-001-thesis-uav-crowdsensing/experiment-design.md)及[经典与近期文献评估](docs/topics/TR-001-thesis-uav-crowdsensing/literature-review.md)。
+以下进展与导读属于 **TR-001**，不代表另外两项的当前任务：[TR-001：第 4.2 节论文化可行性](docs/topics/TR-001-thesis-uav-crowdsensing/README.md)。阅读[论文方案与大纲](docs/topics/TR-001-thesis-uav-crowdsensing/paper-feasibility-plan.md)、[代码与实验讨论稿](docs/topics/TR-001-thesis-uav-crowdsensing/experiment-design.md)及[经典与近期文献评估](docs/topics/TR-001-thesis-uav-crowdsensing/literature-review.md)。
 
 **当前研究进展：** [方向 B：回训如何改变课程价值](workspaces/ucs-genrl/direction-b-study.html)，含解析反例、最近邻审查和拟议最小判别协议；未启动训练。
 
