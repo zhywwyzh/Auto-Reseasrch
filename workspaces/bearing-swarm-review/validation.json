@@ -1,0 +1,153 @@
+{
+  "date": "2026-11-11",
+  "source_hashes": {
+    "thesis_sha256": "4551995b0deda3b4d402c951a4da1b4e69e7b702b39fc0904fe2052706331d76",
+    "arxiv_download_sha256": "5e18ce6b516175193665d463bd78144e0518450c6f7611c7dc5912b419cda7dc"
+  },
+  "passed": [
+    "JSON parse",
+    "HTML generation",
+    "HTTP 200 on execution-host loopback",
+    "PDF original-page inspection: arXiv p8/p20; thesis PDF119/PDF121",
+    "original PDF and extraction remain Git ignored",
+    "Second-round novelty JSON parse and deterministic HTML/Canvas generation",
+    "16 unique HTML IDs and 40 href syntax/local targets checked; no automated remote-URL sweep",
+    "Inline JavaScript syntax: node --check",
+    "Updated HTTP 200 content verified on execution-host loopback"
+  ],
+  "limits": [
+    "CUA getState on this follow-up returned apps=[] and browsers=[]; browser rendering and actual click interactions remain unverified.",
+    "Canvas source generated using inspected SDK exports; no IDE runtime/type-check result available.",
+    "No research code, solver run, training, external review service, paid model invocation or independent experimental replication."
+  ],
+  "local_url": "http://127.0.0.1:8893/workspaces/bearing-swarm-review/",
+  "access_scope": "Execution-host loopback only; not a public or cross-device address.",
+  "git": "Only TR-002 review directories and managed TR-002 Canvas authored here; concurrent TR-001/TR-003 changes preserved. No commit/push/publication.",
+  "followup": {
+    "date": "2026-11-11",
+    "analytical_examples": "A1 two-robot SO(3)/O(3) separation; A2 noiseless tree corollary; A3 standard dual gap bound. Hand derivations, not simulation results. A1 also includes an explicit two-time metric-odometry translation solution; no general planar 6DoF claim.",
+    "experimental_status": "Not started; no new empirical values.",
+    "reading_sources": 11
+  },
+  "detailed_plan": {
+    "date": "2026-11-11",
+    "source": "plan.json",
+    "pages": {
+      "plan.html": {
+        "ids": 16,
+        "links": 20,
+        "native_details": 6,
+        "http": 200
+      },
+      "index.html": {
+        "ids": 17,
+        "links": 41,
+        "native_details": 11,
+        "http": 200
+      }
+    },
+    "checks": [
+      "JSON/schema essentials",
+      "static unique anchors and all local link targets",
+      "paired details/summary structure",
+      "inline JS syntax for review page",
+      "HTTP 200 and plan content",
+      "Canvas generated from same JSON"
+    ],
+    "research_execution": "None; documentation and rendering only",
+    "browser_interactions": "Not runtime verified; native details and anchor navigation used in plan page"
+  },
+  "research_progress": {
+    "date": "2026-11-11",
+    "source": "research-progress.json",
+    "derivations": "D0–D5 hand derivation drafts; no independent proof review or numerical experiment",
+    "checks": {
+      "index.html": {
+        "anchors": 17,
+        "links": 41,
+        "http": 200,
+        "native_details": 11
+      },
+      "plan.html": {
+        "anchors": 23,
+        "links": 30,
+        "http": 200,
+        "native_details": 12
+      }
+    },
+    "browser": "No browser interaction or IDE runtime validation claimed",
+    "research_execution": "No solver, simulation, training or paid calls"
+  },
+  "benchmark_protocol": {
+    "date": "2026-11-11",
+    "version": "0.1 — 实验协议草案，未冻结、未实施",
+    "source": "benchmark.json",
+    "source_sha256": "03f5a6c7e49923d15c246956d750530bf7faae916dbb34874ade3ff608d58dd1",
+    "checks": {
+      "index.html": {
+        "unique_ids": 18,
+        "links": 42,
+        "native_details": 11,
+        "http": 200
+      },
+      "plan.html": {
+        "unique_ids": 24,
+        "links": 31,
+        "native_details": 12,
+        "http": 200
+      },
+      "benchmark.html": {
+        "unique_ids": 20,
+        "links": 33,
+        "native_details": 7,
+        "http": 200
+      }
+    },
+    "passed": [
+      "All JSON parse; Python renderer syntax",
+      "Unique IDs, native details/summary pairing, local link and fragment targets",
+      "HTTP 200 and exact generated content on execution-host loopback",
+      "Sample-count arithmetic",
+      "Existing inline UI JavaScript syntax",
+      "Shared JSON regenerated into existing Canvas"
+    ],
+    "limitations": [
+      "No browser runtime or visual interaction test: Playwright/Puppeteer unavailable; no prior CUA browser available",
+      "No Canvas IDE compile/runtime diagnostics",
+      "No research implementation, solver, simulation, training or paid calls; reliability gates are not passed by document checks"
+    ],
+    "public_benchmark_status": "Official source/README and remote commit audit only; no payload downloaded or adapter executed"
+  },
+  "simulation_environment_design": {
+    "date": "2026-11-11",
+    "source": "benchmark.json:simulation_resources",
+    "status": "Specification and read-only machine inventory only; no installation/research implementation/experiment",
+    "checks": {
+      "workspaces/index.html": {
+        "anchors": 3,
+        "links": 19,
+        "http": 200
+      },
+      "workspaces/bearing-swarm-review/index.html": {
+        "anchors": 18,
+        "links": 42,
+        "http": 200
+      },
+      "workspaces/bearing-swarm-review/plan.html": {
+        "anchors": 24,
+        "links": 31,
+        "http": 200
+      },
+      "workspaces/bearing-swarm-review/benchmark.html": {
+        "anchors": 26,
+        "links": 40,
+        "http": 200
+      }
+    },
+    "limits": [
+      "Browser visual/interactive runtime unverified",
+      "Installed CLI presence does not establish solver/container readiness",
+      "Hardware and budgets are proposals, not benchmark measurements"
+    ]
+  }
+}
