@@ -5,14 +5,16 @@
 <aside>
 <div class="brand">AUTORESEARCH / TR-001</div><div class="project">UCS-GenRL<br>研究设计工作区</div><p class="sidebar-note">从第 4.2 节出发<br>理论 → 判别实验 → 接口契约</p>
 <nav aria-label="研究设计章节"><a href="#overview" aria-current="page">01　讨论总览</a><a href="#theory">02　理论与推导</a><a href="#experiments">03　实验矩阵</a><a href="#architecture">04　代码设计</a><a href="#review">05　评审与记录</a></nav>
-<div class="side-links"><a href="direction-b-study.html">当前：方向 B · 回训价值深入研究</a><a href="research-review.html">前轮：4.2 论文化整合评审</a><a href="curriculum-deep-research.html">前轮：课程分配深度研究</a><a href="direction-a-assessment.html">前轮：原任务内的创新设计</a><a href="novelty-review.html">创新性复评与改进建议 · 11-10</a><a href="UCS-GenRL.code-workspace" download>下载编辑器工作区配置</a><a href="design/decisions.json">设计决策记录 · JSON</a><span>版本 2026-11-10 / v0.7</span><span>规划文档 · 无实验结果</span></div>
+<div class="side-links"><a href="theory-experiment-design.html">当前：理论公式与实验设计</a><a href="direction-b-study.html#value-review">前轮：方向 B · 论文价值评估</a><a href="research-review.html">前轮：4.2 论文化整合评审</a><a href="curriculum-deep-research.html">前轮：课程分配深度研究</a><a href="direction-a-assessment.html">前轮：原任务内的创新设计</a><a href="novelty-review.html">创新性复评与改进建议 · 11-10</a><a href="UCS-GenRL.code-workspace" download>下载编辑器工作区配置</a><a href="design/decisions.json">设计决策记录 · JSON</a><span>版本 2026-11-10 / v0.7</span><span>规划文档 · 无实验结果</span></div>
 </aside>
 <main>
+<p style="padding:16px;border-left:3px solid #17634e;background:#edf3ed"><strong>最新：第一轮详细设计。</strong> <a href="experiment-specification.html">查看原文/源码差异、批次配额、状态恢复和验收规范</a>。设计已整理，研究执行锁定。</p>
+
 <div class="top"><a href="thesis-guide.html">先读：学位论文与各章介绍 →</a><span class="tag">研究方案评审中</span><button class="quiet" id="print">打印完整讨论稿</button></div>
 <noscript><p class="notice">此页面需要 JavaScript 切换章节、显示实验矩阵和接口设计。请启用浏览器脚本后阅读。</p></noscript>
 <section class="page" id="overview" aria-labelledby="overview-title">
 <div class="brand">RESEARCH QUESTION</div><h1 id="overview-title">保持原任务定义，<br>怎样让生成的训练任务真正有效？</h1>
-<div class="notice"><strong>当前方向 B · 2026-11-10</strong><p><a href="direction-b-study.html">回训排序分解、最近邻精读、同标签强对照与最小判别协议 →</a>。方向已继续，方法贡献与 UCS 现象仍待验证；未启动实现或训练。</p></div><div class="notice"><strong>前轮整合评审 · 2026-11-10</strong><p><a href="research-review.html">研究内容、自动科研方法执行记录、最近邻反证、实验代码方案与论文大纲 →</a>。新增 2026 UAV／参数课程近邻、原表核对及教师成本摊销；下方保留前轮讨论，该轮为历史候选比较；用户现已指示沿 B 继续研究。</p></div>
+<div class="notice"><strong>当前理论与实验设计 · 2026-11-11</strong><p><a href="theory-experiment-design.html">候选配额、估计器、方差/成本条件和分阶段实验 →</a>。研究设计，未启动训练；原任务和骨干保持不变。</p></div><div class="notice"><strong>前轮方向 B · 2026-11-11</strong><p><a href="direction-b-study.html#value-review">回训排序分解、最近邻精读、同标签强对照与最小判别协议 →</a>。方向已继续，方法贡献与 UCS 现象仍待验证；未启动实现或训练。</p></div><div class="notice"><strong>前轮整合评审 · 2026-11-10</strong><p><a href="research-review.html">研究内容、自动科研方法执行记录、最近邻反证、实验代码方案与论文大纲 →</a>。新增 2026 UAV／参数课程近邻、原表核对及教师成本摊销；下方保留前轮讨论，该轮为历史候选比较；用户现已指示沿 B 继续研究。</p></div>
 <p class="lead">用户已明确优先维持原任务定义。本轮暂沿方向 2 深入研究课程收益判断，以方向 3 检验未见因素组合；方向 1 保留为候选。主次尚未视为最终选择，具体机制与创新仍待证据验证。</p>
 <div class="notice"><strong>最新深度研究：原指标收益判断是否可靠？</strong><p>暂按方向 2 主线、方向 3 验证推进；已核对公开骨干差异，并补入 GradAlign、PGB、ULEE 等 2026 近邻。<a href="curriculum-deep-research.html">阅读精确问题、理论边界、实验及代码接口方案 →</a>。当前仅研究设计，未启动实现或训练。</p></div>
 <div class="notice"><strong>新增：方向 2 与方向 3 已补充论证</strong><p>方向 2 可作为方法主线候选，但须越过 4.3 已有归一化与探索机制；方向 3 需要严格区分未见组合与额外难度，也有条件独立成文。<a href="direction-a-assessment.html#directions-2-3">阅读具体问题、理论边界、划分与去留条件 →</a></p></div>

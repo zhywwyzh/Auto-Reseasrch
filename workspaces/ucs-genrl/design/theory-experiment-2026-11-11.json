@@ -1,0 +1,329 @@
+{
+  "version": "2026-11-11-theory-experiment-1",
+  "status": "design_only_not_executed",
+  "main_document": "../theory-experiment-design.html",
+  "scope": "TR-001 §4.2；与TR-002无关",
+  "user_request": "继续主线；给出理论公式、创新论点和实验设计",
+  "candidate": "B-M：复用训练前缀、共享系数的回训后候选差值校正",
+  "preserve": [
+    "原任务语义",
+    "原奖励",
+    "D/F/η/χ",
+    "固定4.3学生更新规则"
+  ],
+  "assumptions": [
+    "固定学习状态/候选池/训练时域/评价协议",
+    "训练分支重复独立同分布",
+    "有限二阶矩尚待指标核验",
+    "beta,n,m只由独立先导决定",
+    "评价不影响续训状态/随机流"
+  ],
+  "formulas": [
+    {
+      "id": "T0",
+      "name": "完整配额有限干预",
+      "formula": "p_k=(1-lambda)*p_0+lambda*e_k; U_k=E[Y_k]",
+      "origin": "本课题拟议估计目标；非环境可加重要性",
+      "assumptions": [
+        "合法环境池与固定采样规则",
+        "实际执行候选配额",
+        "UCS指标不变"
+      ]
+    },
+    {
+      "id": "T1",
+      "name": "嵌套两层估计",
+      "formula": "Uhat=Ybar_m+beta*(Xbar_n-Xbar_m)",
+      "claim": "fixed or independent-pilot beta,n,m => E[Uhat]=E[Y]",
+      "origin": "经典MFMC两层形式的任务适配"
+    },
+    {
+      "id": "T2",
+      "name": "方差",
+      "formula": "var=sy2/m+(1/m-1/n)*(beta^2*sx2-2*beta*sxy); beta*=sxy/sx2",
+      "optimum": "sy2*((1-rho^2)/m+rho^2/n)",
+      "origin": "经典协方差展开，非新定理"
+    },
+    {
+      "id": "T3",
+      "name": "系数估计误差代价",
+      "formula": "var(beta)=var(beta*)+(1/m-1/n)*sx2*(beta-beta*)^2",
+      "verification": "SymPy恒等式检查通过",
+      "origin": "由T2配方；条件于独立先导"
+    },
+    {
+      "id": "T4",
+      "name": "含复用前缀的连续成本比",
+      "formula": "r*=max(1,sqrt(cA*rho^2/(cX*(1-rho^2))))",
+      "variance_factor": "F(r)=(cX*r+cA)*((1-rho^2)+rho^2/r)",
+      "verification": "SymPy核验F导数=cX*(1-rho^2)-cA*rho^2/r^2",
+      "origin": "本课题成本模型中的标准约束优化推导；非通用首创"
+    },
+    {
+      "id": "T5",
+      "name": "含先导与真正直接Y成本的理想盈亏条件",
+      "formula": "F(r*)/(Btotal-Bpilot)<cH/Btotal",
+      "caveats": [
+        "cH不必等于cX+cA",
+        "最优系数且忽略取整",
+        "共享参考时不能将成对最优外推全局",
+        "先导估计误差要按T3另计",
+        "c为确定成本或预先上界；平均成本只给期望预算"
+      ]
+    },
+    {
+      "id": "T6",
+      "name": "单快照简单遗憾界",
+      "formula": "E[Ubest-Uselected] <= sum_{Delta_k>0} Delta_k*v_k/(v_k+Delta_k^2)",
+      "v": "Var(Uhat_k-Uhat_best), including covariance",
+      "origin": "标准单侧Cantelli不等式",
+      "caveats": [
+        "含未知真值，只作分析",
+        "不是可执行停止判据",
+        "不是完整非平稳课程遗憾保证"
+      ]
+    },
+    {
+      "id": "T7",
+      "name": "共享系数的比较差值校正",
+      "formula": "Q(beta)=A/m+(1/m-1/n)*(beta^2*B-2*beta*C); beta_gap*=C/B; rho_eff^2=C^2/(A*B)",
+      "definitions": "A=sum w Var(DY), B=sum w Var(DX), C=sum w Cov(DX,DY); pilot-frozen pivot j and comparison set, first-round w=1",
+      "optimum": "Q*=A*((1-rho_eff^2)/m+rho_eff^2/n)",
+      "origin": "本课题候选设计；推导是标准协方差求和及配方，不主张新的通用控制变量理论",
+      "limits": [
+        "比较中心由独立先导冻结",
+        "n,m和beta所有候选共用",
+        "最小化差值方差代理，不等于最小误选或全局课程最优",
+        "多输出控制变量近邻仍须方法级审查"
+      ]
+    },
+    {
+      "id": "T5b",
+      "name": "先导费用占比上界与一次性设计反证",
+      "formula": "Bpilot/Btotal < 1-F(r*)/cH",
+      "example": "h=a, cX=h,cA=a,cH=2h, Bpilot=Bproduction => best possible variance ratio >=1",
+      "scope": "仅限先导独立且不复用于正式估计的本方案；训练成本理想模型",
+      "consequence": "R2示例只作机制诊断，进入R3前重设计先导信息获取/复用与成本核验"
+    }
+  ],
+  "experiments": [
+    {
+      "id": "R0",
+      "type": "语义及恢复契约",
+      "status": "planned_not_run",
+      "requires": [
+        "指标聚合与η零分母",
+        "4.3代码对应",
+        "真实环境步计数",
+        "完整恢复或统一重置协议"
+      ]
+    },
+    {
+      "id": "R1-S",
+      "S": 3,
+      "C": 3,
+      "K": 4,
+      "R": 2,
+      "h": 20000,
+      "a": 20000,
+      "illustrative_training_steps": 3600000,
+      "purpose": "短窗现象筛查；不能估准相关性",
+      "excludes": [
+        "主训练",
+        "独立确认",
+        "评价"
+      ],
+      "environment_pool_size_J": 4,
+      "K_meaning": "非基准候选配额数，允许从同一4环境池中选择较少配额作诊断"
+    },
+    {
+      "id": "R1-L",
+      "S": 2,
+      "C": 1,
+      "K": 2,
+      "R": 2,
+      "h": 240000,
+      "a": 240000,
+      "illustrative_training_steps": 5760000,
+      "purpose": "原训练时域复核",
+      "excludes": [
+        "主训练",
+        "评价",
+        "超出本设计的追加确认"
+      ],
+      "environment_pool_size_J": 4,
+      "K_meaning": "非基准候选配额数，允许从同一4环境池中选择较少配额作诊断"
+    },
+    {
+      "id": "R2",
+      "S": 3,
+      "C": 1,
+      "K": 2,
+      "pilot_repeats": 8,
+      "confirmation_repeats": 8,
+      "example_n": 12,
+      "example_m": 4,
+      "h": 20000,
+      "a": 20000,
+      "illustrative_training_steps": 8640000,
+      "purpose": "同预算估计/选课的机制比较",
+      "parameter_status": "n/m只是成本算例，实际由独立先导和总预算冻结；8次先导不保证相关性精度",
+      "excludes": [
+        "主训练",
+        "评价",
+        "未列调参"
+      ],
+      "deployment_economics": "一次性用法在训练成本理想模型下已被T5b反证；仅为条件性诊断设计，非可部署收益方案",
+      "environment_pool_size_J": 4,
+      "K_meaning": "非基准候选配额数，允许从同一4环境池中选择较少配额作诊断"
+    },
+    {
+      "id": "R3",
+      "methods": 6,
+      "seeds_per_method": 5,
+      "total_interactions_per_seed": 3000000,
+      "illustrative_total_interactions": 90000000,
+      "purpose": "完整课程净收益与留出泛化",
+      "notes": [
+        "每种子总预算包含内部探测和教师反馈评价；保留相同终末原任务份额",
+        "最终封存测试等额另列，纳入项目账",
+        "开发诊断与离线标签成本另披露，不免费给予新法",
+        "5种子未作功效保证",
+        "原文3M训练步与本协议3M总交互分别标识"
+      ],
+      "prerequisite": "先重设计B-M先导获取/复用，并通过计全成本条件；否则删去B-M，保留方向B其他对照"
+    }
+  ],
+  "sources": [
+    {
+      "id": "thesis",
+      "url": "local:thesis-reference/theses/3120215520_答辩修改后论文0830.pdf",
+      "locators": [
+        "4.2 PDF105–106/印刷88–89",
+        "4.4 PDF123/印刷106"
+      ],
+      "depth": "继承4.2精读；本轮重读PDF123预算段",
+      "finding": "5轮×(0.24M生成+0.24M原任务)+0.6M原任务=3M；代码步数口径仍待核"
+    },
+    {
+      "id": "mfmc",
+      "url": "https://kiwi.oden.utexas.edu/papers/multi-fidelity-monte-carlo-peherstorfer-willcox-gunzburger.pdf",
+      "metadata_url": "https://dspace.mit.edu/entities/publication/f104683d-44c4-40ec-bd06-47502c5c0bfd",
+      "status": "SISC2016论文的作者稿；非出版社版逐页核验",
+      "depth": "§3，PDF5–11/可见5–11；PDF6视觉核验",
+      "local_ignored_path": "thesis-reference/notes/thesis-uav-crowdsensing/theory-design-2026-11-11/mfmc-author-manuscript.pdf",
+      "sha256": "424a8b80a422258652017f7202c9ae998855403d0d2d5d416ee7c9a577eb6bb4",
+      "role": "T1/T2/T4的经典控制变量及分配思想来源；本课题对嵌套训练成本另作推导"
+    },
+    {
+      "id": "mf-bai-2022",
+      "url": "https://papers.neurips.cc/paper_files/paper/2022/hash/71c31ebf577ffdad5f4a74156daad518-Abstract-Conference.html",
+      "status": "NeurIPS2022正式论文",
+      "depth": "摘要",
+      "role": "已知偏差上界下多保真选优；不能主张首次成本敏感选臂"
+    },
+    {
+      "id": "optimal-mf-bai",
+      "url": "https://arxiv.org/abs/2406.03033v2",
+      "status": "2024论文、2025-05-26 arXiv v2；另检索到NeurIPS2024论文集入口",
+      "depth": "摘要/元数据",
+      "role": "最优成本识别近邻，尚未全文核算法假设"
+    },
+    {
+      "id": "mfpg",
+      "url": "https://xinjie-liu.github.io/mfpg-rl/",
+      "status": "作者项目页列TMLR2026",
+      "depth": "作者项目页与摘要",
+      "role": "RL控制变量已有研究；主要估计策略梯度，本候选保持学生梯度不变"
+    },
+    {
+      "id": "mfpg-ppo",
+      "url": "https://arxiv.org/abs/2610.02505",
+      "status": "2026-10-01预印本",
+      "depth": "摘要",
+      "role": "相关性破坏、方差膨胀和预算分配已被讨论；差异不能自动视为创新"
+    },
+    {
+      "id": "service-audit",
+      "url": "https://arxiv.org/abs/2601.21471v2",
+      "title": "Designing Service Systems from Textual Evidence",
+      "status": "2026-11-05 v2预印本；作者说明扩写改名准备期刊重投",
+      "depth": "摘要/版本说明，未全文精读",
+      "role": "廉价代理、共享参考、昂贵审计的选优近邻；搜索旧标题不当成另一篇论文"
+    },
+    {
+      "id": "previous-neighbors",
+      "url": "../direction-b-study.html#nearest",
+      "depth": "沿用前轮MM-ACL/ULEE阅读记录",
+      "role": "任务价值预测、回训后课程强对照"
+    },
+    {
+      "id": "cv-ranking-selection",
+      "url": "https://www.informs-sim.org/wsc06papers/040.pdf",
+      "extended_author_manuscript": "https://users.iems.northwestern.edu/~nelsonb/Publications/TsaiNelsonStaum.pdf",
+      "status": "WSC2006正式会议论文；扩展作者稿版本另存链接",
+      "depth": "摘要及引言；会议版PDF1/印刷348",
+      "role": "控制变量用于选优和配对比较早已有研究；T7不主张首次差值校正，需方法级比较"
+    }
+  ],
+  "innovations": {
+    "proposed": [
+      "原UCS完整配额的回训价值失配及失效条件",
+      "复用训练前缀、共享系数的候选差值校正及全成本停用规则",
+      "固定原任务/学生下的完整流程净收益"
+    ],
+    "not_claimed": [
+      "首次回训反馈",
+      "首次控制变量",
+      "首次多保真选优",
+      "新Cantelli定理",
+      "全程课程最优"
+    ],
+    "novelty_status": "未确立；MFMC/预测同标签/2026近邻待进一步方法级反证"
+  },
+  "decisions": [
+    {
+      "id": "T-D1",
+      "decision": "候选由单环境改为完整配额干预，避免假设收益可加"
+    },
+    {
+      "id": "T-D2",
+      "decision": "B-M作为可被淘汰的测量子分支；不替代方向B问题"
+    },
+    {
+      "id": "T-D3",
+      "decision": "把真实直接Y成本及先导开销计入盈亏条件"
+    },
+    {
+      "id": "T-D4",
+      "decision": "短时域诊断不能外推原240k/240k时域"
+    },
+    {
+      "id": "T-D5",
+      "decision": "通用MFMC与B-M相同时合并基线，不通过改名制造创新"
+    },
+    {
+      "id": "T-D6",
+      "decision": "以候选差值方差设计共享校正系数；共享参考导致的单值方差下降不自动改善选课"
+    },
+    {
+      "id": "T-D7",
+      "decision": "新增2006年R&S控制变量主动反证；进一步排除首次差值校正的宽泛主张"
+    },
+    {
+      "id": "T-D8",
+      "decision": "排除R2示例作为一次性节省预算配置：先导占比一半时即使理想相关也无严格净优势；不启动该部署实验"
+    }
+  ],
+  "verification": {
+    "symbolic_identities_checked": [
+      "T3",
+      "T4 derivative"
+    ],
+    "simulation_runs": 0,
+    "training_runs": 0,
+    "paid_model_calls": 0,
+    "implementation_created": false
+  },
+  "retrieval_cutoff": "2026-11-11"
+}

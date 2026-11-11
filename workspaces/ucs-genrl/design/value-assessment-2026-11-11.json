@@ -1,0 +1,201 @@
+{
+  "date": "2026-11-11",
+  "main_document": "../direction-b-study.html#value-review",
+  "kind": "adapted_evidence_review_not_framework_benchmark",
+  "scope": "评估第4.2节及相关章节支撑的拟投稿论文，不替代对整篇博士论文的学位质量评价",
+  "recommendation": "有明确改良方向；值得有限诊断；尚未形成已验证新方法或可投稿论文",
+  "working_title": "面向无人机群体感知策略复用的迁移收益驱动课程优化",
+  "frameworks": [
+    {
+      "id": "agentic-scientist-v3",
+      "repo": "ai-scientist-v3",
+      "paths": [
+        "docs/pipeline.md",
+        "docs/task_drafting.md",
+        "docs/posthoc_pipeline.md",
+        "src/orchestrator/rubrics.py"
+      ],
+      "borrowed": "任务契约、分阶段证据、passed/failed/not_assessed区别；posthoc与新实验分开",
+      "applied": "固定本课题的允许改动、六项证据门槛与结论范围；缺少实验不能标为通过",
+      "limit": "使用本地固定源码指导本课题人工分析式评审，未运行原编排器或评分器",
+      "commit": "df8313889a004f8a44a472e19a833cd547bb828a",
+      "source_url": "https://github.com/SakanaAI/AI-Scientist-v3",
+      "source_hashes": {
+        "docs/pipeline.md": "c6f905d663d4b16274d5f6a8e1acb5bf70addaff82b6316be9ddc3c9e446c4f4",
+        "docs/task_drafting.md": "46507123e36072b9e5d92960bc291dc2aa6d418b339a79fe3f06f098d1b0ab95",
+        "docs/posthoc_pipeline.md": "f383354171651428c57fc127f347d9c807d2163c57d26595a618aa2ed0b0de93",
+        "src/orchestrator/rubrics.py": "b85d2527c50d18e33850fbc318d26e26e9aafb6bc3bae8b14518e695ce29bbff"
+      }
+    },
+    {
+      "id": "ai-scientist-v2",
+      "repo": "ai-scientist-v2",
+      "paths": [
+        "ai_scientist/treesearch/agent_manager.py"
+      ],
+      "borrowed": "先建立/调优基线，再开展创新与消融的分阶段顺序",
+      "applied": "原框架重建、同标签直接预测、残差机制分开比较；不能用弱基线证明创新",
+      "limit": "不机械照搬该实现要求的HuggingFace数据集；没有启动Agent树搜索",
+      "commit": "96bd51617cfdbb494a9fc283af00fe090edfae48",
+      "source_url": "https://github.com/SakanaAI/AI-Scientist-v2",
+      "source_hashes": {
+        "ai_scientist/treesearch/agent_manager.py": "3abbc08428be8345baa106045bcbc82fcff115634579b11436a8181707208c89"
+      }
+    },
+    {
+      "id": "autoresearch",
+      "repo": "autoresearch",
+      "paths": [
+        "program.md"
+      ],
+      "borrowed": "冻结评价器、固定预算、保留/淘汰、简单方案优先",
+      "applied": "χ和原任务保持不变；被丢弃的探测交互也计入预算；残差模型无额外价值即删除",
+      "limit": "不采用5分钟LLM训练预算，也不运行无限搜索；其验证分数不等于论文价值",
+      "commit": "228791fb499afffb54b46200aca536f79142f117",
+      "source_url": "https://github.com/karpathy/autoresearch",
+      "source_hashes": {
+        "program.md": "86cf987a5c381e46eefe0d0a82765223fd766d8d7acdc2afacfbbce15ecacece"
+      }
+    },
+    {
+      "id": "discern",
+      "repo": "discern",
+      "paths": [
+        "README.md"
+      ],
+      "borrowed": "数据可信性、分析有效性、主张忠实性的分层审查；替代解释必须改变最终结论",
+      "applied": "数学反例只支持可能性；原文结果不作新结果；代码疑点不冒充运行错误；实用收益无数据则未评估",
+      "limit": "补读固定v2论文摘要及已有§2–3译读；未运行生命科学基准，不输出DISCERN分数",
+      "commit": "a7bf6c225d6a2ccf7cc02403484ddfc817d5e75c",
+      "source_url": "https://huggingface.co/datasets/discern-bench-anon/discern-benchmark",
+      "source_hashes": {
+        "README.md": "706c4b0987be6840cd5b075bf0218f294dcb11daf40c7fe797c506842774f809"
+      }
+    }
+  ],
+  "checks": [
+    {
+      "id": "V01",
+      "dimension": "研究问题与原任务一致",
+      "assessment": "supported",
+      "evidence": "原4.2生成任务、回原任务训练和反馈，PDF105–106/印刷88–89；拟改课程分配，不改UCS语义",
+      "consequence": "保留方向B作为主线"
+    },
+    {
+      "id": "V02",
+      "dimension": "现有证据已确立方法新颖性",
+      "assessment": "not_established",
+      "evidence": "原文已考虑回训；MM-ACL、ULEE及新增目标导向课程已有相邻机制",
+      "consequence": "删除首次回训反馈/首次目标导向/首次收益预测等主张；残差结构须接受同标签强对照"
+    },
+    {
+      "id": "V03",
+      "dimension": "UCS中有实用错序损失",
+      "assessment": "not_assessed",
+      "evidence": "已有解析反例，但无新UCS分支实验；原章节基础定量结果不识别此机制",
+      "consequence": "R1以独立确认的决策损失检验，不能仅以翻转率立项完整算法"
+    },
+    {
+      "id": "V04",
+      "dimension": "因果比较与实现可复验",
+      "assessment": "not_ready",
+      "evidence": "指标口径、4.3实现对应、计数与快照恢复仍需R0",
+      "consequence": "不能称可直接复现或执行就绪；这是证据准备缺口，不证明方向无效"
+    },
+    {
+      "id": "V05",
+      "dimension": "计入全部成本后仍有应用收益",
+      "assessment": "not_assessed",
+      "evidence": "3.6M只是探测训练示意，不含主训练/评价/确认；没有成本收益数据",
+      "consequence": "以相同全部交互预算下χ为主，另报时间/费用；不把成本加权进原χ"
+    },
+    {
+      "id": "V06",
+      "dimension": "独立测试与论文可投稿程度",
+      "assessment": "not_assessed",
+      "evidence": "尚无新实验、最终测试或独立重跑",
+      "consequence": "建议有上限的诊断研究，不直接认定达到自动化学报或更高期刊门槛"
+    }
+  ],
+  "new_sources": [
+    {
+      "id": "ulee-v2-metadata",
+      "url": "https://arxiv.org/abs/2601.19810v2",
+      "status": "arXiv v2 2026-06-12，元数据列ICLR2026",
+      "depth": "本轮摘要/版本记录；沿用v1方法精读，不声称已核v2全文差异",
+      "implication": "适应后课程已存在"
+    },
+    {
+      "id": "procur-target",
+      "url": "https://ijcai.org/proceedings/2024/556",
+      "status": "IJCAI2024正式论文",
+      "depth": "出版方摘要",
+      "implication": "目标分布、任务关联及可学性联合设计已有研究；方法级差异待全文审查"
+    },
+    {
+      "id": "discover",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/1f8edbfe6c77090469a57c321059f29f-Abstract-Conference.html",
+      "status": "NeurIPS2025正式论文",
+      "depth": "正式摘要",
+      "implication": "目标相关的探索任务选择不是新概念；其稀疏目标条件设置不直接等同原UCS"
+    },
+    {
+      "id": "ttc-rl",
+      "url": "https://arxiv.org/html/2510.04786v1",
+      "status": "2025-10-06 v1预印本；本轮未核其他发表状态",
+      "depth": "摘要、引言、相关工作及Algorithm1开头；非全文精读",
+      "implication": "先练相关任务再改善目标任务亦见于LLM；作为概念邻居，不直接作为同学生基线"
+    },
+    {
+      "id": "reward-sparsity",
+      "url": "https://arxiv.org/abs/2610.31884v1",
+      "status": "2026-10-22 v1；作者备注Accepted to NeurIPS2026，未另核正式论文集",
+      "depth": "摘要及元数据；未审全部证明",
+      "implication": "课程效用依赖奖励与优化景观；其简化模型不能外推断言原UCS无收益，也不能改变原奖励来制造现象"
+    },
+    {
+      "id": "per-context",
+      "url": "https://arxiv.org/abs/2607.26417v2",
+      "status": "2026-10-11 v2；作者备注NeurIPS2026机器人学习Workshop接收，非主会确认",
+      "depth": "摘要及版本记录；未全文审查",
+      "implication": "逐情境分配和训练进度差异已有近邻；不能把逐任务预算本身当贡献"
+    }
+  ],
+  "search_cutoff": "2026-11-11",
+  "search_scope": "定向补查，不是系统性穷尽检索",
+  "new_decisions": [
+    {
+      "id": "V07",
+      "decision": "明确原框架已用回训后反馈；新问题是各候选练习的贡献识别与全成本课程决策",
+      "evidence": "本轮重读原文PDF105–106"
+    },
+    {
+      "id": "V08",
+      "decision": "局部分支最优不等于完整课程最优，最终必须等总预算跑完整训练流程",
+      "evidence": "单步决策与连续策略不同的分析推断"
+    },
+    {
+      "id": "V09",
+      "decision": "加入目标相关性/可学性低成本基线候选；不只比较即时学习进展",
+      "evidence": "新增ProCuRL-Target、DISCOVER摘要；待方法和接口核验"
+    },
+    {
+      "id": "V10",
+      "decision": "LLM生成器价值与课程选择器价值分开测试",
+      "evidence": "混合改动不能归因；原4.2与新机制边界"
+    }
+  ],
+  "execution": {
+    "new_research_runs": 0,
+    "paid_calls": 0,
+    "framework_runners_executed": false,
+    "multi_agent_review": false,
+    "new_algorithm_implemented": false
+  },
+  "paper_outcomes": {
+    "full_case": "现象有实用损失，机制胜过同标签强对照，全部预算下及留出任务成立：形成有竞争力的投稿候选",
+    "simple_predictor_wins": "删除多余校准机制，重新评估简化方法的新颖性；不假装复杂方法胜出",
+    "local_only": "只在诊断或少数场景成立：缩小主张，不能直接声称完整系统收益",
+    "no_net_gain": "停止该改良机制；负结果留档，本身不保证可单独发表"
+  }
+}

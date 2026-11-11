@@ -1,0 +1,12 @@
+{
+  "date": "2026-11-11",
+  "url": "http://127.0.0.1:18773/workspaces/ucs-genrl/direction-b-study.html#value-review",
+  "scope": "same-computer-loopback-only",
+  "sections": 8,
+  "local_links_checked": 42,
+  "framework_source_hashes": "passed",
+  "navigation_and_details": "passed",
+  "desktop_and_mobile_overflow": false,
+  "javascript_errors": [],
+  "new_research_runs": 0
+}

@@ -1,0 +1,60 @@
+{
+  "version": "2026-11-11-preparation-1",
+  "status": "draft_for_review_not_executable",
+  "main_document": "../theory-experiment-design.html#preparation",
+  "scope": "R0准备与R1现象判别；不实现算法、不训练、不付费调用",
+  "inventory": {
+    "checked_date": "2026-11-11",
+    "checked_roots": ["thesis-reference/notes/thesis-uav-crowdsensing", "workspaces/ucs-genrl"],
+    "method": "只读文件名盘点，排除.git；另检查主PDF存在；不覆盖其他课题或用户其他磁盘",
+    "main_pdf_exists": true,
+    "existing_evidence": ["学位论文与页码证据", "方向B理论及设计记录", "固定提交的DRL-MTVCS候选骨干源码及静态审查"],
+    "run_artifact_search": "上述两目录中未见.pt/.pth/.ckpt/.npz/.npy/.csv/.tfevents及.ckpt.*、*tfevents*文件；不证明所有格式或其他位置均不存在",
+    "ready_original_run_records": false,
+    "interpretation": "尚未定位可直接用于本轮的逐运行结果或完整快照；已有文献数据不是新实验结果"
+  },
+  "protocol": {
+    "preserve": ["原UCS任务语义", "原奖励与D/F/η/χ", "核验后的4.3骨干"],
+    "pool_size_J": 4,
+    "lambda_proposed": 0.5,
+    "candidate": "p_k=(1-lambda)p0+lambda*e_k；p0均匀；实际合法配置尚未建立",
+    "selection": "在筛选数据中分别取回训前和回训后均值最大者kX/kY，均包括p0；平局优先p0再按预定候选ID",
+    "confirmation": "冻结kX/kY；从相同初始完整快照、以独立训练和评价随机流，运行{kX,kY,p0}去重集合；只做回训后评价；不再选优",
+    "primary_outcome": "独立确认的χ(kY)-χ(kX)，不是未知最优的regret",
+    "secondary_outcome": "独立确认的χ(kY)-χ(p0)，及D/F/η分项、全成本",
+    "same_choice": "kY=kX时选择策略差值为0，无须人为给同一配额制造两个不同结果",
+    "evaluation": {"maps_M": null, "episodes_per_map_E": null, "max_horizon_T": null, "aggregation": null},
+    "seed_manifest": null,
+    "checkpoint_steps": null,
+    "minimum_practical_chi_difference": null,
+    "delta_status": "按原χ量纲、应用意义及独立开发精度确定；正式确认前冻结；不是环境成功阈值或奖励修改",
+    "inference": "主训练种子为独立单位；快照/分支/回合为嵌套观测。R1-P无总体推断，R1-S仅探索性；正式区间方法、精度和样本量待开发数据后预先冻结。不得以不显著判等效或反复窥看加样本。"
+  },
+  "stages": [
+    {"id":"R0","status":"design_only","deliverable":"定义核验、代码差异、状态恢复、计数及评价契约","runtime_checks_passed":false},
+    {"id":"R1-P","role":"可选的小规模流程与噪声诊断；不作论文证据或先导β拟合","S":1,"C":1,"K":2,"R_screen":2,"R_confirm":2,"h":20000,"a":20000,"screen_training":240000,"confirm_training_upper":240000,"total_branch_training_upper":480000,"evaluation_calls_upper":18,"evaluation_steps_upper":"18*M*E*T；若另做初始评价则另计","exclusions":["获取主快照的训练","R0运行检查","评价","失败和重跑","环境生成及准备"]},
+    {"id":"R1-S","role":"条件性正式短窗探索方案，使用新随机流；R1-P不并入确认结果","S":3,"C":3,"K":4,"R_screen":2,"R_confirm":2,"h":20000,"a":20000,"screen_training":3600000,"confirm_training_upper":2160000,"total_branch_training_upper":5760000,"evaluation_calls_upper":234,"evaluation_steps_upper":"234*M*E*T；实际按每次回合长度累加","exclusions":["主训练","R0与可选R1-P","评价","生成及调参","原时域R1-L","R2/R3"]}
+  ],
+  "gates": [
+    {"id":"G0","condition":"原任务/指标/骨干对应、全状态及计数协议未明确","action":"暂停实施准备的定稿；继续静态核验，不运行比较"},
+    {"id":"G1","condition":"R1-P流程正确但样本少或差异不清","action":"仅判断流程可行；固定开发结束规则后选择是否进入R1-S，不宣称支持或否定总体机制"},
+    {"id":"G2","condition":"R1-S独立确认表明存在有实际影响的回训后选课收益","action":"作为方向支持，进入原时域R1-L；不得直接声称完整课程收益或新颖性"},
+    {"id":"G3","condition":"即时评价已足够、收益仅噪声或区间过宽","action":"分别简化、收缩假设或标为未决；有限样本不足不视为等效"},
+    {"id":"G4","condition":"B-M先导成本和经典近邻等价尚未解决","action":"不进入B-M完整收益验证；保留直接Y和同标签预测路线"}
+  ],
+  "record_dictionary": {
+    "evidence_card": ["claim_id", "evidence_type", "source_path_or_url", "source_sha256", "section", "pdf_page", "printed_page", "reading_depth", "supported_scope", "unresolved"],
+    "protocol_manifest": ["protocol_id", "protocol_hash", "code_commit", "student_variant", "metric_definition_hash", "pool_hash", "quota_vector", "checkpoint_id", "seed_role", "h", "a", "M", "E", "T", "delta_chi", "budget_cap", "failure_policy", "analysis_plan"],
+    "snapshot_manifest": ["parameter_state", "optimizer_slots", "normalization_state", "scheduler_and_counters", "actor_policy_versions", "environment_and_recurrent_state", "queue_and_unroll_state", "random_generators", "restore_policy", "hashes"],
+    "branch_record": ["run_id", "protocol_id", "main_seed", "snapshot_id", "candidate_id", "quota_requested", "quota_realized", "role", "training_repeat", "train_rng_id", "eval_rng_id", "checkpoint_before", "checkpoint_after", "D", "F", "eta", "chi", "raw_metric_components", "aggregation_id", "status", "failure_reason"],
+    "budget_record": ["run_id", "stage", "env_steps_generated", "env_steps_original", "eval_steps", "learner_samples_consumed", "optimizer_updates", "queue_discarded_samples", "wall_seconds", "gpu_seconds", "hardware_id", "llm_calls", "llm_tokens", "fee_currency_and_amount", "rerun_of"],
+    "decision_record": ["hypothesis_id", "frozen_rule", "screening_selected_ids", "confirmation_run_ids", "effect_and_uncertainty", "scope", "support_or_refute_or_unresolved", "next_action"]
+  },
+  "record_policy": "字段字典是设计，不是已实现接口；尚无结果表或伪造示例行。空缺用null/待核，不填0。预算分类互斥，累计实际生成交互，不把学习器消费样本与环境步重复相加。",
+  "failure_policy_draft": "保存所有失败及成本；基础设施故障与算法/数值失败区分。重跑上限和无效样本规则先冻结；不得悄悄删除低分或非有限χ。正式分支失败未有可比处理时标未决，不只汇报成功运行。",
+  "artifact_plan": ["版本化协议与证据缺口单", "快照及种子分区清单", "逐分支指标与成本字典", "分析与去留规则", "论文图表规格（无伪造曲线）"],
+  "figure_specs": ["回训前后候选均值及训练重复散点", "独立确认的kY-kX与kY-p0配对差", "训练重复噪声与评价噪声分开显示", "原时域与短时域比较", "分阶段成本及各指标分项"],
+  "auto_research_adaptation": ["v3任务契约：先冻结定义与准入条件", "v2先基线后机制：R1先不用B-M", "autoresearch固定预算与单因素：只改训练配额", "DISCERN证据纪律：独立确认、反例和未决均入账"],
+  "not_claimed": ["已运行原自动科研系统", "已实现研究接口", "统计功效已保证", "已复现原论文", "已有新实验结果"],
+  "research_training_runs": 0
+}

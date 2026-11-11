@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-11",
+  "source_sha256": "321beca57653bfe56b34607ba43891a4e8a96b2e91f37cc0d88f21abc1416ccc",
+  "source_hashes": "passed",
+  "quota_and_budget_arithmetic": "passed",
+  "url": "http://127.0.0.1:18773/workspaces/ucs-genrl/experiment-specification.html",
+  "access_scope": "same-computer-loopback-only",
+  "http_status": 200,
+  "sections": 8,
+  "audit_cards": 9,
+  "local_links_checked": 58,
+  "filter_navigation_expand_print": "passed",
+  "desktop_mobile_no_overflow": true,
+  "js_errors": [],
+  "research_runtime_checks": "not_run",
+  "training_runs": 0,
+  "simulation_runs": 0,
+  "paid_model_calls": 0
+}

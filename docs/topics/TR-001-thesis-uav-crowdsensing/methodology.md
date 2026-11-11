@@ -65,3 +65,13 @@
 后续按用户明确约束重新排序：优先维持原任务定义，在原定义内部探索创新。原指标反馈属于既有机制；任务编辑与效果归因作为优先候选，跨任务干扰为备选，组合泛化作为验证。资源压力不再预设为唯一主线，人工 q/切片仅为辅助，历史实验不直接执行。候选需先通过任务定义一致性检查，再接受最近邻与竞争解释审查；记录在[当前方案](../../../workspaces/ucs-genrl/direction-a-assessment.html#original-task)。
 
 对已有文献的适配范围及历史版本边界以仓库[中英对照阅读包](../../literature-bilingual-2026-11-05.md)为准；选择最终方向时再做定向相关工作更新。
+
+
+## 2026-11-11：使用已引入成果作价值审查
+
+读取固定版本 Agentic Scientist-v3 的 pipeline/task_drafting/posthoc/rubrics、AI Scientist-v2 的阶段管理代码、autoresearch 的 program.md，以及 DISCERN 的本地文档与论文记录。具体适配、文件哈希和结论见[价值评估记录](../../../workspaces/ucs-genrl/design/value-assessment-2026-11-11.json)，阅读入口为[方向 B 价值评估](../../../workspaces/ucs-genrl/direction-b-study.html#value-review)。这是本课题适配的证据审查，不是已部署原框架、运行原评分器或独立多智能体评审。
+
+本轮重新核对原文 PDF105–106/印刷88–89，明确原4.2已用回训后反馈；删除将此本身视为新增贡献的表达。保留有限预算的候选贡献识别与课程分配方向；把同标签强对照、全过程总预算和留出测试作为论文主张的准入条件。新增目标导向课程及2026年近邻为摘要级筛查，不冒充全文排除新颖性重合。没有训练、付费调用或新研究实现。
+
+
+同日理论设计继续按“提出—反证—收缩”执行：将B-M测量方案与经典MFMC、MF-BAI及2026年的MFPG对照，明确标准公式不构成首创；将先导/回训前评价成本与原训练时域纳入条件和实验。T3恒等式及T4导数完成符号核验，不计为研究模拟或训练。详见[理论与实验设计](../../../workspaces/ucs-genrl/theory-experiment-design.html)。

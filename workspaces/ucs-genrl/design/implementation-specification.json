@@ -1,0 +1,553 @@
+{
+  "version": "2026-11-11-detailed-1",
+  "status": "design_only_execution_locked",
+  "main_document": "../experiment-specification.html",
+  "thesis_source": {
+    "path": "thesis-reference/theses/3120215520_答辩修改后论文0830.pdf",
+    "sha256": "faec3234cb5189adf347724db50446b64f9b3b3645d13071076591708fc51588"
+  },
+  "code_commit": "780e0b41d3fff54c8fa5ea0335979b3f1ec1f225",
+  "sections": [
+    {
+      "id": "overview",
+      "title": "01 当前设计决定",
+      "paragraphs": [
+        "本轮把前期方案推进为配置、接口和验收规范。仍保持原UCS状态/动作/动力学、奖励与D/F/η/χ，主线是完整训练配额的迁移收益。候选B-M不进入第一轮实现。",
+        "已完成原文关键页核对、固定源码静态审查、批次与配额算术核验。没有导入或执行研究代码，没有训练、仿真、付费调用；接口名称仅表示设计。",
+        "详细版本优先于此前20k的近似预算草案。关键口径尚未解决，因此本设计不是可直接启动的实验配置。"
+      ]
+    },
+    {
+      "id": "audit",
+      "title": "02 R0静态核验：哪些已明确，哪些仍阻止运行",
+      "paragraphs": [
+        "原文PDF101/印刷84与PDF103/印刷86已重新渲染并视觉核对；PDF100、115–116、123重新提取核读。源码固定版本只读，工作树干净。以下只针对已读的配置1与公共流程，不把局部审查扩展为全部20个任务审计。"
+      ]
+    },
+    {
+      "id": "protocol",
+      "title": "03 统一实验协议与配额",
+      "paragraphs": [
+        "第一轮固定1个原目标任务和4个合法练习环境；具体地图尚待原定义与单位核验后填入，不拿来源不同的16×16旧配置冒充原8×8场景。池中固定机数与站点数；原文允许变化的布局按预定规则生成/选取，不能看得分挑选。",
+        "按原batch32、unroll20设计每次更新接纳640个联合环境转移样本。将短阶段从草案20,000对齐为20,480，即32次更新；每个候选相同。h/a以接纳样本计，实际生成成本另记，不能把两种计数混为一谈。",
+        "每批固定32条轨迹，P0配额8/8/8/8；偏重配额20/4/4/4及其排列。固定32个actor工作进程；配额调度封装可能影响异步数据分布，需统一应用并核验，不声称对4.3运行机制完全无改动。"
+      ]
+    },
+    {
+      "id": "states",
+      "title": "04 快照、随机流与实验分区",
+      "paragraphs": [
+        "共同主轨迹建议使用固定均匀池240k＋原任务240k交替；在第1/3/5轮练习前保存快照，对应接纳步数0、960k、1.92M。这是诊断状态来源，不是原LLM生成课程的复现。初始状态也必须记录优化器和归一化初始化。",
+        "可选R1-P用独立开发主种子的960k快照；R1-S用3个新主种子，主快照训练最多5.76M接纳样本。主轨迹不能免费取得；若未来找到可复用快照，仍记录来源和取得成本。",
+        "随机流按协议、角色、主种子、快照、训练重复、阶段、任务、actor及回合命名。筛选与确认隔离；共同随机数只在正确边缘分布下配对。异步调度和不同策略的轨迹分叉可能破坏精确配对，需报告，不能保证方差必降。",
+        "优先全状态恢复；若采用统一排空/重启方案，必须明确估计对象是规范化重启后的状态，并保存丢弃成本及敏感性检查。训练计数和学习率调度不得在每条短分支从零重启。"
+      ]
+    },
+    {
+      "id": "interfaces",
+      "title": "05 模块接口与信息流",
+      "paragraphs": [
+        "TaskSpec → SnapshotSpec → QuotaPlan → BranchPlan → EvaluationSpec → BudgetLedger → DecisionRecord。以下为数据契约，没有类、训练器、环境适配器或执行入口实现。",
+        "设计文件与整理证据可跟踪；原始轨迹、逐运行数据和快照将放入既有忽略的runs/、checkpoints/或thesis-reference/，不自动上传。"
+      ]
+    },
+    {
+      "id": "analysis",
+      "title": "06 确认、统计与失败规则",
+      "paragraphs": [
+        "SCREEN中分别按回训前和回训后均值选kX/kY，含均匀P0；完全平局优先P0，再按固定ID。用独立随机流从共同初始快照确认{kX,kY,P0}去重集合，回训后评价；不得再次选优。",
+        "主读出χ(kY)−χ(kX)，次读出χ(kY)−χ(P0)，同时报告D/F/η。若规则选中同一配额，其规则差就是0。排序翻转率仅辅助，未知最优不可用样本最大值替代。",
+        "先回合聚合到分支，再分支到快照，最后按主种子汇总；同轨迹快照相关。R1-P只做流程诊断，R1-S仅三主种子为探索性，不能以大量回合假充独立样本。正式区间、功效和δχ不在没有噪声资料时编造；确认前依据独立开发冻结。",
+        "基础设施故障最多同种子同配置重试1次，两次成本均保留；算法发散或非有限指标不换种子洗掉。定义不明或缺失确认使比较未决，不只报告成功者。"
+      ]
+    },
+    {
+      "id": "budget",
+      "title": "07 修订预算：先分清接纳样本与真实交互",
+      "paragraphs": [
+        "下列为本版本拟议规模的静态算术，均未执行。评价暂设1任务×10回合×最多400转移；10回合参考原文每任务测试次数，不代表已完成精度规划。",
+        "总交互硬上限尚不能冻结：异步生成但未消费的样本、队列排空、R0检查、失败和重跑仍需单列。表中“接纳训练＋评价上界”不是总环境成本承诺。原文3M/50M分属不同实验设置，本诊断预算不冒充任何一个原实验。"
+      ]
+    },
+    {
+      "id": "acceptance",
+      "title": "08 验收与停机位置",
+      "paragraphs": [
+        "当前推进到设计完成、静态证据已整理；没有运行Q02–Q07。下一次涉及研究实现或实际环境交互之前等待用户指令。即使之后获准执行，也先解决Q01的任务/指标口径缺口，再按验收顺序实施。",
+        "可以继续静态研究的缺口：η分母与补给计入方式、奖励归一化与零分母、地图/动作尺度映射、提前终止。若文献和可用源码无法确定，就列为明确的复现假设供评审，不能静默补定义。",
+        "沿用Auto Research任务契约、固定预算、主动反证和独立确认：本轮否定“公开代码开箱即原任务”和“20k就是等更新次数”的便利假设，不是已运行完整自动科研系统。"
+      ]
+    }
+  ],
+  "audit": [
+    {
+      "id": "A01",
+      "topic": "任务参数",
+      "thesis": "§4.4.1 PDF115/印刷98：8×8；E0=40；采集α=.1、移动κ=1；25动作。",
+      "code_locator": "env_setting_1.py；data_collection_1.py:71–79,308–318",
+      "finding": "配置1为16×16、E0=30、ALPHA=1、FACTOR=.1；256 PoI、2机、5站。读到的配置值不同，不能默认单位换算等价。",
+      "decision": "冻结原文数值为目标规范；地图/动作尺度转换和基准布局未解决前不运行；不直接把旧配置改几个数字称复现。",
+      "type": "原文/静态代码事实与设计判断；未运行",
+      "source_files": [
+        {
+          "path": "thesis-reference/notes/thesis-uav-crowdsensing/deep-research-2026-11-10/DRL-MTVCS/mcs_envs/env_setting/env_setting_1.py",
+          "sha256": "526a226cec0e660f2b799b21622bd2df20d5bbec2630ccb648c3adb49a8a872b"
+        },
+        {
+          "path": "thesis-reference/notes/thesis-uav-crowdsensing/deep-research-2026-11-10/DRL-MTVCS/mcs_envs/gym_base/data_collection_1.py",
+          "sha256": "65d66d742595d065399341c696698dceaa60888a77931e82ab9c5e9a304b18ad"
+        }
+      ]
+    },
+    {
+      "id": "A02",
+      "topic": "覆盖度与汇总不一致",
+      "thesis": "§4.2.1.2 式4.2 PDF100/印刷83：对各PoI已采总量ϕ计算Jain指数。",
+      "code_locator": "data_collection_1.py:595–630；experiment.py:847–850",
+      "finding": "efficiency内部用collection_fairness（已采绝对量）；输出表gf_list取normal_fairness（已采量/原始数据量）。两者对不等数据量的PoI一般不同。",
+      "decision": "主F按式4.2；比例公平性只作明确命名的辅助诊断，不替代原F；最终χ必须由同一原口径组成量计算。",
+      "type": "原文/静态代码事实与设计判断；未运行",
+      "source_files": [
+        {
+          "path": "thesis-reference/notes/thesis-uav-crowdsensing/deep-research-2026-11-10/DRL-MTVCS/mcs_envs/gym_base/data_collection_1.py",
+          "sha256": "65d66d742595d065399341c696698dceaa60888a77931e82ab9c5e9a304b18ad"
+        },
+        {
+          "path": "thesis-reference/notes/thesis-uav-crowdsensing/deep-research-2026-11-10/DRL-MTVCS/experiment.py",
+          "sha256": "44c193eb25eaa1c8a6cc6cc936ee6369e71efe711fe30327a74ae3f881cc69dd"
+        }
+      ]
+    },
+    {
+      "id": "A03",
+      "topic": "η与跨回合聚合",
+      "thesis": "§4.2.1.2 PDF101/印刷84：能耗文字含补给；式4.3只列采集与移动；式4.4为任务内FD/η再对任务平均。",
+      "code_locator": "data_collection_1.py:308–327,595–605",
+      "finding": "代码Σuse_energy/E0不把fill_energy直接相加；按单机E0归一化后求和，不是除以机群总初始电量。原文分母口径未完全明确。",
+      "decision": "保存采集、移动、补给分项及每机初始能量；η主口径暂锁为未决。不得自行选择有利口径；也不得用平均F×平均D/平均η替代式4.4。",
+      "type": "原文/静态代码事实与设计判断；未运行",
+      "source_files": [
+        {
+          "path": "thesis-reference/notes/thesis-uav-crowdsensing/deep-research-2026-11-10/DRL-MTVCS/mcs_envs/gym_base/data_collection_1.py",
+          "sha256": "65d66d742595d065399341c696698dceaa60888a77931e82ab9c5e9a304b18ad"
+        }
+      ]
+    },
+    {
+      "id": "A04",
+      "topic": "原奖励与数值约定",
+      "thesis": "§4.2.2 式4.5 PDF103/印刷86：F_t d/e +F_t e_f−ρ。",
+      "code_locator": "data_collection_1.py:288–303,521–523；env_setting_1.py",
+      "finding": "代码采集分母加epsilon；补能项除以E0×充电比例；最终再除normalize。与原公式文字不完全一致。奖励公平性输入是访问轨迹计数。",
+      "decision": "奖励不能默认继承此源码；先确认式4.5对应实现及零分母约定。首轮各候选只用同一经核验奖励，禁调权重。",
+      "type": "原文/静态代码事实与设计判断；未运行",
+      "source_files": [
+        {
+          "path": "thesis-reference/notes/thesis-uav-crowdsensing/deep-research-2026-11-10/DRL-MTVCS/mcs_envs/gym_base/data_collection_1.py",
+          "sha256": "65d66d742595d065399341c696698dceaa60888a77931e82ab9c5e9a304b18ad"
+        },
+        {
+          "path": "thesis-reference/notes/thesis-uav-crowdsensing/deep-research-2026-11-10/DRL-MTVCS/mcs_envs/env_setting/env_setting_1.py",
+          "sha256": "526a226cec0e660f2b799b21622bd2df20d5bbec2630ccb648c3adb49a8a872b"
+        }
+      ]
+    },
+    {
+      "id": "A05",
+      "topic": "步数与学习率",
+      "thesis": "§4.4.1 PDF115/印刷98：batch32、unroll20、学习率5e−4。",
+      "code_locator": "experiment.py:418–438,563–569",
+      "finding": "梯度裁剪分支向apply_gradients传global_step，随后按batch×unroll×repeat累加同一计数；不能把该变量视为经核验的实际交互计数。学习率又依赖此计数。",
+      "decision": "训练计数、消费样本和更新数拆开。计数修正若影响学习率，必须版本化并对所有候选一致；不称逐位原样复现。",
+      "type": "原文/静态代码事实与设计判断；未运行",
+      "source_files": [
+        {
+          "path": "thesis-reference/notes/thesis-uav-crowdsensing/deep-research-2026-11-10/DRL-MTVCS/experiment.py",
+          "sha256": "44c193eb25eaa1c8a6cc6cc936ee6369e71efe711fe30327a74ae3f881cc69dd"
+        }
+      ]
+    },
+    {
+      "id": "A06",
+      "topic": "400步与提前终止",
+      "thesis": "§4.4.5 PDF123/印刷106：每评价回合400步。",
+      "code_locator": "environments.py:58–66,100–122,174–177；data_collection_1.py:534–541",
+      "finding": "ep_t从0开始；一次step后先判断ep_t==ep_len再递增，无提前done时静态推演可能执行401次。环境也可能全机无能量提前done。",
+      "decision": "目标为最多400个底层联合环境转移，记录terminated/truncated/实际长度；提前终止原规则待核。不额外补步或暗改吸收态。",
+      "type": "原文/静态代码事实与设计判断；未运行",
+      "source_files": [
+        {
+          "path": "thesis-reference/notes/thesis-uav-crowdsensing/deep-research-2026-11-10/DRL-MTVCS/environments.py",
+          "sha256": "aa308f2d8d31dc7f98c5e0469d259fa54bca1d445eed5483885604c97186bfc7"
+        },
+        {
+          "path": "thesis-reference/notes/thesis-uav-crowdsensing/deep-research-2026-11-10/DRL-MTVCS/mcs_envs/gym_base/data_collection_1.py",
+          "sha256": "65d66d742595d065399341c696698dceaa60888a77931e82ab9c5e9a304b18ad"
+        }
+      ]
+    },
+    {
+      "id": "A07",
+      "topic": "完整快照与队列",
+      "thesis": "§4.3为异步多任务骨干；原文未给可复现实验快照协议。",
+      "code_locator": "experiment.py:135–149,524,555–558,585–616",
+      "finding": "存在actor local变量、FIFOQueue、StagingArea及Python环境；看到tf.train.Saver()不足以证明其全部可恢复。",
+      "decision": "设计同一暂停点完整快照；无法覆盖时显式采用统一规范化重启协议、改变估计对象并验证影响，不谎称原样恢复。",
+      "type": "原文/静态代码事实与设计判断；未运行",
+      "source_files": [
+        {
+          "path": "thesis-reference/notes/thesis-uav-crowdsensing/deep-research-2026-11-10/DRL-MTVCS/experiment.py",
+          "sha256": "44c193eb25eaa1c8a6cc6cc936ee6369e71efe711fe30327a74ae3f881cc69dd"
+        }
+      ]
+    },
+    {
+      "id": "A08",
+      "topic": "代码身份与可复用边界",
+      "thesis": "用户确认4.3已开源；本项目核验具体版本。",
+      "code_locator": "README.md；LICENSE",
+      "finding": "固定提交780e0b41d3fff54c8fa5ea0335979b3f1ec1f225，自述INFOCOM2020 DRL-MTVCS；根许可证MIT。",
+      "decision": "仅候选骨干来源；保留授权声明；不得当作4.2源码，或凭名称接近认定与学位4.3完全等价。",
+      "type": "原文/静态代码事实与设计判断；未运行",
+      "source_files": [
+        {
+          "path": "thesis-reference/notes/thesis-uav-crowdsensing/deep-research-2026-11-10/DRL-MTVCS/README.md",
+          "sha256": "fa752d266d01cf4d0935e46f14a2509240ae9dd24aacecd011126bcaf19744e2"
+        },
+        {
+          "path": "thesis-reference/notes/thesis-uav-crowdsensing/deep-research-2026-11-10/DRL-MTVCS/LICENSE",
+          "sha256": "4d5532aa542f840efdf690d08105ba1801c1247341ec6e446db74dd34aed3bd6"
+        }
+      ]
+    },
+    {
+      "id": "A09",
+      "topic": "评价策略的动作选择",
+      "thesis": "§4.3测试过程PDF115/印刷98描述策略输出动作，未在已读文字明确采样或argmax。",
+      "code_locator": "agent.py:312–339；experiment.py:701–714",
+      "finding": "候选ResNetLSTMAgent动作使用tf.multinomial；test复用同一agent与build_actor，已读路径未见贪心argmax切换。",
+      "decision": "第一轮设计采用分类采样策略并隔离评价RNG；冻结为本协议选择，不把随机测试与确定性测试结果混算。",
+      "type": "静态代码事实与设计选择；未运行",
+      "source_files": [
+        {
+          "path": "thesis-reference/notes/thesis-uav-crowdsensing/deep-research-2026-11-10/DRL-MTVCS/agent.py",
+          "sha256": "17c62d1b5c0d0060ddc1cd9015749f2cecc5ba52c08872adc0425dbb679cf0bf"
+        },
+        {
+          "path": "thesis-reference/notes/thesis-uav-crowdsensing/deep-research-2026-11-10/DRL-MTVCS/experiment.py",
+          "sha256": "44c193eb25eaa1c8a6cc6cc936ee6369e71efe711fe30327a74ae3f881cc69dd"
+        }
+      ]
+    }
+  ],
+  "config": {
+    "status": "design_only_execution_locked",
+    "version": "2026-11-11-detailed-1",
+    "user_boundary": "继续设计；正式实施或执行训练实验前停下等待用户指令",
+    "task": {
+      "primary": "thesis §4.2 UCS-GenRL",
+      "target_maps": 1,
+      "target_map_id": null,
+      "target_map_role": "固定一个原任务用于第一轮诊断；不据此主张跨任务泛化",
+      "pool_size_J": 4,
+      "pool_ids": [
+        "E01",
+        "E02",
+        "E03",
+        "E04"
+      ],
+      "pool_config_hashes": null,
+      "pool_note": "J=4是本轮设计选择；原4.2实验每轮3个生成子环境。不得称原设置复现。",
+      "pool_design": "第一轮采用冻结合法池，不启用LLM生成；固定无人机/充电站数、维度、动力学与奖励，只比较配额。布局需通过原任务尺度核验后再实例化。"
+    },
+    "quotas": {
+      "P0": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "P1": [
+        20,
+        4,
+        4,
+        4
+      ],
+      "P2": [
+        4,
+        20,
+        4,
+        4
+      ],
+      "P3": [
+        4,
+        4,
+        20,
+        4
+      ],
+      "P4": [
+        4,
+        4,
+        4,
+        20
+      ]
+    },
+    "quota_unit": "每批32条、每条20个联合环境转移的轨迹；不是无人机数或actor数",
+    "student": {
+      "batch_size": 32,
+      "unroll_length": 20,
+      "action_repeat": 1,
+      "gamma": 0.95,
+      "learning_rate": 0.0005,
+      "optimizer": "RMSProp",
+      "decay": 0.99,
+      "epsilon": 0.01,
+      "momentum": 0,
+      "grad_clip": 40,
+      "pc_cost": 0.1,
+      "entropy_cost": 0.1,
+      "value_cost": 0.5,
+      "actor_count": 32,
+      "actor_count_basis": "4环境×8actor，首轮建议，来自原文每任务8actor的组织；固定工作进程数，不按配额改变硬件并发。",
+      "framework": "候选TF1实现；未安装",
+      "lr_schedule": "继承经核验的主轨迹计数与固定3M名义训练时域；不得每个短分支重新从5e−4衰减到0",
+      "resolved_reward": null,
+      "resolved_eta": null,
+      "action_coordinate_mapping": null
+    },
+    "budget_unit": "h/a计学习器实际接纳的联合环境转移样本；环境实际生成数单独计且不小于接纳数，二者不可相加",
+    "screen": {
+      "h": 20480,
+      "a": 20480,
+      "updates_per_phase": 32,
+      "legacy_h": 20000,
+      "legacy_status": "此前20k是近似草案；本版本按640样本/更新向上对齐，不改batch或unroll"
+    },
+    "evaluation": {
+      "M": 1,
+      "E": 10,
+      "T_max": 400,
+      "E_status": "预设诊断值，参考原文每任务10次评价；不是功效保证",
+      "T_status": "底层联合环境转移上限；提前终止语义待核",
+      "aggregation": "候选方案：每回合先算D/F/η与q=FD/η，再等权平均回合、等权平均任务；跨回合层级为新协议选择，原文细节未充分明确",
+      "policy_mode": "分类分布采样（拟定）；依据候选ResNetLSTMAgent的tf.multinomial及test复用build_actor路径，不改为argmax；仍不声称学位原实验已逐项核验",
+      "zero_denominator_policy": null,
+      "rng_pairing": "同阶段/训练重复的不同候选使用同一组评价种子；筛选与确认种子域分离；不能让评价改变训练随机源"
+    },
+    "main_trajectory": {
+      "method": "固定P0池练习240k＋固定原任务回训240k交替；仅作为共同快照来源",
+      "phase_updates": 375,
+      "checkpoint_cycles": [
+        1,
+        3,
+        5
+      ],
+      "checkpoint_consumed_steps": [
+        0,
+        960000,
+        1920000
+      ],
+      "checkpoint_phase": "各轮练习开始前；首个为初始化状态；不挑效果最好checkpoint",
+      "max_consumed_per_seed": 1920000,
+      "main_lr_nominal_horizon": 3000000,
+      "note": "该来源用于因果诊断，不是原LLM课程轨迹；不同来源需另列研究范围。"
+    },
+    "seed_design": {
+      "function_spec": "SHA256(protocol_version | role | main_seed | snapshot | replicate | phase | task | actor | episode)，取前32位非负整数，导出清单时检查冲突；未执行训练",
+      "development_main_ids": [
+        "DEV01"
+      ],
+      "screen_main_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "confirm_role": "CONFIRM，与SCREEN分离；共享同一主快照",
+      "candidate_in_rng_key": false,
+      "pairing_note": "只在结构一致的可配对流中省略candidate；不同任务ID仍保留。策略依赖轨迹与异步调度不保证完美共同随机数；保留正确边缘分布优先。",
+      "frozen_numeric_manifest": null
+    },
+    "snapshots": {
+      "preferred": "暂停所有actor/learner，保存全状态；队列、staging、部分unroll、Python环境与RNG均可追溯。",
+      "fallback": "在所有候选一致的边界排空/记账、重置actor和环境；参数/优化器/归一化/调度保留。若采用此方案，估计对象改为规范化重启状态，必须显式标注。",
+      "phase_transition": "回训前评价只读克隆；练习→原任务切换不得丢失优化器和归一化。环境池切换、LSTM及缓存处理对所有候选统一。",
+      "runtime_passed": false
+    },
+    "stages": [
+      {
+        "id": "R1-P",
+        "S": 1,
+        "C": 1,
+        "K": 2,
+        "R_screen": 2,
+        "R_confirm": 2,
+        "candidates": [
+          "P0",
+          "P1",
+          "P2"
+        ],
+        "snapshots": [
+          960000
+        ],
+        "screen_consumed": 245760,
+        "confirmation_consumed_upper": 245760,
+        "branch_consumed_upper": 491520,
+        "warmup_consumed": 960000,
+        "evaluation_calls_upper": 18,
+        "evaluation_steps_upper": 72000,
+        "consumed_plus_eval_upper": 1523520,
+        "actual_env_budget": null,
+        "budget_note": "此数只含接纳训练样本与评价上界，不含生成但丢弃/待消费样本、R0/失败/重跑等；不是实际总交互硬上限。R1-P不可免费并入R1-S。"
+      },
+      {
+        "id": "R1-S",
+        "S": 3,
+        "C": 3,
+        "K": 4,
+        "R_screen": 2,
+        "R_confirm": 2,
+        "candidates": [
+          "P0",
+          "P1",
+          "P2",
+          "P3",
+          "P4"
+        ],
+        "snapshots": [
+          0,
+          960000,
+          1920000
+        ],
+        "screen_consumed": 3686400,
+        "confirmation_consumed_upper": 2211840,
+        "branch_consumed_upper": 5898240,
+        "warmup_consumed": 5760000,
+        "evaluation_calls_upper": 234,
+        "evaluation_steps_upper": 936000,
+        "consumed_plus_eval_upper": 12594240,
+        "actual_env_budget": null,
+        "budget_note": "此数只含接纳训练样本与评价上界，不含生成但丢弃/待消费样本、R0/失败/重跑等；不是实际总交互硬上限。R1-P不可免费并入R1-S。"
+      }
+    ],
+    "analysis": {
+      "estimand": "独立确认χ(kY)−χ(kX)，以及χ(kY)−χ(P0)",
+      "selection": "SCREEN均值最大，含P0；完全平局优先P0，再按候选ID；不按噪声临时设tie阈值",
+      "confirmation": "从同一初始快照重新运行去重的{kX,kY,P0}；R=2新训练流；不二次选优",
+      "same_choice": "kX=kY时规则差为0；P0同理，不以两个随机实现伪造规则差异",
+      "aggregation": "先回合到分支、再分支到快照；同主种子各快照等权，再主种子等权。分项和各阶段结果同时报告。",
+      "formal_interval": null,
+      "formal_sample_size": null,
+      "delta_chi": null,
+      "inference_limits": "R1-P流程诊断；R1-S三种子探索性估计。无先验噪声资料不声称功效达标；不得回合伪重复或以不显著证明等效。",
+      "stopping": "固定批次，不根据p值加样本；缺少精度只记未决。正式精度与最小实际差异在独立开发之后、确认之前冻结。"
+    },
+    "failure_policy": {
+      "infrastructure_retry_cap": 1,
+      "retry_rule": "恢复相同预定种子和配置；两次尝试均计成本并留痕；如无法证明基础设施原因则归入未决失败",
+      "algorithm_or_nonfinite": "不重抽种子规避；停止受影响比较并保留失败率/成本，修复后新协议版本独立重跑",
+      "partial_result": "缺失任一被选配额的确认时，不汇报该点为完整比较；结果选择性缺失需说明"
+    },
+    "execution": {
+      "authorized": false,
+      "research_implementation_written": false,
+      "training_runs": 0,
+      "simulation_runs": 0,
+      "paid_model_calls": 0,
+      "entrypoint_created": false
+    }
+  },
+  "interfaces": [
+    {
+      "name": "TaskSpec / PoolSpec",
+      "input": "固定原任务与合法环境配置、来源、哈希",
+      "output": "形状、坐标/单位、PoI数据、障碍、站点、初始状态及可变/固定字段",
+      "invariants": "只用原定义允许变化；禁结果导向挑地图；布局未核验则不能进入训练"
+    },
+    {
+      "name": "SnapshotSpec",
+      "input": "完整学习状态与暂停协议",
+      "output": "模型/优化器/归一化/调度/actor/环境/LSTM/队列/RNG清单与哈希",
+      "invariants": "missing-state必须显式报错或选用已声明fallback；不静默只载权重"
+    },
+    {
+      "name": "QuotaPlan",
+      "input": "P0–P4、32轨迹/批、20步/轨迹、32更新",
+      "output": "批次与任务接纳配额、实际生成量、policy lag与丢弃量",
+      "invariants": "固定actor数与学习器；只对配额动手。配额采样封装可能改变异步数据分布，所有候选同封装并与原骨干另行核验，不能称完全零改动"
+    },
+    {
+      "name": "BranchPlan",
+      "input": "快照、候选、阶段、角色、h/a、种子域",
+      "output": "练习终态与回训终态引用，实际指标与账本（实施后才产生）",
+      "invariants": "Eval不改变训练状态；相同h/a与更新次数；不挑测量最优checkpoint当主分支"
+    },
+    {
+      "name": "EvaluationSpec",
+      "input": "只读模型、目标地图、10回合、400步上限、冻结聚合规则",
+      "output": "逐回合原始分项与D/F/η/χ、terminated/truncated",
+      "invariants": "不能用比例公平性替代绝对量公平性；无定义分母标未决，不自行加ε"
+    },
+    {
+      "name": "BudgetLedger",
+      "input": "所有实际生成/接纳/评价/失败事件",
+      "output": "互斥成本分类、墙钟/GPU/费用与精确版本",
+      "invariants": "环境生成量是总交互成本，消费数与更新数是辅助计数；排空成本只计一次"
+    },
+    {
+      "name": "DecisionRecord",
+      "input": "冻结规则、筛选选择、独立确认与失败记录",
+      "output": "支持/反驳/未决及允许的论文主张",
+      "invariants": "不使用确认数据重新挑方法；不把新设计说成已有结果"
+    }
+  ],
+  "acceptance": [
+    {
+      "id": "Q01",
+      "test": "定义/配置一致性",
+      "pass": "原文和配置逐项可追溯；η/奖励/零分母/坐标等无未决项",
+      "status": "未通过：仍有定义缺口"
+    },
+    {
+      "id": "Q02",
+      "test": "完整状态恢复",
+      "pass": "可确定部件哈希及状态一致；等种子恢复续跑检查按预定容差，异步非确定性单独记录",
+      "status": "仅设计，未运行"
+    },
+    {
+      "id": "Q03",
+      "test": "评价隔离",
+      "pass": "评价前后参数、优化器、归一化、RNG、队列状态不变；评价进程不接触训练写状态",
+      "status": "仅设计，未运行"
+    },
+    {
+      "id": "Q04",
+      "test": "计数与时域",
+      "pass": "底层env.step真实次数、learner消费及更新数分别核对；最多400转移，正确记录提前终止",
+      "status": "仅设计，未运行"
+    },
+    {
+      "id": "Q05",
+      "test": "配额和更新等量",
+      "pass": "每批32×20样本；P0–P4配额实现并记录生成/消费差额；每短阶段32次更新",
+      "status": "仅设计，未运行"
+    },
+    {
+      "id": "Q06",
+      "test": "指标复算",
+      "pass": "手工可核的轨迹账本对齐D/F/η/χ；奖励与最终F使用不同输入时明确区分",
+      "status": "仅规范，未生成模拟轨迹"
+    },
+    {
+      "id": "Q07",
+      "test": "角色隔离与失败处理",
+      "pass": "SCREEN/CONFIRM种子与日志分离；失败不消失；确认不二次选优",
+      "status": "仅设计，未运行"
+    },
+    {
+      "id": "Q08",
+      "test": "准入与授权",
+      "pass": "用户给出下一阶段指令；关键定义关闭；预算包含实际生成额外开销且设硬上限",
+      "status": "执行锁定"
+    }
+  ]
+}

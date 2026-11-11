@@ -1,5 +1,13 @@
 # UCS-GenRL 独立设计工作区
 
+**最新详细设计（2026-11-11）：** [第一轮实验规范](experiment-specification.html)含原文/代码静态差异、精确配额、快照和随机流、接口及验收；[唯一设计源](design/implementation-specification.json)，由[文档生成器](design/render-implementation-specification.py)生成页面。短阶段20k草案修订为20,480接纳样本；实际环境交互另计，旧预算保留为历史。按用户最新指令继续设计，正式实施或执行训练实验前等待指令。未执行研究代码。
+
+**第一轮实验准备：** [准备包](theory-experiment-design.html#preparation)列出材料缺口、R0定义、可选R1-P、独立确认和字段字典；[结构化清单](design/first-round-preparation.json)。均待评审，未启动实施。
+
+**2026-11-11 理论与实验设计：** [完整配额的迁移收益测量与预算条件](theory-experiment-design.html)给出T1–T7条件公式、候选B-M、近邻反证和R0–R3实验。全部为拟议设计；旧方案按日期保留，研究实现与训练未启动。
+
+**2026-11-11 价值评估：** [按已引入的 Auto Research 成果审查论文方向](direction-b-study.html#value-review)。方向 B 明确保留为有限诊断主线；明确原 4.2 已有回训反馈，新问题是候选贡献识别与全成本分配。尚未确立新方法效果或可投稿性。
+
 **当前方向 B 深入研究（2026-11-10）：** [回训如何改变课程价值](direction-b-study.html)。用户已指示沿该方向继续；本轮完成解析分解、近邻及代码只读审查、三层随机性与预算协议。尚无新训练结果。下列入口保留前轮研究历史。
 
 前轮整合入口：[4.2 论文化研究评审](research-review.html)，覆盖四项研究交付与自动科研决策记录；未启动研究实现或实验。

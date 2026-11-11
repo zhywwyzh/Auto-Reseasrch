@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-11",
+  "url": "http://127.0.0.1:18773/workspaces/ucs-genrl/theory-experiment-design.html",
+  "access_scope": "same-computer-loopback-only",
+  "http_status": 200,
+  "sections": 9,
+  "local_links_checked": 64,
+  "source_hashes": "passed",
+  "details_navigation_print": "passed",
+  "formula_calculator": "default ratio 1.088889, zero correlation boundary, invalid budget passed",
+  "desktop_and_mobile_no_overflow": true,
+  "javascript_errors": [],
+  "algebra": "T3 identity and T4 derivative checked symbolically",
+  "research_training_runs": 0,
+  "research_simulation_runs": 0,
+  "preparation": {
+    "protocol": "first-round-preparation.json",
+    "json_and_budget_arithmetic": "passed",
+    "section_navigation": "passed",
+    "desktop_visual_review": "passed",
+    "execution_status": "design_only_no_research_runs",
+    "qa_note": "一次移动视口重载等待load超时；改为等待DOMContentLoaded后完整检查通过"
+  }
+}
