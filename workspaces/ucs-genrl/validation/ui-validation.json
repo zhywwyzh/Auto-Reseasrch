@@ -1,0 +1,18 @@
+{
+  "date": "2026-11-11",
+  "url": "http://127.0.0.1:18773/workspaces/ucs-genrl/local-validation.html",
+  "access_scope": "same-computer-loopback-only",
+  "http_status": 200,
+  "sections": 5,
+  "checks": 10,
+  "local_links_checked": 39,
+  "json_html_hash_sync": true,
+  "navigation_details_print": true,
+  "desktop_mobile_no_overflow": true,
+  "javascript_errors": [],
+  "qa_note": "Mobile sidebar intentionally hidden; tested visible main-content entry.",
+  "training_run_ids": [
+    "cpu-smoke-20261111T094005236589Z",
+    "cpu-smoke-20261111T094238517328Z"
+  ]
+}

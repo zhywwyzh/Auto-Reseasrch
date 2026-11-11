@@ -1,0 +1,8 @@
+*
+!Dockerfile
+!requirements.in
+!requirements.lock
+!julia/
+!julia/**
+!smoke/
+!smoke/**

@@ -18,7 +18,7 @@
   "limits": [
     "CUA getState on this follow-up returned apps=[] and browsers=[]; browser rendering and actual click interactions remain unverified.",
     "Canvas source generated using inspected SDK exports; no IDE runtime/type-check result available.",
-    "No research code, solver run, training, external review service, paid model invocation or independent experimental replication."
+    "Historical documentation stages had no solver execution. A later environment-only solver smoke test passed; see container_acceptance. No UAV research implementation, training, paid calls or independent experimental replication."
   ],
   "local_url": "http://127.0.0.1:8893/workspaces/bearing-swarm-review/",
   "access_scope": "Execution-host loopback only; not a public or cross-device address.",
@@ -82,7 +82,7 @@
     "date": "2026-11-11",
     "version": "0.1 — 实验协议草案，未冻结、未实施",
     "source": "benchmark.json",
-    "source_sha256": "03f5a6c7e49923d15c246956d750530bf7faae916dbb34874ade3ff608d58dd1",
+    "source_sha256": "1d70b20d466b418ffb2622de7d91a2fa9573be218899ef92f46f0bf1a65b1733",
     "checks": {
       "index.html": {
         "unique_ids": 18,
@@ -149,5 +149,89 @@
       "Installed CLI presence does not establish solver/container readiness",
       "Hardware and budgets are proposals, not benchmark measurements"
     ]
+  },
+  "configuration_assessment": {
+    "date": "2026-11-11",
+    "source": "benchmark.json:configuration_assessment",
+    "checks": {
+      "index.html": {
+        "anchors": 18,
+        "links": 42,
+        "http": 200
+      },
+      "plan.html": {
+        "anchors": 24,
+        "links": 31,
+        "http": 200
+      },
+      "benchmark.html": {
+        "anchors": 34,
+        "links": 52,
+        "http": 200
+      }
+    },
+    "budget_arithmetic": "passed",
+    "python_candidates": "PyPI metadata / wheel presence only, not installation",
+    "baseline_audit": "pinned Julia sources statically read and hash-recorded; no execution",
+    "local_sources": "remain Git ignored",
+    "limits": [
+      "No new browser visual/interaction validation",
+      "No solver installation, dependency import test, research implementation or experimental run",
+      "Current resource samples are brief observations, not performance benchmarks"
+    ],
+    "git": "Only TR-002 documentation modified in this turn; not committed or pushed"
+  },
+  "container_acceptance": {
+    "date": "2026-11-11",
+    "status": "passed",
+    "source": "container/validation.json",
+    "image_id": "sha256:6d16b6b4b23426bdcb1822c277190ab6269a15319b1fe0dbbaef1b44051486e6",
+    "scope": "仅为 Python/Julia 数值环境和已知答案求解器验收；没有实施无人机算法、正式 benchmark、训练或实机实验。",
+    "locks_match_image": true,
+    "historical_records": "Earlier no-install/no-solver statements apply to their recorded design stages; this environment test supersedes environment readiness only.",
+    "documentation_checks": {
+      "index.html": {
+        "unique_ids": 18,
+        "links": 42,
+        "http": 200
+      },
+      "plan.html": {
+        "unique_ids": 24,
+        "links": 31,
+        "http": 200
+      },
+      "benchmark.html": {
+        "unique_ids": 35,
+        "links": 58,
+        "http": 200
+      }
+    },
+    "browser": "Static anchors/local links and HTTP verified; no new visual or interactive browser test."
+  },
+  "research_pilot": {
+    "date": "2026-11-11",
+    "scope": "Actual rotation-subproblem diagnostics and development pilot; no strict certificate or novelty claim",
+    "summary": "experiments/results/summary.json",
+    "pages": {
+      "index.html": {
+        "anchors": 18,
+        "local_targets_checked": true,
+        "http": 200
+      },
+      "plan.html": {
+        "anchors": 24,
+        "local_targets_checked": true,
+        "http": 200
+      },
+      "benchmark.html": {
+        "anchors": 36,
+        "local_targets_checked": true,
+        "http": 200
+      }
+    },
+    "figure": "Matplotlib SVG/PNG generated and PNG visually inspected",
+    "browser": "CUA inventory apps=[] browsers=[]; HTTP and static anchors checked, no browser interaction validation",
+    "git": "Only TR-002 paths edited; concurrent TR-001/TR-003 preserved; no commit/push",
+    "saved_output_replay": "336 saved SDP reports reaudited in a separate container process; source/data hashes matched. Same solver/checker versions; not independent solver replication."
   }
 }

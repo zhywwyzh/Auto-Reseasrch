@@ -1,0 +1,9 @@
+{
+  "source": "system-overview.svg",
+  "source_sha256": "c8d1216cd7ec5ecee5047a43fed8206e2c414c1aa7a88e826b552c49825017c2",
+  "png": "system-overview.png",
+  "png_sha256": "20ffbc358f6f109301dd93e5813c3bc6997bfb4dc46ee319888e48707dd14e77",
+  "width": 3840,
+  "height": 2160,
+  "renderer": "Chromium via Playwright; exact 1920x1080 viewport at device scale 2"
+}

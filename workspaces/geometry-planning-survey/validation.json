@@ -1,53 +1,75 @@
 {
   "date": "2026-11-11",
-  "status": "v0.2 structural, analytic-identity and headless-browser checks passed; Canvas runtime not checked",
+  "version": "v0.4",
+  "status": "Reading artifact and local browser checks passed; novelty/submission readiness not established; official-template compilation blocked by missing ctexart.cls",
   "passed": [
-    "JSON parses; all citation identifiers resolve; unique reference IDs",
-    "73 unique HTML IDs and 158 internal anchors verified",
-    "38 references and abstract plus nine manuscript sections rendered",
-    "Embedded JavaScript syntax check passed",
-    "HTTP200; served bytes equal generated file",
-    "Chrome 139 headless: search, reading-level filter, reset via citation navigation, and print-button handler passed",
-    "Desktop 1440px and mobile 390px screenshots inspected; mobile figure scrolls horizontally within its container; no document horizontal overflow",
-    "SVG loads; same-curve analytic illustration is explicitly labelled non-experimental",
-    "Exact rational arithmetic confirms polynomial expansion, 0.05 minimum and de Casteljau subdivision coordinates; no simulation",
-    "Generated Canvas source synchronized; inline figure; no external imports beyond cursor/canvas",
-    "Original thesis SHA256 unchanged; original and downloaded PDFs remain Git ignored"
+    "57 source IDs resolve; all table column counts match; 32 manuscript references have author and publication/version metadata",
+    "15 official-rule rows, 8 format rows and 6 published-review samples; sample PDF counts and summary statistics checked",
+    "Analytic Bézier curve coefficients, minimum and exact subdivision checked with rational arithmetic; no experimental data",
+    "Original thesis hash and existing 17-download manifest unchanged; 6 journal sample PDF hashes match manifests",
+    "Generated index/manuscript bytes match local HTTP200; reference navigation and mobile layout checked in Chrome139",
+    "2 figures, 3 tables and 6 equations in manuscript; image loading and internal anchors checked",
+    "All reading-PDF pages visually inspected in contact sheets; table-caption grouping corrected and affected pages rechecked",
+    "Canvas regenerated from the same JSON; source synchronization checked, IDE runtime not verified",
+    "aas.cls identical to repository template; XeLaTeX failure recorded accurately",
+    "TR-003 git diff --check passed"
   ],
   "limits": [
-    "No authoritative IDE Canvas TypeScript/runtime diagnostics available.",
-    "Browser checks used isolated headless Chrome on the execution host, not the user device; print handler was checked but no print/PDF layout was approved.",
-    "No exhaustive database export, L3 fulltext coding, independent second reviewer, or experimental results.",
-    "S09 manufacturing safety survey remains abstract-level despite primary-source and author-site searches; overlap with proposed synthesis is unresolved.",
-    "S04/S09 and some repeat publisher accesses are restricted; failed access is not evidence of missing coverage.",
-    "No training, paid model calls, public publication or git push."
+    "S09 fulltext comparison, representative coverage expansion, full coding and independent researcher review remain incomplete; no novelty or acceptance guarantee",
+    "Metadata verification does not imply fulltext verification; evidence levels retained; no L3 records",
+    "Current AI-assisted core draft is not certified compliant with journal author promise; user authorization to write is recorded separately",
+    "TeX Live2022 lacks ctexart.cls; supplied reading PDF is browser print, not compiled official-template PDF",
+    "Browser checks are on execution host; loopback address is not public or cross-device access; Canvas runtime not tested",
+    "No experiments, training, submission, external messages, public publication or git push"
   ],
-  "source_hashes": {
-    "thesis": "bcc07f9fc643dc86da2eda462233118d80cc73503f8c3cd9a5ef0390c7ea0673",
-    "survey_json": "aa9ae08cc10f2c9bd34ca97ab9a9abee9d0854290343307d3e0582b333e53fff",
-    "generated_html": "69539d152cedee75b1323e1954835cf79e71915cd89f2a19b9f02e2cad6acaa1",
-    "canvas": "19a08663774eca7b92253c79e412fdf1223c1f90abe2e2b0b015848a6462842b",
-    "analytic_svg": "fcc2af5132ed57c311b9171c62bb02b8e3032895b3ee2766e6e15c910a76c1b0"
-  },
   "corpus": {
-    "seed_entries": 38,
+    "source_entries": 57,
     "reading_levels": {
-      "L2": 14,
-      "L1": 23,
+      "L2": 32,
+      "L1": 24,
       "L0": 1
     },
-    "surveys": 10,
-    "downloaded_pdfs": 11,
-    "search_queries": 46,
-    "manuscript_characters": 5823
+    "manuscript_references": 32,
+    "published_review_samples": 6,
+    "manuscript_characters": 9327,
+    "tables": 3,
+    "figures": 2,
+    "equations": 6
   },
-  "local_url": "http://127.0.0.1:8893/workspaces/geometry-planning-survey/",
-  "access_scope": "Execution-host loopback only, not public or cross-device. Static file and IDE Canvas also supplied.",
+  "html_checks": {
+    "index.html": {
+      "ids": 106,
+      "anchors": 261,
+      "http": 200
+    },
+    "manuscript.html": {
+      "ids": 44,
+      "anchors": 76,
+      "http": 200
+    }
+  },
+  "pdf": {
+    "file": "papers/geometry-planning-survey/build/review-reading.pdf",
+    "pages": 16,
+    "engine": "Chrome139 printToPDF",
+    "layout": "A4, single-column reading copy",
+    "sha256": "e6fd4532379f92e91038362d9bbd51fbd0bd8a7e510c26b09a62dd29fb1961a4"
+  },
+  "source_hashes": {
+    "thesis": "bcc07f9fc643dc86da2eda462233118d80cc73503f8c3cd9a5ef0390c7ea0673",
+    "survey_json": "09e47eb36b85c08bfca7e0d4f93dd68759664a3441a4b80199a4dd480ca4567c",
+    "index_html": "73e909e36d5ece703b972394a53abf7f3af98bd9545bc36cef6f5186c4bc0d45",
+    "manuscript_html": "7dbd538ae7e225a941fc42596748df1695c95ed1e29bb858a50613cae88b6c10",
+    "canvas": "e20658a16d3fe299b0f343fe17c432713e5ba22cd2fc6ad4f6fbef2b17a345cb",
+    "aas_cls": "6806ea740616fa742f9c94eac598e94f6559186b964b5dbf23ebd272a3bece6b"
+  },
+  "local_url": "http://127.0.0.1:8893/workspaces/geometry-planning-survey/manuscript.html",
+  "access_scope": "Execution-host loopback only; repository HTML/IDE Canvas available locally; not public",
   "owned_repo_paths": [
     "docs/topics/TR-003-geometry-planning-survey/",
-    "workspaces/geometry-planning-survey/"
+    "workspaces/geometry-planning-survey/",
+    "papers/geometry-planning-survey/"
   ],
-  "preserved_existing_work": "TR-001 and TR-002 in-progress modifications were not edited.",
-  "followup": "v0.2: narrowed novelty after S09/S10; feasible-set framework, three comparison groups, analytic illustration, conditional selection guide and revised manuscript. Headless-browser validation now available; prior CUA limitations do not describe current HTML validation.",
-  "rendering_environment": "Default Python exposes NumPy/Matplotlib ABI mismatch. Figure generated successfully using PYTHONNOUSERSITE=1 /usr/bin/python3 with existing system packages; global environment unchanged."
+  "browser_evidence": "thesis-reference/notes/TR-003-zjuthesis-survey/v04-browser-check.json and v04-manuscript-browser.json; images under aas-benchmark/ (Git ignored)",
+  "rendering_environment": "PYTHONNOUSERSITE=1 /usr/bin/python3 for Matplotlib to avoid user NumPy ABI conflict; no global environment changes"
 }

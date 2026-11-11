@@ -1,0 +1,303 @@
+{
+  "date": "2026-11-11",
+  "evidence_type": "executed_bounded_cpu_acceptance_not_efficacy",
+  "protocol_id": "TR001-CPU-SMOKE-v1",
+  "runs": [
+    {
+      "run_id": "cpu-smoke-20261111T094005236589Z",
+      "result": {
+        "protocol": "TR001-CPU-SMOKE-v1",
+        "status": "passed",
+        "gpu_used": false,
+        "paid_model_calls": 0,
+        "checks": {
+          "observation_shape": {
+            "passed": true,
+            "detail": [
+              80,
+              80,
+              3
+            ]
+          },
+          "two_players_25_actions": {
+            "passed": true,
+            "detail": null
+          },
+          "environment_80_steps_finite": {
+            "passed": true,
+            "detail": null
+          },
+          "absolute_collection_jain_matches": {
+            "passed": true,
+            "detail": 0.1547221584919742
+          },
+          "environment_rng_disk_restore": {
+            "passed": true,
+            "detail": null
+          },
+          "trainable_parameters_changed": {
+            "passed": true,
+            "detail": null
+          },
+          "all_global_variables_restored": {
+            "passed": true,
+            "detail": null
+          },
+          "fixed_batch_update_replayed": {
+            "passed": true,
+            "detail": {
+              "max_abs_error": 0.0,
+              "tolerance": 1e-06
+            }
+          },
+          "loss_log_finite": {
+            "passed": true,
+            "detail": null
+          },
+          "budget_exact": {
+            "passed": true,
+            "detail": null
+          }
+        },
+        "environment_steps": 160,
+        "learner_consumed_samples": 100,
+        "optimizer_calls": 5,
+        "limitations": [
+          "Single synchronous collector, batch=1, CPU only.",
+          "Original candidate config, not thesis-definition equivalence.",
+          "No curriculum, B-CF, convergence or comparative efficacy test.",
+          "Restore checks cover Python environment/RNG and fixed-batch learner variables; not asynchronous queues or TF sampler RNG."
+        ],
+        "versions": {
+          "tensorflow": "1.15.5",
+          "numpy": "1.18.5",
+          "dm-sonnet": "1.35",
+          "tensorflow-probability": "0.8.0",
+          "trfl": "1.1.0",
+          "gym": "0.12.5"
+        },
+        "source_sha256": {
+          "agent.py": "17c62d1b5c0d0060ddc1cd9015749f2cecc5ba52c08872adc0425dbb679cf0bf",
+          "experiment.py": "44c193eb25eaa1c8a6cc6cc936ee6369e71efe711fe30327a74ae3f881cc69dd",
+          "vtrace.py": "2db3dc769ce4c54094a5dff81f001b53df359ef0894578160e9f0a4de6487509",
+          "utils.py": "ae18bcde1b0dc5fa999c04b762f3188e35eb988f84dfffb387a099cb029c8677",
+          "mcs_envs/gym_base/data_collection_1.py": "65d66d742595d065399341c696698dceaa60888a77931e82ab9c5e9a304b18ad",
+          "mcs_envs/env_setting/env_setting_1.py": "526a226cec0e660f2b799b21622bd2df20d5bbec2630ccb648c3adb49a8a872b"
+        },
+        "learner_settings": {
+          "batch_size": 1,
+          "unroll_length": 20,
+          "learning_rate": 0.0005,
+          "total_environment_frames": 75000000,
+          "reward_clipping": "adaptive_normalisation",
+          "pc_cost": 0.1,
+          "discounting": 0.95,
+          "num_players": 2
+        },
+        "wall_seconds": 10.786813626997173,
+        "process_peak_rss_mib": 675.0859375,
+        "candidate_configuration": {
+          "MAP_X": 16,
+          "MAP_Y": 16,
+          "MAX_ENERGY": 30.0,
+          "ALPHA": 1.0,
+          "FACTOR": 0.1,
+          "NUM_UAV": 2
+        },
+        "reset_metric_finite": [
+          false,
+          false
+        ],
+        "parameter_count": 2200519,
+        "global_variable_count": 154,
+        "resource_scope": "Single Python process RSS; CPU only; excludes Docker image/build.",
+        "collection_and_three_updates_seconds": 2.3938598230015486,
+        "upstream_global_steps_after_updates": [
+          21,
+          42,
+          63
+        ],
+        "counter_interpretation": "Upstream global_step includes optimizer increment plus consumed samples; never use it as exact environment count.",
+        "checkpoint_bytes": 27927290
+      },
+      "image_id": "sha256:825715468959f06072fd5f8e9e7578ce5aec2e609d9eafbde56d1f69eec0aa90",
+      "started_utc": "20261111T094005236589Z",
+      "manifest_wall_seconds": 11.996523942972999,
+      "exit_code": 0,
+      "source_commit": "780e0b41d3fff54c8fa5ea0335979b3f1ec1f225",
+      "executed_files_sha256": {
+        "launch.py": "0079fcf6ff7af09eeae03346db46c723994b83078086bbdd360641b5c18b3d07",
+        "requirements.in": "bb13a6cd3202bc8ff37e87356a10d0e258a1348e5a9c01440087843e1a2a483b",
+        "protocol.json": "4af15f3e320aedd2bc91d8999dd61dab86e9968a6585fbc7d033205d36360a75",
+        "run_cpu_smoke.py": "e3f7ea8e134c29d20a814611f6e9e07bc30d72280dce7d499f78e2cae74d413b",
+        "Dockerfile": "0b4adef73d10cc7199e99f68f343ae66d93d1f2057182c1373dc5cf9bb357c99"
+      },
+      "evidence_sha256": {
+        "manifest.json": "5d0a75dd5a475b82de16a5b0148138e243323ddf3a1757c464b19ec8a80e8526",
+        "result.json": "e41669c84102f04a58616c002479803f7d378c9c3ee10e605c2314cc843f13c4",
+        "console.log": "2a59b5b87684a62312aab9533f91df2c55db438cf99cd456561da252ea00447c",
+        "loss_debug.txt": "534c6f0d2dc1c1365a71d0a9ec8d3643ac3450b40d4560bf6a01aea3c19a7993"
+      }
+    },
+    {
+      "run_id": "cpu-smoke-20261111T094238517328Z",
+      "result": {
+        "protocol": "TR001-CPU-SMOKE-v1",
+        "status": "passed",
+        "gpu_used": false,
+        "paid_model_calls": 0,
+        "checks": {
+          "observation_shape": {
+            "passed": true,
+            "detail": [
+              80,
+              80,
+              3
+            ]
+          },
+          "two_players_25_actions": {
+            "passed": true,
+            "detail": null
+          },
+          "environment_80_steps_finite": {
+            "passed": true,
+            "detail": null
+          },
+          "absolute_collection_jain_matches": {
+            "passed": true,
+            "detail": 0.1547221584919742
+          },
+          "environment_rng_disk_restore": {
+            "passed": true,
+            "detail": null
+          },
+          "trainable_parameters_changed": {
+            "passed": true,
+            "detail": null
+          },
+          "all_global_variables_restored": {
+            "passed": true,
+            "detail": null
+          },
+          "fixed_batch_update_replayed": {
+            "passed": true,
+            "detail": {
+              "max_abs_error": 0.0,
+              "tolerance": 1e-06
+            }
+          },
+          "loss_log_finite": {
+            "passed": true,
+            "detail": null
+          },
+          "budget_exact": {
+            "passed": true,
+            "detail": null
+          }
+        },
+        "environment_steps": 160,
+        "learner_consumed_samples": 100,
+        "optimizer_calls": 5,
+        "limitations": [
+          "Single synchronous collector, batch=1, CPU only.",
+          "Original candidate config, not thesis-definition equivalence.",
+          "No curriculum, B-CF, convergence or comparative efficacy test.",
+          "Restore checks cover Python environment/RNG and fixed-batch learner variables; not asynchronous queues or TF sampler RNG."
+        ],
+        "versions": {
+          "tensorflow": "1.15.5",
+          "numpy": "1.18.5",
+          "dm-sonnet": "1.35",
+          "tensorflow-probability": "0.8.0",
+          "trfl": "1.1.0",
+          "gym": "0.12.5"
+        },
+        "source_sha256": {
+          "agent.py": "17c62d1b5c0d0060ddc1cd9015749f2cecc5ba52c08872adc0425dbb679cf0bf",
+          "experiment.py": "44c193eb25eaa1c8a6cc6cc936ee6369e71efe711fe30327a74ae3f881cc69dd",
+          "vtrace.py": "2db3dc769ce4c54094a5dff81f001b53df359ef0894578160e9f0a4de6487509",
+          "utils.py": "ae18bcde1b0dc5fa999c04b762f3188e35eb988f84dfffb387a099cb029c8677",
+          "mcs_envs/gym_base/data_collection_1.py": "65d66d742595d065399341c696698dceaa60888a77931e82ab9c5e9a304b18ad",
+          "mcs_envs/env_setting/env_setting_1.py": "526a226cec0e660f2b799b21622bd2df20d5bbec2630ccb648c3adb49a8a872b"
+        },
+        "learner_settings": {
+          "batch_size": 1,
+          "unroll_length": 20,
+          "learning_rate": 0.0005,
+          "total_environment_frames": 75000000,
+          "reward_clipping": "adaptive_normalisation",
+          "pc_cost": 0.1,
+          "discounting": 0.95,
+          "num_players": 2
+        },
+        "wall_seconds": 7.725165790005121,
+        "process_peak_rss_mib": 670.25,
+        "candidate_configuration": {
+          "MAP_X": 16,
+          "MAP_Y": 16,
+          "MAX_ENERGY": 30.0,
+          "ALPHA": 1.0,
+          "FACTOR": 0.1,
+          "NUM_UAV": 2
+        },
+        "reset_metric_finite": [
+          false,
+          false
+        ],
+        "parameter_count": 2200519,
+        "global_variable_count": 154,
+        "resource_scope": "Single Python process RSS; CPU only; excludes Docker image/build.",
+        "collection_and_three_updates_seconds": 1.8812459519831464,
+        "upstream_global_steps_after_updates": [
+          21,
+          42,
+          63
+        ],
+        "counter_interpretation": "Upstream global_step includes optimizer increment plus consumed samples; never use it as exact environment count.",
+        "checkpoint_bytes": 27927290
+      },
+      "image_id": "sha256:66441ffbe881ee9a8a779dc458e2e77513da1f7a3891ff449eff3a99f6c20043",
+      "started_utc": "20261111T094238517328Z",
+      "manifest_wall_seconds": 8.83765773801133,
+      "exit_code": 0,
+      "source_commit": "780e0b41d3fff54c8fa5ea0335979b3f1ec1f225",
+      "executed_files_sha256": {
+        "README.md": "c244f2cf3cc55102e53728cda00eb0e74ab46f4e4e94108b5c4292099b7a7a66",
+        "launch.py": "0079fcf6ff7af09eeae03346db46c723994b83078086bbdd360641b5c18b3d07",
+        "requirements.in": "bb13a6cd3202bc8ff37e87356a10d0e258a1348e5a9c01440087843e1a2a483b",
+        "protocol.json": "4af15f3e320aedd2bc91d8999dd61dab86e9968a6585fbc7d033205d36360a75",
+        "environment.freeze.txt": "54141a25f384bf4d43313f096505985aeb47316fb995f2b87d3d2c5ee2b2034e",
+        "run_cpu_smoke.py": "ff61df732edf72e0967f4e813d5991b9430781b38c6898552660c6f9c3df4988",
+        "Dockerfile": "7b3a4895815593948e6daeed6464a7f934217758845a609d8f83c065aa67c9ec",
+        "render_report.py": "2e4f90fa051358e73c35158f544f47c932bfdd7aeb1622454a1edc120d26bb00"
+      },
+      "evidence_sha256": {
+        "manifest.json": "641d9d4f8e4c91a6771ff2a591f3e61c302b735e49830c5746117f946ca218cc",
+        "result.json": "5c5f7b0cf09479d25d175f4004945cc5263d70107067b8c384d356768b5a32c0",
+        "console.log": "89f2a8a26007948d74c4ab8da6b921d43b7a7a2a79df7ccf9d90c3f950fbaace",
+        "loss_debug.txt": "534c6f0d2dc1c1365a71d0a9ec8d3643ac3450b40d4560bf6a01aea3c19a7993"
+      }
+    }
+  ],
+  "totals": {
+    "environment_steps": 320,
+    "learner_consumed_samples": 200,
+    "optimizer_calls": 10
+  },
+  "build_failures": [
+    {
+      "reason": "Gym0.17.3 cloudpickle>=1.2 vs TFP0.8 cloudpickle==1.1.1",
+      "environment_steps": 0,
+      "optimizer_calls": 0
+    },
+    {
+      "reason": "dm-tree0.1.8 requires source build on Python3.6; CMake unavailable; pinned prebuilt0.1.5",
+      "environment_steps": 0,
+      "optimizer_calls": 0
+    }
+  ],
+  "notes": [
+    "Second run validates frozen dependencies and per-update finite checks; not statistically independent efficacy replication.",
+    "GPU compatibility, async-state restoration, original-thesis definition alignment and curriculum effects remain untested."
+  ]
+}

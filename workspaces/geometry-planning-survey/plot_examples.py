@@ -38,5 +38,28 @@ fig.subplots_adjust(bottom=0.29, wspace=0.18, top=0.88)
 out = ROOT / 'figures'
 out.mkdir(exist_ok=True)
 fig.savefig(out / 'bezier-certificate.svg', metadata={'Date': None}, bbox_inches='tight')
+fig.savefig(out / 'bezier-certificate.pdf', metadata={'CreationDate': None, 'ModDate': None}, bbox_inches='tight')
 plt.close(fig)
 print('Rendered analytic illustration; no experimental measurements.')
+
+# Conceptual diagram: arrows encode interfaces, not empirical performance.
+from matplotlib.patches import Rectangle
+fig, ax = plt.subplots(figsize=(10, 3.8))
+ax.set(xlim=(0,10), ylim=(0,3.8)); ax.axis('off')
+boxes=[(.12,2.2,'Reference geometry','robot + obstacles'),(2.62,2.2,'Representation','final constraint or screening'),(5.12,2.2,'Finite encoding','curve + constraints'),(7.62,2.2,'Candidate search','budget + stopping rule')]
+for x,y,title,sub in boxes:
+ ax.add_patch(Rectangle((x,y),2.25,1.02,facecolor='#f2f5f3',edgecolor='#526771',lw=.9))
+ ax.text(x+1.125,y+.68,title,ha='center',fontsize=10,fontweight='bold')
+ ax.text(x+1.125,y+.28,sub,ha='center',fontsize=8)
+for x in [2.37,4.87,7.37]:ax.annotate('',xy=(x+.22,2.71),xytext=(x,2.71),arrowprops={'arrowstyle':'->','color':'#182d36'})
+ax.add_patch(Rectangle((5.12,.55),4.75,.9,facecolor='white',edgecolor='#126354',lw=1.2))
+ax.text(7.495,1.12,'Validation: geometry, interpolation, tolerance',ha='center',fontsize=10)
+ax.text(7.495,.77,'Accept / reject / return evidence to search',ha='center',fontsize=9)
+ax.annotate('',xy=(8.75,1.47),xytext=(8.75,2.17),arrowprops={'arrowstyle':'->','color':'#182d36'})
+ax.annotate('',xy=(9.55,2.17),xytext=(9.55,1.47),arrowprops={'arrowstyle':'->','color':'#126354'})
+ax.text(.16,1.42,'Conditional inclusions:',fontsize=10,fontweight='bold')
+ax.text(.16,.98,r'$\mathcal{F}_E \subseteq \mathcal{F}_R \subseteq \mathcal{F}$',fontsize=17)
+ax.text(.16,.43,'Only with sufficient encoding and\nconservative final acceptance.',fontsize=9)
+fig.savefig(out/'constraint-chain.svg',metadata={'Date':None},bbox_inches='tight')
+fig.savefig(out/'constraint-chain.pdf',metadata={'CreationDate':None,'ModDate':None},bbox_inches='tight')
+plt.close(fig)

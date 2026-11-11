@@ -1,0 +1,203 @@
+{
+  "topic": "TR-002",
+  "date": "2026-11-11",
+  "status": "passed",
+  "conclusion": "已实际构建锁定依赖的 Docker 镜像，并在新建的隔离容器内通过环境验收。",
+  "scope": "仅为 Python/Julia 数值环境和已知答案求解器验收；没有实施无人机算法、正式 benchmark、训练或实机实验。",
+  "image": {
+    "tag": "tr002-numerics:locked",
+    "id": "sha256:6d16b6b4b23426bdcb1822c277190ab6269a15319b1fe0dbbaef1b44051486e6",
+    "size_bytes": 1693198132,
+    "platform": "linux/amd64",
+    "docker_version": "28.3.3"
+  },
+  "environment": [
+    [
+      "容器操作系统",
+      "Debian 12 Bookworm；宿主系统未改动"
+    ],
+    [
+      "Python / 科学包",
+      "Python 3.10.22；NumPy 2.2.6；SciPy 1.15.3；Matplotlib 3.10.3；h5py 3.14.0"
+    ],
+    [
+      "Julia / 求解器",
+      "Julia 1.11.3；JuMP 1.32.1；SCS.jl 2.7.1；SCS_jll 300.300.100+0"
+    ],
+    [
+      "资源限制",
+      "实际 cgroup：2 CPU 配额、4 GiB 内存、0 Swap、256 PID；Julia/BLAS 各 1 线程"
+    ],
+    [
+      "运行隔离",
+      "UID 1000；只读根文件系统；关闭网络；无 GPU、端口、Docker socket；drop ALL capabilities、no-new-privileges"
+    ],
+    [
+      "文件边界",
+      "仅挂载本次 TR-002 runs/ 输出目录；/tmp 为 512 MiB tmpfs；未挂载其他课题、宿主 home 或论文"
+    ],
+    [
+      "依赖复现",
+      "基础镜像摘要固定；Python wheel 哈希锁；Julia Manifest；已核对镜像内3个锁/项目文件与仓库逐字节一致"
+    ],
+    [
+      "本次镜像大小",
+      "1.58 GiB（逻辑大小，不等于 Docker 缓存的总占盘）"
+    ],
+    [
+      "本次验收内存",
+      "cgroup memory.peak = 480960512 bytes，约 458.7 MiB；不是完整实验预算"
+    ]
+  ],
+  "checks": [
+    [
+      "导入与依赖",
+      "通过：科学包导入、pip check"
+    ],
+    [
+      "文件/数据",
+      "通过：HDF5 读写、Python→Julia→Python 矩阵向量往返"
+    ],
+    [
+      "数值工具",
+      "通过：SciPy 对称特征值、无显示器 SVG 输出"
+    ],
+    [
+      "2×2 已知答案 SDP",
+      "SCS 状态 OPTIMAL；目标 -8.26158316212e-09（真值0）；对角误差 1.08e-13；最小特征值 -4.13e-09；通过 1e-5 浮点容差"
+    ],
+    [
+      "容器退出",
+      "ExitCode=0；OOMKilled=false；本次容器已删除，镜像与原始验收日志保留"
+    ]
+  ],
+  "measurements": {
+    "memory_peak_bytes": 480960512,
+    "elapsed_seconds_excluding_python_imports": 12.7187683560187,
+    "objective": -8.261583162121344e-09,
+    "objective_recomputed": -8.26158252920095e-09,
+    "minimum_eigenvalue": -4.130791264600475e-09,
+    "primal_diagonal_error": 1.0769163338864018e-13,
+    "termination_status": "OPTIMAL"
+  },
+  "python_distribution_versions": {
+    "contourpy": "1.3.2",
+    "cycler": "0.12.1",
+    "fonttools": "4.65.0",
+    "h5py": "3.14.0",
+    "kiwisolver": "1.5.1",
+    "matplotlib": "3.10.3",
+    "numpy": "2.2.6",
+    "packaging": "26.3",
+    "pillow": "12.3.0",
+    "pip": "23.0.1",
+    "pyparsing": "3.3.3",
+    "python-dateutil": "3.0.0",
+    "scipy": "1.15.3",
+    "setuptools": "79.0.1",
+    "six": "1.17.0",
+    "tzdata": "2026.6",
+    "wheel": "0.46.3"
+  },
+  "julia_package_versions": {
+    "ForwardDiff": "1.4.7",
+    "OrderedCollections": "2.0.3",
+    "IrrationalConstants": "0.2.7",
+    "Base64": "1.11.0",
+    "CompilerSupportLibraries_jll": "1.1.1+0",
+    "SpecialFunctions": "2.9.2",
+    "Markdown": "1.11.0",
+    "TranscodingStreams": "0.11.3",
+    "JSON3": "1.14.4",
+    "LogExpFunctions": "1.0.4",
+    "StructTypes": "1.11.1",
+    "UUIDs": "1.11.0",
+    "OpenBLAS32_jll": "0.3.34+1",
+    "OpenSpecFun_jll": "0.5.6+0",
+    "SHA": "0.7.0",
+    "LinearAlgebra": "1.11.0",
+    "CodecZlib": "0.7.9",
+    "JLLWrappers": "1.8.0",
+    "Artifacts": "1.11.0",
+    "Dates": "1.11.0",
+    "SCS_jll": "300.300.100+0",
+    "Printf": "1.11.0",
+    "LLVMOpenMP_jll": "23.1.1+0",
+    "OpenLibm_jll": "0.8.1+2",
+    "Test": "1.11.0",
+    "Random": "1.11.0",
+    "Libdl": "1.11.0",
+    "Serialization": "1.11.0",
+    "PrecompileTools": "1.2.1",
+    "StructUtils": "2.12.0",
+    "SuiteSparse_jll": "7.7.0+0",
+    "CommonSubexpressions": "0.3.1",
+    "JSON": "1.13.4",
+    "libblastrampoline_jll": "5.11.0+0",
+    "SCS": "2.7.1",
+    "Mmap": "1.11.0",
+    "DocStringExtensions": "0.10.2",
+    "Preferences": "1.6.1",
+    "Parsers": "2.8.11",
+    "Logging": "1.11.0",
+    "TOML": "1.0.3",
+    "MathOptInterface": "1.54.0",
+    "NaNMath": "1.1.5",
+    "StaticArraysCore": "1.4.5",
+    "OpenBLAS_jll": "0.3.27+1",
+    "Zlib_jll": "1.2.13+1",
+    "JuMP": "1.32.1",
+    "DiffResults": "1.1.0",
+    "Bzip2_jll": "1.0.9+0",
+    "SparseArrays": "1.11.0",
+    "DiffRules": "1.17.0",
+    "CodecBzip2": "0.8.5",
+    "Unicode": "1.11.0",
+    "MacroTools": "0.5.16",
+    "InteractiveUtils": "1.11.0",
+    "MutableArithmetics": "1.9.3"
+  },
+  "resource_limits": {
+    "cpu.max": "200000 100000",
+    "memory.max": "4294967296",
+    "memory.swap.max": "0",
+    "pids.max": "256"
+  },
+  "source_sha256": {
+    ".dockerignore": "8e87b3d8fee1613b25f2ca091ec9efb6a07dc7d4b780da440c0c84812ccaab77",
+    "Dockerfile": "47db8089fe33fe62258b3b6147e89d822f06f299e545647c0d8c8478fdf40ec9",
+    "build_image.py": "65f95416c113e6c19b81592e7e9c53c81fd9eb465ec3a7f36016ddcae5ab3b5f",
+    "julia/Manifest.toml": "57116ff5853f7fe5699a07bdc1db3ca5a3f0a344d45a8d3614444544cd498a32",
+    "julia/Project.toml": "664e0ec80517cac38f532aa67aa84b050825cd866be7e87ef7b7ad54c6bb365f",
+    "requirements.in": "958dd2b5db52d366262377d72a3983202ac0dd8ffc880aaeee11ab3763906625",
+    "requirements.lock": "fb3d9c34b36568a4a0196af6371c566bae55a5dd436b49b71ed307e280191714",
+    "run_smoke.py": "59f67fc5b1c90bcdd57020ccb298aee6cb041764f5506ba72e995b14dc65c1dc",
+    "smoke/check_environment.py": "acdfc2af1cd79c8c9937eba1ade3f929a0b163aeb3774d1ca7edb9e03016a7b1",
+    "smoke/check_solver.jl": "c06e38f8c7b5fe28425bf848c592dd97ad0b7eb53ad031f8893a7b35a7ffb7e5"
+  },
+  "raw_evidence": {
+    "directory": "runs/container-smoke-20261111T091152Z-60816b",
+    "git_ignored": true,
+    "files_sha256": {
+      "container.log": "845797743bc19336988f81120ad5759f7e2b05fd833bb5d958f9d0dcaa261514",
+      "environment-smoke.json": "0d1c2b6232bd45d211f3c6da9fff791d74a8802dd00172c53274217284bfc842",
+      "fixture.json": "c197f11bb194f4a13db3e654a4acfaffb6b158b597ec91224fb88599b165b3c4",
+      "host-receipt.json": "236033d8b36890e9003569f58731ce7bc46faf9b731dc6dfa1f66ee7a3565290",
+      "io-check.h5": "c38672213abc9b3cf474394a264c2808c7983e0112ce042b9ec9f54f86281ac5",
+      "julia-smoke.json": "36132bfb1e173ec7d8bc90a55f851c9d961bc1589f4d557e0d96a301a10e8044",
+      "plot-check.svg": "02ce6a2507759e4a896aef7cc70c6f022b945e6634415e744093e06836e2d8ba"
+    }
+  },
+  "limitations": [
+    "本次约459 MiB仅是小型验收的峰值，不能外推无人机数量、完整 SDP、Monte Carlo 或闭环实验的内存/速度。",
+    "小 SDP 的微小负目标和负特征值按浮点容差验收，不构成严格全局最优证书；独立证书检查器尚未实现。",
+    "运行时长包含 Julia 启动/JIT，不是算法延迟；容器共享宿主内核和负载，CPU配额不是独占核。正式性能实验须控制宿主负载并记录硬件/线程。",
+    "目前只验证 Linux/amd64 和本机 Docker 28。构建使用带资源限制的 legacy builder，官方已提示弃用，后续需迁移到有资源上限的专用 BuildKit builder。",
+    "锁定依赖不代表强基线已适配；原 bearing 目标、数据生成器、独立检查器和完整 benchmark 仍待实现与先导验收。",
+    "未调用 GPU、ROS/Gazebo、实机或付费模型；未改宿主 Python/Julia，也未提交或推送本次改动。"
+  ],
+  "official_references": [
+    "https://docs.docker.com/engine/containers/resource_constraints/",
+    "https://docs.docker.com/engine/containers/run/"
+  ]
+}

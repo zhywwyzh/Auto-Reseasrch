@@ -3,8 +3,8 @@
   "url": "http://127.0.0.1:18773/workspaces/ucs-genrl/theory-experiment-design.html",
   "access_scope": "same-computer-loopback-only",
   "http_status": 200,
-  "sections": 9,
-  "local_links_checked": 64,
+  "sections": 10,
+  "local_links_checked": 69,
   "source_hashes": "passed",
   "details_navigation_print": "passed",
   "formula_calculator": "default ratio 1.088889, zero correlation boundary, invalid budget passed",
@@ -13,12 +13,13 @@
   "algebra": "T3 identity and T4 derivative checked symbolically",
   "research_training_runs": 0,
   "research_simulation_runs": 0,
-  "preparation": {
-    "protocol": "first-round-preparation.json",
-    "json_and_budget_arithmetic": "passed",
-    "section_navigation": "passed",
-    "desktop_visual_review": "passed",
-    "execution_status": "design_only_no_research_runs",
-    "qa_note": "一次移动视口重载等待load超时；改为等待DOMContentLoaded后完整检查通过"
+  "algorithm_research": {
+    "record": "algorithm-research-2026-11-11.json",
+    "record_sha256": "766b4826c1fdf18b02c3ec86b64e6be1b31b65319aaee476c8a2c81b578fbf13",
+    "algebra": "T10 completion of square, T12 r=3 simplification, 5-candidate pairwise-centering identity verified symbolically",
+    "proof_boundary": "conditional-expectation and fold-independence reasoning manually checked; not independent empirical verification",
+    "navigation_and_layout": "passed desktop/mobile",
+    "research_implementation": false,
+    "research_simulation_runs": 0
   }
 }

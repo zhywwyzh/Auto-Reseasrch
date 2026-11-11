@@ -1,0 +1,141 @@
+{
+  "audited_at_utc": "2026-11-11T10:26:36.891316+00:00",
+  "scope_cwd": "/home/zhywwyzh/workspace/AutoResearch-UAV",
+  "discovery": "匹配session_meta.cwd为仓库根或其子目录；读取前6行元数据发现，不扫描其他会话正文。",
+  "window": "2026-11-05至2026-11-11的本地匹配快照",
+  "rollout_files": 11,
+  "distinct_session_ids": 10,
+  "visible_user_records": 84,
+  "compacted_records": 14,
+  "counting": "仅非空response_item/message/user可见文本；排除AGENTS和环境注入。按文件事件计数，未把它视为语义去重后的独立指令数。压缩事件只计数，未读取其摘要内容。",
+  "limits": [
+    "同一个session_id有两个文件/续段，文件数不等于会话数。",
+    "不包含cwd不匹配、已删除、未同步、无法读取或远端会话；不是账户级完整历史。",
+    "原生会话仍可能追加；哈希对应审计时读取的字节快照。后续比较先按snapshot_bytes取原文件前缀。",
+    "没有从隐藏推理、模型自报或历史工具输出认定科学结论；课题状态另与当前README交叉核对。",
+    "三个课题的README是当时记录来源，本轮未独立重跑其中实验或核验全部日志。"
+  ],
+  "files": [
+    {
+      "source_file": "rollout-2026-11-05T19-42-21-01a1ab84-5d5e-71a1-b554-43696abb24e3.jsonl",
+      "session_id": "01a1ab84-5d5e-71a1-b554-43696abb24e3",
+      "created_at": "2026-11-05T11:42:21.024Z",
+      "snapshot_last_event_at": "2026-11-10T11:57:45.115Z",
+      "snapshot_bytes": 5762455,
+      "snapshot_lines": 870,
+      "snapshot_sha256": "8806e146ef4f51a43349d2222f7a43eebcb395f5d7195e653946e00447388692",
+      "visible_user_records": 8,
+      "compacted_records": 0
+    },
+    {
+      "source_file": "rollout-2026-11-09T14-58-06-01a1bf19-9198-7572-8732-f244142eb236.jsonl",
+      "session_id": "01a1bf19-9198-7572-8732-f244142eb236",
+      "created_at": "2026-11-09T06:58:06.388Z",
+      "snapshot_last_event_at": "2026-11-10T01:32:35.248Z",
+      "snapshot_bytes": 5093456,
+      "snapshot_lines": 723,
+      "snapshot_sha256": "8a8cc30749ccea844c892d788b413814bfe9b81f31e20f43fa1828f5fd63bbe4",
+      "visible_user_records": 14,
+      "compacted_records": 1
+    },
+    {
+      "source_file": "rollout-2026-11-09T17-12-18-01a1bf94-656d-7f42-8c24-84817373f06e.jsonl",
+      "session_id": "01a1bf94-656d-7f42-8c24-84817373f06e",
+      "created_at": "2026-11-09T09:12:18.442Z",
+      "snapshot_last_event_at": "2026-11-10T11:57:51.682Z",
+      "snapshot_bytes": 12874306,
+      "snapshot_lines": 719,
+      "snapshot_sha256": "faf315d007a3c6dd188fd40f2fe845e32b853d1fe79fcbcd9281482be822f473",
+      "visible_user_records": 7,
+      "compacted_records": 0
+    },
+    {
+      "source_file": "rollout-2026-11-10T09-20-05-01a1c30a-7959-77c3-9bb3-5336bd275afb.jsonl",
+      "session_id": "01a1c30a-7959-77c3-9bb3-5336bd275afb",
+      "created_at": "2026-11-10T01:20:05.991Z",
+      "snapshot_last_event_at": "2026-11-10T11:57:54.714Z",
+      "snapshot_bytes": 1050085,
+      "snapshot_lines": 70,
+      "snapshot_sha256": "451541f28d28d448bdc1a25fe5441ea79c41c087b572e5cc18ba0e6c2bfc4bd8",
+      "visible_user_records": 4,
+      "compacted_records": 0
+    },
+    {
+      "source_file": "rollout-2026-11-10T09-27-07-01a1c310-de1f-7ff0-b44d-bc7bbf713bd8.jsonl",
+      "session_id": "01a1c310-de1f-7ff0-b44d-bc7bbf713bd8",
+      "created_at": "2026-11-10T01:27:07.829Z",
+      "snapshot_last_event_at": "2026-11-10T11:57:39.492Z",
+      "snapshot_bytes": 1217903,
+      "snapshot_lines": 214,
+      "snapshot_sha256": "3d5afdded8f599ca00b1a32589f9eee2cb6ed65cea23087c78bb1c7b7a69b917",
+      "visible_user_records": 2,
+      "compacted_records": 0
+    },
+    {
+      "source_file": "rollout-2026-11-10T09-32-44-01a1bf19-9198-7572-8732-f244142eb236_01a1c316-0d7a-7452-913f-56376c1a4731.jsonl",
+      "session_id": "01a1bf19-9198-7572-8732-f244142eb236",
+      "created_at": "2026-11-10T01:32:44.794Z",
+      "snapshot_last_event_at": "2026-11-11T08:29:23.475Z",
+      "snapshot_bytes": 9067582,
+      "snapshot_lines": 878,
+      "snapshot_sha256": "836f9bb556cbc7d879f4ae5933d9e80947d14e6a9fc64bd0208afba3498bc0ce",
+      "visible_user_records": 7,
+      "compacted_records": 3
+    },
+    {
+      "source_file": "rollout-2026-11-10T10-04-43-01a1c333-5341-74e3-8a55-a5e612492e07.jsonl",
+      "session_id": "01a1c333-5341-74e3-8a55-a5e612492e07",
+      "created_at": "2026-11-10T02:04:43.221Z",
+      "snapshot_last_event_at": "2026-11-10T11:57:52.777Z",
+      "snapshot_bytes": 318398,
+      "snapshot_lines": 101,
+      "snapshot_sha256": "858d43c2439545f81219eeacdea64b2d755d6e595c87126effa10712445d8524",
+      "visible_user_records": 1,
+      "compacted_records": 0
+    },
+    {
+      "source_file": "rollout-2026-11-10T17-57-04-01a1c4e3-c739-7181-bca5-afcd25d252c4.jsonl",
+      "session_id": "01a1c4e3-c739-7181-bca5-afcd25d252c4",
+      "created_at": "2026-11-10T09:57:04.453Z",
+      "snapshot_last_event_at": "2026-11-11T10:14:28.035Z",
+      "snapshot_bytes": 16163648,
+      "snapshot_lines": 1784,
+      "snapshot_sha256": "05425488d63482f33ccfff986e57fef7e7f072b983c1ffe6a049814009c1f9c1",
+      "visible_user_records": 19,
+      "compacted_records": 4
+    },
+    {
+      "source_file": "rollout-2026-11-11T14-57-00-01a1c965-4945-7852-89fa-a9b6a5c7fb69.jsonl",
+      "session_id": "01a1c965-4945-7852-89fa-a9b6a5c7fb69",
+      "created_at": "2026-11-11T06:57:00.746Z",
+      "snapshot_last_event_at": "2026-11-11T09:43:27.255Z",
+      "snapshot_bytes": 7650344,
+      "snapshot_lines": 1230,
+      "snapshot_sha256": "4a41751a61b21514692b8d2b1763fcc17ea7b7287224a6ff27403ebe105e169c",
+      "visible_user_records": 15,
+      "compacted_records": 3
+    },
+    {
+      "source_file": "rollout-2026-11-11T15-08-14-01a1c96f-91f0-7a02-8804-56d242912c9c.jsonl",
+      "session_id": "01a1c96f-91f0-7a02-8804-56d242912c9c",
+      "created_at": "2026-11-11T07:08:14.710Z",
+      "snapshot_last_event_at": "2026-11-11T10:12:21.704Z",
+      "snapshot_bytes": 22312952,
+      "snapshot_lines": 942,
+      "snapshot_sha256": "2de7e36269452426e57ae0e03362ec3c38fbb04050921960c6ddc46b28962bd1",
+      "visible_user_records": 5,
+      "compacted_records": 3
+    },
+    {
+      "source_file": "rollout-2026-11-11T18-03-29-01a1ca10-049a-7980-a9f2-365dbd364a85.jsonl",
+      "session_id": "01a1ca10-049a-7980-a9f2-365dbd364a85",
+      "created_at": "2026-11-11T10:03:29.869Z",
+      "snapshot_last_event_at": "2026-11-11T10:26:36.600Z",
+      "snapshot_bytes": 908007,
+      "snapshot_lines": 118,
+      "snapshot_sha256": "7d1659d9f39ebeb4acf07ca2b068a972547f8ddd95a5ea762179d35428d4e8c5",
+      "visible_user_records": 2,
+      "compacted_records": 0
+    }
+  ]
+}

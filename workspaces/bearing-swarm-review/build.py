@@ -15,6 +15,10 @@ D['followup'] = json.loads((ROOT / 'novelty.json').read_text())
 D['plan'] = json.loads((ROOT / 'plan.json').read_text())
 D['progress'] = json.loads((ROOT / 'research-progress.json').read_text())
 D['benchmark'] = json.loads((ROOT / 'benchmark.json').read_text())
+if (ROOT / 'container/validation.json').is_file():
+    D['container'] = json.loads((ROOT / 'container/validation.json').read_text())
+if (ROOT / 'experiments/results/summary.json').is_file():
+    D['pilot'] = json.loads((ROOT / 'experiments/results/summary.json').read_text())
 
 
 def e(x):
@@ -35,7 +39,7 @@ def section(key, title, body):
 
 def webpage():
     s = []
-    s.append(section('benchmark-link','最新 / 实验协议与 benchmark','<p><a href="benchmark.html">查看受控评测、公开数据审计、强基线、样本划分及可靠性门槛</a>。协议已细化，尚未实施；不能把设计审阅当成实验可靠性已验证。</p>'))
+    s.append(section('benchmark-link','最新 / 实验协议与 benchmark','<p><a href="benchmark.html">查看受控评测、公开数据审计、强基线、样本划分及可靠性门槛</a>。已启动旋转子问题先导；<a href="benchmark.html#pilot-results">查看实际结果、失败和边界</a>。下方预审为此前阶段记录，不能当作最新执行状态。</p>'))
     s.append(section('plan-link','详细补强计划','<p>按当前候选决策继续：<a href="plan.html">打开阶段计划、待证理论、实验规格与去留标准</a>。该计划区分当前设计工作与实施获准后的实验。</p>'))
     f = D['followup']
     follow = '<div class="notice">'+e(f['conclusion'])+'</div>'+paragraphs([f['scope']])
@@ -78,7 +82,7 @@ def webpage():
     nav=''.join('<a href="#'+key+'">'+title+'</a>' for key,title in [('novelty','最新：创新补强'),('route-C1','C1 认证与运动'),('route-C2','C2 窗口调度'),('route-C3','C3 工程支撑'),('identity','对象与章节'),('scores','暂定评分'),('issues','核心问题'),('literature','首轮相关工作'),('design','首轮候选记录'),('experiments','首轮实验方案'),('auto','Auto Research'),('outline','论文大纲'),('next','下一步与边界')])
     css='''*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}body{margin:0;background:#f6f7f3;color:#25372f;font:16px/1.85 system-ui,-apple-system,"Microsoft YaHei",sans-serif}aside{position:fixed;inset:0 auto 0 0;width:224px;background:#fff;border-right:1px solid #d7dfd9;padding:28px 22px;overflow:auto}nav{display:grid;gap:10px;margin-top:25px}a{color:#23654c;text-underline-offset:4px}nav a{text-decoration:none}main{margin-left:224px;max-width:1500px;padding:38px 46px 70px}h1{font-size:30px;line-height:1.5;max-width:1000px}h2{font-size:23px}h3{font-size:18px;line-height:1.6}p{margin:10px 0}.meta{font-size:13px;color:#5b6e62}.lead{font-size:19px}.notice{background:#e8efe9;border-left:3px solid #23654c;padding:16px 20px;margin:20px 0}section{border-top:1px solid #d7dfd9;padding:28px 0}article{padding:20px 0;border-bottom:1px solid #d7dfd9}article:last-child{border:0}.scroll{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:14px;margin:16px 0;background:#fff}th,td{text-align:left;vertical-align:top;padding:12px 14px;border-bottom:1px solid #d7dfd9}th{background:#e8efe9}td:first-child{min-width:130px}td{min-width:110px}details{background:#fff;border:1px solid #d7dfd9;padding:12px 18px;margin:15px 0}summary{cursor:pointer;font-weight:600}button,select{font:inherit;font-size:14px;background:#fff;border:1px solid #bac9bd;border-radius:4px;padding:7px 12px;color:#25372f}button{cursor:pointer}.top{display:flex;justify-content:space-between;gap:15px;align-items:center}li{margin:15px 0}a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible{outline:3px solid #ad7c30;outline-offset:3px}[hidden]{display:none!important}@media(max-width:850px){aside{position:static;width:auto;padding:20px}nav{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:12px}main{margin:0;padding:24px 20px}h1{font-size:26px}}@media print{aside,button,select,label,#count{display:none}main{margin:0;padding:0}body{background:#fff}details>*{display:block}.scroll{overflow:visible}table{font-size:11px}section{break-before:auto}}'''
     js='''const f=document.querySelector('#filter');function update(){let n=0;document.querySelectorAll('.issue').forEach(x=>{x.hidden=f.value!=='all'&&x.dataset.level!==f.value;if(!x.hidden)n++});document.querySelector('#count').textContent=`当前显示 ${n} 项评审问题`}f.addEventListener('change',update);update();document.querySelector('#expand').addEventListener('click',()=>{const all=[...document.querySelectorAll('details')];const open=all.some(x=>!x.open);all.forEach(x=>x.open=open);document.querySelector('#expand').textContent=open?'收起全部证据':'展开全部证据'})'''
-    return '<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+e(D['title'])+'</title><style>'+css+'</style></head><body><aside><p class="meta">TR-002 / '+e(D['date'])+'</p><h2>论文预审</h2><p>事实、推导与研究假设分别记录</p><nav aria-label="章节导航">'+nav+'</nav></aside><main><div class="top"><span class="meta">阅读与研究设计 · 未运行实验</span><button id="expand">展开全部证据</button></div><h1>'+e(D['title'])+'</h1><p class="lead">'+e(D['conclusion'])+'</p><div class="notice">'+e(D['boundary'])+'</div><p class="meta">'+e(D['scope'])+'</p>'+''.join(s)+'<script>'+js+'</script></main></body></html>'
+    return '<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+e(D['title'])+'</title><style>'+css+'</style></head><body><aside><p class="meta">TR-002 / '+e(D['date'])+'</p><h2>论文预审</h2><p>事实、推导与研究假设分别记录</p><nav aria-label="章节导航">'+nav+'</nav></aside><main><div class="top"><span class="meta">预审历史与研究设计 · 最新执行状态见先导结果</span><button id="expand">展开全部证据</button></div><h1>'+e(D['title'])+'</h1><p class="lead">'+e(D['conclusion'])+'</p><div class="notice">'+e(D['boundary'])+'</div><p class="meta">'+e(D['scope'])+'</p>'+''.join(s)+'<script>'+js+'</script></main></body></html>'
 
 
 def planpage():
@@ -89,7 +93,7 @@ def planpage():
         progress += '<article id="'+e(x['id'])+'"><p class="meta">'+e(x['id']+' · '+x['kind'])+'</p><h3>'+e(x['title'])+'</h3><p><b>假设：</b>'+e(x['assumptions'])+'</p><p><b>命题：</b>'+e(x['statement'])+'</p><details><summary>展开证明、来源及适用边界</summary><ol>'+''.join('<li>'+e(step)+'</li>' for step in x['proof'])+'</ol><p><b>边界：</b>'+e(x['boundary'])+'</p><p><b>来源：</b>'+e(x['source'])+'</p></details></article>'
     progress += table(['决策','对象','依据'],q['decisions'])+'<h3>下一项研究工作</h3>'+paragraphs(q['next'])
     progress += '<h3>本轮近邻与阅读深度</h3>'+''.join('<p><a href="'+e(x['url'])+'" target="_blank" rel="noopener noreferrer">'+e(x['title'])+'</a> — '+e(x['depth'])+'</p>' for x in q['sources'])+'<div class="notice">'+e(q['validation'])+'</div><p>进展内容源：<a href="research-progress.json">research-progress.json</a>。下方是阶段计划，不能把计划项目当成完成记录。</p>'
-    parts = [section('benchmark-link','最新 / 详细实验协议','<p><a href="benchmark.html">打开 benchmark 注册表、实验矩阵、强基线和统计协议</a>。该协议细化下方粗略实验/样本建议；没有新增实验结果。</p>'),section('progress','00 / '+e(q['title']),progress),section('contract','01 / 研究目标与固定条件',paragraphs([p['target']])+paragraphs(p['fixed'])+table(['层次','主张','需要的证据'],p['claims']))]
+    parts = [section('benchmark-link','最新 / 详细实验协议','<p><a href="benchmark.html">打开 benchmark 注册表、实验矩阵、强基线和统计协议</a>。该协议细化下方粗略实验/样本建议；<a href="benchmark.html#pilot-results">最新实际先导结果</a>单独记录，原计划中的“尚未实施”为历史状态。</p>'),section('progress','00 / '+e(q['title']),progress),section('contract','01 / 研究目标与固定条件',paragraphs([p['target']])+paragraphs(p['fixed'])+table(['层次','主张','需要的证据'],p['claims']))]
     stages = table(['阶段','建议投入','进入条件'],[[x['id']+' '+x['title'],x['effort'],x['dependency']] for x in p['stages']])
     for x in p['stages']:
         stages += '<article id="'+e(x['id'])+'"><p class="meta">'+e(x['id']+' · '+x['effort'])+'</p><h3>'+e(x['title'])+'</h3><p><b>依赖：</b>'+e(x['dependency'])+'</p><details open><summary>具体工作与验收</summary><ol>'+''.join('<li>'+e(t)+'</li>' for t in x['tasks'])+'</ol>'+''.join('<p><b>'+label+'：</b>'+e(x[k])+'</p>' for k,label in [('deliverable','阶段交付'),('pass','通过标准'),('stop','未通过时')])+'</details></article>'
@@ -106,7 +110,7 @@ def planpage():
     parts.append(section('sources','10 / 来源与执行边界',sources+'<div class="notice">'+e(p['limits'])+'</div><p>内容源：<a href="plan.json">plan.json</a>；生成器：<a href="build.py">build.py</a>；<a href="index.html#novelty">前轮创新核查与解析推导</a>；<a href="validation.json">交付验证记录</a>。所有阶段均为计划，没有新增实验结果。</p>'))
     nav=''.join('<a href="#'+key+'">'+label+'</a>' for key,label in [('progress','最新：研究进展'),('D0','证书重推'),('D2','生成树条件'),('D4','带噪粗界'),('contract','目标与范围'),('stages','阶段与验收'),('theory','待证理论'),('method','方法与接口'),('baselines','强基线'),('experiments','实验与指标'),('budget','时间与预算'),('branches','C2 / C3分支'),('paper','论文结构'),('sources','来源与边界')])
     css='''*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}body{margin:0;background:#f6f7f3;color:#25372f;font:16px/1.8 system-ui,-apple-system,"Microsoft YaHei",sans-serif}aside{position:fixed;inset:0 auto 0 0;width:220px;background:#fff;border-right:1px solid #d7dfd9;padding:24px;overflow:auto}nav{display:grid;gap:10px}a{color:#23654c;text-underline-offset:4px}nav a{text-decoration:none}main{margin-left:220px;max-width:1450px;padding:34px 42px 70px}h1{font-size:28px;line-height:1.5}h2{font-size:22px}h3{font-size:18px}.meta{font-size:13px;color:#5b6e62}.notice{background:#e8efe9;border-left:3px solid #23654c;padding:16px;margin:18px 0}section{border-top:1px solid #d7dfd9;padding:24px 0}article{padding:20px 0;border-bottom:1px solid #d7dfd9}.scroll{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:14px;background:#fff;margin:16px 0}th,td{padding:12px;text-align:left;vertical-align:top;border-bottom:1px solid #d7dfd9;min-width:120px}th{background:#e8efe9}details{padding:12px 18px;background:#fff;border:1px solid #d7dfd9}summary{font-weight:600;cursor:pointer}li{margin:12px 0}a:focus-visible,summary:focus-visible{outline:3px solid #ad7c30;outline-offset:3px}@media(max-width:850px){aside{position:static;width:auto}nav{display:flex;flex-wrap:wrap;gap:10px 16px}main{margin:0;padding:24px 18px}}@media print{aside{display:none}main{margin:0;padding:0}body{background:#fff}.scroll{overflow:visible}table{font-size:11px}}'''
-    return '<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+e(p['title'])+'</title><style>'+css+'</style></head><body><aside><p class="meta">TR-002 / '+e(p['date'])+'</p><h2>补强执行计划</h2><p><a href="index.html">返回证据评审</a></p><nav aria-label="计划章节">'+nav+'</nav></aside><main><p class="meta">详细研究设计 · 未启动研究实现或实验</p><h1>'+e(p['title'])+'</h1><p>'+e(p['summary'])+'</p><div class="notice">'+e(p['status'])+'</div>'+''.join(parts)+'</main></body></html>'
+    return '<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+e(p['title'])+'</title><style>'+css+'</style></head><body><aside><p class="meta">TR-002 / '+e(p['date'])+'</p><h2>补强执行计划</h2><p><a href="index.html">返回证据评审</a></p><nav aria-label="计划章节">'+nav+'</nav></aside><main><p class="meta">详细研究设计 · 已启动旋转先导，其他阶段按实际记录</p><h1>'+e(p['title'])+'</h1><p>'+e(p['summary'])+'</p><div class="notice">'+e(p['status'])+'</div>'+''.join(parts)+'</main></body></html>'
 
 
 def benchmarkpage():
@@ -118,9 +122,45 @@ def benchmarkpage():
         for key,title,headers in [('dataset_layers','要构建的测试集',['层次','规模','内容']),('instance_contract','一个数据实例包含什么',['部分','规格']),('environments','分阶段的软件环境',['环境','配置','边界']),('hardware','硬件建议：规划值，尚未测性能',['阶段','建议','依据与限制']),('host_snapshot','当前执行主机只读盘点',['项目','检查结果'])]:
             body += '<h3 id="env-'+key+'">'+title+'</h3>'+table(headers,z[key])
         body += '<h3>存储、时间预算与实施顺序</h3>'+paragraphs(z['budget'])
-        body += '<h3>待执行的环境验收</h3>'+table(['项目','验收要求'],z['acceptance'])
+        body += '<h3>搭建前拟定的环境验收要求</h3>'+table(['项目','验收要求'],z['acceptance'])
         body += '<h3>官方来源与核查边界</h3>'+''.join('<p><a href="'+e(x['url'])+'">'+e(x['title'])+'</a> — '+e(x['note'])+'</p>' for x in z['sources'])
-        sections.insert(0,section('simulation-resources','最新 / '+e(z['title']),body))
+        sections.insert(0,section('simulation-resources','搭建前设计 / '+e(z['title']),body))
+    c = b.get('configuration_assessment')
+    if c:
+        body = '<div class="notice">'+e(c['conclusion'])+'</div><p>'+e(c['status'])+'</p>'
+        for key,title,headers in [('decisions','首轮配置决策',['项目','提案','条件']),('software','软件与隔离',['部分','配置','核查边界']),('baseline_audit','强基线源码审查：适配必须处理的问题',['问题','源码事实','本项目要求']),('solver_proposal','求解精度与限时',['项目','提议设置','解释']),('host_recheck','本轮机器复核：瞬时观察',['项目','观察','限制']),('resource_gates','资源与扩容判据',['阶段','判据','说明']),('budget_scenarios','运行预算：算术情景，未执行',['配额','调用数','累计时长情景'])]:
+            body += '<h3 id="config-'+key+'">'+title+'</h3>'+table(headers,c[key])
+        body += '<p>'+e(c['budget_boundary'])+'</p><details><summary>搭建前候选Python依赖元数据（当时未安装）</summary>'
+        for x in c['package_candidates']:
+            body += '<p><a href="'+e(x['metadata_url'])+'">'+e(x['package']+' '+x['candidate_version'])+'</a>；Python '+e(x['requires_python'])+'；cp310/Linux x86_64 wheel已在元数据中找到；'+e(x['status'])+'</p>'
+        body += '</details><h3>下一步</h3>'+paragraphs(c['next_steps'])
+        body += '<h3>来源与阅读深度</h3>'+''.join('<p><a href="'+e(x['url'])+'">'+e(x['title'])+'</a> — '+e(x['note'])+'</p>' for x in c['sources'])
+        sections.insert(0,section('configuration-assessment','搭建前评估 / '+e(c['title']),body))
+    v = D.get('container')
+    if v:
+        body = '<div class="notice">'+e(v['conclusion'])+'</div><p>'+e(v['scope'])+'</p>'
+        body += '<h3>实际环境与隔离检查</h3>'+table(['项目','实测/核查记录'],v['environment'])
+        body += '<h3>已执行的环境验收</h3>'+table(['检查','结果'],v['checks'])
+        body += '<h3>结果边界</h3>'+paragraphs(v['limitations'])
+        body += '<p>构建与复测：<a href="container/README.md">容器说明</a> · <a href="container/build_image.py">构建脚本</a> · <a href="container/run_smoke.py">验收脚本</a> · <a href="container/Dockerfile">Dockerfile</a> · <a href="container/validation.json">实际验收记录</a>。</p>'
+        sections.insert(0,section('container-validation','最新 / 容器环境验收（'+e(v['date'])+'）',body))
+    p = D.get('pilot')
+    if p:
+        count = p['counts']
+        body = '<div class="notice">已实际完成首轮旋转子问题实验；不是留出评测，也未验证新方法创新。'+e(count['diagnostic_cases'])+'个解析诊断、'+e(count['development_worlds'])+'个开发世界／'+e(count['development_logs'])+'条日志、'+e(count['main_method_runs'])+'次主配置运行，另有'+e(count['precision_repeat_runs'])+'次复查。</div>'
+        body += '<p>8类故障注入被拒绝。弱SDP有3次TIME_LIMIT，均保留。所有270次开发运行均返回通过本轮浮点可行性检查的候选，但这不等于全部收敛，更不是严格认证。</p>'
+        body += '<h3>本批结果对研究方向的影响</h3>'+paragraphs([
+            '16个可辨识平面诊断中，弱SDP的前三特征值之外尾谱约1至3；观测边、全对和生成树加强均在预设容差内恢复真值Gram。该结果支持解析动机，但加强约束和生成树仍是现成强基线。',
+            str(len(p['rank3_reflection_cases']))+'个开发实例中，弱SDP数值秩为3、状态为OPTIMAL，却含接近−1行列式的相对块；投影到SO(3)后代价明显增大。不能把秩3和求解器状态当作原SO(3)问题的全局证书。这里是自建基线及其舍入结果，不是原作者完整算法复现。',
+            'D5探索性分析：36条含噪日志分别评价生成树和观测边两种加强，共72个界计算；有效尾谱界为'+str(p['d5_exploratory']['informative_noisy_records'])+'。这是“下界图不连通或上界不小于tr(X)”的判据，说明该粗界在本批输入上没有信息，不代表定位必然失败。',
+            '加强约束、生成树和几何初始化NLS在本批输入上的误差接近。下一步优先研究更有用的含噪界与真正超出这些基线的决策机制；当前不支持新方法优越性声明。'])
+        body += '<figure><img src="experiments/results/pilot-results.svg" alt="先导开发集平均相对旋转误差与平面诊断Gram尾谱" style="width:100%;max-width:1100px"><figcaption>真实先导数据；18个世界跨噪声配对，平均值易受弱SDP舍入离群点影响。未作显著性检验。</figcaption></figure>'
+        names = {'weak':'弱SDP','observed':'观测边加强','all_pairs':'全对加强','tree':'生成树加强','nls':'几何初始化NLS'}
+        body += '<h3>开发集描述性结果</h3>'+table(['噪声上界/度','方法','数值可行/尝试','世界内平均相对旋转误差再跨世界平均/度','每观测数值gap中位数'],[[r['noise_degrees'],names[r['method']],str(r['usable'])+'/'+str(r['attempted']),format(r['mean_pair_rotation_error_deg'],'.6g'),format(r['median_gap_per_observation'],'.3g')] for r in p['strata']])
+        body += '<h3>修订与资源</h3><p>v1断图提取实现出错并停止，原始失败保留；v2改为分连通分量处理，读取开发集前重跑全部诊断。主运行耗时约'+format(p['runtime']['elapsed_seconds'],'.1f')+'秒，cgroup峰值内存约'+format(p['runtime']['memory_peak_bytes']/1024**2,'.1f')+' MiB。2 CPU／2 GiB、单worker、无GPU；共享宿主负载，因此不据此声称算法实时性或正式速度优势。</p>'
+        body += '<h3>必须保留的边界</h3>'+paragraphs(p['limitations'])
+        body += '<p><a href="experiments/pilot/README.md">实验与复测说明</a> · <a href="experiments/pilot/protocol.json">先导协议v2</a> · <a href="experiments/results/summary.json">结果、哈希与逐项界记录</a> · <a href="experiments/results/pilot-results.png">PNG图</a>。完整数据与矩阵保存在本课题被忽略的runs目录，不上传原始资料。</p>'
+        sections.insert(0,section('pilot-results','最新 / 首轮真实研究实验（TR002-PILOT-001）',body))
     registry = ''
     for x in b['registry']:
         title = e(x['id']+' / '+x['name'])
@@ -137,8 +177,12 @@ def benchmarkpage():
     sections.append(section('gates','10 / 开跑与结论准入门槛',table(['门槛','验收内容','失败处理'],b['gates'])+paragraphs(b['next'])))
     versions = ''.join('<p><a href="'+e(x['url'])+'">'+e(x['repo'])+'</a><br><code>'+e(x['commit'])+'</code><br>'+e(x['status'])+'</p>' for x in b['code_versions'])
     sources = ''.join('<p><a href="'+e(x['url'])+'">'+e(x['title'])+'</a> — '+e(x['depth'])+'</p>' for x in b['sources'])
-    sections.append(section('sources','11 / 来源、版本与阅读深度','<p>检索与版本核查截止 '+e(b['date'])+'；文献新颖性审阅另见研究计划，投稿/修回前需更新。</p>'+versions+sources+'<p>内容源：<a href="benchmark.json">benchmark.json</a>；<a href="build.py">生成脚本</a>；<a href="validation.json">页面验证记录</a>。没有生成器、数据或实验结果发布。</p>'))
-    nav = ''.join('<a href="#'+key+'">'+label+'</a>' for key,label in [('simulation-resources','最新：仿真环境与设备'),('env-dataset_layers','测试集结构'),('env-hardware','硬件建议'),('env-host_snapshot','本机盘点'),('readiness','就绪状态'),('questions','问题与判据'),('registry','benchmark 注册表'),('fixed_log','固定日志与样本'),('baselines','强基线'),('closed_loop','闭环归因'),('metrics','指标边界'),('checker','独立证书检查'),('statistics','统计规则'),('stress','压力与实测'),('manifest','复现清单'),('gates','可靠性门槛'),('sources','来源与版本')])
+    sections.append(section('sources','11 / 来源、版本与阅读深度','<p>检索与版本核查截止 '+e(b['date'])+'；文献新颖性审阅另见研究计划，投稿/修回前需更新。</p>'+versions+sources+'<p>内容源：<a href="benchmark.json">benchmark.json</a>；<a href="build.py">生成脚本</a>；<a href="validation.json">页面验证记录</a>。先导生成器与整理结果已在本课题experiments目录；完整运行数据仍在Git忽略的runs目录，未对外发布。</p>'))
+    nav = ''.join('<a href="#'+key+'">'+label+'</a>' for key,label in [('configuration-assessment','搭建前配置评估'),('config-baseline_audit','基线源码差异'),('config-resource_gates','资源与扩容判据'),('simulation-resources','仿真环境与设备'),('env-dataset_layers','测试集结构'),('env-hardware','硬件建议'),('env-host_snapshot','前轮本机盘点'),('readiness','就绪状态'),('questions','问题与判据'),('registry','benchmark 注册表'),('fixed_log','固定日志与样本'),('baselines','强基线'),('closed_loop','闭环归因'),('metrics','指标边界'),('checker','独立证书检查'),('statistics','统计规则'),('stress','压力与实测'),('manifest','复现清单'),('gates','可靠性门槛'),('sources','来源与版本')])
+    if v:
+        nav = '<a href="#container-validation">最新：容器环境验收</a>' + nav
+    if p:
+        nav = '<a href="#pilot-results">最新：真实先导实验</a>' + nav
     css = '''*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}body{margin:0;background:#f6f7f3;color:#25372f;font:16px/1.8 system-ui,-apple-system,"Microsoft YaHei",sans-serif}aside{position:fixed;inset:0 auto 0 0;width:240px;padding:24px;background:#fff;border-right:1px solid #d7dfd9;overflow:auto}nav{display:grid;gap:9px}a{color:#23654c;text-underline-offset:4px}main{margin-left:240px;max-width:1440px;padding:32px 40px 70px}h1{font-size:28px;line-height:1.5}h2{font-size:22px}h3{font-size:18px}.meta{font-size:13px;color:#5b6e62}.notice{background:#e8efe9;padding:18px;border-left:3px solid #23654c}section{padding:24px 0;border-top:1px solid #d7dfd9}article{padding:16px 0;border-bottom:1px solid #d7dfd9}.scroll{overflow:auto}table{width:100%;border-collapse:collapse;font-size:14px;background:#fff}th,td{padding:12px;text-align:left;vertical-align:top;border-bottom:1px solid #d7dfd9;min-width:120px}th{background:#e8efe9}details{padding:10px 16px;background:#fff;border:1px solid #d7dfd9}summary{cursor:pointer;font-weight:600}li{margin:14px 0}code{overflow-wrap:anywhere}a:focus-visible,summary:focus-visible{outline:3px solid #ad7c30;outline-offset:3px}@media(max-width:850px){aside{position:static;width:auto}nav{display:flex;flex-wrap:wrap;gap:10px 16px}main{margin:0;padding:22px 18px}}@media print{aside{display:none}main{margin:0;padding:0}.scroll{overflow:visible}table{font-size:11px}}'''
     return '<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+e(b['title'])+'</title><style>'+css+'</style></head><body><aside><p class="meta">TR-002 / '+e(b['date'])+'</p><h2>实验设计</h2><p><a href="index.html">返回评审</a> · <a href="plan.html">研究计划</a></p><nav aria-label="实验协议章节">'+nav+'</nav></aside><main><p class="meta">'+e(b['version'])+'</p><h1>'+e(b['title'])+'</h1><div class="notice">'+e(b['summary'])+'</div><p>'+e(b['scope'])+'</p>'+''.join(sections)+'</main></body></html>'
 
@@ -154,7 +198,7 @@ export default function BearingSwarmReview() {
  const [phase,setPhase]=useCanvasState("TR002-plan-phase","P0");
  const stage=d.plan.stages.find(x=>x.id===phase)||d.plan.stages[0];
  return <Stack gap={20} style={{padding:24,maxWidth:1300,margin:"0 auto"}}>
- <Text style={{color:t.text.secondary}}>TR-002 · {d.date} · 作者侧预审 / 未运行研究实验</Text>
+ <Text style={{color:t.text.secondary}}>TR-002 · {d.date} · 作者侧预审历史 / 最新执行状态见实验页面</Text>
  <H1>{d.title}</H1><Text>{d.conclusion}</Text>
  <Text style={{background:t.fill.tertiary,padding:16}}>{d.boundary}</Text>
  <H2>{d.benchmark.title}</H2><Text>{d.benchmark.version}</Text><Text>{d.benchmark.summary}</Text>

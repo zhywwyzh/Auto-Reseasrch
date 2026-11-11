@@ -1,0 +1,171 @@
+{
+  "version": "2026-11-11-algorithm-1",
+  "status": "conditional_algorithm_design_no_execution",
+  "main_document": "../theory-experiment-design.html#algorithm-research",
+  "user_steering": "先做算法研究，后续实验需要具体模型再讨论",
+  "retrieval_cutoff": "2026-11-11",
+  "candidate": "B-CF: two independent blocks with cross-fitted shared contrast correction",
+  "supersedes": "old B-M pilot-only economic failure is retained; B-CF is a new optional measurement branch, not replacement of R1 or an implementation authorization",
+  "fixed_problem": [
+    "original UCS state/action/dynamics/reward and D/F/eta/chi",
+    "full curriculum allocations, not additive per-environment values",
+    "fixed complete learner snapshot, pool, h/a and evaluation protocol",
+    "no model/provider selection this round"
+  ],
+  "sampling": [
+    "two iid independent folds; within each fold iid complete candidate-bank repeats",
+    "fixed n>=m>=2 in each fold; designated high-fidelity indices before observing X",
+    "X0=Y0=0; candidate-relative measurements retain shared-reference covariance",
+    "all candidate pairs and nonnegative weights frozen, first version all weights 1",
+    "bounded shared beta fitted from its own fold only; applied to opposite fold",
+    "no pooling normalization, data-adaptive n/m, current-data candidate-center selection or cross-state reuse in the stated proof"
+  ],
+  "definitions": {
+    "A": "sum_l w_l Var(W_l)",
+    "B": "sum_l w_l Var(Z_l)",
+    "C": "sum_l w_l Cov(Z_l,W_l)",
+    "beta_star": "C/B",
+    "rho_eff_squared": "C*C/(A*B)",
+    "d": "1/m-1/n",
+    "D_f_l": "mean_n(Z_f_l)-mean_m(Z_f_l)",
+    "g_l": "E[beta_hat_f D_f_l]",
+    "MSE_beta": "E[(beta_hat-beta_star)^2]",
+    "epsilon_beta": "(B/A)*MSE_beta",
+    "Q": "sum of candidate-contrast variances, not selection regret"
+  },
+  "formulas": [
+    {
+      "id": "T8",
+      "formula": "Uhat_k = 0.5*(Ybar_A,k+beta_B*D_A,k+Ybar_B,k+beta_A*D_B,k)",
+      "conclusion": "unbiased for fixed candidate U_k under fold independence"
+    },
+    {
+      "id": "T9",
+      "formula": "Cov(fold_est_A,l,fold_est_B,l)=g_l^2",
+      "condition": "identical fold designs and identical fitting rule; not a general formula for unequal folds"
+    },
+    {
+      "id": "T10",
+      "formula": "Q_CF=Q_oracle+0.5*d*B*MSE_beta+0.5*sum_l(w_l*g_l^2)",
+      "Q_oracle": "0.5*(A/m-d*C*C/B)",
+      "condition": "A,B>0; finite second moments and bounded beta"
+    },
+    {
+      "id": "T11",
+      "formula": "0 <= Q_CF-Q_oracle <= d*B*MSE_beta",
+      "proof": "g_l=E[(beta_hat-beta_star)D_l], Cauchy-Schwarz and E[D_l^2]=d Var(Z_l)"
+    },
+    {
+      "id": "T12",
+      "formula": "Q_CF/Q_direct <= (r+1)/2*(1-q+q/r)+(r+1)*(1-1/r)*epsilon_beta",
+      "special_case_r3": "<=2-4*q/3+8*epsilon_beta/3; q>3/4+2*epsilon_beta is sufficient",
+      "conditions": [
+        "q=rho_eff_squared",
+        "training-only costs cX=cA=h,cH=2h,cfit=0",
+        "r=n/m fixed",
+        "ignores integer rounding, evaluation overhead and async waste",
+        "m(r+1) direct high-fidelity candidate-bank repeats",
+        "oracle quantities unknown; not executable stopping threshold"
+      ]
+    }
+  ],
+  "analytic_counterexample": {
+    "purpose": "cross-fitted corrected folds need not be independent",
+    "setup": "within each fold n=4,m=2; iid X=+/-1 with mean0,var1; Y=X; beta_hat=mean_m(X)",
+    "g": "1/4-1/2=-1/4",
+    "cross_fold_covariance": "1/16",
+    "not_claimed": [
+      "proposed coefficient fitting rule",
+      "UCS observation",
+      "simulation result"
+    ]
+  },
+  "algorithm_steps": [
+    "freeze snapshot, candidate bank, all contrasts, counts and coefficient-fitting rule",
+    "acquire two independent nested measurement blocks",
+    "fit clipped shared coefficient on each block using its paired X/Y data",
+    "apply each coefficient only to the opposite block and average",
+    "select a directly tested full allocation including baseline with frozen tie rule",
+    "independent confirmation and fresh main continuation; never deploy the lucky probe checkpoint"
+  ],
+  "baseline_requirements": [
+    "same-total-cost direct Y",
+    "fixed beta=1",
+    "independent pilot",
+    "generic cross-fitted linear correction",
+    "per-candidate correction",
+    "all-pair shared correction",
+    "same-label predictor family, concrete models deferred"
+  ],
+  "decisions": [
+    {
+      "id": "CF01",
+      "decision": "reuse expensive measurements for fitting and estimation; keep pilot-only failure as prior negative result"
+    },
+    {
+      "id": "CF02",
+      "decision": "use all predeclared candidate pairs, remove current-data pilot winner-center selection; acknowledge wasted precision on irrelevant pairs"
+    },
+    {
+      "id": "CF03",
+      "decision": "retain fold dependence g_l^2 and coefficient MSE; no independent-fold standard error"
+    },
+    {
+      "id": "CF04",
+      "decision": "do not equate variance reduction with better selection or curriculum net gain"
+    },
+    {
+      "id": "CF05",
+      "decision": "setting beta=0 after data acquisition does not refund X cost; not equivalent to all-budget direct Y"
+    },
+    {
+      "id": "CF06",
+      "decision": "if generic cross-fitted control variates are equivalent, classify as adaptation baseline; algorithm novelty not established"
+    },
+    {
+      "id": "CF07",
+      "decision": "concrete models deferred; algorithm analysis can proceed with fixed learner operators"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Reducing the error of Monte Carlo Algorithms by Learning Control Variates",
+      "authors": "Brendan D. Tracey; David H. Wolpert",
+      "url": "https://arxiv.org/html/1606.02261v1",
+      "version": "2016-06-07 v1 manuscript",
+      "depth": "HTML §2 and §3.1; not all proofs or experiments",
+      "effect": "cross-validation and learned control variates already exist"
+    },
+    {
+      "title": "Cross-Prediction-Powered Inference",
+      "authors": "Tijana Zrnic; Emmanuel J. Candès",
+      "url": "https://arxiv.org/html/2309.16598v3",
+      "version": "2024-02-28 v3 manuscript",
+      "depth": "HTML §3.1 Eq4 and unbiasedness; §4 dependence and stability condition",
+      "effect": "label reuse, unbiased cross-prediction and dependent folds already studied; do not transfer its CI unchanged"
+    },
+    {
+      "title": "Prediction-Powered Inference Across Many Tasks for AI Evaluation & Social Science Research",
+      "url": "https://arxiv.org/abs/2605.29249v1",
+      "version": "2026-05-28 preprint",
+      "depth": "abstract only",
+      "effect": "cross-task recalibration is a near neighbor; full mapping pending"
+    },
+    {
+      "title": "Statistical Optimality of Prediction-Powered Inference",
+      "url": "https://arxiv.org/abs/2606.08730v1",
+      "version": "2026-06-07 preprint",
+      "depth": "abstract only",
+      "effect": "calibration and cross-fitted variance/efficiency already studied; not an optimality claim for our design"
+    }
+  ],
+  "source_search_scope": "targeted search on cross-fitting/control variates/PPI and 2026 extensions; not systematic novelty proof",
+  "validation": {
+    "symbolic": "T10 square-completion and T12 r=3 simplification checked",
+    "probability_proof": "manual conditional-expectation and independence argument; not independently replicated",
+    "research_simulations": 0,
+    "training_runs": 0,
+    "paid_model_calls": 0,
+    "algorithm_implementation_written": false
+  }
+}

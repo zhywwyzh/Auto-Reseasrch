@@ -1,0 +1,92 @@
+{
+  "checked_at_utc": "2026-11-11T11:19:20.148485+00:00",
+  "scope": "纯HTML设计文档与汇报图；不是自主研究系统验收",
+  "design_input_sha256": "5caba6cea19d76e2b682f691820da74f728bcfd972585fded6cf28a78d13b86a",
+  "checks": {
+    "browser": {
+      "title": "长期全自动研究系统 · 设计与验收",
+      "sections": 11,
+      "figure": {
+        "loaded": true,
+        "width": 1920,
+        "height": 1080
+      },
+      "case_count": 18,
+      "topic_filter_checks": [
+        {
+          "topic": "all",
+          "count": 18
+        },
+        {
+          "topic": "shared",
+          "count": 11
+        },
+        {
+          "topic": "TR-001",
+          "count": 4
+        },
+        {
+          "topic": "TR-002",
+          "count": 1
+        },
+        {
+          "topic": "TR-003",
+          "count": 2
+        }
+      ],
+      "page_errors": [],
+      "desktop_horizontal_overflow": false,
+      "mobile_horizontal_overflow": false,
+      "scenario_steps": "All 18 cases: next-step and reset checked, including filtered selections",
+      "scope": "Document UI checks only; no model/controller/research benchmark executed"
+    },
+    "figure_manifest": {
+      "source": "system-overview.svg",
+      "source_sha256": "c8d1216cd7ec5ecee5047a43fed8206e2c414c1aa7a88e826b552c49825017c2",
+      "png": "system-overview.png",
+      "png_sha256": "20ffbc358f6f109301dd93e5813c3bc6997bfb4dc46ee319888e48707dd14e77",
+      "width": 3840,
+      "height": 2160,
+      "renderer": "Chromium via Playwright; exact 1920x1080 viewport at device scale 2"
+    },
+    "visual_review": "检查SVG/PNG文字、布局、箭头及设计状态标注；无裁切、遮挡",
+    "media_viewer": {
+      "native": {
+        "displayWidth": 3840,
+        "naturalWidth": 3840
+      },
+      "fit": {
+        "displayWidth": 1400,
+        "naturalWidth": 3840
+      },
+      "download_filename": "system-overview.png",
+      "restricted_paths": [
+        {
+          "path": "/thesis-reference/",
+          "status": 404
+        },
+        {
+          "path": "/.git/config",
+          "status": 404
+        },
+        {
+          "path": "/workspaces/autonomous-research-system/../ucs-genrl/runs/",
+          "status": 404
+        }
+      ]
+    },
+    "media_registered_bytes_match_repository_png": true,
+    "delivery_scope": "same-host; browser and services on this computer",
+    "html_url": "http://127.0.0.1:18767/workspaces/autonomous-research-system/index.html",
+    "image_viewer_url": "http://127.0.0.1:18765/v/pnrdE3VInXp1p8lUjtbh9YEl/",
+    "new_panel_removed": true,
+    "older_panels": "preserved",
+    "page_errors": []
+  },
+  "not_executed": [
+    "控制器、模型回放与研究效果评测",
+    "付费调用、训练或仿真实验",
+    "24/72小时无人值守研究"
+  ],
+  "git": "仅本地创建/修改，未commit或push"
+}

@@ -3,8 +3,18 @@
   "version": "0.1 — 实验协议草案，未冻结、未实施",
   "title": "TR-002 实验协议与 benchmark 注册表",
   "summary": "已把实验细化为同任务受控评测、强基线、独立认证审计和闭环归因。可审阅协议已有；可执行 benchmark 尚未建成，可靠性尚未通过先导验证，不能承诺新方法一定优于基线。",
-  "scope": "仅针对王英建《博士论文.pdf》第4章及 arXiv:2401.07784v1 的方位角互定位与协同规划；不是 TR-001 / UCS-GenRL。数值均为拟定配置或原文参数，不是本项目实验结果。以下规格细化并优先于旧计划中的粗略样本建议。",
+  "scope": "仅针对王英建《博士论文.pdf》第4章及 arXiv:2401.07784v1；不是TR-001。协议配额仍是设计值；本页最新先导节引用experiments/results/summary.json中的真实运行结果，明确与计划、原论文结果区分。",
   "readiness": [
+    [
+      "旋转子问题先导",
+      "已实际完成，非正式留出",
+      "TR002-PILOT-001：24诊断、54开发日志、390主运行＋30复查；3次弱SDP限时保留。严格证书、平移/闭环、完整强基线与独立复验未完成。"
+    ],
+    [
+      "独立数值容器",
+      "环境验收已通过",
+      "2026-11-11：锁定依赖的 Python/Julia/JuMP/SCS 容器通过已知答案小SDP等验收；详细真实记录见本页容器节。研究 benchmark 可靠性仍未验证。"
+    ],
     [
       "研究问题与证据分层",
       "已写明",
@@ -27,8 +37,8 @@
     ],
     [
       "可执行与统计可靠性",
-      "未验证",
-      "须先通过输入审计、已知答案测试、跨实现检查及开发集先导实验。"
+      "数值先导部分通过；统计与严格认证未验证",
+      "本轮8类故障注入、已知答案、跨Python/Julia目标与完整对偶浮点检查通过；独立求解器、严格谱界、统计功效和留出评测待完成。"
     ],
     [
       "闭环与真实飞行",
@@ -323,7 +333,7 @@
     {
       "title": "ICCV2025 anisotropic-ra 官方实现",
       "url": "https://github.com/ylochman/anisotropic-ra",
-      "depth": "README与commit核查：Julia1.11.3、JuMP/SCS；未执行、未完成bearing代价适配。"
+      "depth": "README、固定提交主求解器与requirements.jl静态核查；新增约束/目标/输出审计见配置评估，未执行或完成bearing适配。"
     },
     {
       "title": "MILUV 官方数据文档",
@@ -357,7 +367,7 @@
       "repo": "ylochman/anisotropic-ra",
       "commit": "f0ede76128edd893e2fa5a5727b6b94de44bc1be",
       "url": "https://github.com/ylochman/anisotropic-ra/tree/f0ede76128edd893e2fa5a5727b6b94de44bc1be",
-      "status": "git ls-remote锁定远端HEAD；只读README，未安装或执行"
+      "status": "固定commit；已静态阅读README、主求解器与requirements.jl，未安装或执行"
     },
     {
       "repo": "decargroup/miluv",
@@ -415,7 +425,7 @@
   "simulation_resources": {
     "date": "2026-11-11",
     "title": "仿真测试集、工作环境与硬件需求",
-    "status": "用户于2026-11-11明确先做仿真，完成后再考虑实机。本节只设计仿真；不新增实机采集、无人机/动捕采购或部署任务。仅作环境只读盘点，没有安装依赖、启动求解器或运行仿真。",
+    "status": "搭建前历史评估；其中“未安装/未验收”为当时状态，最新环境执行记录见本页容器验收节。用户于2026-11-11明确先做仿真，完成后再考虑实机。本节只设计仿真；不新增实机采集、无人机/动捕采购或部署任务。仅作环境只读盘点，没有安装依赖、启动求解器或运行仿真。",
     "conclusion": "先建立可重放的数值测试集，再加入运动—观测闭环。当前执行主机具备开展小规模开发的硬件基础；先导前不能保证全量运行时间或实时性。当前路线不需要大模型训练或多卡GPU。",
     "dataset_layers": [
       [
@@ -466,7 +476,7 @@
       ],
       [
         "格式与目录",
-        "建议JSON配置/manifest + HDF5数值数组 + JSONL逐次结果，汇总CSV。小配置/协议进Git，大数组/结果放预先设为忽略的data/results目录；实施时先补忽略规则，不把原论文摘录纳入数据发布。"
+        "建议JSON配置/manifest + HDF5数值数组 + JSONL逐次结果，汇总CSV。小配置/协议进Git，大数组/结果放预先设为忽略的datasets/runs目录；实施时核验既有忽略规则，不把原论文摘录纳入数据发布。"
       ]
     ],
     "environments": [
@@ -600,6 +610,301 @@
         "title": "PX4 v1.17 Gazebo官方文档",
         "url": "https://docs.px4.io/v1.17/en/sim_gazebo_gz/",
         "note": "仅核查后续可选SITL路线，未安装或验证多机性能。"
+      }
+    ]
+  },
+  "configuration_assessment": {
+    "date": "2026-11-11",
+    "title": "首轮仿真配置评估：CPU数值验证优先",
+    "status": "搭建前历史评估；其中“未安装/未验收”为当时状态，最新环境执行记录见本页容器验收节。本轮完成只读环境盘点、固定版本强基线源码核查和依赖元数据核查；未安装环境、未执行研究实现/求解器/仿真。配置为待验收提案，不是测得的最低配置或实时性保证。",
+    "conclusion": "现有9700X/32GB/4070 Ti SUPER具备小规模开发基础，暂不采购设备。先建设独立CPU数值环境，以单worker、单数值线程跑解析诊断和54条开发日志；完整留出评测和闭环按门槛后置。",
+    "decisions": [
+      [
+        "首轮环境",
+        "Ubuntu22.04 + Python3.10 + Julia1.11.3，Float64；CPU稀疏直接SCS起步",
+        "锁定依赖后验收；不改全局Python，不安装ROS/Gazebo作为首轮前提。"
+      ],
+      [
+        "首轮规模",
+        "24个解析诊断实例；18开发世界×3噪声=54日志；N=4/8主场景",
+        "每条日志先5个配置：弱SDP、观测边加强、全对加强、生成树加强、热启动NLS。新策略待其定义/实现验收后加入。"
+      ],
+      [
+        "线程",
+        "worker=1；Julia计算线程=1，BLAS线程=1；OpenMP线程=1（适用时）",
+        "在进程内读取实际线程/BLAS后端确认；环境变量设置不等于全部线程已受控。Julia JIT编译时间独立记录。"
+      ],
+      [
+        "GPU",
+        "首轮不启用CUDA或GPU求解；不依赖现有GPU空闲",
+        "GPU只在未来SITL渲染/视觉前端有明确需求时进入配置，不采购多卡。"
+      ],
+      [
+        "工作空间",
+        "依赖缓存/虚拟环境、datasets、runs都限定在TR-002目录",
+        "先导前预留至少30GiB工作空间作为资源策略；95G剩余盘空间可支持此预留，但仍须监测。"
+      ],
+      [
+        "是否能立即正式跑",
+        "不能据现状判定就绪：Julia不可见、求解器缺失、环境未验证，资源也有竞争",
+        "可以继续配置设计与安装准备；正式性能数据要在受控资源下采集。当前没有发起安装。"
+      ]
+    ],
+    "package_candidates": [
+      {
+        "package": "numpy",
+        "candidate_version": "2.2.6",
+        "requires_python": ">=3.10",
+        "numpy_requirements": [],
+        "cp310_manylinux_x86_64_wheels": [
+          "numpy-2.2.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+        ],
+        "metadata_url": "https://pypi.org/pypi/numpy/2.2.6/json",
+        "status": "metadata only; not installed or imported"
+      },
+      {
+        "package": "scipy",
+        "candidate_version": "1.15.3",
+        "requires_python": ">=3.10",
+        "numpy_requirements": [
+          "numpy<2.5,>=1.23.5",
+          "numpydoc; extra == \"doc\""
+        ],
+        "cp310_manylinux_x86_64_wheels": [
+          "scipy-1.15.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+        ],
+        "metadata_url": "https://pypi.org/pypi/scipy/1.15.3/json",
+        "status": "metadata only; not installed or imported"
+      },
+      {
+        "package": "matplotlib",
+        "candidate_version": "3.10.3",
+        "requires_python": ">=3.10",
+        "numpy_requirements": [
+          "numpy>=1.23"
+        ],
+        "cp310_manylinux_x86_64_wheels": [
+          "matplotlib-3.10.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+        ],
+        "metadata_url": "https://pypi.org/pypi/matplotlib/3.10.3/json",
+        "status": "metadata only; not installed or imported"
+      },
+      {
+        "package": "h5py",
+        "candidate_version": "3.14.0",
+        "requires_python": ">=3.9",
+        "numpy_requirements": [
+          "numpy>=1.19.3"
+        ],
+        "cp310_manylinux_x86_64_wheels": [
+          "h5py-3.14.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+        ],
+        "metadata_url": "https://pypi.org/pypi/h5py/3.14.0/json",
+        "status": "metadata only; not installed or imported"
+      }
+    ],
+    "software": [
+      [
+        "Python",
+        "候选NumPy2.2.6 / SciPy1.15.3 / Matplotlib3.10.3 / h5py3.14.0",
+        "已核查PyPI的Python版本要求、NumPy依赖范围和cp310 manylinux x86_64轮子；不是声称最新版，未安装/import验证；其余传递依赖及哈希需解算后锁定。"
+      ],
+      [
+        "Julia",
+        "以官方README测试版本1.11.3作为复现起点；JuMP、SCS版本待兼容性解算",
+        "官方requirements.jl只列包名，不锁版本。需独立Project.toml/Manifest.toml、Julia版本及BLAS后端记录，不能直接在全局环境运行Pkg.add。"
+      ],
+      [
+        "数据交换",
+        "Python端JSON/HDF5输入与JSONL输出；Julia端采用经验证的IO依赖",
+        "Julia侧JSON/HDF5适配包需一并锁定；索引0/1、数组维度、矩阵转置、单位及时间戳要做往返检查。Python有h5py不意味着Julia自动能读。"
+      ],
+      [
+        "证书检查",
+        "独立目标/约束重建；严谨谱下界的区间或向外舍入工具未选定",
+        "数值残差轨可以先定义；严格认证轨在验证工具完成前保持未就绪，不把SCS solved状态升级为严格证书。"
+      ],
+      [
+        "当前Docker",
+        "客户端与服务端均返回28.3.3；只检查版本",
+        "可用作后续复现封装，不代表所需镜像已存在或求解器可运行；无容器创建，无系统升级。"
+      ],
+      [
+        "隔离路径",
+        "workspaces/bearing-swarm-review/.venv/python、.venv/julia-runtime、.venv/julia-depot；未来env/用于可跟踪锁文件",
+        "均为设计路径，当前未创建运行环境。Python禁用用户site继承，Julia显式选择项目并禁用个人startup；不复用TR-001/TR-003环境。"
+      ]
+    ],
+    "baseline_audit": [
+      [
+        "约束覆盖",
+        "固定提交源码43行只为非零相对旋转观测块加conv(SO(3))约束",
+        "原样实现对应观测边加强；全对加强必须标为本项目适配变体。不要填假观测来激活约束，因为会影响代价。"
+      ],
+      [
+        "目标与缩放",
+        "源码构造Hessian相关目标、默认重缩放，并执行最大化",
+        "适配需直接保留原bearing M，明确符号/常数/尺度映射；在相同可行旋转上验证目标一致。"
+      ],
+      [
+        "输出与认证",
+        "返回投影后旋转、启发式秩和求解状态/目标；没有返回完整原始Gram及全部对偶乘子",
+        "需保留投影前解与对偶、重算投影后U；秩和solver状态都不能代替独立证书。"
+      ],
+      [
+        "预算参数",
+        "默认500000迭代、eps_abs=1e−5、eps_rel=1e−6、eps_infeas=1e−8",
+        "原参数复现与公平比较配置分开。只读审计未证明其在当前Julia环境可以运行。"
+      ]
+    ],
+    "solver_proposal": [
+      [
+        "统一SDP比较配置",
+        "eps_abs=1e−6，eps_rel=1e−6，eps_infeas=1e−8，max_iters=500000",
+        "待先导冻结；只用于共享SDP后端，不能将其机械等同NLS停止条件。"
+      ],
+      [
+        "精度敏感性",
+        "在开发实例检查1e−5/1e−6/1e−7绝对与相对容差档位",
+        "每档所有同类方法使用相同条件；仍用独立gap评估。容差不等于真实解误差，更不保证gap≤1e−6。"
+      ],
+      [
+        "离线限时",
+        "初拟每实例60秒在线计算预算，建立模型/优化/独立检查都计入",
+        "SCS time_limit_secs仅限制求解部分，外层必须计时剩余预算并保留部分结果/失败；不是允许三阶段各花60秒。"
+      ],
+      [
+        "编译与冷启动",
+        "记录首次启动/编译；另报常驻进程下的稳态端到端时间",
+        "预热只用开发实例且不传测试解；不得把即时编译时间选择性算给某基线。轨迹热启动只来自同任务过去数据。"
+      ],
+      [
+        "闭环限时",
+        "旧草案1秒/决策仍为目标，不能写成已达成",
+        "先导不满足时明确延迟/任务失败，或在测试前统一修订控制周期；不事后放宽本方法时限。"
+      ],
+      [
+        "记录量",
+        "按求解输出summary与必要检查信息，抽样保留详细诊断",
+        "SCS官方说明逐迭代CSV可能显著减速；完整日志调试轨与正式性能轨分开，所有方法执行相同记录策略。"
+      ]
+    ],
+    "host_recheck": [
+      [
+        "内存/磁盘",
+        "本轮盘点可用内存约7.4GiB，Swap约30GiB已用、仅127MiB空余；工作分区可用约95G",
+        "是瞬时状态，不将高Swap占用本身当性能结论。"
+      ],
+      [
+        "短时负载",
+        "vmstat后两条1秒采样CPU idle约36–37%，swap-in为100/84 KiB/s，swap-out为0",
+        "仅2秒增量观察，表明当时有其他活动与少量换入；不能据此预测长时负载或断言持续换页风暴。"
+      ],
+      [
+        "可见Python",
+        "NumPy2.2.6、SciPy1.8.0、Matplotlib3.5.1；h5py/cvxpy/scs/clarabel未发现",
+        "只读包元数据，无科学包import/求解测试；不把此混合环境视为验收通过。"
+      ],
+      [
+        "工具",
+        "gcc/g++/cmake/git/time可见；Julia/juliaup未在PATH发现",
+        "编译器存在不等于全部依赖齐全。"
+      ],
+      [
+        "GPU",
+        "4070 Ti SUPER 16GB，盘点时约3051MiB已用、利用率31%",
+        "首轮CPU配置不依赖此显卡，未终止任何用户进程。"
+      ]
+    ],
+    "resource_gates": [
+      [
+        "首次诊断",
+        "建议启动时MemAvailable≥8GiB，工作盘空闲≥30GiB，单worker",
+        "这是本项目保守运行策略，不是算法最低硬件要求；当前快照未达到内存余量建议。"
+      ],
+      [
+        "正式计时",
+        "至少先观察60秒背景负载与换页，记录CPU分配/频率策略/线程及内存压力",
+        "不以本轮2秒观察作为正式验收；不自动关闭用户应用。"
+      ],
+      [
+        "并发决策",
+        "以先导各方法最大峰值P（GiB）估算；可用内存A，保留H=4GiB，倍率s=1.5：W_mem=floor((A−H)/(sP))",
+        "实际W不超过CPU配额/每worker线程与W_mem；≤0时不开新worker。P必须覆盖Julia/求解器子进程，不能只量Python调度器。"
+      ],
+      [
+        "默认上限",
+        "正式延迟比较W=1；吞吐批处理首轮最多W=2，再由先导决定",
+        "共享缓存/内存带宽仍可能干扰，吞吐与算法单次延迟分开报告。"
+      ],
+      [
+        "升级判据",
+        "清晰空闲环境下单worker峰值仍逼近可分配内存，或所需吞吐无法在32GB内实现时，再考虑64GB",
+        "先降并发、改善稀疏表示和日志策略；不通过删掉困难样本降低资源。更换机器后重测全部性能基线。"
+      ]
+    ],
+    "budget_scenarios": [
+      [
+        "54日志×5配置",
+        "270次调用",
+        "平均1/10/60秒时，仅调用总时长约4.5分钟/45分钟/4.5小时"
+      ],
+      [
+        "24诊断×5配置",
+        "至多120次调用",
+        "若均60秒则2小时；不适用的组合标原因，诊断不是统计样本"
+      ],
+      [
+        "1620测试日志×8主配置",
+        "12960次调用",
+        "平均1/10/60秒时，单worker约3.6/36/216小时；8配置为预算例，额外消融/窗口/种子另计"
+      ]
+    ],
+    "budget_boundary": "以上均为算术情景而非实测预测；不承诺双worker恰好减半。预处理、编译、独立验证、重试和闭环还需按口径计入。正式样本量需先导功效分析，不按预算凑出显著性。",
+    "next_steps": [
+      "先把配置作为评审规格锁定；后续实施时先建TR-002独立环境和小规模验收，不改其他课题。",
+      "先导需实测包import/IO往返、弱/强模型一致性、诊断答案、时间/峰值内存与检查器；通过后才冻结依赖全量锁文件、并发和正式测试规模。",
+      "本轮仅配置评估与文档更新；没有研究安装、算法实现、仿真或训练结果，也未自动继续推送新修改。"
+    ],
+    "sources": [
+      {
+        "title": "ICCV2025固定提交求解器源码",
+        "url": "https://raw.githubusercontent.com/ylochman/anisotropic-ra/f0ede76128edd893e2fa5a5727b6b94de44bc1be/anisotropic_ra/anisotropic_ra.jl",
+        "note": "静态全文审阅；约束/目标/输出/参数差异已列出，未运行。"
+      },
+      {
+        "title": "ICCV2025固定提交依赖文件",
+        "url": "https://raw.githubusercontent.com/ylochman/anisotropic-ra/f0ede76128edd893e2fa5a5727b6b94de44bc1be/requirements.jl",
+        "note": "包名清单，不是依赖锁文件。"
+      },
+      {
+        "title": "SCS官方设置",
+        "url": "https://www.cvxgrp.org/scs/api/settings.html",
+        "note": "查验容差、求解限时和逐迭代日志；实际绑定版本仍待锁定。"
+      },
+      {
+        "title": "Julia命令行官方说明",
+        "url": "https://docs.julialang.org/en/v1/manual/command-line-interface/",
+        "note": "核查项目选择、个人启动文件和线程控制；实际采用1.11.3时需匹配该版本支持。"
+      },
+      {
+        "title": "SciPy1.15.3发行元数据",
+        "url": "https://pypi.org/project/scipy/1.15.3/",
+        "note": "与其余3个候选包JSON元数据一并核对Python要求和wheel存在性；不是运行验证。"
+      }
+    ],
+    "code_source_records": [
+      {
+        "url": "https://raw.githubusercontent.com/ylochman/anisotropic-ra/f0ede76128edd893e2fa5a5727b6b94de44bc1be/anisotropic_ra/anisotropic_ra.jl",
+        "sha256": "9956808da00ecb2cd766a683af922b142a78bf68dc0bdef8c99067ded5632230",
+        "read_depth": "静态阅读全文；未运行",
+        "local_ignored_copy": "thesis-reference/notes/TR-002-bearing-swarm/benchmark-audit/anisotropic-ra-anisotropic_ra--anisotropic_ra.jl"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/ylochman/anisotropic-ra/f0ede76128edd893e2fa5a5727b6b94de44bc1be/requirements.jl",
+        "sha256": "517ea2187def8a170b1cec4e3b62345ae1b14b1a459148e59c056c02f8a29e44",
+        "read_depth": "静态阅读全文；未运行",
+        "local_ignored_copy": "thesis-reference/notes/TR-002-bearing-swarm/benchmark-audit/anisotropic-ra-requirements.jl"
       }
     ]
   }

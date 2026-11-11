@@ -1,5 +1,9 @@
 # UCS-GenRL 独立设计工作区
 
+**最新：本机最小验证已完成（2026-11-11）。** 用户授权先做小规模验证，再考虑服务器训练。[运行报告](local-validation.html)记录两次有界CPU验收，每次160次环境转移、5次梯度更新；环境/RNG恢复与固定批次学习器恢复通过。原候选源码只读，测试脚本和可重跑容器在[validation/](validation/README.md)，原始日志/检查点在忽略目录runs。发现零分母指标及global_step计数问题。未执行课程算法效果实验、GPU训练或服务器任务；下一阶段等待用户指令。
+
+**前轮算法研究。** 用户明确具体模型留到后续实验讨论；[两折交叉复用算法推导](theory-experiment-design.html#algorithm-research)给出T8–T12无偏性、依赖方差和条件成本界，补查经典及2026近邻。候选尚未证明独立创新或UCS效果。以下“未执行”描述保留对应历史轮次，最新状态以上方验收报告为准。
+
 **最新详细设计（2026-11-11）：** [第一轮实验规范](experiment-specification.html)含原文/代码静态差异、精确配额、快照和随机流、接口及验收；[唯一设计源](design/implementation-specification.json)，由[文档生成器](design/render-implementation-specification.py)生成页面。短阶段20k草案修订为20,480接纳样本；实际环境交互另计，旧预算保留为历史。按用户最新指令继续设计，正式实施或执行训练实验前等待指令。未执行研究代码。
 
 **第一轮实验准备：** [准备包](theory-experiment-design.html#preparation)列出材料缺口、R0定义、可选R1-P、独立确认和字段字典；[结构化清单](design/first-round-preparation.json)。均待评审，未启动实施。
@@ -16,7 +20,7 @@
 
 先读[学位论文与各章介绍](thesis-guide.html)，再读[2026–2027 投稿创新性复评](novelty-review.html)及最新的[原任务内创新设计与历史评估](direction-a-assessment.html#original-task)，然后进入[研究设计 Web UI](index.html)。编辑器入口：[UCS-GenRL.code-workspace](UCS-GenRL.code-workspace)。上述阅读页均为单文件 HTML，可在浏览器按 Ctrl+O 打开；远程仓库需先把文件复制到浏览器所在电脑。
 
-本工作区聚焦学位论文 4.2 的理论、实验方案与代码接口讨论；根目录 AGENTS.md 对此仍然有效。未实现研究算法、未启动训练，用户评估计划后再进入实现阶段。
+本工作区聚焦学位论文4.2；根目录AGENTS.md及用户后续指令有效。现已在用户授权范围完成最小运行验收；完整课程算法实现、正式对照实验与服务器训练尚未启动。
 
 最新用户约定：优先维持原任务定义，并在其内部拓展创新。当前阅读[原任务内的创新设计](direction-a-assessment.html#original-task)：任务编辑与跨任务课程分配分别审查，组合泛化作为共同强验证并保留独立成文可能；资源依赖判据降为辅助。该页保留的旧 P0–P4 不是当前已确定执行方案。
 

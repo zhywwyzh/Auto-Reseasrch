@@ -4,7 +4,14 @@
 
 主要阅读入口：[论文预审与补强方案](../../../workspaces/bearing-swarm-review/index.html)。
 
-2026-11-11 用户进一步明确：先完成仿真实验，再考虑实机。最新规格为[仿真测试集、环境和硬件](../../../workspaces/bearing-swarm-review/benchmark.html#simulation-resources)，保存在 `benchmark.json` 的 `simulation_resources` 中。已盘点当前执行主机，提出数值环境→轻量闭环→可选SITL的顺序；未安装依赖、运行求解器或启动实验。实机/公开数据条目保留作后续背景，不作为本轮前置条件。
+最新实际研究结果：[首轮旋转先导](../../../workspaces/bearing-swarm-review/benchmark.html#pilot-results)。2026-11-11 用户明确授权“现在启动研究实验”，已在独立容器完成24解析诊断、54开发日志（18世界）和5配置，共390次主运行及30次复查。8类故障注入通过；3次弱SDP限时保留。发现并修复断图提取错误，失败记录保留。秩3反射解与D5粗界无信息提示后续研究重点；不认领新方法或严格证书。源码/协议在[experiments/pilot](../../../workspaces/bearing-swarm-review/experiments/pilot/README.md)，整理结果在[summary.json](../../../workspaces/bearing-swarm-review/experiments/results/summary.json)。下文“未启动”均为此前设计阶段历史状态，最新运行记录优先。
+
+
+最新实际环境状态：[独立容器验收](../../../workspaces/bearing-swarm-review/benchmark.html#container-validation)。2026-11-11 已构建 `tr002-numerics:locked`，在 2 CPU／4 GiB、0 Swap、断网、普通用户、只读根文件系统下通过 Python/Julia 往返和 JuMP/SCS 已知答案小SDP等验收。锁文件、构建与复测命令在[容器目录](../../../workspaces/bearing-swarm-review/container/README.md)。这更新了下述搭建前“未安装/未验收”的环境状态；无人机研究实现、正式 benchmark 和严格证书仍未完成。
+
+搭建前配置评估：[CPU首轮配置与强基线源码审查](../../../workspaces/bearing-swarm-review/benchmark.html#configuration-assessment)。已核查固定版本强基线的约束覆盖、目标缩放、投影输出和未锁定依赖，给出独立环境候选、单worker配置、限时/精度口径和扩容判据。包版本仅完成官方元数据核查，Julia/求解器与严格证书工具尚未验收；本轮没有安装依赖或运行研究实验。更新只属于TR-002。
+
+2026-11-11 用户进一步明确：先完成仿真实验，再考虑实机。搭建前规格为[仿真测试集、环境和硬件](../../../workspaces/bearing-swarm-review/benchmark.html#simulation-resources)，保存在 `benchmark.json` 的 `simulation_resources` 中。已盘点当前执行主机，提出数值环境→轻量闭环→可选SITL的顺序；未安装依赖、运行求解器或启动实验。实机/公开数据条目保留作后续背景，不作为本轮前置条件。
 
 最新实验入口：[实验协议与 benchmark 注册表](../../../workspaces/bearing-swarm-review/benchmark.html)，单一内容源为 [benchmark.json](../../../workspaces/bearing-swarm-review/benchmark.json)。2026-11-11 已细化固定日志/闭环对照、强基线、公开数据适用性、数据划分、独立证书检查与统计门槛。协议版本0.1尚未冻结：自建 benchmark 未实现，公开实测数据尚未接入，可靠性未完成先导验证。不得将样本配额、数值阈值或原论文结果表述为本项目已验证结果。此页优先于旧计划中的粗略实验与样本建议。
 

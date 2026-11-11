@@ -36,6 +36,7 @@
 
 ## 材料入口
 
+- [自动研究智能体程序与HTML操作台](workspaces/autonomous-research-system/runtime.html)（v0.1：自动任务、Codex、持久记忆与恢复） · [完整系统设计](workspaces/autonomous-research-system/index.html)
 - [AI 自主科研与论文撰写：截至 2026-11-10 的进展与证据边界](docs/research/autonomous-science-2026-11-10/index.html)
 - [对应资料集：16项中文译读、13份原文PDF与11个固定提交的代码／资料库](docs/research/autonomous-science-2026-11-10/library/index.html)
 - [指定 8 篇论文及 autoresearch 文档的中文阅读目录（PDF / Markdown）](translations/fulltext/README.md)

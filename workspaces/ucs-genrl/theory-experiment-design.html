@@ -2,9 +2,10 @@
 :root{--ink:#20332f;--muted:#61726b;--line:#d7dfd8;--paper:#fcfcf8;--accent:#17634e;--soft:#edf3ed}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.85 system-ui,"Noto Sans CJK SC",sans-serif}a{color:var(--accent);text-underline-offset:3px;overflow-wrap:anywhere}aside{position:fixed;width:250px;inset:0 auto 0 0;padding:32px 24px;background:var(--soft);overflow:auto;border-right:1px solid var(--line)}nav a{display:block;padding:5px 0;text-decoration:none}main{max-width:1260px;margin-left:250px;padding:36px 5vw 70px}.eyebrow,small,.source{color:var(--muted);font-size:13px}.eyebrow{letter-spacing:.09em}h1{font-size:32px;line-height:1.45}h2{font-size:24px;margin-top:0}h3{font-size:18px}section{padding:30px 0;border-top:1px solid var(--line);margin-top:30px}.lead{font-size:20px}.note{padding:16px 22px;background:var(--soft);border-left:3px solid var(--accent)}.row{display:grid;grid-template-columns:1fr 1fr;gap:26px}.badge{display:inline-block;font-size:12px;padding:2px 8px;border:1px solid var(--line);margin:3px 5px 3px 0}.table{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:14px}td,th{border-bottom:1px solid var(--line);padding:12px;text-align:left;vertical-align:top}th{background:var(--soft)}td:first-child{min-width:130px}details{border-bottom:1px solid var(--line);padding:14px 0}summary{cursor:pointer;font-weight:650}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:var(--soft);padding:18px;font:14px/1.8 ui-monospace,monospace}button,input,select{font:inherit;padding:7px 10px;border:1px solid var(--line);background:white;color:var(--ink);border-radius:3px}button{cursor:pointer}input{max-width:100%}.toolbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center}li{margin:7px 0}.source-card{padding:15px 0;border-bottom:1px solid var(--line)}.source-card[hidden]{display:none}footer{margin-top:45px;color:var(--muted);font-size:13px}@media(max-width:860px){aside{position:static;width:auto;padding:20px}nav{display:flex;flex-wrap:wrap;gap:4px 18px}main{margin:0;padding:22px}h1{font-size:27px}.row{grid-template-columns:1fr}table{min-width:650px}}@media print{aside,.toolbar{display:none}main{margin:0;padding:0}section{break-inside:auto}a{color:inherit}.table{overflow:visible}table{min-width:0}body{font-size:12px}}
 
 .calc{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}.calc label{display:flex;flex-direction:column;gap:6px}.calc input{width:100%;box-sizing:border-box;padding:8px;border:1px solid #bdcec5;background:transparent;color:inherit;font:inherit}#calc-output{font-weight:600}</style></head><body>
-<aside><div class="eyebrow">TR-001 / THEORY & DESIGN</div><h2>迁移收益驱动<br>课程优化</h2><p>理论与实验设计 · 2026-11-11<br><small>候选方案；尚未运行研究实验</small></p><nav><a href="#proposal">01 候选方法</a><a href="#definition">02 比较什么</a><a href="#estimator">03 估计公式与证明</a><a href="#cost">04 何时省预算</a><a href="#selection">05 决策与流程</a><a href="#novelty">06 创新主张边界</a><a href="#experiments">07 实验与成本</a><a href="#paper">08 论文证据链</a><a href="#preparation">09 第一轮准备包</a></nav><hr><a href="direction-b-study.html#value-review">前轮价值评估</a><br><a href="thesis-guide.html">学位论文导读</a><br><a href="index.html">工作区</a><br><a href="design/theory-experiment-2026-11-11.json">公式、来源与协议索引</a></aside>
+<aside><div class="eyebrow">TR-001 / THEORY & DESIGN</div><h2>迁移收益驱动<br>课程优化</h2><p>理论与实验设计 · 2026-11-11<br><small>候选方案；尚未运行研究实验</small></p><nav><a href="#proposal">01 候选方法</a><a href="#definition">02 比较什么</a><a href="#estimator">03 估计公式与证明</a><a href="#cost">04 何时省预算</a><a href="#selection">05 决策与流程</a><a href="#novelty">06 创新主张边界</a><a href="#experiments">07 实验与成本</a><a href="#paper">08 论文证据链</a><a href="#preparation">09 第一轮准备包</a><a href="#algorithm-research">10 算法：交叉复用</a></nav><hr><a href="direction-b-study.html#value-review">前轮价值评估</a><br><a href="thesis-guide.html">学位论文导读</a><br><a href="index.html">工作区</a><br><a href="design/theory-experiment-2026-11-11.json">公式、来源与协议索引</a></aside>
 <main><div class="toolbar"><span class="badge">条件推导</span><span class="badge">待验证创新</span><span class="badge">无新实验结果</span><button id="expand">展开所有证明</button><button id="print">打印</button></div><h1>怎样判断练习的迁移收益，<br>同时控制判断本身的成本？</h1><p class="lead">主线保持方向 B。本轮提出一个可被淘汰的测量候选：<strong>复用练习训练前缀，用回训前后的配对测量估计完整课程配额的收益，并按相关性与真实成本决定是否使用校正。</strong></p>
 <p class="note"><strong>最新准备进展：</strong><a href="#preparation">第一轮实验准备包</a>已补充材料盘点、R0契约、最小诊断、独立确认成本和记录字段；尚未启动实验。</p>
+<p class="note"><strong>当前推进：</strong><a href="#algorithm-research">先研究算法：两折交叉校正及依赖成本</a>。具体实验模型后续讨论；该候选不代表已批准运行。</p>
 <section id="proposal"><h2>01　候选方案与改动边界</h2><p>暂用内部标签 <strong>B-M（回训收益的多保真测量）</strong>，不预先命名为已成立的新算法。它位于 4.2 的课程选择层：生成合法环境 → 比较候选配额 → 在选定配额上训练 → 原任务回训 → 反馈。4.3 学习规则、UCS 状态动作动力学、原奖励及 D/F/η/χ 均不改。</p><p>原 4.2 已有回训反馈（PDF105–106 / 印刷88–89），本轮不重复主张这一点。新增研究对象是<strong>同起点、同练习与回训时域下，替换课程配额的有限干预收益，以及测量这一收益的成本</strong>。不将候选比较解释为每个环境独立、可相加的贡献。</p><div class="note"><strong>方法取舍：</strong>先保留无预测网络的统计测量版本，让公式与失效条件可检查；残差神经预测器仍是后续对照，不在本轮同时叠加。多保真控制变量本身是已有方法。只有领域机制、采样设计和实际净收益经强对照成立，才可能构成论文贡献。</div><p class="source">延续 Auto Research 的实际使用：v3 任务契约约束修改范围，v2 先基线后机制，autoresearch 固定预算与简化规则，DISCERN 要求把失败条件写进结论。没有运行这些系统、研究 Agent 或付费模型。</p></section>
 <section id="definition"><h2>02　候选是完整配额，不是假设可加的环境得分</h2><p>固定含 J 个环境的合法池 ℰ={e₁,…,eJ}，基准配额 p₀ 为均匀分配。以预先冻结的 λ 构造 K≤J 个候选（预算中的 K 指候选配额数）：</p><pre>pₖ = (1−λ)p₀ + λ eₖ，k=1,…,K。
 例：J=4、λ=1/2，则 pₖ 对重点环境分配 5/8，其余各 1/8。
@@ -101,6 +102,63 @@ R1-S确认 ≤ 3×3×3×2×40k = 2.16M。
 <ul><li><strong>继续方向：</strong>原定义与恢复契约通过，独立确认支持回训后选课有实际收益，且不是单个阶段或种子的偶然现象；再进入原240k/240k时域核验，不能用短窗替代。</li><li><strong>简化路线：</strong>即时评价已足够，或同标签简单预测器已解决问题，就不强加B-M。</li><li><strong>保留未决：</strong>区间过宽或样本太少。R1-P不作总体推断；3主种子的R1-S也只是探索，不能承诺统计功效。“不显著”不等于“等效”。正式样本量、区间及多重比较方案在独立开发后、确认前冻结，不反复查看结果追加样本。</li><li><strong>停止相应分支：</strong>收益独立确认消失、仅是近乎平局的错序，或完整成本不划算。B-M先导成本和近邻等价问题未解，暂不进入它的完整收益验证。</li></ul>
 <details><summary>准备对应的论文图表与Auto Research证据链</summary><p>只预定义图表规格，不填虚构曲线：回训前后候选表现与训练重复散点；独立确认的kY−kX、kY−p₀；训练噪声与评价噪声分层；短窗与原时域对比；阶段成本与D/F/η分项。图的统计单位和误差含义必须随图注明。</p><p>沿用本仓库已引入方法：v3任务契约冻结修改范围和验收；v2先基线后机制，第一轮不依赖B-M；autoresearch固定预算只改配额；DISCERN记录支持、反驳和未决，并独立确认。它们用于组织研究，不表示已部署或运行原自动科研系统。具体来源见<a href="../../docs/topics/TR-001-thesis-uav-crowdsensing/methodology.md">方法规程</a>。</p></details>
 <p class="source">准备版本2026-11-11-preparation-1。仍待定：骨干对应、指标聚合、完整状态协议、合法地图、实际快照位置、M/E/T、δχ、随机流清单、正式精度和运行预算。以上未定项解决且用户评估实施计划后，才进入代码与实验阶段。</p>
+</section>
+
+<section id="algorithm-research"><h2>10　算法研究：复用回训数据，但不忽略复用产生的依赖</h2>
+<p class="lead">按用户最新指令，当前先研究算法，具体实验模型后续讨论。本轮推进<strong>两折交叉校正 B-CF</strong>：一个不依赖LLM选型或新预测网络的候选测量模块。它接续B-M的先导成本反证；未替换原任务、学习骨干或R1诊断协议。</p>
+<p>研究问题仍是：固定完整学习状态、合法课程池和回训时域，如何以有限测量成本选出迁移收益更好的<strong>完整训练配额</strong>。所有期望、方差和无偏性均条件于这一固定状态；不把跨训练阶段的样本当同分布数据。原文4.2已有回训反馈（PDF105–106 / 印刷88–89）；这里研究测量组织，不重新主张首次回训。</p>
+<p><a href="design/algorithm-research-2026-11-11.json">本轮推导与来源记录</a>。未运行模拟或训练；下文为数学推导、已知理论适配和可淘汰的算法假设。</p>
+<h3>10.1 从旧方案的失败条件出发</h3>
+<p>旧B-M把独立先导数据仅用于估计系数，正式估计又另收数据。先导费用占总预算一半、练习与回训成本1:1时，该一次性设计即使理想相关也不能严格节省预算。B-CF改为两组数据交叉使用：A组拟合系数用于B组，B组拟合系数用于A组；所有昂贵Y同时参与最终均值。</p>
+<p>这只消除了“拟合数据完全不进入最终均值”的浪费，<strong>没有消除数据获取成本、拟合误差或组间依赖</strong>。交叉拟合不是本项目首创，最近邻见10.7。</p>
+<h3>10.2 先冻结所有比较对，避免再为挑中心花先导预算</h3>
+<p>令候选数为K+1，包含均匀基准p₀。延用Xₖ=回训前相对p₀的χ差、Yₖ=回训后相对p₀的χ差，X₀=Y₀=0。对每个完整随机重复，同时形成整组候选与共享基准的观测。定义全部固定比较对℘={(k,j):0≤j&lt;k≤K}，权重先取wℓ=1；ℓ表示一对候选：</p>
+<pre>Zℓ = Xₖ−Xⱼ，Wℓ = Yₖ−Yⱼ。
+A = Σℓ wℓ Var(Wℓ)，B = Σℓ wℓ Var(Zℓ)，C = Σℓ wℓ Cov(Zℓ,Wℓ)。
+β* = C/B，ρeff²=C²/(AB)≤1（A,B&gt;0）。
+若候选向量V有q=K+1项，Σk&gt;j(Vk−Vj)² = qΣk(Vk−V̄)²。</pre>
+<p>最后的恒等式说明“所有比较对”相当于去掉候选共同均值后再考虑波动。比较对之间并不独立；后面的目标Q是各差值方差的加权和，不将这些比较对当额外独立样本。它可能浪费精度在明显较差的候选上，未证明最优选课；优点是无需先选一个随机领先中心。</p>
+<h3>10.3 算法步骤与无偏性</h3>
+<ol><li>冻结候选池、h/a、每折n≥m≥2、全部比较对、系数拟合规则及上界b。两折用相同采样设计、彼此独立的完整训练随机流。每折有n组X，其中预先指定m组继续回训获得Y；不能看X后只延长高分者。</li><li>在每折内部，用其m组配对Z/W拟合 β̂=clip(Ĉ/B̂,−b,b)；若B̂=0取0。b预先固定，数值留待开发精度讨论；截断仅限制统计校正系数，不裁剪χ、不改奖励。两折使用同一拟合规则，预处理只能使用本折数据。</li><li>A折用β̂B、B折用β̂A作校正，按下式估计各候选回训后收益。</li><li>按固定平局规则选argmaxₖÛₖ，包括p₀。输出已测试的完整配额，不用softmax另造未测试混合，不把探测中的高分checkpoint当作主学习器。</li><li>独立确认仍用全新的分支；最终主训练也从同一规定起点按选定配额执行。校正、选择与确认的成本均记录。</li></ol>
+<pre>(T8) Df,k = X̄f,n,k − X̄f,m,k，f∈{A,B}。
+     Ûk,CF = ½[ȲA,m,k + β̂B DA,k + ȲB,m,k + β̂A DB,k]。
+     E[Ûk,CF] = Uk = E[Yk]。</pre>
+<details><summary>T8成立条件与证明</summary><p>固定s、池、h/a与评价协议；完整重复之间iid；两折独立且同分布；X/Y有有限二阶矩；β̂只由本折决定且有界；n/m、高保真索引及比较集合在采样前固定。不要求χ落在[0,1]，不要求X与Y同均值，也不要求X能无偏预测Y。</p><p>DA只依赖A，β̂B只依赖B，因此E[β̂B DA]=E[β̂B]E[DA]=0，另一项同理。β̂A/β̂B可以有偏，Û仍无偏。若用全体数据先调系数、标准化或挑比较中心，这一独立性证明不能照搬。无偏只针对预定候选均值；E[maxₖÛₖ]一般不是maxₖUk。</p></details>
+<h3>10.4 关键推导：两折估计并不独立</h3>
+<p>以下针对任一固定候选差值，本段X/Y暂代Zℓ/Wℓ，记每折D=X̄n−X̄m，d=1/m−1/n；β̂表示本折拟合出的系数。因为两折同分布，设g=E[β̂D]。即使每折使用对方系数，二者仍通过数据发生耦合：</p>
+<pre>(T9) Cov(ȲA+β̂B DA, ȲB+β̂A DB) = g²。
+
+Var(ÛCF) = ½{ σY²/m
+             + d[σX² E(β̂²) − 2σXY E(β̂)] + g² }。</pre>
+<details><summary>交叉项展开与一个非独立反例</summary><p>把两个折估计相乘：不同折Y项协方差为0；Y与对方校正的交叉项含E[D]=0；剩下E[β̂A DA]E[β̂B DB]=g²。不能将两个校正后的折估计视为两个独立样本，直接套标准误差。</p><p>解析反例（不是UCS实验）：每折n=4、m=2，Xi为独立均值0、方差1的±1变量，Yi=Xi；取有界系数规则β̂=X̄m。则g=Cov(X̄m,X̄n−X̄m)=1/4−1/2=−1/4，两个折估计的协方差为1/16。此规则只用来反驳“交叉拟合自动独立”，不是拟采用的系数拟合器，也没有抽样运行。</p></details>
+<p>将T9对所有固定比较对加权求和。记Dℓ为相应比较对的均值校正项，gℓ=E[β̂Dℓ]，MSEβ=E[(β̂−β*)²]，得到：</p>
+<pre>(T10) QCF = Qoracle + ½dB·MSEβ + ½Σℓ wℓ gℓ²，
+      Qoracle = ½[A/m − d C²/B]
+              = A[(1−ρeff²)/(2m) + ρeff²/(2n)]。
+
+(T11) 0 ≤ QCF−Qoracle ≤ dB·MSEβ。</pre>
+<details><summary>误差界证明与适用范围</summary><p>T10把T9中的二次项围绕β*=C/B配方。因E[Dℓ]=0，有gℓ=E[(β̂−β*)Dℓ]，由Cauchy–Schwarz得gℓ²≤MSEβ·E[Dℓ²]=MSEβ·d Var(Zℓ)，加权求和得到T11。符号工具已核验T10配方恒等式；概率分解依赖前述独立性，符号检查不是其独立统计复验。</p><p>这里Qoracle使用完全相同2n/2m样本但已知真系数，是不可执行的理论参照。B=0时不做校正；A=0时不存在该差值方差的降低空间，不能除以A计算成本比。比较对权重需非负，MSEβ含系数截断偏差。结果不提供完整课程收敛保证，也不直接给可执行置信区间。</p></details>
+<h3>10.5 重新比较成本：没有额外先导，不代表一定划算</h3>
+<p>用整组候选的实际成本cX（获得一组X）、cA（从该前缀继续获得Y的增量）、cH（直接获得一组Y）计账，Bcost=2n cX+2m cA+cfit。拟合计算cfit也需记录；真实直接Y未必需要即时评价，因此一般cH≠cX+cA。所有实际方法按真实成本配平，不把oracle参数当免费可用信息。</p>
+<p>为看清边界，考虑<strong>纯训练成本理想情形</strong>：h=a、cX=cA=h、cH=2h、cfit=0，忽略额外评价及异步浪费。固定r=n/m，不在同一数据上自适应改变采样量。令εβ=(B/A)MSEβ，同预算直接Y有m(r+1)个整组重复（暂忽略整数取整），则：</p>
+<pre>(T12) QCF / Qdirect ≤ (r+1)/2 · [1−ρeff²+ρeff²/r]
+                         + (r+1)(1−1/r) εβ。
+
+固定r=3时：QCF / Qdirect ≤ 2 − (4/3)ρeff² + (8/3)εβ。
+一个充分条件为：ρeff² &gt; 3/4 + 2εβ。</pre>
+<p>这不是部署阈值：ρeff和εβ目前未知，尚无可靠小样本上界。即使系数已知，r=3也只有ρeff²&gt;0.75时才有理想方差优势；系数误差、额外评价和资源开销会收紧条件。这里ρeff²是同一状态下<strong>候选差值随机波动</strong>的有效相关量，不是候选均值的排序相关，也不是某个模型的准确率。</p>
+<div class="note"><strong>算法取舍：</strong>B-CF移除了旧“半数预算纯先导”结构，所以旧反证不能直接套用；新的误差与依赖项又阻止我们宣称自动节省预算。若采集后把β设为0，虽保留无偏性，已花掉的X成本不会退回；不能把它说成等价于事先把全部预算用于直接Y。</div>
+<h3>10.6 保留的对照与不支持的论文主张</h3>
+<ul><li>必备对照：同总成本直接Y、固定β=1、旧独立先导、通用交叉拟合线性校正、逐候选校正、全部候选差值共享校正；预测器对照继续保留，具体模型以后讨论。</li><li>若B-CF与通用交叉拟合控制变量在同一数据设计下等价，就合并为适配基线；不能靠“UAV＋交叉拟合”的名称宣称新算法。</li><li>Q下降不保证最重要的最优/次优候选差值方差下降，更不保证实际选课收益；必须保留独立确认和全流程成本比较。这里不提出未经证明的自适应停止规则。</li><li>跨状态复用数据、改变候选池或根据当前X选择哪些分支回训，会改变本轮假设，需单独推导。跨任务共享先导也有2026近邻，暂不添加。</li><li>R1现象诊断不依赖B-CF。当前先把算法假设推清楚，后续再决定是否值得写实现及选择实验所需模型。</li></ul>
+<h3>10.7 经典与2026近邻：收缩创新主张</h3>
+<div class="table"><table><thead><tr><th>原始来源</th><th>本轮阅读深度与已有覆盖</th><th>对本候选的约束</th></tr></thead><tbody>
+<tr><td><a href="https://arxiv.org/html/1606.02261v1">Reducing the error of Monte Carlo Algorithms by Learning Control Variates</a><br>Tracey / Wolpert，2016稿</td><td>HTML §2与§3.1：StackMC使用留出预测学习控制变量，并讨论误差。</td><td>交叉验证校正、复用样本与学习系数均非首创；未把全文所有定理与本候选逐项排除等价。</td></tr>
+<tr><td><a href="https://arxiv.org/html/2309.16598v3">Cross-Prediction-Powered Inference</a><br>Zrnic / Candès，2024修订v3</td><td>HTML §3.1、§4：复用标签、无偏均值、共享拟合引入依赖；渐近推断要求稳定性。</td><td>不能主张首次无需外部预训练预测器。其观测设计与本轮嵌套训练前缀不同，不能直接套区间。</td></tr>
+<tr><td><a href="https://arxiv.org/abs/2605.29249v1">Prediction-Powered Inference Across Many Tasks for AI Evaluation &amp; Social Science Research</a><br>2026-05-28预印本</td><td>摘要级：跨任务校准及任务内纠偏；共享标签信息已有研究。</td><td>将来跨状态/任务共享不能当作空白；未完成全文条件映射。</td></tr>
+<tr><td><a href="https://arxiv.org/abs/2606.08730v1">Statistical Optimality of Prediction-Powered Inference</a><br>2026-06-07预印本</td><td>摘要级：校准、效率与交叉拟合/单次拟合方差修正。</td><td>“校正后有效且最优”的宽泛主张已高度拥挤；本轮无效率最优性证明。</td></tr>
+</tbody></table></div>
+<p class="source">定向检索截至2026-11-11；不是系统综述或新颖性证明。来源明确区分版本及阅读深度，不引用尚未发生的未来研究。前两项方法内容短述；T8–T12为本候选采样设计下的重推，理论原创性未确立。</p>
+<p><strong>本轮结论：</strong>算法研究已从“另付先导成本”推进到“数据交叉复用＋依赖显式计入”的条件候选。已有无偏性、方差分解和成本条件；没有UCS效果证据，也没有确认独立方法创新。具体模型后续讨论，当前不启动实现、仿真或训练。</p>
 </section>
 
 <footer>2026-11-11 · TR-001 理论与实验设计 · 原始PDF仍在忽略目录；与其他课题工作区隔离。</footer></main>

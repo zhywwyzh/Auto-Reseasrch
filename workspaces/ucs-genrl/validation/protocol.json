@@ -1,0 +1,26 @@
+{
+  "id": "TR001-CPU-SMOKE-v1",
+  "authorization": "2026-11-11 用户要求先做更小规模验证，验证后再考虑服务器实际训练",
+  "purpose": "原候选代码的最小运行链路验收；不估计算法效果、不替代R1-P或论文复现",
+  "source": "https://github.com/BIT-MCS/DRL-MTVCS",
+  "source_commit": "780e0b41d3fff54c8fa5ea0335979b3f1ec1f225",
+  "environment": "data_collection_1.Env 原配置、原奖励、2无人机、25动作、80x80x3观察",
+  "runtime": "独立CPU容器；只读挂载候选源码；结果写本课题runs目录",
+  "limits": {"cpu_cores": 2, "memory_gib": 3, "swap_gib": 0, "runtime_seconds": 300, "gpu": false},
+  "scope": {
+    "seed": 20261111,
+    "random_environment_steps": 80,
+    "environment_replay_steps_each": 10,
+    "batch_size": 1,
+    "unroll_length": 20,
+    "initial_updates": 3,
+    "fixed_batch_update_replays": 2,
+    "fresh_training_transitions": 60,
+    "training_sample_consumptions_including_replay": 100,
+    "max_environment_steps_including_replay": 160
+  },
+  "preserved": ["原ResNetLSTMAgent", "原build_learner/V-trace/PopArt/pixel-control/RMSProp", "原候选环境动力学、奖励和配置"],
+  "deviations": ["同步单环境采样代替异步actor队列", "batch由32降为1，仅作运行验收", "动作按原logits分类分布由独立NumPy RNG采样，以显式保存随机流；未使用原tf.multinomial RNG", "不调用原experiment主循环或dynamic_batching", "只验证同步边界与固定批更新恢复，不声称异步完整快照已通过"],
+  "stop_rules": ["达到步数或时间上限即结束", "非有限损失/参数立即失败", "资源超过容器限额即失败", "不启动完整R1-P、服务器或付费模型"],
+  "pending": ["学位原文与开源配置对齐", "η与奖励定义核验", "GPU兼容与正式batch32峰值", "异步队列和TensorFlow随机采样恢复", "B-CF算法及课程效果验证"]
+}
