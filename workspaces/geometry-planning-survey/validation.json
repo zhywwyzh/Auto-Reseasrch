@@ -1,0 +1,53 @@
+{
+  "date": "2026-11-11",
+  "status": "v0.2 structural, analytic-identity and headless-browser checks passed; Canvas runtime not checked",
+  "passed": [
+    "JSON parses; all citation identifiers resolve; unique reference IDs",
+    "73 unique HTML IDs and 158 internal anchors verified",
+    "38 references and abstract plus nine manuscript sections rendered",
+    "Embedded JavaScript syntax check passed",
+    "HTTP200; served bytes equal generated file",
+    "Chrome 139 headless: search, reading-level filter, reset via citation navigation, and print-button handler passed",
+    "Desktop 1440px and mobile 390px screenshots inspected; mobile figure scrolls horizontally within its container; no document horizontal overflow",
+    "SVG loads; same-curve analytic illustration is explicitly labelled non-experimental",
+    "Exact rational arithmetic confirms polynomial expansion, 0.05 minimum and de Casteljau subdivision coordinates; no simulation",
+    "Generated Canvas source synchronized; inline figure; no external imports beyond cursor/canvas",
+    "Original thesis SHA256 unchanged; original and downloaded PDFs remain Git ignored"
+  ],
+  "limits": [
+    "No authoritative IDE Canvas TypeScript/runtime diagnostics available.",
+    "Browser checks used isolated headless Chrome on the execution host, not the user device; print handler was checked but no print/PDF layout was approved.",
+    "No exhaustive database export, L3 fulltext coding, independent second reviewer, or experimental results.",
+    "S09 manufacturing safety survey remains abstract-level despite primary-source and author-site searches; overlap with proposed synthesis is unresolved.",
+    "S04/S09 and some repeat publisher accesses are restricted; failed access is not evidence of missing coverage.",
+    "No training, paid model calls, public publication or git push."
+  ],
+  "source_hashes": {
+    "thesis": "bcc07f9fc643dc86da2eda462233118d80cc73503f8c3cd9a5ef0390c7ea0673",
+    "survey_json": "aa9ae08cc10f2c9bd34ca97ab9a9abee9d0854290343307d3e0582b333e53fff",
+    "generated_html": "69539d152cedee75b1323e1954835cf79e71915cd89f2a19b9f02e2cad6acaa1",
+    "canvas": "19a08663774eca7b92253c79e412fdf1223c1f90abe2e2b0b015848a6462842b",
+    "analytic_svg": "fcc2af5132ed57c311b9171c62bb02b8e3032895b3ee2766e6e15c910a76c1b0"
+  },
+  "corpus": {
+    "seed_entries": 38,
+    "reading_levels": {
+      "L2": 14,
+      "L1": 23,
+      "L0": 1
+    },
+    "surveys": 10,
+    "downloaded_pdfs": 11,
+    "search_queries": 46,
+    "manuscript_characters": 5823
+  },
+  "local_url": "http://127.0.0.1:8893/workspaces/geometry-planning-survey/",
+  "access_scope": "Execution-host loopback only, not public or cross-device. Static file and IDE Canvas also supplied.",
+  "owned_repo_paths": [
+    "docs/topics/TR-003-geometry-planning-survey/",
+    "workspaces/geometry-planning-survey/"
+  ],
+  "preserved_existing_work": "TR-001 and TR-002 in-progress modifications were not edited.",
+  "followup": "v0.2: narrowed novelty after S09/S10; feasible-set framework, three comparison groups, analytic illustration, conditional selection guide and revised manuscript. Headless-browser validation now available; prior CUA limitations do not describe current HTML validation.",
+  "rendering_environment": "Default Python exposes NumPy/Matplotlib ABI mismatch. Figure generated successfully using PYTHONNOUSERSITE=1 /usr/bin/python3 with existing system packages; global environment unchanged."
+}
