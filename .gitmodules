@@ -1,0 +1,33 @@
+[submodule "external/autonomous-science/ai-scientist-v2"]
+	path = external/autonomous-science/ai-scientist-v2
+	url = https://github.com/SakanaAI/AI-Scientist-v2.git
+[submodule "external/autonomous-science/ai-scientist-v3"]
+	path = external/autonomous-science/ai-scientist-v3
+	url = https://github.com/SakanaAI/AI-Scientist-v3.git
+[submodule "external/autonomous-science/omniscientist"]
+	path = external/autonomous-science/omniscientist
+	url = https://github.com/Omni-Scientist/OmniScientist.git
+[submodule "external/autonomous-science/autodna"]
+	path = external/autonomous-science/autodna
+	url = https://github.com/IPADS-X/AutoDNA.git
+[submodule "external/autonomous-science/alphaevolve"]
+	path = external/autonomous-science/alphaevolve
+	url = https://github.com/google-deepmind/alphaevolve.git
+[submodule "external/autonomous-science/alab-gpss"]
+	path = external/autonomous-science/alab-gpss
+	url = https://github.com/CederGroupHub/alab_gpss_public.git
+[submodule "external/autonomous-science/empirical-loop-artifacts"]
+	path = external/autonomous-science/empirical-loop-artifacts
+	url = https://github.com/Explore-Science/Virtuous-Machines-Towards-Artificial-General-Science.git
+[submodule "external/autonomous-science/mombot-software"]
+	path = external/autonomous-science/mombot-software
+	url = https://github.com/kambielawski/mombot_software.git
+[submodule "external/autonomous-science/paperbenchx"]
+	path = external/autonomous-science/paperbenchx
+	url = https://github.com/UniPat-AI/PaperBenchX.git
+[submodule "external/autonomous-science/autoresearch"]
+	path = external/autonomous-science/autoresearch
+	url = https://github.com/karpathy/autoresearch.git
+[submodule "external/autonomous-science/discern"]
+	path = external/autonomous-science/discern
+	url = https://huggingface.co/datasets/discern-bench-anon/discern-benchmark

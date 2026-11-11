@@ -1,0 +1,765 @@
+[
+  {
+    "id": "autodna",
+    "title_zh": "面向自主生物分子操作的AI原生实验室",
+    "doi": "10.1038/s41586-026-11228-6",
+    "web": "https://www.nature.com/articles/s41586-026-11228-6",
+    "repo": "autodna",
+    "fallback_abstract_url": "https://pubmed.ncbi.nlm.nih.gov/42983087/",
+    "metadata_xml_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=42983087&retmode=xml",
+    "retrieved": "2026-11-10",
+    "files": [
+      {
+        "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=42983087&retmode=xml",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/autodna/pubmed.xml",
+        "bytes": 28787,
+        "sha256": "04beb79edb8dd4342abe2a6a3eee12bf910ce9019df0a1da3b59ac3c30eee8cd",
+        "reused": true
+      }
+    ],
+    "errors": [
+      {
+        "operation": "web",
+        "error": "challenge page; content not archived as paper"
+      }
+    ],
+    "status": "public-page-only",
+    "title": "An AI-native experimental laboratory for autonomous biomolecular operations.",
+    "abstract_local": "thesis-reference/notes/autonomous-science-2026-11-10/autodna/abstract-en.txt"
+  },
+  {
+    "id": "agentic-scientist",
+    "title_zh": "Agentic Scientist：组织编程智能体，实现自动化科学（共同）发现",
+    "arxiv": "2610.18933v1",
+    "repo": "ai-scientist-v3",
+    "retrieved": "2026-11-10",
+    "files": [
+      {
+        "url": "https://arxiv.org/abs/2610.18933v1",
+        "resolved_url": "https://arxiv.org/abs/2610.18933v1",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/agentic-scientist/metadata.html",
+        "bytes": 43657,
+        "sha256": "bd817b004363896dfbcabb6314150180e8fba0402c6948a4060dae7b77d1f914",
+        "reused": false
+      },
+      {
+        "url": "https://arxiv.org/pdf/2610.18933v1",
+        "resolved_url": "https://arxiv.org/pdf/2610.18933v1",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/agentic-scientist/original.pdf",
+        "bytes": 35279078,
+        "sha256": "cb170b5435743032755f89b97136464a024df2c0fb4f46286a69945208585fd5",
+        "reused": false
+      },
+      {
+        "url": "https://arxiv.org/html/2610.18933v1",
+        "resolved_url": "https://arxiv.org/html/2610.18933v1",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/agentic-scientist/fulltext.html",
+        "bytes": 1400520,
+        "sha256": "f273a2c67e6a85733feb64aae53e5d54212e107c1b843643b60abdf58cc4b62b",
+        "reused": false
+      }
+    ],
+    "errors": [],
+    "status": "full-paper-downloaded",
+    "title": "The Agentic Scientist: Orchestrating Coding Agents for Automated Scientific (Co-)Discovery",
+    "authors": [
+      "Lange, Robert Tjarko",
+      "Grillotti, Luca",
+      "Yamada, Yutaro",
+      "Charakorn, Rujikorn",
+      "Ha, David"
+    ],
+    "paper_license_url": "http://creativecommons.org/licenses/by/4.0/",
+    "pages": 88,
+    "extracted_text": "thesis-reference/notes/autonomous-science-2026-11-10/agentic-scientist/original-layout.txt",
+    "abstract_local": "thesis-reference/notes/autonomous-science-2026-11-10/agentic-scientist/abstract-en.txt"
+  },
+  {
+    "id": "closing-empirical-loop",
+    "title_zh": "闭合实证循环：自主AI智能体开展有人类参与者的端到端研究",
+    "arxiv": "2508.13421v3",
+    "doi": "10.1002/advs.76675",
+    "repo": "empirical-loop-artifacts",
+    "retrieved": "2026-11-10",
+    "files": [
+      {
+        "url": "https://arxiv.org/abs/2508.13421v3",
+        "resolved_url": "https://arxiv.org/abs/2508.13421v3",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/closing-empirical-loop/metadata.html",
+        "bytes": 44464,
+        "sha256": "ab6a7ed3edd3b47589ff779e687ad8cc11a145e5be28a835bda62a6c1ec45d7d",
+        "reused": false
+      },
+      {
+        "url": "https://arxiv.org/pdf/2508.13421v3",
+        "resolved_url": "https://arxiv.org/pdf/2508.13421v3",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/closing-empirical-loop/original.pdf",
+        "bytes": 645582,
+        "sha256": "b88dacedcf50146a605f252fd7fab266a5d5fc7c69eb65c8cca35e158b4cfa88",
+        "reused": false
+      }
+    ],
+    "errors": [
+      {
+        "operation": "html",
+        "error": "HTTP Error 404: Not Found"
+      }
+    ],
+    "status": "full-paper-downloaded",
+    "title": "Closing the empirical loop: autonomous AI agents conduct end-to-end research with human participants",
+    "authors": [
+      "Wehr, Gabrielle",
+      "Rideaux, Reuben",
+      "Fox, Amaya J.",
+      "Lightfoot, David R.",
+      "Tangen, Jason",
+      "Mattingley, Jason B.",
+      "Ehrhardt, Shane E."
+    ],
+    "paper_license_url": "http://creativecommons.org/licenses/by/4.0/",
+    "pages": 43,
+    "extracted_text": "thesis-reference/notes/autonomous-science-2026-11-10/closing-empirical-loop/original-layout.txt",
+    "abstract_local": "thesis-reference/notes/autonomous-science-2026-11-10/closing-empirical-loop/abstract-en.txt"
+  },
+  {
+    "id": "scientisttwo",
+    "title_zh": "ScientistTwo：以自主AI探索人类知识前沿",
+    "arxiv": "2609.19644v1",
+    "web": "https://scientist-two.github.io/",
+    "retrieved": "2026-11-10",
+    "files": [
+      {
+        "url": "https://arxiv.org/abs/2609.19644v1",
+        "resolved_url": "https://arxiv.org/abs/2609.19644v1",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/scientisttwo/metadata.html",
+        "bytes": 42821,
+        "sha256": "5f6ad48691c8c03cb168f71c15b8ab41555bc760437875959f787af1c22b9281",
+        "reused": false
+      },
+      {
+        "url": "https://arxiv.org/pdf/2609.19644v1",
+        "resolved_url": "https://arxiv.org/pdf/2609.19644v1",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/scientisttwo/original.pdf",
+        "bytes": 26081865,
+        "sha256": "98fb7802ec28beea159895a3de219307e019867b16296dfe4a79e68daaef9a17",
+        "reused": false
+      },
+      {
+        "url": "https://arxiv.org/html/2609.19644v1",
+        "resolved_url": "https://arxiv.org/html/2609.19644v1",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/scientisttwo/fulltext.html",
+        "bytes": 458136,
+        "sha256": "61d10b5cc69365bf6cf44cb1c7e7df48b7551bfcb3bdec5ba130471d03574d93",
+        "reused": false
+      }
+    ],
+    "errors": [],
+    "status": "full-paper-downloaded",
+    "title": "ScientistTwo: Pioneering the Human Knowledge Frontier with Autonomous AI",
+    "authors": [
+      "Nam, Jaehyun",
+      "Yoon, Jinsung",
+      "Pan, Yanzhou",
+      "Wang, Yubo",
+      "Meng, Rui",
+      "Ranganathan, Parthasarathy",
+      "Pfister, Tomas"
+    ],
+    "paper_license_url": "http://creativecommons.org/licenses/by/4.0/",
+    "pages": 71,
+    "extracted_text": "thesis-reference/notes/autonomous-science-2026-11-10/scientisttwo/original-layout.txt",
+    "abstract_local": "thesis-reference/notes/autonomous-science-2026-11-10/scientisttwo/abstract-en.txt"
+  },
+  {
+    "id": "mombot",
+    "title_zh": "用于自主生物学发现的闭环机器人科学家",
+    "web": "https://www.biorxiv.org/content/10.64898/2026.09.11.751076v1.full",
+    "doi": "10.64898/2026.09.11.751076",
+    "repo": "mombot-software",
+    "retrieved": "2026-11-10",
+    "files": [
+      {
+        "url": "https://www.biorxiv.org/content/10.64898/2026.09.11.751076v1.full",
+        "resolved_url": "https://www.biorxiv.org/content/10.64898/2026.09.11.751076v1.full",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/mombot/source-page.html",
+        "bytes": 359814,
+        "sha256": "b63bc9a4094f354a4ab1203d9e1b3a1ae6c3613f215c5588cc6c036ac9a30c02",
+        "reused": false
+      }
+    ],
+    "errors": [],
+    "status": "public-page-only",
+    "title": "A Closed-Loop Robot Scientist for Autonomous Biological Discovery",
+    "abstract_local": "thesis-reference/notes/autonomous-science-2026-11-10/mombot/abstract-en.txt"
+  },
+  {
+    "id": "omniscientist",
+    "title_zh": "OmniScientist：全模态、跨学科的AI科学家",
+    "arxiv": "2608.13558v1",
+    "repo": "omniscientist",
+    "retrieved": "2026-11-10",
+    "files": [
+      {
+        "url": "https://arxiv.org/abs/2608.13558v1",
+        "resolved_url": "https://arxiv.org/abs/2608.13558v1",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/omniscientist/metadata.html",
+        "bytes": 43039,
+        "sha256": "f19e51ae081bc7a8cbb150767cade1886015e41640038e4e1abab77acb12cf47",
+        "reused": false
+      },
+      {
+        "url": "https://arxiv.org/pdf/2608.13558v1",
+        "resolved_url": "https://arxiv.org/pdf/2608.13558v1",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/omniscientist/original.pdf",
+        "bytes": 4734161,
+        "sha256": "028cdc0c2163563cdee101a7c5754343f0c4b00ffab85da675dcc3b080842554",
+        "reused": false
+      },
+      {
+        "url": "https://arxiv.org/html/2608.13558v1",
+        "resolved_url": "https://arxiv.org/html/2608.13558v1",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/omniscientist/fulltext.html",
+        "bytes": 871988,
+        "sha256": "abbc6ee87f563608ae0f471dcd49aa9a2a399237430951b9e64d4f456127fb90",
+        "reused": false
+      }
+    ],
+    "errors": [],
+    "status": "full-paper-downloaded",
+    "title": "OmniScientist: An Omni-Modal Omni-Discipline AI Scientist",
+    "authors": [
+      "Li, Bobo",
+      "Fei, Hao",
+      "Ju, Tianjie",
+      "Lee, Mong-Li",
+      "Hsu, Wynne"
+    ],
+    "paper_license_url": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/",
+    "pages": 30,
+    "extracted_text": "thesis-reference/notes/autonomous-science-2026-11-10/omniscientist/original-layout.txt",
+    "abstract_local": "thesis-reference/notes/autonomous-science-2026-11-10/omniscientist/abstract-en.txt"
+  },
+  {
+    "id": "co-scientist",
+    "title_zh": "借助Co-Scientist加速科学发现",
+    "arxiv": "2502.18864v2",
+    "doi": "10.1038/s41586-026-10644-y",
+    "existing": "sources/fulltext/co-scientist",
+    "retrieved": "2026-11-10",
+    "files": [
+      {
+        "url": "https://arxiv.org/abs/2502.18864v2",
+        "path": "sources/fulltext/co-scientist/arxiv-metadata.html",
+        "bytes": 52162,
+        "sha256": "3339a49478db6e500676963950106309da8eae1365adbc5545d5a8b26c60a9c9",
+        "reused": true
+      },
+      {
+        "url": "https://arxiv.org/pdf/2502.18864v2",
+        "path": "sources/fulltext/co-scientist/original.pdf",
+        "bytes": 5885207,
+        "sha256": "e603a77c9d2bdfb528313e4cf35405b72261e018a70da724fcebca94c96e4716",
+        "reused": true
+      }
+    ],
+    "errors": [],
+    "status": "full-paper-downloaded",
+    "title": "Accelerating scientific discovery with Co-Scientist",
+    "authors": [
+      "Gottweis, Juraj",
+      "Weng, Wei-Hung",
+      "Daryin, Alexander",
+      "Tu, Tao",
+      "Sirkovic, Petar",
+      "Myaskovsky, Artiom",
+      "Glowaty, Grzegorz",
+      "Weissenberger, Felix",
+      "Orlandi, Alessio",
+      "Popovici, Dan",
+      "Palepu, Anil",
+      "Rong, Keran",
+      "Tanno, Ryutaro",
+      "Saab, Khaled",
+      "Zhang, Fan",
+      "Blum, Jacob",
+      "Carroll, Andrew",
+      "Kulkarni, Kavita",
+      "Tomasev, Nenad",
+      "Zverinski, Dina",
+      "Rendulic, Ivor",
+      "Vedadi, Elahe",
+      "Hasler, Florian",
+      "Rimanic, Luka",
+      "Boia, Marina",
+      "Budiselic, Ivan",
+      "Feinstein, Ben",
+      "Bellaiche, Mathias",
+      "Sheffer, Tom",
+      "Freyberg, Jan",
+      "Ratcliff, Jeremy",
+      "Bertolli, Ottavia",
+      "Chou, Katherine",
+      "Hassidim, Avinatan",
+      "Gokturk, Burak",
+      "Vahdat, Amin",
+      "Guan, Yuan",
+      "Dhillon, Vikram",
+      "Vaishnav, Eeshit Dhaval",
+      "Lee, Byron",
+      "Costa, Tiago R D",
+      "Penadés, José R",
+      "Peltz, Gary",
+      "Matias, Yossi",
+      "Manyika, James",
+      "Hassabis, Demis",
+      "Xu, Yunhan",
+      "Kohli, Pushmeet",
+      "Pawlosky, Annalisa",
+      "Karthikesalingam, Alan",
+      "Natarajan, Vivek"
+    ],
+    "paper_license_url": "http://creativecommons.org/licenses/by/4.0/",
+    "pages": 157,
+    "extracted_text": "thesis-reference/notes/autonomous-science-2026-11-10/co-scientist/original-layout.txt",
+    "abstract_local": "thesis-reference/notes/autonomous-science-2026-11-10/co-scientist/abstract-en.txt"
+  },
+  {
+    "id": "alphaevolve",
+    "title_zh": "AlphaEvolve：用于科学与算法发现的编程智能体",
+    "arxiv": "2506.13131v1",
+    "repo": "alphaevolve",
+    "web": "https://deepmind.google/blog/alphaevolve-impact/",
+    "retrieved": "2026-11-10",
+    "files": [
+      {
+        "url": "https://arxiv.org/abs/2506.13131v1",
+        "resolved_url": "https://arxiv.org/abs/2506.13131v1",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/alphaevolve/metadata.html",
+        "bytes": 45061,
+        "sha256": "dfb07059966a1047ce048256817d4a0830d7449f95fbe30ed7bdb145ccdec32d",
+        "reused": false
+      },
+      {
+        "url": "https://arxiv.org/pdf/2506.13131v1",
+        "resolved_url": "https://arxiv.org/pdf/2506.13131v1",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/alphaevolve/original.pdf",
+        "bytes": 3525764,
+        "sha256": "f092c8cbd65da89951ee6496374da9a54963f9035758c25ac6e4625f506df9ad",
+        "reused": false
+      },
+      {
+        "url": "https://arxiv.org/html/2506.13131v1",
+        "resolved_url": "https://arxiv.org/html/2506.13131v1",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/alphaevolve/fulltext.html",
+        "bytes": 815670,
+        "sha256": "0a5a44d90b13ed1e6aeb1b4b4f1f1e7dcfc819ad2a2812ff5d1fb9ed539f5489",
+        "reused": false
+      }
+    ],
+    "errors": [],
+    "status": "full-paper-downloaded",
+    "title": "AlphaEvolve: A coding agent for scientific and algorithmic discovery",
+    "authors": [
+      "Novikov, Alexander",
+      "V크, Ng창n",
+      "Eisenberger, Marvin",
+      "Dupont, Emilien",
+      "Huang, Po-Sen",
+      "Wagner, Adam Zsolt",
+      "Shirobokov, Sergey",
+      "Kozlovskii, Borislav",
+      "Ruiz, Francisco J. R.",
+      "Mehrabian, Abbas",
+      "Kumar, M. Pawan",
+      "See, Abigail",
+      "Chaudhuri, Swarat",
+      "Holland, George",
+      "Davies, Alex",
+      "Nowozin, Sebastian",
+      "Kohli, Pushmeet",
+      "Balog, Matej"
+    ],
+    "paper_license_url": "http://creativecommons.org/licenses/by-nc-nd/4.0/",
+    "pages": 44,
+    "extracted_text": "thesis-reference/notes/autonomous-science-2026-11-10/alphaevolve/original-layout.txt",
+    "abstract_local": "thesis-reference/notes/autonomous-science-2026-11-10/alphaevolve/abstract-en.txt"
+  },
+  {
+    "id": "alab-gpss",
+    "title_zh": "面向空气敏感锂卤化物尖晶石导体的自主实验室中的智能体式大语言模型推理",
+    "arxiv": "2604.11957v1",
+    "repo": "alab-gpss",
+    "retrieved": "2026-11-10",
+    "files": [
+      {
+        "url": "https://arxiv.org/abs/2604.11957v1",
+        "resolved_url": "https://arxiv.org/abs/2604.11957v1",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/alab-gpss/metadata.html",
+        "bytes": 44114,
+        "sha256": "7c4a42a58767e06c990c3b45c875c6cac6be84ee65aec4e1689405b6ea85d924",
+        "reused": false
+      },
+      {
+        "url": "https://arxiv.org/pdf/2604.11957v1",
+        "resolved_url": "https://arxiv.org/pdf/2604.11957v1",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/alab-gpss/original.pdf",
+        "bytes": 3203468,
+        "sha256": "79c887640ccc0732b6a19c8992512a695d063c7c79b5e746c6c0534fb5cfb7f7",
+        "reused": false
+      },
+      {
+        "url": "https://arxiv.org/html/2604.11957v1",
+        "resolved_url": "https://arxiv.org/html/2604.11957v1",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/alab-gpss/fulltext.html",
+        "bytes": 195567,
+        "sha256": "a5b568b6285161de122474c14842a357f911ea39af230e735f70014de72b572b",
+        "reused": false
+      }
+    ],
+    "errors": [],
+    "status": "full-paper-downloaded",
+    "title": "Agentic LLM Reasoning in a Self-Driving Laboratory for Air-Sensitive Lithium Halide Spinel Conductors",
+    "authors": [
+      "Fei, Yuxing",
+      "Rendy, Bernardus",
+      "Yang, Xiaochen",
+      "Woo, Junhee",
+      "Huang, Xu",
+      "Li, Chang",
+      "Wang, Shilong",
+      "Milsted, David",
+      "Zeng, Yan",
+      "Ceder, Gerbrand"
+    ],
+    "paper_license_url": "http://creativecommons.org/licenses/by/4.0/",
+    "pages": 56,
+    "extracted_text": "thesis-reference/notes/autonomous-science-2026-11-10/alab-gpss/original-layout.txt",
+    "abstract_local": "thesis-reference/notes/autonomous-science-2026-11-10/alab-gpss/abstract-en.txt"
+  },
+  {
+    "id": "ai-scientist-nature",
+    "title_zh": "走向AI研究的端到端自动化",
+    "doi": "10.1038/s41586-026-10265-5",
+    "web": "https://www.nature.com/articles/s41586-026-10265-5",
+    "repo": "ai-scientist-v2",
+    "retrieved": "2026-11-10",
+    "files": [
+      {
+        "url": "https://www.nature.com/articles/s41586-026-10265-5.pdf",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/ai-scientist-nature/original.pdf",
+        "bytes": 2774541,
+        "sha256": "a75e0d93447f400179136bf18d909df29e0c8ccaeba076a1dfb1beeef0e0e10d",
+        "reused": true
+      }
+    ],
+    "errors": [
+      {
+        "operation": "web",
+        "error": "challenge page; content not archived as paper"
+      }
+    ],
+    "status": "full-paper-downloaded",
+    "pages": 9,
+    "extracted_text": "thesis-reference/notes/autonomous-science-2026-11-10/ai-scientist-nature/original-layout.txt",
+    "paper_license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "license_evidence": "PDF extracted license statement; inspect original for full terms"
+  },
+  {
+    "id": "autoresearch",
+    "title_zh": "autoresearch：单GPU训练的自主实验循环",
+    "web": "https://github.com/karpathy/autoresearch",
+    "repo": "autoresearch",
+    "document_only": true,
+    "retrieved": "2026-11-10",
+    "files": [
+      {
+        "url": "https://github.com/karpathy/autoresearch",
+        "resolved_url": "https://github.com/karpathy/autoresearch",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/autoresearch/source-page.html",
+        "bytes": 246121,
+        "sha256": "31e457e2c251bf101f797837f21c044e76aee2c98e722b5fc88518ac26cd72fe",
+        "reused": false
+      }
+    ],
+    "errors": [],
+    "status": "public-page-only",
+    "title": "GitHub - karpathy/autoresearch: AI agents running research on single-GPU nanochat training automatically · GitHub"
+  },
+  {
+    "id": "kosmos",
+    "title_zh": "Kosmos：用于自主发现的AI科学家",
+    "arxiv": "2511.02824v1",
+    "web": "https://advances.edisonscientific.com/research/announcing-kosmos/",
+    "retrieved": "2026-11-10",
+    "files": [
+      {
+        "url": "https://arxiv.org/abs/2511.02824v1",
+        "resolved_url": "https://arxiv.org/abs/2511.02824v1",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/kosmos/metadata.html",
+        "bytes": 48161,
+        "sha256": "85bf561be5660ca9da9ee3159efceedb85a61cfedb459b771de3887358cc9a9e",
+        "reused": false
+      },
+      {
+        "url": "https://arxiv.org/pdf/2511.02824v1",
+        "resolved_url": "https://arxiv.org/pdf/2511.02824v1",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/kosmos/original.pdf",
+        "bytes": 8556238,
+        "sha256": "2dbe6b68c8465b68d3a116f22e66833a6d7ee24df4267f8bca6d6d814e2c47e9",
+        "reused": false
+      },
+      {
+        "url": "https://arxiv.org/html/2511.02824v1",
+        "resolved_url": "https://arxiv.org/html/2511.02824v1",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/kosmos/fulltext.html",
+        "bytes": 319832,
+        "sha256": "7d76e23e4515b67b3e51a05dafc575773d728c990fcd08f494cab234b9837ad7",
+        "reused": false
+      }
+    ],
+    "errors": [],
+    "status": "full-paper-downloaded",
+    "title": "Kosmos: An AI Scientist for Autonomous Discovery",
+    "authors": [
+      "Mitchener, Ludovico",
+      "Yiu, Angela",
+      "Chang, Benjamin",
+      "Bourdenx, Mathieu",
+      "Nadolski, Tyler",
+      "Sulovari, Arvis",
+      "Landsness, Eric C.",
+      "Barabasi, Daniel L.",
+      "Narayanan, Siddharth",
+      "Evans, Nicky",
+      "Reddy, Shriya",
+      "Foiani, Martha",
+      "Kamal, Aizad",
+      "Shriver, Leah P.",
+      "Cao, Fang",
+      "Wassie, Asmamaw T.",
+      "Laurent, Jon M.",
+      "Melville-Green, Edwin",
+      "Caldas, Mayk",
+      "Bou, Albert",
+      "Roberts, Kaleigh F.",
+      "Zagorac, Sladjana",
+      "Orr, Timothy C.",
+      "Orr, Miranda E.",
+      "Zwezdaryk, Kevin J.",
+      "Ghareeb, Ali E.",
+      "McCoy, Laurie",
+      "Gomes, Bruna",
+      "Ashley, Euan A.",
+      "Duff, Karen E.",
+      "Buonassisi, Tonio",
+      "Rainforth, Tom",
+      "Bateman, Randall J.",
+      "Skarlinski, Michael",
+      "Rodriques, Samuel G.",
+      "Hinks, Michaela M.",
+      "White, Andrew D."
+    ],
+    "paper_license_url": "http://creativecommons.org/licenses/by/4.0/",
+    "pages": 42,
+    "extracted_text": "thesis-reference/notes/autonomous-science-2026-11-10/kosmos/original-layout.txt",
+    "abstract_local": "thesis-reference/notes/autonomous-science-2026-11-10/kosmos/abstract-en.txt"
+  },
+  {
+    "id": "paperbenchx",
+    "title_zh": "PAPERBENCHX：AI能否跨学科复现科学研究？",
+    "arxiv": "2610.39744v1",
+    "repo": "paperbenchx",
+    "retrieved": "2026-11-10",
+    "files": [
+      {
+        "url": "https://arxiv.org/abs/2610.39744v1",
+        "resolved_url": "https://arxiv.org/abs/2610.39744v1",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/paperbenchx/metadata.html",
+        "bytes": 44533,
+        "sha256": "f92d50fb97651b7b65e5bd97a81344f96e0a19223112d1ded342e6738e1bcf84",
+        "reused": false
+      },
+      {
+        "url": "https://arxiv.org/pdf/2610.39744v1",
+        "resolved_url": "https://arxiv.org/pdf/2610.39744v1",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/paperbenchx/original.pdf",
+        "bytes": 7384443,
+        "sha256": "b3290184c24169a32b1439121cf800fca648bfde90a8422e34cba136defd1444",
+        "reused": false
+      },
+      {
+        "url": "https://arxiv.org/html/2610.39744v1",
+        "resolved_url": "https://arxiv.org/html/2610.39744v1",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/paperbenchx/fulltext.html",
+        "bytes": 323755,
+        "sha256": "a5f612c8f3cdda5c079ac805c9f402669893f399c806a907bd4c8a838289aa4a",
+        "reused": false
+      }
+    ],
+    "errors": [],
+    "status": "full-paper-downloaded",
+    "title": "PAPERBENCHX: Can AI Reproduce Science Across Disciplines?",
+    "authors": [
+      "Wu, Ruoyu",
+      "Tu, Zengji",
+      "Sun, Aolong",
+      "Ma, Tianyi",
+      "Li, Junren",
+      "Xu, Xinbo",
+      "Fu, Li",
+      "Zhang, Ziyan",
+      "Huang, Pinrui",
+      "Wang, Xiaochen",
+      "Wu, Chengda",
+      "Zhou, Yutao",
+      "Wu, Jianjun",
+      "Chang, Lin",
+      "Chang, Baobao",
+      "Chen, Liang",
+      "Li, Kuan"
+    ],
+    "paper_license_url": "http://creativecommons.org/licenses/by/4.0/",
+    "pages": 22,
+    "extracted_text": "thesis-reference/notes/autonomous-science-2026-11-10/paperbenchx/original-layout.txt",
+    "abstract_local": "thesis-reference/notes/autonomous-science-2026-11-10/paperbenchx/abstract-en.txt"
+  },
+  {
+    "id": "discern",
+    "title_zh": "DISCERN：AI智能体能否像科学家一样工作并引导发现？",
+    "arxiv": "2609.33357v2",
+    "repo": "discern",
+    "retrieved": "2026-11-10",
+    "files": [
+      {
+        "url": "https://arxiv.org/abs/2609.33357v2",
+        "resolved_url": "https://arxiv.org/abs/2609.33357v2",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/discern/metadata.html",
+        "bytes": 43947,
+        "sha256": "a342cac687ce95fc2fd3eee3e02446e96d281354c3e591d27432b18b26200994",
+        "reused": false
+      },
+      {
+        "url": "https://arxiv.org/pdf/2609.33357v2",
+        "resolved_url": "https://arxiv.org/pdf/2609.33357v2",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/discern/original.pdf",
+        "bytes": 2025573,
+        "sha256": "e30ae8bdae928bd90e6fcca6aa3d764c5533eb42393253b9671a2c0c33caaefa",
+        "reused": false
+      },
+      {
+        "url": "https://arxiv.org/html/2609.33357v2",
+        "resolved_url": "https://arxiv.org/html/2609.33357v2",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/discern/fulltext.html",
+        "bytes": 754001,
+        "sha256": "722a55945897f2a10071ac37969a3c62af05a87008d53af399065d41607f174d",
+        "reused": false
+      }
+    ],
+    "errors": [],
+    "status": "full-paper-downloaded",
+    "title": "DISCERN: Can AI Agents Work Like Scientists and Guide Discovery?",
+    "authors": [
+      "Huang, Nan",
+      "Tapia-Pacheco, Mario",
+      "Zhou, Kun",
+      "Huang, Yiming",
+      "Díaz, Kevin José Barrientos",
+      "Amariuta, Tiffany",
+      "Shang, Jingbo"
+    ],
+    "paper_license_url": "http://creativecommons.org/licenses/by/4.0/",
+    "pages": 63,
+    "extracted_text": "thesis-reference/notes/autonomous-science-2026-11-10/discern/original-layout.txt",
+    "abstract_local": "thesis-reference/notes/autonomous-science-2026-11-10/discern/abstract-en.txt"
+  },
+  {
+    "id": "ai-scientist-v2",
+    "title_zh": "AI Scientist-v2：基于智能体树搜索的研讨会级自动化科学发现",
+    "arxiv": "2504.08066v1",
+    "existing": "sources/fulltext/ai-scientist-v2",
+    "repo": "ai-scientist-v2",
+    "retrieved": "2026-11-10",
+    "files": [
+      {
+        "url": "https://arxiv.org/abs/2504.08066v1",
+        "path": "sources/fulltext/ai-scientist-v2/arxiv-metadata.html",
+        "bytes": 44475,
+        "sha256": "9f6a499fb113c74aae603c522ce31b0ff8fd79e82237c520c7adeaf11286448b",
+        "reused": true
+      },
+      {
+        "url": "https://arxiv.org/pdf/2504.08066v1",
+        "path": "sources/fulltext/ai-scientist-v2/original.pdf",
+        "bytes": 8923691,
+        "sha256": "53bafd3028e3f8829a3d85220e84dcf0d18934f9b75c092a60de303ff3644bd2",
+        "reused": true
+      }
+    ],
+    "errors": [],
+    "status": "full-paper-downloaded",
+    "title": "The AI Scientist-v2: Workshop-Level Automated Scientific Discovery via Agentic Tree Search",
+    "authors": [
+      "Yamada, Yutaro",
+      "Lange, Robert Tjarko",
+      "Lu, Cong",
+      "Hu, Shengran",
+      "Lu, Chris",
+      "Foerster, Jakob",
+      "Clune, Jeff",
+      "Ha, David"
+    ],
+    "paper_license_url": "http://creativecommons.org/licenses/by/4.0/",
+    "pages": 69,
+    "extracted_text": "thesis-reference/notes/autonomous-science-2026-11-10/ai-scientist-v2/original-layout.txt",
+    "abstract_local": "thesis-reference/notes/autonomous-science-2026-11-10/ai-scientist-v2/abstract-en.txt"
+  },
+  {
+    "id": "diffusing-blame",
+    "title_zh": "扩散归因：生物合理双流网络中依赖任务的信用分配",
+    "arxiv": "2606.31700v1",
+    "web": "https://pub.sakana.ai/agentic-scientist/",
+    "role": "ALIFE共同研究案例，非另一套AI科学家系统",
+    "retrieved": "2026-11-10",
+    "files": [
+      {
+        "url": "https://arxiv.org/abs/2606.31700v1",
+        "resolved_url": "https://arxiv.org/abs/2606.31700v1",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/diffusing-blame/metadata.html",
+        "bytes": 44556,
+        "sha256": "9b8a615ed3c5f8f0a0ccf4979b6796ec43422e1b232deb3fb15ef90c7c0fed43",
+        "reused": false
+      },
+      {
+        "url": "https://arxiv.org/pdf/2606.31700v1",
+        "resolved_url": "https://arxiv.org/pdf/2606.31700v1",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/diffusing-blame/original.pdf",
+        "bytes": 6973549,
+        "sha256": "71a0e9d15fb920b4c9e2bde608021338cc4fddd0380f870b5ad7ff74e334349e",
+        "reused": false
+      },
+      {
+        "url": "https://arxiv.org/html/2606.31700v1",
+        "resolved_url": "https://arxiv.org/html/2606.31700v1",
+        "path": "thesis-reference/related-papers/autonomous-science-2026-11-10/diffusing-blame/fulltext.html",
+        "bytes": 145709,
+        "sha256": "8ac18f164df18f42ddcd822f1ffb5e245db42f776c6d70917d4b06df5f2b0831",
+        "reused": false
+      }
+    ],
+    "errors": [],
+    "status": "full-paper-downloaded",
+    "title": "Diffusing Blame: Task-Dependent Credit Assignment in Biologically Plausible Dual-Stream Networks",
+    "authors": [
+      "Yamada, Yutaro",
+      "Grillotti, Luca",
+      "Charakorn, Rujikorn",
+      "Risi, Sebastian",
+      "Ha, David",
+      "Lange, Robert Tjarko"
+    ],
+    "paper_license_url": "http://creativecommons.org/licenses/by/4.0/",
+    "pages": 10,
+    "extracted_text": "thesis-reference/notes/autonomous-science-2026-11-10/diffusing-blame/original-layout.txt",
+    "abstract_local": "thesis-reference/notes/autonomous-science-2026-11-10/diffusing-blame/abstract-en.txt"
+  }
+]

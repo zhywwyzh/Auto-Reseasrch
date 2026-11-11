@@ -4,7 +4,8 @@
 Run without flags to regenerate index.html from sources.json.
 Use --fetch to restore missing checkouts at their recorded commits, or record
 the upstream HEAD on the first download. Existing checkouts are not updated.
-Untracked files, model weights, data archives and submodules are not fetched.
+No separate datasets, model weights, LFS blobs or submodules are downloaded.
+Files already bundled in an upstream repository remain subject to its layout.
 """
 import argparse
 from concurrent.futures import ThreadPoolExecutor, as_completed

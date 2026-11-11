@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>课程收益是否判断正确？ · UCS-GenRL 深度研究</title>
+<meta name="description" content="保持原UCS任务的课程分配研究：证据核对、理论假设、代码复用差异、实验与组合泛化方案。计划评审稿，无新实验结果。">
+<style>
+:root{--bg:#f6f6f1;--ink:#23342f;--muted:#5c6964;--accent:#176457;--line:#d6dfd9;--soft:#e8efea}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:var(--bg);font:16px/1.85 system-ui,"Microsoft YaHei",sans-serif}a{color:var(--accent);overflow-wrap:anywhere;text-underline-offset:3px}aside{position:fixed;inset:0 auto 0 0;width:230px;overflow:auto;padding:26px 22px;background:white;border-right:1px solid var(--line)}nav{display:grid;gap:9px;margin:22px 0}nav a{text-decoration:none}main{margin-left:230px;padding:32px 42px 70px;max-width:1330px}h1{font-size:32px;line-height:1.45;max-width:850px}h2{font-size:24px;line-height:1.5}h3{font-size:18px;margin:24px 0 8px}p{margin:10px 0}section{border-top:1px solid var(--line);padding:26px 0;scroll-margin-top:16px}.eyebrow,.meta,small{font-size:13px;color:var(--muted)}.eyebrow{color:var(--accent);font-weight:700;letter-spacing:1px}.lead{font-size:19px}.notice{background:var(--soft);border-left:3px solid var(--accent);padding:16px 22px;margin:20px 0}.tag{display:inline-block;font-size:12px;border:1px solid var(--line);padding:1px 7px;margin-right:7px}.formula{padding:16px 20px;background:#fff;border:1px solid var(--line);font:15px/1.9 ui-monospace,monospace;overflow-wrap:anywhere}.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:680px;background:white;font-size:14px}th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:var(--soft)}li{margin:8px 0}details{padding:12px 0}summary{cursor:pointer;font-weight:650}.tools{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin:20px 0}button,input,select{font:inherit;color:inherit}button,select,input[type=number]{border:1px solid #9faea5;background:#fff;padding:7px 10px}button{cursor:pointer}label{display:block}input[type=number]{width:110px;max-width:100%}.budget{display:flex;gap:15px;flex-wrap:wrap;margin:15px 0}output{display:block;padding:12px 0;font-weight:650}code{overflow-wrap:anywhere;font-size:14px}.source{border-bottom:1px solid var(--line);padding:13px 0}.source h3{margin:0}footer{padding-top:22px;color:var(--muted);font-size:13px}:focus-visible{outline:3px solid #ad771f;outline-offset:3px}[hidden]{display:none!important}@media(max-width:800px){aside{position:static;width:auto;padding:18px}aside h2{margin:0}nav{display:flex;overflow:auto;margin:12px 0;gap:20px}nav a{white-space:nowrap}main{margin:0;padding:22px 20px}.grid{grid-template-columns:1fr}h1{font-size:27px}}@media print{aside,.tools,.budget{display:none}main{margin:0;padding:0;max-width:none}body{background:#fff;font-size:11pt}h1{font-size:22pt}h2{font-size:17pt}table{min-width:0}section{break-before:auto}.notice{break-inside:avoid}a{color:inherit}}
+</style>
+</head>
+<body>
+<aside><div class="eyebrow">AUTORESEARCH / TR-001</div><h2>课程分配<br>深度研究</h2><p class="meta">2026-11-10 · 评审稿 1<br>检索截止：2026-11-10<br>研究实现与训练：未启动</p><nav aria-label="研究章节"><a href="#decision">01　当前判断</a><a href="#audit">02　原文与代码差异</a><a href="#neighbors">03　必须越过的近邻</a><a href="#question">04　精确研究问题</a><a href="#theory">05　理论推导与边界</a><a href="#mechanism">06　候选机制</a><a href="#experiments">07　判别实验与预算</a><a href="#composition">08　组合泛化设计</a><a href="#architecture">09　代码接口设计</a><a href="#paper">10　论文方案与去留</a><a href="#sources">11　证据与阅读深度</a></nav><a href="thesis-guide.html">先读：学位论文导读</a><br><a href="direction-a-assessment.html#directions-2-3">前轮方向 2 / 3 比较</a><br><a href="index.html">返回工作区</a></aside>
+<main>
+<header><div class="eyebrow">原任务不变，检验课程决策依据</div><h1>哪些练习真正有助于原任务，<br>我们能提前判断吗？</h1><p class="lead">暂按方向 2 为方法主线、方向 3 为组合泛化验证继续研究。主次是本轮工作假设，用户尚未明确选择；不把它写成最终定题。</p><p><span class="tag">原文事实</span><span class="tag">只读代码核对</span><span class="tag">条件推导</span><span class="tag">待验证假设</span>本页没有本项目的新实验结果。</p><div class="tools"><button id="print" type="button">打印完整方案</button><a href="#question">直接阅读研究问题</a><a href="#experiments">查看最小判别实验</a><a href="design/curriculum-evidence-2026-11-10.json">证据索引 JSON</a></div></header>
+
+<section id="decision"><h2>01　可以深入，但还不能宣布创新成立</h2><div class="notice"><strong>建议立项的研究问题：</strong>原 UCS 学习器中，短窗梯度或学习进展对“生成练习的价值”的判断，是否系统性偏离经过原任务回训后的真实 χ 收益？如果偏离，能否以有限核验成本修正课程决策？</div>
+<p>这比“LLM 生成环境＋反馈”“缓解负迁移”“用梯度选任务”更具体。但<strong>收益预测、目标梯度对齐、适应后课程和任务排序本身都已有研究</strong>。本轮交付的是可反驳的研究方案，不能把几种已有工具相加就称为创新。</p>
+<ul><li><strong>保持原问题：</strong>状态、动作、动力学、采集/补能/避障语义、D/F/η/χ 及第一轮奖励和骨干不变。只改变合法训练环境的分配、顺序和配额。</li><li><strong>先隔离调度：</strong>固定候选环境池和原任务回训比例。若调度无净收益，不用更强生成器掩盖；若成立，再接回 4.2 的环境生成循环。</li><li><strong>方向 3 的职责：</strong>检查收益是否只来自记住反馈地图，验证未见因素组合；不把组合测试当作已成立的方法贡献。</li><li><strong>暂不执行：</strong>代码仅只读检查，实验仅设计。用户评估方案前不实现算法、不跑训练、不调用付费模型。</li></ul>
+</section>
+
+<section id="audit"><h2>02　原章节与可复用代码：重要差异已显现</h2><p><span class="tag">原文事实</span>4.2 已有生成训练→回原任务少量训练和评估→多指标反馈的闭环（PDF 105–106 / 印刷 88–89）。4.3 已有共享策略、任务价值头、自适应归一化与像素控制（PDF 107、111–113 / 印刷 90、94–96）。这些均为继承内容。</p>
+<p><span class="tag">只读核对</span>找到 <a href="https://github.com/BIT-MCS/DRL-MTVCS">BIT-MCS/DRL-MTVCS</a>：README 明确对应 INFOCOM 2020 的 <em>Multi-Task-Oriented Vehicular Crowdsensing: A Deep Learning Approach</em>。锁定提交 <code>780e0b41d3fff54c8fa5ea0335979b3f1ec1f225</code>，根 LICENSE 为 MIT。它是高度相关的复用候选，<strong>当前公开提交尚不能视为学位论文 4.3 的等价实现</strong>；没有运行或安装该仓库。</p>
+<div class="scroll"><table><thead><tr><th>项目</th><th>证据与发现</th><th>对研究设计的影响</th></tr></thead><tbody>
+<tr><td>价值头与归一化</td><td>论文 PDF 111–112 / 94–95 是 N 个任务价值头及逐任务统计。公开代码 <code>agent.py:358</code> 输出 1 维 baseline；<code>utils.py:313,362</code> 的统计默认标量，PopArt 输出断言为 1。</td><td>不能把单头实现上的冲突结果外推为原 4.3 仍存在的问题。需确认对应版本或形成逐条等价性修复方案，用户评估后才实施。</td></tr>
+<tr><td>PopArt 更新依赖</td><td><code>utils.py:343–385</code> 创建统计/输出重标定赋值；<code>vtrace.py:290–292</code> 调用，返回值未显式携带这些操作。</td><td>静态阅读尚未确认赋值是否进入 TF1 执行依赖。列为运行图核验项，不能现在断言训练时必然未更新。</td></tr>
+<tr><td>奖励与指标</td><td><code>data_collection_1.py:288–303</code> 奖励使用访问轨迹公平性与充电项；<code>:595–620</code> 综合效率使用采集量公平性。与论文 PDF 101、103 / 84、86 的区分一致。</td><td>训练回报上涨不等于 χ 上涨；但这只是结构差异，不足以证明实际发生了有害错配。</td></tr>
+<tr><td>η 与 F 输出</td><td>代码 η 为 Σ<sub>u</sub>use_energy<sub>u</sub>/E₀，未额外累加充入电量；论文 PDF 101 / 84 的文字“包含…补给”仍有歧义。<code>environments.py:149–153</code> 同时记录采集量公平性和采集比例公平性；<code>experiment.py:848</code> 汇总读取后者，而 efficiency 属性用前者。</td><td>锁定原指标口径前不比较收益。不得由名称“normal_fairness”擅自改写论文 F。零采集时分母为零的处理也须单列。</td></tr>
+<tr><td>补能与结束</td><td><code>data_collection_1.py:420–468</code> 进入站点范围自动补能，该步不采集；<code>:513–542</code> 全部无人机电量耗尽可结束；<code>environments.py:116–121</code> 另有时域截断。</td><td>保留既有机制，不新增“强制回站”任务。须核对原文与包装层的 T、步数统计和终止语义。</td></tr>
+<tr><td>默认参数与优化器</td><td>公开配置地图 16×16、E₀=30；论文实验 PDF 115 / 98 为 8×8、E₀=40。<code>experiment.py:421–435</code> 使用 RMSProp 与全局梯度裁剪；还有像素控制和 V-trace。</td><td>不能直接运行默认参数并称为原文复现；原始策略梯度不等于实际参数更新。</td></tr>
+</tbody></table></div>
+<p class="meta">代码行号均对应锁定提交。表中是整理后的语义审计，不包含论文原文摘录。当前差异不会改变“4.3 已有论文与开源”的用户确认，只影响我们能否准确复用这个版本。</p>
+</section>
+
+<section id="neighbors"><h2>03　经典与 2026 研究已经覆盖了什么</h2><p class="meta">窄屏下可横向滚动表格，查看完整对照。</p><div class="scroll"><table><thead><tr><th>近邻</th><th>已覆盖的想法</th><th>本项目必须回答的差别</th></tr></thead><tbody>
+<tr><td><a href="#s-cmdp">Curriculum MDP，IJCAI 2017</a><br><a href="#s-mm">MM-ACL，CoLLAs 2023</a></td><td>自适应任务排序；根据学生状态预测“练任务 k 后，目标任务改善多少”。</td><td>收益预测不是新思想。需比较预测对象、标签成本、学生状态表示及单次训练内的可用性；不能省略元教师预训练成本。</td></tr>
+<tr><td><a href="#s-procurl">PROCURL-TARGET，IJCAI 2024</a><br><a href="#s-camrl">CAMRL，TPAMI 2023</a></td><td>面向目标分布的课程与任务相关性；课程和非对称迁移缓解负迁移。</td><td>相同骨干的可移植课程应直接比较；需要更换学生结构的算法另列，不能称为等学习器复现。</td></tr>
+<tr><td><a href="#s-gradalign">GradAlign，2026</a><br><a href="#s-tac">TAC，2026 预印本</a></td><td>目标验证梯度指导选样；跨域梯度关系指导分配。GradAlign v2 已讨论二元奖励归一化保持方向的条件与一般标量奖励反例。</td><td>不能声称首次指出归一化失真，不能把二元奖励结论直接套到 UCS 的轨迹指标；移植后的强基线可能已解决问题。</td></tr>
+<tr><td><a href="#s-pgb">PGB，2026-10 预印本</a></td><td>初始梯度分组，利用历史学习状态预测后续代理效用并分配样本。</td><td>“加入时间预测器”不足。须检验以实际原目标回训收益作为校准标签是否带来额外价值；不要只与历史均值比较。</td></tr>
+<tr><td><a href="#s-ulee">ULEE，2026</a></td><td>依据适应后的能力选择自生成目标，元学习多回合探索与适应。</td><td>“看适应后收益”也不是首创。本项目固定原学习器、原奖励和目标，需证明代理排序偏差、低成本修正及收益，而非仅更换场景。</td></tr>
+<tr><td><a href="#s-gas">GAS，ICML 2026</a></td><td>异步课程与策略滞后联合调度。</td><td>滞后先作为混杂控制。其困难度—曲率—滞后模型不能未经核验用作 UCS 定律。</td></tr>
+<tr><td><a href="#s-envgen">EnvGen</a>、<a href="#s-mracl">MRACL，AAAI 2026</a></td><td>反馈驱动环境生成，多奖励空间课程。原 4.2 也已有多指标反馈。</td><td>本轮先固定池；生成器优势另做交叉对照，避免把环境质量提升混同为课程排序贡献。</td></tr>
+<tr><td><a href="#s-compo">CompoSuite</a>、<a href="#s-code">CoDE</a></td><td>因素组合测试与组合环境设计。</td><td>新地图、新组合或组合性这个词本身不构成新贡献。</td></tr>
+</tbody></table></div>
+<p><a href="#s-benchmark">MTBench（RLC 2025）</a> 还提示应分开看 actor 与 critic：其特定实验中的梯度冲突主要出现在价值学习。我们不能先假设“策略冲突就是根因”，更不能为了展示冲突删掉原 4.3 的归一化与辅助机制。</p>
+</section>
+
+<section id="question"><h2>04　把问题写成可检验的量</h2><p><span class="tag">研究定义，不是新增任务</span>令 s 为完整学习状态：策略与价值参数、优化器槽、归一化统计、循环状态及采样/队列状态。T<sub>k,h</sub> 表示在合法练习 k 上按原更新规则训练 h 步；A<sub>a</sub> 表示在原目标任务上按固定流程回训 a 步；p₀ 是预先确定的基准混合。</p>
+<div class="formula">J(s) = E[χ(π(s))]，χ = (1/N) Σⱼ FⱼDⱼ/ηⱼ<br>Uₖ(s;h,a) = E[J(Aₐ(Tₖ,ₕ(s))) − J(Aₐ(Tₚ₀,ₕ(s)))]</div>
+<p>上式比较相同总训练量、相同原任务回训量的两个分支。每任务先算 F·D/η 再平均；每回合比值还是回合聚合后比值，须按语义核验结果冻结，不能混用。a=0 是即时迁移；a&gt;0 对应原流程内的回训后迁移。最终独立测试不向教师反馈。</p>
+<div class="grid"><div><h3>三个可证伪假设</h3><ol><li><strong>H1 排序错配：</strong>学习进展、训练梯度对齐对 U 的排序，在部分阶段系统性失准，超过测量噪声。</li><li><strong>H2 可修正：</strong>少量配对原指标核验能在未参与拟合的检查点/种子上降低错误选任务造成的损失。</li><li><strong>H3 有净收益：</strong>把核验、拟合和评估算进总预算后，最终原 χ 仍优于强基线，且组合留出中不消失。</li></ol></div><div><h3>三个竞争解释</h3><ol><li>原价值学习或版本不等价导致表面冲突，课程本身并不是问题。</li><li>只要统一实际采样量和策略滞后，错配就消失。</li><li>复杂校准器过拟合开发地图，或优势完全来自额外训练/评价预算。</li></ol></div></div>
+<p><strong>“负迁移”用词：</strong>U&lt;0 表示不如基准分配；只有相对同一分支训练前的原指标确实下降，才记录为绝对退化。回训能恢复与回训后仍退化分别报告。</p>
+</section>
+
+<section id="theory"><h2>05　理论入口：解释决策误差，而非许诺全局收敛</h2><details open><summary>推导 A：训练代理为何可能判断错</summary><p>在固定随机性、局部光滑的理想化学习状态空间中，记 Φ<sub>a</sub>(s)=J(A<sub>a</sub>(s))，Δ<sub>k</sub>=T<sub>k,h</sub>(s)−s，Δ₀ 同理。若 Φ<sub>a</sub> 的梯度为 L-Lipschitz，则固定随机实现下的收益差 uₖ 满足（Uₖ 为其期望）：</p><div class="formula">uₖ = ∇Φₐ(s)ᵀ(Δₖ−Δ₀) + Rₖ−R₀<br>|Rₖ−R₀| ≤ (L/2)(‖Δₖ‖²+‖Δ₀‖²)<br>∇Φₐ(s) = DAₐ(s)ᵀ ∇J(Aₐ(s))</div><p>链式法则和 Taylor 界是标准工具，<strong>不是本论文的新定理</strong>。它们指出三个必须区别的对象：训练回报梯度与原 χ 梯度；原始梯度与完整学习器的实际更新；回训前的目标梯度与回训后的敏感性。单纯的梯度余弦无法自动消除这些区别。</p><p>真实过程含随机轨迹、裁剪、队列和离散环境，完整 s 也不能随意当成光滑向量。以上只适用于明示的局部连续近似；一般情况以有限差分配对测量 U 为准，不能声称已证明原异步算法的改善保证。η=0 等指标边界未处理前，不假设 J 有界或可微。</p></details>
+<details><summary>推导 B：是否存在任务顺序效应</summary><div class="formula">Oₖℓ(s) = E[J(Aₐ(Tℓ,ₕ(Tₖ,ₕ(s)))) − J(Aₐ(Tₖ,ₕ(Tℓ,ₕ(s))))]</div><p>两分支任务计数、总步数和最后回训完全一致，只交换顺序。O 不为零可以来自表示学习、优化器记忆、归一化或数据分布变化；不能直接命名为“技能先修关系”。</p><p>若理想更新 Tₖ(s)=s+εvₖ(s)，光滑小步近似下顺序差的二阶项为 ε²∇Φₐ(s)ᵀ[Dvℓ(s)vₖ(s)−Dvₖ(s)vℓ(s)]。这也是标准展开，只说明一阶打分可能忽略什么；任务排序早有 Curriculum MDP 和序列搜索方法，不能声称首次研究顺序。</p><p>本项先作诊断。如果等计数随机排序与调度排序等效，就不增加序列模型；如发现稳定效应，再提出单独机制及与序列课程方法的比较。</p></details>
+<details><summary>理论成果的最低要求</summary><p>不能以重写 χ、Hoeffding 界或“若所有预测误差≤ε，则选优损失≤2ε”充当主要理论贡献。更有价值的目标是：明确哪一种可测误差导致排名翻转；推导在实际更新量、回训长度或核验噪声条件下何时必须重新测量；证明适用于所提出决策规则的性质，并用数据检验假设。如果做不到，应按机制与实验论文定位，不强行承诺理论保证。</p></details>
+</section>
+
+<section id="mechanism"><h2>06　一个可实现、也可以被否定的候选机制</h2><p><span class="tag">暂称“原指标收益校准课程”</span>名称仅用于讨论，不代表算法已经定稿。保留原学生的全部更新规则；教师在同一合法候选池中选择下一段练习，不修改环境奖励。</p>
+<ol><li><strong>廉价代理层：</strong>收集学习进展、目标梯度对齐、actor/critic/像素控制分量、真实任务占比和策略版本差。先以 GradAlign/TAC 式规则作为强基线，不把这些组件列作新贡献。</li><li><strong>稀疏核验层：</strong>在预设检查点，从同一完整快照分出有限个练习分支和混合对照。每个分支执行相同 h 和 a，用独立开发评价回合测量 U；所有开销计账。</li><li><strong>最小校准模型：</strong>先拟合正则线性残差：Ûₖ=α+β·proxyₖ+wᵀzₖ。z 只含决策时可获得的学习状态和合法配置描述。若线性模型已足够，不额外使用大网络或 LLM 判断收益。</li><li><strong>测量分配：</strong>为“代理与校准排序分歧大”以及代表性随机候选分别保留核验额度，避免只验证自己喜欢的任务。优先级和刷新频率在开发集确定；与等额度随机核验、均匀周期核验比较。</li><li><strong>课程分配：</strong>在固定原任务回训配额之外，依据校准排序分配练习；保留预设探索下限。无足够可信数据时退回强代理基线。探索下限只是训练调度参数，不是新 UAV 约束。</li></ol>
+<p><strong>真正待争取的贡献：</strong>在原学习器和真实 χ 上发现可重复的代理失效结构；以显著少于穷举的测量修正决策，并在总预算下获得净收益。只有“加回归器后涨分”不足以说明该贡献。MM-ACL 已预测跨任务收益，PGB 已建时序预测器，ULEE 已看适应后表现；具体标签、误差机制和成本证据须越过这些近邻。</p>
+<p><strong>与 MM-ACL 的具体比较：</strong>它在多次学生训练历程中学习短段跨任务收益模型，部署阶段使用历史上下文。本候选暂研究一次训练内的稀疏配对校准、固定回训后的原 χ 收益和校准成本；这些是待比较的设计差异，并非新颖性证明。应增加同预算的 MM-ACL 式在线收益预测，以及其加上固定回训标签的适配对照；若简单适配已解决问题，就停止包装新的校准算法。</p>
+<p><strong>暂不叠加：</strong>自动改奖励、改骨干、元学习学生、按最差任务重新定义目标、并行加入任务编辑因果模型。先找到一个可解释的机制。</p>
+</section>
+
+<section id="experiments"><h2>07　分阶段实验计划：先判别，再决定是否扩大</h2><p class="meta">下面均为待评审方案，不是运行命令或已执行任务。最小有意义收益 δχ、实际预算 B、h/a、任务数量和最终重复数须在实施前冻结。</p>
+<div class="scroll"><table><thead><tr><th>阶段</th><th>实验与对照</th><th>必要证据 / 停止条件</th></tr></thead><tbody>
+<tr><td>D0 语义对齐</td><td>核对论文—配置—指标—网络—TF 更新依赖；未来用小型确定轨迹核查采集、补能、能耗和结束。区分原始发布版本与修复版本。</td><td>本轮已完成部分静态审计。差异未解决时，不能进入“固定原 4.3”的实验证明；修复不记为算法创新。</td></tr>
+<tr><td>D1 现象判别</td><td>固定候选池；均匀基线的早/中/晚快照。短段练习 k 与混合分支等预算，a=0 与固定 a&gt;0 分别评价。记录逐任务 D/F/η/χ、代理排名和实测收益。</td><td>排名翻转须跨种子/检查点复现并超过测量不确定性。若强代理预测已经足够，不继续复杂校准。</td></tr>
+<tr><td>D2 机制区分</td><td>actor 与 critic 分量分开；控制真实采样量/样本年龄；等计数顺序交换；检查原任务回训是否改变排名。附加诊断才考虑冻结统计等非原算法分支，单列结果。</td><td>如果现象仅由代码差异或异步吞吐产生，先解决一致性，不能作为新科学发现。任何改学习器的诊断均不得替代主实验。</td></tr>
+<tr><td>D3 方法竞争</td><td>均匀/静态最优开发混合、学习进展、可适配的 TAC/GradAlign、MM-ACL 式收益预测、PGB 式时序代理，以及候选校准法。统一学生、候选池、回训份额和教师反馈权限。</td><td>先筛保留有竞争力基线，再冻结最终对照。无法忠实移植时明确“机制适配”，不得冒称原算法复现。比较总体开销后的 χ。</td></tr>
+<tr><td>D4 反事实与泛化</td><td>去掉收益校准、只看即时收益、等额度随机核验、移除学习状态、打乱调度但保留计数；加方向 3 留出和互补划分。</td><td>校准收益和低成本采样须分别有证据；只有开发任务上涨或只在一个特定组合上涨，不足以支撑一般方法主张。</td></tr>
+<tr><td>D5 回到 4.2</td><td>方法成立后，生成来源×调度做交叉对照：合法随机/规则池与原反馈生成池，分别均匀调度/候选调度。生成器及模型预算完整报告。</td><td>这是后续方案。未授权付费模型；没有原 4.2 代码时只能称协议重建。生成器和调度收益分开归因。</td></tr>
+</tbody></table></div>
+<h3>预算账本：分支训练不免费</h3><div class="formula">B_total = B_main + B_probe_train + B_target_adapt + B_eval + B_generation<br>B_probe_train + B_target_adapt = 2 × C × K × S × (h+a)</div><p>上式是每个候选各有独立练习/混合两分支的保守计划账本。C 为检查点数，K 为每点候选数，S 为独立主训练种子数。若复用混合分支，必须保留相关性并按实际费用记账；不能当作更多独立样本。主训练预算比较与全部交互预算比较分开报告，另报总 GPU/CPU 时、墙钟、生成模型费用。</p>
+<div class="notice"><strong>预算示意计算器，不是实验结果</strong><div class="budget"><label>检查点 C<input id="budget-c" type="number" min="1" max="100" value="3"></label><label>候选 K<input id="budget-k" type="number" min="1" max="100" value="4"></label><label>训练种子 S<input id="budget-s" type="number" min="1" max="100" value="3"></label><label>练习步 h<input id="budget-h" type="number" min="1" max="10000000" value="10000"></label><label>回训步 a<input id="budget-a" type="number" min="0" max="10000000" value="5000"></label></div><output id="budget-output" aria-live="polite"></output><p class="meta">这里只计两分支的练习与回训步数；不含主训练、评价及生成。默认数值仅用于展示成本，3 个种子不构成充分统计保证。</p></div>
+<h3>统计和测量约定</h3><ul><li>以完整训练种子为主要独立单位；同一种子的地图与重复回合采用分层统计，不把数千回合当作数千次独立训练。计划先用少量诊断种子估计方差，最终重复数依据 δχ 和精度规划确定，不能边看显著性边加样本。</li><li>报告 χ 配对差及区间、D/F/η 分量、逐任务变化和尾部退化。最差任务是辅助观察，不替换原平均 χ。</li><li>代理评价包含排序相关、符号错误、选中候选相对诊断池最佳候选的 U 损失；只有在诊断子池测过全部候选时才有该参考，不能叫全任务“真 oracle”。</li><li>教师反馈集、超参选择集、最终测试集隔离；各基线可获得同等开发反馈预算。重复使用开发地图属于训练信息，需明示。</li><li>无采集/无能耗等异常不随意加 ε 改目标；先按原语义给出统一处理与异常数量。训练梯度与指标定义的任何不一致均存档。</li></ul>
+</section>
+
+<section id="composition"><h2>08　方向 3：留出组合，而不偷换任务</h2><p><span class="tag">待评审划分</span>固定 UAV 数、站点数、PoI 数、总需求、时域和物理参数。A 为 PoI 分散/聚集布局，B 为均匀/非均匀需求，C 为相同障碍面积下的两类布局。因素取值范围依原定义与可实现性核验确定，不添加新目标。</p>
+<div class="formula">训练组合：000、011、101、110<br>留出组合：001、010、100、111</div>
+<p>这个二值设计使每个单因素取值和每对因素的四种组合均在训练中出现，而三因素完整组合留出。它只能支持这三个因素及取值范围内的组合结论，不能证明任意组合泛化。</p>
+<ol><li>每格采样多张独立地图，不用八张地图代表八类；PoI/障碍种子和需求赋值分别控制。数据不由最终学生表现反向筛选。</li><li>合法性包括边界、碰撞及既有语义要求；检查连通性和可达性，但不新增“必须充电才能成功”的筛选规则。</li><li>匹配名义难度参数，记录实际路径距离、站点距离、拥挤与剩余需求分布；同组合新地图作为 IID 对照。若留出组只是更难，需做预注册分层敏感性分析，不能全部归因于组合。</li><li>交换两组重新从头训练作为互补划分；两次独立实验都严守自己的留出组，不在一个模型上轮流暴露两组后声称未见。</li><li>零样本测试冻结策略，最终留出组合不参与生成器反馈、教师探测或调参；少量适应作为单独协议，用相同适应预算和新的评价回合。</li></ol>
+<p><strong>独立成文条件：</strong>若多种课程都在未见组合上稳定失效，发现能排除额外难度/记忆的机制，并提出有效修正，方向 3 可升为主线。若只是制作新划分，应定位为本论文的证据资源。</p>
+</section>
+
+<section id="architecture"><h2>09　代码设计：现在只定义接口与证据流</h2><div class="scroll"><table><thead><tr><th>拟议模块</th><th>输入 → 输出</th><th>必须守住的边界</th></tr></thead><tbody>
+<tr><td><code>semantics_manifest</code></td><td>论文章节/代码提交/配置 → 指标、动力学、结束与骨干核对清单</td><td>未对齐项不能默认“通过”；发布版与修复版各有版本标识。</td></tr>
+<tr><td><code>task_pool / split_manifest</code></td><td>合法配置、独立种子 → 训练池/开发集/最终组合留出及内容哈希</td><td>最终测试配置不进入教师 API；禁止同图改名进入不同集合。</td></tr>
+<tr><td><code>learner_adapter</code></td><td>任务分配、预算 → 原学习器更新、真实采样占比、版本差与损失分量</td><td>不改奖励；记录实际更新而非只记录请求配额。</td></tr>
+<tr><td><code>checkpoint_bundle</code></td><td>训练状态 → 策略/价值/优化器/归一化/RNG/循环/队列与采样状态</td><td>选择完整恢复或统一暂停清空队列方案，后者须标注改变了恢复协议；不能只复制网络。</td></tr>
+<tr><td><code>paired_probe</code></td><td>同一快照、k/p₀、h/a、开发种子 → U 与逐任务原指标、预算账单</td><td>探测分支不混回主学生训练状态；可保留教师标签，未来若复用分支须重新定义公平协议。</td></tr>
+<tr><td><code>utility_estimator / scheduler</code></td><td>时刻可用日志与探测标签 → 排序、练习分布、校准不确定性和选择原因</td><td>跨检查点/主训练种子验证，不能用最终测得 U 预测当时决策。</td></tr>
+<tr><td><code>evaluator / budget_ledger</code></td><td>冻结策略和评价计划 → 每回合 D/F/η/χ、聚合统计、总成本</td><td>原论文数值与新实验分开；外部教师训练和失败试验预算也计入。</td></tr>
+</tbody></table></div><p>以上是接口契约草案，不是已经创建的 Python 模块。公开旧代码只保存在 Git 忽略的阅读目录，未复制为新的研究实现。实施时优先复用经核验的环境和学习器；TF1 到新框架的迁移需先证明语义一致，不能把框架迁移收益混作课程创新。</p>
+</section>
+
+<section id="paper"><h2>10　论文应围绕一个证据链组织</h2><p><strong>暂定题目：</strong>面向无人机群体感知的原指标收益校准课程学习。只有 H1–H3 均获支持后才适合用方法式标题；否则保留为课程评估研究，不提前写摘要中的性能提升。</p>
+<ol><li><strong>引言：</strong>原 UCS 的任务复用需求；生成练习并不等于知道如何分配；明确新的问题和边界。</li><li><strong>相关工作：</strong>生成课程、跨任务迁移、目标导向/适应后课程、组合泛化；逐项说明与 MM-ACL、GradAlign、TAC、PGB、ULEE 的关系。</li><li><strong>原问题与审计后的协议：</strong>D/F/η/χ、继承的 4.3 学习器、原反馈循环、代码语义差异与处理。</li><li><strong>代理有效性的诊断：</strong>可重复的排名错配及竞争解释；不把单个失败轨迹当普遍机制。</li><li><strong>方法与条件分析：</strong>精确收益目标、低成本核验及校准决策；区分标准工具与真正新增性质。</li><li><strong>实验：</strong>总预算主结果、强基线、误差解释、消融、未见组合、完整成本和失败情形。</li><li><strong>局限与结论：</strong>任务族、适应预算、学习器依赖与检索截止；公布可复验材料。</li></ol>
+<h3>继续与停止</h3><ul><li><strong>继续为方法论文：</strong>稳定错配＋可解释修正＋总预算收益＋未见组合验证同时成立。</li><li><strong>保留应用研究：</strong>已有强方法直接有效，却无独立机制贡献；可以形成扎实的 UCS 研究，但应降低“通用新算法”的主张。</li><li><strong>停止此机制：</strong>错配不稳定、强近邻已解决、修正成本超过收益，或优势来自削弱原骨干。返回原任务内其他候选，不能人为换任务制造结果。</li></ul>
+<p>自动化学报仍作为用户给定的基础稿件方向和排版模板，不代表录用保证。是否挑战更高目标，待上述证据和可推广性形成后再核对具体期刊/会议范围；本轮不以没有结果的设想承诺更高投递。</p>
+<h3>本轮采用的 Auto Research 做法</h3><p>沿用已有方法规程中的来源追踪、假设台账、最近邻主动反证、成本记账和可复验协议。每个 H 对应反例和停止条件；优先找能否定想法的文献。没有声称部署了完整自动科研系统，也没有启动实验代理。</p>
+<p><strong>下一次评审最值得决定：</strong>先认可“代理是否可靠”这一科学问题，再确定是否批准 D0 的实现核验与 D1 的最小诊断；原指标歧义、4.3 对应实现、δχ 与预算仍须解决。本页本身不构成执行批准。</p>
+</section>
+
+<section id="sources"><h2>11　证据索引与阅读深度</h2><p>定向检索，非穷尽系统综述。年份以出版/提交记录为准，不用搜索引擎抓取时间判断。新颖性仍需在定题、投稿和修回前更新；2027 年尚未出现的工作不作已知事实。以下“阅读”均不代表独立复现实验或核验全部证明。</p><div class="tools"><label for="source-filter">筛选来源 <select id="source-filter"><option value="all">全部</option><option value="2026">2026 年</option><option value="method">已读关键方法/代码</option><option value="limited">元数据/摘要，待深入</option></select></label><output id="source-count" aria-live="polite"></output></div>
+<article class="source" id="s-codebase" data-year="2020" data-depth="method"><h3>原论文与 DRL-MTVCS</h3><p><a href="https://github.com/BIT-MCS/DRL-MTVCS/tree/780e0b41d3fff54c8fa5ea0335979b3f1ec1f225">锁定代码提交</a> · <a href="https://ieeexplore.ieee.org/document/9155393/">INFOCOM 2020 论文</a>。读 README、LICENSE、环境指标/动力学、默认配置、网络输出、归一化、V-trace、更新及汇总调用片段；未读完整训练路径或运行图。学位论文章节/PDF 页序/印刷页码已在正文标注；原 PDF 与摘录保留在本地忽略目录。</p></article>
+<article class="source" id="s-cmdp" data-year="2017" data-depth="method"><h3>Autonomous Task Sequencing for Customized Curriculum Design in Reinforcement Learning</h3><p><a href="https://ijcai.org/proceedings/2017/353">IJCAI 2017</a>。读问题设定与 curriculum MDP 方法概要；任务排序是经典问题。另查 <a href="https://arxiv.org/abs/1901.11478">An Optimization Framework for Task Sequencing（2019 预印本）</a> 摘要，序列搜索细节待核验。</p></article>
+<article class="source" id="s-mm" data-year="2023" data-depth="method"><h3>Model-Based Meta Automatic Curriculum Learning</h3><p><a href="https://proceedings.mlr.press/v232/xu23a.html">CoLLAs 2023 / PMLR</a>。读 §3.1–3.4、§4.1–4.3 与算法 1：完整学生状态定义、任务/回报历史、LSTM 学习动力学模型、多次独立训练历程采集前后收益标签，离线学教师后部署。完整超参与预算仍待核验；这是本候选最直接的传统 RL 近邻。</p></article>
+<article class="source" id="s-procurl" data-year="2024" data-depth="method"><h3>Proximal Curriculum with Task Correlations for Deep Reinforcement Learning</h3><p><a href="https://ijcai.org/proceedings/2024/0556.pdf">IJCAI 2024</a>。读问题设定、REINFORCE 分析概要及 §3.2 目标分布/相关性采样公式；未审完附录证明。作为传统交互 RL 的目标导向近邻。</p></article>
+<article class="source" id="s-camrl" data-year="2023" data-depth="method"><h3>CAMRL</h3><p><a href="https://arxiv.org/html/2211.03352">作者文稿，预印本 2022 / 正式 TPAMI 2023</a>。前轮读 §III-A/B 的课程与非对称迁移；多任务独立参数及迁移矩阵不等同于固定共享策略。</p></article>
+<article class="source" id="s-gradalign" data-year="2026" data-depth="method"><h3>GradAlign: Gradient-Aligned Data Selection for LLM Reinforcement Learning</h3><p><a href="https://arxiv.org/abs/2602.21492">元数据</a> · <a href="https://arxiv.org/html/2602.21492v2">v2 作者全文</a>。首次 2026-02-25，v2 07-18；arXiv 作者注明 Accepted by COLM 2026，未另核会议录。读 §3–4，尤其 Theorem 4.1/4.2 的二元奖励、on-policy、无裁剪/KL 分析条件及一般标量反例提示；附录证明未完整复核。</p></article>
+<article class="source" id="s-tac" data-year="2026" data-depth="method"><h3>Transferability for General Reasoning: An Automated Curriculum for Multi-Domain RLVR</h3><p><a href="https://arxiv.org/html/2606.25178v2">TAC，2026-06 预印本 v2</a>。前轮读 §3.1–3.3：优势代理、投影梯度迁移与 bandit 分配。作者开销和性能是其报告，未在 UCS 复验。</p></article>
+<article class="source" id="s-pgb" data-year="2026" data-depth="method"><h3>Predictive Bandit Curriculum Reinforcement Learning via Gradient-Based Sample Group Discovery</h3><p><a href="https://arxiv.org/html/2610.25704v1">PGB，2026-10-19 预印本</a>。读 §3.1–3.3：初始 SFT 梯度固定分组、学习状态序列、GRU/MLP 预测优势/进展代理、Boltzmann 分配；不是每轮重新聚类，也不是已验证的真实目标收益 oracle。</p></article>
+<article class="source" id="s-ulee" data-year="2026" data-depth="method"><h3>Unsupervised Learning of Efficient Exploration: Pre-training Adaptive Policies via Self-Imposed Goals</h3><p><a href="https://arxiv.org/html/2601.19810v1">ULEE，2026 作者文稿</a> · <a href="https://openreview.net/pdf?id=UmxTIxHWkl">OpenReview PDF</a>。PDF 标注 ICLR 2026；论坛页遇浏览器验证。读适应后难度设定、方法概要、§4.3 与附录 post-adaptation LP 讨论；未完成全部算法/证明审计。它已直接覆盖“适应后能力指导课程”的宽泛想法。</p></article>
+<article class="source" id="s-gas" data-year="2026" data-depth="method"><h3>Gradient-Aware Scheduling: Coupling Curriculum and Staleness for Async Reinforcement Learning</h3><p><a href="https://proceedings.mlr.press/v306/zhang26bc.html">GAS，ICML 2026 / PMLR</a>。读 PDF §4 的平滑/有界更新/吞吐假设及课程—滞后调度描述。指数关系依赖其模型，附录推导未独立复核，不把它视为 UCS 的已知规律。</p></article>
+<article class="source" id="s-benchmark" data-year="2025" data-depth="method"><h3>Benchmarking Massively Parallelized Multi-Task Reinforcement Learning for Robotics Tasks</h3><p><a href="https://rlj.cs.umass.edu/2025/papers/RLJ_RLC_2025_140.pdf">MTBench，RLC/RLJ 2025</a>。读摘要及 actor/critic 梯度冲突、架构和计算成本的结果分析；结论仅在其机器人基准中成立。</p></article>
+<article class="source" id="s-envgen" data-year="2024" data-depth="method"><h3>EnvGen</h3><p><a href="https://arxiv.org/html/2403.12014v2">作者文稿 v2</a>。前轮读 §2.2 反馈适配与实验设置；环境生成闭环属于已知近邻。</p></article>
+<article class="source" id="s-mracl" data-year="2026" data-depth="limited"><h3>MRACL: Multi-Reward Space Guided Adaptive Curriculum Reinforcement Learning for LLMs</h3><p><a href="https://ojs.aaai.org/index.php/AAAI/article/view/41101">AAAI 2026，DOI 10.1609/aaai.v40i44.41101</a>。元数据/摘要；全文直连受限。不能据摘要断言它与拟议机制完全相同或不同。</p></article>
+<article class="source" id="s-compo" data-year="2022" data-depth="limited"><h3>CompoSuite</h3><p><a href="https://proceedings.mlr.press/v199/mendez22a.html">CoLLAs 2022 / PMLR</a>。前轮元数据/摘要：机器人因素组合基准。具体划分及公平性细节待精读。</p></article>
+<article class="source" id="s-code" data-year="2021" data-depth="limited"><h3>CoDE</h3><p><a href="https://proceedings.neurips.cc/paper_files/paper/2021/hash/218344619d8fb95d504ccfa11804073f-Abstract.html">NeurIPS 2021</a>。前轮摘要：组合环境设计。仅用于排除“首次组合生成”的宽泛主张。</p></article>
+<article class="source" id="s-moc" data-year="2023" data-depth="limited"><h3>Learning Multi-Objective Curricula for Robotic Policy Learning</h3><p><a href="https://proceedings.mlr.press/v205/kang23a.html">CoRL 2022 / PMLR 出版 2023</a>。读摘要与引言；多种课程模块协同，不能把其 multi-objective 直接等同于 UCS 的 D/F/η。改奖励/目标的模块不自动纳入本轮固定语义实验。</p></article>
+</section>
+<footer>本页为主要正文；JSON 仅索引证据和状态，避免维护重复全文。没有执行研究实验、付费调用或公开发布。源文件可在浏览器所在电脑 Ctrl+O 打开；远程机器的绝对路径不能当作本机网址。</footer>
+</main>
+<script>
+const fields=['c','k','s','h','a'];
+function budget(){const values=fields.map(k=>document.getElementById('budget-'+k));const out=document.getElementById('budget-output');if(values.some(el=>el.value===''||!el.checkValidity())){out.textContent='请输入范围内的非负整数；C、K、S、h 至少为 1。';return;}const [c,k,s,h,a]=values.map(el=>Number(el.value));out.textContent='示意分支交互量：'+(2*c*k*s*(h+a)).toLocaleString('zh-CN')+' 步（不含主训练、评价与生成）';}
+fields.forEach(k=>document.getElementById('budget-'+k).addEventListener('input',budget));budget();
+function filter(){const value=document.getElementById('source-filter').value;let count=0;document.querySelectorAll('.source').forEach(el=>{el.hidden=!(value==='all'||el.dataset.year===value||el.dataset.depth===value);if(!el.hidden)count++;});document.getElementById('source-count').textContent=count+' 条来源';}
+document.getElementById('source-filter').addEventListener('change',filter);filter();
+function revealSource(hash){const el=document.getElementById(hash.slice(1));if(el&&el.classList.contains('source')&&el.hidden){document.getElementById('source-filter').value='all';filter();}}
+window.addEventListener('hashchange',()=>revealSource(location.hash));document.querySelectorAll('a[href^="#s-"]').forEach(a=>a.addEventListener('click',()=>revealSource(a.getAttribute('href'))));revealSource(location.hash);
+let printState=null;
+function beforePrint(){if(printState)return;printState={details:[...document.querySelectorAll('details')].map(el=>el.open),filter:document.getElementById('source-filter').value};document.querySelectorAll('details').forEach(el=>el.open=true);document.getElementById('source-filter').value='all';filter();}
+function afterPrint(){if(!printState)return;document.querySelectorAll('details').forEach((el,i)=>el.open=printState.details[i]);document.getElementById('source-filter').value=printState.filter;printState=null;filter();}
+window.addEventListener('beforeprint',beforePrint);window.addEventListener('afterprint',afterPrint);document.getElementById('print').addEventListener('click',()=>{beforePrint();window.print();});
+</script>
+</body>
+</html>

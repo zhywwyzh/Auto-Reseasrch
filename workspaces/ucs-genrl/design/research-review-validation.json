@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-10",
+  "url": "http://127.0.0.1:18773/workspaces/ucs-genrl/research-review.html",
+  "access_scope": "same-computer-loopback-only",
+  "http_status": 200,
+  "sections": 9,
+  "source_cards": 10,
+  "new_source_filter": 4,
+  "search_expand_navigation": "passed",
+  "mobile_390_no_horizontal_overflow": true,
+  "javascript_errors": [],
+  "local_links": "all exist; fragments checked",
+  "source_hashes": "passed",
+  "research_training_runs": 0,
+  "research_implementation_created": false
+}

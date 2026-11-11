@@ -1,0 +1,25 @@
+{
+  "date": "2026-11-10",
+  "artifact": "../direction-a-assessment.html",
+  "document_version": "2026-11-10-draft-6",
+  "checks": {
+    "unique_ids_and_local_fragments": "passed",
+    "threshold_control": "passed at 0,40,41,80,81,100; hypothetical only",
+    "print_button_and_details_restore": "passed",
+    "no_external_assets": "passed",
+    "json_and_javascript_syntax": "passed",
+    "chrome_desktop_and_mobile": "draft-6 Chrome load passed at 1440 and 390 px; no document overflow; CSS unchanged from draft-5 screenshots",
+    "existing_five_section_navigation": "passed",
+    "git_diff_check": "passed",
+    "original_pdf_and_qa_artifacts_ignored": "passed",
+    "original_task_section": "present; 9 sections; current and historical recommendations labeled",
+    "temporary_browser_cleanup": "draft-6 browser closed gracefully, temporary profile cleaned",
+    "directions_2_3": "new discussion initially expanded; unique IDs and local links passed; print restores collapsed state"
+  },
+  "preview_scope": "单文件HTML；持有文件的同机浏览器可直接打开；未开启持续服务或公开发布",
+  "research_experiments": 0,
+  "limits": [
+    "Web UI测试不等于研究实验",
+    "外部论文访问限制与阅读深度见evidence记录；未核验代码可复现性"
+  ]
+}

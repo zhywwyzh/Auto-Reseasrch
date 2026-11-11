@@ -1,0 +1,45 @@
+{
+  "date": "2026-11-10",
+  "artifact": "../curriculum-deep-research.html",
+  "kind": "Web UI verification only; no research implementation or experiment",
+  "static_checks": {
+    "unique_ids": 36,
+    "sections": 11,
+    "source_entries": 16,
+    "sources_2026": 6,
+    "checks": [
+      "unique ids and fragment targets",
+      "local file links exist",
+      "no external runtime assets",
+      "inline script executed without errors",
+      "budget default/zero-adaptation/invalid input",
+      "source filtering",
+      "source navigation reveals filtered target",
+      "print expands details and sources, then restores state",
+      "evidence and decision JSON parse",
+      "app.js node --check",
+      "git diff --check"
+    ]
+  },
+  "browser": [
+    {
+      "width": 1440,
+      "scroll": 1425,
+      "title": "课程收益是否判断正确？ · UCS-GenRL 深度研究",
+      "table_scroll": false
+    },
+    {
+      "width": 390,
+      "scroll": 375,
+      "title": "课程收益是否判断正确？ · UCS-GenRL 深度研究",
+      "table_scroll": true
+    }
+  ],
+  "visual_inspection": [
+    "1440px desktop overview",
+    "390px mobile experiments with horizontally scrollable table"
+  ],
+  "delivery": "standalone local HTML; file:// loading tested; no persistent service or public hosting",
+  "ignored_materials_verified": true,
+  "research_training_runs": 0
+}

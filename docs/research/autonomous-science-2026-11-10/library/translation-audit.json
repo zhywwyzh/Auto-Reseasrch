@@ -1,0 +1,167 @@
+{
+  "checked": "2026-11-10",
+  "method": "本会话翻译；未调用外部翻译服务或付费模型API",
+  "full_paper_translation": false,
+  "items": [
+    {
+      "id": "autodna",
+      "translation_kind": "官方Apache-2.0 README概述与系统架构翻译；期刊摘要仅作内容核验，未全文翻译",
+      "original_en_sha256": "335cf5f7af05ad993a4db72fdd5b7acbdb6c22e6b0d2ee42decc04ceba999174",
+      "translation_zh_sha256": "f687889a4546bfd8a3dd5b384e819f6f1fc5e98766c5b79667000619839563ba",
+      "english_chars": 848,
+      "chinese_chars": 196,
+      "local_reader": "thesis-reference/notes/autonomous-science-2026-11-10/autodna/bilingual.html",
+      "independently_reproduced": false
+    },
+    {
+      "id": "agentic-scientist",
+      "translation_kind": "固定版本论文摘要全文翻译；CC BY 4.0",
+      "original_en_sha256": "ba29711b51a63087dc8c61f1754b6df6883d952dea5a5fc2faff9afb9ad353a5",
+      "translation_zh_sha256": "8d4aa4c6027d7c60f2931179b5068ac9164344aa780474833c72563020d22990",
+      "english_chars": 1914,
+      "chinese_chars": 487,
+      "local_reader": "thesis-reference/notes/autonomous-science-2026-11-10/agentic-scientist/bilingual.html",
+      "independently_reproduced": false
+    },
+    {
+      "id": "closing-empirical-loop",
+      "translation_kind": "固定版本论文摘要全文翻译；CC BY 4.0",
+      "original_en_sha256": "6a66286eca8bd9a0c9ddb95c5669bec0a5106f22ace97f485a027f43c3f39948",
+      "translation_zh_sha256": "d3f3803a817f501b0cbc4048c9d02101307cc027c3163fa06aa5dce215b6b784",
+      "english_chars": 1618,
+      "chinese_chars": 396,
+      "local_reader": "thesis-reference/notes/autonomous-science-2026-11-10/closing-empirical-loop/bilingual.html",
+      "independently_reproduced": false
+    },
+    {
+      "id": "scientisttwo",
+      "translation_kind": "固定版本论文摘要全文翻译；CC BY 4.0；评价性措辞是作者主张",
+      "original_en_sha256": "9c27dff5ccee4fee414017de199a79e115cc3f31a6a79424250b3db51070f18b",
+      "translation_zh_sha256": "eac8e1aa72f744d883ca0b70dfef31ef1276e087072dfafe90c8c31f454abe58",
+      "english_chars": 1699,
+      "chinese_chars": 431,
+      "local_reader": "thesis-reference/notes/autonomous-science-2026-11-10/scientisttwo/bilingual.html",
+      "independently_reproduced": false
+    },
+    {
+      "id": "mombot",
+      "translation_kind": "当前MIT代码仓库README Overview及硬件范围说明的选段翻译；不是全文论文译本",
+      "original_en_sha256": "8a74a9ffe1bbb67c553318a0f345836af8ce1b26c3f87a7ac9eaa420a90cf3a9",
+      "translation_zh_sha256": "f029593ca98dfb63d56dd0fa97f4045d7e8b5e5d3867383bfa2984018b213e8c",
+      "english_chars": 1092,
+      "chinese_chars": 245,
+      "local_reader": "thesis-reference/notes/autonomous-science-2026-11-10/mombot/bilingual.html",
+      "independently_reproduced": false
+    },
+    {
+      "id": "omniscientist",
+      "translation_kind": "摘要开头选段翻译；其余为原创方法译解，非摘要全文译文。arXiv仅非独占传播许可。",
+      "original_en_sha256": "acd4619795bc42b0170fb6d6fc66a9fa07e0fe24792287b7f9f2a84d2e8ea8a8",
+      "translation_zh_sha256": "4053943a2d01f077675435ade72d4848787b29dd13c8e970e02bcfa8544de894",
+      "english_chars": 504,
+      "chinese_chars": 145,
+      "local_reader": "thesis-reference/notes/autonomous-science-2026-11-10/omniscientist/bilingual.html",
+      "independently_reproduced": false
+    },
+    {
+      "id": "co-scientist",
+      "translation_kind": "已固定arXiv v2摘要全文翻译；CC BY 4.0。与Nature最终版分别记录。",
+      "original_en_sha256": "7f234d8b6bad41e362eff315dcab749fe4d02aa4f320409ec781e9e698384894",
+      "translation_zh_sha256": "c16c0908cb4c2e4d6987bc5c7e94fb902d96e98b87836009701e311fe0bdc3f1",
+      "english_chars": 1510,
+      "chinese_chars": 412,
+      "local_reader": "thesis-reference/notes/autonomous-science-2026-11-10/co-scientist/bilingual.html",
+      "independently_reproduced": false
+    },
+    {
+      "id": "alphaevolve",
+      "translation_kind": "摘要首两句选段翻译；方法为原创简明译解。论文CC BY-NC-ND，未制作全文译本。",
+      "original_en_sha256": "6ebdc456a810b3d449d3ba6f3c33d831321b68b5a4dd846cea599571734f218a",
+      "translation_zh_sha256": "ed6306b44aca3fe3cf7ade60f0019de05b00fb88ab530790d48b7db0df901a78",
+      "english_chars": 405,
+      "chinese_chars": 122,
+      "local_reader": "thesis-reference/notes/autonomous-science-2026-11-10/alphaevolve/bilingual.html",
+      "independently_reproduced": false
+    },
+    {
+      "id": "alab-gpss",
+      "translation_kind": "固定版本论文摘要全文翻译；CC BY 4.0",
+      "original_en_sha256": "63eafe0d353f1e8e49d81e2e8630c62ae5bda92bd30b659952b8152ed4dfcfa7",
+      "translation_zh_sha256": "574b4aca47cb29d3c53a0e7bff2684b51f5c05ca8c08a3ad6e588edf6c081a62",
+      "english_chars": 1599,
+      "chinese_chars": 421,
+      "local_reader": "thesis-reference/notes/autonomous-science-2026-11-10/alab-gpss/bilingual.html",
+      "independently_reproduced": false
+    },
+    {
+      "id": "ai-scientist-nature",
+      "translation_kind": "正式论文摘要全文翻译；PDF载明CC BY 4.0",
+      "original_en_sha256": "364df1db9bcb1df7906ec1184aefa3fc63780d908bbee5397c919c9a60640ec4",
+      "translation_zh_sha256": "59e1701aa65f8fff72eb72c2e469f00fa512c3562c0e8c4452be0a3fec6d210c",
+      "english_chars": 1798,
+      "chinese_chars": 428,
+      "local_reader": "thesis-reference/notes/autonomous-science-2026-11-10/ai-scientist-nature/bilingual.html",
+      "independently_reproduced": false
+    },
+    {
+      "id": "autoresearch",
+      "translation_kind": "MIT README核心构想与文件职责翻译；它是项目文档，没有论文摘要",
+      "original_en_sha256": "9adf4002ce8aa8a8f34a734c0232472680eba48ab236b2b2f11330dd2ee7965b",
+      "translation_zh_sha256": "c3c90f06969ab2a5bae53df2ca7002df75358efae8729963b27e0d0b5ddd7e4a",
+      "english_chars": 2235,
+      "chinese_chars": 253,
+      "local_reader": "thesis-reference/notes/autonomous-science-2026-11-10/autoresearch/bilingual.html",
+      "independently_reproduced": false
+    },
+    {
+      "id": "kosmos",
+      "translation_kind": "固定版本论文摘要全文翻译；CC BY 4.0",
+      "original_en_sha256": "6926a671b9cbd1807c3b40720a27f84604f7d44e7dd70c4d9b901af03c45558f",
+      "translation_zh_sha256": "9f94d6c47da581f8a31124f02b41e72fb4550b6aa14a1af23dfe76d2c4cbe169",
+      "english_chars": 1813,
+      "chinese_chars": 477,
+      "local_reader": "thesis-reference/notes/autonomous-science-2026-11-10/kosmos/bilingual.html",
+      "independently_reproduced": false
+    },
+    {
+      "id": "paperbenchx",
+      "translation_kind": "固定版本论文摘要全文翻译；CC BY 4.0",
+      "original_en_sha256": "865669be5fab4eefa2c7e449f442d33110927adaed206d9cf9e85f429470367b",
+      "translation_zh_sha256": "2e2a65209fe17bbd26b5991ac3a37353bcb6767a8ec5625d1faa072ae95ae30a",
+      "english_chars": 1879,
+      "chinese_chars": 473,
+      "local_reader": "thesis-reference/notes/autonomous-science-2026-11-10/paperbenchx/bilingual.html",
+      "independently_reproduced": false
+    },
+    {
+      "id": "discern",
+      "translation_kind": "固定版本论文摘要全文翻译；CC BY 4.0",
+      "original_en_sha256": "046d025956bca19378be2b72ad2cd68b2b31d8c0f7b02baf4f8a760a34a833f0",
+      "translation_zh_sha256": "3d18271b85dd3baf7882f96fcb14696abc7c87137296bfcfb1dfa7569cc768d5",
+      "english_chars": 1846,
+      "chinese_chars": 474,
+      "local_reader": "thesis-reference/notes/autonomous-science-2026-11-10/discern/bilingual.html",
+      "independently_reproduced": false
+    },
+    {
+      "id": "ai-scientist-v2",
+      "translation_kind": "固定版本论文摘要全文翻译；CC BY 4.0；作者的评审表述结合正式论文核对",
+      "original_en_sha256": "08cc15455b0f782067afeaa8bb29812138889b1a47d07dfa126b9c77ebb68c34",
+      "translation_zh_sha256": "2ca284ef1785b46bc6034a8fe1c0c89dac55ff68b1b2303f6e6c1cbfa90d277b",
+      "english_chars": 1819,
+      "chinese_chars": 386,
+      "local_reader": "thesis-reference/notes/autonomous-science-2026-11-10/ai-scientist-v2/bilingual.html",
+      "independently_reproduced": false
+    },
+    {
+      "id": "diffusing-blame",
+      "translation_kind": "固定版本论文摘要全文翻译；CC BY 4.0；作为人机共同研究案例",
+      "original_en_sha256": "7dd01230135b1e91bfc832b185c42c1d4467cc1bc03b354351af83fcb848dce2",
+      "translation_zh_sha256": "08f6d6b930470b72331a3fde8122c4d1cf2aeeb3dcf3c87b83959c9b638aa831",
+      "english_chars": 1916,
+      "chinese_chars": 479,
+      "local_reader": "thesis-reference/notes/autonomous-science-2026-11-10/diffusing-blame/bilingual.html",
+      "independently_reproduced": false
+    }
+  ]
+}

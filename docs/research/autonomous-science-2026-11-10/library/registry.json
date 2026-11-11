@@ -1,0 +1,187 @@
+{
+  "checked": "2026-11-10",
+  "scope": "上一轮12项代表工作、两项反证基准，以及AI Scientist-v2和ALIFE案例的对应论文。",
+  "translation_scope": "标题、摘要中文翻译；核心方法和局限的中文译解。不是全篇逐段翻译。英文摘要及论文原件保存在本地忽略目录。",
+  "papers": [
+    {
+      "id": "autodna",
+      "title_zh": "面向自主生物分子操作的AI原生实验室",
+      "doi": "10.1038/s41586-026-11228-6",
+      "web": "https://www.nature.com/articles/s41586-026-11228-6",
+      "repo": "autodna",
+      "fallback_abstract_url": "https://pubmed.ncbi.nlm.nih.gov/42983087/",
+      "metadata_xml_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=42983087&retmode=xml"
+    },
+    {
+      "id": "agentic-scientist",
+      "title_zh": "Agentic Scientist：组织编程智能体，实现自动化科学（共同）发现",
+      "arxiv": "2610.18933v1",
+      "repo": "ai-scientist-v3"
+    },
+    {
+      "id": "closing-empirical-loop",
+      "title_zh": "闭合实证循环：自主AI智能体开展有人类参与者的端到端研究",
+      "arxiv": "2508.13421v3",
+      "doi": "10.1002/advs.76675",
+      "repo": "empirical-loop-artifacts"
+    },
+    {
+      "id": "scientisttwo",
+      "title_zh": "ScientistTwo：以自主AI探索人类知识前沿",
+      "arxiv": "2609.19644v1",
+      "web": "https://scientist-two.github.io/"
+    },
+    {
+      "id": "mombot",
+      "title_zh": "用于自主生物学发现的闭环机器人科学家",
+      "web": "https://www.biorxiv.org/content/10.64898/2026.09.11.751076v1.full",
+      "doi": "10.64898/2026.09.11.751076",
+      "repo": "mombot-software"
+    },
+    {
+      "id": "omniscientist",
+      "title_zh": "OmniScientist：全模态、跨学科的AI科学家",
+      "arxiv": "2608.13558v1",
+      "repo": "omniscientist"
+    },
+    {
+      "id": "co-scientist",
+      "title_zh": "借助Co-Scientist加速科学发现",
+      "arxiv": "2502.18864v2",
+      "doi": "10.1038/s41586-026-10644-y",
+      "existing": "sources/fulltext/co-scientist"
+    },
+    {
+      "id": "alphaevolve",
+      "title_zh": "AlphaEvolve：用于科学与算法发现的编程智能体",
+      "arxiv": "2506.13131v1",
+      "repo": "alphaevolve",
+      "web": "https://deepmind.google/blog/alphaevolve-impact/"
+    },
+    {
+      "id": "alab-gpss",
+      "title_zh": "面向空气敏感锂卤化物尖晶石导体的自主实验室中的智能体式大语言模型推理",
+      "arxiv": "2604.11957v1",
+      "repo": "alab-gpss"
+    },
+    {
+      "id": "ai-scientist-nature",
+      "title_zh": "走向AI研究的端到端自动化",
+      "doi": "10.1038/s41586-026-10265-5",
+      "web": "https://www.nature.com/articles/s41586-026-10265-5",
+      "repo": "ai-scientist-v2",
+      "pdf_urls": [
+        "https://www.nature.com/articles/s41586-026-10265-5.pdf",
+        "https://ora.ox.ac.uk/objects/uuid%3A92d16200-fbe1-4564-b4d4-694e96223b39/files/rsb397b75p"
+      ]
+    },
+    {
+      "id": "autoresearch",
+      "title_zh": "autoresearch：单GPU训练的自主实验循环",
+      "web": "https://github.com/karpathy/autoresearch",
+      "repo": "autoresearch",
+      "document_only": true
+    },
+    {
+      "id": "kosmos",
+      "title_zh": "Kosmos：用于自主发现的AI科学家",
+      "arxiv": "2511.02824v1",
+      "web": "https://advances.edisonscientific.com/research/announcing-kosmos/"
+    },
+    {
+      "id": "paperbenchx",
+      "title_zh": "PAPERBENCHX：AI能否跨学科复现科学研究？",
+      "arxiv": "2610.39744v1",
+      "repo": "paperbenchx"
+    },
+    {
+      "id": "discern",
+      "title_zh": "DISCERN：AI智能体能否像科学家一样工作并引导发现？",
+      "arxiv": "2609.33357v2",
+      "repo": "discern"
+    },
+    {
+      "id": "ai-scientist-v2",
+      "title_zh": "AI Scientist-v2：基于智能体树搜索的研讨会级自动化科学发现",
+      "arxiv": "2504.08066v1",
+      "existing": "sources/fulltext/ai-scientist-v2",
+      "repo": "ai-scientist-v2"
+    },
+    {
+      "id": "diffusing-blame",
+      "title_zh": "扩散归因：生物合理双流网络中依赖任务的信用分配",
+      "arxiv": "2606.31700v1",
+      "web": "https://pub.sakana.ai/agentic-scientist/",
+      "role": "ALIFE共同研究案例，非另一套AI科学家系统"
+    }
+  ],
+  "repositories": [
+    {
+      "id": "ai-scientist-v2",
+      "url": "https://github.com/SakanaAI/AI-Scientist-v2.git",
+      "evidence": "https://sakana.ai/ai-scientist-first-publication/",
+      "scope": "官方v2科研系统"
+    },
+    {
+      "id": "ai-scientist-v3",
+      "url": "https://github.com/SakanaAI/AI-Scientist-v3.git",
+      "evidence": "https://pub.sakana.ai/agentic-scientist/",
+      "scope": "官方Agentic Scientist研究框架"
+    },
+    {
+      "id": "omniscientist",
+      "url": "https://github.com/Omni-Scientist/OmniScientist.git",
+      "evidence": "https://omni-scientist.github.io/",
+      "scope": "官方多模态科研系统"
+    },
+    {
+      "id": "autodna",
+      "url": "https://github.com/IPADS-X/AutoDNA.git",
+      "evidence": "https://www.nature.com/articles/s41586-026-11228-6",
+      "scope": "论文Code availability指定的代码；不含实验硬件"
+    },
+    {
+      "id": "alphaevolve",
+      "url": "https://github.com/google-deepmind/alphaevolve.git",
+      "evidence": "https://github.com/google-deepmind/alphaevolve",
+      "scope": "官方最小实现及公开发现验证材料；不是Google内部完整服务"
+    },
+    {
+      "id": "alab-gpss",
+      "url": "https://github.com/CederGroupHub/alab_gpss_public.git",
+      "evidence": "https://arxiv.org/html/2604.11957v1",
+      "scope": "论文指定的材料实验平台公开代码"
+    },
+    {
+      "id": "empirical-loop-artifacts",
+      "url": "https://github.com/Explore-Science/Virtuous-Machines-Towards-Artificial-General-Science.git",
+      "evidence": "https://advanced.onlinelibrary.wiley.com/doi/10.1002/advs.76675",
+      "scope": "论文数据与分析代码；论文声明核心工作流和算法为公司专有，不等同完整系统"
+    },
+    {
+      "id": "mombot-software",
+      "url": "https://github.com/kambielawski/mombot_software.git",
+      "evidence": "https://github.com/kambielawski/mombot_software",
+      "scope": "作者实验软件；当前根目录MIT许可证与README旧占位提示不一致，以固定提交的实际LICENSE记录为准"
+    },
+    {
+      "id": "paperbenchx",
+      "url": "https://github.com/UniPat-AI/PaperBenchX.git",
+      "evidence": "https://arxiv.org/html/2610.39744v1",
+      "scope": "论文指定复现评测代码及任务定义"
+    },
+    {
+      "id": "autoresearch",
+      "url": "https://github.com/karpathy/autoresearch.git",
+      "evidence": "https://github.com/karpathy/autoresearch",
+      "scope": "官方单GPU自动实验循环"
+    },
+    {
+      "id": "discern",
+      "url": "https://huggingface.co/datasets/discern-bench-anon/discern-benchmark",
+      "evidence": "https://arxiv.org/abs/2609.33357",
+      "scope": "匿名评测代码与数据发布；代码MIT、数据混合条款，跳过LFS大文件",
+      "skip_lfs": true
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "date": "2026-11-10",
+  "artifact": "../direction-a-assessment.html",
+  "document_version": "2026-11-10-draft-4",
+  "scope": "针对方向A的反证检索与原文语义核对；不是系统综述或实验结果",
+  "queries": [
+    "curriculum reward machines transfer learning 2026",
+    "curriculum temporal constraints reinforcement 2026",
+    "curriculum prerequisite preserving reinforcement learning",
+    "Beyond Fixed Tasks ATLAS reinforcement learning",
+    "Temporal Behavior Trees for Reinforcement Learning pdf",
+    "Automaton-Guided Curriculum Generation arxiv"
+  ],
+  "primary_thesis_pages": [
+    {
+      "pdf": 100,
+      "printed": 83,
+      "purpose": "多指标目标，无统一硬采集阈值；C/U固定"
+    },
+    {
+      "pdf": 101,
+      "printed": 84,
+      "purpose": "能耗与综合指标；资源权衡"
+    },
+    {
+      "pdf": 102,
+      "printed": 85,
+      "purpose": "MDP、全体UAV状态"
+    },
+    {
+      "pdf": 103,
+      "printed": 86,
+      "purpose": "补能奖励与长时域动机"
+    },
+    {
+      "pdf": 104,
+      "printed": 87,
+      "purpose": "生成配置范围"
+    },
+    {
+      "pdf": 115,
+      "printed": 98,
+      "purpose": "环境参数"
+    },
+    {
+      "pdf": 123,
+      "printed": 106,
+      "purpose": "等步数补充对照"
+    }
+  ],
+  "new_sources": [
+    {
+      "id": "rm",
+      "title": "Reward-machine-guided, self-paced reinforcement learning",
+      "publication": "UAI 2023",
+      "url": "https://proceedings.mlr.press/v216/koprulu23a.html",
+      "method_url": "https://proceedings.mlr.press/v216/koprulu23a/koprulu23a.pdf",
+      "read": "摘要与PDF前3页；未做实现审计"
+    },
+    {
+      "id": "agcl",
+      "title": "Automaton-Guided Curriculum Generation for Reinforcement Learning Agents",
+      "publication": "ICAPS 2023",
+      "url": "https://ojs.aaai.org/index.php/ICAPS/article/view/27242",
+      "author_url": "https://arxiv.org/abs/2304.05271",
+      "read": "出版元数据与作者摘要；出版页直连防机器人，未完整核验方法"
+    },
+    {
+      "id": "atlas",
+      "title": "Beyond Fixed Tasks: Unsupervised Environment Design for Task-Level Pairs",
+      "publication": "AAAI 2026",
+      "preprint_first": "2025-11-16",
+      "read_version": "v2, 2025-12-29",
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/download/39258/43219",
+      "method_url": "https://arxiv.org/html/2511.12706v2",
+      "read": "出版方PDF首页索引核对正式年份；扩展版§3–4、§5.3–5.5；未审计代码或全部版本差异"
+    },
+    {
+      "id": "tbt",
+      "title": "Temporal Behavior Trees for Reinforcement Learning: Specifications as Rewards, Curricula, and Diagnostics",
+      "publication": "作者机构页称To appear at NeurIPS 2026, December",
+      "url": "https://rct.cit.tum.de/publications/2026-temporal-behavior-trees-for-reinforcement-learning/",
+      "read": "作者摘要；未取得全文、版本时间和代码；不称会议已举行"
+    }
+  ],
+  "analytic_only": [
+    "充电必要性依赖诊断阈值q，原任务不包含该统一硬门槛",
+    "同二元标签不推出固定坐标下最优动作一致；这不证明实际负迁移",
+    "Q0/Q1区间与上下界计算为标准集合关系，不作为新定理"
+  ],
+  "research_training_runs": 0,
+  "paid_model_calls": 0,
+  "limits": [
+    "原4.3环境语义及版本仍需校准",
+    "拟议失配发生频率、检查器成本与学习收益未知",
+    "2027成果及2026年余下时间不可预先覆盖"
+  ],
+  "latest_amendment": {
+    "date": "2026-11-10",
+    "version": "draft-5",
+    "user_constraint": "维持原任务定义，据此拓展创新",
+    "thesis_pages_reread": [
+      104,
+      105,
+      106
+    ],
+    "finding": "原文已有多指标反馈与薄弱指标补训，不能列为新增贡献",
+    "new_candidate": "原指标导向的任务编辑与效果归因；跨任务干扰为备选",
+    "new_primary_source": {
+      "title": "MRACL: Multi-Reward Space Guided Adaptive Curriculum Reinforcement Learning for LLMs",
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/view/41101",
+      "doi": "10.1609/aaai.v40i44.41101",
+      "publication": "AAAI 2026",
+      "published": "2026-03-14",
+      "read": "出版方检索元数据与摘要；直连防机器人限制，未完整方法核验"
+    },
+    "refreshed_sources": [
+      "https://arxiv.org/html/2403.12014v2",
+      "https://arxiv.org/html/2606.25178v2"
+    ],
+    "research_runs": 0
+  },
+  "directions_2_3_review": {
+    "date": "2026-11-10",
+    "version": "draft-6",
+    "thesis_pages": [
+      {
+        "pdf": 107,
+        "printed": 90,
+        "fact": "4.3共享骨干与既有贡献"
+      },
+      {
+        "pdf": 111,
+        "printed": 94,
+        "fact": "任务价值头与自适应归一化"
+      },
+      {
+        "pdf": 112,
+        "printed": 95,
+        "fact": "归一化更新与像素控制；原文已报告站点附近往返现象"
+      },
+      {
+        "pdf": 113,
+        "printed": 96,
+        "fact": "异步Actor/Learner与辅助探索"
+      }
+    ],
+    "new_sources": [
+      {
+        "title": "Curriculum-based Asymmetric Multi-task Reinforcement Learning",
+        "url": "https://arxiv.org/html/2211.03352",
+        "version": "2022 v1；正式卷期2023",
+        "read": "§III-A/B方法片段；非完整代码审计"
+      },
+      {
+        "title": "Environment Generation for Zero-Shot Compositional Reinforcement Learning",
+        "url": "https://proceedings.neurips.cc/paper_files/paper/2021/hash/218344619d8fb95d504ccfa11804073f-Abstract.html",
+        "publication": "NeurIPS 2021",
+        "read": "会议页面与摘要"
+      },
+      {
+        "title": "CompoSuite: A Compositional Reinforcement Learning Benchmark",
+        "url": "https://proceedings.mlr.press/v199/mendez22a.html",
+        "publication": "CoLLA 2022",
+        "read": "出版方摘要"
+      },
+      {
+        "title": "Per-Context Reverse Curricula for Sparse-Reward Reinforcement Learning",
+        "url": "https://arxiv.org/html/2607.26417v2",
+        "version": "2026-10-11 v2；作者页称NeurIPS2026 Robot Learning Workshop接收",
+        "read": "§2–3；v1题名含SCOUT，不是主会成果"
+      }
+    ],
+    "queries": [
+      "reinforcement learning curriculum negative transfer task interference multi task 2026",
+      "compositional generalization environment design curriculum benchmark 2026 reinforcement learning",
+      "asynchronous curriculum multi-task reinforcement learning interference"
+    ],
+    "retained_2026_neighbors": [
+      "TAC",
+      "ATLAS"
+    ],
+    "conclusion": "方向2可与1同等作为方法候选；方向3为共同强验证，有条件独立成文；没有验证失效或新机制",
+    "research_runs": 0
+  }
+}

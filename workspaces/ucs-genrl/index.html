@@ -5,18 +5,22 @@
 <aside>
 <div class="brand">AUTORESEARCH / TR-001</div><div class="project">UCS-GenRL<br>研究设计工作区</div><p class="sidebar-note">从第 4.2 节出发<br>理论 → 判别实验 → 接口契约</p>
 <nav aria-label="研究设计章节"><a href="#overview" aria-current="page">01　讨论总览</a><a href="#theory">02　理论与推导</a><a href="#experiments">03　实验矩阵</a><a href="#architecture">04　代码设计</a><a href="#review">05　评审与记录</a></nav>
-<div class="side-links"><a href="novelty-review.html">创新性复评与改进建议 · 11-10</a><a href="UCS-GenRL.code-workspace" download>下载编辑器工作区配置</a><a href="design/decisions.json">设计决策记录 · JSON</a><span>版本 2026-11-10 / v0.3</span><span>规划文档 · 无实验结果</span></div>
+<div class="side-links"><a href="direction-b-study.html">当前：方向 B · 回训价值深入研究</a><a href="research-review.html">前轮：4.2 论文化整合评审</a><a href="curriculum-deep-research.html">前轮：课程分配深度研究</a><a href="direction-a-assessment.html">前轮：原任务内的创新设计</a><a href="novelty-review.html">创新性复评与改进建议 · 11-10</a><a href="UCS-GenRL.code-workspace" download>下载编辑器工作区配置</a><a href="design/decisions.json">设计决策记录 · JSON</a><span>版本 2026-11-10 / v0.7</span><span>规划文档 · 无实验结果</span></div>
 </aside>
 <main>
 <div class="top"><a href="thesis-guide.html">先读：学位论文与各章介绍 →</a><span class="tag">研究方案评审中</span><button class="quiet" id="print">打印完整讨论稿</button></div>
 <noscript><p class="notice">此页面需要 JavaScript 切换章节、显示实验矩阵和接口设计。请启用浏览器脚本后阅读。</p></noscript>
 <section class="page" id="overview" aria-labelledby="overview-title">
-<div class="brand">RESEARCH QUESTION</div><h1 id="overview-title">简化了训练环境，<br>是否还保留了必须学会的任务依赖？</h1>
-<p class="lead">2026 年相关工作已纳入重新检索。当前优先讨论资源依赖保持的课程生成；迁移探测与预算控制保留为候选工具，最终路线待用户评估。</p>
-<div class="notice"><strong>2026-11-10 复评：原样论文化的创新性风险较高</strong><p>通用生成/反思循环、约束课程、因果结构课程和迁移感知均有近邻。先验证“简化任务删掉关键依赖”的具体问题，再判断是否值得扩展。<a href="novelty-review.html"><strong>阅读完整复评、2026 年来源与三条改进路线 →</strong></a></p><p>本页其余理论、实验矩阵和接口保留为首轮迁移探测草案；它们没有通过创新性审查，不代表最新推荐路线已确定或获准实施。</p></div>
+<div class="brand">RESEARCH QUESTION</div><h1 id="overview-title">保持原任务定义，<br>怎样让生成的训练任务真正有效？</h1>
+<div class="notice"><strong>当前方向 B · 2026-11-10</strong><p><a href="direction-b-study.html">回训排序分解、最近邻精读、同标签强对照与最小判别协议 →</a>。方向已继续，方法贡献与 UCS 现象仍待验证；未启动实现或训练。</p></div><div class="notice"><strong>前轮整合评审 · 2026-11-10</strong><p><a href="research-review.html">研究内容、自动科研方法执行记录、最近邻反证、实验代码方案与论文大纲 →</a>。新增 2026 UAV／参数课程近邻、原表核对及教师成本摊销；下方保留前轮讨论，该轮为历史候选比较；用户现已指示沿 B 继续研究。</p></div>
+<p class="lead">用户已明确优先维持原任务定义。本轮暂沿方向 2 深入研究课程收益判断，以方向 3 检验未见因素组合；方向 1 保留为候选。主次尚未视为最终选择，具体机制与创新仍待证据验证。</p>
+<div class="notice"><strong>最新深度研究：原指标收益判断是否可靠？</strong><p>暂按方向 2 主线、方向 3 验证推进；已核对公开骨干差异，并补入 GradAlign、PGB、ULEE 等 2026 近邻。<a href="curriculum-deep-research.html">阅读精确问题、理论边界、实验及代码接口方案 →</a>。当前仅研究设计，未启动实现或训练。</p></div>
+<div class="notice"><strong>新增：方向 2 与方向 3 已补充论证</strong><p>方向 2 可作为方法主线候选，但须越过 4.3 已有归一化与探索机制；方向 3 需要严格区分未见组合与额外难度，也有条件独立成文。<a href="direction-a-assessment.html#directions-2-3">阅读具体问题、理论边界、划分与去留条件 →</a></p></div>
+<div class="notice"><strong>最新约定：维持原定义，在原问题内创新</strong><p>保留 D/F/η/χ、采集补能避障与全局状态语义，第一轮固定原奖励和骨干。原文已有多指标反馈，新增贡献需具体落实到任务编辑决策及其有效性。<a href="direction-a-assessment.html#original-task">阅读固定边界、创新候选及最近邻比较 →</a>。充电必要性和人为性能切片降为辅助分析；历史实验方案不自动执行。</p></div>
+<div class="notice"><strong>2026-11-10 复评：原样论文化的创新性风险较高</strong><p>通用生成/反思循环、约束课程、因果结构课程和迁移感知均有近邻。此前“简化任务删掉关键依赖”已降为辅助假设；当前按原任务定义重新组织创新候选。<a href="novelty-review.html"><strong>阅读完整复评、2026 年来源与三条改进路线 →</strong></a></p><p>本页其余理论、实验矩阵和接口保留为首轮迁移探测草案；它们保留为历史候选工具，不代表最新推荐路线已确定或获准实施。</p></div>
 <div class="notice"><strong>当前边界</strong><p>用户已确认 4.2 尚无论文、代码与开源。这个工作区保存理论、实验和接口设计；本轮没有实现研究算法、启动仿真、训练或付费模型调用。</p></div>
-<div class="cols"><div><h2>保留的候选工具</h2><p><strong>目标迁移判定与成本权衡。</strong>有限样本判定可支持评价；短期信号的长期预测价值和探测成本仍需实证。标准统计界不能独立承担论文创新。</p><p>LLM 提供候选，不作为收益真值来源。若随机生成配合同一选择器同样有效，应接受删除 LLM 的结论。</p></div><div class="pane"><h3>这轮需要形成的三种证据</h3><ol><li><strong>形式证据：</strong>判据依赖什么假设，能够保持哪些任务依赖。</li><li><strong>机制证据：</strong>依赖丢失是否导致迁移失效，简单规则能否解决。</li><li><strong>系统证据：</strong>计全成本后，未见组合与留出任务表现是否改善。</li></ol></div></div>
-<h2>从理论到实现的顺序</h2><div class="flow"><span>任务与指标</span><b>→</b><span>有限样本判定</span><b>→</b><span>短期/长期关联</span><b>→</b><span>等预算对照</span><b>→</b><span>冻结后复验</span></div>
+<div class="cols"><div><h2>保留的候选工具</h2><p><strong>目标迁移判定与成本权衡。</strong>有限样本判定可支持评价；短期信号的长期预测价值和探测成本仍需实证。标准统计界不能独立承担论文创新。</p><p>LLM 提供候选，不作为收益真值来源。若随机生成配合同一选择器同样有效，应接受删除 LLM 的结论。</p></div><div class="pane"><h3>这轮需要形成的三种证据</h3><ol><li><strong>形式证据：</strong>任务定义不变，编辑和收益估计依赖哪些假设。</li><li><strong>机制证据：</strong>哪类编辑改善原任务，简单反馈或规则能否同样解决。</li><li><strong>系统证据：</strong>计全成本后，未见组合与留出任务表现是否改善。</li></ol></div></div>
+<h2>从问题到实现的顺序</h2><div class="flow"><span>任务与指标</span><b>→</b><span>原指标与任务编辑</span><b>→</b><span>竞争解释对照</span><b>→</b><span>等预算比较</span><b>→</b><span>冻结后复验</span></div>
 <h2>三个问题，分别作答</h2><div class="table-wrap"><table><thead><tr><th>问题</th><th>需要的实验</th><th>不能混淆的解释</th></tr></thead><tbody><tr><td>选择器有用吗？</td><td>同候选源：直接训练 vs 迁移准入</td><td>更多探测、更多训练、容易任务</td></tr><tr><td>LLM 有额外价值吗？</td><td>同选择器：随机候选 vs LLM 候选</td><td>检查器或信息权限的贡献</td></tr><tr><td>对无人机耦合问题有用吗？</td><td>不同充电依赖、多机配置及留出组合</td><td>仅记住反馈地图或更换评价口径</td></tr></tbody></table></div>
 <h2>已有研究限定了创新范围</h2><p><a href="https://arxiv.org/html/2403.12014v2">EnvGen</a> 已有环境生成与性能反馈循环；<a href="https://arxiv.org/abs/2604.05336v2">TRACE</a> 已有失败诊断后的能力补训；<a href="https://arxiv.org/abs/2606.25178v2">TAC</a> 已研究迁移感知课程。我们需解释具体判定机制、成本与 UAV 耦合带来的差异，当前不声称完整新颖性已成立。</p>
 <div class="notice"><strong>按 2026–2027 年实际投稿标准评估</strong><p>2026 年相关工作必须纳入新颖性审查，学位论文完成时间不降低新稿的创新要求。原 4.2 与所有拟新增机制均须对照最近邻全文。</p><p>本轮定向检索更新至 2026-11-10；阅读深度、正式发表/预印本及访问限制见<a href="novelty-review.html#sources">来源卡片</a>。不声称覆盖 2026 全年或未来 2027 年；选题定稿、投稿及修回前仍需更新。</p></div>
@@ -24,11 +28,11 @@
 </section>
 <section class="page" id="theory" aria-labelledby="theory-title" hidden>
 <div class="brand">FORMALIZATION / CLAIM BOUNDARIES</div><h1 id="theory-title">先证明有限的事，<br>把无法保证的部分交给实验。</h1>
-<p class="notice">本节保留首轮迁移评价工具。最新建议先定义资源依赖及可计算判据，见<a href="novelty-review.html#theory">复评中的理论设计</a>；下述标准集中界不是论文核心创新。</p>
-<p class="lead">推荐把理论组织成“问题定义 → 条件性准入界 → 预算与误判权衡”。标准集中界只是工具，论文贡献应在具体机制及它解决的问题。</p>
-<h2>1. 把环境、学习器与课程分开</h2><p>目标任务族 M(ξ) 包含地图、PoI、无人机与充电配置，任务可按有限时域 Dec-POMDP 描述。策略 π 执行联合决策；训练状态 x 包括模型、优化器、归一化、缓冲区与随机状态。课程教师选择任务参数 z，学习算子 A<sub>h</sub>(x,z;ω) 在 h 个全局环境步后输出新状态。</p>
+<p class="notice">本节保留首轮迁移评价工具。当前先保持原指标，讨论任务编辑及其收益估计，见<a href="direction-a-assessment.html#original-task">原任务内的创新设计</a>；资源判据只作辅助；下述标准集中界不是论文核心创新。</p>
+<p class="lead">本历史草案组织为“问题定义 → 条件性准入界 → 预算与误判权衡”。它保留为可选评价工具；最新理论讨论以原任务定义、任务编辑效果及其估计局限为中心。</p>
+<h2>1. 把环境、学习器与课程分开</h2><p>目标任务族 M(ξ) 包含地图、PoI、无人机与充电配置，原文按 MDP 建模，输入包含全体 UAV 位置与能量；局部观测的 Dec-POMDP 仅可作为另行讨论的新扩展。策略 π 执行联合决策；训练状态 x 包括模型、优化器、归一化、缓冲区与随机状态。课程教师选择任务参数 z，学习算子 A<sub>h</sub>(x,z;ω) 在 h 个全局环境步后输出新状态。</p>
 <div class="formula">max<sub>课程规则 μ</sub>　E[J<sub>P目标</sub>(π<sub>xB</sub>)]<br>s.t.　C<sub>训练+探测+生成</sub> ≤ B，　V<sub>j</sub>(π<sub>xB</sub>) ≤ b<sub>j</sub><small>J：归一化有效采集比例，取值 [0,1]；Vj：预先声明的违规/成本指标。B 可以是全局交互预算，墙钟和费用另行报告，不能未经权重定义直接相加。测试分布只用于最终报告。</small></div>
-<p>这是研究目标的定义，不是已经求解的最优控制问题。有限样本评价只能支持分布意义的判断，不能证明每条无人机轨迹硬安全。</p>
+<p>上述归一化 J 仅用于历史统计工具示例，不替代最新方案的原 χ 及 D/F/η；若统计分析改用 χ，须重新说明其范围和界。这里不是已经求解的最优控制问题。有限样本评价不能证明每条无人机轨迹硬安全。</p>
 <h2>2. 定义“净迁移”，先排除额外训练的收益</h2><div class="formula">π<sub>z,h</sub> = policy(A<sub>h</sub>(x,z;ω<sub>z</sub>))<br>π<sub>0,h</sub> = policy(A<sub>h</sub>(x,z<sub>控制</sub>;ω<sub>0</sub>))<br>Δ<sub>h</sub>(z | x) = J<sub>P确认</sub>(π<sub>z,h</sub>) − J<sub>P确认</sub>(π<sub>0,h</sub>)</div>
 <p>同一完整检查点、相同训练步数；控制分支继续学习固定原任务。先把两条训练轨迹固定，再讨论这两个策略的评价差异。若要声称“重新训练平均也有效”，还要在外层重复训练种子，不能靠多跑评价回合替代。</p>
 <h2>3. 草案命题：固定候选的有限样本准入</h2><div class="pane"><strong>明确假设</strong><ol><li>本轮 K 对候选/控制策略已冻结；它们未利用本轮确认样本生成、更新或筛选。</li><li>对每对策略，n 个评价场景及随机数独立同分布抽自预先固定的 P确认。每个样本内部两策略使用相同场景，形成配对。</li><li>每回合主得分在 [0,1]，因此配对差 D<sub>z,i</sub> 在 [−1,1]。不同候选可共享评价场景；不要求候选间独立。</li><li>τ ≥ 0 是预先声明的最小有意义改善，不根据观察到的结果反向选择。</li></ol></div>
@@ -43,9 +47,9 @@
 </section>
 <section class="page" id="experiments" aria-labelledby="experiments-title" hidden>
 <div class="brand">EVIDENCE PLAN / NOT RESULTS</div><h1 id="experiments-title">每个实验，都对应一个<br>可以被否定的研究判断。</h1>
-<p class="notice">以下 E0–E5 是首轮迁移探测方案。最新优先顺序为原义核验、依赖丢失诊断及最小机制判别，见<a href="novelty-review.html#experiments">D0–D5 讨论稿</a>。两套方案不要求同时执行，均待用户评估。</p>
-<p class="lead">优先顺序是环境语义 → 短期信号 → 六组对照 → 耦合机制 → 泛化 → 复验。确认样本、最终测试和独立训练种子承担不同职责。</p>
-<div class="cols"><div class="pane"><h3>评价数据分工</h3><p><strong>训练：</strong>策略更新。<br><strong>开发/筛选：</strong>生成反馈与候选排序。<br><strong>确认：</strong>冻结候选后的新样本，支撑准入判定。<br><strong>测试：</strong>最终冻结后报告，不参与循环。</p><small>这些是角色，不保证一定需要四套文件格式；隔离的是信息使用权限。</small></div><div class="pane"><h3>主指标与约束</h3><p>固定期限和能量模型下的有效采集比例为主；覆盖、碰撞、耗尽、充电开销及最差场景组表现同时报告。</p><p>配对/分层统计以独立训练种子为外层；地图和回合不是独立训练重复。</p></div></div>
+<p class="notice">以下 E0–E5 是首轮迁移探测方案。此前 P0–P4 也仅作历史参考。最新比较从原定义内的任务编辑展开，见<a href="direction-a-assessment.html#original-task">当前边界与最小对照讨论</a>；历史方案均不自动执行。</p>
+<p class="lead">下方保留历史 E0–E5 矩阵作为可选工具。当前先核对原循环与同信息规则/随机编辑的差异；确认样本、最终测试和独立训练种子承担不同职责。</p>
+<div class="cols"><div class="pane"><h3>评价数据分工</h3><p><strong>训练：</strong>策略更新。<br><strong>开发/筛选：</strong>生成反馈与候选排序。<br><strong>确认：</strong>冻结候选后的新样本，支撑准入判定。<br><strong>测试：</strong>最终冻结后报告，不参与循环。</p><small>这些是角色，不保证一定需要四套文件格式；隔离的是信息使用权限。</small></div><div class="pane"><h3>主指标与约束</h3><p>最新方案主报告原 χ，配套采集率 D、公平性 F、能耗比 η；碰撞、耗尽和最差资源组同时报告。指标实现需先校准，不把历史归一化 J 示例当作原论文目标。</p><p>配对/分层统计以独立训练种子为外层；地图和回合不是独立训练重复。</p></div></div>
 <label style="max-width:320px;margin-top:24px">筛选实验阶段<select id="experiment-filter"><option value="全部">全部阶段</option><option>规范</option><option>机制</option><option>主对照</option><option>泛化</option><option>复验</option></select></label><div id="experiment-list"></div>
 <h2>训练预算讨论器</h2><p>这里的每次运行步数已包含候选、控制和失败分支的训练/探测；评价单独记录。下方乘法不包含 E1 专项研究、额外消融、调参、API 费用或重跑。</p><div class="pane"><div class="controls"><label>方法组数<input id="budget-methods" type="number" min="1" max="30" value="6"></label><label>独立训练种子<input id="budget-seeds" type="number" min="1" max="100" value="3"></label><label>每次运行预算（百万全局步）<input id="budget-steps" type="number" min="0.01" max="1000" step="any" value="0.5"></label><label>骨干数 × 训练分布数<input id="budget-suites" type="number" min="1" max="100" value="1"></label></div><div class="result-row"><div><output id="budget-total"></output><small>主比较训练/探测步数</small></div><div><output id="budget-runs"></output><small>独立运行数</small></div></div><small>全局步：所有无人机的一次联合动作和转移。并行环境按实际步数求和。尚未标定 steps/s，不能换算成 GPU 天数。</small></div>
 </section>
@@ -68,10 +72,10 @@
 </section>
 <section class="page" id="review" aria-labelledby="review-title" hidden>
 <div class="brand">DECISIONS / DISCUSSION</div><h1 id="review-title">现在讨论哪几个决定，<br>才会改变论文和实验？</h1>
-<div class="question"><h3>D1 · 理论主线</h3><p><strong>推荐：</strong>有限样本迁移判定与预算权衡。替代方向是 UAV 约束保证或通用学习收敛；后两者需要更多建模与证明，不能仅增加一个“理论分析”小节。</p><small>状态：建议，等待用户选择。</small></div>
-<div class="question"><h3>D2 · 首先要证伪什么</h3><p><strong>推荐：</strong>先做 E1 检验短探测信号。若信号不预测长期迁移，再扩大 LLM 端到端比较的收益有限。</p><small>状态：实验设计建议；未执行。</small></div>
-<div class="question"><h3>D3 · 最小有意义改善与约束</h3><p>τ 应以实际采集收益及成本定义，不能在看结果后选择。碰撞、能量耗尽和最差场景组退化容忍度需分别明确，不能靠综合分数抵消。</p><small>状态：待讨论，当前不填任意“通过阈值”。</small></div>
-<div class="question"><h3>D4 · 确认成本与实现策略</h3><p>使用独立确认样本，优先保留已评价的胜出策略；预算账本包含所有失败分支。若成本过高，可研究更紧的界或更便宜的代理，但须重新说明假设和比较。</p><small>状态：建议；不把理论计算器的充分样本量直接当成训练方案。</small></div>
+<div class="question"><h3>D1 · 是否进入问题诊断</h3><p><strong>已确认：</strong>维持原任务定义。<strong>推荐：</strong>分别审查任务编辑与跨任务课程分配，以原环境因素组合泛化共同验证；不预选方向 1。详见<a href="direction-a-assessment.html#original-task">原任务内的创新设计</a>。</p><small>状态：方案待用户评估；未启动研究实现。</small></div>
+<div class="question"><h3>D2 · 首先要证伪什么</h3><p><strong>推荐：</strong>先核对原任务及编辑空间，再比较原反馈循环、同信息规则/随机编辑与新决策机制。原文已有针对薄弱指标生成任务；不能将其重新列为新增贡献。</p><small>状态：实验设计建议；未执行。</small></div>
+<div class="question"><h3>D3 · 最小有意义改善与约束</h3><p>δ 应在开发阶段依据原 χ、实际收益和成本定义，不能看完最终结果再选择。D/F/η、碰撞、耗尽与最差组退化分别报告，不靠综合分数抵消。</p><small>状态：待讨论；探索性 3 种子不自动满足正式结论所需精度。</small></div>
+<div class="question"><h3>D4 · 确认成本与停止条件</h3><p>检查器成本、全部失败分支和生成费用均计入。若同信息简单规则已同样有效、新机制仅对人为改变的任务有用，或独立复验不支持收益，停止或收缩主张。</p><small>状态：建议；下一阶段仍需先评估计划和资源。</small></div>
 <h2>本地讨论笔记</h2><p>可记录对理论、实验和代码接口的修改意见。笔记只保存在当前浏览器；下载后才可作为文件交给协作者，不会自动提交或写回仓库。</p>
 <label>你的评审意见<textarea id="review-notes" placeholder="例如：先关注充电依赖；主实验采用原4.3骨干；希望理论覆盖多轮选择……"></textarea></label><div class="actions"><button class="primary" id="download-notes">下载讨论记录 JSON</button></div><p class="note-status" id="note-status" aria-live="polite">尚未编辑。</p>
 <h2>本次设计依据</h2><ul><li>用户已确认的成果状态与根目录 AGENTS.md。</li><li>原文 4.2：PDF 98–106 / 印刷81–89；原实验：PDF115–118、123 / 印刷98–101、106。原始资料保留在被忽略的 thesis-reference/，不由此页面服务。</li><li><a href="https://arxiv.org/html/2403.12014v2">EnvGen</a>、<a href="https://arxiv.org/abs/2606.25178v2">TAC</a> 等：帮助限定新颖性，不能替代本方法实验。</li><li>本页 Hoeffding + 并集界推导为标准工具的直接应用；条件性长期推论尚需漂移假设，未形成新理论成果。</li></ul>

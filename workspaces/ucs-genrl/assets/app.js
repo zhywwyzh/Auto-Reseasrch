@@ -84,7 +84,7 @@ notes.addEventListener('input',()=>{
   catch {status.textContent='本地自动保存不可用，请下载记录保留。';}
 });
 document.getElementById('download-notes').addEventListener('click',()=>{
-  const record={workspace:'UCS-GenRL',document_version:'2026-11-10-draft-3',exported_at:new Date().toISOString(),status:'用户讨论笔记；不自动构成实施批准',notes:notes.value};
+  const record={workspace:'UCS-GenRL',document_version:'2026-11-10-draft-7',exported_at:new Date().toISOString(),status:'用户讨论笔记；不自动构成实施批准',notes:notes.value};
   const url=URL.createObjectURL(new Blob([JSON.stringify(record,null,2)+'\n'],{type:'application/json;charset=utf-8'}));
   const a=el('a');a.href=url;a.download='ucs-genrl-review-notes.json';document.body.append(a);a.click();a.remove();
   setTimeout(()=>URL.revokeObjectURL(url),1000);

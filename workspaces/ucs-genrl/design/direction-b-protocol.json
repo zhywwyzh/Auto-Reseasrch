@@ -1,0 +1,117 @@
+{
+  "version": "2026-11-10-R1-draft-2",
+  "main_document": "../direction-b-study.html#protocol",
+  "status": "proposed_not_run",
+  "executable": false,
+  "question": "固定原任务回训是否改变练习排序并产生值得额外探测成本的χ决策损失？",
+  "preserve": [
+    "UCS状态动作动力学及采集补能避障语义",
+    "D/F/η/χ",
+    "原奖励",
+    "核验后的4.3学生"
+  ],
+  "prerequisites": [
+    "R0核验η/F/χ聚合与零分母口径",
+    "确认4.3与公开代码差异",
+    "定义完整快照恢复或一致暂停排空重置协议",
+    "确定真实环境交互、训练样本及参数更新计数",
+    "固定合法候选池和开发/拟合/确认/最终测试划分",
+    "用户评估具体实施计划"
+  ],
+  "estimands": {
+    "V0": "E[J(T_k(s))]",
+    "Va": "E[J(A_a(T_k(s)))]",
+    "R": "Va-V0",
+    "U": "Va-Vbaseline_a",
+    "loss": "max_k Va_k - Va_argmax(V0)"
+  },
+  "analysis_only": {
+    "identity": "U_k^a=U_k^0+(R_k^a-R_0^a)",
+    "counterexample": "J=-(9x²+y²)/2; s=(1,1); candidate=(1-eps,1),(1,1-eps); A=(.1x,.9y); immediate gains9q,q; adapted gains.09q,.81q",
+    "status": "手工解析示例，不是UCS实验、新定理或数据"
+  },
+  "diagnostic_parameters": {
+    "S_main_seeds": 3,
+    "C_snapshots": 3,
+    "K_candidates": 4,
+    "shared_baselines": 1,
+    "R_training_branch_repeats": 2,
+    "h_practice_steps": 20000,
+    "a_adaptation_steps": 20000,
+    "evaluation_maps_M": null,
+    "evaluation_episodes_E": null,
+    "evaluation_horizon_T": null,
+    "delta_chi": null,
+    "parameter_status": "可评审示意，非正式规模；待语义与精度规划后冻结"
+  },
+  "budget": {
+    "probe_training_formula": "S*C*R*(K+1)*(h+a)",
+    "illustrative_probe_training_steps": 3600000,
+    "evaluation_upper_bound_formula": "2*S*C*R*(K+1)*M*E*T",
+    "excluded": [
+      "主训练",
+      "独立训练分支确认",
+      "调参",
+      "任务生成",
+      "未来离线元教师预训练"
+    ],
+    "wall_clock_or_gpu_commitment": null
+  },
+  "baselines": [
+    {
+      "id": "B0",
+      "rule": "即时代理＋均匀/原任务继续训练"
+    },
+    {
+      "id": "B1",
+      "rule": "同回训后标签/信息/探测预算的MM-ACL式直接预测",
+      "label": "机制适配，不称原算法原样复现"
+    },
+    {
+      "id": "B2",
+      "rule": "即时值＋回训残差分解预测；匹配容量和特征"
+    },
+    {
+      "id": "B3",
+      "rule": "决策导向探测；对比等次数随机/周期探测",
+      "condition": "R1和预测对照通过后才考虑"
+    }
+  ],
+  "statistics": {
+    "primary_unit": "独立主训练种子；同轨迹不同快照相关",
+    "branch_noise": "同状态重新采样训练轨迹；评价重复不可替代",
+    "common_random_numbers": "保持正确边缘分布，记录协方差；不预设降方差",
+    "selection_confirmation": "候选选择与确认使用不同训练随机流及评价种子",
+    "testing": "首轮固定样本数；不对普通区间反复窥看自适应停止",
+    "range": "未核指标边界，不假设χ∈[0,1]",
+    "minimum_interpretation": "3主种子×2分支仅粗诊断，不承诺统计功效"
+  },
+  "decisions": {
+    "continue": "独立确认有实用损失且可重复、非口径/恢复混杂",
+    "simplify": "即时规则足够或同标签B1足以解决问题",
+    "stop": "翻转近乎平局或确认消失或计全成本无净收益",
+    "undetermined": "区间过宽，按预定额外预算处理；不把不显著写等效"
+  },
+  "paper_claims": [
+    {
+      "claim": "固定回训可改变排序",
+      "support": "本轮恒等式和解析反例",
+      "limit": "未证UCS实际存在或新颖性"
+    },
+    {
+      "claim": "UCS中存在有实际影响的决策损失",
+      "support": "待R1独立确认",
+      "status": "unverified"
+    },
+    {
+      "claim": "有限测量的改进方法优于同标签强对照",
+      "support": "待R2方法对照、消融和计全成本",
+      "status": "unverified"
+    },
+    {
+      "claim": "未见因素组合仍有收益",
+      "support": "待独立留出测试及多种子复验",
+      "status": "unverified"
+    }
+  ]
+}

@@ -1,0 +1,252 @@
+{
+  "version": "2026-11-10-integrated-review-1",
+  "main_document": "../research-review.html",
+  "retrieval_cutoff": "2026-11-10",
+  "status": "研究方案待用户评审，未实施",
+  "user_confirmed_scope": "4.2无论文代码开源，仅基础量化验证；其余2.2/2.3/3.2/3.3/4.3已有论文开源",
+  "inheritance": [
+    "curriculum-evidence-2026-11-10.json",
+    "direction-a-evidence-2026-11-10.json"
+  ],
+  "sources": [
+    {
+      "id": "thesis",
+      "version_status": "local",
+      "source": "4.2 PDF98–106/印刷81–89; 4.4 PDF115–118,123/印刷98–101,106",
+      "reading_depth": "本轮重读与PDF117视觉核对",
+      "local_ignored_path": "thesis-reference/theses/3120215520_答辩修改后论文0830.pdf",
+      "sha256": "faec3234cb5189adf347724db50446b64f9b3b3645d13071076591708fc51588"
+    },
+    {
+      "id": "envgen",
+      "version_status": "2024 v2",
+      "source": "https://arxiv.org/html/2403.12014v2",
+      "reading_depth": "本轮四步流程/2.2复核"
+    },
+    {
+      "id": "mm-acl",
+      "version_status": "CoLLAs 2023",
+      "source": "https://proceedings.mlr.press/v232/xu23a/xu23a.pdf",
+      "reading_depth": "本轮2.2–4.3, PDF3–6关键方法",
+      "local_ignored_path": "thesis-reference/notes/thesis-uav-crowdsensing/research-review-2026-11-10/mm-acl.pdf",
+      "sha256": "c233e014d64f8e5d7f1e9fdf4df44a6ebfecfc639608c36786b30d88ac385870"
+    },
+    {
+      "id": "reparam",
+      "version_status": "2026-08-09 v1 preprint",
+      "source": "https://arxiv.org/html/2608.08545v1",
+      "reading_depth": "新增; 3–5.3, Algorithm1",
+      "local_ignored_path": "thesis-reference/notes/thesis-uav-crowdsensing/research-review-2026-11-10/reparam.html",
+      "sha256": "e625d7871371bc7d0aa6fbaf7267a522e12bb4766d36a6a557228a960f409719"
+    },
+    {
+      "id": "egp2",
+      "version_status": "online 2026-07-31 journal pre-proof",
+      "source": "https://doi.org/10.1016/j.robot.2026.105670",
+      "reading_depth": "新增; 出版方摘要/Highlights;全文403"
+    },
+    {
+      "id": "cl-cma-mappo",
+      "version_status": "Internet of Things 40 November2026 102124",
+      "source": "https://doi.org/10.1016/j.iot.2026.102124",
+      "reading_depth": "新增;出版方摘要/公开片段;全文403;首发日未核"
+    },
+    {
+      "id": "flymirage",
+      "version_status": "2026-09-27 v2 preprint",
+      "source": "https://arxiv.org/abs/2605.19600v2",
+      "reading_depth": "新增;元数据/摘要"
+    },
+    {
+      "id": "alp-gmm",
+      "version_status": "CoRL2019/PMLR2020",
+      "source": "https://proceedings.mlr.press/v100/portelas20a.html",
+      "reading_depth": "元数据/摘要"
+    },
+    {
+      "id": "plr",
+      "version_status": "ICML2021",
+      "source": "https://proceedings.mlr.press/v139/jiang21b.html",
+      "reading_depth": "元数据/摘要"
+    },
+    {
+      "id": "accel",
+      "version_status": "ICML2022",
+      "source": "https://proceedings.mlr.press/v162/parker-holder22a.html",
+      "reading_depth": "元数据/摘要"
+    },
+    {
+      "id": "eurekaverse",
+      "version_status": "PMLR2025",
+      "source": "https://proceedings.mlr.press/v270/liang25a.html",
+      "reading_depth": "元数据/摘要;沿用前轮方法范围"
+    },
+    {
+      "id": "gradalign",
+      "version_status": "2026 v2",
+      "source": "https://arxiv.org/html/2602.21492v2",
+      "reading_depth": "版本复核;方法阅读继承curriculum-evidence记录"
+    },
+    {
+      "id": "tac",
+      "version_status": "2026 v2 preprint",
+      "source": "https://arxiv.org/html/2606.25178v2",
+      "reading_depth": "版本复核;方法阅读继承curriculum-evidence记录"
+    },
+    {
+      "id": "pgb",
+      "version_status": "2026-10-19 v1 preprint",
+      "source": "https://arxiv.org/html/2610.25704v1",
+      "reading_depth": "版本复核;方法阅读继承curriculum-evidence记录"
+    },
+    {
+      "id": "aas",
+      "version_status": "current retrieved2026-11-10",
+      "source": "https://aas.net.cn/news/tgxz.htm",
+      "reading_depth": "官方检索文本;直连超时"
+    },
+    {
+      "id": "jas",
+      "version_status": "current retrieved2026-11-10",
+      "source": "https://www.ieee-jas.net/en/article/2026/6",
+      "reading_depth": "官方范围说明检索文本;只作范围判断"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "生成—训练—回训—反思四步循环足够新颖",
+      "decision": "reject_broad_novelty",
+      "evidence": [
+        "thesis",
+        "envgen"
+      ],
+      "reason": "流程近邻已存在；不评价作者归属或代码相同性"
+    },
+    {
+      "id": "C02",
+      "claim": "预测源任务对目标收益属于新的课程概念",
+      "decision": "reject_broad_novelty",
+      "evidence": [
+        "mm-acl",
+        "tac",
+        "pgb"
+      ],
+      "reason": "目标收益预测已有明确先例"
+    },
+    {
+      "id": "C03",
+      "claim": "参数化合法环境及逐渐增难即可承担方法创新",
+      "decision": "reject_broad_novelty",
+      "evidence": [
+        "alp-gmm",
+        "eurekaverse",
+        "reparam"
+      ],
+      "reason": "已有多种生成与课程方法"
+    },
+    {
+      "id": "C04",
+      "claim": "候选B回训后原指标校准具有独立贡献",
+      "decision": "untested_conditional",
+      "evidence": [
+        "mm-acl",
+        "gradalign",
+        "tac",
+        "pgb"
+      ],
+      "falsifier": "强方法简单适配已解决/无稳定错序/总成本无增益"
+    },
+    {
+      "id": "C05",
+      "claim": "候选A反馈诊断带来必要增益",
+      "decision": "untested_backup",
+      "evidence": [
+        "envgen"
+      ],
+      "falsifier": "同权限规则或原反馈等效"
+    },
+    {
+      "id": "C06",
+      "claim": "新因素组合划分本身是一篇方法论文贡献",
+      "decision": "reject_as_sufficient",
+      "evidence": [
+        "prior-curriculum-review"
+      ],
+      "reason": "优先作为验证；独立成文需机制与修正"
+    },
+    {
+      "id": "C07",
+      "claim": "LLM对该课程必不可少",
+      "decision": "untested",
+      "evidence": [
+        "thesis",
+        "envgen"
+      ],
+      "falsifier": "同选择器下规则池等效/优势来自额外反馈"
+    }
+  ],
+  "research_training_runs": 0,
+  "research_implementation_created": false,
+  "paid_model_calls": 0,
+  "independent_replication_completed": false,
+  "workflow_actions": [
+    {
+      "method": "AI-Scientist-v2 / Co-Scientist",
+      "performed": "候选生成、文献反证及C01-C07去留记录",
+      "not_performed": "未运行上游自动实验或独立多Agent评审"
+    },
+    {
+      "method": "Agentic Scientist/v3",
+      "performed": "阅读固定README，任务边界与封存评价契约设计",
+      "not_performed": "未执行封存评价"
+    },
+    {
+      "method": "autoresearch",
+      "performed": "固定目标、成本单位、继续/淘汰规则",
+      "not_performed": "未修改训练实现、未启动无限循环"
+    },
+    {
+      "method": "Kosmos / DISCERN / PaperBenchX",
+      "performed": "来源追踪与执行-分析-科学主张分层验收设计",
+      "not_performed": "未部署系统、未运行基准"
+    }
+  ],
+  "new_findings": [
+    {
+      "id": "A01",
+      "status": "observed_in_source_not_corrected",
+      "locator": "thesis PDF117/print100 table4.1",
+      "observation": "GPT4o cycle1=1.139, narrative later highest0.436 vs cycle7=0.437",
+      "limit": "需原始日志，不用均值乘除推断非线性汇总，也不擅改0.139"
+    },
+    {
+      "id": "A02",
+      "status": "semantic_ambiguity",
+      "locator": "thesis PDF100/print83 vs PDF104/print87",
+      "observation": "task model fixes C,U while prompt allows counts; first study conservatively fixes both"
+    },
+    {
+      "id": "A03",
+      "status": "design_revision",
+      "observation": "separate interaction, compute, token/currency budgets; report single deployment and amortized teacher reuse"
+    }
+  ],
+  "open_items": [
+    "4.3准确代码版本与配置",
+    "η/F/χ口径与零分母",
+    "4.2原始日志及表4.1疑点",
+    "2026近邻全文及代码适配",
+    "δχ/h/a/预算/最终独立种子数",
+    "用户对研究计划评估"
+  ],
+  "search_log": [
+    "LLM curriculum environment generation reinforcement learning 2026 UAV EnvGen transfer curriculum",
+    "2026 curriculum reinforcement learning GradAlign PGB ULEE",
+    "2026 UAV crowdsensing curriculum generative environment LLM",
+    "Teacher algorithms curriculum learning continuously parameterized environments Portelas site.proceedings.mlr.press",
+    "Curriculum learning-enhanced MARL with attention 2026 102124",
+    "EGP2 105670",
+    "自动化学报 投稿须知 / IEEE JAS scope / TNNLS scope (TNNLS current direct page unavailable; no firm recommendation)"
+  ]
+}

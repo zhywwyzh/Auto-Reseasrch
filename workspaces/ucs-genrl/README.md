@@ -1,8 +1,16 @@
 # UCS-GenRL 独立设计工作区
 
-先读[学位论文与各章介绍](thesis-guide.html)，再读[2026–2027 投稿创新性复评与改进路线](novelty-review.html)，然后进入[研究设计 Web UI](index.html)。编辑器入口：[UCS-GenRL.code-workspace](UCS-GenRL.code-workspace)。导读和复评均为单文件 HTML，可在浏览器按 Ctrl+O 打开；远程仓库需先把文件复制到浏览器所在电脑。
+**当前方向 B 深入研究（2026-11-10）：** [回训如何改变课程价值](direction-b-study.html)。用户已指示沿该方向继续；本轮完成解析分解、近邻及代码只读审查、三层随机性与预算协议。尚无新训练结果。下列入口保留前轮研究历史。
+
+前轮整合入口：[4.2 论文化研究评审](research-review.html)，覆盖四项研究交付与自动科研决策记录；未启动研究实现或实验。
+
+**2026-11-10 深度研究更新：** 该轮入口为[课程分配深度研究](curriculum-deep-research.html)，暂按方向 2 为方法主线、方向 3 为组合泛化验证。已补充公开代码与原文差异、GradAlign/PGB/ULEE 等 2026 近邻、固定原任务回训后收益定义及分阶段实验；主次未视为最终选择，创新尚待验证。下方早期路线与实验编号保留为历史讨论，不自动执行。
+
+先读[学位论文与各章介绍](thesis-guide.html)，再读[2026–2027 投稿创新性复评](novelty-review.html)及最新的[原任务内创新设计与历史评估](direction-a-assessment.html#original-task)，然后进入[研究设计 Web UI](index.html)。编辑器入口：[UCS-GenRL.code-workspace](UCS-GenRL.code-workspace)。上述阅读页均为单文件 HTML，可在浏览器按 Ctrl+O 打开；远程仓库需先把文件复制到浏览器所在电脑。
 
 本工作区聚焦学位论文 4.2 的理论、实验方案与代码接口讨论；根目录 AGENTS.md 对此仍然有效。未实现研究算法、未启动训练，用户评估计划后再进入实现阶段。
+
+最新用户约定：优先维持原任务定义，并在其内部拓展创新。当前阅读[原任务内的创新设计](direction-a-assessment.html#original-task)：任务编辑与跨任务课程分配分别审查，组合泛化作为共同强验证并保留独立成文可能；资源依赖判据降为辅助。该页保留的旧 P0–P4 不是当前已确定执行方案。
 
 在浏览器直接打开 index.html 即可阅读，无须安装前端依赖。或者从仓库根目录运行：
 
@@ -13,7 +21,8 @@ python3 -m http.server 18767 --bind 127.0.0.1 --directory workspaces/ucs-genrl
 随后在同一电脑访问 http://127.0.0.1:18767/ 。远程客户端需要自己的端口转发，不默认公开托管。
 
 - index.html：理论模型、有限样本推导、假设边界、评审问题和来源的主要文档。
-- novelty-review.html：2026-11-10 最新创新性判断、三条候选路线、理论与最小实验；包含来源年份筛选，内容优先于首轮迁移探测建议，尚待用户评估。
+- direction-a-assessment.html：第六版当前约定与原任务内创新候选（新增方向 2 / 3 深化）；新增 MRACL 等比较，明确原多指标反馈属于继承内容。后半部保留第四版方向 A 的理论反证与历史实验讨论，均未执行。
+- novelty-review.html：同日上一版创新性复评、三条候选路线；包含来源年份筛选。方向 A 的最新判断以 direction-a-assessment.html 为准。
 - design/novelty-search-2026-11-10.json：定向检索范围、来源链接与阅读深度；不是系统综述或实验结果。
 - thesis-guide.html：独立的研究前导读，含全文主线、五章与结论、六项方法、成果边界和原文页码；样式和脚本均内嵌，不依赖其他资产。
 - assets/design-data.js：实验矩阵和接口规范的唯一数据源，由页面直接渲染；这些是设计，不是算法实现。

@@ -1,0 +1,135 @@
+{
+  "version": "2026-11-10-B-1",
+  "main_document": "../direction-b-study.html",
+  "retrieval_cutoff": "2026-11-10",
+  "status": "研究分析完成；算法与UCS现象未实证",
+  "user_steering": "继续按照你选定的方向执行研究",
+  "authorization_interpretation": "继续方向B的理论、文献与方案研究；保持已有先讨论后实施边界",
+  "inheritance": [
+    "research-review-2026-11-10.json",
+    "curriculum-evidence-2026-11-10.json"
+  ],
+  "sources": [
+    {
+      "id": "thesis",
+      "url": "local:thesis-reference/theses/3120215520_答辩修改后论文0830.pdf",
+      "locator": "4.2 PDF105–106 / 印刷88–89；完整范围PDF98–106 / 印刷81–89",
+      "reading_depth": "沿用前轮原文核验：生成训练后回原任务训练与多指标评估；本轮先重读导读和已核记录",
+      "version_status": "本地学位论文",
+      "local_ignored_path": "thesis-reference/theses/3120215520_答辩修改后论文0830.pdf",
+      "sha256": "faec3234cb5189adf347724db50446b64f9b3b3645d13071076591708fc51588"
+    },
+    {
+      "id": "mm-acl",
+      "url": "https://proceedings.mlr.press/v232/xu23a/xu23a.pdf",
+      "locator": "PDF3–9、13–15；可见页码相同",
+      "reading_depth": "关键方法、Algorithm1/2、实验及附录A/B；本轮视觉核对PDF9与13",
+      "version_status": "CoLLAs2023正式论文",
+      "issues": [
+        "Habitat正文PDF9为80 lifetimes，附录PDF13表为120",
+        "FourRoom UpdateInterval附录表45000，正文450000",
+        "未找到可确认属于此正式版本的官方完整实现；不等于不存在"
+      ],
+      "local_ignored_path": "thesis-reference/notes/thesis-uav-crowdsensing/research-review-2026-11-10/mm-acl.pdf",
+      "sha256": "c233e014d64f8e5d7f1e9fdf4df44a6ebfecfc639608c36786b30d88ac385870"
+    },
+    {
+      "id": "ulee",
+      "url": "https://arxiv.org/pdf/2601.19810v1",
+      "locator": "§3.1–3.2 PDF4–5；§4.2 PDF6–7；Algorithm1 PDF14；A.3 PDF19–20；可见页码相同",
+      "reading_depth": "方法、关键实验及指定附录，非逐项复现实验",
+      "version_status": "arXiv v1，页眉To appear as a conference paper at ICLR2026；OpenReview PDF403，未确认排版及内容完全一致",
+      "findings": [
+        "交互历史中的上下文适应，与本课题原学习器梯度回训不同",
+        "适应后难度与目标χ迁移增益不同；不能据此推出新颖性",
+        "A.3讨论适应后学习进展",
+        "SED额外评价回合未计入部分步数报告，作者有说明"
+      ],
+      "local_ignored_path": "thesis-reference/notes/thesis-uav-crowdsensing/direction-b-2026-11-10/ulee-v1.pdf",
+      "sha256": "17e1cb178e175e11810529b4b7f0739a73bbe0c18010507b4b76d71e17b93c02"
+    },
+    {
+      "id": "ulee-code",
+      "url": "https://github.com/Octavio-Pappalardo/ulee-jax/tree/b7623f650e5e980ee3c6bedb61cf2e900b671381",
+      "commit": "b7623f650e5e980ee3c6bedb61cf2e900b671381",
+      "license": "MIT（根LICENSE）",
+      "local_ignored_directory": "thesis-reference/notes/thesis-uav-crowdsensing/direction-b-2026-11-10/ulee-jax",
+      "read_paths": [
+        "README.md",
+        "LICENSE",
+        "src/ulee_repo/ULEE/goal_sample.py",
+        "src/ulee_repo/ULEE/goal_judge.py"
+      ],
+      "acquisition": "depth1 filtered clone --no-checkout；仅git show阅读部分对象；无完整工作树、未安装或执行"
+    },
+    {
+      "id": "best-arm",
+      "url": "https://proceedings.mlr.press/v49/garivier16a.html",
+      "title": "Optimal Best Arm Identification with Fixed Confidence",
+      "version_status": "COLT2016正式论文",
+      "reading_depth": "摘要与问题设定；未核全部证明",
+      "limit": "不直接用于非平稳学习状态和未经校准的回归区间"
+    },
+    {
+      "id": "student-code",
+      "url": "https://github.com/BIT-MCS/DRL-MTVCS/tree/780e0b41d3fff54c8fa5ea0335979b3f1ec1f225",
+      "commit": "780e0b41d3fff54c8fa5ea0335979b3f1ec1f225",
+      "local_ignored_directory": "thesis-reference/notes/thesis-uav-crowdsensing/deep-research-2026-11-10/DRL-MTVCS",
+      "reading_depth": "静态代码审查，未运行TF1；与4.3等价待核",
+      "locators": {
+        "counter": "experiment.py:418–438,563–569",
+        "restore": "experiment.py:524,555–558,587–616",
+        "normalization": "utils.py:343–385;vtrace.py:287–295"
+      }
+    },
+    {
+      "id": "tf-optimizer",
+      "url": "https://github.com/tensorflow/tensorflow/blob/v1.13.1/tensorflow/python/training/optimizer.py",
+      "locator": "539及614–626行",
+      "reading_depth": "固定v1.13.1源码：global_step非空时apply_gradients加1；候选学生实际运行图未核",
+      "version_status": "v1.13.1源码标签",
+      "local_ignored_path": "thesis-reference/notes/thesis-uav-crowdsensing/direction-b-2026-11-10/tf-v1.13.1-optimizer.py.txt",
+      "sha256": "0525bd4aa707bbd55bdc7097d60c3c4d8d9dcdd8f02af1c71eae4e201e69fce4"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "B01",
+      "action": "删除共同基准作为新颖性依据",
+      "basis": "对所有候选减相同值不改变argmax；共同估计也严格抵消",
+      "type": "解析事实"
+    },
+    {
+      "id": "B02",
+      "action": "研究候选间回训增量差",
+      "basis": "精确分解及二次目标反例；尚无UCS现象证据",
+      "type": "解析事实＋待验证假设"
+    },
+    {
+      "id": "B03",
+      "action": "加入同标签同预算MM-ACL式直接预测强对照",
+      "basis": "MM-ACL和ULEE已覆盖目标收益与适应后课程的相邻概念",
+      "type": "文献驱动方案"
+    },
+    {
+      "id": "B04",
+      "action": "拆分主训练、分支训练、评价三层随机性",
+      "basis": "冻结参数后增加评价回合不能估计参数训练随机性；预算需R倍",
+      "type": "统计设计"
+    },
+    {
+      "id": "B05",
+      "action": "R0增加计数和完整快照恢复审查",
+      "basis": "固定代码的队列与global_step实现；静态线索，未动态验证",
+      "type": "代码审计"
+    },
+    {
+      "id": "B06",
+      "action": "主诊断从翻转率转向独立确认的决策损失",
+      "basis": "近乎平局的错序不等于实际损失；同数据选优和验证会偏乐观",
+      "type": "研究方案"
+    }
+  ],
+  "research_training_runs": 0,
+  "research_implementation_created": false
+}

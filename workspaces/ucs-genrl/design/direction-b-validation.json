@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-10",
+  "url": "http://127.0.0.1:18773/workspaces/ucs-genrl/direction-b-study.html",
+  "access_scope": "same-computer-loopback-only",
+  "http_status": 200,
+  "sections": 7,
+  "local_links_checked": 58,
+  "source_hashes": "passed",
+  "details_navigation_print_events": "passed",
+  "mobile_390_and_desktop_1440_no_page_overflow": true,
+  "javascript_errors": [],
+  "research_training_runs": 0,
+  "research_implementation_created": false
+}

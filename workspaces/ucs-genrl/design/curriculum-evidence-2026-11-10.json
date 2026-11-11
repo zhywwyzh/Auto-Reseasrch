@@ -1,0 +1,242 @@
+{
+  "version": "2026-11-10-deep-research-1",
+  "retrieval_cutoff": "2026-11-10",
+  "status": "文献与静态代码研究；方案待评审；没有研究实现或新实验",
+  "main_document": "../curriculum-deep-research.html",
+  "working_assumption": "方向2为方法主线，方向3为组合泛化验证；暂定，未记录为用户最终选择",
+  "sources": [
+    {
+      "id": "s-codebase",
+      "year": 2020,
+      "reading_depth": "method",
+      "urls": [
+        "https://github.com/BIT-MCS/DRL-MTVCS/tree/780e0b41d3fff54c8fa5ea0335979b3f1ec1f225",
+        "https://ieeexplore.ieee.org/document/9155393/"
+      ]
+    },
+    {
+      "id": "s-cmdp",
+      "year": 2017,
+      "reading_depth": "method",
+      "urls": [
+        "https://ijcai.org/proceedings/2017/353",
+        "https://arxiv.org/abs/1901.11478"
+      ]
+    },
+    {
+      "id": "s-mm",
+      "year": 2023,
+      "reading_depth": "method",
+      "urls": [
+        "https://proceedings.mlr.press/v232/xu23a.html"
+      ]
+    },
+    {
+      "id": "s-procurl",
+      "year": 2024,
+      "reading_depth": "method",
+      "urls": [
+        "https://ijcai.org/proceedings/2024/0556.pdf"
+      ]
+    },
+    {
+      "id": "s-camrl",
+      "year": 2023,
+      "reading_depth": "method",
+      "urls": [
+        "https://arxiv.org/html/2211.03352"
+      ]
+    },
+    {
+      "id": "s-gradalign",
+      "year": 2026,
+      "reading_depth": "method",
+      "urls": [
+        "https://arxiv.org/abs/2602.21492",
+        "https://arxiv.org/html/2602.21492v2"
+      ]
+    },
+    {
+      "id": "s-tac",
+      "year": 2026,
+      "reading_depth": "method",
+      "urls": [
+        "https://arxiv.org/html/2606.25178v2"
+      ]
+    },
+    {
+      "id": "s-pgb",
+      "year": 2026,
+      "reading_depth": "method",
+      "urls": [
+        "https://arxiv.org/html/2610.25704v1"
+      ]
+    },
+    {
+      "id": "s-ulee",
+      "year": 2026,
+      "reading_depth": "method",
+      "urls": [
+        "https://arxiv.org/html/2601.19810v1",
+        "https://openreview.net/pdf?id=UmxTIxHWkl"
+      ]
+    },
+    {
+      "id": "s-gas",
+      "year": 2026,
+      "reading_depth": "method",
+      "urls": [
+        "https://proceedings.mlr.press/v306/zhang26bc.html"
+      ]
+    },
+    {
+      "id": "s-benchmark",
+      "year": 2025,
+      "reading_depth": "method",
+      "urls": [
+        "https://rlj.cs.umass.edu/2025/papers/RLJ_RLC_2025_140.pdf"
+      ]
+    },
+    {
+      "id": "s-envgen",
+      "year": 2024,
+      "reading_depth": "method",
+      "urls": [
+        "https://arxiv.org/html/2403.12014v2"
+      ]
+    },
+    {
+      "id": "s-mracl",
+      "year": 2026,
+      "reading_depth": "limited",
+      "urls": [
+        "https://ojs.aaai.org/index.php/AAAI/article/view/41101"
+      ]
+    },
+    {
+      "id": "s-compo",
+      "year": 2022,
+      "reading_depth": "limited",
+      "urls": [
+        "https://proceedings.mlr.press/v199/mendez22a.html"
+      ]
+    },
+    {
+      "id": "s-code",
+      "year": 2021,
+      "reading_depth": "limited",
+      "urls": [
+        "https://proceedings.neurips.cc/paper_files/paper/2021/hash/218344619d8fb95d504ccfa11804073f-Abstract.html"
+      ]
+    },
+    {
+      "id": "s-moc",
+      "year": 2023,
+      "reading_depth": "limited",
+      "urls": [
+        "https://proceedings.mlr.press/v205/kang23a.html"
+      ]
+    }
+  ],
+  "source_notes": "阅读范围、发表状态与限制以正文各来源条目为准；method表示阅读关键方法或代码片段，不等于完整审计或复现。",
+  "code_audit": {
+    "repo": "https://github.com/BIT-MCS/DRL-MTVCS",
+    "commit": "780e0b41d3fff54c8fa5ea0335979b3f1ec1f225",
+    "root_license": "MIT",
+    "local_ignored_path": "thesis-reference/notes/thesis-uav-crowdsensing/deep-research-2026-11-10/DRL-MTVCS",
+    "equivalence": "复用候选；公开提交与学位论文4.3尚未对齐",
+    "read_only": true,
+    "executed": false,
+    "findings": [
+      {
+        "kind": "static_fact",
+        "item": "scalar value output vs thesis per-task value heads",
+        "code": [
+          "agent.py:358",
+          "utils.py:313",
+          "utils.py:362"
+        ],
+        "thesis": {
+          "pdf_pages": [
+            111,
+            112
+          ],
+          "printed_pages": [
+            94,
+            95
+          ]
+        }
+      },
+      {
+        "kind": "pending_runtime_verification",
+        "item": "TF1 normalization assignment operations execution dependencies",
+        "code": [
+          "utils.py:343",
+          "utils.py:362",
+          "vtrace.py:290"
+        ]
+      },
+      {
+        "kind": "semantic_ambiguity",
+        "item": "energy normalization and collected-amount vs collected-ratio fairness in reporting",
+        "code": [
+          "mcs_envs/gym_base/data_collection_1.py:595",
+          "environments.py:149",
+          "experiment.py:848"
+        ],
+        "thesis": {
+          "pdf_pages": [
+            101,
+            103
+          ],
+          "printed_pages": [
+            84,
+            86
+          ]
+        }
+      },
+      {
+        "kind": "static_fact",
+        "item": "default map/energy differ from thesis experimental parameters",
+        "code": [
+          "mcs_envs/env_setting/env_setting_1.py:4",
+          "mcs_envs/env_setting/env_setting_1.py:298"
+        ],
+        "thesis": {
+          "pdf_pages": [
+            115
+          ],
+          "printed_pages": [
+            98
+          ]
+        }
+      }
+    ]
+  },
+  "claims": [
+    {
+      "id": "H1",
+      "status": "untested",
+      "claim": "短窗代理对固定回训后原χ收益存在稳定排序错配"
+    },
+    {
+      "id": "H2",
+      "status": "untested",
+      "claim": "稀疏核验校准可在未拟合的检查点和种子降低选择损失"
+    },
+    {
+      "id": "H3",
+      "status": "untested",
+      "claim": "计入全部成本后仍有原任务和组合留出收益"
+    }
+  ],
+  "open_items": [
+    "原4.3对应版本与逐任务价值头/归一化语义",
+    "η、F汇总和零分母口径",
+    "MM-ACL已读§3–4关键方法；其完整超参与成本、ULEE完整算法及MRACL全文仍待核验",
+    "δχ、h/a、总预算与独立重复数",
+    "实际实现/训练授权"
+  ],
+  "training_runs": 0,
+  "paid_model_calls": 0
+}

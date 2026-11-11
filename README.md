@@ -14,9 +14,13 @@
 
 当前课题：[TR-001：第 4.2 节论文化可行性](docs/topics/TR-001-thesis-uav-crowdsensing/README.md)。阅读[论文方案与大纲](docs/topics/TR-001-thesis-uav-crowdsensing/paper-feasibility-plan.md)、[代码与实验讨论稿](docs/topics/TR-001-thesis-uav-crowdsensing/experiment-design.md)及[经典与近期文献评估](docs/topics/TR-001-thesis-uav-crowdsensing/literature-review.md)。
 
+**当前研究进展：** [方向 B：回训如何改变课程价值](workspaces/ucs-genrl/direction-b-study.html)，含解析反例、最近邻审查和拟议最小判别协议；未启动训练。
+
 **阅读第0步：** [学位论文导读——全篇主线与各章介绍](workspaces/ucs-genrl/thesis-guide.html)。操作者先了解原文，再评估研究方案。
 
-**最新研究判断（2026-11-10）：** [4.2 创新性复评与三条改进路线](workspaces/ucs-genrl/novelty-review.html)。纳入 2026 年近邻，先评估关键资源依赖是否在课程简化中丢失；迁移准入草案保留为候选工具，尚未开始实验。
+**本轮深度研究：** [课程分配、理论与实验方案](workspaces/ucs-genrl/curriculum-deep-research.html)。暂按方向 2 主线、方向 3 验证推进；已补查原代码差异及 2026 强近邻，创新仍待验证，未启动实现或训练。
+
+**最新研究约定（2026-11-10）：** [维持原任务定义的创新设计](workspaces/ucs-genrl/direction-a-assessment.html#original-task)。保留原 UCS 语义与 D/F/η/χ；分别审查任务编辑与跨任务课程分配，组合泛化作为共同强验证并保留独立成文可能。原文已有多指标反馈，不把它重新列为创新；充电必要性降为辅助分析。尚未开始实现或实验；背景与方向 A 历史反证保留在同页。
 
 **理论与实验设计工作区：** [Web UI 主入口](workspaces/ucs-genrl/index.html) · [编辑器工作区](workspaces/ucs-genrl/UCS-GenRL.code-workspace) · [启动与文件说明](workspaces/ucs-genrl/README.md)。后续理论推导、实验矩阵及代码接口优先在此维护；当前仍处于设计讨论，尚未启动研究实现。
 
@@ -28,6 +32,8 @@
 
 ## 材料入口
 
+- [AI 自主科研与论文撰写：截至 2026-11-10 的进展与证据边界](docs/research/autonomous-science-2026-11-10/index.html)
+- [对应资料集：16项中文译读、13份原文PDF与11个固定提交的代码／资料库](docs/research/autonomous-science-2026-11-10/library/index.html)
 - [指定 8 篇论文及 autoresearch 文档的中文阅读目录（PDF / Markdown）](translations/fulltext/README.md)
 - [全文阅读总入口（HTML，中文正文，可展开英文）](translations/fulltext/index.html)
 - [抓取原文、版本、许可及校验和](sources/fulltext/manifest.json)

@@ -1,0 +1,14 @@
+{
+  "checked": "2026-11-10",
+  "url": "http://127.0.0.1:18773/docs/research/autonomous-science-2026-11-10/library/index.html",
+  "access_scope": "loopback-current-computer-only",
+  "http": 200,
+  "reading_entries": 16,
+  "code_repositories": 11,
+  "filters": "passed",
+  "local_bilingual_readers": "sampled-7-passed",
+  "desktop_mobile": "passed",
+  "console_errors": [],
+  "upstream_execution": false,
+  "experiments_run": false
+}
