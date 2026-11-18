@@ -1,0 +1,22 @@
+{
+  "original_record_files_checked": 5237,
+  "changed_original_records": [],
+  "logged_identity_only_trace_redactions": [
+    "tracks/clinvar_acmg/L2/results/clinvar_l2_classify_run/out_cell015_glm-5.3.trace.json",
+    "tracks/hist_gene_exp/L1/results/hist_qc_run/out_cell004_gpt-5.6-sol.trace.json"
+  ],
+  "model_ids": [
+    "claude-fable-5",
+    "claude-opus-5",
+    "deepseek-v4-pro",
+    "glm-5.2",
+    "glm-5.3",
+    "gpt-4.1",
+    "gpt-5.6-sol",
+    "gpt-6-astra",
+    "kimi-k3"
+  ],
+  "live_model_calls": 0,
+  "fresh_execution_validated": false,
+  "publication_ready": false
+}

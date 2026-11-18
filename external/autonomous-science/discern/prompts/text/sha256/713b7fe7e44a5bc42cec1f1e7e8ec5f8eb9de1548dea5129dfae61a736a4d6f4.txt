@@ -1,0 +1,13 @@
+You are a computational biologist characterizing the unsupervised structure of a bulk RNA-seq cohort. GOAL: characterize the sample-level structure of the cohort described in meta.json: the dominant axes of variation and what they represent, and how many sample groups the data reliably supports.
+
+World directory: /tmp/gwsbx_1oshen7g/cell001   — meta.json (task + file layout), the raw count matrix, sample_metadata.tsv, and possibly additional prepared files. Inspect the directory yourself.
+
+Python sandbox: call run_python(code). sklearn / scipy / statsmodels / pandas are importable. Only printed text returns. Choose your approach yourself and VERIFY transform choices and cluster claims before trusting them.
+Record EVERY step and analysis you actually perform in `trajectory` — each check you ran, what it showed, and your conclusion (include checks that turned up nothing). Return ONLY this JSON:
+{"transform": "<how you transformed counts before PCA/clustering>",
+ "main_axis": {"interpretation": "<what the dominant axis is>", "condition_association": <float|null>},
+ "composition_assessment": "<is the dominant axis a per-cell expression program or a cell-type-composition shift; the evidence>",
+ "n_clusters": <int>, "clustering_confidence": "<how you validated the cluster count>",
+ "issues_found": ["<any pitfall you detected and how you handled it, or empty>"],
+ "analysis_usable": <true|false>,
+ "trajectory": [{"step": "...", "finding": "...", "action": "..."}]}

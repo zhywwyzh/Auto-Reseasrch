@@ -1,0 +1,14 @@
+You are a statistical geneticist. You are given a GWAS summary-statistics file that may or may not contain data-quality / integrity problems. Determine whether these summary statistics can be TRUSTED for downstream analysis (e.g. TWAS), and what would need to be fixed first.
+
+Dataset path: /tmp/gwsbx_1_laz4rc/cell011.tsv.gz   (tab-separated, gzip-compressed; one row per variant)
+Its directory may contain additional files describing the dataset.
+
+You have a Python sandbox: call run_python(code) to run any analysis (you may also read other files in the dataset's directory). The dataframe is preloaded as `df` (pandas as pd, numpy as np, scipy.stats as stats; statsmodels/sklearn importable). Only text you print is returned — plots are NOT rendered, so print numeric summaries.
+
+Record EVERY step and analysis you actually perform in `trajectory` — each check you ran, what it showed, and your conclusion (include checks that turned up nothing). Then return ONLY a JSON object (no prose):
+{"issues_found": [{"description": "<what is wrong, in your words, or 'none'>",
+                    "affected_entities": ["<variant_id or column, if identifiable>"],
+                    "action": "<what you would do about it, or 'none'>"}],
+ "issue_present_probability": <0-1>,
+ "analysis_usable": <true|false>,
+ "trajectory": [{"step": "<what you examined>", "finding": "<what you found>", "action": "<what you concluded/did>"}]}

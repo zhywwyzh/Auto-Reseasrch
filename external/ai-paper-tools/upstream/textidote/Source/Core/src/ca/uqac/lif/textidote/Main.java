@@ -1,0 +1,1115 @@
+/*
+    TeXtidote, a linter for LaTeX documents
+    Copyright (C) 2018-2023  Sylvain Hallé
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+package ca.uqac.lif.textidote;
+
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintStream;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
+import java.util.Scanner;
+import java.util.Set;
+
+import ca.uqac.lif.petitpoucet.function.strings.Range;
+import ca.uqac.lif.textidote.as.AnnotatedString;
+import ca.uqac.lif.textidote.cleaning.CompositeCleaner;
+import ca.uqac.lif.textidote.cleaning.ReplacementCleaner;
+import ca.uqac.lif.textidote.cleaning.TextCleanerException;
+import ca.uqac.lif.textidote.cleaning.latex.LatexCleaner;
+import ca.uqac.lif.textidote.cleaning.markdown.MarkdownCleaner;
+import ca.uqac.lif.textidote.render.AnsiAdviceRenderer;
+import ca.uqac.lif.textidote.render.ClickableAdviceRenderer;
+import ca.uqac.lif.textidote.render.HtmlAdviceRenderer;
+import ca.uqac.lif.textidote.render.JsonAdviceRenderer;
+import ca.uqac.lif.textidote.render.SinglelineAdviceRenderer;
+import ca.uqac.lif.textidote.rules.CheckCaptions;
+import ca.uqac.lif.textidote.rules.CheckCiteMix;
+import ca.uqac.lif.textidote.rules.CheckFigurePaths;
+import ca.uqac.lif.textidote.rules.CheckFigureReferences;
+import ca.uqac.lif.textidote.rules.CheckLanguage;
+import ca.uqac.lif.textidote.rules.CheckNoBreak;
+import ca.uqac.lif.textidote.rules.CheckStackedHeadings;
+import ca.uqac.lif.textidote.rules.CheckSubsectionSize;
+import ca.uqac.lif.textidote.rules.CheckSubsections;
+import ca.uqac.lif.textidote.rules.LanguageFactory;
+import ca.uqac.lif.textidote.rules.LanguageMarker;
+import ca.uqac.lif.textidote.rules.RegexRule;
+import ca.uqac.lif.util.AnsiPrinter;
+import ca.uqac.lif.util.CliParser;
+import ca.uqac.lif.util.CliParser.Argument;
+import ca.uqac.lif.util.CliParser.ArgumentMap;
+import ca.uqac.lif.util.NullPrintStream;
+
+/**
+ * Command-line interface for TeXtidote.
+ * @author Sylvain Hallé
+ */
+public class Main
+{
+	/**
+	 * Filename where the regex rules are stored
+	 */
+	public static final String REGEX_FILENAME = "rules/regex.csv";
+
+	/**
+	 * Filename where the regex rules are stored
+	 */
+	public static final String REGEX_FILENAME_DETEX = "rules/regex-detex.csv";
+
+	/**
+	 * A version string
+	 */
+	public static final String VERSION_STRING = "0.9";
+
+	/**
+	 * The name of the Aspell dictionary file to look for in a folder
+	 */
+	protected static final String ASPELL_DICT_FILENAME = ".aspell.XX.pws";
+
+	/**
+	 * The name of the optional file containing command line parameters
+	 */
+	protected static final String PARAM_FILENAME = ".textidote";
+
+	/**
+	 * The OS-dependent path separator
+	 */
+	protected static final transient String PATH_SEP = File.separator;
+	
+	/**
+	 * Return code for incorrect command line arguments.
+	 */
+	protected static final transient int ERR_ARGUMENTS = -1;
+	
+	/**
+	 * Return code for error when cleaning file.
+	 */
+	protected static final transient int ERR_CLEANER = -2;
+	
+	/**
+	 * Return code for unknown language code.
+	 */
+	protected static final transient int ERR_UNKNOWN_LANGUAGE = -3;
+	
+	/**
+	 * Return code for error when applying linter.
+	 */
+	protected static final transient int ERR_LINTER = -4;
+	
+	/**
+	 * Return code for multiple roots with sub-files.
+	 */
+	protected static final transient int ERR_SINGLE_ROOT = -5;
+	
+	/**
+	 * Return code when no file was analyzed.
+	 */
+	protected static final transient int ERR_NO_FILE = -6;
+	
+	/**
+	 * Return code when all analyzed files were empty.
+	 */
+	protected static final transient int ERR_EMPTY_INPUT = -7;
+
+	/**
+	 * Main method. This method simply calls the static method
+	 * {@link #main(String[]) mainLoop()},
+	 * and exits with the return value of that method. The reason for this is
+	 * is that we can test the main loop, and the test is not interrupted
+	 * by calls to {@code System.exit}.
+	 * @param args Command-line arguments
+	 * @throws IOException Thrown if some file cannot be found or open
+	 */
+	@SuppressWarnings({"squid:S106"})
+	public static void main(String[] args) throws IOException
+	{
+		System.exit(mainLoop(args, System.in, System.out, System.err));
+	}
+
+	/**
+	 * Delegate method of {@link #mainLoop(String[], InputStream, PrintStream, PrintStream, Class)}.
+	 * @param args Command-line arguments
+	 * @param in A stream corresponding to the standard input
+	 * @param out A stream corresponding to the standard output
+	 * @param err A stream corresponding to the standard error
+	 * @return An exit code
+	 * @throws IOException Thrown if some file cannot be found or open
+	 */
+	public static int mainLoop(String[] args, InputStream in, PrintStream out, PrintStream err) throws IOException
+	{
+		return mainLoop(args, in, out, err, null);
+	}
+
+	/**
+	 * Main method. The {@code base_class} argument can be set to a non-null
+	 * value to indicate that the loop is being run inside a unit test.
+	 * When given a filename, the loop will fetch it using
+	 * {@link Class#getResourceAsStream(String)} instead of through a
+	 * {@link File} object.
+	 * @param args Command-line arguments
+	 * @param in A stream corresponding to the standard input
+	 * @param out A stream corresponding to the standard output
+	 * @param err A stream corresponding to the standard error
+	 * @param base_class Unit tests can pass a {@code Class} object to indicate
+	 * that the loop is being run inside a unit test.
+	 * @return An exit code
+	 * @throws IOException Thrown if some file cannot be found or open
+	 */
+	/**
+	 * Raises the JAXP system properties controlling the maximum cumulative
+	 * size of XML entities, if they have not already been explicitly set
+	 * (e.g. by the user through a {@code -D} JVM flag, or by the environment).
+	 * <p>
+	 * Starting with JDK 24, the default values for
+	 * {@code jdk.xml.totalEntitySizeLimit} and
+	 * {@code jdk.xml.maxGeneralEntitySizeLimit} were lowered considerably
+	 * (see <a href="https://bugs.openjdk.org/browse/JDK-8343006">JDK-8343006</a>).
+	 * Some of the grammar rule files bundled with LanguageTool (notably the
+	 * French {@code grammar.xml}) exceed the new default cap, which causes
+	 * {@code CheckLanguage} to fail during initialization with a
+	 * {@code SAXParseException} ("JAXP00010004") before any linting can
+	 * happen at all. Since textidote always needs to fully parse these
+	 * trusted, bundled rule files (not arbitrary external XML), disabling
+	 * this particular limit is safe in this context.
+	 */
+	protected static void raiseJaxpEntityLimitsIfUnset()
+	{
+		String[] properties = {
+				"jdk.xml.totalEntitySizeLimit",
+				"jdk.xml.maxGeneralEntitySizeLimit"
+		};
+		for (String property : properties)
+		{
+			if (System.getProperty(property) == null)
+			{
+				System.setProperty(property, "0"); // 0 = no limit
+			}
+		}
+	}
+
+	public static int mainLoop(String[] args, InputStream in, PrintStream out, PrintStream err, Class<?> base_class) throws IOException
+	{
+		// Recent JDKs (24+) tightened default JAXP limits on cumulative XML
+		// entity size (see JDK-8343006). Some of LanguageTool's bundled
+		// grammar rule files (e.g. the French grammar.xml) exceed the new
+		// default cap, which makes CheckLanguage fail to initialize with a
+		// SAXParseException before textidote even gets a chance to run. We
+		// raise these limits here, at startup, so users don't have to pass
+		// JVM flags manually. This only sets a property if the user (or the
+		// environment) hasn't already specified a value, so an explicit
+		// -D flag on the command line still takes precedence.
+		raiseJaxpEntityLimitsIfUnset();
+
+		// Store input type
+		Linter.Language input_type = Linter.Language.UNSPECIFIED;
+
+		// Setup command line parser and arguments
+		CliParser cli_parser = new CliParser();
+		//cli_parser.addArgument(new Argument().withLongName("autocheck").withDescription("Checks grammar in auto-detected language"));
+		cli_parser.addArgument(new Argument().withLongName("check").withArgument("lang").withDescription("Checks grammar in language lang"));
+		cli_parser.addArgument(new Argument().withLongName("firstlang").withArgument("lang").withDescription("Checks for false friends with the author's first language lang and the language specified in --check"));
+		cli_parser.addArgument(new Argument().withLongName("clean").withDescription("Remove markup from input file"));
+		cli_parser.addArgument(new Argument().withLongName("dict").withArgument("file").withDescription("Load dictionary from file"));
+		cli_parser.addArgument(new Argument().withLongName("help").withDescription("\tShow command line usage"));
+		cli_parser.addArgument(new Argument().withLongName("ignore").withArgument("rules").withDescription("Ignore rules"));
+		cli_parser.addArgument(new Argument().withLongName("languagemodel").withArgument("dir").withDescription("Use n-grams data from dir"));
+		cli_parser.addArgument(new Argument().withLongName("map").withArgument("file").withDescription("Output correspondence map to file"));
+		cli_parser.addArgument(new Argument().withLongName("name").withArgument("n").withDescription("Use n as app name when printing usage"));
+		cli_parser.addArgument(new Argument().withLongName("no-color").withDescription("Disables colors in ANSI printing"));
+		cli_parser.addArgument(new Argument().withLongName("no-config").withDescription("Ignore config file if any"));
+		cli_parser.addArgument(new Argument().withLongName("quiet").withDescription("Don't print any message"));
+		cli_parser.addArgument(new Argument().withLongName("read-all").withDescription("Don't ignore lines before \\begin{document}"));
+		cli_parser.addArgument(new Argument().withLongName("remove").withArgument("envs").withDescription("Remove LaTeX environments envs"));
+		cli_parser.addArgument(new Argument().withLongName("remove-macros").withArgument("macs").withDescription("Remove LaTeX macros macs"));
+		cli_parser.addArgument(new Argument().withLongName("replace").withArgument("file").withDescription("Apply replacement patterns from file"));
+		cli_parser.addArgument(new Argument().withLongName("lang-markers").withArgument("file").withDescription("Declare LaTeX commands marking passages in another language"));
+		cli_parser.addArgument(new Argument().withLongName("lang-dict").withArgument("dir").withDescription("Directory of per-language custom dictionaries for secondary languages"));
+		cli_parser.addArgument(new Argument().withLongName("ignore-english-variant").withDescription("Do not flag British/American English spelling differences in secondary English passages"));
+		cli_parser.addArgument(new Argument().withLongName("type").withArgument("x").withDescription("Input is of type x (tex or md)"));
+		cli_parser.addArgument(new Argument().withLongName("version").withDescription("Show version number"));
+		cli_parser.addArgument(new Argument().withLongName("output").withArgument("method").withDescription("Output as plain (default), json, html, singleline, or clickable"));
+		cli_parser.addArgument(new Argument().withLongName("ci").withDescription("Ignores the return code for CI usage"));
+		cli_parser.addArgument(new Argument().withLongName("encoding").withArgument("x").withDescription("Read files using encoding x"));
+		cli_parser.addArgument(new Argument().withLongName("single-file").withDescription("Don't read sub-files if any"));
+		cli_parser.addArgument(new Argument().withLongName("root").withArgument("file").withDescription("Manually set the root of the LaTeX document"));
+
+		// Check if we are using textidote in a CI tool
+		boolean usingCI = false;
+
+		// Check if there is a parameter filename
+		ArgumentMap map = null;
+		File param_file = new File(PARAM_FILENAME);
+		if (param_file.exists())
+		{
+			Scanner f_c_scan = new Scanner(param_file);
+			String[] f_c_args = readArguments(f_c_scan);
+			map = cli_parser.parse(f_c_args);
+		}
+		ArgumentMap map_cline = cli_parser.parse(args);
+		if (map == null)
+		{
+			// If no arguments were read from a file, just use those from
+			// the actual command line
+			map = map_cline;
+		}
+		else if(map_cline != null)
+		{
+			if (map_cline.hasOption("no-config"))
+			{
+				// Just use command line args
+				map = map_cline;
+			}
+			else
+			{
+				// Merge CLI and args from file
+				map.putAll(map_cline);
+			}
+		}
+
+		// Process command line arguments
+		String app_name = "java -jar textidote.jar";
+		if (map == null)
+		{
+			cli_parser.printHelp("Usage: " + app_name + " [options] file1 [file2 ...]", err);
+			return ERR_ARGUMENTS;
+		}
+		if (map.hasOption("name"))
+		{
+			app_name = map.getOptionValue("name");
+		}
+		boolean read_all = map.hasOption("read-all");
+		boolean enable_colors = !map.hasOption("no-color");
+		boolean single_file = map.hasOption("single-file");
+		AnsiPrinter stdout = new AnsiPrinter(out);
+		AnsiPrinter stderr = null;
+		if (map.hasOption("version"))
+		{
+			printGreeting(stdout);
+			return 0;
+		}
+		if (map.hasOption("quiet"))
+		{
+			stderr = new AnsiPrinter(new NullPrintStream());
+		}
+		else
+		{
+			stderr = new AnsiPrinter(err);
+		}
+		assert stderr != null;
+		// User has specified rules to ignore
+		List<String> rule_blacklist = new ArrayList<String>();
+		if (map.hasOption("ignore"))
+		{
+			String[] ids = map.getOptionValue("ignore").split(",");
+			Collections.addAll(rule_blacklist, ids);
+		}
+		// User has specified environments to remove
+		List<String> env_blacklist = new ArrayList<String>();
+		if (map.hasOption("remove"))
+		{
+			String[] ids = map.getOptionValue("remove").split(",");
+			Collections.addAll(env_blacklist, ids);
+		}
+		// User has specified environments to remove
+		List<String> mac_blacklist = new ArrayList<String>();
+		if (map.hasOption("remove-macros"))
+		{
+			String[] ids = map.getOptionValue("remove-macros").split(",");
+			Collections.addAll(mac_blacklist, ids);
+		}
+		// User uses n-gram
+		String ngram_dir = "";
+		File f_ngram_dir = null;
+		if (map.hasOption("languagemodel"))
+		{
+			ngram_dir = map.getOptionValue("languagemodel");
+			f_ngram_dir = new File(ngram_dir);
+			if (!f_ngram_dir.exists())
+			{
+				stderr.println("N-gram directory " + ngram_dir + " not found. N-gram rules will be ignored.");
+				f_ngram_dir = null;
+			}
+			else if (!f_ngram_dir.isDirectory())
+			{
+				stderr.println("N-gram path " + ngram_dir + " is not a directory. N-gram rules will be ignored.");
+				f_ngram_dir = null;
+			}
+			else
+			{
+				stderr.println("Using N-grams from " + ngram_dir);
+			}
+		}
+		printGreeting(stderr);
+		if (map.hasOption("help"))
+		{
+			cli_parser.printHelp("Usage: " + app_name + " [options] file1 [file2 ...]", stderr);
+			stdout.close();
+			return 0;
+		}
+		if (map.hasOption("type"))
+		{
+			String type = map.getOptionValue("type");
+			if (type.compareToIgnoreCase("md") == 0)
+			{
+				input_type = Linter.Language.MARKDOWN;
+			}
+			else if (type.compareToIgnoreCase("tex") == 0)
+			{
+				input_type = Linter.Language.LATEX;
+			}
+			else if (type.compareToIgnoreCase("txt") == 0)
+			{
+				input_type = Linter.Language.TEXT;
+			}
+			else
+			{
+				stderr.println("Unknown --type \'"+type+"\'.");
+				return ERR_UNKNOWN_LANGUAGE;
+			}
+		}
+		String encoding = "utf-8";
+		if (map.hasOption("encoding"))
+		{
+			encoding = map.getOptionValue("encoding");
+			// Try to create a scanner with specified encoding
+			Scanner temp_scanner = null;
+			try
+			{
+				temp_scanner = new Scanner(new ByteArrayInputStream("foo".getBytes()), encoding);
+			}
+			catch (IllegalArgumentException e)
+			{
+				stderr.println("Invalid encoding: " + encoding);
+				return 9;
+			}
+			temp_scanner.close();
+		}
+
+		// Only detex input
+		if (map.hasOption("clean"))
+		{
+			CompositeCleaner cleaner = new CompositeCleaner();
+			if (map.hasOption("replace"))
+			{
+				String replacement_filename = map.getOptionValue("replace");
+				File f = new File(replacement_filename);
+				if (!f.exists())
+				{
+					stderr.println("Replacement file " + replacement_filename + " not found");
+					return ERR_ARGUMENTS;
+				}
+				else
+				{
+					Scanner scanner = new Scanner(f, encoding);
+					cleaner.add(ReplacementCleaner.create(scanner));
+					stderr.println("Using replacement file " + replacement_filename);
+				}
+			}
+			List<String> filenames = map.getOthers();
+			if (filenames.isEmpty())
+			{
+				filenames.add("--"); // This indicates: read from stdin
+			}
+			for (String filename : filenames)
+			{
+				Scanner scanner = null;
+				try
+				{
+					File f = new File(filename);
+					if (filename.compareTo("--") == 0)
+					{
+						// Open scanner on stdin
+						scanner = new Scanner(in, encoding);
+					}
+					else
+					{
+						if (!f.exists())
+						{
+							stderr.println("File " + filename + " not found (skipping)");
+							continue;
+						}
+						else
+						{
+							scanner = new Scanner(f, encoding);
+						}
+					}
+					// Create cleaner based on file extension
+					CompositeCleaner c_file = new CompositeCleaner(cleaner);
+					if (input_type == Linter.Language.LATEX || (filename.compareTo("--") == 0 && input_type == Linter.Language.UNSPECIFIED) || filename.endsWith(".tex"))
+					{
+						// LaTeX file
+						String root_dir = calculateRootDir(filename, map.getOptionValue("root"));
+						LatexCleaner latex_cleaner = new LatexCleaner(root_dir);
+						latex_cleaner.setIgnoreBeforeDocument(!read_all);
+						latex_cleaner.ignoreEnvironments(env_blacklist);
+						latex_cleaner.ignoreMacros(mac_blacklist);
+						c_file.add(latex_cleaner);
+					}
+					else if (input_type == Linter.Language.MARKDOWN || filename.endsWith(".md"))
+					{
+						MarkdownCleaner markdown_cleaner = new MarkdownCleaner();
+						c_file.add(markdown_cleaner);
+					}
+					AnnotatedString s = AnnotatedString.read(scanner);
+					s.setResourceName(filename);
+					AnnotatedString ds = c_file.clean(s);
+					stdout.println(ds);
+					if (map.hasOption("map"))
+					{
+						File map_file = new File(map.getOptionValue("map"));
+						FileOutputStream fos = new FileOutputStream(map_file);
+						PrintStream ps_fos = new PrintStream(fos);
+						printMap(ps_fos, ds.getMap());
+						ps_fos.close();
+					}
+				}
+				catch (TextCleanerException e)
+				{
+					stderr.print(e.getMessage());
+					return ERR_CLEANER;
+				}
+				catch (FileNotFoundException e)
+				{
+					// Nothing to do; we already trapped this
+				}
+				finally
+				{
+					if (scanner != null)
+					{
+						scanner.close();
+					}
+				}
+			}
+			stdout.close();
+			return 0;
+		}
+
+		// Create a linter
+		long start_time = System.currentTimeMillis();
+		CompositeCleaner cleaner = new CompositeCleaner();
+		if (map.hasOption("replace"))
+		{
+			String replacement_filename = map.getOptionValue("replace");
+			File f = new File(replacement_filename);
+			if (!f.exists())
+			{
+				stderr.println("Replacement file " + replacement_filename + " not found");
+				return ERR_ARGUMENTS;
+			}
+			else
+			{
+				Scanner scanner = new Scanner(f);
+				cleaner.add(ReplacementCleaner.create(scanner));
+				stderr.println("Using replacement file " + replacement_filename);
+			}
+		}
+
+		// Are explicit LaTeX language markers declared?
+		List<LanguageMarker> language_markers = new ArrayList<LanguageMarker>();
+		if (map.hasOption("lang-markers"))
+		{
+			String markers_filename = map.getOptionValue("lang-markers");
+			File markers_f = new File(markers_filename);
+			if (!markers_f.exists())
+			{
+				stderr.println("Language markers file " + markers_filename + " not found");
+				return ERR_ARGUMENTS;
+			}
+			else
+			{
+				List<String> marker_lines = new ArrayList<String>();
+				Scanner markers_scanner = new Scanner(markers_f);
+				while (markers_scanner.hasNextLine())
+				{
+					marker_lines.add(markers_scanner.nextLine());
+				}
+				markers_scanner.close();
+				try
+				{
+					language_markers = LanguageMarker.parseFile(marker_lines);
+					stderr.println("Using language markers file " + markers_filename);
+				}
+				catch (IllegalArgumentException e)
+				{
+					stderr.println("Error parsing language markers file " + markers_filename + ": " + e.getMessage());
+					return ERR_ARGUMENTS;
+				}
+			}
+		}
+
+		// Is a directory of per-language secondary dictionaries provided?
+		File secondary_dict_dir = null;
+		if (map.hasOption("lang-dict"))
+		{
+			String lang_dict_dirname = map.getOptionValue("lang-dict");
+			File dir_f = new File(lang_dict_dirname);
+			if (!dir_f.exists() || !dir_f.isDirectory())
+			{
+				stderr.println("Language dictionary directory " + lang_dict_dirname + " not found");
+				return ERR_ARGUMENTS;
+			}
+			else
+			{
+				secondary_dict_dir = dir_f;
+				stderr.println("Using language dictionaries from " + lang_dict_dirname);
+			}
+		}
+
+		// Do we check the language?
+		List<String> dictionary = new ArrayList<String>();
+		String lang_s = "";
+		String firstlang_s = "";
+		List<String> additional_langs = new ArrayList<String>();
+		if (map.hasOption("check"))
+		{
+			lang_s = map.getOptionValue("check");
+			if (lang_s.contains(","))
+			{
+				String[] lang_parts = lang_s.split(",");
+				lang_s = lang_parts[0].trim();
+				for (int i = 0; i < lang_parts.length; i++)
+				{
+					String code = LanguageFactory.getLanguageToolCode(lang_parts[i].trim());
+					if (code != null)
+					{
+						additional_langs.add(code);
+					}
+				}
+			}
+			// Try to read dictionary from an Aspell file
+			try
+			{
+				String dict_filename = ASPELL_DICT_FILENAME.replace("XX", lang_s);
+				Set<String> dict = readDictionary(dict_filename);
+				if (dictionary.addAll(dict))
+				{
+					stderr.println("Found local Aspell dictionary in " + dict_filename);
+				}
+				if (dict.isEmpty())
+				{
+					stderr.println("Warning: nothing read from local dictionary. Is the file written with the proper encoding?");
+				}
+			}
+			catch (FileNotFoundException e)
+			{
+				// Do nothing
+			}
+			if (map.hasOption("firstlang"))
+			{
+				firstlang_s = map.getOptionValue("firstlang");
+			}
+			if (map.hasOption("dict"))
+			{
+				try
+				{
+					Set<String> dict = readDictionary(map.getOptionValue("dict"));
+					dictionary.addAll(dict);
+					if (dict.isEmpty())
+					{
+						stderr.println("Warning: nothing read from dictionary file. Is the file written with the proper encoding?");
+					}
+				}
+				catch (FileNotFoundException e)
+				{
+					stderr.println("Dictionary not found: " + map.getOptionValue("dict"));
+					return ERR_ARGUMENTS;
+				}
+			}
+		}
+
+		// Setup the advice renderer
+		if (enable_colors)
+		{
+			stdout.enableColors();
+		}
+		else
+		{
+			stdout.disableColors();
+		}
+		AdviceRenderer renderer = null;
+		if (map.hasOption("output"))
+		{
+			String output_method = map.getOptionValue("output");
+			if (output_method.compareToIgnoreCase("plain") == 0)
+			{
+				renderer = new AnsiAdviceRenderer(stdout);
+			}
+			else if (output_method.compareToIgnoreCase("html") == 0)
+			{
+				stdout.disableColors();
+				renderer = new HtmlAdviceRenderer(stdout);
+			}
+			else if (output_method.compareToIgnoreCase("singleline") == 0)
+			{
+				renderer = new SinglelineAdviceRenderer(stdout);
+			}
+			else if (output_method.compareToIgnoreCase("clickable") == 0)
+			{
+				renderer = new ClickableAdviceRenderer(stdout);
+			}
+			else if (output_method.compareToIgnoreCase("json") == 0)
+			{
+				stdout.disableColors();
+				renderer = new JsonAdviceRenderer(stdout, lang_s);
+			}
+			else
+			{
+				stderr.println("Warning: Unknown output method \'"+output_method+"\'");
+				return ERR_ARGUMENTS;
+			}
+		}
+		else
+		{
+			renderer = new AnsiAdviceRenderer(stdout);
+		}
+		if (map.hasOption("ci"))
+		{
+			usingCI = true;
+		}
+
+		// Process files
+		int num_advice = 0;
+		int num_files = 0;
+		List<String> filenames = new ArrayList<String>();
+		List<String> cmd_filenames = new ArrayList<String>();
+		filenames.addAll(map.getOthers());
+		cmd_filenames.addAll(map.getOthers());
+		if (filenames.isEmpty())
+		{
+			filenames.add("--"); // This indicates: read from stdin
+			cmd_filenames.add("--");
+		}
+		Set<String> processed_filenames = new HashSet<String>();
+		Queue<String> filename_queue = new ArrayDeque<String>(filenames);
+		String top_level_filename = null;
+		boolean empty_input = true;
+		while (!filename_queue.isEmpty())
+		{
+			String filename = filename_queue.remove();
+			if (processed_filenames.contains(filename))
+			{
+				continue;
+			}
+			processed_filenames.add(filename);
+			if (top_level_filename == null || cmd_filenames.contains(filename))
+			{
+				// This is a top level filename
+				top_level_filename = filename;
+			}
+			Scanner scanner = null;
+			CompositeCleaner c_cleaner = null;
+			try
+			{
+				if (filename.compareTo("--") == 0)
+				{
+					// Open scanner on stdin
+					scanner = new Scanner(in, encoding);
+				}
+				else
+				{
+					if (base_class != null)
+					{
+						InputStream is = base_class.getResourceAsStream(filename);
+						if (is == null)
+						{
+							stderr.println("File " + filename + " not found (skipping)");
+							continue;
+						}
+						scanner = new Scanner(is, encoding);
+					}
+					else
+					{
+						File f = new File(filename);
+						if (!f.exists())
+						{
+							stderr.println("File " + filename + " not found (skipping)");
+							continue;
+						}
+						scanner = new Scanner(f, encoding);
+					}
+				}
+				num_files++;
+				c_cleaner = new CompositeCleaner(cleaner);
+				Linter linter = null;
+				if (input_type == Linter.Language.MARKDOWN || filename.endsWith(".md"))
+				{
+					MarkdownCleaner markdown_cleaner = new MarkdownCleaner();
+					c_cleaner.add(markdown_cleaner);
+					linter = new Linter(c_cleaner);
+					populateMarkdownRules(linter);
+					linter.addToBlacklist(rule_blacklist);
+				}
+				else if(input_type != Linter.Language.TEXT)
+				{
+					String root_dir = calculateRootDir(top_level_filename, map.getOptionValue("root"));
+					LatexCleaner latex_cleaner = new LatexCleaner(root_dir);
+					if (cmd_filenames.contains(filename))
+					{
+						latex_cleaner.setIgnoreBeforeDocument(!read_all);
+					}
+					else
+					{
+						latex_cleaner.setIgnoreBeforeDocument(false);
+					}
+					latex_cleaner.ignoreEnvironments(env_blacklist);
+					latex_cleaner.ignoreMacros(mac_blacklist);
+					c_cleaner.add(latex_cleaner);
+					linter = new Linter(c_cleaner);
+					populateLatexRules(linter);
+					linter.addToBlacklist(rule_blacklist);
+				}
+				else{
+					linter = new Linter(c_cleaner);
+					linter.addToBlacklist(rule_blacklist);
+				}
+				if (!lang_s.isEmpty())
+				{
+					try
+					{
+						CheckLanguage cl;
+						if (!additional_langs.isEmpty() || !language_markers.isEmpty())
+						{
+							cl = new CheckLanguage(LanguageFactory.getLanguageFromString(lang_s), dictionary, additional_langs, language_markers, secondary_dict_dir, map.hasOption("ignore-english-variant"));
+						}
+						else
+						{
+							cl = new CheckLanguage(LanguageFactory.getLanguageFromString(lang_s), LanguageFactory.getLanguageFromString(firstlang_s), dictionary);
+						}
+						if (f_ngram_dir != null)
+						{
+							cl.activateLanguageModelRules(f_ngram_dir);
+						}
+						linter.addCleaned(cl);
+					}
+					catch (CheckLanguage.FolderNotFoundException e)
+					{
+						stderr.println("Cannot open N-gram directory " + ngram_dir + ". N-gram rules will be ignored.");
+					}
+					catch (CheckLanguage.IncorrectFolderStructureException e)
+					{
+						stderr.println(e.getMessage().replaceAll("[\n\r]+", " ") + " N-gram rules will be ignored.");
+					}
+					catch (CheckLanguage.UnsupportedLanguageException e)
+					{
+						stderr.println("Unknown language: " + map.getOptionValue("check"));
+						stdout.close();
+						return ERR_UNKNOWN_LANGUAGE;
+					}
+				}
+				AnnotatedString last_string = AnnotatedString.read(scanner);
+				last_string.setResourceName(filename);
+				List<Advice> all_advice = linter.evaluateAll(last_string);
+				renderer.addAdvice(filename, last_string, all_advice);
+				num_advice += all_advice.size();
+				int added = 0;
+				empty_input = false;
+				if (!single_file)
+				{
+					added = addInnerFilesToQueue(c_cleaner.getInnerFiles(), processed_filenames, filename_queue);
+				}
+				if (added > 0 && cmd_filenames.size() > 1)
+				{
+					// Corner case where file checking does not work
+					stderr.println("Warning: one of the input files refers to sub-files, and");
+					stderr.println("more than one file is specified on the command line. When");
+					stderr.println("using sub-files, you should provide a single root document.");
+					return ERR_SINGLE_ROOT;
+				}
+			}
+			catch (EmptyInputException e)
+			{
+				if (!single_file)
+				{
+					addInnerFilesToQueue(c_cleaner.getInnerFiles(), processed_filenames, filename_queue);
+				}
+			}
+			catch (LinterException e)
+			{
+				stderr.print(e.getMessage());
+				return ERR_LINTER;
+			}
+			catch (FileNotFoundException e)
+			{
+				// Nothing to do; we already trapped this
+			}
+			finally
+			{
+				if (scanner != null)
+				{
+					scanner.close();
+				}
+			}
+		}
+		if (num_files == 0)
+		{
+			// No file was processed
+			stdout.close();
+			return ERR_NO_FILE;
+		}
+		if (empty_input)
+		{
+			stderr.println("No input processed. Did you omit --read-all?");
+			return ERR_EMPTY_INPUT;
+		}
+		long end_time = System.currentTimeMillis();
+		stderr.println("Found " + num_advice + " warning(s)");
+		stderr.println("Total analysis time: " + ((end_time - start_time) / 1000) + " second(s)");
+		stderr.println();
+
+		// Render all the advice
+		renderer.render();
+
+		// The exit code is the number of warnings raised
+		return usingCI ? 0 : num_advice;
+	}
+
+	/**
+	 * Prints a simple greeting on a command line
+	 * @param out The print stream to print on
+	 */
+	protected static void printGreeting(AnsiPrinter out)
+	{
+		out.println("TeXtidote v" + VERSION_STRING + " - A linter for LaTeX documents and others");
+		out.println("(C) 2018-2023 Sylvain Hallé - All rights reserved");
+		out.println();
+	}
+
+	/**
+	 * Adds the rules to the LaTeX linter
+	 * @param linter The linter to configure
+	 */
+	protected static void populateLatexRules(Linter linter)
+	{
+		linter.add(readRules(REGEX_FILENAME).values());
+		linter.addCleaned(readRules(REGEX_FILENAME_DETEX).values());
+		linter.add(new CheckFigureReferences());
+		linter.add(new CheckFigurePaths());
+		linter.add(new CheckCaptions());
+		linter.add(new CheckSubsections());
+		linter.add(new CheckSubsectionSize());
+		linter.add(new CheckStackedHeadings());
+		linter.add(new CheckNoBreak());
+		linter.add(new CheckCiteMix());
+	}
+
+	/**
+	 * Adds the rules to the Markdown linter
+	 * @param linter The linter to configure
+	 */
+	protected static void populateMarkdownRules(Linter linter)
+	{
+		// Do nothing
+	}
+
+	/**
+	 * Reads a list of regex rules from a file
+	 * @param filename The filename to read from
+	 * @return A map of rule names to regex rules
+	 */
+	/*@ non_null @*/ public static Map<String,RegexRule> readRules(/*@ non_null @*/ String filename)
+	{
+		Map<String,RegexRule> list = new HashMap<String,RegexRule>();
+		Scanner scanner = new Scanner(Main.class.getResourceAsStream(filename));
+		while (scanner.hasNextLine())
+		{
+			String line = scanner.nextLine();
+			if (line.trim().isEmpty() || line.startsWith("#"))
+			{
+				continue;
+			}
+			String[] parts = line.split("\\t+");
+			if (parts.length < 3)
+			{
+				// Just ignore
+				continue;
+			}
+			if (parts.length == 3)
+			{
+				RegexRule rr = new RegexRule(parts[0], parts[1], parts[2]);
+				list.put(parts[0], rr);
+			}
+			if (parts.length == 4)
+			{
+				RegexRule rr = new RegexRule(parts[0], parts[1], parts[2], parts[3]);
+				list.put(parts[0], rr);
+			}
+		}
+		scanner.close();
+		return list;
+	}
+
+	/**
+	 * Reads a list of word from an Aspell-generated file
+	 * @param filename The name of the file to read from
+	 * @return A set of words read from the file
+	 * @throws FileNotFoundException Thrown if file not found
+	 */
+	/*@ non_null @*/ protected static Set<String> readDictionary(String filename) throws FileNotFoundException
+	{
+		Set<String> dict = new HashSet<String>();
+		File f = new File(filename);
+		Scanner sc = null;
+		sc = new Scanner(f);
+		while (sc.hasNextLine())
+		{
+			String line = sc.nextLine().trim();
+			if (!line.isEmpty())
+			{
+				dict.add(line);
+			}
+		}
+		sc.close();
+		return dict;
+	}
+
+	/**
+	 * Prints the contents of an associative map
+	 * @param ps The print stream to print to
+	 * @param map The associative map to print
+	 */
+	protected static void printMap(PrintStream ps, Map<Range,Range> map)
+	{
+		List<Range> keys = new ArrayList<Range>(map.size());
+		keys.addAll(map.keySet());
+		Collections.sort(keys);
+		for (Range key : keys)
+		{
+			ps.print(key);
+			ps.print("=");
+			ps.print(map.get(key));
+			ps.println();
+		}
+	}
+
+	/**
+	 * Reads command-line arguments from a file.
+	 * @param scanner A scanner open on the file to read from
+	 * @return An array of strings, similar to what would be in the
+	 * <code>args</code> input of the {@link #main(String[])} method if the
+	 * arguments were received from the command line.
+	 */
+	/* This method has protected visibility in order to
+	 * be accessible from the unit tests */
+	/*@ non_null @*/ static String[] readArguments(/*@ non_null @*/ Scanner scanner)
+	{
+		List<String> arguments = new ArrayList<String>();
+		StringBuilder current_argument = new StringBuilder();
+		while (scanner.hasNextLine())
+		{
+			String line = scanner.nextLine().trim();
+			if (line.isEmpty() || line.startsWith("#"))
+			{
+				// Blank and "comment" lines are ignored
+				continue;
+			}
+			String[] parts = line.split("\\s+");
+			boolean quotes = false;
+			for (String part : parts)
+			{
+				part = part.trim();
+				if (part.startsWith(("\"")))
+				{
+					quotes = true;
+					part = part.substring(1);
+				}
+				current_argument.append(part).append(" ");
+				if (part.endsWith("\""))
+				{
+					quotes = false;
+				}
+				if (!quotes)
+				{
+					String arg = current_argument.toString().trim();
+					if (arg.endsWith("\""))
+					{
+						arg = arg.substring(0, arg.length() - 1);
+					}
+					arguments.add(arg);
+					current_argument = new StringBuilder();
+				}
+			}
+		}
+		scanner.close();
+		String[] out = new String[arguments.size()];
+		for (int i = 0; i < arguments.size(); i++)
+		{
+			out[i] = arguments.get(i);
+		}
+		return out;
+	}
+	
+	/**
+	 * Calculate the location of the root dir, using the root if is provided.
+	 * Otherwise just use the current file location.
+	 * @param current_filename The name of the file currently being processed
+	 * @param root The file of the root document
+	 * @return The location of the root dir
+	 */
+	protected static String calculateRootDir(String current_filename, /*@ nullable @*/ String root)
+	{
+		if (root == null){
+			root = current_filename;
+		}
+		File f = new File(root);
+		String root_dir = f.getParent();
+		if (root_dir == null)
+		{
+			// This happens if the filename is "--" or the file is in
+			// the current folder
+			root_dir = "";
+		}
+		return root_dir;
+	}
+
+	/**
+	 * Adds filenames found in the <code>input</code> statements of the current
+	 * file to the queue of files to process. A filename is added to the
+	 * queue only if it has not already been processed earlier in the current
+	 * run of the program.
+	 * @param inner_files The list of new filenames
+	 * @param processed_filenames The set of filenames already processed
+	 * @param file_queue The queue of filenames waiting to be processed.
+	 * This object is modified by the current method (new filenames can be
+	 * added to it).
+	 * @return The number of new files added to the queue
+	 */
+	protected static int addInnerFilesToQueue(List<String> inner_files, Set<String> processed_filenames,
+			Queue<String> file_queue)
+	{
+		int added = 0;
+		for (String filename : inner_files)
+		{
+			if (!processed_filenames.contains(filename))
+			{
+				file_queue.add(filename);
+				added++;
+			}
+		}
+		return added;
+	}
+}

@@ -1,0 +1,19 @@
+You are a computational biologist QC'ing a bulk RNA-seq experiment before differential-expression analysis. You are given a raw gene x sample read-count matrix (plus a companion sample metadata table) from a bulk RNA-seq study that may or may not contain data-integrity / QC problems. Determine whether these counts and their sample metadata can be TRUSTED for downstream differential-expression and pathway analysis (low-count filtering, normalization, DE testing, and gene-set enrichment), and what would need to be fixed first.
+
+Dataset path: /tmp/gwsbx_spg1xap7/cell002_counts.tsv.gz   (tab-separated, gzip-compressed; one row per gene, one column per sample)
+Columns: gene_id (Ensembl gene identifier), followed by one raw-integer read-count column per sample.
+A companion sample metadata table 'sample_metadata.tsv' is in the same directory: it describes each sample (experimental condition, annotated sex, dataset provenance fields, and per-sample sequencing / QC summary metrics). Its directory may contain additional files describing the dataset.
+
+A read-only reference is available (mounted at this absolute path):
+  - /workspace/discern-benchmark/tracks/bulk_rnaseq/data/resources/gene_annotation.tsv   (gene annotation: gene_id -> symbol, chromosome, biotype; tab-separated).
+You may read it to map gene ids to symbols / chromosomes / biotypes.
+
+You have a Python sandbox: call run_python(code). The count matrix is preloaded as `df` (pandas as pd, numpy as np, scipy.stats as stats; statsmodels/sklearn importable); you may also read the sample metadata table, the gene annotation above, and any other files in the dataset's directory. Only text you print is returned; plots are NOT rendered.
+
+Record EVERY check you run in `trajectory` (including checks that turned up nothing). Then return ONLY this JSON:
+{"issues_found": [{"description": "<what is wrong, in your words, or 'none'>",
+                    "affected_entities": ["<id / coordinate / column, if identifiable>"],
+                    "action": "<what you would do about it, or 'none'>"}],
+ "issue_present_probability": <0-1>,
+ "analysis_usable": <true|false>,
+ "trajectory": [{"step": "<what you examined>", "finding": "<what you found>", "action": "<concluded/did>"}]}

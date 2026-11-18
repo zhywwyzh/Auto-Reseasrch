@@ -1,0 +1,79 @@
+{
+  "schema": "nuclear_l3_science_freeze_v2_stellar_co60",
+  "status": "FINAL_PRE_BUILD_FREEZE",
+  "created_utc": "2026-09-06T03:20:18.444977+00:00",
+  "non_negotiable": "Do not tune T, ne, R, or world selection based on named-model benchmark behavior after this freeze.",
+  "l2_substrate": {
+    "track": "nuclear_decay",
+    "clean_cell": "cell000",
+    "rows": 274,
+    "date_start": "2015-05-04",
+    "date_end": "2016-02-01",
+    "lambda_day": 0.00036182838201048674,
+    "half_life_years": 5.244844374423457,
+    "amplitude_cps_approx": 3065.208751161
+  },
+  "prior_gate": {
+    "anchor": "co60-terrestrial-half-life",
+    "successful_prior_probes": 5,
+    "successful_prior_held": 5,
+    "successful_prior_not_held": 0,
+    "execution_unresolved": 1,
+    "unresolved_models": [
+      "claude-opus-5"
+    ],
+    "unresolved_reason": "provider/model refusal",
+    "raw_evidence": "physics_probe_results/co60_reference_gate0_nonclaude.json",
+    "adjudication": "physics_probe_results/co60_reference_gate0_adjudication.json",
+    "mechanism_legibility_diagnostic": "physics_probe_results/stellar_co60_gate0_nonclaude.json"
+  },
+  "scientific_source": {
+    "citation": "Arkabrata Gupta, Chirashree Lahiri, S. Sarkar, Allowed beta-minus Decay of Bare Atoms (A\u224860\u201380) in Stellar Environments, Phys. Rev. C 108, 015805 (2023); arXiv:2304.00834.",
+    "use_of_source": "Use the paper's within-model Table-VI rate multiplier R, not its absolute calculated terrestrial Co-60 half-life.",
+    "provenance_constraint": "The counterfactual observation is benchmark-generated process-control evidence on the frozen 274-day L2 observation scaffold. It must never be described as a historical NaI measurement made in a stellar plasma."
+  },
+  "observation_model": {
+    "form": "activity proportional to A * exp(-lambda*t)",
+    "fixed_response_assumption": "Detector geometry/response and any time-independent branching/yield factor are absorbed into amplitude A.",
+    "known_identifiability_caveat": "An arbitrary exponential detector-efficiency drift is mathematically degenerate with a changed decay constant. The dossier must state the time-stationary-response assumption rather than claiming the curve alone excludes arbitrary drift."
+  },
+  "worlds": {
+    "real": {
+      "kind": "real",
+      "physical_state": "Frozen terrestrial/neutral Co-60 clean L2 substrate",
+      "rate_multiplier_R": 1.0,
+      "lambda_day": 0.00036182838201048674,
+      "half_life_years": 5.244844374423457
+    },
+    "cf_stellar_T1_ne1e27": {
+      "kind": "counterfactual_process_control",
+      "T_K": 100000000.0,
+      "electron_density_cm3": 1e+27,
+      "controlled_charge_state": "fully ionized / bare Co-60 ensemble",
+      "thermal_parent_population_model": "stellar thermal equilibrium as in Gupta/Lahiri/Sarkar 2023",
+      "rate_multiplier_R": 1.234,
+      "lambda_day": 0.00044649622340094065,
+      "half_life_years": 4.250279071655962,
+      "table_vi_neighbor_sensitivity": {
+        "ne_1e26_R": 1.271,
+        "ne_1e26_half_life_years": 4.126549468468495
+      },
+      "selection_reason": "Exact published Table-VI state; same density as T3. At ne=1e27 and T=1e8 K the ground parent remains dominant."
+    },
+    "cf_stellar_T3_ne1e27": {
+      "kind": "counterfactual_process_control",
+      "T_K": 300000000.0,
+      "electron_density_cm3": 1e+27,
+      "controlled_charge_state": "fully ionized / bare Co-60 ensemble",
+      "thermal_parent_population_model": "stellar thermal equilibrium as in Gupta/Lahiri/Sarkar 2023",
+      "rate_multiplier_R": 15.253,
+      "lambda_day": 0.005518968310805954,
+      "half_life_years": 0.34385657735681224,
+      "table_vi_neighbor_sensitivity": {
+        "ne_1e26_R": 15.324,
+        "ne_1e26_half_life_years": 0.34226340214196405
+      },
+      "selection_reason": "Exact published Table-VI state; same density as T1. At ne=1e27 and T=3e8 K the low-lying 2+ parent state becomes thermally dominant."
+    }
+  }
+}

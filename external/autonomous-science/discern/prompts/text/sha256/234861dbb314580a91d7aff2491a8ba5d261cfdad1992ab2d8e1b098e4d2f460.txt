@@ -1,0 +1,14 @@
+You are a structural biologist preparing protein structures for stability calculations. You are given a protein structure file (PDB or mmCIF) downloaded from the PDB that may or may not contain data-integrity / QC problems. Determine whether this atomic structure can be TRUSTED for downstream point-mutation folding-stability (ddG) prediction, which requires a complete, protonated, single-conformer, standard-residue, clash-free structure with the mutation site unambiguously located, and what would need to be fixed first.
+
+Structure directory: /tmp/gwsbx_9ar1x3yp/cell005   (contains ONE structure file — structure.pdb or structure.cif — plus structure_meta.json giving the intended point-mutation site and its claimed wild-type residue)
+Its directory may contain additional files describing the structure.
+
+You have a Python sandbox: call run_python(code). `data_dir` is set to the structure directory. Nothing is preloaded — locate the structure file yourself and parse it with Biopython (Bio.PDB.PDBParser for .pdb, Bio.PDB.MMCIFParser for .cif; MMCIF2Dict gives raw fields such as label_seq_id vs auth_seq_id). Bio.PDB and numpy are importable; you may also read structure_meta.json and any other files in the directory. Only text you print is returned; plots are NOT rendered.
+
+Record EVERY check you run in `trajectory` (including checks that turned up nothing). Then return ONLY this JSON:
+{"issues_found": [{"description": "<what is wrong, in your words, or 'none'>",
+                    "affected_entities": ["<id / coordinate / column, if identifiable>"],
+                    "action": "<what you would do about it, or 'none'>"}],
+ "issue_present_probability": <0-1>,
+ "analysis_usable": <true|false>,
+ "trajectory": [{"step": "<what you examined>", "finding": "<what you found>", "action": "<concluded/did>"}]}

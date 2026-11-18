@@ -1,0 +1,513 @@
+{
+  "decay_fit": {
+    "clean": {
+      "gold_lambda_per_day": 0.00036182838201048674,
+      "gold_half_life_years": 5.244844374423457,
+      "gold_fit": {
+        "A_cps": 3065.2087511609693,
+        "lambda_per_day": 0.00036182838201048674,
+        "half_life_days": 1915.6794077581676,
+        "half_life_years": 5.244844374423457,
+        "mean_lifetime_days": 2763.741181505815,
+        "mean_lifetime_years": 7.566710969215099,
+        "rmse_cps": 0.22639350666005478,
+        "weighted_rmse": 1.2235685691825429,
+        "model": "exponential",
+        "weighting": "uncertainty",
+        "timescale": "half_life"
+      }
+    },
+    "mn54_cross_source_contamination": {
+      "gold_lambda_per_day": 0.00036182838201048674,
+      "gold_half_life_years": 5.244844374423457,
+      "gold_fit": {
+        "A_cps": 3065.2087511609693,
+        "lambda_per_day": 0.00036182838201048674,
+        "half_life_days": 1915.6794077581676,
+        "half_life_years": 5.244844374423457,
+        "mean_lifetime_days": 2763.741181505815,
+        "mean_lifetime_years": 7.566710969215099,
+        "rmse_cps": 0.22639350666005478,
+        "weighted_rmse": 1.2235685691825429,
+        "model": "exponential",
+        "weighting": "uncertainty",
+        "timescale": "half_life"
+      },
+      "naive_fit": {
+        "A_cps": 3093.0001687432436,
+        "lambda_per_day": 0.0003753605159192478,
+        "half_life_days": 1846.6171884446783,
+        "half_life_years": 5.05576232291493,
+        "mean_lifetime_days": 2664.105460189458,
+        "mean_lifetime_years": 7.293923231182636,
+        "rmse_cps": 0.3028585794761609,
+        "weighted_rmse": 1.6217624773794461,
+        "model": "exponential",
+        "weighting": "uncertainty",
+        "timescale": "half_life"
+      },
+      "robust_fit": {
+        "A_cps": 3066.5209529045646,
+        "lambda_per_day": 0.0003624717785785848,
+        "half_life_days": 1912.2790283924662,
+        "half_life_years": 5.235534643100523,
+        "mean_lifetime_days": 2758.8354710577764,
+        "mean_lifetime_years": 7.5532798660034945,
+        "rmse_cps": 0.2262519715706204,
+        "weighted_rmse": 1.2181278185947875,
+        "model": "two_source_exponential",
+        "weighting": "uncertainty",
+        "timescale": "half_life",
+        "mn54_reference_coupling": 0.002381945763562358
+      },
+      "injection": {
+        "mn54_reference_coupling": 0.0025,
+        "initial_contaminant_cps": 28.293189166547354,
+        "initial_contaminant_fraction_of_co": 0.009231048173518601,
+        "mn54_reference_half_life_years": 0.8401508577713833
+      }
+    },
+    "fixed_photopeak_roi_default": {
+      "gold_lambda_per_day": 0.00036182838201048674,
+      "gold_half_life_years": 5.244844374423457,
+      "gold_fit": {
+        "A_cps": 3065.2087511609693,
+        "lambda_per_day": 0.00036182838201048674,
+        "half_life_days": 1915.6794077581676,
+        "half_life_years": 5.244844374423457,
+        "mean_lifetime_days": 2763.741181505815,
+        "mean_lifetime_years": 7.566710969215099,
+        "rmse_cps": 0.22639350666005478,
+        "weighted_rmse": 1.2235685691825429,
+        "model": "exponential",
+        "weighting": "uncertainty",
+        "timescale": "half_life"
+      },
+      "naive_fit": {
+        "A_cps": 433.64495285968275,
+        "lambda_per_day": 0.0004067768680214733,
+        "half_life_days": 1703.99851872441,
+        "half_life_years": 4.665293685761561,
+        "mean_lifetime_days": 2458.3502126458457,
+        "mean_lifetime_years": 6.730596064738797,
+        "rmse_cps": 0.40616404486342583,
+        "weighted_rmse": 5.908280845911806,
+        "model": "exponential",
+        "weighting": "uncertainty",
+        "timescale": "half_life"
+      },
+      "robust_fit": {
+        "A_cps": 3065.2087511609693,
+        "lambda_per_day": 0.00036182838201048674,
+        "half_life_days": 1915.6794077581676,
+        "half_life_years": 5.244844374423457,
+        "mean_lifetime_days": 2763.741181505815,
+        "mean_lifetime_years": 7.566710969215099,
+        "rmse_cps": 0.22639350666005478,
+        "weighted_rmse": 1.2235685691825429,
+        "model": "exponential",
+        "weighting": "uncertainty",
+        "timescale": "half_life"
+      },
+      "prepared_rule": {
+        "native_no_injection": true,
+        "baseline_days": 14,
+        "fwhm_multiplier": 1.0,
+        "co60_gamma_energies_keV": [
+          1173.228,
+          1332.492
+        ],
+        "expected_channels": [
+          768.0915639972078,
+          868.6906841086308
+        ],
+        "peak_fits": [
+          {
+            "success": true,
+            "mu_channel": 766.073668786779,
+            "sigma_channels": 14.24229323199832,
+            "fwhm_channels": 33.538037589477476
+          },
+          {
+            "success": true,
+            "mu_channel": 867.592470212111,
+            "sigma_channels": 16.035642181194376,
+            "fwhm_channels": 37.761051642724034
+          }
+        ],
+        "roi_bounds": [
+          {
+            "center_channel": 766,
+            "halfwidth_channels": 34,
+            "lo": 732,
+            "hi_exclusive": 801
+          },
+          {
+            "center_channel": 868,
+            "halfwidth_channels": 38,
+            "lo": 830,
+            "hi_exclusive": 907
+          }
+        ],
+        "roi_fraction_relative_sd": 0.003698643834043556,
+        "roi_fraction_time_correlation": -0.9643173520017876
+      },
+      "sensitivity": [
+        {
+          "baseline_days": 7,
+          "fwhm_multiplier": 0.75,
+          "naive_fit": {
+            "A_cps": 396.2252232821877,
+            "lambda_per_day": 0.00043904312553533236,
+            "half_life_days": 1578.767870957505,
+            "half_life_years": 4.322430858199877,
+            "mean_lifetime_days": 2277.6805781452194,
+            "mean_lifetime_years": 6.235949563710388,
+            "rmse_cps": 0.7031092666977882,
+            "weighted_rmse": 10.758500545575782,
+            "model": "exponential",
+            "weighting": "uncertainty",
+            "timescale": "half_life"
+          },
+          "naive_accuracy": {
+            "accuracy": 0,
+            "half_life_abs_error_years": 0.92241351622358,
+            "lambda_relative_error": 0.21340156649902542
+          },
+          "roi_fraction_time_correlation": -0.9554225311159904
+        },
+        {
+          "baseline_days": 7,
+          "fwhm_multiplier": 1.0,
+          "naive_fit": {
+            "A_cps": 433.64495285968275,
+            "lambda_per_day": 0.0004067768680214733,
+            "half_life_days": 1703.99851872441,
+            "half_life_years": 4.665293685761561,
+            "mean_lifetime_days": 2458.3502126458457,
+            "mean_lifetime_years": 6.730596064738797,
+            "rmse_cps": 0.40616404486342583,
+            "weighted_rmse": 5.908280845911806,
+            "model": "exponential",
+            "weighting": "uncertainty",
+            "timescale": "half_life"
+          },
+          "naive_accuracy": {
+            "accuracy": 0,
+            "half_life_abs_error_years": 0.5795506886618966,
+            "lambda_relative_error": 0.12422598183490163
+          },
+          "roi_fraction_time_correlation": -0.9643173520017876
+        },
+        {
+          "baseline_days": 7,
+          "fwhm_multiplier": 1.25,
+          "naive_fit": {
+            "A_cps": 449.7235854802259,
+            "lambda_per_day": 0.0003950763523658403,
+            "half_life_days": 1754.4638559335783,
+            "half_life_years": 4.803460248962569,
+            "mean_lifetime_days": 2531.1563043743026,
+            "mean_lifetime_years": 6.929928280285565,
+            "rmse_cps": 0.29802885756623065,
+            "weighted_rmse": 4.2280539318233705,
+            "model": "exponential",
+            "weighting": "uncertainty",
+            "timescale": "half_life"
+          },
+          "naive_accuracy": {
+            "accuracy": 0,
+            "half_life_abs_error_years": 0.4413841254608881,
+            "lambda_relative_error": 0.09188878487257512
+          },
+          "roi_fraction_time_correlation": -0.9685378425809844
+        },
+        {
+          "baseline_days": 14,
+          "fwhm_multiplier": 0.75,
+          "naive_fit": {
+            "A_cps": 396.2252232821877,
+            "lambda_per_day": 0.00043904312553533236,
+            "half_life_days": 1578.767870957505,
+            "half_life_years": 4.322430858199877,
+            "mean_lifetime_days": 2277.6805781452194,
+            "mean_lifetime_years": 6.235949563710388,
+            "rmse_cps": 0.7031092666977882,
+            "weighted_rmse": 10.758500545575782,
+            "model": "exponential",
+            "weighting": "uncertainty",
+            "timescale": "half_life"
+          },
+          "naive_accuracy": {
+            "accuracy": 0,
+            "half_life_abs_error_years": 0.92241351622358,
+            "lambda_relative_error": 0.21340156649902542
+          },
+          "roi_fraction_time_correlation": -0.9554225311159904
+        },
+        {
+          "baseline_days": 14,
+          "fwhm_multiplier": 1.0,
+          "naive_fit": {
+            "A_cps": 433.64495285968275,
+            "lambda_per_day": 0.0004067768680214733,
+            "half_life_days": 1703.99851872441,
+            "half_life_years": 4.665293685761561,
+            "mean_lifetime_days": 2458.3502126458457,
+            "mean_lifetime_years": 6.730596064738797,
+            "rmse_cps": 0.40616404486342583,
+            "weighted_rmse": 5.908280845911806,
+            "model": "exponential",
+            "weighting": "uncertainty",
+            "timescale": "half_life"
+          },
+          "naive_accuracy": {
+            "accuracy": 0,
+            "half_life_abs_error_years": 0.5795506886618966,
+            "lambda_relative_error": 0.12422598183490163
+          },
+          "roi_fraction_time_correlation": -0.9643173520017876
+        },
+        {
+          "baseline_days": 14,
+          "fwhm_multiplier": 1.25,
+          "naive_fit": {
+            "A_cps": 449.7235854802259,
+            "lambda_per_day": 0.0003950763523658403,
+            "half_life_days": 1754.4638559335783,
+            "half_life_years": 4.803460248962569,
+            "mean_lifetime_days": 2531.1563043743026,
+            "mean_lifetime_years": 6.929928280285565,
+            "rmse_cps": 0.29802885756623065,
+            "weighted_rmse": 4.2280539318233705,
+            "model": "exponential",
+            "weighting": "uncertainty",
+            "timescale": "half_life"
+          },
+          "naive_accuracy": {
+            "accuracy": 0,
+            "half_life_abs_error_years": 0.4413841254608881,
+            "lambda_relative_error": 0.09188878487257512
+          },
+          "roi_fraction_time_correlation": -0.9685378425809844
+        },
+        {
+          "baseline_days": 30,
+          "fwhm_multiplier": 0.75,
+          "naive_fit": {
+            "A_cps": 396.3673714908379,
+            "lambda_per_day": 0.0004281685783798308,
+            "half_life_days": 1618.8651282697595,
+            "half_life_years": 4.4322111656940715,
+            "mean_lifetime_days": 2335.5286924228576,
+            "mean_lifetime_years": 6.394329068919528,
+            "rmse_cps": 0.6535758922342219,
+            "weighted_rmse": 9.991042952622855,
+            "model": "exponential",
+            "weighting": "uncertainty",
+            "timescale": "half_life"
+          },
+          "naive_accuracy": {
+            "accuracy": 0,
+            "half_life_abs_error_years": 0.8126332087293857,
+            "lambda_relative_error": 0.18334713269513858
+          },
+          "roi_fraction_time_correlation": -0.9486614831661109
+        },
+        {
+          "baseline_days": 30,
+          "fwhm_multiplier": 1.0,
+          "naive_fit": {
+            "A_cps": 433.75125145246847,
+            "lambda_per_day": 0.0004026711071291804,
+            "half_life_days": 1721.373022022108,
+            "half_life_years": 4.712862483291192,
+            "mean_lifetime_days": 2483.416322391344,
+            "mean_lifetime_years": 6.799223333035849,
+            "rmse_cps": 0.3784966925788609,
+            "weighted_rmse": 5.505524663464284,
+            "model": "exponential",
+            "weighting": "uncertainty",
+            "timescale": "half_life"
+          },
+          "naive_accuracy": {
+            "accuracy": 0,
+            "half_life_abs_error_years": 0.5319818911322649,
+            "lambda_relative_error": 0.11287872137545563
+          },
+          "roi_fraction_time_correlation": -0.9627630802916164
+        },
+        {
+          "baseline_days": 30,
+          "fwhm_multiplier": 1.25,
+          "naive_fit": {
+            "A_cps": 449.8280610038113,
+            "lambda_per_day": 0.0003939158539869979,
+            "half_life_days": 1759.6326056549735,
+            "half_life_years": 4.81761151445578,
+            "mean_lifetime_days": 2538.6132339649553,
+            "mean_lifetime_years": 6.950344240834922,
+            "rmse_cps": 0.2885805182734244,
+            "weighted_rmse": 4.093152678296131,
+            "model": "exponential",
+            "weighting": "uncertainty",
+            "timescale": "half_life"
+          },
+          "naive_accuracy": {
+            "accuracy": 0,
+            "half_life_abs_error_years": 0.42723285996767757,
+            "lambda_relative_error": 0.08868146771189767
+          },
+          "roi_fraction_time_correlation": -0.9684683668554153
+        }
+      ],
+      "native_no_injection": true
+    },
+    "near_field_efficiency_model_default": {
+      "gold_lambda_per_day": 0.00036182828511538455,
+      "gold_half_life_years": 5.2448457789563605,
+      "gold_fit": {
+        "A_cps": 3065.2087110823613,
+        "lambda_per_day": 0.00036182828511538455,
+        "half_life_days": 1915.6799207638105,
+        "half_life_years": 5.2448457789563605,
+        "mean_lifetime_days": 2763.7419216165117,
+        "mean_lifetime_years": 7.566712995527753,
+        "rmse_cps": 0.22639299811761074,
+        "weighted_rmse": 1.2213249127241967,
+        "model": "exponential",
+        "weighting": "uncertainty",
+        "timescale": "half_life"
+      },
+      "naive_fit": {
+        "A_cps": 3065.2415689549184,
+        "lambda_per_day": 0.00033781902970385456,
+        "half_life_days": 2051.8298840878956,
+        "half_life_years": 5.617604063211213,
+        "mean_lifetime_days": 2960.164798521384,
+        "mean_lifetime_years": 8.104489523672509,
+        "rmse_cps": 0.2283927444627989,
+        "weighted_rmse": 1.2281698581956257,
+        "model": "exponential",
+        "weighting": "uncertainty",
+        "timescale": "half_life"
+      }
+    }
+  },
+  "_frozen_settings": {
+    "mn54_reference_coupling": 0.0025,
+    "photopeak_roi_baseline_days": 14,
+    "photopeak_roi_fwhm_multiplier": 1.0,
+    "photopeak_roi_sensitivity_baseline_days": [
+      7,
+      14,
+      30
+    ],
+    "photopeak_roi_sensitivity_fwhm_multipliers": [
+      0.75,
+      1.0,
+      1.25
+    ],
+    "clean_start_date": "2015-05-04",
+    "clean_end_date": "2016-02-01",
+    "near_field_source_face_distance_start_cm": 5.0,
+    "near_field_source_face_distance_end_cm": 5.05,
+    "near_field_crystal_diameter_cm": 5.08,
+    "near_field_crystal_length_cm": 5.08,
+    "near_field_efficiency_calibration_distances_cm": [
+      5.0,
+      10.0,
+      15.0
+    ],
+    "near_field_efficiency_1000kev": [
+      0.0219,
+      0.0074,
+      0.0037
+    ],
+    "near_field_efficiency_1332kev": [
+      0.02,
+      0.0067,
+      0.0033
+    ],
+    "near_field_co60_gamma_energies_kev": [
+      1173.228,
+      1332.492
+    ],
+    "near_field_co60_emission_probabilities": [
+      0.9985,
+      0.999826
+    ]
+  },
+  "_verification": [
+    {
+      "name": "clean_rows",
+      "pass": true,
+      "detail": "n=274"
+    },
+    {
+      "name": "clean_half_life_sane",
+      "pass": true,
+      "detail": "half=5.244844374"
+    },
+    {
+      "name": "mn_contamination_small",
+      "pass": true,
+      "detail": "fraction=0.009231"
+    },
+    {
+      "name": "mn_naive_accuracy_1",
+      "pass": true,
+      "detail": "{'accuracy': 1, 'half_life_abs_error_years': 0.1890820515085272, 'lambda_relative_error': 0.03739931575729427}"
+    },
+    {
+      "name": "mn_robust_accuracy_3",
+      "pass": true,
+      "detail": "{'accuracy': 3, 'half_life_abs_error_years': 0.009309731322933779, 'lambda_relative_error': 0.0017781815912920607}"
+    },
+    {
+      "name": "mn_coupling_recovered",
+      "pass": true,
+      "detail": "fit=0.00238195"
+    },
+    {
+      "name": "photopeak_spectra_match_clean_counts",
+      "pass": true,
+      "detail": "rows=274 full-spectrum integral exactly matches clean count totals"
+    },
+    {
+      "name": "photopeak_naive_accuracy_0",
+      "pass": true,
+      "detail": "{'accuracy': 0, 'half_life_abs_error_years': 0.5795506886618966, 'lambda_relative_error': 0.12422598183490163}"
+    },
+    {
+      "name": "photopeak_robust_accuracy_3",
+      "pass": true,
+      "detail": "{'accuracy': 3, 'half_life_abs_error_years': 0.0, 'lambda_relative_error': 0.0}"
+    },
+    {
+      "name": "photopeak_central_rule_frozen",
+      "pass": true,
+      "detail": "baseline=14 fwhm_multiplier=1.0"
+    },
+    {
+      "name": "photopeak_native_no_injection",
+      "pass": true,
+      "detail": "True"
+    },
+    {
+      "name": "photopeak_sensitivity_all_fire",
+      "pass": true,
+      "detail": "n=9 accuracies=[0, 0, 0, 0, 0, 0, 0, 0, 0]"
+    },
+    {
+      "name": "near_field_prepared_accuracy_1",
+      "pass": true,
+      "detail": "Frozen point-detector prepared response produces the predeclared rough/tier-1 error."
+    },
+    {
+      "name": "near_field_robust_accuracy_3",
+      "pass": true,
+      "detail": "Matched-detector efficiency calibration recovers the clean Co-60 decay parameter."
+    }
+  ]
+}

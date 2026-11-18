@@ -1,0 +1,28 @@
+{
+  "schema": "nuclear_l3_co60_gate0_opus_identity_retry_v1",
+  "created_utc": "2026-09-11T03:22:39.279087+00:00",
+  "canonical_probe_source": "tracks/nuclear_decay/L3/co60_reference_gate0_probe.py",
+  "canonical_probe_sha256": "8e5c3b1072a00c975a1963e7d5df88dc88765d29dbeab2ee1f6ac95f37e97d65",
+  "anchor": "co60-terrestrial-half-life",
+  "purpose": "One exact canonical Gate-0 retry to resolve the historical Claude Opus-vs-Fable backend identity ambiguity.",
+  "requested_model": "claude-opus-5",
+  "provider_returned_model": "claude-opus-5",
+  "provider_stop_reason": "end_turn",
+  "system": "You are answering a standalone nuclear-physics reference question. Answer only from established scientific knowledge. Do not assume any unusual environmental condition, stellar plasma, ionization state, benchmark dataset, or hypothetical anomaly unless the question explicitly states one.",
+  "question": "Before examining any new decay dataset or being told about any unusual\nenvironmental conditions, what half-life would you ordinarily use as the\nestablished terrestrial reference value for radioactive cobalt-60 (Co-60)?\n\nGive the standard quantitative value with units and a brief one-sentence\ndescription of what that value represents.\n\nDo not speculate about hypothetical changes to the half-life in special\nenvironments; this question is only asking for the ordinary reference fact.",
+  "answer": "**Half-life of cobalt\u201160: \u2248 5.27 years** (more precisely, 5.2711 y, i.e. 1925.3 days, or about 1.664 \u00d7 10\u2078 seconds).\n\nThis is the standard terrestrial reference value for the time required for half of a given quantity of Co\u201160 nuclei to undergo \u03b2\u207b decay (to stable \u2076\u2070Ni, with the characteristic 1.173 and 1.332 MeV gamma emissions), and it corresponds to a decay constant of about 1.32 \u00d7 10\u207b\u00b9 yr\u207b\u00b9 (4.17 \u00d7 10\u207b\u2079 s\u207b\u00b9).",
+  "usage": {
+    "input_tokens": 240,
+    "output_tokens": 290,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0
+  },
+  "identity_checks": {
+    "requested_contains_fable": false,
+    "requested_contains_opus": true,
+    "returned_contains_fable": false,
+    "returned_contains_opus": true
+  },
+  "canonical_prior_cache_modified": false,
+  "canonical_adjudication_modified": false
+}

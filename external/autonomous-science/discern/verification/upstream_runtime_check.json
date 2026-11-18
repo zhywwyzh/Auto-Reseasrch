@@ -1,0 +1,22 @@
+{
+  "checked_on": "2026-09-25",
+  "method": "fresh official upstream downloads into a separate temporary directory",
+  "esm": {
+    "files": [
+      "esm2_t30_150M_UR50D.pt",
+      "esm2_t30_150M_UR50D-contact-regression.pt",
+      "esm2_t33_650M_UR50D.pt",
+      "esm2_t33_650M_UR50D-contact-regression.pt"
+    ],
+    "all_match_frozen_runtime_sha256": true,
+    "checksum_authority": "verification/runtime_files.csv"
+  },
+  "cadd": {
+    "source": "https://krishna.gs.washington.edu/download/CADD/v1.7/GRCh38/whole_genome_SNVs.tsv.gz",
+    "rows": 2211126,
+    "decompressed_sha256": "e29cca63dad543179ced50314016f942b747a7b49b484ee153759bff3a5abd7b",
+    "matches_frozen_decompressed_text": true,
+    "compressed_byte_identity_claimed": false
+  },
+  "public_upload_performed": false
+}

@@ -1,0 +1,240 @@
+<pre-registration>
+    <metadata>
+        <title>Precision Response Patterns in Visual Working Memory: Shared Constraints with Mental Rotation and the Role of Imagery Vividness</title>
+        <description>This study examines whether visual working memory precision and mental rotation performance share common representational constraints that manifest as systematic patterns of error scaling with cognitive demand. We investigate whether individual differences in imagery vividness moderate these relationships by testing specific hypotheses about performance decline patterns across varying task difficulties.</description>
+        <contributors>Principal Investigators and Research Team from Department of Psychology</contributors>
+
+        <license type="select_one">CC-By Attribution 4.0 International</license>
+
+        <subject>Cognitive Psychology, Visual Working Memory, Mental Rotation, Individual Differences, Imagery Vividness</subject>
+        <tags>visual working memory, mental rotation, precision, imagery vividness, cognitive demand, representational constraints</tags>
+    </metadata>
+
+    <study_information>
+        <hypotheses>H1: Performance decline patterns in visual working memory (VWM) and mental rotation (MR) will show systematic relationships reflecting shared resource-based representational constraints. Specifically:
+
+H1a: The rate at which VWM absolute angular error increases with increasing memory load (set size 2 vs. 4) will positively correlate with the rate at which mental rotation reaction time increases with angular disparity (0°-150°). This relationship reflects a shared constraint in resource allocation efficiency across both maintenance and transformation processes (theoretical basis: Bays & Husain, 2008; Ma et al., 2014).
+
+H1b: The rate at which VWM absolute angular error increases with increasing maintenance duration (1000ms vs. 4000ms) will positively correlate with the rate at which mental rotation accuracy decreases with angular disparity (0°-150°). This relationship reflects a shared constraint in representational persistence over time and transformation difficulty (theoretical basis: Pertzov et al., 2017; Shepard & Metzler, 1971).
+
+H2: Individual differences in imagery vividness will moderate the relationship between cognitive demand and performance in both tasks. Specifically:
+
+H2a: Higher VVIQ2 scores will predict shallower slopes of VWM error increase across both set sizes and delay durations, reflecting more robust visual representations that degrade less rapidly with increased cognitive demands (theoretical basis: Keogh & Pearson, 2018).
+
+H2b: Higher VVIQ2 scores will predict shallower slopes of mental rotation performance decline (both RT increase and accuracy decrease) across rotation angles, reflecting more efficient transformation processes for individuals with more vivid imagery (theoretical basis: Logie et al., 2011).
+
+These hypotheses are based on resource theories of working memory (Ma et al., 2014), which propose that representational quality varies continuously with resource allocation, and process models of mental rotation (Just & Carpenter, 1985), which propose that transformation efficiency is constrained by representational quality. The hypothesized correlations between VWM and MR performance patterns would provide evidence for shared representational resources that constrain both maintenance and transformation processes.</hypotheses>
+    </study_information>
+
+    <design_plan>
+        <study_type type="select_one">Experiment</study_type>
+
+        <blinding type="select_multiple">No blinding is involved in this study.</blinding>
+        
+        <study_design>This study employs a within-subjects design with two cognitive tasks: a Visual Working Memory (VWM) task and a Mental Rotation Task (MRT).
+
+The VWM task follows a 2×2 factorial design with two within-subject factors: Set Size (2, 4) and Delay (1000ms, 4000ms). This creates four experimental conditions: SS2/Delay1000, SS2/Delay4000, SS4/Delay1000, and SS4/Delay4000. On each trial, participants view an array of oriented bars, maintain them in memory for either 1000ms or 4000ms, and then recall the orientation of a cued bar using a continuous response method.
+
+The MRT requires participants to judge whether two 3D block figures are the same or different (mirror images) across four rotation angles (0°, 50°, 100°, 150°). This creates eight experimental conditions: four rotation angles × two stimulus types (same, different).
+
+Both tasks include built-in attention checks: the VWM task includes trials with Set Size 1 and 500ms delay, while the MRT includes repeated 0° rotation trials. These attention checks are part of the established task protocols and will be used for data quality assessment.
+
+Task order is counterbalanced across participants, with approximately half completing VWM first and half completing MRT first, determined by JavaScript randomization at the beginning of the experiment.</study_design>
+        
+        <randomization>Within each task, trial order and conditions are randomized. In the VWM task, the following are randomized: (1) trial condition order (Set Size × Delay combinations), (2) stimulus orientations (drawn from a uniform distribution between 0° and 180°), (3) stimulus positions (with first item at random angular position and subsequent items at equal intervals), and (4) which item is cued for recall. In the MRT, the following are randomized: (1) trial order across rotation angles and same/different conditions, (2) specific stimulus images used. Attention check trials in both tasks are randomly interspersed throughout the task.
+
+Task order (VWM first vs. MRT first) is randomized across participants using JavaScript's Math.random() function, with equal probability of either task appearing first.</randomization>
+    </design_plan>
+
+    <sampling_plan>
+        <existing_data type="select_one">Registration prior to creation of data</existing_data>
+        
+        <data_collection_procedures>Participants will be recruited via Prolific using pre-screening filters for age (18-35 years), vision status (normal or corrected-to-normal), and device type (laptop/desktop computer only). Participants must have self-reported normal or corrected-to-normal vision and no self-reported hearing deficits.
+
+Participants will complete both tasks online via Pavlovia.org. The experiment begins with a browser window size check (minimum 768×768 pixels). Participants will complete both the VWM task and MRT (order counterbalanced) followed by the VVIQ2 questionnaire hosted on SurveyMonkey. The entire experiment is expected to take approximately 40 minutes.
+
+The VWM task consists of a practice phase followed by 120 experimental trials plus 6 attention check trials (Set Size 1, 500ms delay). The MRT consists of a practice phase followed by 96 experimental trials plus 6 attention check trials (repeated 0° rotation trials). Both tasks include regular breaks to minimize fatigue.
+
+Participants will be compensated at a rate of £9 per hour (pro-rated based on completion time).</data_collection_procedures>
+        
+        <sample_size>288 participants</sample_size>
+        
+        <sample_size_rationale>A power analysis was conducted using the pwr package in R with the following parameters: effect size r = 0.25 (conservative estimate based on Gignac & Szodorai, 2016), significance level α = 0.05, desired power = 0.95. This yielded a required sample size of 202 participants for detecting the hypothesized correlations between VWM and MRT performance patterns. To account for an anticipated 30% dropout/exclusion rate typical of online studies, we will recruit 288 participants (202 / 0.7 = 288.6, rounded to 288).
+
+This sample size is also sufficient for detecting the hypothesized interaction effects in our mixed-effects models. Based on simulations for detecting small-to-medium interaction effects (f = 0.15) in mixed-effects models with two repeated-measures factors, a sample size of 200 provides power of approximately 0.90 (Brysbaert & Stevens, 2018).</sample_size_rationale>
+        
+        <stopping_rule>Data collection will stop once 288 participants have completed the full experiment (both tasks and the VVIQ2 questionnaire). If the exclusion rate exceeds 30% after applying our pre-specified exclusion criteria, additional participants will be recruited to ensure a final analyzable sample of at least 202 participants.</stopping_rule>
+    </sampling_plan>
+
+    <variables>
+        <manipulated_variables>VWM Task:
+1. Set Size: Two levels (2 or 4 oriented bars)
+2. Delay: Two levels (1000ms or 4000ms between memory array offset and response cue)
+
+Mental Rotation Task:
+1. Rotation Angle: Four levels (0°, 50°, 100°, or 150° rotation of 3D block figures)
+2. Stimulus Type: Two levels (same or different/mirror images)</manipulated_variables>
+        
+        <measured_variables>VWM Task:
+1. Absolute angular error: Absolute difference in degrees between the reported orientation and the true orientation of the target item, normalized to range 0-90°
+2. Response time: Time from response probe onset to response submission in milliseconds
+3. Timeout occurrences: Binary indicator (0/1) of whether a response was made within the 7000ms time limit
+
+Mental Rotation Task:
+1. Accuracy: Binary indicator (0/1) of correct same/different judgment
+2. Reaction time: Time from stimulus presentation to response in milliseconds for correct trials only
+3. Timeout occurrences: Binary indicator (0/1) of whether a response was made within the 7000ms time limit
+
+Individual Differences:
+1. VVIQ2 scores: Total vividness score (sum of ratings across 32 items; range 32-160)
+
+Task Metadata:
+1. Browser type: Automatically recorded browser information
+2. Operating system: Automatically recorded OS information
+3. Estimated frame rate: Automatically recorded average frame rate
+4. Window focus loss: Number of instances and total duration when browser window lost focus</measured_variables>
+        
+        <indices>VWM Precision Indices:
+1. VWM_Error_SetSize_Slope: For each participant, calculated as the difference in mean absolute angular error between Set Size 4 and Set Size 2 conditions, averaged across delay conditions. This index quantifies individual sensitivity to memory load.
+
+2. VWM_Error_Delay_Slope: For each participant, calculated as the difference in mean absolute angular error between 4000ms and 1000ms delay conditions, averaged across set size conditions. This index quantifies individual sensitivity to maintenance duration.
+
+Mental Rotation Performance Indices:
+1. MRT_RT_Angle_Slope: For each participant, calculated as the unstandardized regression coefficient (β) from a linear regression of mean RT (correct trials only) on rotation angle (0°, 50°, 100°, 150°). This index quantifies individual sensitivity to rotation difficulty in terms of processing time.
+
+2. MRT_Accuracy_Angle_Slope: For each participant, calculated as the unstandardized regression coefficient (β) from a linear regression of mean accuracy on rotation angle (0°, 50°, 150°). This index quantifies individual sensitivity to rotation difficulty in terms of error likelihood.
+
+All slope indices will be calculated for each participant individually, creating person-specific measures of sensitivity to cognitive demand that will be used in correlation analyses testing H1a and H1b.</indices>
+    </variables>
+
+    <analysis_plan>
+        <statistical_models>Our analysis plan is structured around our two main hypotheses:
+
+1. Testing shared constraints between VWM and MRT (H1a and H1b):
+
+First, we will analyze performance in each task separately using linear mixed-effects models:
+
+For VWM: 
+absolute_error ~ set_size * delay + (1 + set_size * delay | participant)
+
+Where set_size and delay are categorical predictors (set_size: 2, 4; delay: 1000ms, 4000ms), and the random effects structure includes random intercepts and slopes for participants. If this maximal model fails to converge, we will simplify the random effects structure following Barr et al. (2013), first removing the interaction from the random effects, then the random slopes in order of theoretical importance (delay, then set_size).
+
+For MRT (separate models for RT and accuracy): 
+log_rt ~ rotation_angle + (1 + rotation_angle | participant)
+accuracy ~ rotation_angle + (1 + rotation_angle | participant)
+
+Where rotation_angle is treated as a continuous predictor (0, 50, 100, 150), log_rt is the natural logarithm of reaction time for correct trials, and accuracy is analyzed using a generalized linear mixed model with a logit link function. Random effects structure includes random intercepts and slopes for participants, with simplification if convergence issues arise.
+
+To test H1a and H1b, we will compute Pearson correlations between the individual slope parameters:
+- VWM_Error_SetSize_Slope with MRT_RT_Angle_Slope (testing H1a)
+- VWM_Error_Delay_Slope with MRT_Accuracy_Angle_Slope (testing H1b)
+
+2. Testing moderation by imagery vividness (H2a and H2b):
+
+We will extend the mixed-effects models to include VVIQ2 scores as a continuous predictor:
+
+For VWM: 
+absolute_error ~ set_size * delay * vviq2_centered + (1 + set_size * delay | participant)
+
+For MRT: 
+log_rt ~ rotation_angle * vviq2_centered + (1 + rotation_angle | participant)
+accuracy ~ rotation_angle * vviq2_centered + (1 + rotation_angle | participant)
+
+Where vviq2_centered is the mean-centered VVIQ2 score. The key tests for H2a and H2b are the interaction terms (set_size:vviq2_centered, delay:vviq2_centered, rotation_angle:vviq2_centered), which assess whether imagery vividness moderates the effect of cognitive demand on performance.
+
+If significant interactions are found, we will conduct simple slopes analyses to examine the effect of cognitive demand at different levels of imagery vividness (±1 SD from the mean).</statistical_models>
+        
+        <transformations>1. VVIQ2 scores will be mean-centered prior to inclusion in the mixed-effects models to facilitate interpretation of main effects in the presence of interactions.
+
+2. Reaction times in the MRT will be natural log-transformed to address the typical positive skew in reaction time distributions. This transformation will be applied prior to both the calculation of individual MRT_RT_Angle_Slope parameters and the mixed-effects modeling.
+
+3. Absolute angular error in the VWM task will be normalized to the range 0-90° by taking the minimum of the absolute error and (180 - absolute error). This transformation accounts for the circular nature of orientation data and is applied automatically during data collection.
+
+4. No other transformations are planned for the primary analyses. If exploratory analyses reveal substantial violations of statistical assumptions, appropriate transformations will be documented as part of the exploratory analysis section.</transformations>
+        
+        <inference_criteria>We will use a significance threshold of α = 0.05 for all confirmatory analyses. All tests will be two-tailed unless otherwise specified.
+
+For the correlation analyses testing H1a and H1b, we will apply the Benjamini-Hochberg procedure with a false discovery rate (FDR) of 0.05 to correct for multiple comparisons.
+
+For the mixed-effects models testing H2a and H2b, we will apply the Benjamini-Hochberg procedure with FDR = 0.05 to the set of interaction terms involving VVIQ2 (set_size:vviq2_centered, delay:vviq2_centered, rotation_angle:vviq2_centered).
+
+Effect sizes will be reported for all analyses:
+- For mixed-effects models: standardized regression coefficients (β) and their 95% confidence intervals
+- For correlation analyses: Pearson's r and its 95% confidence interval
+- For simple slopes analyses (if conducted): unstandardized regression coefficients (b) and their 95% confidence intervals
+
+Power analysis indicates that with our planned sample size (n=202 after exclusions), we have 95% power to detect correlations of r = 0.25 or larger, which corresponds to a small-to-medium effect size according to Cohen's (1988) conventions.</inference_criteria>
+        
+        <data_exclusion>Our data exclusion criteria are structured hierarchically, with participant-level exclusions applied first, followed by trial-level exclusions:
+
+Participant-level exclusions:
+1. VWM Task:
+   - Participants with >15% trials with timeouts (no response within 7000ms)
+   - Participants with chance-level performance, defined as mean absolute error >45° in the Set Size 2, Delay 1000ms condition
+   - Participants who failed attention checks, defined as >50% incorrect responses on Set Size 1, 500ms delay trials
+
+2. MRT:
+   - Participants with >15% trials with timeouts (no response within 7000ms)
+   - Participants with chance-level performance, defined as mean accuracy <55% on 0° rotation trials
+   - Participants who failed attention checks, defined as >50% incorrect responses on the repeated 0° rotation attention check trials
+
+3. VVIQ2:
+   - Participants with >10% missing responses on the 32 VVIQ2 items
+   - Participants with implausible response patterns (e.g., identical ratings across all 32 items)
+
+These criteria will be applied independently, and participants will be excluded if they meet any one criterion. The number of participants excluded based on each criterion will be reported.
+
+Trial-level exclusions (applied after participant-level exclusions):
+1. VWM Task:
+   - Trials with timeouts (no response within 7000ms)
+   - Trials with implausible response times (<200ms from response probe onset)
+
+2. MRT:
+   - Trials with timeouts (no response within 7000ms)
+   - Trials with implausible response times (<200ms from stimulus onset)
+
+After applying these exclusions, we will identify outliers at the condition level for each participant:
+- For VWM: Exclude data points where a participant's mean absolute error in any of the four conditions (SS2/Delay1000, SS2/Delay4000, SS4/Delay1000, SS4/Delay4000) exceeds 3 standard deviations from the respective condition's sample mean
+- For MRT: Exclude data points where a participant's mean RT or accuracy in any of the four rotation angle conditions (0°, 50°, 100°, 150°) exceeds 3 standard deviations from the respective condition's sample mean
+
+The outlier identification will be applied to raw RT values in the MRT and to absolute angular error in the VWM task.</data_exclusion>
+        
+        <missing_data>For VWM and MRT, missing trials (due to timeouts or exclusions) will not be replaced. Participants must have at least 85% valid trials in each condition after trial-level exclusions to be included in analyses. If a participant has insufficient valid trials in any condition, they will be excluded from all analyses involving that condition.
+
+For the VWM task, if a participant has sufficient valid trials in some conditions but not others, they will be included in the mixed-effects modeling (which can handle missing data) but excluded from the calculation of slope parameters if the missing condition is necessary for that calculation.
+
+For the MRT, if a participant has insufficient valid trials at any rotation angle, they will be excluded from the calculation of slope parameters but retained in the mixed-effects modeling.
+
+For VVIQ2, participants must have responses on at least 90% of items (29 out of 32) to be included. No imputation will be performed for missing VVIQ2 responses; the total score will be calculated based on the available responses, adjusted proportionally for the number of completed items (e.g., if a participant completes 30/32 items with a sum of 120, their adjusted score would be 120 × (32/30) = 128).</missing_data>
+        
+        <exploratory_analysis>1. Non-linear effects: We will explore potential non-linear relationships between rotation angle and mental rotation performance by fitting models with quadratic terms for rotation angle. Similarly, we will examine whether the relationship between set size/delay and VWM error is better characterized by non-linear functions.
+
+2. Task order effects: We will examine whether task order (VWM first vs. MRT first) influences performance patterns in either task by including task order as a between-subjects factor in the mixed-effects models.
+
+3. Browser and device effects: We will explore potential relationships between browser/device metrics (e.g., frame rate, window focus loss) and task performance to assess the quality of online data collection.
+
+4. Reliability assessment: We will assess the reliability of our derived slope parameters by calculating split-half reliability coefficients (corrected using the Spearman-Brown formula) to aid interpretation of correlation results.
+
+5. VVIQ2 subscales: We will explore whether specific subscales of the VVIQ2 (corresponding to different imagery scenarios) show differential relationships with VWM and MRT performance.
+
+6. Additional VWM metrics: We will explore alternative measures of VWM performance, including circular standard deviation of errors and response time, to assess whether these show different patterns of relationship with MRT performance and imagery vividness.</exploratory_analysis>
+    </analysis_plan>
+
+    <other>This study examines potential shared representational constraints across visual working memory and mental rotation processes using online testing methods. The tasks are designed to be comparable to laboratory-based paradigms while being feasible for online implementation. The online implementation necessitates certain methodological considerations, such as the use of attention checks and strict data quality criteria. The study focuses on precision-based measures that can detect subtle differences in cognitive processing under varying levels of demand, allowing for a detailed examination of how performance patterns relate across tasks and individuals.
+
+The theoretical framework integrates resource models of visual working memory (Ma et al., 2014; Bays & Husain, 2008) with process models of mental rotation (Shepard & Metzler, 1971; Just & Carpenter, 1985) to test specific hypotheses about shared representational constraints. This integration addresses a significant gap in the literature, as these domains have typically been studied separately despite evidence for overlapping neural substrates (Christophel et al., 2017) and similar resource limitations.
+
+References:
+- Bays, P. M., & Husain, M. (2008). Dynamic shifts of limited working memory resources in human vision. Science, 321(5890), 851-854.
+- Barr, D. J., Levy, R., Scheepers, C., & Tily, H. J. (2013). Random effects structure for confirmatory hypothesis testing: Keep it maximal. Journal of Memory and Language, 68(3), 255-278.
+- Brysbaert, M., & Stevens, M. (2018). Power analysis and effect size in mixed effects models: A tutorial. Journal of Cognition, 1(1), 9.
+- Christophel, T. B., Klink, P. C., Spitzer, B., Roelfsema, P. R., & Haynes, J. D. (2017). The distributed nature of working memory. Trends in Cognitive Sciences, 21(2), 111-124.
+- Cohen, J. (1988). Statistical power analysis for the behavioral sciences (2nd ed.). Erlbaum.
+- Gignac, G. E., & Szodorai, E. T. (2016). Effect size guidelines for individual differences researchers. Personality and Individual Differences, 102, 74-78.
+- Just, M. A., & Carpenter, P. A. (1985). Cognitive coordinate systems: Accounts of mental rotation and individual differences in spatial ability. Psychological Review, 92(2), 137-172.
+- Keogh, R., & Pearson, J. (2018). The blind mind: No sensory visual imagery in aphantasia. Cortex, 105, 53-60.
+- Logie, R. H., Pernet, C. R., Buonocore, A., & Della Sala, S. (2011). Low and high imagers activate networks differentially in mental rotation. Neuropsychologia, 49(11), 3071-3077.
+- Ma, W. J., Husain, M., & Bays, P. M. (2014). Changing concepts of working memory. Nature Neuroscience, 17(3), 347-356.
+- Pertzov, Y., Manohar, S., & Husain, M. (2017). Rapid forgetting results from competition over time between items in visual working memory. Journal of Experimental Psychology: Learning, Memory, and Cognition, 43(4), 528-536.
+- Shepard, R. N., & Metzler, J. (1971). Mental rotation of three-dimensional objects. Science, 171(3972), 701-703.</other>
+</pre-registration>

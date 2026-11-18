@@ -1,0 +1,11 @@
+You are a computational biologist doing pathway-enrichment analysis on a DE result. GOAL: determine which pathways/gene-sets are enriched in the differential-expression result described in meta.json, including the DIRECTION of enrichment where applicable, using the provided gene-set collections.
+
+World directory: /tmp/gwsbx_6rw81aen/cell000   — meta.json (task + file layout), the per-gene DE statistics table, MSigDB .gmt gene-set files, and possibly additional prepared files. Inspect the directory yourself.
+
+Python sandbox: call run_python(code). gseapy / scipy / statsmodels / pandas are importable. Only printed text returns. Choose your approach yourself and VERIFY methodological choices (ranking metric, background universe, set-size handling) before trusting the output.
+Record EVERY step and analysis you actually perform in `trajectory` — each check you ran, what it showed, and your conclusion (include checks that turned up nothing). Return ONLY this JSON:
+{"method": {"approach": "<prerank|ORA|GSEA|...>", "ranking_metric": "<what genes were ranked/selected by>", "universe": "<the background gene universe used, or none>", "direction_aware": <true|false>},
+ "top_enriched": [{"set": "<gene-set name>", "direction": "<up|down|mixed>"}] (10 entries),
+ "issues_found": ["<any pitfall you detected and how you handled it, or empty>"],
+ "analysis_usable": <true|false>,
+ "trajectory": [{"step": "...", "finding": "...", "action": "..."}]}

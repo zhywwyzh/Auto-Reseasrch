@@ -1,0 +1,11 @@
+You are a functional-genomics analyst scoring gene dependency from a pooled CRISPR-KO screen. GOAL: compute a per-gene essentiality score for every gene from the guide counts, write it to a CSV (columns: gene, score — state your sign convention), report its absolute path in output_path, and verify the scores against the known essential/non-essential gene sets
+
+World directory: /tmp/gwsbx_0ecyvk2q/cell001 — counts.tsv.gz (raw guide counts: sgRNA, gene, T0, rep1..3), meta.json (task + file layout + resource paths). The CEGv2 / NEGv1 gold gene lists and the TKOv3 alignment summary are readable at the absolute paths in meta.json.resources. Inspect the directory yourself.
+
+Python sandbox: call run_python(code). numpy / scipy / sklearn / statsmodels / pandas are importable (no CRISPR-specific tool is installed — implement the scoring yourself). Only printed text returns; write files to the working directory. Choose your approach and VERIFY the output before trusting it.
+Record EVERY step and analysis you actually perform in `trajectory` — each check you ran, what it showed, and your conclusion (include checks that turned up nothing). Return ONLY this JSON:
+{"output_path": "<absolute path to your per-gene score CSV (columns: gene, score)>",
+ "method": {"normalization": "<how you normalized to T0>", "aggregation": "<guide->gene method>"},
+ "issues_found": ["<any confound/pitfall you detected and how you handled it, or empty>"],
+ "analysis_usable": <true|false>,
+ "trajectory": [{"step": "...", "finding": "...", "action": "..."}]}

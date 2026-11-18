@@ -9,6 +9,7 @@
 - [公共约束](AGENTS.md)
 - [通用论文预审量表](docs/research/ai-paper-review/aas-review-profile.json)
 - [共享排版模板](templates/acta-automatica-sinica/README.md)
+- [外部公共源码与版本清单](external/README.md)
 
 ## 本地初始化
 
@@ -26,6 +27,8 @@ python3 workspaces/autonomous-research-system/serve.py --port 18767
 ## 提交边界
 
 `.gitignore` 使用默认拒绝的允许清单。公共系统源码、测试、界面、文档和必要的共享工具/模板可以跟踪；任务目录、论文、资料、任务登记、真实服务器配置和运行记录均忽略。
+
+`external/` 中经审查的公共源码作为普通文件由本仓库管理，不使用子模块或嵌套仓库。其逐文件允许清单见 `external/.gitignore`，上游地址、提交和源码校验和见 `external/sources.lock.json`；未列入清单的数据、附件和新增文件继续仅留本地。
 
 ```sh
 python3 scripts/check_git_scope.py

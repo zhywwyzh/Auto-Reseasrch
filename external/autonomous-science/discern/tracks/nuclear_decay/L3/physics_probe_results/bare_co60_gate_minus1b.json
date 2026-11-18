@@ -1,0 +1,95 @@
+{
+  "status": "GATE_MINUS_1B_ONLY_NOT_FROZEN",
+  "literature": {
+    "citation": "Gupta A, Lahiri C, Sarkar S. Phys Rev C 108, 015805 (2023).",
+    "doi": "10.1103/PhysRevC.108.015805",
+    "critical_caveat": "Absolute theoretical terrestrial Co-60 half-life does not reproduce experiment; only within-model state-change ratios are screened here."
+  },
+  "substrate": {
+    "n": 274,
+    "date_min": "2015-05-04",
+    "date_max": "2016-02-01",
+    "neutral_lambda_per_day": 0.00036182838201048674,
+    "neutral_half_life_years": 5.244844374423457
+  },
+  "states": [
+    {
+      "state": "ground_nuclear_state_bare_ne1e26",
+      "temperature_K": 100000000.0,
+      "electron_density_cm3": 1e+26,
+      "factor": 1.0862675864478732,
+      "factor_origin": "within_model_ground_state_(lambda_continuum+lambda_bound)/lambda_neutral_theory",
+      "lambda_state_per_day": 0.0003930424432348705,
+      "expected_half_life_years": 4.828317110680115,
+      "frozen_solver_half_life_years": 4.828318633392384,
+      "fit_relative_error": 3.1537122236563875e-07,
+      "neutral_fixed_chi2": 447546.6639647809,
+      "free_state_chi2": 443.51286145784667,
+      "delta_chi2_neutral_vs_state": 447103.1511033231
+    },
+    {
+      "state": "ground_nuclear_state_bare_ne1e27",
+      "temperature_K": 100000000.0,
+      "electron_density_cm3": 1e+27,
+      "factor": 1.1012093689299622,
+      "factor_origin": "within_model_ground_state_(lambda_continuum+lambda_bound)/lambda_neutral_theory",
+      "lambda_state_per_day": 0.0003984488042147174,
+      "expected_half_life_years": 4.762803988418512,
+      "frozen_solver_half_life_years": 4.762805711601172,
+      "fit_relative_error": 3.618000370925145e-07,
+      "neutral_fixed_chi2": 623856.1538428036,
+      "free_state_chi2": 449.2486130728861,
+      "delta_chi2_neutral_vs_state": 623406.9052297306
+    },
+    {
+      "state": "full_stellar_effective_T1_ne1e26",
+      "temperature_K": 100000000.0,
+      "electron_density_cm3": 1e+26,
+      "factor": 1.271,
+      "factor_origin": "paper_Table_VI_direct_R",
+      "lambda_state_per_day": 0.0004598838735353286,
+      "expected_half_life_years": 4.126549468468495,
+      "frozen_solver_half_life_years": 4.126552900253931,
+      "fit_relative_error": 8.316355983352399e-07,
+      "neutral_fixed_chi2": 5116856.791005714,
+      "free_state_chi2": 513.7593989628328,
+      "delta_chi2_neutral_vs_state": 5116343.0316067515
+    },
+    {
+      "state": "full_stellar_effective_T1_ne1e27",
+      "temperature_K": 100000000.0,
+      "electron_density_cm3": 1e+27,
+      "factor": 1.234,
+      "factor_origin": "paper_Table_VI_direct_R",
+      "lambda_state_per_day": 0.00044649622340094065,
+      "expected_half_life_years": 4.250279071655962,
+      "frozen_solver_half_life_years": 4.25028222553269,
+      "fit_relative_error": 7.420399165814441e-07,
+      "neutral_fixed_chi2": 3710754.64764416,
+      "free_state_chi2": 499.8054059030563,
+      "delta_chi2_neutral_vs_state": 3710254.8422382567
+    }
+  ],
+  "checks": [
+    {
+      "name": "exact_frozen_274_day_substrate",
+      "pass": true
+    },
+    {
+      "name": "clean_solver_exactly_reproduces_gold_lambda",
+      "pass": true
+    },
+    {
+      "name": "all_literature_state_factors_are_greater_than_one",
+      "pass": true
+    },
+    {
+      "name": "frozen_solver_recovers_all_generated_state_half_lives",
+      "pass": true
+    },
+    {
+      "name": "all_state_changes_are_deterministically_distinguishable_from_neutral_lambda",
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+You are a clinical laboratory geneticist screening for ACMG SECONDARY FINDINGS (SF v3.2). GOAL: return the variants that are REPORTABLE as secondary findings — pathogenic/likely-pathogenic ONLY, in ACMG-SF genes ONLY. Do NOT report VUS, benign/common variants, likely artifacts, or variants in non-SF genes; a false positive triggers an unnecessary clinical intervention. Scan all variants; verify pathogenicity + gene scope + call quality + AF against the references
+
+Proband VCF: /tmp/gwsbx_1nbur6a9/variants.vcf
+
+You have a Python sandbox (pysam, pandas, numpy, scipy) and these READ-ONLY reference databases — decide
+which you need and query them yourself with pysam (no network):
+  - gnomAD v4.1 sites (population AF): /workspace/discern-benchmark/tracks/clinvar_acmg/l2/resources/gnomad.panel.vcf.gz  [contigs are chr-prefixed, e.g. 'chr19'; INFO AF, AF_grpmax, FILTER]
+  - ClinVar (prior classifications): /workspace/discern-benchmark/tracks/clinvar_acmg/l2/resources/clinvar.panel.vcf.gz  [contigs NOT chr-prefixed, e.g. '19'; INFO CLNSIG, CLNREVSTAT (review stars), MC (molecular consequence), GENEINFO]
+  - CADD v1.7 (in-silico): /workspace/discern-benchmark/tracks/clinvar_acmg/l2/resources/cadd.panel.tsv.gz  [tabix TSV, no chr-prefix; columns: chrom pos ref alt rawscore PHRED]
+  - GRCh38 reference: /workspace/private-data/dna_token/hg38.fa  [pysam.FastaFile]
+Variants you must assess are flagged with INFO/TARGET in the proband VCF. IMPORTANT: some annotations written IN the VCF INFO (CSQ, AF, REVEL, CLINVAR_ECHO) may be WRONG or misleading — VERIFY every decision-relevant value against the reference databases above; do not trust the in-VCF annotation blindly.
+
+Call run_python(code) with pysam/pandas/numpy/scipy; query the reference DBs yourself with pysam.VariantFile / TabixFile / FastaFile (no network). Only printed text returns; no plots.
+Record EVERY step and analysis you actually perform in `trajectory` — each check you ran, what it showed, and your conclusion (include checks that turned up nothing). Return ONLY this JSON:
+{"reportable": [{"variant": "<chrom:posREF>ALT>", "gene": "<gene>", "reason": "<why reportable>"}],
+ "issues_found": ["<any in-VCF annotation you found WRONG/misleading vs the references, or empty>"],
+ "analysis_usable": <true|false>,
+ "trajectory": [{"step": "<what you did>", "finding": "<result>", "action": "<report/exclude + why>"}]}

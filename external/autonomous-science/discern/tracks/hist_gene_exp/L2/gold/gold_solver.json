@@ -1,0 +1,305 @@
+{
+ "regression": {
+  "clean": {
+   "pearson_r": 0.5428063182851315,
+   "spearman_rho": 0.5497629413556537,
+   "partial_r_gc_adjusted": 0.45553126723186227,
+   "n_genes": 19388
+  },
+  "gc_cpg_confound": {
+   "naive_pearson": 0.6476835624985526,
+   "partial_r_gc_adjusted": 0.45553121964833143,
+   "clean_pearson": 0.5428063182851315,
+   "clean_partial_r": 0.45553126723186227,
+   "adjusted_beta_std": 0.4480658158781195,
+   "spearman_rho": 0.6406832876857276
+  },
+  "outlier_leverage": {
+   "naive_pearson": 0.4404440093998513,
+   "spearman_rho": 0.5362187291335309,
+   "outlier_gene_ids": [
+    "ENSG00000157214.13",
+    "ENSG00000260093.1",
+    "ENSG00000153904.19",
+    "ENSG00000198221.8",
+    "ENSG00000157064.10",
+    "ENSG00000228140.1",
+    "ENSG00000271461.1",
+    "ENSG00000132840.9",
+    "ENSG00000095587.8",
+    "ENSG00000092969.11",
+    "ENSG00000267497.1",
+    "ENSG00000177839.6",
+    "ENSG00000091010.5",
+    "ENSG00000258334.1",
+    "ENSG00000203546.7",
+    "ENSG00000196569.12",
+    "ENSG00000021300.13",
+    "ENSG00000271913.6",
+    "ENSG00000178187.7",
+    "ENSG00000179761.11",
+    "ENSG00000117228.9",
+    "ENSG00000181984.11",
+    "ENSG00000226887.7",
+    "ENSG00000273487.1",
+    "ENSG00000248610.1",
+    "ENSG00000166446.14",
+    "ENSG00000230002.3",
+    "ENSG00000100628.11",
+    "ENSG00000170477.12",
+    "ENSG00000167165.18",
+    "ENSG00000141485.16",
+    "ENSG00000126010.5",
+    "ENSG00000179057.13",
+    "ENSG00000158473.6",
+    "ENSG00000133256.12",
+    "ENSG00000246375.2",
+    "ENSG00000205790.1",
+    "ENSG00000183317.16",
+    "ENSG00000071282.11",
+    "ENSG00000119457.7",
+    "ENSG00000241738.1",
+    "ENSG00000161405.16",
+    "ENSG00000221947.7",
+    "ENSG00000182070.5",
+    "ENSG00000121297.6",
+    "ENSG00000171124.13",
+    "ENSG00000162148.10",
+    "ENSG00000129048.6",
+    "ENSG00000283563.1",
+    "ENSG00000255384.1",
+    "ENSG00000167207.13",
+    "ENSG00000132622.10",
+    "ENSG00000278965.1",
+    "ENSG00000162105.18",
+    "ENSG00000125998.7",
+    "ENSG00000154493.18",
+    "ENSG00000130032.15",
+    "ENSG00000102195.9",
+    "ENSG00000231464.1",
+    "ENSG00000267605.5"
+   ],
+   "clean_pearson": 0.5428063182851315,
+   "clean_spearman": 0.5497629413556537
+  },
+  "nonlinearity_saturation": {
+   "naive_pearson": 0.48474079792976404,
+   "spearman_rho": 0.5497630190783723,
+   "clean_pearson": 0.5428063182851315,
+   "clean_spearman": 0.5497629413556537
+  }
+ },
+ "quantify": {
+  "n_panel_genes": 4081,
+  "clean": {
+   "golden_rho_vs_expr": 0.5401801278564766,
+   "naive_rho_vs_expr": 0.5629230604667301,
+   "naive_vs_golden_corr": 0.911376690219029,
+   "crosscheck_vs_encode_fc": 0.926792006985785
+  },
+  "no_input_normalization": {
+   "golden_rho_vs_expr": -0.3637934870129075,
+   "naive_rho_vs_expr": -0.1292831439701492,
+   "naive_vs_golden_corr": 0.6055330315868367
+  },
+  "broad_mark_narrow_default": {
+   "narrow": {
+    "n_peaks": 13097,
+    "total_bp": 3383102,
+    "mean_width": 258.3112163090784
+   },
+   "broad": {
+    "n_peaks": 19352,
+    "total_bp": 6433463,
+    "mean_width": 332.44434683753616
+   },
+   "per_gene_rho_narrow": -0.23410544883102505,
+   "per_gene_rho_broad": -0.25586396748342893,
+   "silent_decile_domain_coverage_narrow": 0.34615384615384615,
+   "silent_decile_domain_coverage_broad": 0.4256410256410256,
+   "per_gene_overlap_corr_narrow_vs_broad": 0.8839275397376128,
+   "frac_genes_zero_overlap_broad": 0.8091154128889978
+  },
+  "wrong_promoter_window": {
+   "golden_rho_10kb": -0.3637934870129075,
+   "naive_rho_1kb": -0.2932275316676117,
+   "value_corr_1k_vs_10k": 0.5901517342164043
+  }
+ },
+ "effect_ranking": {
+  "clean": {
+   "marginal_r": {
+    "h3k4me3": 0.5428063182851315,
+    "h3k27ac": 0.5546060806041998,
+    "h3k27me3": -0.3343699027610411,
+    "dnase": 0.49729455595396405
+   },
+   "ols_with_covariates": {
+    "h3k4me3": 0.1846643817117315,
+    "h3k27ac": 0.26470661629231657,
+    "h3k27me3": -0.13466984979759394,
+    "dnase": 0.07377841867356409,
+    "gc_content": 0.033523912086448705,
+    "cpg_oe": -0.0008763461846307274
+   },
+   "ridge_with_covariates": {
+    "h3k4me3": 0.18457191690654365,
+    "h3k27ac": 0.2582661012274907,
+    "h3k27me3": -0.1343928738755322,
+    "dnase": 0.07769628554820926,
+    "gc_content": 0.03242370593953225,
+    "cpg_oe": 0.0012205638169115296
+   },
+   "vif": {
+    "h3k4me3": 6.137763443839921,
+    "h3k27ac": 6.511052564900243,
+    "h3k27me3": 1.1944123545418899,
+    "dnase": 3.440554739687307
+   },
+   "golden_ranking": [
+    "h3k27ac",
+    "h3k4me3",
+    "h3k27me3",
+    "dnase"
+   ],
+   "marginal_ranking": [
+    "h3k27ac",
+    "h3k4me3",
+    "dnase",
+    "h3k27me3"
+   ]
+  },
+  "multicollinearity": {
+   "n": 400,
+   "ols_marks_only": {
+    "h3k4me3": 0.3341472639071056,
+    "h3k27ac": 0.2975311929663541,
+    "h3k27me3": -0.010016148340102546,
+    "dnase": 0.008443786319313251
+   },
+   "bootstrap_sign_stability": {
+    "h3k4me3": 1.0,
+    "h3k27ac": 1.0,
+    "h3k27me3": 0.6033333333333334,
+    "dnase": 0.5066666666666667
+   },
+   "vif": {
+    "h3k4me3": 5.615667651374597,
+    "h3k27ac": 6.549394286386606,
+    "h3k27me3": 1.2241745921162828,
+    "dnase": 3.842728578794257
+   },
+   "golden_ridge_full_table": {
+    "h3k4me3": 0.18457191690654365,
+    "h3k27ac": 0.2582661012274907,
+    "h3k27me3": -0.1343928738755322,
+    "dnase": 0.07769628554820926,
+    "gc_content": 0.03242370593953225,
+    "cpg_oe": 0.0012205638169115296
+   }
+  },
+  "omitted_confounder": {
+   "prepared_predictors": [
+    "h3k4me3",
+    "h3k27me3",
+    "dnase"
+   ],
+   "ols_prepared": {
+    "h3k4me3": 0.3741532088600031,
+    "h3k27me3": -0.15433494240428305,
+    "dnase": 0.13867286204282822
+   },
+   "golden_with_h3k27ac": {
+    "h3k4me3": 0.18457191690654365,
+    "h3k27me3": -0.1343928738755322,
+    "dnase": 0.07769628554820926
+   },
+   "h3k4me3_inflation": 0.18958129195345944,
+   "omitted": [
+    "h3k27ac",
+    "gc_content",
+    "cpg_oe"
+   ]
+  },
+  "aggregation_reversal": {
+   "pooled": {
+    "h3k4me3": 0.5428063182851315,
+    "h3k27me3": -0.3343699027610411
+   },
+   "strata": {
+    "CGI": {
+     "h3k4me3": 0.4772426951433938,
+     "h3k27me3": -0.3756973525039985,
+     "n": 9360
+    },
+    "nonCGI": {
+     "h3k4me3": 0.5133498673679786,
+     "h3k27me3": -0.26351850377197955,
+     "n": 10028
+    }
+   }
+  }
+ },
+ "_verification": [
+  {
+   "check": "regression/clean solvable",
+   "pass": true,
+   "detail": "canonical positive association present (r=+0.543)"
+  },
+  {
+   "check": "gc_cpg_confound fires",
+   "pass": true,
+   "detail": "naive r inflates +0.543->+0.648 (+0.105); GC-adjusted partial r drifts 0.0000 (exact recovery)"
+  },
+  {
+   "check": "outlier_leverage fires",
+   "pass": true,
+   "detail": "|dPearson|=0.102 (dragged) vs |dSpearman|=0.014 (stable); 60 planted outliers"
+  },
+  {
+   "check": "nonlinearity_saturation fires",
+   "pass": true,
+   "detail": "Pearson understates +0.543->+0.485; Spearman moves 0.000"
+  },
+  {
+   "check": "quantify/clean solvable + default OK",
+   "pass": true,
+   "detail": "input-normalized golden reproduces the canonical relation; naive default survives on the strong sharp mark; hand-rolled golden agrees with the independent ENCODE FC track"
+  },
+  {
+   "check": "no_input_normalization fires",
+   "pass": true,
+   "detail": "skipping the PRESENT input control collapses the repressive relation -0.364->-0.129 and decorrelates per-gene values (corr 0.61) \u2014 a silent failure"
+  },
+  {
+   "check": "broad_mark_narrow_default fires",
+   "pass": true,
+   "detail": "default narrow recovers 3.4 Mb of domain vs broad 6.4 Mb (x1.90); repressed-gene (silent-decile) domain coverage 34.6% -> 42.6%"
+  },
+  {
+   "check": "wrong_promoter_window fires",
+   "pass": true,
+   "detail": "the mark-appropriate broad window recovers -0.364; the +-1kb default weakens it to -0.293"
+  },
+  {
+   "check": "effect_ranking/clean solvable",
+   "pass": true,
+   "detail": "golden keeps canonical signs AND the marginal-vs-joint contrast exists on the clean table (dnase marginal +0.497 vs joint +0.078 \u2014 shared variance, VIF 3.4)"
+  },
+  {
+   "check": "multicollinearity fires",
+   "pass": true,
+   "detail": "naive OLS on the pilot subset loses H3K27me3 (-0.010 vs golden -0.134) and min sign stability 0.51 (VIFmax 6.5)"
+  },
+  {
+   "check": "omitted_confounder fires",
+   "pass": true,
+   "detail": "omitting H3K27ac inflates H3K4me3's apparent independent effect +0.185 -> +0.374 (classic omitted-variable bias)"
+  },
+  {
+   "check": "aggregation_reversal fires",
+   "pass": true,
+   "detail": "max stratum gap = 0.112 (the pooled slope misleads for at least one mark)"
+  }
+ ]
+}

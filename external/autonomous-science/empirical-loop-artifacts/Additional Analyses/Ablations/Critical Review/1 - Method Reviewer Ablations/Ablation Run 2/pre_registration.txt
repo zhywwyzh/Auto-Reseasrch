@@ -1,0 +1,69 @@
+<pre-registration>
+    <metadata>
+        <title>Error Distribution Parameters in Visual Working Memory as Predictors of Visuospatial Cognitive Performance</title>
+        <description>An online experiment examining whether individual differences in visual working memory error distributions, characterized by concentration parameters from von Mises fits, predict mental rotation performance and visual imagery vividness ratings. 526 participants will complete visual working memory, mental rotation, and imagery vividness tasks to test whether precision-related distributional parameters explain shared variance across visuospatial domains.</description>
+        <contributors>Research Team</contributors>
+
+        <license type="select_one">
+            <options>
+                - CC-By Attribution 4.0 International
+            </options>
+        </license>
+
+        <subject>Cognitive Psychology, Visual Working Memory, Spatial Cognition, Individual Differences, Psychometrics</subject>
+        <tags>visual working memory, mental rotation, imagery, error distributions, circular statistics, individual differences</tags>
+    </metadata>
+
+    <study_information>
+        <hypotheses>H1: Individual differences in visual working memory error distributions, characterized by concentration parameters (κ) from von Mises fits, will predict mental rotation accuracy and reaction times (directional hypothesis: higher κ values predict better performance). H2: Participants with higher concentration parameters will demonstrate superior mental rotation performance, particularly for larger angular disparities where precise spatial transformations are most demanding (directional hypothesis: κ × rotation angle interaction). H3: Higher concentration parameters will correlate with higher VVIQ2 imagery vividness ratings (directional hypothesis: positive correlation). H4: These relationships will persist after controlling for domain-general factors including overall accuracy, response consistency, and engagement metrics (directional hypothesis: κ effects remain significant with covariates).</hypotheses>
+    </study_information>
+
+    <design_plan>
+        <study_type type="select_one">
+            <options>
+                - Experiment
+            </options>
+        </study_type>
+
+        <blinding type="select_multiple">
+            <options>
+                - Personnel who analyze the data collected from the study are not aware of the treatment applied to any given group.
+            </options>
+        </blinding>
+        
+        <additional_blinding>Participants are unaware of the specific hypotheses regarding error distribution parameters. Data analysis will be conducted with participant identifiers anonymized.</additional_blinding>
+        <study_design>This is a within-subjects design where each participant completes three tasks: visual working memory (VWM), mental rotation test (MRT), and VVIQ2 imagery questionnaire. The VWM and MRT tasks are counterbalanced in presentation order using random assignment (if Math.random() < 0.5). The design includes repeated measures with 4 rotation angles (0°, 50°, 100°, 150°) in the MRT task. Individual-level error distributions from VWM will be fitted to extract concentration parameters that serve as predictors of performance across the other visuospatial tasks.</study_design>
+        <randomization>Task order for VWM and MRT will be randomized using JavaScript's Math.random() function, with participants randomly assigned to receive either VWM-first or MRT-first presentation order. Within each task, trial order will be randomized. The VVIQ2 questionnaire is always presented last after completion of both cognitive tasks.</randomization>
+    </design_plan>
+
+    <sampling_plan>
+        <existing_data type="select_one">
+            <options>
+                - Registration prior to creation of data
+            </options>
+        </existing_data>
+        
+        <existing_data_explanation>No data have been collected for this study. All experimental tasks, data collection procedures, and analyses are being pre-registered prior to any data collection or observation.</existing_data_explanation>
+        <data_collection_procedures>Participants will be recruited via Prolific with pre-screening filters targeting adults aged 18-35 with normal or corrected-to-normal vision and no self-reported hearing deficits. The experiment will be implemented on Pavlovia.org using JavaScript, requiring minimum browser window dimensions of 768x768 pixels. Participants complete the VWM task, MRT task (in counterbalanced order), and VVIQ2 questionnaire hosted on SurveyMonkey. Compensation will be set at minimum £9/hour pro-rata based on pilot data median completion time. Focus loss instances and duration will be monitored throughout the session.</data_collection_procedures>
+        <sample_size>Target sample size is 526 participants, accounting for anticipated exclusions and attrition.</sample_size>
+        <sample_size_rationale>Power analysis using pwr and powerlmm packages in R determined the required sample size. For the primary mixed-effects analysis testing VWM concentration × rotation angle interaction on MRT accuracy, we calculated power to detect a small-to-medium effect (Cohen's f² = 0.075) with 80% power at α = 0.05, incorporating ICC = 0.4. This yielded 405 participants. For secondary correlational analyses with VVIQ2 (r = 0.25), 122 participants were required. The final target of 526 represents the larger requirement (405) inflated by 30% for exclusions and attrition.</sample_size_rationale>
+        <stopping_rule>Data collection will continue until 526 completed responses are obtained through Prolific's platform. No sequential analysis or interim stopping rules will be applied.</stopping_rule>
+    </sampling_plan>
+
+    <variables>
+        <manipulated_variables>Rotation angle in the mental rotation task with four levels: 0°, 50°, 100°, and 150°. Task presentation order (VWM-first vs MRT-first) is counterbalanced across participants.</manipulated_variables>
+        <measured_variables>Primary predictor: VWM concentration parameter (κ) extracted from von Mises distribution fits to orientation recall errors. Primary outcomes: MRT accuracy (proportion correct per rotation angle) and MRT reaction time (milliseconds for correct responses). Secondary outcome: VVIQ2 total score and eight subscale scores (sum of 4 items per scenario, range 4-20 per subscale). Control variables: VWM mean absolute error, MRT reaction time coefficient of variation, focus loss instances during instructions, focus loss duration during instructions, focus loss instances during trials, focus loss duration during trials, and total session duration.</measured_variables>
+        <indices>VWM concentration parameter (κ) will be extracted from two-component mixture models fitted to each participant's error distribution using maximum likelihood estimation. VVIQ2 total score will be calculated as the sum of all 32 items. Eight VVIQ2 subscale scores will be calculated as the sum of 4 items per scenario. MRT performance indices will include mean accuracy and mean correct RT for each rotation angle. Control indices include coefficient of variation for MRT reaction times and aggregate focus loss metrics.</indices>
+    </variables>
+
+    <analysis_plan>
+        <statistical_models>Primary hypothesis testing will use mixed-effects models via lme4 in R. Model 1: Generalized linear mixed-effects model with logit link predicting trial-level MRT accuracy from fixed effects of VWM κ, rotation angle (categorical), and their interaction, with random intercepts for participants. Model 2: Linear mixed-effects model predicting log-transformed RT on correct MRT trials from the same fixed effects and random structure. Secondary analysis: Robust multiple regression via MASS package predicting VVIQ2 total score from VWM κ. Additional regressions will predict each of the eight VVIQ2 subscale scores from κ. Control analyses will re-run all models adding domain-general covariates. P-values for mixed-effects models obtained using Satterthwaite's method via lmerTest.</statistical_models>
+        <transformations>VWM errors will be normalized to +/- 90 degrees and converted to radians for circular statistical modeling. MRT reaction times will be log-transformed for analysis. VVIQ2 fairness concerns items will be reverse-coded before calculating indices. No other transformations are planned unless assumption violations are detected.</transformations>
+        <inference_criteria>Two-tailed tests with α = 0.05 for all analyses. Effect sizes will be reported with 95% confidence intervals. Multiple comparisons for VVIQ2 subscales will use False Discovery Rate (FDR) correction. For mixed-effects models, significance will be determined using Satterthwaite degrees of freedom approximation.</inference_criteria>
+        <data_exclusion>Participants will be excluded for: 1) Failure to achieve proficiency after 3 attempts on practice blocks, 2) Overall MRT accuracy below 60%, 3) Failure on >50% of attention checks, 4) Aggregate timeout rate exceeding 20%, 5) Total focus loss duration exceeding 15% of session duration. Trial-level exclusions: timeouts, anticipatory RTs (<200 ms), and correct MRT RTs exceeding 3 SD from participant's mean for that rotation angle. VVIQ2 exclusions: incomplete submissions, zero variance across all items, and total scores >3 SD from sample mean.</data_exclusion>
+        <missing_data>All cognitive task questions are required fields, so no missing data are expected for primary measures. Participants with incomplete VVIQ2 submissions will be excluded from VVIQ2 analyses but retained for MRT analyses if they completed the cognitive tasks.</missing_data>
+        <exploratory_analysis>If primary hypotheses are supported, we will explore whether relationships differ across VVIQ2 subscales and examine potential non-linear relationships between κ and performance measures. We will also test alternative circular distributions (Wrapped Normal, Wrapped Cauchy) as sensitivity analyses and examine whether mixture model guess rates moderate the observed relationships.</exploratory_analysis>
+    </analysis_plan>
+
+    <other>This research bridges cognitive psychology, psychometrics, and computational modeling by connecting behavioral error distributions to individual differences in spatial abilities. The circular statistical framework draws from directional statistics, while hierarchical modeling incorporates advances from computational cognitive science. Sensitivity analyses will test robustness to modeling assumptions by examining alternative circular distributions and mixture model components.</other>
+</pre-registration>

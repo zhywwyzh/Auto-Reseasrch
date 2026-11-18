@@ -1,0 +1,68 @@
+{
+  "created_utc": "2026-09-04T05:30:31.665119+00:00",
+  "name": "50-nm nano-Cu heat-capacity bulk-reuse prior",
+  "scientific_claim_under_test": "For same-composition fcc Cu with approximately 50 nm nanocrystalline crystallites, no phase transition, and equilibrium over 150\u2013300 K, ordinary bulk/polycrystalline Cu Cp(T) remains the natural quantitative baseline; only a small positive correction is expected a priori.",
+  "canonical_roster": [
+    "gpt-4.1",
+    "gpt-5.6-sol",
+    "glm-5.2",
+    "deepseek-v4-pro",
+    "kimi-k3",
+    "claude-opus-5"
+  ],
+  "successful_prior_probes": 6,
+  "successful_prior_held": 6,
+  "execution_unresolved": 0,
+  "any_prior_knew_false": false,
+  "anchor_switch_required": false,
+  "construction_status": "ANCHOR_FROZEN_BUILD_ALLOWED",
+  "candidate_magnitude_was_disclosed": false,
+  "literature_range_was_disclosed": false,
+  "question_sha256": "a0f021273e20083e229400d740779fa33004976607f283827d2d620622d16580",
+  "system_prompt_sha256": "3155e32ab408f9e96d52a2cd5e5e80fa348d6de1f2d7fb2f3c84df886bab638a",
+  "adjudications": [
+    {
+      "canonical_key": "gpt-4.1",
+      "prior_knew": true,
+      "adjudication": "prior_held",
+      "answer_sha256": "8bdb1e5a2b6c9cdb2ed627302542e6bb557516e6dc57b5b2e6840c5b92b214d6",
+      "reason": "Expected slightly higher Cp but only sub-percent to few-percent; ordinary bulk Cu remains the quantitative baseline."
+    },
+    {
+      "canonical_key": "gpt-5.6-sol",
+      "prior_knew": true,
+      "adjudication": "prior_held",
+      "answer_sha256": "54fcab58a257eec32fd9640186e49c22234a781f53f0a703de7e21f85acf3089",
+      "reason": "Expected roughly 0.1\u20131%, perhaps 1\u20132%, and explicitly described an approximately ten-percent intrinsic enhancement as surprising."
+    },
+    {
+      "canonical_key": "glm-5.2",
+      "prior_knew": true,
+      "adjudication": "prior_held",
+      "answer_sha256": "1b9e47209645c68bd5f8f4909c3ab692b78b527ee423dc7e40cc766845704837",
+      "reason": "Expected approximately 0.5\u20133%, tending to sub-percent near 300 K, with no approximately ten-percent effect."
+    },
+    {
+      "canonical_key": "deepseek-v4-pro",
+      "prior_knew": true,
+      "adjudication": "prior_held",
+      "answer_sha256": "90e467e0a0f98a02b97937c01eb1f11187fcc3e3eb7089cc0c0a2aeda31b987a",
+      "reason": "Expected a slight positive excess, approximately 1\u20133% near 150 K and below about 1% near 300 K."
+    },
+    {
+      "canonical_key": "kimi-k3",
+      "prior_knew": true,
+      "adjudication": "prior_held",
+      "answer_sha256": "53241fa53259e093c8d58fa82180199b44db156d0051be5f2a74f46d0455ba2d",
+      "reason": "Expected sub-percent to a few-percent enhancement, with approximately ten percent requiring additional structural or specimen effects."
+    },
+    {
+      "canonical_key": "claude-opus-5",
+      "prior_knew": true,
+      "adjudication": "prior_held",
+      "answer_sha256": "f4e933d74f9ab3bbae5b0bc4f05af1c4bc508e56456d9c0d1b1a916aca6c1ba2",
+      "reason": "Expected essentially bulk-like Cp with a slight positive bias of roughly 0.2\u20131%; a few-percent result would already require scrutiny under the stated prior."
+    }
+  ],
+  "important_note": "Gate 0 establishes only that the benchmarked models held the prior. Model explanations are not used as physical evidence for the counterfactual magnitude."
+}

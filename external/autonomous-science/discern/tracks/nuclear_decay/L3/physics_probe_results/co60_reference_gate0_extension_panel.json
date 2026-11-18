@@ -1,0 +1,47 @@
+{
+  "schema": "nuclear_l3_co60_reference_gate0_raw_v1",
+  "anchor": "co60-terrestrial-half-life",
+  "purpose": "named-fact / surface-prior Gate-0 elicitation; raw evidence for later knew_prior adjudication",
+  "question": "Before examining any new decay dataset or being told about any unusual\nenvironmental conditions, what half-life would you ordinarily use as the\nestablished terrestrial reference value for radioactive cobalt-60 (Co-60)?\n\nGive the standard quantitative value with units and a brief one-sentence\ndescription of what that value represents.\n\nDo not speculate about hypothetical changes to the half-life in special\nenvironments; this question is only asking for the ordinary reference fact.",
+  "models": {
+    "glm-5.3": {
+      "model": "glm-5.3",
+      "anchor": "co60-terrestrial-half-life",
+      "available": true,
+      "completed": true,
+      "execution_unresolved": false,
+      "answer": "**Half-life of cobalt-60: approximately 5.27 years** (more precisely, about 1925.3 days, or roughly 1.66 \u00d7 10\u2078 seconds).\n\nThis value represents the time required for half of the nuclei in a sample of Co-60 to decay under ordinary terrestrial conditions \u2014 in this case via beta-minus decay to excited states of nickel-60, accompanied by the emission of the isotope's characteristic gamma rays at approximately 1.17 MeV and 1.33 MeV.",
+      "stop_reason": "stop",
+      "error": null,
+      "knew_prior": null,
+      "adjudication": null,
+      "note": "Adjudicate the factual answer itself. knew_prior=True means the model clearly knows the ordinary established Co-60 terrestrial half-life reference. Special-environment physics is deliberately outside this probe and must not be used to invalidate the named-fact prior."
+    },
+    "gpt-6-astra": {
+      "model": "gpt-6-astra",
+      "anchor": "co60-terrestrial-half-life",
+      "available": true,
+      "completed": true,
+      "execution_unresolved": false,
+      "answer": "The established terrestrial half-life of cobalt-60 (Co-60) is approximately **5.27 years** (commonly quoted as **5.2714 years**). This is the time required for half the Co-60 nuclei in a sample to decay, primarily by beta-minus emission to nickel-60.",
+      "stop_reason": "stop",
+      "error": null,
+      "knew_prior": null,
+      "adjudication": null,
+      "note": "Adjudicate the factual answer itself. knew_prior=True means the model clearly knows the ordinary established Co-60 terrestrial half-life reference. Special-environment physics is deliberately outside this probe and must not be used to invalidate the named-fact prior."
+    },
+    "claude-fable-5": {
+      "model": "claude-fable-5",
+      "anchor": "co60-terrestrial-half-life",
+      "available": true,
+      "completed": false,
+      "execution_unresolved": true,
+      "answer": "[REFUSED_PROBE]",
+      "stop_reason": "refusal",
+      "error": null,
+      "knew_prior": null,
+      "adjudication": null,
+      "note": "Provider/model refusal is not evidence about prior knowledge."
+    }
+  }
+}

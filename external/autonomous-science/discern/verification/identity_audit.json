@@ -1,0 +1,26 @@
+{
+  "scope": "current release worktree, not remote history or unknown identities",
+  "counts": {
+    "files": 8418,
+    "raw_bytes": 28701452263,
+    "zip_containers": 13,
+    "gzip_files": 130,
+    "bam_headers": 8,
+    "tar_archives": 22,
+    "tar_members": 110
+  },
+  "findings": {},
+  "reviewed_false_positives": [
+    {
+      "path": "tracks/clinvar_acmg/L2/l2/resources/gnomad.panel.vcf.gz",
+      "reason": "matches confined to VRS_Allele_IDs in checksum-verified VCF",
+      "matching_fields": 9,
+      "sha256": "52457ffbe4d4d1b79e94ce874791b425752532adac95641f5a4438e89d8afdca"
+    }
+  ],
+  "inspection_errors": [],
+  "anonymous_commit_configuration": {
+    "user.name": true,
+    "user.email": true
+  }
+}

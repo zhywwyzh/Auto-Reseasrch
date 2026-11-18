@@ -1,0 +1,18 @@
+You are a regulatory-genomics analyst QC'ing a cross-species enhancer-activity table before an activity/conservation analysis. You are given a raw cross-species enhancer-activity table (a STARR-seq screen), delivered as an Excel (.xlsx) workbook that may or may not contain data-integrity / QC problems. Determine whether these enhancer activity rows (coordinates + sequences) can be TRUSTED for downstream regulatory analysis (predicting enhancer activity from sequence, and comparing enhancer activity vs sequence conservation across species), and what would need to be fixed first.
+
+Dataset path: /tmp/gwsbx_73ebqvvj/cell004.xlsx   (an .xlsx workbook — the ORIGINAL Klein-2018 Supplementary File 2 format)
+The enhancer table is on sheet 'S4 All ortholog scores'. In that sheet ROW 0 is a title ('Table S4. Ortholog Scores'), ROW 1 is the real header (['Enhancer Coordinates (hg19)', 'Enrichment Score', 'sequence']), and the data start at ROW 2 — so read it with e.g. pandas.read_excel(path, sheet_name='S4 All ortholog scores', header=1) (openpyxl is installed).
+Each row is one species ORTHOLOG of an enhancer. The coordinate is a STRING '<chrom>:<start>-<end>_<assembly>' (0-based half-open; <assembly> = the ortholog genome, e.g. hg38, panTro5, gorGor3, ponAbe2, macFas5, rheMac3, papAnu2, chlSab2, calJac3, nomLeu3, saiBol1) — parse chrom/start/end/assembly out of it yourself. 'Enrichment Score' is log2 enhancer activity; 'sequence' is the forward (+) strand DNA fetched for that coordinate. Its directory may contain additional files.
+
+A read-only reference is available (mounted at this absolute path):
+  - /workspace/discern-benchmark/tracks/enhancer_activity/data/resources/hg38_reference_loci.tsv   (tab-separated: coordinate<TAB>sequence — the forward (+) strand reference sequence for the HUMAN (hg38) enhancer loci; use it to check sequence integrity / orientation for hg38 rows).
+
+You have a Python sandbox: call run_python(code). Parse the .xlsx yourself with pandas.read_excel / openpyxl (pandas as pd, numpy as np, scipy.stats as stats; sklearn/pysam importable); you may also read the reference file above and any other files in the dataset's directory. Only text you print is returned; plots are NOT rendered.
+
+Record EVERY check you run in `trajectory` (including checks that turned up nothing). Then return ONLY this JSON:
+{"issues_found": [{"description": "<what is wrong, in your words, or 'none'>",
+                    "affected_entities": ["<id / coordinate / column, if identifiable>"],
+                    "action": "<what you would do about it, or 'none'>"}],
+ "issue_present_probability": <0-1>,
+ "analysis_usable": <true|false>,
+ "trajectory": [{"step": "<what you examined>", "finding": "<what you found>", "action": "<concluded/did>"}]}

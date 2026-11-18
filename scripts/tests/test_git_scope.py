@@ -22,6 +22,8 @@ class PublicationBoundaryTests(unittest.TestCase):
         self.git('config', 'user.email', 'synthetic@example.invalid')
         root = Path(__file__).resolve().parents[2]
         shutil.copyfile(root / '.gitignore', self.repo / '.gitignore')
+        (self.repo / 'external').mkdir()
+        shutil.copyfile(root / 'external/.gitignore', self.repo / 'external/.gitignore')
         (self.repo / 'workspaces').mkdir()
         (self.repo / 'workspaces/topics.json').write_text(json.dumps({'topics': [
             {'id': 'EXAMPLE-PRIVATE-A', 'workspace': 'workspaces/synthetic-private-topic'}]}))
@@ -50,6 +52,18 @@ class PublicationBoundaryTests(unittest.TestCase):
         self.git('add', '--', 'README.md')
         (self.repo / 'README.md').write_text('EXAMPLE-PRIVATE-A local-only edit.\n')
         self.assertEqual(scope.check_content(self.repo), [])
+
+    def test_external_source_allowlist_keeps_new_task_files_private(self):
+        self.stage('external/README.md', 'Reviewed public source documentation.\n')
+        self.assertEqual(scope.check(self.repo), [])
+        name = 'external/autonomous-science/autoresearch/new-private-task.py'
+        oid = self.git('hash-object', '-w', '--stdin', input=b'private_result = 1\n').decode().strip()
+        self.git('update-index', '--add', '--cacheinfo', '100644,' + oid + ',' + name)
+        self.assertIn(name, scope.check(self.repo))
+
+    def test_external_allowlist_does_not_exempt_private_content(self):
+        self.stage('external/README.md', 'EXAMPLE-PRIVATE-A local task result.\n')
+        self.assertEqual(scope.check_content(self.repo), ['external/README.md'])
 
     def test_later_clean_commit_does_not_hide_private_history(self):
         self.stage('README.md', 'EXAMPLE-PRIVATE-A synthetic leak.\n')

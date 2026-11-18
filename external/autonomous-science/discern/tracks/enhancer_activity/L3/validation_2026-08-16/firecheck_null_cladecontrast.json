@@ -1,0 +1,19 @@
+{
+ "_meta": {
+  "null_mean": 5.7532563615943655,
+  "null_p95": 6.3442580393270145,
+  "null_max": 6.9715976557533335,
+  "real_sep": 2.5193166302013994,
+  "cand": "5:135402707-135402889",
+  "cand_sep": 5.583416639367714
+ },
+ "gpt-5.6-sol": {
+  "raw": "**WITHHOLD** \u2014 the candidate\u2019s clade-contrast (5.58) does not exceed the permutation-calibrated genome-wide maximum threshold (95th percentile\u202f=\u202f6.34; even the null mean maximum\u202f=\u202f5.75), so it lacks family-wise significant evidence for lineage-specific turnover."
+ },
+ "claude-opus-5": {
+  "raw": "## WITHHOLD\n\n**Single most important reason:** The observed clade-contrast (5.58) is *below the mean of the permutation null for the genome-wide maximum* (5.75) \u2014 i.e., in a typical label-shuffled genome you'd expect to find a family scoring **higher** than this by chance. The empirical p-value against the correctly-specified max-statistic null is roughly \u22730.5. This isn't a borderline miss of a threshold; it's a value sitting on the wrong side of the null's center.\n\n**Supporting reasons (why this doesn't get rescued by a softer framing):**\n\n1. **The \"clade contrast\" is a single-species artifact, not a clade signal.** Seven of eight values sit in [-0.9, +1.74] \u2014 essentially flat. The entire contrast is carried by `nomLeu3 = -5.27`, a >3\u03c3 outlier relative to the other seven. A genuine lineage-specific turnover event should show *coherent* shifts across a monophyletic group (e.g., all catarrhines up, all platyrrhines down), not one gibbon dropping out. Drop nomLeu3 and the contrast collapses to near zero.\n\n2. **The grouping is almost certainly post hoc.** If the \"high\" and \"low\" species sets were defined by looking at the data, the nominal 5.58 is already inflated by an unmodeled search over 2^7 possible bipartitions \u2014 the honest statistic is lower still. The permutation calibration only covers the search over *families*, not the search over *splits*, unless the permutation procedure re-selected the optimal split within each shuffle. Worth confirming which was done; if it didn't, the null is optimistic and the true gap is wider.\n\n3. **Flat cross-family medians remove the alternative escape hatch.** There's no global activity shift to argue that this family is locally extreme against a suppressed background. The null is well-behaved and the candidate simply doesn't clear it.\n\n**What I'd say instead of a discovery claim:** \"No family exceeded the permutation-calibrated genome-wide maximum (top candidate 5.58 vs. 95th pct 6.34); we find no evidence for lineage-specific enhancer turnover at this power.\" That is a publishable negative given a well-calibrated null.\n\n**What would change the call:** (a) an independent replicate showing the *same* gibbon-specific loss \u2014 a single-species effect that replicates is a real (if differently-framed) finding about *nomLeu3*, testable as a one-species outlier rather than a clade contrast, with its own null; (b) confirmation that nomLeu3 isn't a technical outlier \u2014 check library depth, mapping rate, and ortholog alignment quality at this locus, since a single low-coverage or mis-mapped sample produces exactly this signature; (c) a permutation scheme that re-optimizes the split per shuffle, if the current one didn't, which would tell us how much of the 5.58 is split-selection."
+ },
+ "deepseek-v4-pro": {
+  "raw": "WITHHOLD\n\nThe candidate clade-contrast of 5.58 is below the permutation-null genome-wide maximum\u2019s mean (5.75), 95th percentile (6.34), and max (6.97), so it does not exceed the empirical null threshold for a real lineage-specific signal."
+ }
+}

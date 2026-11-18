@@ -1,0 +1,16 @@
+{
+ "_key": {
+  "A": "REAL_clade",
+  "B": "CONFOUND_batch",
+  "C": "REAL_human"
+ },
+ "gpt-5.6-sol": {
+  "raw": "{\"A\":{\"call\":\"PROPOSE\",\"why\":\"The strong activity shift between apes and Old World monkeys is phylogenetically coherent and cannot be explained by the relatively stable species-wide medians.\"},\"B\":{\"call\":\"WITHHOLD\",\"why\":\"The apparent human elevation tracks a large human-wide median shift, leaving the element\u2019s median-adjusted activity similar across species and indicating an assay or batch artifact.\"},\"C\":{\"call\":\"ABSTAIN\",\"why\":\"The median-stable but non-monophyletic pattern, together with missing squirrel-monkey data, requires multiple possible turnover events and does not support a uniquely resolved lineage-specific signal.\"}}"
+ },
+ "claude-opus-5": {
+  "raw": "```json\n{\n  \"A\": {\n    \"call\": \"PROPOSE\",\n    \"why\": \"Activity is high across all four/five great-ape+gibbon species and uniformly low across all catarrhine monkeys and marmoset in a clean monophyletic split, while the crossfamily medians are flat (-0.32 to -0.62) so no species shows a genome-wide baseline shift that could manufacture the contrast \u2014 consistent with a real ape-lineage gain (or OWM/NWM loss) of enhancer activity.\"\n  },\n  \"B\": {\n    \"call\": \"WITHHOLD\",\n    \"why\": \"The apparent human-specific signal (3.87 vs ~0.7 elsewhere) tracks the human genome-wide median being shifted up by ~3 units (2.48 vs ~-0.5 in all others), so after baseline correction the human element is actually ~+1.4 versus ~+1.1\u20131.2 in other species \u2014 an assay/batch offset in the hg38 library, not lineage-specific biology (and panTro5 is missing, removing the key closest-outgroup control).\"\n  },\n  \"C\": {\n    \"call\": \"ABSTAIN\",\n    \"why\": \"Medians are flat so it is not a batch artifact, but the active/inactive pattern is phylogenetically incoherent \u2014 human/chimp/gorilla and marmoset active while orangutan, gibbon and all OWM are inactive \u2014 which would require multiple independent turnover events or homoplasy, and with marmoset only weakly positive (0.35) and saiBol1 missing there is no NWM replicate to resolve whether this is real ancestral retention or noise near threshold.\"\n  }\n}\n```"
+ },
+ "deepseek-v4-pro": {
+  "raw": "{\"A\":{\"call\":\"PROPOSE\",\"why\":\"After subtracting per-species medians, activity is positive in all apes and negative in monkeys, a clean phylogenetic split consistent with a lineage-specific enhancer gain.\"},\"B\":{\"call\":\"WITHHOLD\",\"why\":\"The apparent human-specific high activity is driven by the elevated human genome-wide median; after correction the element is broadly active across species rather than lineage-specific.\"},\"C\":{\"call\":\"ABSTAIN\",\"why\":\"Median-corrected activity is positive in human/chimp/gorilla but also in marmoset, breaking the expected monophyletic pattern and leaving insufficient evidence for a clean lineage-specific call.\"}}"
+ }
+}

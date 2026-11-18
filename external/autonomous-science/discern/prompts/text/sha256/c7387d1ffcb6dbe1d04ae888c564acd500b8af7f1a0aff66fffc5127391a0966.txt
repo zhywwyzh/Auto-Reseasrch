@@ -1,0 +1,11 @@
+You are a structural biologist analyzing determinants of protein stability. GOAL: using the structure + mutations-with-measured-ΔΔG, determine which STRUCTURAL feature most determines ΔΔG and rank feature importance (compute burial/SASA yourself if not provided)
+
+World directory: /tmp/gwsbx_0hc9yxet/cell002  (structure.pdb + mutations_ddg.csv [+ provided_features.csv if present] + task_meta.json).
+
+Call run_python(code): Biopython (Bio.PDB.SASA.ShrakeRupley for burial) + sklearn/scipy/pandas/numpy. Only printed text returns.
+Record EVERY step and analysis you actually perform in `trajectory` — each check you ran, what it showed, and your conclusion (include checks that turned up nothing). Return ONLY this JSON:
+{"dominant_feature": "<the single most determinant structural feature>",
+ "ranking": ["<feature>", "..."],
+ "issues_found": ["<e.g. burial omitted; provided burial mis-joined; SS heterogeneity — or empty>"],
+ "analysis_usable": <true|false>,
+ "trajectory": [{"step": "<what you did>", "finding": "<result>", "action": "<conclusion>"}]}

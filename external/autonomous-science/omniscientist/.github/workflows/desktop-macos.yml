@@ -1,0 +1,129 @@
+name: desktop-macos
+
+# Builds the Tauri desktop app for macOS, arm64 only: Intel Mac 用户已经排不上
+# 优先级（2026-08-28 决定砍掉），少一半构建时间。要恢复的话，给 sidecar 加
+# bun-darwin-x64 交叉编译、rustup target add x86_64-apple-darwin、tauri build
+# --target x86_64-apple-darwin 三步就回来。
+#
+# Signing is ad-hoc (no identity on the runner). To sign with a real Developer
+# ID later, import the certificate into a temporary keychain and set
+# APPLE_SIGNING_IDENTITY for `tauri build`.
+#
+# 分支和 PR 上当构建检查；发版时由 release.yml 通过 workflow_call 调用，
+# 产物（OmniSci-Desktop-macOS.zip）以 artifact 落回同一次 run，由 publish 统一挂载。
+
+on:
+  workflow_call:
+  push:
+    branches: ["main", "launch/**"]
+    paths: ["desktop/**", "cli/**", ".github/workflows/desktop-macos.yml"]
+  pull_request:
+    paths: ["desktop/**", ".github/workflows/desktop-macos.yml"]
+  workflow_dispatch:
+
+# group 里带 github.workflow（被 release.yml 调用时解析成调用方的名字）：不然
+# 手动 dispatch 的发版和一次恰好同 ref 的独立构建会互相取消。
+concurrency:
+  group: desktop-macos-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: OmniScientist.app
+    runs-on: macos-latest
+    timeout-minutes: 45
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install bun
+        run: |
+          curl -fsSL https://bun.sh/install | bash
+          echo "$HOME/.bun/bin" >> "$GITHUB_PATH"
+
+      - name: The five implementations must stay in step
+        run: python3 scripts/check_parity.py
+
+      - name: Cache cargo
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            desktop/src-tauri/target
+          key: cargo-macos-${{ hashFiles('desktop/src-tauri/Cargo.lock') }}
+
+      - name: Build the service binary
+        run: |
+          # The launcher pulls in the gateway, which pulls in cli/src, so both
+          # dependency trees have to be present.
+          (cd cli && bun install --frozen-lockfile)
+          cd desktop
+          bun install --frozen-lockfile
+          bun run build:assets
+          mkdir -p src-tauri/binaries
+          bun build --compile --minify --target=bun-darwin-arm64 \
+            launcher/main.ts --outfile src-tauri/binaries/omnisci-desktop-aarch64-apple-darwin
+          ls -la src-tauri/binaries
+
+      - name: The binary must carry the whole interface, not half of it
+        working-directory: desktop
+        run: |
+          # 契约测试只看服务行为，不看界面。静态资源少嵌一半时服务照样健康，
+          # 而用户打开看到的是没有 logo、图片全裂。所以数一遍，并确认首屏那张
+          # logo 真的在里面。dist/ 里有多少个文件，就该嵌进去多少个。
+          expected=$(find dist -type f | wc -l | tr -d ' ')
+          embedded=$(grep -c 'with { type: "file" }' launcher/assets.generated.ts)
+          echo "dist 里 $expected 个文件，嵌进去 $embedded 个（含 skill）"
+          if [ "$embedded" -lt "$expected" ]; then
+            echo "少嵌了：dist 有 $expected，assets.generated.ts 只引用了 $embedded" >&2
+            exit 1
+          fi
+          grep -q 'omni-logo.svg' launcher/assets.generated.ts \
+            || { echo "logo 没被嵌进去，界面会缺图" >&2; exit 1; }
+
+      - name: Check the service binary against the contract
+        working-directory: desktop/packaging/launcher-ref
+        run: ./contract-test.sh ../../src-tauri/binaries/omnisci-desktop-aarch64-apple-darwin
+
+      - name: Build the bundle
+        working-directory: desktop
+        run: bun x tauri build --bundles app
+
+      # tauri 出的 app 要整体重签：bun 编译的 sidecar 是"先签名再往文件尾追加
+      # JS 包"，签名天生已失效；外层 app 又没封资源清单。浏览器下载会带隔离
+      # 标记，坏签名在用户那儿直接弹"已损坏"。ad-hoc 重签 + 封印后，用户见到的
+      # 是"未知开发者"（右键打开可过）。真证书签名+公证是以后的事。
+      - name: Re-sign and verify
+        working-directory: desktop/src-tauri/target/release/bundle/macos
+        run: |
+          app=OmniScientist.app
+          codesign --force --sign - "$app/Contents/MacOS/omnisci-desktop"
+          codesign --force --sign - "$app"
+          codesign --verify --deep --strict --verbose=2 "$app"
+          plutil -lint "$app/Contents/Info.plist"
+          test -x "$app/Contents/MacOS/OmniScientist"
+          test -x "$app/Contents/MacOS/omnisci-desktop"
+          for binary in OmniScientist omnisci-desktop; do
+            got=$(lipo -archs "$app/Contents/MacOS/$binary")
+            [ "$got" = "arm64" ] || { echo "$binary is $got, expected arm64" >&2; exit 1; }
+          done
+          echo "arm64 bundle is intact and sealed"
+
+      # zip 而不是 dmg：GitHub 的 mac runner 上 hdiutil 会在盘明明有 95G 空闲时
+      # 谎报 "No space left on device"（2026-08-28 实测两轮，属 runner 已知抽风）。
+      # 老发行版的 mac 资产本来就是 OmniSci-Desktop-macOS.zip，沿用这个名字连
+      # 应用内更新的下载契约都不用动。dmg 等以后上 Developer ID 签名+公证时一起做。
+      - name: Package the zip
+        working-directory: desktop/src-tauri/target/release/bundle/macos
+        run: |
+          ditto -c -k --keepParent OmniScientist.app OmniSci-Desktop-macOS.zip
+          ls -la *.zip
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: OmniScientist-macos
+          path: desktop/src-tauri/target/release/bundle/macos/*.zip
+          if-no-files-found: error
+          # v4 的 artifact 同名即 409。不加这个，"Re-run all jobs" 一按必炸。
+          overwrite: true

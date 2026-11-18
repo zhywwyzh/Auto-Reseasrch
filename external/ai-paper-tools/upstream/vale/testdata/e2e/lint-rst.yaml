@@ -1,0 +1,119 @@
+# reStructuredText, against a fixture with its own configuration and styles.
+name: lint/rst
+dir: fixtures/formats/rst
+
+cases:
+  - name: basic
+    args: test.rst
+    requires: rst2html
+    exit: 1
+    want: |
+      test.rst:15:1:Test.Rule:Use 'BIG Needles' rather than 'BIG needles'.
+      test.rst:22:59:Test.Rule:Use 'BIG Needles' rather than 'BIG needles'.
+      test.rst:23:43:Test.Rule:Use 'BIG Needles' rather than 'BIG needles'.
+      test.rst:25:22:Test.Rule:Use 'BIG Needles' rather than 'BIG needles'.
+      test.rst:29:17:Test.Rule:Use 'BIG Needles' rather than 'BIG needles'.
+
+  - name: sphinx
+    about: "#294 -- the body of a directive Docutils does not define is prose:
+      Sphinx's own, and a project's. `[sphinx]` names the ones that are code
+      instead, and the roles whose text is prose. A literal, a code block, a
+      toctree and a `vale off` block are not read."
+    args: sphinx.rst
+    requires: rst2html
+    exit: 1
+    want: |
+      sphinx.rst:4:18:Test.Rule:Use 'BIG Needles' rather than 'BIG needles'.
+      sphinx.rst:7:8:Test.Rule:Use 'BIG Needles' rather than 'BIG needles'.
+      sphinx.rst:11:8:Test.Rule:Use 'BIG Needles' rather than 'BIG needles'.
+      sphinx.rst:15:28:Test.Rule:Use 'BIG Needles' rather than 'BIG needles'.
+      sphinx.rst:27:15:Test.Rule:Use 'BIG Needles' rather than 'BIG needles'.
+      sphinx.rst:27:84:Test.Rule:Use 'BIG Needles' rather than 'BIG needles'.
+      sphinx.rst:32:19:Test.Rule:Use 'BIG Needles' rather than 'BIG needles'.
+      sphinx.rst:44:20:Test.Rule:Use 'BIG Needles' rather than 'BIG needles'.
+
+  - name: sphinx-substitution
+    about: "a substitution defined outside the file, as a Sphinx project's
+      rst_epilog does, is not prose: Docutils leaves it as written, and it is
+      skipped like the markup it is. The same word in a sentence, or in a
+      literal, is read as before."
+    files:
+      .vale.ini: |
+        StylesPath = styles
+
+        [*.rst]
+        Test.Rule = YES
+      styles/Test/Rule.yml: |
+        extends: existence
+        message: "found '%s'"
+        level: error
+        tokens:
+          - rsp
+      subst.rst: |
+        Open the |rsp-at| in a browser, or follow |rsp|_ to the rsp portal.
+
+        Run ``rsp | grep x`` and keep |rsp-a b| as written.
+    args: subst.rst
+    requires: rst2html
+    exit: 1
+    want: |
+      subst.rst:1:57:Test.Rule:found 'rsp'
+
+  - name: rewritten-run-placement
+    about: "a run the converter rewrote -- a `:ref:` reduced to its title, an
+      escaped `\\*` -- is placed word by word. Unmapped, a match in it was
+      placed by searching from the top of the file, inside an earlier role's
+      name."
+    files:
+      .vale.ini: |
+        StylesPath = styles
+
+        [*.rst]
+        Test.Rule = YES
+      styles/Test/Rule.yml: |
+        extends: existence
+        message: "found '%s'"
+        level: error
+        tokens:
+          - rsp
+      roles.rst: |
+        See :rsp-link:`Platform <home>`.
+
+        Under it.
+        Wrap in :ref:`rsp-only <c>` block.
+
+        Files (\*.in.rst) with rsp-only
+        =================================
+    args: roles.rst
+    requires: rst2html
+    exit: 1
+    want: |
+      roles.rst:4:15:Test.Rule:found 'rsp'
+      roles.rst:6:24:Test.Rule:found 'rsp'
+
+  - name: hyphenated-literal
+    about: "prose after a hyphenated inline literal is still read. Docutils
+      wraps such a literal in a `pre` span inside the `tt`, and the pair, left
+      in the block's tag history once closed, marked every later text node of
+      the paragraph as literal content."
+    files:
+      .vale.ini: |
+        StylesPath = styles
+
+        [*.rst]
+        Test.Rule = YES
+      styles/Test/Rule.yml: |
+        extends: existence
+        message: "found '%s'"
+        level: error
+        tokens:
+          - however
+      literal.rst: |
+        Using ``a-b`` is supported, however some plugins might use it.
+        Using ``ab`` is supported, however.
+    args: literal.rst
+    requires: rst2html
+    exit: 1
+    want: |
+      literal.rst:1:29:Test.Rule:found 'however'
+      literal.rst:2:28:Test.Rule:found 'however'

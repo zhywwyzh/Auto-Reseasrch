@@ -1,0 +1,14 @@
+{
+  "asset": "co60_daily_spectra.npz",
+  "role": "Canonical real daily NaI pulse-height spectra used by the Nuclear L2 fixed_photopeak_roi_default tool-trap.",
+  "raw_source": "tracks/nuclear_decay/raw/Multi year radiation measurement data/NaI_Co-60_1Dec2014to1June2016.csv",
+  "raw_source_sha256": "aef9aab28205835d1630815c336a175aa07c94075e74e18932728b095bf0873a",
+  "derived_asset_sha256": "6ca2dddcba9636bc315f1ab0ec04b56e48c9e73193958a7604aca38328d0414c",
+  "derivation": "Daily acquisition spectra from the same real Co-60 campaign as co60_daily_meta.csv.gz. No spectral shift or count injection is applied by the benchmark world.",
+  "validated_invariants": [
+    "393 spectral rows align with 393 Co-60 daily metadata rows",
+    "2048 channels per daily spectrum",
+    "daily spectrum sum exactly equals total_integral_counts",
+    "final shared panel is 274 days from 2015-05-04 through 2016-02-01"
+  ]
+}

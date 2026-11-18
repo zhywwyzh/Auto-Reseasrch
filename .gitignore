@@ -4,6 +4,9 @@
 !/.gitignore
 !/AGENTS.md
 !/README.md
+!/external/
+/external/*
+!/external/.gitignore
 !/.cursor/
 /.cursor/*
 !/.cursor/rules/
@@ -14,9 +17,11 @@
 /scripts/*
 !/scripts/check_git_scope.py
 !/scripts/check_git_history.py
+!/scripts/fetch_autonomous_science_repos.py
 !/scripts/tests/
 /scripts/tests/*
 !/scripts/tests/test_git_scope.py
+!/scripts/tests/test_external_sources.py
 !/workspaces/
 /workspaces/*
 !/workspaces/build-index.py
@@ -86,6 +91,7 @@
 !/workspaces/autonomous-research-system/tests/test_astryx_ui.py
 !/workspaces/autonomous-research-system/tests/test_delivery_validation.py
 !/workspaces/autonomous-research-system/tests/test_evolution.py
+!/workspaces/autonomous-research-system/tests/test_evidence_continuation.py
 !/workspaces/autonomous-research-system/tests/test_execution_observation.py
 !/workspaces/autonomous-research-system/tests/test_execution_visibility.py
 !/workspaces/autonomous-research-system/tests/test_executor_auth.py

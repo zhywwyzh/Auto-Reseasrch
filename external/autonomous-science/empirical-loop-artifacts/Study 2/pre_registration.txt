@@ -1,0 +1,297 @@
+<pre-registration>
+    <metadata>
+        <title>Differential Contribution of Visual Imagery Strength to Perceptual Stability and Change Detection: A Computational Approach to Serial Effects in Visual Cognition</title>
+        <description>This study investigates how individual differences in visual imagery vividness modulate serial dependence in Visual Working Memory and sequential effects in Mental Rotation Tasks. Using computational modeling and a circular statistics framework, we will characterize how imagery strength influences the balance between perceptual stability and change detection across different cognitive domains.</description>
+        <contributors>Principal Investigators from the Department of Psychology</contributors>
+
+        <license type="select_one">CC-By Attribution 4.0 International</license>
+
+        <subject>Cognitive Psychology; Visual Perception; Individual Differences; Computational Modeling; Working Memory; Mental Imagery; Mental Rotation</subject>
+        <tags>serial dependence, visual imagery, mental rotation, working memory, individual differences, temporal integration, perceptual stability</tags>
+    </metadata>
+
+    <study_information>
+        <hypotheses>H1: Serial dependence in Visual Working Memory will follow a derivative-of-Gaussian (DoG) curve, with attraction at small orientation differences and repulsion at larger differences.
+Justification: Previous research (Fischer & Whitney, 2014; Yu & Ying, 2021) has established that perception is influenced by recently viewed stimuli in a systematic pattern that promotes visual stability. These studies demonstrate that for small differences between consecutive stimuli, responses are biased toward the previous stimulus (attraction), while for larger differences, responses are biased away (repulsion). This pattern can be mathematically modeled using a derivative-of-Gaussian function that captures both the attractive and repulsive components of serial dependence.
+
+H2: Individual differences in imagery vividness (VVIQ2 scores) will predict the amplitude parameter of the DoG curve, with higher VVIQ2 scores associated with larger amplitude values.
+Justification: Imagery and perception share neural substrates (Pearson, 2019; Huang et al., 2023), suggesting that stronger imagery abilities may enhance the influence of prior information on current percepts. Within a predictive coding framework, individuals with stronger imagery abilities may generate more precise prior predictions, leading to stronger serial dependence effects as measured by the amplitude parameter of the DoG function.
+
+H3: Individual differences in imagery vividness (VVIQ2 scores) will predict the zero-crossing point of the DoG curve, with higher VVIQ2 scores associated with larger zero-crossing values.
+Justification: The zero-crossing point represents the transition from attractive to repulsive biases and reflects the balance between stability and change sensitivity. If imagery strength modulates the relative weighting of prior information versus current sensory evidence, as suggested by Bayesian models of perception (Kersten et al., 2004), then individuals with stronger imagery may show a different stability-sensitivity balance, manifested as a shifted zero-crossing point.
+
+H4: In the Mental Rotation Task, response times will systematically vary as a function of the angular disparity between current and previous trials, with facilitation (faster RTs) when consecutive trials involve similar rotation angles.
+Justification: Previous research on sequential effects in mental rotation (Koriat & Norman, 1988) has demonstrated that response times are influenced by the rotation demands of preceding trials. This is consistent with the broader literature on task-switching costs and suggests that mental rotation engages orientation-selective mechanisms that may exhibit similar temporal integration properties as those observed in lower-level visual tasks.
+
+H5: Imagery vividness (VVIQ2 scores) will predict the strength of sequential RT facilitation effects in the Mental Rotation Task, with stronger mental imagers showing heightened sensitivity to trial history.
+Justification: If imagery strength modulates the influence of prior information across different cognitive domains, as suggested by shared neural mechanisms for imagery and spatial transformation (Zacks, 2008), then individuals with stronger imagery abilities should show stronger sequential effects in the mental rotation task, similar to the enhanced serial dependence in the VWM task.
+
+H6: The strength of serial dependence in the VWM task (as measured by DoG amplitude) will correlate with the magnitude of sequential effects in the MRT (as measured by RT facilitation indices) across individuals, suggesting a domain-general mechanism of temporal integration modulated by imagery strength.
+Justification: Recent work on individual differences in serial dependence (Guan & Goettker, 2024) suggests that serial effects may be correlated across perceptual tasks but not motor tasks. If imagery strength represents a domain-general factor influencing how prior information is integrated with current processing, then we should observe correlations between serial effects across these different cognitive domains.</hypotheses>
+    </study_information>
+
+    <design_plan>
+        <study_type type="select_one">Experiment</study_type>
+
+        <blinding type="select_multiple">No blinding is involved in this study.</blinding>
+        
+        <study_design>This is an online within-subjects experiment where all participants complete two cognitive tasks and one questionnaire. Participants will complete both a Visual Working Memory (VWM) task and a Mental Rotation Task (MRT) in a counterbalanced order, followed by the Vividness of Visual Imagery Questionnaire 2 (VVIQ2).
+
+The VWM task employs a 2 (Set Size: 2, 4 items) × 2 (Delay: 1000ms, 4000ms) within-subjects factorial design. Participants view arrays of oriented white bars, maintain them in memory during a delay period, and then report the orientation of a cued bar using a continuous response method. The task consists of 120 experimental trials plus 6 attention check trials, with conditions presented in a fully randomized order.
+
+The MRT employs a 4 (Rotation Angle: 0°, 50°, 100°, 150°) × 2 (Reflection: same, different) within-subjects factorial design. Participants view pairs of 3D objects and judge whether they are identical (but rotated) or mirror reflections of each other. The task consists of 96 experimental trials plus 6 attention check trials, with conditions presented in a fully randomized order.
+
+The VVIQ2 is administered after completion of both cognitive tasks. It consists of 32 items across 8 scenarios, with participants rating the vividness of mental images on a 5-point scale.
+
+The primary independent variable of interest is individual differences in imagery vividness (VVIQ2 scores). The dependent variables are serial dependence parameters in the VWM task and sequential facilitation indices in the MRT.</study_design>
+        
+        <randomization>Task order is randomized through JavaScript code that assigns participants to complete either the VWM task first or the MRT first with equal probability (if (Math.random() < 0.5)). This counterbalancing controls for potential order effects.
+
+Within the VWM task, trial conditions (Set Size × Delay combinations) are presented in a fully randomized order. The orientation of each stimulus bar is drawn randomly from a uniform distribution between 0° and 180°. The angular position of stimuli in the circular array is randomized on each trial, with the first item's position randomized and subsequent items placed at equal angular intervals. The cued location is randomly selected from the presented items. The initial orientation of the response line is randomized on each trial.
+
+Within the MRT, trial conditions (Rotation Angle × Reflection status combinations) are presented in a fully randomized order. The 96 unique trial types are derived from combinations of 12 3D shapes, 4 rotation angles, and 2 reflection states. The 6 attention check trials are exact repetitions of previously presented trials, inserted with random lags of 2, 3, or 4 trials.
+
+This randomization ensures that potential sequential effects in both tasks reflect genuine trial-to-trial dependencies rather than systematic presentation patterns.</randomization>
+    </design_plan>
+
+    <sampling_plan>
+        <existing_data type="select_one">Registration prior to creation of data</existing_data>
+        
+        <data_collection_procedures>Participants aged 18-35 years with self-reported normal or corrected-to-normal vision will be recruited via the Prolific online platform. Participants must use a laptop/desktop computer with a compatible browser. Prolific pre-screeners will be used to ensure participants meet the age and vision requirements.
+
+The experiment will be implemented on Pavlovia.org using JavaScript and HTML. Upon beginning the experiment, participants will complete an initial check to verify minimum browser window dimensions (768x768 pixels). Those unable to meet this requirement will not be permitted to begin the experiment. Participants will then be randomly assigned to complete either the VWM task first or the MRT first.
+
+For the VWM task, participants will first complete 8 practice trials with feedback. To proceed to the main task, they must achieve an average absolute error of less than 30° across these practice trials. The main task consists of 120 experimental trials plus 6 attention check trials (Set Size 1, 500ms delay). Short breaks are provided every 21 trials, with a longer break at the halfway point.
+
+For the MRT, participants will first complete 12 practice trials with feedback. To proceed to the main task, they must achieve at least 8 correct responses out of 12. The main task consists of 96 experimental trials plus 6 attention check trials. Short breaks are provided every 17 trials, with a longer break at the halfway point.
+
+After completing both cognitive tasks, participants will receive a unique completion code and a link to complete the VVIQ2 questionnaire on SurveyMonkey. The entire experiment (including both tasks and the VVIQ2) is expected to take approximately 40 minutes. Participants will be compensated at a rate of £9 per hour, pro-rated.
+
+Throughout the experiment, metadata including browser type, OS, estimated frame rate, and the number and duration of window focus loss instances will be recorded automatically. Participants who exit fullscreen mode will be flagged but allowed to continue.</data_collection_procedures>
+        
+        <sample_size>We will recruit 120 participants through Prolific to account for potential exclusions and ensure adequate power for both multilevel modeling and individual differences analyses.</sample_size>
+
+<sample_size_rationale>Our power analysis using the pwr package in R indicates that 85 participants would be required to detect correlations of r = 0.3 with 80% power at α = 0.05. This effect size estimate (r = 0.3) is consistent with typically observed correlations in individual differences research on perceptual phenomena, providing a more conservative estimate than larger effect sizes.
+
+When accounting for an anticipated 30% dropout rate, we need to recruit approximately 122 participants to ensure we retain at least 85 analyzable datasets. For regression analyses, a comparable effect size (f² = 0.0989) yields a similar required sample of 82 participants, or 118 when accounting for dropouts.
+
+Given the complexity of our multilevel modeling approach, the need to fit DoG functions to relatively sparse data, and the potential for additional exclusions due to poor data quality in online testing, we have set our recruitment target to 120 participants. This should yield approximately 85-90 usable datasets after applying exclusion criteria, providing adequate power for our planned analyses while accounting for the challenges of online data collection.</sample_size_rationale>
+
+<stopping_rule>Data collection will continue until we have recruited 120 participants who have completed both Pavlovia tasks and the VVIQ2 questionnaire. If the dropout rate exceeds 30% or if more than 30% of participants must be excluded based on our pre-specified exclusion criteria, we will recruit additional participants to ensure a final analyzable sample of at least 85 participants.</stopping_rule>
+    </sampling_plan>
+
+    <variables>
+        <manipulated_variables>The study does not experimentally manipulate any variables but examines natural variation in visual imagery strength and its relationship to serial dependence and sequential effects.
+
+Within the VWM task, the following parameters vary within-subjects:
+1. Set Size: 2 or 4 oriented bars presented simultaneously
+2. Delay: 1000ms or 4000ms between stimulus offset and response cue
+
+Within the MRT task, the following parameters vary within-subjects:
+1. Rotation Angle: 0°, 50°, 100°, or 150° angular disparity between the two 3D objects
+2. Reflection Status: Whether objects are identical (same) or mirror reflections (different)</manipulated_variables>
+        
+        <measured_variables>1. Visual Working Memory (VWM) Task:
+   - Response Angle: The reported orientation of the target bar (in degrees, 0-179)
+   - Target Angle: The actual orientation of the target bar (in degrees, 0-179)
+   - Response Error: The angular difference between the reported orientation and the true orientation (in degrees)
+   - Absolute Error: The absolute value of response error (in degrees)
+   - Normalized Error: Response error normalized to ±90° range
+   - Response Time: Time taken to adjust the response dial (in milliseconds)
+   - Set Size: Number of items in the array (2 or 4)
+   - Delay Duration: Retention interval length (1000ms or 4000ms)
+   - Previous Trial Target Angle: The orientation of the target on the previous trial (in degrees)
+   - Previous Trial Feedback: The feedback received on the previous trial (Good/Ok/Poor)
+   - Angular Difference: The difference between current and previous trial target orientations (in degrees)
+   - Trial Number: Sequential position within the task
+   - Timeout Flag: Binary indicator of whether response was made within time limit
+   - Attention Check Flag: Binary indicator of whether the trial was an attention check
+
+2. Mental Rotation Task (MRT):
+   - Response: The participant's judgment (same or different)
+   - Accuracy: Binary correct/incorrect
+   - Response Time: Time taken to make same/different judgment (in milliseconds)
+   - Rotation Angle: Angular disparity between objects (0°, 50°, 100°, or 150°)
+   - Reflection Status: Whether objects are identical or mirror reflections
+   - Previous Trial Rotation Angle: The rotation angle on the previous trial
+   - Previous Trial Accuracy: Whether the previous trial was answered correctly
+   - Angular Disparity Change: The difference between current and previous trial rotation angles
+   - Trial Number: Sequential position within the task
+   - Timeout Flag: Binary indicator of whether response was made within time limit
+   - Attention Check Flag: Binary indicator of whether the trial was an attention check
+
+3. Vividness of Visual Imagery Questionnaire (VVIQ2):
+   - Individual Item Responses: Ratings for each of the 32 items (1-5 scale)
+   - Total Score: Sum of ratings across all 32 items (range: 32-160)
+   - Subscale Scores: Sum of ratings for each of the 8 scenarios (range: 4-20 per subscale)
+
+4. Metadata:
+   - Browser Type and OS
+   - Estimated Frame Rate
+   - Number and Duration of Window Focus Loss Instances
+   - Task Order: Whether participant completed VWM or MRT first</measured_variables>
+        
+        <indices>1. Serial Dependence Parameters (VWM Task):
+   We will fit a derivative-of-Gaussian (DoG) function to each participant's data to quantify how current-trial error is influenced by the angular difference between current and previous trial orientations. The DoG function is defined as:
+   
+   Error = a × x × exp(-((x^2)/(2w^2)))
+   
+   Where:
+   - a is the amplitude parameter, reflecting the maximum bias strength
+   - w is the width parameter, reflecting the range of orientation differences susceptible to bias
+   - x is the angular difference between current and previous trial orientations
+   
+   From this function, we will extract three key parameters for each participant:
+   - Amplitude (a): Maximum bias strength (in degrees)
+   - Width (w): Range of orientation differences susceptible to bias (in degrees)
+   - Zero-crossing: Point where bias changes from attractive to repulsive (in degrees), calculated as w × √2
+
+   These parameters will be extracted separately for each Set Size and Delay condition, resulting in four sets of parameters per participant (2×2 design).
+
+2. Sequential Facilitation Indices (MRT Task):
+   For each participant, we will quantify sequential effects in the MRT using two indices:
+   
+   - RT Facilitation Slope: The slope coefficient from a linear regression predicting current-trial RT from the absolute angular disparity change between consecutive trials, controlling for current trial rotation angle and reflection status. More negative slopes indicate stronger facilitation when consecutive trials have similar rotation demands.
+   
+   - Accuracy Facilitation Index: The difference in accuracy between trials with small angular disparity changes (≤50°) and trials with large angular disparity changes (>50°), controlling for current trial rotation angle and reflection status. More positive values indicate stronger facilitation when consecutive trials have similar rotation demands.
+   
+   These indices will be calculated using only correct trials and excluding the first trial of each block.</indices>
+    </variables>
+
+    <analysis_plan>
+        <statistical_models>1. Binning and DoG Fitting for Serial Dependence Analysis:
+   Prior to fitting the DoG function, we will bin the angular differences between consecutive trials into 15° bins (0-15°, 15-30°, etc.) and calculate the mean normalized error for each bin. This binning approach reduces noise and ensures more stable parameter estimates. For each participant and condition (Set Size × Delay), we will fit the DoG function to these binned data using a non-linear least squares approach with the circular package in R (via rpy2):
+   
+   Error = a × x × exp(-((x^2)/(2w^2)))
+   
+   Where a is amplitude, w is width, and x is the angular difference between current and previous trial orientations. Initial parameter values will be set to a = 5 and w = 15, based on previous literature. To ensure robust parameter estimation, we will employ a bootstrapping approach with 1000 resamples to obtain confidence intervals for each parameter.
+   
+   To account for potential confounds, we will also fit an expanded model that includes previous-trial feedback, trial number, and window focus loss duration as covariates:
+   
+   Error = a × x × exp(-((x^2)/(2w^2))) + b1(PrevFeedback) + b2(TrialNumber) + b3(FocusLoss)
+   
+   We will extract the same parameters (amplitude, width, zero-crossing) from this expanded model.
+
+2. Individual Differences in VWM Serial Dependence:
+   To test whether VVIQ2 scores predict DoG parameters, we will use multilevel models with the following structure:
+   
+   Level 1 (within-participant):
+   DoGParameter_ij = β0j + β1j(SetSize_ij) + β2j(Delay_ij) + β3j(SetSize_ij × Delay_ij) + ε_ij
+   
+   Level 2 (between-participant):
+   β0j = γ00 + γ01(VVIQ2_j) + u0j
+   β1j = γ10 + γ11(VVIQ2_j) + u1j
+   β2j = γ20 + γ21(VVIQ2_j) + u2j
+   β3j = γ30 + γ31(VVIQ2_j) + u3j
+   
+   This model allows us to test whether VVIQ2 scores predict overall DoG parameters (γ01) and whether they moderate the effects of Set Size (γ11), Delay (γ21), or their interaction (γ31). We will fit separate models for each DoG parameter (amplitude, width, zero-crossing).
+
+3. Sequential Effects in MRT Analysis:
+   For the MRT, we will use generalized linear mixed-effects models (GLMMs) to analyze sequential effects:
+   
+   For RT analysis (correct trials only):
+   log(RT) ~ CurrentRotation + CurrentReflection + PrevRotation + AbsAngularChange + 
+            CurrentRotation × AbsAngularChange + (1|Participant)
+   
+   For accuracy analysis:
+   Accuracy ~ CurrentRotation + CurrentReflection + PrevRotation + AbsAngularChange + 
+              CurrentRotation × AbsAngularChange + (1|Participant)
+   
+   Where AbsAngularChange is the absolute difference between current and previous trial rotation angles. The RT model will use a Gamma distribution with log link, and the accuracy model will use a binomial distribution with logit link.
+   
+   From these models, we will extract participant-specific estimates of sequential effects (i.e., the effect of AbsAngularChange) to serve as the sequential facilitation indices.
+
+4. Individual Differences in MRT Sequential Effects:
+   To test whether VVIQ2 scores predict sequential facilitation indices, we will use multiple regression models:
+   
+   RTFacilitationSlope = β0 + β1(VVIQ2) + ε
+   AccuracyFacilitationIndex = β0 + β1(VVIQ2) + ε
+   
+   We will also test whether baseline task performance moderates these relationships by including main effects and interactions with mean RT and overall accuracy.
+
+5. Cross-Task Correlation Analysis:
+   To test whether serial dependence in VWM correlates with sequential effects in MRT, we will compute Pearson correlations between the DoG amplitude parameter and the sequential facilitation indices. We will also test whether these correlations are moderated by VVIQ2 scores using moderation analysis:
+   
+   RTFacilitationSlope = β0 + β1(DoGAmplitude) + β2(VVIQ2) + β3(DoGAmplitude × VVIQ2) + ε</statistical_models>
+        
+        <transformations>1. Response errors in the VWM task will be computed as the angular difference between reported and target orientations, normalized to a ±90° range using circular statistics methods to account for the circular nature of orientation data.
+
+2. For the MRT, reaction times will be log-transformed prior to analysis to address the positive skew typically observed in RT distributions. Only correct trials will be included in the RT analysis.
+
+3. For DoG function fitting, angular differences between consecutive trials will be computed using circular distance metrics to properly account for the circular nature of orientation data. These differences will then be binned into 15° bins prior to fitting.
+
+4. VVIQ2 total scores will be computed by summing ratings across all 32 items (range: 32-160) and then z-standardized to facilitate interpretation of regression coefficients.
+
+5. For multilevel models, Set Size and Delay variables will be effect-coded (-0.5, 0.5) rather than dummy-coded to facilitate interpretation of main effects and interactions.
+
+6. When analyzing sequential effects in the MRT, we will compute the absolute angular disparity change between consecutive trials, which will be treated as a continuous predictor in the models.</transformations>
+        
+        <inference_criteria>We will use two-tailed tests with α = .05 for all analyses. For the multilevel models testing the relationship between VVIQ2 scores and DoG parameters, we will report standardized regression coefficients with 95% confidence intervals and p-values based on Satterthwaite's approximation for degrees of freedom.
+
+For testing whether DoG functions significantly capture serial dependence patterns, we will use model comparison (likelihood ratio tests) between the DoG model and a null model that includes only an intercept. We will also report the proportion of variance explained (R²) by the DoG model for each participant.
+
+For the generalized linear mixed-effects models analyzing sequential effects in the MRT, we will report fixed effect estimates with 95% confidence intervals and p-values based on Wald tests. Effect sizes will be reported as standardized regression coefficients for continuous predictors and as odds ratios for categorical predictors in the binomial models.
+
+For correlation analyses between VWM serial dependence parameters and MRT sequential facilitation indices, we will report Pearson's r with 95% confidence intervals and p-values.
+
+To control for multiple comparisons within each family of tests, we will implement False Discovery Rate correction using the Benjamini-Hochberg procedure with q = .05. Specifically, we will apply FDR correction separately for:
+1. Tests of VVIQ2 effects on DoG parameters (amplitude, width, zero-crossing)
+2. Tests of VVIQ2 effects on MRT sequential facilitation indices
+3. Cross-task correlation analyses
+
+We define statistical significance as p < .05 after FDR correction.</inference_criteria>
+        
+        <data_exclusion>1. Participant-level exclusions:
+   - Participants who fail more than 25% of attention checks (>1 out of 6 trials per task)
+   - Participants with more than 30% timeout trials across all trials in either task
+   - Participants whose mean absolute error in the VWM task exceeds 3 standard deviations from the sample mean
+   - Participants whose mean response time (for correct trials) or overall accuracy in the MRT deviates by more than 3 standard deviations from the respective sample means
+   - Participants with more than 10% missing responses on the VVIQ2 questionnaire
+   - Participants who show no variability in their VVIQ2 responses (e.g., same rating for all items)
+
+2. Trial-level exclusions:
+   - Trials with response times <200ms (anticipatory responses)
+   - Trials with response times >7000ms (timeouts)
+   - For VWM serial dependence analysis, the first trial of each block will be excluded as there is no previous trial to create a serial dependence effect
+   - For MRT sequential effects analysis, the first trial of each block will be excluded for the same reason
+   - Attention check trials will be used only for participant exclusion decisions and not included in the main analyses
+
+3. DoG fitting exclusions:
+   - If the DoG fitting algorithm fails to converge for a particular participant and condition, that participant's data will be excluded from analyses involving that specific DoG parameter
+   - If the estimated DoG parameters for a participant are extreme outliers (>5 standard deviations from the sample mean), that participant's data will be excluded from analyses involving that specific DoG parameter
+
+All exclusions will be documented and reported in detail, including the number of participants and trials excluded for each criterion.</data_exclusion>
+        
+        <missing_data>Given the design of the online experiment, participants must respond to each trial to proceed, minimizing within-task missing data. For the VVIQ2 questionnaire, participants with >10% missing responses will be excluded from analyses involving imagery vividness.
+
+If participants complete only one of the two tasks, their data will be retained for analyses specific to that task but excluded from cross-task comparisons.
+
+For metadata variables like window focus loss duration, missing values will be imputed with the participant's mean value for that task. No other imputation methods are planned.
+
+If a participant has insufficient valid trials in a particular condition to reliably estimate DoG parameters (fewer than 10 trials per condition after exclusions), that participant's data will be excluded from analyses involving that condition, but retained for other conditions with sufficient data.
+
+We will report the pattern and extent of missing data for all key variables in our results.</missing_data>
+        
+        <exploratory_analysis>1. Temporal dynamics of serial dependence: We will explore how serial dependence decays across trials by modeling the influence of n-2 and n-3 trials on current response errors. This will help determine whether imagery vividness affects not only the strength but also the temporal persistence of serial effects.
+
+2. Relationship between DoG width parameter and imagery vividness: While our confirmatory hypotheses focus on amplitude and zero-crossing, we will exploratorily examine whether the width parameter of the DoG function (reflecting the range of orientation differences susceptible to bias) correlates with VVIQ2 scores.
+
+3. VVIQ2 subscale analyses: We will explore whether specific subscales of the VVIQ2 (corresponding to different imagery scenarios) show differential relationships with serial dependence parameters or sequential facilitation indices.
+
+4. Response time effects in VWM: We will explore whether response times in the VWM task show sequential dependencies similar to those observed in the MRT, and whether these are related to imagery vividness.
+
+5. Feedback effects on serial dependence: We will explore how the feedback received on the previous trial (Good/Ok/Poor) influences serial dependence, and whether this interaction differs based on imagery vividness.
+
+6. Task order effects: We will explore whether task order (VWM first vs. MRT first) influences serial dependence or sequential effects.
+
+7. Relationship between baseline task performance and serial effects: We will explore whether individual differences in basic task performance (mean accuracy, mean response time) correlate with the strength of serial dependence or sequential effects.</exploratory_analysis>
+    </analysis_plan>
+
+    <other>This study builds on prior work by Fischer & Whitney (2014) on serial dependence in visual perception and extends it to examine individual differences in imagery vividness as a potential moderator. The derivative-of-Gaussian modeling approach is based on methodology from Yu & Ying (2021).
+
+Due to the constraints of online testing and the need to keep the experiment within a reasonable duration, we acknowledge that the number of trials per condition is lower than ideal for reliable DoG parameter estimation. To address this limitation, we have implemented a binning strategy and bootstrapping approach to improve parameter stability. The use of multilevel modeling also helps address this limitation by partially pooling information across participants.
+
+We acknowledge that trial-by-trial feedback in the VWM task may influence sequential effects. By including previous-trial feedback as a covariate in our models, we aim to isolate the orientation-based serial dependence from feedback-driven adjustments.
+
+The cross-task comparison between VWM and MRT involves different response modalities and measures, which may limit the comparability of serial effects. Our analysis approach focuses on extracting conceptually similar indices of sequential effects from each task, but we acknowledge that these measures may capture different aspects of temporal integration.</other>
+</pre-registration>

@@ -1,0 +1,14 @@
+You are a single-cell genomics analyst. You are given a 10x Genomics single-cell RNA-seq count matrix (as delivered — determine yourself whether cell-calling / QC still needs to be done) that may or may not contain data-integrity / QC problems. Determine whether these single-cell counts can be TRUSTED for downstream single-cell analysis (QC filtering, normalization, clustering, and cell-type annotation), and what would need to be fixed first.
+
+Dataset path: /tmp/gwsbx_v3k7mzia/cell002   (a 10x download: a .tar.gz archive of the matrix trio matrix.mtx.gz + barcodes.tsv.gz + features.tsv.gz, packed under gene_bc_matrices/hg19/)
+Its directory also contains study_metadata.json and may contain other files describing the dataset.
+
+You have a Python sandbox: call run_python(code). `data_dir` is set to the raw-download directory. Nothing is preloaded — EXTRACT the .tar.gz yourself (tarfile) into data_dir, then load the matrix (scanpy.read_10x_mtx on the extracted dir, else scipy.io.mmread on matrix.mtx.gz plus the barcodes/features TSVs). pandas / numpy / scipy / tarfile are importable; you may also read study_metadata.json and any other files in the directory. Only text you print is returned; plots are NOT rendered.
+
+Record EVERY check you run in `trajectory` (including checks that turned up nothing). Then return ONLY this JSON:
+{"issues_found": [{"description": "<what is wrong, in your words, or 'none'>",
+                    "affected_entities": ["<id / coordinate / column, if identifiable>"],
+                    "action": "<what you would do about it, or 'none'>"}],
+ "issue_present_probability": <0-1>,
+ "analysis_usable": <true|false>,
+ "trajectory": [{"step": "<what you examined>", "finding": "<what you found>", "action": "<concluded/did>"}]}

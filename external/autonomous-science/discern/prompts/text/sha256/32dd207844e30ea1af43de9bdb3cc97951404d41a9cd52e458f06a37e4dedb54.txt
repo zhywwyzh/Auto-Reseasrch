@@ -1,0 +1,13 @@
+You are an experimental thermodynamics researcher. You are given real ThermoML adiabatic-calorimetry measurements of crystalline copper, aluminum oxide, and benzoic acid that may or may not contain data-integrity / QC problems. Determine whether measurement identity, compound identity, temperature values and units, molar heat-capacity values and units, reported heat-capacity uncertainties, phase metadata, temperature coverage, and the physical consistency of each material's Cp(T) series can be TRUSTED for temperature-dependent heat-capacity modeling, calorimetric integration, and equilibrium-temperature calculations, and what would need to be fixed first.
+
+Dataset path: /tmp/gwsbx_vuf3nvd8/cell001   (directory containing a normalized ThermoML heat-capacity table and measurement metadata)
+
+You have a Python sandbox: call run_python(code). The world directory is available as `world_dir`. `df` is preloaded from `heat_capacity.csv.gz`, and `measurement_meta` is preloaded from `measurement_meta.json`. Use pandas, numpy, scipy, json, and ordinary filesystem operations to perform quantitative QC. Print numeric/text summaries; plots are not rendered. Only text you print is returned; plots are NOT rendered.
+
+Record EVERY check you run in `trajectory` (including checks that turned up nothing). Then return ONLY this JSON:
+{"issues_found": [{"description": "<what is wrong, in your words, or 'none'>",
+                    "affected_entities": ["<id / coordinate / column, if identifiable>"],
+                    "action": "<what you would do about it, or 'none'>"}],
+ "issue_present_probability": <0-1>,
+ "analysis_usable": <true|false>,
+ "trajectory": [{"step": "<what you examined>", "finding": "<what you found>", "action": "<concluded/did>"}]}

@@ -1,0 +1,10 @@
+You are a protein stability analyst. GOAL: classify each mutation in mutations.csv as stabilizing or destabilizing using the LM — recognizing and calibrating the model's directional (wt-preference) bias, not trusting the raw score sign
+
+World directory: /tmp/gwsbx_q6qasb70/cell001  (structure.pdb + mutations.csv + task_meta.json).
+
+Call run_python(code): `import esm, torch` + Biopython/sklearn/scipy/pandas/numpy. Only printed text returns. TIME BUDGET: each call is capped (~300s); a single wild-type-marginal forward pass (~30s for esm2_t33_650M) fits, full masked-marginal scanning will not — esm2_t30_150M (also cached) is the faster alternative.
+Record EVERY step and analysis you actually perform in `trajectory` — each check you ran, what it showed, and your conclusion (include checks that turned up nothing). Return ONLY this JSON:
+{"classifications": [{"mutation": "<e.g. L7A>", "class": "stabilizing|destabilizing"}],
+ "issues_found": ["<e.g. the LM over-predicts destabilizing; calibrated the threshold — or empty>"],
+ "analysis_usable": <true|false>,
+ "trajectory": [{"step": "<what you did>", "finding": "<result>", "action": "<conclusion>"}]}

@@ -1,0 +1,86 @@
+{
+  "schema": "nuclear_l3_co60_reference_gate0_raw_v1",
+  "anchor": "co60-terrestrial-half-life",
+  "purpose": "named-fact / surface-prior Gate-0 elicitation; raw evidence for later knew_prior adjudication",
+  "question": "Before examining any new decay dataset or being told about any unusual\nenvironmental conditions, what half-life would you ordinarily use as the\nestablished terrestrial reference value for radioactive cobalt-60 (Co-60)?\n\nGive the standard quantitative value with units and a brief one-sentence\ndescription of what that value represents.\n\nDo not speculate about hypothetical changes to the half-life in special\nenvironments; this question is only asking for the ordinary reference fact.",
+  "models": {
+    "gpt-4.1": {
+      "model": "gpt-4.1",
+      "anchor": "co60-terrestrial-half-life",
+      "available": true,
+      "completed": true,
+      "execution_unresolved": false,
+      "answer": "The established terrestrial reference half-life for radioactive cobalt-60 (Co-60) is **5.271 years**.\n\nThis value represents the time required for half of a sample of Co-60 nuclei to decay under normal terrestrial conditions.",
+      "stop_reason": "stop",
+      "error": null,
+      "knew_prior": null,
+      "adjudication": null,
+      "note": "Adjudicate the factual answer itself. knew_prior=True means the model clearly knows the ordinary established Co-60 terrestrial half-life reference. Special-environment physics is deliberately outside this probe and must not be used to invalidate the named-fact prior."
+    },
+    "gpt-5.6-sol": {
+      "model": "gpt-5.6-sol",
+      "anchor": "co60-terrestrial-half-life",
+      "available": true,
+      "completed": true,
+      "execution_unresolved": false,
+      "answer": "The established terrestrial half-life of cobalt-60 (^60Co) is **5.2714 years** (approximately **1,925 days**).\n\nThis is the time required for half of a sample of ^60Co nuclei to decay under ordinary terrestrial conditions.",
+      "stop_reason": "stop",
+      "error": null,
+      "knew_prior": null,
+      "adjudication": null,
+      "note": "Adjudicate the factual answer itself. knew_prior=True means the model clearly knows the ordinary established Co-60 terrestrial half-life reference. Special-environment physics is deliberately outside this probe and must not be used to invalidate the named-fact prior."
+    },
+    "deepseek-v4-pro": {
+      "model": "deepseek-v4-pro",
+      "anchor": "co60-terrestrial-half-life",
+      "available": true,
+      "completed": true,
+      "execution_unresolved": false,
+      "answer": "The ordinary terrestrial reference half-life for cobalt-60 (Co-60) is **5.2714 years** (about 1,925 days).\n\nThis value represents the time required for half of a given sample of Co-60 nuclei to undergo radioactive decay.",
+      "stop_reason": "stop",
+      "error": null,
+      "knew_prior": null,
+      "adjudication": null,
+      "note": "Adjudicate the factual answer itself. knew_prior=True means the model clearly knows the ordinary established Co-60 terrestrial half-life reference. Special-environment physics is deliberately outside this probe and must not be used to invalidate the named-fact prior."
+    },
+    "glm-5.2": {
+      "model": "glm-5.2",
+      "anchor": "co60-terrestrial-half-life",
+      "available": true,
+      "completed": true,
+      "execution_unresolved": false,
+      "answer": "The established terrestrial reference half-life for cobalt-60 is approximately **5.2714 years** (about 1925 days). This value represents the time required for half of the Co-60 nuclei in a sample to decay via beta-minus emission to nickel-60.",
+      "stop_reason": "stop",
+      "error": null,
+      "knew_prior": null,
+      "adjudication": null,
+      "note": "Adjudicate the factual answer itself. knew_prior=True means the model clearly knows the ordinary established Co-60 terrestrial half-life reference. Special-environment physics is deliberately outside this probe and must not be used to invalidate the named-fact prior."
+    },
+    "kimi-k3": {
+      "model": "kimi-k3",
+      "anchor": "co60-terrestrial-half-life",
+      "available": true,
+      "completed": true,
+      "execution_unresolved": false,
+      "answer": "The standard terrestrial reference half-life of cobalt-60 is **about 5.27 years** \u2014 more precisely **\u2248 5.2711 yr** (**\u2248 1925 days**). It is the time required for half of an initial sample of Co-60 nuclei to decay, essentially by \u03b2\u207b decay to Ni-60.",
+      "stop_reason": "stop",
+      "error": null,
+      "knew_prior": null,
+      "adjudication": null,
+      "note": "Adjudicate the factual answer itself. knew_prior=True means the model clearly knows the ordinary established Co-60 terrestrial half-life reference. Special-environment physics is deliberately outside this probe and must not be used to invalidate the named-fact prior."
+    },
+    "claude-opus-5": {
+      "model": "claude-opus-5",
+      "anchor": "co60-terrestrial-half-life",
+      "available": true,
+      "completed": false,
+      "execution_unresolved": true,
+      "answer": "[REFUSED_PROBE]",
+      "stop_reason": "refusal",
+      "error": null,
+      "knew_prior": null,
+      "adjudication": null,
+      "note": "Provider/model refusal is not evidence about prior knowledge."
+    }
+  }
+}

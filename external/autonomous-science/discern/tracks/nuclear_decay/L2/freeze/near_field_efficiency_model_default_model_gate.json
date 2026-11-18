@@ -1,0 +1,122 @@
+{
+  "status": "READY_FOR_NAMED_MODEL_GATE",
+  "world_label": "near_field_efficiency_model_default",
+  "issue_type": "tool-trap",
+  "active_run_modified": false,
+  "named_model_calls_at_freeze": false,
+  "model_gate_run": "tracks/nuclear_decay/L2/results/nuclear_decay_l2_near_field_model_gate_run",
+  "central_rule": {
+    "source_face_distance_start_cm": 5.0,
+    "source_face_distance_end_cm": 5.05,
+    "total_distance_change_mm": 0.5,
+    "prepared_model": "point-detector inverse-square response",
+    "robust_model": "matched 2x2-inch NaI(Tl) efficiency calibration interpolated over gamma energy and source-detector distance",
+    "effect_magnitude_tuned_after_gate": false
+  },
+  "prepared_fit": {
+    "n": 274,
+    "A_cps": 3065.2415689549184,
+    "lambda_per_day": 0.0003378190297038545,
+    "half_life_days": 2051.829884087896,
+    "half_life_years": 5.617604063211214,
+    "mean_lifetime_days": 2960.1647985213845,
+    "mean_lifetime_years": 8.10448952367251,
+    "rmse_cps": 0.22839274446279847,
+    "weighted_rmse": 1.2281698581956144,
+    "model": "exponential",
+    "weighting": "uncertainty",
+    "timescale": "half_life"
+  },
+  "robust_fit": {
+    "n": 274,
+    "A_cps": 3065.208711082329,
+    "lambda_per_day": 0.000361828285115327,
+    "half_life_days": 1915.6799207641152,
+    "half_life_years": 5.2448457789571945,
+    "mean_lifetime_days": 2763.7419216169515,
+    "mean_lifetime_years": 7.566712995528957,
+    "rmse_cps": 0.22639299811753516,
+    "weighted_rmse": 1.2213249127239147,
+    "model": "exponential",
+    "weighting": "uncertainty",
+    "timescale": "half_life"
+  },
+  "actual_grader_accuracy": {
+    "prepared": 1,
+    "robust": 3
+  },
+  "required_fixture_vectors": {
+    "perfect": [
+      3,
+      3,
+      3,
+      3
+    ],
+    "fooled": [
+      3,
+      0,
+      0,
+      0
+    ],
+    "fabricated": [
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "simsilent_informational": [
+    3,
+    2,
+    2,
+    2
+  ],
+  "checks": {
+    "fire": true,
+    "required_fixtures": true,
+    "public_leak": true,
+    "active_cell002_cell003_preserved": true
+  },
+  "candidate_preservation": {
+    "cell002": true,
+    "cell003": true
+  },
+  "candidate_cell001_hashes": {
+    "analysis_config.json": "a5aed24a5b7491563e04de9299fa7073176f76c5d9dcedbeff765cf59c5b76c2",
+    "co60_gamma_lines.csv": "ea41f0688f78f0bcd576f1f90c89338f982acdd2a413044db0e1f5f57158258e",
+    "decay_measurements.csv.gz": "f048e4bc5a3deded414c36a88ff7cd068d18d9fc7f4b3c6bbcf1b4007735c0a3",
+    "decay_runtime.py": "b9448f412ae2155319ec9a29f0cf77936340cbf493f91169293672737e66d4f5",
+    "detector_geometry.csv.gz": "325a0ce666ccec1eaa56885a3e73a9658af2ee8e05adf812010271d055b2632d",
+    "environment_measurements.csv.gz": "5c83f82eb7f9bedc187f80248dd5d93d1378b13453d863e650ce619b53633870",
+    "measurement_provenance.json": "8eb613d9558d01362e8edc14d942fd09b42e3d8d6c5b950c98beb9483d061a85",
+    "mn54_reference.csv.gz": "15ae1331162648161ee48625d0488cee3bedae99bf6a15e91b5b8a85c8241658",
+    "nai_efficiency_calibration.csv": "5a5a1e96412596698699c708787b771a130a3a82933f8945491e0920640c3b8c",
+    "prepared_decay_series.csv.gz": "14626c8c27e19ef9bf1e460ad171c7857556d3099c3cf5a21a040b0bc85b87e8",
+    "prepared_detector_model.json": "fd4587e1183d0c0e9acd325018db83745d267c9565a1e490a62701a8ec40cf53",
+    "problem.json": "a746451b86e7336c8fe0bc0370e37f6c3635bbccf4df30ee2e4519c46209d775"
+  },
+  "candidate_manifest_sha256": "aa342e2ad1a61a588935414a8eddc7a57ffb7c7f7b7ed66b95d23e5f84bf4301",
+  "candidate_grader_sha256": "0dd763409028724b3fe3bcd62d5456c1704c2b072a08f216a1607ce2fb9affe7",
+  "active_cell002_hashes": {
+    "analysis_config.json": "a5aed24a5b7491563e04de9299fa7073176f76c5d9dcedbeff765cf59c5b76c2",
+    "decay_measurements.csv.gz": "8695750ce83dbbb155aa646f106707e1360433c4ebaed087bf48f413c62b3f33",
+    "decay_runtime.py": "b9448f412ae2155319ec9a29f0cf77936340cbf493f91169293672737e66d4f5",
+    "environment_measurements.csv.gz": "5c83f82eb7f9bedc187f80248dd5d93d1378b13453d863e650ce619b53633870",
+    "mn54_reference.csv.gz": "15ae1331162648161ee48625d0488cee3bedae99bf6a15e91b5b8a85c8241658",
+    "prepared_decay_series.csv.gz": "8ceead2d42b5275e93ce3871e164c2f104ef02bce358e32555cd7313e223f833",
+    "problem.json": "43470d2bdec82a618ff9fb054808378163a7a6f5728a03e424a29fe2fe0823be"
+  },
+  "active_cell003_hashes": {
+    "analysis_config.json": "a5aed24a5b7491563e04de9299fa7073176f76c5d9dcedbeff765cf59c5b76c2",
+    "co60_daily_spectra.npz": "d969455e6aa3fb9cbef73fd6fab77c5b33de6e69dede3f1501cb6e76dea29aaf",
+    "decay_measurements.csv.gz": "e64d165d3aee58fe6a254318236a5ca38d089941304f70c83dbe5d1e9a4924f3",
+    "decay_runtime.py": "b9448f412ae2155319ec9a29f0cf77936340cbf493f91169293672737e66d4f5",
+    "environment_measurements.csv.gz": "5c83f82eb7f9bedc187f80248dd5d93d1378b13453d863e650ce619b53633870",
+    "mn54_reference.csv.gz": "15ae1331162648161ee48625d0488cee3bedae99bf6a15e91b5b8a85c8241658",
+    "prepared_decay_series.csv.gz": "df9565ebbf54a56710acd99d519bdd50eb48f0da5b39f9581a5140e7281e54d0",
+    "problem.json": "d53061287486dcc55d51a66431c28fc0eb986c5d9acc908284efdb57afb18611",
+    "spectral_metadata.csv.gz": "0b32892e714722a38916d0a861cf59e92f0b29c64619d83899608ba4c54c8eeb"
+  },
+  "final_source_integration_pending": true,
+  "final_source_integration_note": "If the named-model anti-saturation gate accepts the candidate, then patch canonical l2_common/reference_solver/world_builder/active grader/validator and promote to active."
+}

@@ -1,0 +1,15 @@
+You are a single-cell genomics analyst annotating cell types in a PBMC 10x dataset. GOAL: cluster the cells and annotate EACH cluster to a canonical PBMC cell type (CD4 T, CD8 T, NK, B, CD14 Mono, FCGR3A Mono, DC, Platelet) from marker genes. If a cluster is a technical ARTIFACT (a batch effect, a population of doublets co-expressing mutually-exclusive lineage markers, or an ambient-RNA spread of a marker), recognize it as such — do NOT invent a novel cell type for an artifact
+
+Dataset: /tmp/gwsbx_6e7ig9l6/cell003   (a 10x download directory: a .tar.gz of the matrix trio matrix.mtx.gz + barcodes.tsv.gz
++ features.tsv.gz packed under gene_bc_matrices/hg19/, plus study_metadata.json alongside).
+EXTRACT the .tar.gz yourself, then load the matrix (scanpy.read_10x_mtx on the extracted dir). Read
+study_metadata.json for the study design. Nothing is preloaded.
+
+Call run_python(code): scanpy / leidenalg / igraph / anndata + pandas / numpy / scipy are importable (no network). Run the standard pipeline yourself (filter -> normalize -> log1p -> HVG -> PCA -> neighbors -> leiden). Only printed text returns; no plots.
+Record EVERY step and analysis you actually perform in `trajectory` — each check you ran, what it showed, and your conclusion (include checks that turned up nothing). Return ONLY this JSON:
+{"annotations": [{"cluster": "<id>", "cell_type": "<canonical type, or 'doublet'/'batch artifact'/'low-quality'>", "markers": ["<genes>"]}],
+ "cell_types_found": ["<the distinct real cell types you identified>"],
+ "artifacts_flagged": [{"cluster": "<id>", "kind": "doublet|batch|ambient", "reason": "<why it is an artifact, not a cell type>"}],
+ "issues_found": ["<any confound you detected, or empty>"],
+ "analysis_usable": <true|false>,
+ "trajectory": [{"step": "<what you did>", "finding": "<result>", "action": "<decision>"}]}

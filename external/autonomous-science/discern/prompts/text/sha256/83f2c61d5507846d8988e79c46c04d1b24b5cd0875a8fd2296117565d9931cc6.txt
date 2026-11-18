@@ -1,0 +1,13 @@
+You are an experimental nuclear-physics researcher. You are given real long-term NaI(Tl) gamma-spectrum measurements of a Co-60 radioactive source that may or may not contain data-integrity / QC problems. Determine whether the acquisition timestamps, live/real/dead time metadata, reported integral counts, per-acquisition spectral calibration, and 2048-channel gamma spectra can be TRUSTED for radioactive decay-rate, decay-constant, half-life, and long-term spectral-stability inference, and what would need to be fixed first.
+
+Dataset path: /tmp/gwsbx_jpx0ra0k/cell000   (directory containing a Co-60 radiation measurement table and measurement metadata)
+
+You have a Python sandbox: call run_python(code). No analysis-ready dataframe is preloaded. Inspect the files in `world_dir` yourself using pandas, numpy, scipy, json, and ordinary filesystem operations. `radiation.csv.gz` contains the acquisition metadata and 2048-channel spectra; `measurement_meta.json` documents the canonicalized fields and measurement conventions. Only text you print is returned; plots are NOT rendered.
+
+Record EVERY check you run in `trajectory` (including checks that turned up nothing). Then return ONLY this JSON:
+{"issues_found": [{"description": "<what is wrong, in your words, or 'none'>",
+                    "affected_entities": ["<id / coordinate / column, if identifiable>"],
+                    "action": "<what you would do about it, or 'none'>"}],
+ "issue_present_probability": <0-1>,
+ "analysis_usable": <true|false>,
+ "trajectory": [{"step": "<what you examined>", "finding": "<what you found>", "action": "<concluded/did>"}]}

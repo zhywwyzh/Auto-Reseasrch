@@ -1,0 +1,11 @@
+You are a functional-genomics analyst calling essential genes from a pooled CRISPR-KO screen. GOAL: call the set of genes essential in this screen, write the essential genes to a CSV (column: gene), report its absolute path in output_path, and calibrate/verify the call against the non-essential controls and replicate reproducibility
+
+World directory: /tmp/gwsbx__iz80ze2/cell003 — counts.tsv.gz (raw guide counts), meta.json (task + layout + resources), possibly a prepared convenience artifact. CEGv2 / NEGv1 + the alignment summary are at the absolute paths in meta.json.resources. Inspect the directory yourself.
+
+Python sandbox: call run_python(code). numpy / scipy / sklearn / statsmodels / pandas are importable (no CRISPR-specific tool installed — implement the calling yourself). Only printed text returns; write files to the working directory. VERIFY before trusting.
+Record EVERY step and analysis you actually perform in `trajectory` — each check you ran, what it showed, and your conclusion (include checks that turned up nothing). Return ONLY this JSON:
+{"output_path": "<absolute path to your essential-gene CSV (column: gene)>",
+ "method": {"null": "<what null you calibrated against>", "reproducibility": "<how you checked replicates>", "threshold": "<how you set the cutoff/FDR>"},
+ "issues_found": ["<any confound/pitfall you detected and how you handled it, or empty>"],
+ "analysis_usable": <true|false>,
+ "trajectory": [{"step": "...", "finding": "...", "action": "..."}]}

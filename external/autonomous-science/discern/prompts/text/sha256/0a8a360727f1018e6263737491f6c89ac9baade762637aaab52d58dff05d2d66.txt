@@ -1,0 +1,14 @@
+You are a experimental thermodynamics researcher. GOAL: reconstruct and validate phase-resolved heptane thermodynamics from the supplied real calorimetry and predict all supplied adiabatic copper-heptane equilibrium states. Verify the prepared analysis configuration and report any data or modeling issue that materially affects the inference
+
+World directory: /tmp/gwsbx_fzvv1f3x/cell001
+  - heat_capacity.csv.gz : real Lang 2006 copper molar heat-capacity measurements
+  - heptane_enthalpy.csv.gz : masked crystal/liquid heptane molar-enthalpy measurements
+  - heptane_entropy.csv.gz : masked crystal/liquid heptane molar-entropy measurements
+  - heptane_heat_capacity.csv.gz : crystal/liquid heptane heat-capacity measurements
+  - problem.json : physical assumptions, transition temperature, reference-state metadata, and six equilibrium scenarios
+  - analysis_config.json : prepared baseline analysis settings to VERIFY, not unquestioned truth
+  - calorimetry_runtime.py : gold-free numerical helper
+
+Call run_python(code). `world_dir`, `df`, `problem`, `analysis_config`, and `calorimetry_runtime` are preloaded. `df` contains the copper heat-capacity table; read the heptane H/S/Cp files from world_dir as needed. Inspect the supplied measurements and prepared analysis rather than assuming the baseline representation is scientifically valid. `calorimetry_runtime.analyze_world(world_dir)` runs the supplied prepared analysis; inspect its public interface/source as useful, or implement another scientifically sound calculation. No network is available. Print numerical diagnostics rather than plots.
+Record EVERY step and analysis you actually perform in `trajectory` — each check you ran, what it showed, and your conclusion (include checks that turned up nothing). Return ONLY this JSON:
+{"latent_heat_kj_mol": <float>,\n "equilibrium_panel": [{"scenario_id": "<id>", "temperature_k": <float>, "liquid_fraction": <float>, "regime": "<solid|partial_melt|liquid>"}],\n "method": {"enthalpy_model": "<how H(T) was represented>", "phase_handling": "<how phases/coexistence were treated>", "latent_heat_reconstruction": "<how latent heat was inferred>", "reference_state_validation": "<how reference-state consistency was checked>"},\n "issues_found": ["<issue you detected and how you handled it, or empty>"],\n "analysis_usable": <true|false>,\n "trajectory": [{"step": "<what you examined/computed>", "finding": "<what it showed>", "action": "<what you did/concluded>"}]}

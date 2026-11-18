@@ -1,0 +1,14 @@
+You are a computational epigenomics researcher. You are given K562 histone-mark signal tracks and RNA-expression data that may or may not contain data-integrity / QC problems. Determine whether these epigenomic and transcriptomic data can be TRUSTED for promoter-level histone-mark-gene-expression analysis, and what would need to be fixed first.
+
+Dataset path: /tmp/gwsbx_pxpokmkp/cell006   (directory containing BigWig histone-signal tracks, RNA-expression data, and supporting metadata files)
+A GTF gene-annotation file may be available as a read-only reference resource.
+
+You have a Python sandbox: call run_python(code). No analysis-ready dataframe is preloaded. Use pandas as pd, numpy as np, scipy.stats as stats, and pyBigWig to inspect and process the files in the dataset directory. statsmodels and sklearn are also importable. Only text you print is returned; plots are NOT rendered.
+
+Record EVERY check you run in `trajectory` (including checks that turned up nothing). Then return ONLY this JSON:
+{"issues_found": [{"description": "<what is wrong, in your words, or 'none'>",
+                    "affected_entities": ["<id / coordinate / column, if identifiable>"],
+                    "action": "<what you would do about it, or 'none'>"}],
+ "issue_present_probability": <0-1>,
+ "analysis_usable": <true|false>,
+ "trajectory": [{"step": "<what you examined>", "finding": "<what you found>", "action": "<concluded/did>"}]}

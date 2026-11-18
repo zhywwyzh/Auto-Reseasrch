@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "scope": "current result Figures 3\u20135 and Table 1 numerical rows",
+  "model_rows": 10,
+  "api_calls": 0,
+  "source_sha256": {
+    "results/fig_data_levels_8models.csv": "78ecb30ace6e7f5d9d7219c0657fdb76779f926ca4536272c1f72ec1a29b334b",
+    "results/fig_data_l1_8models.csv": "335fe6024bd43cb7459777e5ba6a62bbd53ab7a8f0a1f3bd48e35247bbab3b4e",
+    "results/fig_data_l2_8models.csv": "ce2832e3c8862c09104a4e9bdae6a417f0471173927305fcbdff8814bf512e55",
+    "results/fig_data_l3_8models.csv": "239dadf756b3dcc2cbccfb9fb86f37dac6f05d80cfe1529d65e2f55e2de1f1c6",
+    "results/efficiency_by_model_8models.csv": "4d197c58a39ed5a23272c4fe69c7cd4f1fe02fddf6d0ed29a259cfe42a345bc5",
+    "results/token_efficiency_8models.csv": "8ca917e2448de8b67a46816376f126a19fb88a98be5b2b7a7b4ee976d58cccc7",
+    "Scientific Working Style Profile Draft/outputs/8models/data/working_style_stability.csv": "0a0fc8baadb6d42ab9ca7da5de4337cc9a4e581a4249be3c655dd675468b0cb5",
+    "Scientific Working Style Profile Draft/outputs/8models/data/profile_metrics_long.csv": "7136f525cce4e5aa37ce9cffb933598a10af138ad5bccb7e8d63972c66b68429",
+    "results/figures/F03_chain_landscape_8models.csv": "e5d7882465aa75637aa7eccd066173fa835483c0b8fd6356703b4842061b696b",
+    "results/figures/F06_prior_to_yield_8models.csv": "11d6acc078a08fbb552eedcf717f55811ca965c546e84f8424a517aac879abb5",
+    "results/model_reports/ROLLUP_claude-fable-5.json": "ac02882791596ba938598ac279e2cd2c540228a7611609dfe3110b69f4df370e",
+    "results/model_reports/FALLBACK_REPLAY_claude-fable-5_to_claude-opus-5.json": "d016be1282a69946e25afe33499fb256ef2f230bac52882ba8fa50ab5277d9c1",
+    "results/model_reports/FABLE_COST_claude-fable-5_and_opus-replay.json": "ce63c5baa5eb1677d3b2477a8388bda48775ab8d3b60af50206787e7c3f21cb5"
+  },
+  "note": "Uses finalized exports, not a raw-transcript regrade. PDF bytes may vary with plotting-library versions."
+}

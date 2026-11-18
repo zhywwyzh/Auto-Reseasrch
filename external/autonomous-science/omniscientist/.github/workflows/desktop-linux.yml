@@ -1,0 +1,120 @@
+name: desktop-linux
+
+# Builds the Tauri desktop app for Linux x86_64: a .deb (Ubuntu/Debian) and an
+# .AppImage (single portable file, runs anywhere).
+#
+# The runner is headless, so nobody here ever sees the window; what this job can
+# and does verify is the package structure and the sidecar service itself
+# (start, health, interface assets). GUI 行为靠 Windows/macOS 上的人工验收兜底。
+#
+# 分支和 PR 上当构建检查；发版时由 release.yml 通过 workflow_call 调用，
+# 产物（.deb）以 artifact 落回同一次 run，由 publish 统一改稳定名、挂载。
+
+on:
+  workflow_call:
+  push:
+    branches: ["main", "launch/**"]
+    paths: ["desktop/**", "cli/**", ".github/workflows/desktop-linux.yml"]
+  pull_request:
+    paths: ["desktop/**", ".github/workflows/desktop-linux.yml"]
+  workflow_dispatch:
+
+# group 里带 github.workflow（被 release.yml 调用时解析成调用方的名字）：不然
+# 手动 dispatch 的发版和一次恰好同 ref 的独立构建会互相取消。
+concurrency:
+  group: desktop-linux-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: OmniScientist .deb + .AppImage
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install bun
+        run: |
+          curl -fsSL https://bun.sh/install | bash
+          echo "$HOME/.bun/bin" >> "$GITHUB_PATH"
+
+      # Tauri 在 Linux 上的系统依赖（webkit2gtk 是窗口本体）
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          # libfuse2：AppImage 打包器（linuxdeploy）自身是个 AppImage，没有 FUSE
+          # 跑不起来，Ubuntu 24.04 默认不带（包名带 t64 后缀，老名字兜底）。
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libayatana-appindicator3-dev \
+            librsvg2-dev libxdo-dev patchelf
+          sudo apt-get install -y libfuse2t64 || sudo apt-get install -y libfuse2
+
+      - name: The five implementations must stay in step
+        run: python3 scripts/check_parity.py
+
+      - name: Cache cargo
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            desktop/src-tauri/target
+          key: cargo-linux-${{ hashFiles('desktop/src-tauri/Cargo.lock') }}
+
+      - name: Build the sidecar service binary
+        run: |
+          (cd cli && bun install --frozen-lockfile)
+          cd desktop
+          bun install --frozen-lockfile
+          bun run build:desktop
+          mkdir -p src-tauri/binaries
+          cp dist-desktop/omnisci-desktop src-tauri/binaries/omnisci-desktop-x86_64-unknown-linux-gnu
+
+      # 只出 .deb。AppImage 的打包器（linuxdeploy）给 bun 编译的 99MB sidecar
+      # 跑 ldd 收集依赖时直接崩（"Failed to run ldd: exited with code 1"，
+      # 2026-08-28 实测，NO_STRIP 也救不了），等上游或换收集方案再补 AppImage。
+      - name: Build the package
+        working-directory: desktop
+        run: |
+          # cargo 缓存可能带着上一个版本的 .deb 还魂；publish 的 mv 只认恰好一个。
+          rm -f src-tauri/target/release/bundle/deb/*.deb
+          bun x tauri build --bundles deb
+
+      - name: Verify what we are about to ship
+        run: |
+          deb=$(ls desktop/src-tauri/target/release/bundle/deb/*.deb | head -1)
+          test -n "$deb"
+          ls -la "$deb"
+
+          # .deb 里必须真有壳和 sidecar 两个可执行
+          dpkg-deb -c "$deb" | grep -E "usr/bin/OmniScientist$|omnisci-desktop" \
+            || { echo "deb 里缺壳或 sidecar" >&2; exit 1; }
+
+          # sidecar 起服务做健康与首屏资源检查（跟 Windows 那条同款门禁）
+          exe=desktop/src-tauri/binaries/omnisci-desktop-x86_64-unknown-linux-gnu
+          export HOME="$RUNNER_TEMP/home"; mkdir -p "$HOME"
+          "$exe" --no-open --verbose > "$RUNNER_TEMP/service.log" 2>&1 &
+          pid=$!
+          trap 'kill $pid 2>/dev/null || true' EXIT
+          lock="$HOME/.omnisci/desktop.lock"
+          for i in $(seq 1 60); do [ -f "$lock" ] && break; sleep 0.5; done
+          [ -f "$lock" ] || { echo "服务没写出 lock 文件"; cat "$RUNNER_TEMP/service.log"; exit 1; }
+          port=$(python3 -c "import json; print(json.load(open('$lock'))['port'])")
+          token=$(python3 -c "import json; print(json.load(open('$lock'))['token'])")
+          curl -sf "http://127.0.0.1:$port/api/health" > /dev/null
+          echo "health ok on port $port"
+          jar="$RUNNER_TEMP/cookies.txt"
+          curl -sf -c "$jar" -L "http://127.0.0.1:$port/?t=$token" > /dev/null
+          for asset in / /assets/omni-logo.svg /splash.html; do
+            size=$(curl -sf -b "$jar" "http://127.0.0.1:$port$asset" | wc -c)
+            [ "$size" -ge 512 ] || { echo "$asset 只有 $size 字节，可疑" >&2; exit 1; }
+            echo "asset ok $asset -> $size bytes"
+          done
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: OmniScientist-linux
+          path: desktop/src-tauri/target/release/bundle/deb/*.deb
+          if-no-files-found: error
+          # v4 的 artifact 同名即 409。不加这个，"Re-run all jobs" 一按必炸。
+          overwrite: true

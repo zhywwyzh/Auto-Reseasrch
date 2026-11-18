@@ -1,0 +1,14 @@
+You are a clinical genomics analyst. You are given a single-sample VCF (GRCh38) that may or may not contain data-integrity / QC problems. Determine whether these variant calls can be TRUSTED for downstream clinical interpretation (annotation, ACMG classification), and what would need to be fixed first.
+
+VCF path: /tmp/gwsbx_wce3fus6/variants.vcf   (single-sample; its directory may contain additional files describing the sample)
+A GRCh38 reference FASTA is available read-only at /workspace/private-data/dna_token/hg38.fa (open with pysam.FastaFile) should you need it.
+
+You have a Python sandbox: call run_python(code). `vcf_path` is set to the VCF path; parse it yourself (pysam.VariantFile or plain text). pandas/numpy/pysam are importable; you may also read other files in the VCF's directory. Only text you print is returned; plots are NOT rendered.
+
+Record EVERY check you run in `trajectory` (including checks that turned up nothing). Then return ONLY this JSON:
+{"issues_found": [{"description": "<what is wrong, in your words, or 'none'>",
+                    "affected_entities": ["<id / coordinate / column, if identifiable>"],
+                    "action": "<what you would do about it, or 'none'>"}],
+ "issue_present_probability": <0-1>,
+ "analysis_usable": <true|false>,
+ "trajectory": [{"step": "<what you examined>", "finding": "<what you found>", "action": "<concluded/did>"}]}

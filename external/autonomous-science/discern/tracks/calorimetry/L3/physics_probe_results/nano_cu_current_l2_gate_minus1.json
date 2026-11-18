@@ -1,0 +1,555 @@
+{
+  "design": "nano_cu_current_final_l2_gate_minus1",
+  "central_fractional_cp_enhancement": 0.1,
+  "sensitivity_only": [
+    0.09,
+    0.11
+  ],
+  "literature_supported_temperature_interval_k": [
+    150.0,
+    300.0
+  ],
+  "active_cell000": "tracks/calorimetry/L2/results/calorimetry_l2_equilibrium_run/data/cell000",
+  "active_input_sha256": {
+    "heat_capacity.csv.gz": "0587ad7ed1be401525ba26b3e942108b6871ea577f33f05db50bb7bb6428f255",
+    "heptane_enthalpy.csv.gz": "487ad409f64b0ee58a98368b3894eef16dcded7d128db65488472866d0f6ada9",
+    "heptane_entropy.csv.gz": "9aabc7e20edb46c43fbc90fa022bd072b61d79e59ddb5140ea661b2ab258871a",
+    "heptane_heat_capacity.csv.gz": "e4377e71102f4ce52b4ebe866468c1b2f5cf25f96c7b35c804454c23a050cb61",
+    "problem.json": "b3a1d959d8fd21eb462cd1153515f1660d55230f73a81a610f3bdb205c1bc11d"
+  },
+  "tfus_k": 182.55,
+  "latent_heat_clean_reconstruction_kj_mol": 14.039971300053931,
+  "bulk_panel": {
+    "solid_low": {
+      "temperature_k": 165.08208995605494,
+      "liquid_fraction": 0.0,
+      "regime": "solid"
+    },
+    "solid_high": {
+      "temperature_k": 173.88112609970835,
+      "liquid_fraction": 0.0,
+      "regime": "solid"
+    },
+    "partial_low": {
+      "temperature_k": 182.55,
+      "liquid_fraction": 0.23376811790449448,
+      "regime": "partial_melt"
+    },
+    "partial_mid": {
+      "temperature_k": 182.55,
+      "liquid_fraction": 0.38829477662577727,
+      "regime": "partial_melt"
+    },
+    "partial_high": {
+      "temperature_k": 182.55,
+      "liquid_fraction": 0.5428214353470595,
+      "regime": "partial_melt"
+    },
+    "liquid": {
+      "temperature_k": 189.1243273813968,
+      "liquid_fraction": 1.0,
+      "regime": "liquid"
+    }
+  },
+  "rows": [
+    {
+      "fractional_cp_enhancement": 0.09,
+      "scenario_id": "solid_low",
+      "bulk": {
+        "temperature_k": 165.08208995605494,
+        "liquid_fraction": 0.0,
+        "regime": "solid"
+      },
+      "nano": {
+        "temperature_k": 166.10802026878304,
+        "liquid_fraction": 0.0,
+        "regime": "solid"
+      },
+      "temperature_shift_k": 1.025930312728093,
+      "liquid_fraction_shift": 0.0,
+      "regime_changed": false,
+      "cu_path_min_k": 165.08208995605494,
+      "cu_path_max_k": 220.0,
+      "path_inside_150_300_k": true,
+      "extra_cu_heat_released_j": 170.035575987126
+    },
+    {
+      "fractional_cp_enhancement": 0.09,
+      "scenario_id": "solid_high",
+      "bulk": {
+        "temperature_k": 173.88112609970835,
+        "liquid_fraction": 0.0,
+        "regime": "solid"
+      },
+      "nano": {
+        "temperature_k": 175.48277708448367,
+        "liquid_fraction": 0.0,
+        "regime": "solid"
+      },
+      "temperature_shift_k": 1.6016509847753184,
+      "liquid_fraction_shift": 0.0,
+      "regime_changed": false,
+      "cu_path_min_k": 173.88112609970835,
+      "cu_path_max_k": 260.0,
+      "path_inside_150_300_k": true,
+      "extra_cu_heat_released_j": 274.6546091424706
+    },
+    {
+      "fractional_cp_enhancement": 0.09,
+      "scenario_id": "partial_low",
+      "bulk": {
+        "temperature_k": 182.55,
+        "liquid_fraction": 0.23376811790449448,
+        "regime": "partial_melt"
+      },
+      "nano": {
+        "temperature_k": 182.55,
+        "liquid_fraction": 0.2615829164743255,
+        "regime": "partial_melt"
+      },
+      "temperature_shift_k": 0.0,
+      "liquid_fraction_shift": 0.027814798569831045,
+      "regime_changed": false,
+      "cu_path_min_k": 182.55,
+      "cu_path_max_k": 300.0,
+      "path_inside_150_300_k": true,
+      "extra_cu_heat_released_j": 389.7200475397496
+    },
+    {
+      "fractional_cp_enhancement": 0.09,
+      "scenario_id": "partial_mid",
+      "bulk": {
+        "temperature_k": 182.55,
+        "liquid_fraction": 0.38829477662577727,
+        "regime": "partial_melt"
+      },
+      "nano": {
+        "temperature_k": 182.55,
+        "liquid_fraction": 0.4300169744805231,
+        "regime": "partial_melt"
+      },
+      "temperature_shift_k": 0.0,
+      "liquid_fraction_shift": 0.041722197854745846,
+      "regime_changed": false,
+      "cu_path_min_k": 182.55,
+      "cu_path_max_k": 300.0,
+      "path_inside_150_300_k": true,
+      "extra_cu_heat_released_j": 584.5800713096244
+    },
+    {
+      "fractional_cp_enhancement": 0.09,
+      "scenario_id": "partial_high",
+      "bulk": {
+        "temperature_k": 182.55,
+        "liquid_fraction": 0.5428214353470595,
+        "regime": "partial_melt"
+      },
+      "nano": {
+        "temperature_k": 182.55,
+        "liquid_fraction": 0.5984510324867212,
+        "regime": "partial_melt"
+      },
+      "temperature_shift_k": 0.0,
+      "liquid_fraction_shift": 0.055629597139661646,
+      "regime_changed": false,
+      "cu_path_min_k": 182.55,
+      "cu_path_max_k": 300.0,
+      "path_inside_150_300_k": true,
+      "extra_cu_heat_released_j": 779.4400950794992
+    },
+    {
+      "fractional_cp_enhancement": 0.09,
+      "scenario_id": "liquid",
+      "bulk": {
+        "temperature_k": 189.1243273813968,
+        "liquid_fraction": 1.0,
+        "regime": "liquid"
+      },
+      "nano": {
+        "temperature_k": 193.29763610141592,
+        "liquid_fraction": 1.0,
+        "regime": "liquid"
+      },
+      "temperature_shift_k": 4.173308720019122,
+      "liquid_fraction_shift": 0.0,
+      "regime_changed": false,
+      "cu_path_min_k": 189.1243273813968,
+      "cu_path_max_k": 300.0,
+      "path_inside_150_300_k": true,
+      "extra_cu_heat_released_j": 1424.0532123554547
+    },
+    {
+      "fractional_cp_enhancement": 0.1,
+      "scenario_id": "solid_low",
+      "bulk": {
+        "temperature_k": 165.08208995605494,
+        "liquid_fraction": 0.0,
+        "regime": "solid"
+      },
+      "nano": {
+        "temperature_k": 166.21949728506996,
+        "liquid_fraction": 0.0,
+        "regime": "solid"
+      },
+      "temperature_shift_k": 1.1374073290150193,
+      "liquid_fraction_shift": 0.0,
+      "regime_changed": false,
+      "cu_path_min_k": 165.08208995605494,
+      "cu_path_max_k": 220.0,
+      "path_inside_150_300_k": true,
+      "extra_cu_heat_released_j": 188.55393739725943
+    },
+    {
+      "fractional_cp_enhancement": 0.1,
+      "scenario_id": "solid_high",
+      "bulk": {
+        "temperature_k": 173.88112609970835,
+        "liquid_fraction": 0.0,
+        "regime": "solid"
+      },
+      "nano": {
+        "temperature_k": 175.65671666260243,
+        "liquid_fraction": 0.0,
+        "regime": "solid"
+      },
+      "temperature_shift_k": 1.775590562894081,
+      "liquid_fraction_shift": 0.0,
+      "regime_changed": false,
+      "cu_path_min_k": 173.88112609970835,
+      "cu_path_max_k": 260.0,
+      "path_inside_150_300_k": true,
+      "extra_cu_heat_released_j": 304.57712548776504
+    },
+    {
+      "fractional_cp_enhancement": 0.1,
+      "scenario_id": "partial_low",
+      "bulk": {
+        "temperature_k": 182.55,
+        "liquid_fraction": 0.23376811790449448,
+        "regime": "partial_melt"
+      },
+      "nano": {
+        "temperature_k": 182.55,
+        "liquid_fraction": 0.2646734496487509,
+        "regime": "partial_melt"
+      },
+      "temperature_shift_k": 0.0,
+      "liquid_fraction_shift": 0.030905331744256415,
+      "regime_changed": false,
+      "cu_path_min_k": 182.55,
+      "cu_path_max_k": 300.0,
+      "path_inside_150_300_k": true,
+      "extra_cu_heat_released_j": 433.02227504416624
+    },
+    {
+      "fractional_cp_enhancement": 0.1,
+      "scenario_id": "partial_mid",
+      "bulk": {
+        "temperature_k": 182.55,
+        "liquid_fraction": 0.38829477662577727,
+        "regime": "partial_melt"
+      },
+      "nano": {
+        "temperature_k": 182.55,
+        "liquid_fraction": 0.4346527742421619,
+        "regime": "partial_melt"
+      },
+      "temperature_shift_k": 0.0,
+      "liquid_fraction_shift": 0.04635799761638465,
+      "regime_changed": false,
+      "cu_path_min_k": 182.55,
+      "cu_path_max_k": 300.0,
+      "path_inside_150_300_k": true,
+      "extra_cu_heat_released_j": 649.5334125662495
+    },
+    {
+      "fractional_cp_enhancement": 0.1,
+      "scenario_id": "partial_high",
+      "bulk": {
+        "temperature_k": 182.55,
+        "liquid_fraction": 0.5428214353470595,
+        "regime": "partial_melt"
+      },
+      "nano": {
+        "temperature_k": 182.55,
+        "liquid_fraction": 0.6046320988355725,
+        "regime": "partial_melt"
+      },
+      "temperature_shift_k": 0.0,
+      "liquid_fraction_shift": 0.06181066348851294,
+      "regime_changed": false,
+      "cu_path_min_k": 182.55,
+      "cu_path_max_k": 300.0,
+      "path_inside_150_300_k": true,
+      "extra_cu_heat_released_j": 866.0445500883325
+    },
+    {
+      "fractional_cp_enhancement": 0.1,
+      "scenario_id": "liquid",
+      "bulk": {
+        "temperature_k": 189.1243273813968,
+        "liquid_fraction": 1.0,
+        "regime": "liquid"
+      },
+      "nano": {
+        "temperature_k": 193.7439508262783,
+        "liquid_fraction": 1.0,
+        "regime": "liquid"
+      },
+      "temperature_shift_k": 4.619623444881512,
+      "liquid_fraction_shift": 0.0,
+      "regime_changed": false,
+      "cu_path_min_k": 189.1243273813968,
+      "cu_path_max_k": 300.0,
+      "path_inside_150_300_k": true,
+      "extra_cu_heat_released_j": 1576.025312851438
+    },
+    {
+      "fractional_cp_enhancement": 0.11,
+      "scenario_id": "solid_low",
+      "bulk": {
+        "temperature_k": 165.08208995605494,
+        "liquid_fraction": 0.0,
+        "regime": "solid"
+      },
+      "nano": {
+        "temperature_k": 166.33048452521066,
+        "liquid_fraction": 0.0,
+        "regime": "solid"
+      },
+      "temperature_shift_k": 1.248394569155721,
+      "liquid_fraction_shift": 0.0,
+      "regime_changed": false,
+      "cu_path_min_k": 165.08208995605494,
+      "cu_path_max_k": 220.0,
+      "path_inside_150_300_k": true,
+      "extra_cu_heat_released_j": 206.99911010138305
+    },
+    {
+      "fractional_cp_enhancement": 0.11,
+      "scenario_id": "solid_high",
+      "bulk": {
+        "temperature_k": 173.88112609970835,
+        "liquid_fraction": 0.0,
+        "regime": "solid"
+      },
+      "nano": {
+        "temperature_k": 175.82987169467057,
+        "liquid_fraction": 0.0,
+        "regime": "solid"
+      },
+      "temperature_shift_k": 1.9487455949622188,
+      "liquid_fraction_shift": 0.0,
+      "regime_changed": false,
+      "cu_path_min_k": 173.88112609970835,
+      "cu_path_max_k": 260.0,
+      "path_inside_150_300_k": true,
+      "extra_cu_heat_released_j": 334.38348235368915
+    },
+    {
+      "fractional_cp_enhancement": 0.11,
+      "scenario_id": "partial_low",
+      "bulk": {
+        "temperature_k": 182.55,
+        "liquid_fraction": 0.23376811790449448,
+        "regime": "partial_melt"
+      },
+      "nano": {
+        "temperature_k": 182.55,
+        "liquid_fraction": 0.26776398282317676,
+        "regime": "partial_melt"
+      },
+      "temperature_shift_k": 0.0,
+      "liquid_fraction_shift": 0.033995864918682284,
+      "regime_changed": false,
+      "cu_path_min_k": 182.55,
+      "cu_path_max_k": 300.0,
+      "path_inside_150_300_k": true,
+      "extra_cu_heat_released_j": 476.32450254858287
+    },
+    {
+      "fractional_cp_enhancement": 0.11,
+      "scenario_id": "partial_mid",
+      "bulk": {
+        "temperature_k": 182.55,
+        "liquid_fraction": 0.38829477662577727,
+        "regime": "partial_melt"
+      },
+      "nano": {
+        "temperature_k": 182.55,
+        "liquid_fraction": 0.43928857400380034,
+        "regime": "partial_melt"
+      },
+      "temperature_shift_k": 0.0,
+      "liquid_fraction_shift": 0.050993797378023065,
+      "regime_changed": false,
+      "cu_path_min_k": 182.55,
+      "cu_path_max_k": 300.0,
+      "path_inside_150_300_k": true,
+      "extra_cu_heat_released_j": 714.4867538228744
+    },
+    {
+      "fractional_cp_enhancement": 0.11,
+      "scenario_id": "partial_high",
+      "bulk": {
+        "temperature_k": 182.55,
+        "liquid_fraction": 0.5428214353470595,
+        "regime": "partial_melt"
+      },
+      "nano": {
+        "temperature_k": 182.55,
+        "liquid_fraction": 0.6108131651844241,
+        "regime": "partial_melt"
+      },
+      "temperature_shift_k": 0.0,
+      "liquid_fraction_shift": 0.06799172983736457,
+      "regime_changed": false,
+      "cu_path_min_k": 182.55,
+      "cu_path_max_k": 300.0,
+      "path_inside_150_300_k": true,
+      "extra_cu_heat_released_j": 952.6490050971657
+    },
+    {
+      "fractional_cp_enhancement": 0.11,
+      "scenario_id": "liquid",
+      "bulk": {
+        "temperature_k": 189.1243273813968,
+        "liquid_fraction": 1.0,
+        "regime": "liquid"
+      },
+      "nano": {
+        "temperature_k": 194.18665542121505,
+        "liquid_fraction": 1.0,
+        "regime": "liquid"
+      },
+      "temperature_shift_k": 5.062328039818254,
+      "liquid_fraction_shift": 0.0,
+      "regime_changed": false,
+      "cu_path_min_k": 189.1243273813968,
+      "cu_path_max_k": 300.0,
+      "path_inside_150_300_k": true,
+      "extra_cu_heat_released_j": 1726.7994779647333
+    }
+  ],
+  "active_gold_continuity": {
+    "file": "tracks/calorimetry/L2/gold/gold_solver.json",
+    "exists": true,
+    "matched_scenarios": {
+      "liquid": {
+        "bulk_probe": {
+          "temperature_k": 189.1243273813968,
+          "liquid_fraction": 1.0,
+          "regime": "liquid"
+        },
+        "gold_record": {
+          "scenario_id": "liquid",
+          "cu_mass_g": 400.0,
+          "heptane_mass_g": 100.0,
+          "cu_initial_temperature_k": 300.0,
+          "heptane_initial_temperature_k": 175.0,
+          "temperature_k": 189.1265000690253,
+          "liquid_fraction": 1.0,
+          "regime": "liquid"
+        }
+      },
+      "partial_high": {
+        "bulk_probe": {
+          "temperature_k": 182.55,
+          "liquid_fraction": 0.5428214353470595,
+          "regime": "partial_melt"
+        },
+        "gold_record": {
+          "scenario_id": "partial_high",
+          "cu_mass_g": 200.0,
+          "heptane_mass_g": 100.0,
+          "cu_initial_temperature_k": 300.0,
+          "heptane_initial_temperature_k": 175.0,
+          "temperature_k": 182.55,
+          "liquid_fraction": 0.5420536402543372,
+          "regime": "partial_melt"
+        }
+      },
+      "partial_low": {
+        "bulk_probe": {
+          "temperature_k": 182.55,
+          "liquid_fraction": 0.23376811790449448,
+          "regime": "partial_melt"
+        },
+        "gold_record": {
+          "scenario_id": "partial_low",
+          "cu_mass_g": 100.0,
+          "heptane_mass_g": 100.0,
+          "cu_initial_temperature_k": 300.0,
+          "heptane_initial_temperature_k": 175.0,
+          "temperature_k": 182.55,
+          "liquid_fraction": 0.23345374358704934,
+          "regime": "partial_melt"
+        }
+      },
+      "partial_mid": {
+        "bulk_probe": {
+          "temperature_k": 182.55,
+          "liquid_fraction": 0.38829477662577727,
+          "regime": "partial_melt"
+        },
+        "gold_record": {
+          "scenario_id": "partial_mid",
+          "cu_mass_g": 150.0,
+          "heptane_mass_g": 100.0,
+          "cu_initial_temperature_k": 300.0,
+          "heptane_initial_temperature_k": 175.0,
+          "temperature_k": 182.55,
+          "liquid_fraction": 0.38775369192069353,
+          "regime": "partial_melt"
+        }
+      },
+      "solid_high": {
+        "bulk_probe": {
+          "temperature_k": 173.88112609970835,
+          "liquid_fraction": 0.0,
+          "regime": "solid"
+        },
+        "gold_record": {
+          "scenario_id": "solid_high",
+          "cu_mass_g": 100.0,
+          "heptane_mass_g": 100.0,
+          "cu_initial_temperature_k": 260.0,
+          "heptane_initial_temperature_k": 150.0,
+          "temperature_k": 173.8811260997085,
+          "liquid_fraction": 0.0,
+          "regime": "solid"
+        }
+      },
+      "solid_low": {
+        "bulk_probe": {
+          "temperature_k": 165.08208995605494,
+          "liquid_fraction": 0.0,
+          "regime": "solid"
+        },
+        "gold_record": {
+          "scenario_id": "solid_low",
+          "cu_mass_g": 100.0,
+          "heptane_mass_g": 100.0,
+          "cu_initial_temperature_k": 220.0,
+          "heptane_initial_temperature_k": 150.0,
+          "temperature_k": 165.08208995605492,
+          "liquid_fraction": 0.0,
+          "regime": "solid"
+        }
+      }
+    },
+    "max_abs_temperature_difference_k": 0.002172687628501535,
+    "max_abs_liquid_fraction_difference": 0.0007677950927222899
+  },
+  "checks": {
+    "all_Cu_paths_inside_literature_150_300_K": true,
+    "9_10_11_percent_effects_same_physical_direction": true,
+    "central_10_percent_changes_at_least_one_scenario": true,
+    "central_10_percent_has_material_effect": true,
+    "heptane_files_untouched_by_intervention": true,
+    "intervention_is_upstream_Cu_Cp_not_downstream_Teq_edit": true,
+    "sensitivity_not_used_for_model_tuning": true
+  },
+  "overall_pass": true,
+  "interpretation": "The injected L3 counterfactual modifies the upstream Cu Cp relation over the literature-supported 150-300 K interval and reruns the same Cu-heptane phase-resolved equilibrium logic. Heptane thermodynamics are unchanged. The 9% and 11% cases are scientific sensitivity checks around the fixed 10% central literature-constrained intervention, not model-tuning settings."
+}

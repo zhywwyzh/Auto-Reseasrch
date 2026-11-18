@@ -1,0 +1,16 @@
+You are a single-cell genomics analyst characterizing marker genes and differential expression in a PBMC 10x dataset. GOAL: identify the canonical marker genes for each cell type, and — where the study design supports a differential-expression comparison (e.g. across conditions with biological replicates) — perform it with a statistically appropriate method. Do NOT report an ambient/soup contaminant as a real marker, and do NOT treat individual cells as biological replicates (that inflates DE — use pseudobulk per replicate when comparing conditions)
+
+Dataset: /tmp/gwsbx_hs4fpri2/cell001   (a 10x download directory: a .tar.gz of the matrix trio matrix.mtx.gz + barcodes.tsv.gz
++ features.tsv.gz packed under gene_bc_matrices/hg19/, plus study_metadata.json alongside).
+EXTRACT the .tar.gz yourself, then load the matrix (scanpy.read_10x_mtx on the extracted dir). Read
+study_metadata.json for the study design. Nothing is preloaded.
+
+Call run_python(code): scanpy / leidenalg / igraph / anndata + pandas / numpy / scipy are importable (no network). Run the standard pipeline yourself (filter -> normalize -> log1p -> HVG -> PCA -> neighbors -> leiden). Only printed text returns; no plots.
+Record EVERY step and analysis you actually perform in `trajectory` — each check you ran, what it showed, and your conclusion (include checks that turned up nothing). Return ONLY this JSON:
+{"markers": {"<cell_type>": ["<top marker genes>"]},
+ "de_method": "<the DE method you used for any condition comparison, or 'none'>",
+ "n_de_genes": <int or null>,
+ "ambient_genes_flagged": ["<genes you judged ambient/soup, not real markers>"],
+ "issues_found": ["<any confound you detected, or empty>"],
+ "analysis_usable": <true|false>,
+ "trajectory": [{"step": "<what you did>", "finding": "<result>", "action": "<decision>"}]}

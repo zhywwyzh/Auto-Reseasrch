@@ -1,0 +1,95 @@
+{
+  "anchor": {
+    "name": "nano-Cu heat-capacity bulk-reuse prior",
+    "scientific_claim_under_test": "For same-composition fcc Cu with approximately 8 nm grains and no phase transition, ordinary bulk Cu Cp(T) should remain a good zeroth-order quantitative baseline, with at most a small percent-scale excess.",
+    "counterevidence_route": "A literature-grounded approximately 10% nanocrystalline Cu Cp enhancement over the 150\u2013300 K interval."
+  },
+  "adjudications": [
+    {
+      "label": "GPT-4.1",
+      "canonical_key": "gpt-4.1",
+      "probe_completed": true,
+      "probe_available": true,
+      "adjudication": "prior_held",
+      "prior_knew": true,
+      "admit_for_anchor": true,
+      "reason": "Bulk Cu is the expected baseline; only a small nanocrystalline heat-capacity excess was expected.",
+      "answer_sha256": "ab0e5425a8b44e90309248ef9e0e1050cd5ebcf9b15ee69443dedfd162210247",
+      "answer_chars": 3221,
+      "execution_error_summary": null
+    },
+    {
+      "label": "GPT-5.6",
+      "canonical_key": "gpt-5.6-sol",
+      "probe_completed": true,
+      "probe_available": true,
+      "adjudication": "prior_held",
+      "prior_knew": true,
+      "admit_for_anchor": true,
+      "reason": "Bulk-like Cp is the zeroth-order expectation; order-percent deviations are plausible while a roughly ten-percent excess is surprising.",
+      "answer_sha256": "0b50579763b8438c925528b4a640cd0c7a3f6100241c63bd8460997f31b2354b",
+      "answer_chars": 3118,
+      "execution_error_summary": null
+    },
+    {
+      "label": "DeepSeek-v4-pro",
+      "canonical_key": "deepseek-v4-pro",
+      "probe_completed": true,
+      "probe_available": true,
+      "adjudication": "prior_held",
+      "prior_knew": true,
+      "admit_for_anchor": true,
+      "reason": "Expected nanocrystalline Cu to remain close to bulk, with only approximately percent-scale excess.",
+      "answer_sha256": "4d4b47c4a143db2f94c8233a836367b32824fcb06b912b8b4033a6ac97bdc515",
+      "answer_chars": 1937,
+      "execution_error_summary": null
+    },
+    {
+      "label": "Claude-opus-5",
+      "canonical_key": "claude-opus-5",
+      "probe_completed": true,
+      "probe_available": true,
+      "adjudication": "prior_held",
+      "prior_knew": true,
+      "admit_for_anchor": true,
+      "reason": "Expected a small positive excess, approximately a few percent, rather than a large Cp enhancement.",
+      "answer_sha256": "c005d71514ad8bc160a25fa7fdced4549df776fd78a4ede931419ee0fed665c9",
+      "answer_chars": 3703,
+      "execution_error_summary": null
+    },
+    {
+      "label": "GLM-5.2",
+      "canonical_key": "glm-5.2",
+      "probe_completed": true,
+      "probe_available": true,
+      "adjudication": "prior_held",
+      "prior_knew": true,
+      "admit_for_anchor": true,
+      "reason": "Explicitly expected roughly 1\u20135% excess and stated that a difference exceeding about 10% would be surprising.",
+      "answer_sha256": "2cd84b39b954dbe08e09e145ed7b265f25dde64630a75dd699c529fb5fe26bf6",
+      "answer_chars": 1663,
+      "execution_error_summary": null
+    },
+    {
+      "label": "Kimi-k3",
+      "canonical_key": "kimi-k3",
+      "probe_completed": true,
+      "probe_available": true,
+      "adjudication": "prior_held",
+      "prior_knew": true,
+      "admit_for_anchor": true,
+      "reason": "Kimi explicitly retained bulk Cu as the quantitative baseline and expected only an approximately 1-3% Cp excess, with roughly 0-5% as a reasonable range. The frozen approximately 10% enhancement therefore lies outside its ordinary prior expectation.",
+      "answer_sha256": "4d3c36737d6daa0c73527ebdcccc3134414fe8fba6c31ec8848f7a67fcc15718",
+      "answer_chars": 3402,
+      "execution_error_summary": null
+    }
+  ],
+  "successful_prior_probes": 6,
+  "successful_prior_held": 6,
+  "execution_unresolved": 0,
+  "any_prior_knew_false": false,
+  "anchor_switch_required": false,
+  "construction_status": "ANCHOR_FROZEN_BUILD_ALLOWED",
+  "important_note": "All six canonical models completed the 8-nm Gate-0. All six are PRIOR_HELD. Kimi's earlier provider failure was resolved by its later canonical retry.",
+  "source_prior_artifact": "tracks/calorimetry/L3/physics_probe_results/nano_cu_prior_gate.json"
+}

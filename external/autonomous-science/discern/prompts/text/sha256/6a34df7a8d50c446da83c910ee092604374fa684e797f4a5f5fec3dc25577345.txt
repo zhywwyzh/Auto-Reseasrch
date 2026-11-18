@@ -1,0 +1,15 @@
+You are a statistical geneticist. GOAL: run a transcriptome-wide association study (TWAS) for cystic fibrosis lung-disease severity in Lung tissue — produce gene-level associations between genetically-predicted expression and the trait
+
+Available in the environment:
+- GWAS summary statistics: /tmp/gwsbx_cjpi6g7k/cell000.tsv.gz   (tab-separated, gzip; also preloaded as the dataframe `df`)
+- A GTEx Lung gene-expression prediction model: /workspace/discern-benchmark/tracks/cf_gwas/L2/predictdb_gtex_v8/eqtl/mashr/mashr_Lung.db
+  and its SNP covariance file: /workspace/discern-benchmark/tracks/cf_gwas/L2/predictdb_gtex_v8/eqtl/mashr/mashr_Lung.txt.gz
+- TWAS software is installed under: /workspace/discern-benchmark/tracks/cf_gwas/L2/MetaXcan/software   (choose the appropriate tool yourself)
+
+Prepare the GWAS as your chosen tool requires, run the TWAS, and verify the result is sound. You have a Python sandbox (run_python) with subprocess access — write files and run commands as needed. Your only writable location is the current working directory (`.`); write all outputs there. CRITICAL: only the interpreter you are already running in (`sys.executable`) has the tools' dependencies — always invoke Python tools as `[sys.executable, "<tool>.py", ...]`. Do NOT use "/usr/bin/python3", "python3" or "python" (they lack the dependencies and will fail).
+Record EVERY step and analysis you actually perform in `trajectory` — each check you ran, what it showed, and your conclusion (include checks that turned up nothing). Return ONLY this JSON:
+{"output_path": "<absolute path to your final TWAS output CSV>", "tool_used": "<tool / command you ran>",
+ "n_snps_used_total": <int or null>, "mapping_method": "<how you matched the GWAS SNPs to the model>",
+ "issues_found": ["<any data problem you detected and had to fix, or empty>"],
+ "analysis_usable": <true|false>,
+ "trajectory": [{"step": "<what you did>", "finding": "<what you found>", "action": "<what you concluded/did>"}]}

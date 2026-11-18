@@ -1,0 +1,239 @@
+{
+  "scope": "Offline representative input-loading and isolation smoke test, not a rerun.\n\nChecks the first recorded world in each authority-index manifest in a fresh sealed\nsandbox. Mounts only its selected agent input, never gold, manifests or results.\nParses structured inputs and samples tables/binary readers; this is not full\nscientific execution, checkpoint inference, or exhaustive input validation.",
+  "network": "disabled by bubblewrap",
+  "model_api_calls": 0,
+  "manifest_count": 46,
+  "passed": true,
+  "checks": [
+    {
+      "manifest": "tracks/bulk_rnaseq/L1/results/bulkrna_l1_run/manifest.json",
+      "passed": true,
+      "output": "{\"table_sampled\": 1}"
+    },
+    {
+      "manifest": "tracks/bulk_rnaseq/L2/results/bulk_l2_de_run/manifest.json",
+      "passed": true,
+      "output": "{\"json\": 1, \"table_sampled\": 2}"
+    },
+    {
+      "manifest": "tracks/bulk_rnaseq/L2/results/bulk_l2_gsea_run/manifest.json",
+      "passed": true,
+      "output": "{\"bytes_sampled\": 2, \"json\": 1, \"table_sampled\": 1}"
+    },
+    {
+      "manifest": "tracks/bulk_rnaseq/L2/results/bulk_l2_structure_run/manifest.json",
+      "passed": true,
+      "output": "{\"json\": 1, \"table_sampled\": 3}"
+    },
+    {
+      "manifest": "tracks/bulk_rnaseq/L3/results/l3_run/manifest.json",
+      "passed": true,
+      "output": "{\"json\": 1}"
+    },
+    {
+      "manifest": "tracks/calorimetry/L1/results/calorimetry_l1_run/manifest.json",
+      "passed": true,
+      "output": "{\"json\": 1, \"table_sampled\": 1}"
+    },
+    {
+      "manifest": "tracks/calorimetry/L2/results/calorimetry_l2_equilibrium_run/manifest.json",
+      "passed": true,
+      "output": "{\"bytes_sampled\": 1, \"json\": 2, \"table_sampled\": 4}"
+    },
+    {
+      "manifest": "tracks/calorimetry/L3/results/l3_run/manifest.json",
+      "passed": true,
+      "output": "{\"json\": 1}"
+    },
+    {
+      "manifest": "tracks/cf_gwas/L1/results/gwas_qc_run/manifest.json",
+      "passed": true,
+      "output": "{\"table_sampled\": 1}"
+    },
+    {
+      "manifest": "tracks/cf_gwas/L2/results/gwas_signaleda_run/manifest.json",
+      "passed": true,
+      "output": "{\"table_sampled\": 1}"
+    },
+    {
+      "manifest": "tracks/cf_gwas/L2/results/gwas_task2_run/manifest.json",
+      "passed": true,
+      "output": "{\"table_sampled\": 1}"
+    },
+    {
+      "manifest": "tracks/cf_gwas/L2/results/gwas_twas_run/manifest.json",
+      "passed": true,
+      "output": "{\"table_sampled\": 1}"
+    },
+    {
+      "manifest": "tracks/cf_gwas/L3/results/l3_run/manifest.json",
+      "passed": true,
+      "output": "{\"json\": 1}"
+    },
+    {
+      "manifest": "tracks/clinvar_acmg/L1/results/clinvar_l1_run/manifest.json",
+      "passed": true,
+      "output": "{\"vcf_sampled\": 1}"
+    },
+    {
+      "manifest": "tracks/clinvar_acmg/L2/results/clinvar_l2_classify_run/manifest.json",
+      "passed": true,
+      "output": "{\"vcf_sampled\": 1}"
+    },
+    {
+      "manifest": "tracks/clinvar_acmg/L2/results/clinvar_l2_prioritize_run/manifest.json",
+      "passed": true,
+      "output": "{\"vcf_sampled\": 1}"
+    },
+    {
+      "manifest": "tracks/clinvar_acmg/L2/results/clinvar_l2_sf_run/manifest.json",
+      "passed": true,
+      "output": "{\"vcf_sampled\": 1}"
+    },
+    {
+      "manifest": "tracks/clinvar_acmg/L3/results/l3_run/manifest.json",
+      "passed": true,
+      "output": "{\"json\": 1}"
+    },
+    {
+      "manifest": "tracks/crispr_screen/L1/results/crispr_l1_run/manifest.json",
+      "passed": true,
+      "output": "{\"table_sampled\": 1}"
+    },
+    {
+      "manifest": "tracks/crispr_screen/L2/results/crispr_l2_calling_run/manifest.json",
+      "passed": true,
+      "output": "{\"json\": 1, \"table_sampled\": 1}"
+    },
+    {
+      "manifest": "tracks/crispr_screen/L2/results/crispr_l2_context_run/manifest.json",
+      "passed": true,
+      "output": "{\"json\": 1, \"table_sampled\": 1}"
+    },
+    {
+      "manifest": "tracks/crispr_screen/L2/results/crispr_l2_scoring_run/manifest.json",
+      "passed": true,
+      "output": "{\"json\": 1, \"table_sampled\": 1}"
+    },
+    {
+      "manifest": "tracks/crispr_screen/L3/results/l3_run/manifest.json",
+      "passed": true,
+      "output": "{\"json\": 1}"
+    },
+    {
+      "manifest": "tracks/enhancer_activity/L1/results/enhancer_l1_run/manifest.json",
+      "passed": true,
+      "output": "{\"xlsx_sampled\": 1}"
+    },
+    {
+      "manifest": "tracks/enhancer_activity/L2/results/enhancer_l2_conservation_run/manifest.json",
+      "passed": true,
+      "output": "{\"json\": 1, \"table_sampled\": 1}"
+    },
+    {
+      "manifest": "tracks/enhancer_activity/L2/results/enhancer_l2_divergence_run/manifest.json",
+      "passed": true,
+      "output": "{\"json\": 1, \"table_sampled\": 1}"
+    },
+    {
+      "manifest": "tracks/enhancer_activity/L2/results/enhancer_l2_ranking_run/manifest.json",
+      "passed": true,
+      "output": "{\"json\": 1, \"table_sampled\": 1}"
+    },
+    {
+      "manifest": "tracks/enhancer_activity/L3/results/l3_run/manifest.json",
+      "passed": true,
+      "output": "{\"json\": 1}"
+    },
+    {
+      "manifest": "tracks/hist_gene_exp/L1/results/hist_qc_run/manifest.json",
+      "passed": true,
+      "output": "{\"bigwig_header\": 3, \"gzip_sampled\": 1, \"table_sampled\": 1}"
+    },
+    {
+      "manifest": "tracks/hist_gene_exp/L2/results/hist_l2_quantify_run/manifest.json",
+      "passed": true,
+      "output": "{\"bam_index_header\": 2, \"bam_sampled\": 2, \"json\": 1, \"table_sampled\": 1}"
+    },
+    {
+      "manifest": "tracks/hist_gene_exp/L2/results/hist_l2_ranking_run/manifest.json",
+      "passed": true,
+      "output": "{\"table_sampled\": 1}"
+    },
+    {
+      "manifest": "tracks/hist_gene_exp/L2/results/hist_l2_regression_run/manifest.json",
+      "passed": true,
+      "output": "{\"table_sampled\": 1}"
+    },
+    {
+      "manifest": "tracks/hist_gene_exp/L3/results/l3_run/manifest.json",
+      "passed": true,
+      "output": "{\"json\": 1}"
+    },
+    {
+      "manifest": "tracks/nuclear_decay/L1/results/nuclear_decay_l1_run/manifest.json",
+      "passed": true,
+      "output": "{\"json\": 1, \"table_sampled\": 1}"
+    },
+    {
+      "manifest": "tracks/nuclear_decay/L2/results/nuclear_decay_l2_decay_fit_run/manifest.json",
+      "passed": true,
+      "output": "{\"bytes_sampled\": 1, \"json\": 2, \"table_sampled\": 4}"
+    },
+    {
+      "manifest": "tracks/nuclear_decay/L3/results/l3_run/manifest.json",
+      "passed": true,
+      "output": "{\"json\": 1}"
+    },
+    {
+      "manifest": "tracks/protein_ddg/L1/results/protein_ddg_l1_run/manifest.json",
+      "passed": true,
+      "output": "{\"json\": 1, \"pdb\": 1}"
+    },
+    {
+      "manifest": "tracks/protein_ddg/L2/results/ddg_predict_run/manifest.json",
+      "passed": true,
+      "output": "{\"json\": 1, \"pdb\": 1, \"table_sampled\": 1}"
+    },
+    {
+      "manifest": "tracks/protein_ddg/L2/results/feature_effect_run/manifest.json",
+      "passed": true,
+      "output": "{\"json\": 1, \"pdb\": 1, \"table_sampled\": 1}"
+    },
+    {
+      "manifest": "tracks/protein_ddg/L2/results/stab_classify_run/manifest.json",
+      "passed": true,
+      "output": "{\"json\": 1, \"pdb\": 1, \"table_sampled\": 1}"
+    },
+    {
+      "manifest": "tracks/protein_ddg/L3/results/l3_run/manifest.json",
+      "passed": true,
+      "output": "{\"json\": 1}"
+    },
+    {
+      "manifest": "tracks/scrna/L1/results/scrna_l1_run/manifest.json",
+      "passed": true,
+      "output": "{\"json\": 1, \"tar_members_sampled\": 1}"
+    },
+    {
+      "manifest": "tracks/scrna/L2/results/scrna_l2_annotation_run/manifest.json",
+      "passed": true,
+      "output": "{\"json\": 1, \"tar_members_sampled\": 1}"
+    },
+    {
+      "manifest": "tracks/scrna/L2/results/scrna_l2_composition_run/manifest.json",
+      "passed": true,
+      "output": "{\"json\": 1, \"tar_members_sampled\": 1}"
+    },
+    {
+      "manifest": "tracks/scrna/L2/results/scrna_l2_marker_de_run/manifest.json",
+      "passed": true,
+      "output": "{\"json\": 1, \"tar_members_sampled\": 1}"
+    },
+    {
+      "manifest": "tracks/scrna/L3/results/l3_run/manifest.json",
+      "passed": true,
+      "output": "{\"json\": 1}"
+    }
+  ]
+}

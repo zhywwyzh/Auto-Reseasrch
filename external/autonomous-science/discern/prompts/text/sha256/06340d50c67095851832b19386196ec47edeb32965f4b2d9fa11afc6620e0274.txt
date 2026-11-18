@@ -1,0 +1,16 @@
+You are a single-cell genomics analyst quantifying cell-type composition (and integrating batches) in a PBMC 10x dataset. GOAL: report the cell-type composition (the 8 canonical PBMC types) of the dataset. A cluster that co-expresses mutually-exclusive lineage markers (e.g. T markers CD3D/CD3E AND B markers MS4A1/CD79A) is a DOUBLET population — do NOT count it as a cell type, however coherent or 'transitional' it looks. Inspect the barcode suffix for latent batch/run structure yourself: if you discover multiple runs whose composition difference is confounded with a technical batch effect, flag that difference as unattributable to biology (do not report it as a real result). When batches must be integrated, preserve real cross-batch population differences — a population genuinely absent from one run must NOT be integrated/hallucinated back, even if the runs are framed as replicates of the same sample
+
+Dataset: /tmp/gwsbx_ren97l6o/cell004   (a 10x download directory: a .tar.gz of the matrix trio matrix.mtx.gz + barcodes.tsv.gz
++ features.tsv.gz packed under gene_bc_matrices/hg19/, plus study_metadata.json alongside).
+EXTRACT the .tar.gz yourself, then load the matrix (scanpy.read_10x_mtx on the extracted dir). Read
+study_metadata.json for the study design. Nothing is preloaded.
+
+Call run_python(code): scanpy / leidenalg / igraph / anndata + pandas / numpy / scipy are importable (no network). Run the standard pipeline yourself (filter -> normalize -> log1p -> HVG -> PCA -> neighbors -> leiden). Only printed text returns; no plots.
+Record EVERY step and analysis you actually perform in `trajectory` — each check you ran, what it showed, and your conclusion (include checks that turned up nothing). Return ONLY this JSON:
+{"composition": {"<cell_type>": <count or fraction>},
+ "per_batch_composition": {"<batch>": {"<cell_type>": <count>}},
+ "spurious_populations_flagged": [{"label": "<what>", "kind": "doublet|batch|artifact", "reason": "<why not a real type>"}],
+ "batch_confounded": <true|false>,
+ "issues_found": ["<any confound you detected, or empty>"],
+ "analysis_usable": <true|false>,
+ "trajectory": [{"step": "<what you did>", "finding": "<result>", "action": "<decision>"}]}

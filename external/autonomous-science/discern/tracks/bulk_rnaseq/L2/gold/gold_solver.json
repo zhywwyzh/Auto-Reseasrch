@@ -1,0 +1,231 @@
+{
+ "de": {
+  "clean": {
+   "n_de_padj05": 7088,
+   "n_up": 3918,
+   "canonical_in_top50": [
+    "CCNA2",
+    "IGHG1",
+    "MKI67",
+    "MZB1",
+    "PLK1",
+    "RRM2",
+    "TK1",
+    "UBE2C"
+   ]
+  },
+  "batch_confound": {
+   "batch_b_samples": [
+    "S062_258",
+    "S067_270",
+    "S071_280",
+    "S147_nCoV001EUHM-Draw-1",
+    "S150_nCoV003EUHM-Draw-1",
+    "S151_nCoV004EUHM-Draw-1",
+    "S154_nCoV0010EUHM-Draw-1",
+    "S155_nCOV021EUHM",
+    "S156_nCOV024EUHM-Draw-1",
+    "S175_nCoV024EUHM-Draw-2",
+    "S176_nCoV025EUHM-Draw-1",
+    "S179_nCoV033EUHM-Draw-1",
+    "S182_SHXA10",
+    "S183_263",
+    "S184_SHXA18"
+   ],
+   "naive": {
+    "lfc_corr": 0.9637353798065277,
+    "top500_jaccard": 0.680672268907563
+   },
+   "adjusted": {
+    "lfc_corr": 0.991616352724678,
+    "top500_jaccard": 0.8939393939393939
+   },
+   "batch_pc_discoverability": 0.9880753290575556
+  },
+  "normalization_default": {
+   "naive_minus_golden_lfc_median_offset": -0.13578045883276507,
+   "null_genes_shifted_ge_0.3": 102,
+   "n_null": 4842,
+   "min_sizefactor_over_totalcount": 0.758252405335367
+  },
+  "hidden_covariate": {
+   "naive": {
+    "lfc_corr": 0.9824237704881981,
+    "top500_jaccard": 0.7064846416382252
+   },
+   "adjusted_rin_group": {
+    "lfc_corr": 0.9866356705569794,
+    "top500_jaccard": 0.7921146953405018
+   },
+   "adjusted_rin_continuous": {
+    "lfc_corr": 0.9865937736742593,
+    "top500_jaccard": 0.8382352941176471
+   },
+   "best_adjusted": {
+    "lfc_corr": 0.9865937736742593,
+    "top500_jaccard": 0.8382352941176471
+   },
+   "naive_stat_length_corr": -0.315740155315116
+  }
+ },
+ "gsea": {
+  "clean": {
+   "top10_signed_sets": {
+    "HALLMARK_OXIDATIVE_PHOSPHORYLATION": 0.941,
+    "HALLMARK_E2F_TARGETS": 0.792,
+    "HALLMARK_MYC_TARGETS_V1": 0.716,
+    "HALLMARK_G2M_CHECKPOINT": 0.671,
+    "HALLMARK_MTORC1_SIGNALING": 0.641,
+    "HALLMARK_HEME_METABOLISM": 0.585,
+    "HALLMARK_COAGULATION": 0.552,
+    "HALLMARK_REACTIVE_OXYGEN_SPECIES_PATHWAY": 0.536,
+    "HALLMARK_CHOLESTEROL_HOMEOSTASIS": 0.512,
+    "HALLMARK_ADIPOGENESIS": 0.475
+   }
+  },
+  "ranking_metric_default": {
+   "n_strong_down_gobp": 158,
+   "golden_top_down": [
+    "GOBP_PHOSPHATIDYLINOSITOL_DEPHOSPHORYLATION",
+    "GOBP_NUCLEOTIDE_BINDING_DOMAIN_LEUCINE_RICH_REPEAT_CONTAINING_RECEPTOR_SIGNALING_PATHWAY",
+    "GOBP_REGULATION_OF_SMOOTH_MUSCLE_CELL_DIFFERENTIATION",
+    "GOBP_T_HELPER_17_CELL_DIFFERENTIATION",
+    "GOBP_CORONARY_VASCULATURE_DEVELOPMENT",
+    "GOBP_REGULATION_OF_T_HELPER_17_TYPE_IMMUNE_RESPONSE",
+    "GOBP_NEURAL_TUBE_PATTERNING",
+    "GOBP_PHOSPHOLIPID_DEPHOSPHORYLATION",
+    "GOBP_POSITIVE_REGULATION_OF_INTERLEUKIN_2_PRODUCTION",
+    "GOBP_POSITIVE_REGULATION_OF_RHO_PROTEIN_SIGNAL_TRANSDUCTION"
+   ],
+   "golden_down_findable_in_unsigned_top100": 0
+  },
+  "wrong_background_universe": {
+   "n_sig_expressed_universe": 36,
+   "n_sig_genome_universe": 135,
+   "n_spurious": 101,
+   "spurious_examples": [
+    "ADAPTIVE_IMMUNE_RESPONSE",
+    "ADAPTIVE_IMMUNE_RESPONSE_BASED_ON_SOMATIC_RECOMBINATION_OF_IMMUNE_RECEPTORS_BUILT_FROM_IMMUNOGLOBULIN_SUPERFAMILY_DOMAINS",
+    "APOPTOTIC_PROCESS",
+    "APOPTOTIC_SIGNALING_PATHWAY",
+    "CARBOHYDRATE_DERIVATIVE_METABOLIC_PROCESS",
+    "CELLULAR_CATABOLIC_PROCESS",
+    "CELLULAR_RESPONSE_TO_STRESS",
+    "CELL_CYCLE_CHECKPOINT_SIGNALING"
+   ]
+  },
+  "geneset_size_bias": {
+   "median_K_all": 44.0,
+   "median_K_top10_by_p": 421.5,
+   "top10_jaccard_p_vs_foldenrich": 0.0
+  }
+ },
+ "structure": {
+  "clean": {
+   "pc1_condition_corr": 0.9005792664182259,
+   "pc1_var": 0.29382929051958934,
+   "pc1_top10_loading_share": 0.006733823666679754,
+   "n_clusters_golden": 4,
+   "silhouette": {
+    "2": 0.39597108679216253,
+    "3": 0.3977986929048749,
+    "4": 0.4515316649207131,
+    "5": 0.3900338317481794,
+    "6": 0.3762968542018131
+   },
+   "bootstrap_coassignment": {
+    "2": 0.9443048128342246,
+    "3": 0.895445632798574,
+    "4": 0.963235294117647,
+    "5": 0.9354723707664884,
+    "6": 0.9255793226381462
+   }
+  },
+  "pca_on_raw_counts": {
+   "pc1_condition_corr_raw": 0.47611994097280824,
+   "pc1_top10_loading_share_raw": 0.2553091187482437,
+   "raw_pc1_top_loadings": [
+    "HBB",
+    "S100A9",
+    "S100A8",
+    "ACTB",
+    "IGHG1",
+    "HBA2",
+    "FOS",
+    "CD74",
+    "IGKC",
+    "B2M"
+   ],
+   "clean_pc1_condition_corr": 0.9005792664182259,
+   "clean_top10_loading_share": 0.006733823666679754
+  },
+  "composition_confound": {
+   "pc1_igfrac_corr": 0.7404180968092161,
+   "pc1_proliferation_corr": 0.8805501728009004,
+   "igfrac_covid_mean": 0.03337219474004634,
+   "igfrac_healthy_mean": 0.00419689634416115
+  }
+ },
+ "_verification": [
+  {
+   "check": "de/clean solvable",
+   "pass": true,
+   "detail": "7088 DE genes with canonical COVID-PBMC biology on top (8/8 canonical markers)"
+  },
+  {
+   "check": "batch_confound fires",
+   "pass": true,
+   "detail": "naive `~condition` degrades to top500-jac 0.68; `~batch+condition` recovers 0.89; batch axis discoverable in PCA (|corr|=0.99)"
+  },
+  {
+   "check": "normalization_default fires",
+   "pass": true,
+   "detail": "the prepared total-count-CPM path is globally offset -0.14 and shifts 102 truly-null genes by >=0.3 logFC (plasmablast/IG skew; SF/TC down to 0.76); median-of-ratios on raw counts is the robust move"
+  },
+  {
+   "check": "hidden_covariate fires",
+   "pass": true,
+   "detail": "RIN-coupled degradation contaminates naive DE (jac 0.71); modeling rin recovers (0.84); length-coupled tell corr -0.32"
+  },
+  {
+   "check": "gsea/clean solvable",
+   "pass": true,
+   "detail": "signed prerank produces strong directional hallmark calls (50 sets scored)"
+  },
+  {
+   "check": "ranking_metric_default fires",
+   "pass": true,
+   "detail": "the DOWN-regulated biology (158 strong GO-BP modules \u2014 lymphopenia/T-cell) is UNDISCOVERABLE from the prepared unsigned -log10(p) ranking (0/15 golden top-down sets in its top-100); a signed metric is required"
+  },
+  {
+   "check": "wrong_background_universe fires",
+   "pass": true,
+   "detail": "genome-background ORA fabricates 101 spurious Bonferroni-significant GO-BP sets (vs 36 with the correct expressed-gene universe)"
+  },
+  {
+   "check": "geneset_size_bias fires",
+   "pass": true,
+   "detail": "p-ranked ORA top-10 median set size 422 vs corpus median 44 (9.6x); size-aware (fold-enrichment) top-10 differs (jac 0.00)"
+  },
+  {
+   "check": "structure/clean solvable",
+   "pass": true,
+   "detail": "variance-stabilized PCA puts the real (condition) axis on PC1 (corr 0.90)"
+  },
+  {
+   "check": "pca_on_raw_counts fires",
+   "pass": true,
+   "detail": "untransformed PCA is hijacked by extreme-abundance genes (top-10 loading share 0.26 vs 0.01) and loses the condition axis (0.48 vs 0.90)"
+  },
+  {
+   "check": "composition_confound fires (attribution evidence exists)",
+   "pass": true,
+   "detail": "the main axis is substantially a plasmablast-composition axis (IGfrac corr 0.74, proliferation-signature corr 0.88) \u2014 naive 'expression program' reading is wrong"
+  },
+  {
+   "check": "structure/cluster golden stable",
+   "pass": true,
+   "detail": "the silhouette-selected k=4 is bootstrap-stable (0.96) \u2014 a defensible n_clusters golden for the clean world"
+  }
+ ]
+}

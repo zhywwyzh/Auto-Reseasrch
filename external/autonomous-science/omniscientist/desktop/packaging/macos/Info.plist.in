@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Template. build-app.sh substitutes @VERSION@ and @BUILD@ from the git tag.
+  Do not hard-code a version here.
+-->
+<plist version="1.0">
+<dict>
+    <key>CFBundleIdentifier</key>
+    <string>io.github.omni-scientist.desktop</string>
+    <key>CFBundleName</key>
+    <string>OmniScientist</string>
+    <key>CFBundleDisplayName</key>
+    <string>OmniScientist</string>
+    <key>CFBundleExecutable</key>
+    <string>OmniScientist</string>
+    <key>CFBundleIconFile</key>
+    <string>OmniScientist</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+    <key>CFBundleShortVersionString</key>
+    <string>@VERSION@</string>
+    <key>CFBundleVersion</key>
+    <string>@BUILD@</string>
+    <key>LSMinimumSystemVersion</key>
+    <string>12.0</string>
+    <key>LSApplicationCategoryType</key>
+    <string>public.app-category.productivity</string>
+    <key>NSHighResolutionCapable</key>
+    <true/>
+    <!-- Dock icon plus menu-bar item. Menu-bar-only (LSUIElement) shipped first, and
+         real users could not find the app at all: nothing in the Dock, nothing in
+         Cmd-Tab, and on notched MacBooks a crowded menu bar hides the status item
+         entirely. The Dock icon is the discoverable handle; clicking it opens the
+         workbench. -->
+    <key>LSUIElement</key>
+    <false/>
+    <key>NSHumanReadableCopyright</key>
+    <string>MIT licensed. See LICENSE in the source repository.</string>
+</dict>
+</plist>

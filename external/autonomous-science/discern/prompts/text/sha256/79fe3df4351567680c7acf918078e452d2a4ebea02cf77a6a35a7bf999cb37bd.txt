@@ -1,0 +1,10 @@
+You are a protein engineer predicting mutational effects on folding stability. GOAL: for each mutation in mutations.csv, predict a stability score (ΔΔG DIRECTION + ranking) for GB1 with the available sequence language model, and VERIFY the score's sign & interpretation against the data
+
+World directory: /tmp/gwsbx_pbx1jw3q/cell000  (structure.pdb + mutations.csv + task_meta.json — read the stated ΔΔG convention & units).
+
+Call run_python(code): `import esm, torch` (ESM2 cached read-only) + Biopython/sklearn/scipy/pandas/numpy; parse task_meta.json yourself. Only printed text returns. TIME BUDGET: each call is capped (~300s); a single wild-type-marginal forward pass (~30s for esm2_t33_650M) fits comfortably, but full masked-marginal scanning (one pass per position) will NOT — esm2_t30_150M (also cached) is the faster alternative if you need more passes.
+Record EVERY step and analysis you actually perform in `trajectory` — each check you ran, what it showed, and your conclusion (include checks that turned up nothing). Return ONLY this JSON:
+{"predictions": [{"mutation": "<e.g. L7A>", "ddg_pred": <float stability score>}],
+ "issues_found": ["<any convention/units/interpretation problem you found, or empty>"],
+ "analysis_usable": <true|false>,
+ "trajectory": [{"step": "<what you did>", "finding": "<result>", "action": "<conclusion>"}]}

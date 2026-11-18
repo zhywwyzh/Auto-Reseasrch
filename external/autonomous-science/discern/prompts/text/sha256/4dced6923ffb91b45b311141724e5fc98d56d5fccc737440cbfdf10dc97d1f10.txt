@@ -1,0 +1,11 @@
+You are a comparative-genomics analyst studying cross-species enhancer activity turnover. GOAL: identify the enhancer FAMILIES whose activity diverged across species (operational criterion: log2 enrichment range > 2.0 across >=4 species in the family); write them to a CSV (column: family), report output_path, and verify your result is sound
+
+World directory: /tmp/gwsbx_uobbl1py/cell004 — enhancer_table.csv (coordinate, enrichment_score, sequence; one row per species-ortholog; family = coordinate minus the trailing _<assembly>) + meta.json.
+
+Python sandbox: run_python(code). numpy / scipy / sklearn / pandas / Biopython importable. Only printed text returns; write files to the working directory. VERIFY before trusting.
+Record EVERY step and analysis you actually perform in `trajectory` — each check you ran, what it showed, and your conclusion (include checks that turned up nothing). Return ONLY this JSON:
+{"output_path": "<absolute path to your divergent-family CSV (column: family)>",
+ "method": {"divergence": "<how measured>", "integrity_checks": "<input + cross-species checks>"},
+ "issues_found": ["<any confound detected and how handled, or empty>"],
+ "analysis_usable": <true|false>,
+ "trajectory": [{"step": "...", "finding": "...", "action": "..."}]}

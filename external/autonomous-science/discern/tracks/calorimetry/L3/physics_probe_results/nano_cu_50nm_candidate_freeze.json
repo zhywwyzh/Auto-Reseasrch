@@ -1,0 +1,59 @@
+{
+  "created_utc": "2026-09-04T05:30:31.665322+00:00",
+  "track": "calorimetry",
+  "level": "L3",
+  "candidate_world": "cf_nano_cu_50nm",
+  "status": "SCIENTIFIC_CONCEPT_AND_MAGNITUDE_FROZEN",
+  "specimen_state": {
+    "material": "elemental copper",
+    "composition": "same-composition Cu benchmark specimen",
+    "crystal_structure": "fcc",
+    "mean_nanocrystalline_size_nm": 50.0,
+    "phase_transition_in_support": false,
+    "equilibrium_state": true
+  },
+  "literature_anchor": {
+    "citation": "Zhi-Cheng Tan, Lan Wang, Quan Shi, Pure and Applied Chemistry 81(10), 1871\u20131880 (2009)",
+    "doi": "10.1351/PAC-CON-08-09-15",
+    "reported_state": "50-nm nanocrystalline copper",
+    "reported_cp_enhancement": "about 3\u20136%",
+    "reported_temperature_range_k": [
+      100.0,
+      370.0
+    ],
+    "important_interpretation": "The publication discusses specimen-state contributors including open grain-boundary structure/density and thermal expansion. The benchmark does NOT interpret the reported enhancement as an isolated causal effect of grain size alone."
+  },
+  "benchmark_process_control": {
+    "fractional_cp_enhancement": 0.045,
+    "support_temperature_k": [
+      150.0,
+      300.0
+    ],
+    "parameter_origin": "+4.5% is the arithmetic midpoint of the published approximately 3\u20136% enhancement range.",
+    "historical_pointwise_measurement_claim": false,
+    "exact_curve_digitization_claim": false,
+    "model_tuned": false,
+    "upstream_intervention_only": true,
+    "solver_rule": "Modify only the upstream Cu Cp values and rerun the exact frozen final-L2 reference solver unchanged."
+  },
+  "sensitivity_only": {
+    "fractional_cp_enhancements": [
+      0.03,
+      0.06
+    ],
+    "role": "Published-range endpoints used only for deterministic pre-build sensitivity; not alternate promoted worlds."
+  },
+  "prebuild_results": {
+    "physical_coherence": "PASS",
+    "regime_preservation": "PASS",
+    "observability": "PASS",
+    "central_signal_over_stated_sigma": {
+      "min": 3.5708108108108108,
+      "median": 3.7482544930152244,
+      "max": 3.827045454545455,
+      "rows_ge_3sigma": "34/34"
+    },
+    "prior_gate": "PASS_6_OF_6"
+  },
+  "semantic_boundary": "This is a physically realizable benchmark specimen state. The benchmark may test whether evidence supports the specimen-specific Cp departure, but it must not claim that 50-nm grain size alone uniquely causes an exact constant +4.5% Cp enhancement."
+}

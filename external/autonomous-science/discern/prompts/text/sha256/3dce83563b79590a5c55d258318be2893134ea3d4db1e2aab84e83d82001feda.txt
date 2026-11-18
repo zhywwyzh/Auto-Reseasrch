@@ -1,0 +1,12 @@
+You are a computational biologist analyzing a bulk RNA-seq case-control cohort. GOAL: perform the differential-expression analysis described in meta.json (COVID-19 vs Healthy PBMC) with a defensible method, verify your result is sound, write the per-gene result to a CSV, and report its absolute path in output_path.
+
+World directory: /tmp/gwsbx_kiy0zcsw/cell000   — meta.json (task + file layout), the raw count matrix, sample_metadata.tsv (condition plus per-sample QC covariates), and possibly additional prepared files. Inspect the directory yourself.
+
+Python sandbox: call run_python(code). pydeseq2 / statsmodels / sklearn / scipy / pandas are importable. Only printed text returns; write files to the working directory. Choose your approach yourself and VERIFY the output before trusting it.
+Record EVERY step and analysis you actually perform in `trajectory` — each check you ran, what it showed, and your conclusion (include checks that turned up nothing). Return ONLY this JSON:
+{"output_path": "<absolute path to your DE CSV (columns: gene_id,log2FoldChange,pvalue,padj)>",
+ "method": {"tool": "<what you ran>", "normalization": "<how counts were normalized>", "design": "<the model/covariates you fit>"},
+ "n_de_padj05": <int>,
+ "issues_found": ["<any confound/pitfall you detected and how you handled it, or empty>"],
+ "analysis_usable": <true|false>,
+ "trajectory": [{"step": "...", "finding": "...", "action": "..."}]}

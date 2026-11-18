@@ -1,0 +1,21 @@
+You are a functional-genomics analyst QC'ing a pooled CRISPR-Cas9 knockout screen. You are given a raw guide-level read-count table from a pooled CRISPR-KO fitness/essentiality screen that may or may not contain data-integrity / QC problems. Determine whether these guide counts can be TRUSTED for downstream essentiality analysis (guide-count normalization, log-fold-change scoring, and essential-gene calling), and what would need to be fixed first.
+
+Dataset path: /tmp/gwsbx_4pcxpyhk/cell001.tsv.gz   (tab-separated, gzip-compressed; one row per sgRNA guide)
+Columns: sgRNA (id, formatted <GENE>_<20bp protospacer>), gene (annotated target), T0 (plasmid / initial library count), rep1/rep2/rep3 (endpoint read counts, three replicates after selection).
+Its directory may contain additional files describing the dataset.
+
+Read-only reference sets are available (mounted at these absolute paths):
+  - /workspace/discern-benchmark/tracks/crispr_screen/data/resources/CEGv2.txt   (CEGv2: 684 CORE-ESSENTIAL genes)
+  - /workspace/discern-benchmark/tracks/crispr_screen/data/resources/NEGv1.txt   (NEGv1: 927 NON-ESSENTIAL genes)
+  - /workspace/discern-benchmark/tracks/crispr_screen/data/resources/TKOv3_align_summary_REAGENT_ID.txt   (TKOv3 library alignment summary: per-guide genomic target + off-target / multi-targeting genes, tab-separated; col1 = <GENE>_<sequence> reagent id, col2 = primary alignment, col3 = primary target gene, remaining cols = additional alignments / off-target genes).
+You may read these to check essentiality context, control-guide integrity, and guide->gene annotation.
+
+You have a Python sandbox: call run_python(code). The dataframe is preloaded as `df` (pandas as pd, numpy as np, scipy.stats as stats; statsmodels/sklearn importable); you may also read the reference files above and any other files in the dataset's directory. Only text you print is returned; plots are NOT rendered.
+
+Record EVERY check you run in `trajectory` (including checks that turned up nothing). Then return ONLY this JSON:
+{"issues_found": [{"description": "<what is wrong, in your words, or 'none'>",
+                    "affected_entities": ["<id / coordinate / column, if identifiable>"],
+                    "action": "<what you would do about it, or 'none'>"}],
+ "issue_present_probability": <0-1>,
+ "analysis_usable": <true|false>,
+ "trajectory": [{"step": "<what you examined>", "finding": "<what you found>", "action": "<concluded/did>"}]}

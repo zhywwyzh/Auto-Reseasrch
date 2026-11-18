@@ -1,0 +1,27 @@
+{
+  "purpose": "Canonical compact daily summaries used by Nuclear Decay L2. Derived from the real long-term NaI Co-60 and Mn-54 measurement campaign and synchronous environmental record.",
+  "source_files": {
+    "co60": "tracks/nuclear_decay/raw/Multi year radiation measurement data/NaI_Co-60_1Dec2014to1June2016.csv",
+    "mn54": "tracks/nuclear_decay/raw/Multi year radiation measurement data/NaI_Mn-54_30Nov2014to1May2016.csv",
+    "environment": "tracks/nuclear_decay/raw/Multi year radiation measurement data/envirodata_10Feb2015to13Dec2016.csv"
+  },
+  "retained_clean_overlap": {
+    "start_date": "2015-05-04",
+    "end_date": "2016-02-01",
+    "reason": "Complete Co-60/environment overlap within the validated Co-60 analysis regime."
+  },
+  "files": {
+    "co60_daily_meta.csv.gz": {
+      "rows": 393,
+      "sha256": "1a0b4814d0950c480a0ec133a36f25b0d33e0f2686b81162eaead1a7d591dbb8"
+    },
+    "mn54_daily_meta.csv.gz": {
+      "rows": 297,
+      "sha256": "f5f6ea83c131f5c511dbc466c07800194235e471cc23aa384e927c426239441d"
+    },
+    "environment_daily.csv.gz": {
+      "rows": 515,
+      "sha256": "f55360e9dd69fb9461bf0c96fc3bd859d34ac2bb7fc0541158e08c86f8b82b14"
+    }
+  }
+}

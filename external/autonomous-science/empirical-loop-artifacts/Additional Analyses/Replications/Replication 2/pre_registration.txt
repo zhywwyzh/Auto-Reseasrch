@@ -1,0 +1,93 @@
+<pre-registration>
+    <metadata>
+        <title>Error Distribution Parameters in Visual Working Memory as Predictors of Visuospatial Cognitive Performance</title>
+        <description>An online experiment examining whether individual differences in visual working memory error distribution parameters predict mental rotation performance and visual imagery vividness. Participants complete orientation recall tasks, mental rotation tests, and imagery questionnaires to test whether distributional precision parameters capture shared cognitive mechanisms underlying visuospatial abilities.</description>
+        <contributors>Research team to be specified</contributors>
+
+        <license type="select_one">
+            <options>
+                - CC-By Attribution 4.0 International
+            </options>
+        </license>
+
+        <subject>Cognitive Psychology, Visual Working Memory, Spatial Cognition, Individual Differences, Psychometrics</subject>
+        <tags>visual working memory, mental rotation, circular statistics, von Mises distribution, spatial abilities, imagery, individual differences</tags>
+    </metadata>
+
+    <study_information>
+        <hypotheses>H1: Individual differences in visual working memory concentration parameters (κ) from von Mises distributions will positively predict mental rotation accuracy (directional hypothesis: higher κ predicts higher accuracy). This hypothesis is grounded in resource-based models of visual working memory (Bays & Husain, 2009) suggesting that precision parameters reflect individual differences in cognitive resource allocation that should generalize to other spatial tasks requiring precise spatial representations.
+
+H2: Individual differences in visual working memory concentration parameters (κ) will negatively predict mental rotation reaction times for correct trials (directional hypothesis: higher κ predicts faster responses). This is based on evidence that spatial working memory capacity correlates with mental rotation speed (Kane et al., 2004), suggesting shared cognitive mechanisms for spatial processing efficiency.
+
+H3: The relationship between κ and mental rotation performance will be strongest for larger angular disparities (50°, 100°, 150° vs. 0°) where precise spatial transformations are most demanding (directional hypothesis: interaction effect with rotation angle). This follows from theories that more demanding spatial transformations require greater precision in spatial representation maintenance (Miyake et al., 2001).
+
+H4: Individual differences in visual working memory concentration parameters (κ) will positively predict VVIQ2 imagery vividness ratings (directional hypothesis: higher κ predicts higher imagery scores). This hypothesis assumes that both precise working memory and vivid imagery rely on similar mechanisms for maintaining detailed spatial representations (Kosslyn et al., 2006).
+
+H5: All relationships will persist after controlling for domain-general cognitive factors including response time variability and overall task engagement (directional hypothesis: unique predictive validity of κ). This tests whether precision parameters capture spatial-specific mechanisms rather than general cognitive ability or task engagement factors.</hypotheses>
+    </study_information>
+
+    <design_plan>
+        <study_type type="select_one">
+            <options>
+                - Experiment
+            </options>
+        </study_type>
+
+        <blinding type="select_multiple">
+            <options>
+                - Personnel who analyze the data collected from the study are not aware of the treatment applied to any given group.
+            </options>
+        </blinding>
+        
+        <additional_blinding>Participants are unaware of the specific hypotheses regarding error distribution parameters.</additional_blinding>
+        <study_design>Within-subjects design where each participant completes three tasks: visual working memory (VWM) orientation recall, mental rotation test (MRT), and Vividness of Visual Imagery Questionnaire (VVIQ2). The VWM task manipulates set size (2, 4 items) and delay period (1000ms, 4000ms) within-subjects in a 2×2 factorial design. The MRT presents stimuli at four rotation angles (0°, 50°, 100°, 150°). Task order is counterbalanced across participants using random assignment to VWM-first or MRT-first conditions, with VVIQ2 always administered last via SurveyMonkey link after both cognitive tasks.</study_design>
+        <randomization>Simple randomization implemented through JavaScript will assign participants to one of two counterbalanced task orders: VWM-first followed by MRT, or MRT-first followed by VWM. Random assignment uses the condition 'if (Math.random() < 0.5)' to ensure equal probability assignment. The VVIQ2 questionnaire will always be presented after both cognitive tasks. Random assignment condition will be logged for verification of equal distribution across conditions.</randomization>
+    </design_plan>
+
+    <sampling_plan>
+        <existing_data type="select_one">
+            <options>
+                - Registration prior to creation of data
+            </options>
+        </existing_data>
+        
+        <existing_data_explanation>As of the date of submission, no data have been collected, created, or observed for this study.</existing_data_explanation>
+        <data_collection_procedures>Participants will be recruited via Prolific with pre-screening filters for adults aged 18-35, normal or corrected-to-normal vision, English proficiency, and no history of neurological or psychiatric conditions. The experiment will be conducted online using Pavlovia.org platform with a minimum browser requirement of 768×768 pixels. Participants will complete: (1) VWM orientation recall task with white bars at different orientations, (2) MRT with 3D object pairs requiring same/different judgments, and (3) VVIQ2 questionnaire via SurveyMonkey link. Compensation will be set at minimum £9/hour pro rata based on estimated 40-minute duration. Data will be automatically logged including trial parameters, response times, accuracy, and focus loss metrics (aggregate instances and duration during instruction screens and task trials).</data_collection_procedures>
+        <sample_size>Target final sample size is N=200 participants after exclusions. Initial recruitment will aim for N=211 participants to account for anticipated 30% attrition rate based on the updated power analysis conducted.</sample_size>
+
+<sample_size_rationale>Power analysis using R's pwr package determined that N=148 participants are required to detect a small-to-medium effect size (r=0.25) with 80% power and estimated FDR-adjusted alpha of 0.025. The analysis employed False Discovery Rate (FDR) correction using Benjamini-Hochberg method, which is more appropriate than Bonferroni correction for intercorrelated measures. FDR correction is applied separately within MRT domain (4 rotation angles) and VVIQ2 domain (8 subscales plus total score). Adding 30% expected attrition for online data collection yields initial recruitment target of N=211. The primary statistical approach uses linear mixed-effects models (LMEs) which typically provide similar or better power than simple correlations, making this sample size conservative for the sophisticated statistical modeling approach planned.</sample_size_rationale>
+
+<stopping_rule>Data collection will continue until N=200 valid participants are obtained after applying exclusion criteria, or until the initial recruitment pool of N=211 is exhausted, whichever occurs first.</stopping_rule>
+    </sampling_plan>
+
+    <variables>
+        <manipulated_variables>VWM task manipulates set size (2, 4 colored oriented bars) and delay period (1000ms or 4000ms retention interval) in a fully crossed within-subjects design. MRT task presents 3D object pairs at four rotation angles (0°, 50°, 100°, 150°) requiring same/different judgments. Task order is counterbalanced with participants randomly assigned to VWM-first or MRT-first conditions.</manipulated_variables>
+        <measured_variables>Primary dependent variables: (1) VWM recall errors measured as signed angular deviation between target and response orientation, normalized to ±90°; (2) MRT accuracy (proportion correct) and reaction times (ms) for correct trials only; (3) VVIQ2 total score and eight subscale scores (sum of 4 items per scenario, 32 items total rated 1-5).
+
+Key predictor variables: VWM concentration parameter (κ) and bias parameter (μ) from von Mises distribution fits to individual recall errors using maximum likelihood estimation.
+
+Control variables: Coefficient of variation of reaction times for correct trials across both tasks, total focus loss instances during task trials, total focus loss duration during task trials, participant age and sex from Prolific demographics.</measured_variables>
+        <indices>VWM concentration parameter (κ) will be extracted from maximum likelihood von Mises distribution fits to each participant's trial-level signed recall errors, with separate fitting for each set size and delay condition. Higher κ values indicate more precise (less variable) recall distributions.
+
+VVIQ2 total vividness score calculated as sum of all 32 items (range 32-160). Eight subscale scores calculated as sum of 4 items per imagery scenario (range 4-20 each).
+
+Domain-general control composite created from: (1) coefficient of variation of RT for correct trials across both tasks, (2) total focus loss instances during trials, (3) total focus loss duration during trials. These will be standardized and used as individual covariates rather than combined into a single composite.</indices>
+    </variables>
+
+    <analysis_plan>
+        <statistical_models>Primary analyses will use linear mixed-effects models (LMEs) to test relationships between VWM concentration parameters (κ) and MRT performance. MRT accuracy will be analyzed using logistic LMEs with participant random intercepts, modeling accuracy as a function of κ, rotation angle (categorical: 0°, 50°, 100°, 150°), and their interaction. MRT reaction times will be analyzed using linear LMEs on log-transformed RTs with the same model structure.
+
+VVIQ2 relationships will be tested using multiple regression models with κ predicting total scores and individual subscale scores separately, including the three control variables (RT coefficient of variation, focus loss instances, focus loss duration) as covariates.
+
+Given the measurement uncertainty in κ parameter estimation from limited trial data, we will conduct sensitivity analyses using bootstrap resampling to assess the stability of κ estimates and their relationships with external measures. Alternative circular distributions (wrapped normal, wrapped Cauchy) will be tested using AIC model comparison to validate the von Mises assumption.</statistical_models>
+        <transformations>VWM recall errors will be calculated as signed angular deviation (response - target orientation) and normalized to ±90° range. MRT reaction times will be log-transformed to normalize distributions. Individual RT outliers exceeding 3 standard deviations from participant's mean RT (calculated separately per rotation angle) will be excluded from RT analyses but retained for accuracy analyses. All control variables will be standardized (z-scored) before inclusion in models. κ parameters will be log-transformed if distributions are highly skewed.</transformations>
+        <inference_criteria>Two-tailed tests with α = 0.05 for primary analyses. Given the intercorrelated nature of MRT rotation angles and VVIQ2 subscales, we will apply False Discovery Rate (FDR) correction using the Benjamini-Hochberg procedure separately within each domain (MRT and VVIQ2) rather than a blanket Bonferroni correction. Effect sizes will be reported with 95% confidence intervals: standardized regression coefficients (β) for linear models, odds ratios for logistic models, and partial R-squared (ηp²) for regression models. Confidence intervals will be generated using bootstrapping methods.</inference_criteria>
+        <data_exclusion>Participant-level exclusions: (1) >3 attempts to pass practice blocks for either task, (2) >25% timeout rate on either task, (3) overall mean VWM absolute error or MRT accuracy >3 SD from group mean, (4) insufficient valid trials for reliable κ estimation (<60 valid VWM trials).
+
+Trial-level exclusions: VWM trials with timeouts or RT <200ms; MRT trials with timeouts or RT <200ms; MRT RT outliers >3 SD from participant's mean per rotation angle (excluded from RT analyses only).</data_exclusion>
+        <missing_data>VVIQ2 participants with >10% missing items or invariant response patterns (same value for >90% of items) will be excluded. No other missing data is expected as all cognitive task trials are required for completion. Focus loss metrics may have missing values if detection fails; these will be coded as zero instances/duration.</missing_data>
+        <exploratory_analysis>We will explore whether κ parameters estimated from different VWM conditions (set size, delay) show differential relationships with spatial performance, potentially indicating condition-specific precision mechanisms. Alternative approaches to κ estimation will be tested, including Bayesian estimation with different prior specifications and mixture modeling approaches that separate precision from guessing components. We will examine whether individual differences in practice block performance predict final κ estimates, potentially indicating strategic versus capacity-based individual differences.</exploratory_analysis>
+    </analysis_plan>
+
+    <other>This research applies circular statistics to individual differences in spatial cognition, bridging cognitive psychology and computational modeling. The maximum likelihood approach for κ estimation provides more straightforward implementation than hierarchical Bayesian methods while maintaining statistical rigor. If κ parameters significantly predict MRT performance and VVIQ2 scores after controlling for confounds, findings could inform educational interventions targeting spatial reasoning abilities and provide behavioral indices for clinical assessment of visuospatial processing. The conservative statistical approach acknowledges the challenges of detecting precision-based individual differences in online cognitive testing while maintaining scientific rigor.</other>
+</pre-registration>

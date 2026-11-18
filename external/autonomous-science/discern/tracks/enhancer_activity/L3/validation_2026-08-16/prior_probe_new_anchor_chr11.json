@@ -1,0 +1,26 @@
+{
+ "gpt-5.6-sol": {
+  "tail": "unknown",
+  "answer": "I do not recognize chr11:67,914,328\u201367,914,514 (hg38) as a specifically characterized enhancer or regulatory element, so I cannot reliably assign it a target gene or species/lineage-specific activity from established knowledge.\n\nunknown"
+ },
+ "claude-opus-5": {
+  "tail": "unknown",
+  "answer": "I don't recognize this specific 187\u2011bp interval (chr11:67,914,328\u201167,914,514, hg38) as a named, characterized regulatory element. It does not correspond to any enhancer I can identify from established literature \u2014 e.g., it is not one of the classic VISTA/hs\u2011numbered enhancers, a well\u2011known locus\u2011control region, or a functionally validated promoter\u2011distal element with an assigned target gene.\n\nWhat I can say from general genome knowledge is only positional context: this coordinate lies on the long arm of chromosome 11 in band 11q13, a gene\u2011dense region containing genes such as ALDH3B1/ALDH3B2, NDUFS8, TCIRG1, CHKA, KMT5B and LRP5 nearby. Regions of this density typically contain many candidate cis-regulatory elements in ENCODE/cCRE and Ensembl Regulatory Build annotations, so it is quite plausible that this interval overlaps a DNase\u2011hypersensitive/H3K27ac\u2011marked candidate element. But I cannot responsibly assert that it is a validated enhancer, name its target gene, or state the species/lineages or cell types in which it is active \u2014 doing so would be speculation.\n\nTo resolve it properly you would want to check: ENCODE SCREEN cCREs, ENCODE/Roadmap chromatin states, VISTA Enhancer Browser, FANTOM5 enhancer atlas, and Hi\u2011C/promoter\u2011capture Hi\u2011C or eQTL data for 11q13, plus PhyloP/PhastCons and multi\u2011species alignments for conservation.\n\nunknown"
+ },
+ "glm-5.2": {
+  "tail": "unknown",
+  "answer": "I do not recognize this specific coordinate (chr11:67,914,328\u201367,914,514, hg38) as a well-characterized enhancer or named regulatory element from established knowledge of the human genome. While this region lies within chromosome 11q13, an area rich in regulatory activity and cancer-associated amplification, I cannot identify this exact 187 bp window as a specifically annotated enhancer with a known target gene from the standard literature or major regulatory databases (e.g., VISTA, ENCODE cCREs, FANTOM5) based on my established knowledge.\n\nunknown"
+ },
+ "kimi-k3": {
+  "tail": "unknown",
+  "answer": "I do not recognize the exact interval chr11:67,914,328-67,914,514 (hg38) as an established, named enhancer/regulatory element with a validated target gene and a defined species/lineage activity pattern. It lies on 11q13, but I cannot cite from established knowledge a specific gene that this ~187 bp element regulates or a lineage in which it is active, so I will not infer one.\n\nunknown"
+ },
+ "gpt-4.1": {
+  "tail": "unknown",
+  "answer": "I do not recognize the specific region chr11:67,914,328-67,914,514 (hg38) as a well-established enhancer or regulatory element associated with a particular gene or lineage from established knowledge of the human genome.\n\nunknown"
+ },
+ "deepseek-v4-pro": {
+  "tail": "known",
+  "answer": "Yes \u2014 this interval corresponds to an ENCODE candidate cis-regulatory element (cCRE), EH11E0679143, annotated as an enhancer-like element in human (hg38). It lies within an intron of **CHKA**, and its predicted/nearest target gene is **CHKA** (choline kinase alpha). Activity is annotated in human cells/tissues; I am not aware of a specific validated function in other lineages.\n\nknown"
+ }
+}

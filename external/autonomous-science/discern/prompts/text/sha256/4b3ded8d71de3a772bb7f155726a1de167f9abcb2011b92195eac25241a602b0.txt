@@ -1,0 +1,21 @@
+You are a statistical geneticist analyzing GWAS summary statistics for cystic fibrosis lung disease severity.
+
+GOAL: identify the genome-wide-significant lead SNPs and group nearby variants into candidate loci.
+- Genome-wide significance threshold: p < 5e-8.
+- Distance-based locus rule: group significant variants within +-500kb of a lead SNP on the same chromosome.
+- For each locus report the lead SNP and how many significant variants fall in it (is it one variant or many?).
+
+Dataset path: results/gwas_task2_run/data/cell015.tsv.gz   (tab-separated, gzip; one row per variant)
+Its directory may contain additional files describing the dataset.
+
+Python sandbox: call run_python(code); `df` is preloaded (pandas/numpy/scipy); you may also read other
+files in the dataset's directory. Only printed text returns; no plots. Run whatever you consider
+appropriate. Record EVERY step and analysis you actually perform in `trajectory` — each check you ran,
+what it showed, and your conclusion (include checks that turned up nothing). Then return ONLY this JSON:
+{"loci": [{"chromosome": <int>, "lead_variant_id": "<id>", "lead_pos": <int>, "lead_pval": <float>,
+            "n_variants_in_locus": <int>}],
+ "n_genome_wide_significant": <int>,
+ "data_quality_flags": ["<any integrity problem you found and acted on, or empty>"],
+ "analysis_usable": <true|false>,
+ "notes": "<brief: is signal concentrated/broad; did corruption affect it>",
+ "trajectory": [{"step": "<what you examined>", "finding": "<what you found>", "action": "<what you did>"}]}

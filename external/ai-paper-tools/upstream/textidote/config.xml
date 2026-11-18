@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  Configuration file for AntRun.
+  
+  Use this file to override the default properties contained
+  in build.xml. For example, to override the build.jar.filename
+  property (which sets the name of the compiled jar file), add
+  an element
+  
+  <jar>
+    <filename>foo</filename>
+  </jar>
+  
+  inside the <build> element.
+  
+  **Caveat emptor:** in some cases, changing this file and running ant
+  again will result in Ant using a cached version of the old file! Run
+  "ant dummy" to make sure that the correct data is being read. Otherwise
+  you might need to run "ant clean" and start over.
+-->
+<build>
+  <!-- Uncomment any of these if you want to override the build
+       script's default values -->
+
+  <!-- The project's name -->
+  <name>TeXtidote</name>
+  
+  <!-- The project's author. Currently this only
+  shows up in the footer of the Javadoc documentation. -->
+  <author>Sylvain Hall&#233;</author>
+  
+  <!-- The project's version number -->
+  <version>0.9</version>
+
+  <!-- The JDK to compile for. Note that the current Language Tool bundle
+       contains binary files that are compiled for Java 9, but it it safer
+       to keep TeXtidote's code compliant with version 8. -->
+  <targetjdk>8</targetjdk>
+  
+  <!-- The project's main class -->
+  <mainclass>ca.uqac.lif.textidote.Main</mainclass>
+  
+  <!-- Redefine directories -->
+  <srcdir>Source/Core/src</srcdir>
+  <bindir>Source/Core/bin</bindir>
+  <depdir>Source/Core/dep</depdir>
+  <docdir>docs/javadoc</docdir>
+  <test>
+    <srcdir>Source/CoreTest/src</srcdir>
+    <bindir>Source/CoreTest/bin</bindir>
+  </test>
+  
+  <!-- Output jar -->
+  <jar>
+    <filename>textidote</filename>
+    <withdoc>false</withdoc>
+    <withdeps>true</withdeps>
+  </jar>
+  
+  <!--
+    Write JAR dependencies here.
+  -->
+  <dependencies>
+    <dependency>
+      <!--
+      Bullwinkle. Used mainly because of its Cli parser.
+      -->
+      <name>Bullwinkle</name>
+      <classname>ca.uqac.lif.bullwinkle.BnfParser</classname>
+      <files>
+        <zip>https://github.com/sylvainhalle/Bullwinkle/releases/download/v1.4.6/bullwinkle-1.4.6.zip</zip>
+      </files>
+      <bundle>true</bundle>
+    </dependency>
+    <dependency>
+      <!--
+      Language Tool. Checks grammar on plain text.
+      -->
+      <name>Language Tool</name>
+      <classname>org.languagetool.JLanguageTool</classname>
+      <files>
+        <jar>https://github.com/sylvainhalle/languagetool-bundle/releases/download/v6.9/languagetool-6.9-bundle.jar</jar>
+      </files>
+      <bundle>true</bundle>
+    </dependency>
+    <dependency>
+      <!--
+      json-lif, used to create JSON output
+      -->
+      <name>json-lif</name>
+      <classname>ca.uqac.lif.json.JsonElement</classname>
+      <files>
+        <zip>https://github.com/liflab/json-lif/releases/download/v1.6.4/json-lif-1.6.4.zip</zip>
+      </files>
+      <bundle>true</bundle>
+    </dependency>
+    <dependency>
+      <!--
+      Petit Poucet Core
+      -->
+      <name>Petit Poucet (Core)</name>
+      <classname>ca.uqac.lif.petitpoucet.Part</classname>
+      <files>
+        <jar>https://github.com/liflab/petitpoucet/releases/download/v2.3.2/petitpoucet-core-2.3.2.jar</jar>
+      </files>
+      <bundle>true</bundle>
+    </dependency>
+    <dependency>
+      <!--
+      Petit Poucet Functions
+      -->
+      <name>Petit Poucet (Functions)</name>
+      <classname>ca.uqac.lif.petitpoucet.function.Function</classname>
+      <files>
+        <jar>https://github.com/liflab/petitpoucet/releases/download/v2.3.2/petitpoucet-functions-2.3.2.jar</jar>
+      </files>
+      <bundle>true</bundle>
+    </dependency>
+  </dependencies>
+</build>

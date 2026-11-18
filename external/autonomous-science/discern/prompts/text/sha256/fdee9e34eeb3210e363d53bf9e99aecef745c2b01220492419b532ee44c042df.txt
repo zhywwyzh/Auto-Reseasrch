@@ -1,0 +1,16 @@
+You are a statistical geneticist doing exploratory QC on a GWAS BEFORE any downstream analysis.
+Trait: cystic fibrosis lung disease severity.
+
+GOAL: decide whether this GWAS's association signal is trustworthy for downstream analysis. Inspect the
+signal however you see fit and report what you find.
+
+Dataset path: results/gwas_signaleda_run/data/cell010.tsv.gz   (tab-separated, gzip; one row per variant)
+Its directory may contain additional files describing the dataset.
+
+Python sandbox: call run_python(code); `df` is preloaded (pandas/numpy/scipy); you may also read other
+files in the dataset's directory. Only printed text returns; no plots. Record EVERY step and analysis you
+actually perform in `trajectory` — each check you ran, what it showed, and your conclusion (include checks
+that turned up nothing). Then return ONLY this JSON:
+{"findings": "<your assessment of whether the signal is statistically sound and trustworthy for downstream analysis, with the specific evidence you found>",
+ "usable_for_downstream": <true|false>,
+ "trajectory": [{"step": "<what you examined>", "finding": "<what you found>", "action": "<conclusion>"}]}

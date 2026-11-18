@@ -1,0 +1,254 @@
+{
+ "scoring": {
+  "clean": {
+   "auroc_bf": 0.9982,
+   "n_essential": 3124,
+   "essential_thr": -2.506
+  },
+  "golden_csv": "/workspace/discern-benchmark/tracks/crispr_screen/L2/gold/golden_scores.csv",
+  "essential_thr": -2.506,
+  "guide_efficiency": {
+   "affected": [
+    "CCT3",
+    "BIRC5",
+    "BUB1B",
+    "ZMAT5",
+    "SF3B1",
+    "ISG20L2",
+    "U2AF1",
+    "MRPL43",
+    "TNPO3",
+    "MCM5",
+    "POLA2",
+    "DDOST"
+   ],
+   "truth": "essential",
+   "naive_mean": 1,
+   "median": 0,
+   "bf": 9,
+   "best_guide": 12,
+   "n": 12
+  },
+  "off_target_promiscuous": {
+   "affected": [
+    "OR1A2",
+    "TAAR2",
+    "C2orf83",
+    "KRTAP17-1",
+    "BPIFB3",
+    "DEFB129",
+    "RNF17",
+    "ZNF804B",
+    "LOR",
+    "TMPRSS11F"
+   ],
+   "truth": "non-essential",
+   "promiscuous_guides": {
+    "OR1A2": [
+     "OR1A2_AGATGGAACTTGGAAGACTG",
+     "OR1A2_GAAGGCTTTGAATAGACTCT"
+    ],
+    "TAAR2": [
+     "TAAR2_GAGGAAATCAGTGATGGCCA",
+     "TAAR2_AATCAGTGATGGCCATGGAG"
+    ],
+    "C2orf83": [
+     "C2orf83_AACAGACCAAGTGTGAGGGA",
+     "C2orf83_GCTGACCTTCATTCACCCTG"
+    ],
+    "KRTAP17-1": [
+     "KRTAP17-1_GGTGTGGGCTGGCAGCACAC",
+     "KRTAP17-1_GCTGTGGATCCAGTTGCTGT"
+    ],
+    "BPIFB3": [
+     "BPIFB3_GACAAGGATGAACTCGGCAA",
+     "BPIFB3_TGAGGAGCTCACGCTGCCAA"
+    ],
+    "DEFB129": [
+     "DEFB129_TCACCTGGTACTGTAGCATG",
+     "DEFB129_GATGGTGGCAGAGTTCATAG"
+    ],
+    "RNF17": [
+     "RNF17_AGTGCACCAGGTGTGGAAGG",
+     "RNF17_TCAGGGCTAGATCCCATCTG"
+    ],
+    "ZNF804B": [
+     "ZNF804B_ATCTTCCAGGGCCTTTGCTG",
+     "ZNF804B_TTACACTGAAGTCTTTCCCA"
+    ],
+    "LOR": [
+     "LOR_GCCACCGGAGGAGAAGCAGC",
+     "LOR_TCTGTCTGCGGCTACTCTGG"
+    ],
+    "TMPRSS11F": [
+     "TMPRSS11F_GAAGGGAAACAGCTATGGAA",
+     "TMPRSS11F_GGAAGGGAAACAGCTATGGA"
+    ]
+   },
+   "median_correct": 0,
+   "drop_flagged_correct": 10,
+   "n": 10
+  }
+ },
+ "calling": {
+  "clean": {
+   "n_essential": 3124,
+   "ceg_recall": 0.9923,
+   "neg_false": 40,
+   "essential_thr": -2.506
+  },
+  "golden_csv": "/workspace/discern-benchmark/tracks/crispr_screen/L2/gold/golden_essential.csv",
+  "essential_thr": -2.506,
+  "null_calibration": {
+   "ceg_recall_allgene_null": 0.7616,
+   "ceg_recall_neg_null": 0.9923
+  },
+  "replicate_irreproducible": {
+   "affected": [
+    "BRDT",
+    "B3GNT6",
+    "BANF2",
+    "KCNK10",
+    "RPTN",
+    "IFNK",
+    "TMPRSS11A",
+    "KRT74",
+    "TAAR5",
+    "KCNK16",
+    "NUTM1",
+    "CYLC2"
+   ],
+   "truth": "non-essential",
+   "pooled_wrong": 7,
+   "repaware_wrong": 0,
+   "n": 12
+  },
+  "threshold_sensitivity": {
+   "n_at_cutoffs": {
+    "-0.5": 3326,
+    "-1.0": 2065,
+    "-1.5": 1599
+   },
+   "swing_frac": 0.836
+  }
+ },
+ "context": {
+  "clean": {
+   "n_context": 1074,
+   "essential_thr": -2.506
+  },
+  "golden_csv": "/workspace/discern-benchmark/tracks/crispr_screen/L2/gold/golden_context.csv",
+  "essential_thr": -2.506,
+  "real_context_examples": [
+   "HSPA5",
+   "SDHB",
+   "NGDN",
+   "PDAP1",
+   "MRPS18B",
+   "MRP63",
+   "C1QBP",
+   "POLR2F",
+   "TBCA",
+   "GTPBP10",
+   "CENPN",
+   "NARFL",
+   "FAM96B",
+   "GPN1",
+   "C10orf2",
+   "CDC23",
+   "RTEL1",
+   "C9orf114",
+   "NAA25",
+   "RPE"
+  ],
+  "artifact_context_hit": {
+   "affected": [
+    "BSND",
+    "CYP11B1",
+    "RXFP2",
+    "BANF2",
+    "KRT75",
+    "OC90",
+    "TAS2R13",
+    "TMPRSS15"
+   ],
+   "truth": "non-essential(artifact)",
+   "naive_promotes": 7,
+   "robust_demotes": 8,
+   "n": 8
+  },
+  "over_correction_erases_real": {
+   "real_context_genes": [
+    "HSPA5",
+    "SDHB",
+    "NGDN",
+    "PDAP1",
+    "MRPS18B",
+    "MRP63",
+    "C1QBP",
+    "POLR2F",
+    "TBCA",
+    "GTPBP10",
+    "CENPN",
+    "NARFL",
+    "FAM96B",
+    "GPN1",
+    "C10orf2",
+    "CDC23",
+    "RTEL1",
+    "C9orf114",
+    "NAA25",
+    "RPE"
+   ],
+   "truth": "essential",
+   "note": "reproducible across all 3 reps + BF>thr; must be PRESERVED"
+  }
+ },
+ "_verification": [
+  {
+   "check": "scoring clean solvable",
+   "pass": true,
+   "detail": "clean CEG-vs-NEG AUROC(BF)=0.998 (correct tool separates)"
+  },
+  {
+   "check": "scoring guide_efficiency fires",
+   "pass": true,
+   "detail": "dead-guide dilution: naive gene-MEAN recovers 1/12 real essentials, best-guide 12/12, BF 9/12"
+  },
+  {
+   "check": "scoring off_target_promiscuous fires (median FAILS, alignment needed)",
+   "pass": true,
+   "detail": "two promiscuous guides: robust MEDIAN still wrong (0/10 correct); dropping the alignment-flagged guides recovers 10/10"
+  },
+  {
+   "check": "calling null_calibration fires",
+   "pass": true,
+   "detail": "ALL-GENE null z<-2 silently misses essentials (CEG recall 0.762) vs NEG-anchored null (0.992); all-gene sd=0.94 inflated by the essentials in the pool (NEG sd=0.39)"
+  },
+  {
+   "check": "calling replicate_irreproducible fires",
+   "pass": true,
+   "detail": "one-replicate depletion: pooled MEAN wrongly essential 7/12; rep-concordance(>=2/3) wrongly essential 0/12"
+  },
+  {
+   "check": "calling threshold_sensitivity is real",
+   "pass": true,
+   "detail": "arbitrary LFC cutoff swings the hit set by 84% over [-0.5,-1.5] ({-0.5: 3326, -1.0: 2065, -1.5: 1599}); NEG-anchored FDR is the stable calibration"
+  },
+  {
+   "check": "context real dependencies exist",
+   "pass": true,
+   "detail": "1074 genuine context-specific (non-core, reproducible) essentials available"
+  },
+  {
+   "check": "context artifact_context_hit fires",
+   "pass": true,
+   "detail": "artifact 'context hit': naive promotes 7/8; robust (rep-concordance OR median) demotes 8/8"
+  },
+  {
+   "check": "context over_correction guard has real signal",
+   "pass": true,
+   "detail": "20 real context essentials reproducible across all 3 reps (erasing them = over-correction)"
+  }
+ ]
+}

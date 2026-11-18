@@ -1,0 +1,307 @@
+{
+  "status": "FROZEN_DETERMINISTIC_PRE_MODEL",
+  "world_label": "fixed_photopeak_roi_default",
+  "issue_type": "tool-trap",
+  "route": "native_real_data",
+  "injection": false,
+  "prepared_rule": {
+    "native_no_injection": true,
+    "baseline_days": 14,
+    "fwhm_multiplier": 1.0,
+    "co60_gamma_energies_keV": [
+      1173.228,
+      1332.492
+    ],
+    "expected_channels": [
+      768.0915639972078,
+      868.6906841086308
+    ],
+    "peak_fits": [
+      {
+        "success": true,
+        "mu_channel": 766.073668786779,
+        "sigma_channels": 14.24229323199832,
+        "fwhm_channels": 33.538037589477476
+      },
+      {
+        "success": true,
+        "mu_channel": 867.592470212111,
+        "sigma_channels": 16.035642181194376,
+        "fwhm_channels": 37.761051642724034
+      }
+    ],
+    "roi_bounds": [
+      {
+        "center_channel": 766,
+        "halfwidth_channels": 34,
+        "lo": 732,
+        "hi_exclusive": 801
+      },
+      {
+        "center_channel": 868,
+        "halfwidth_channels": 38,
+        "lo": 830,
+        "hi_exclusive": 907
+      }
+    ],
+    "roi_fraction_relative_sd": 0.003698643834043556,
+    "roi_fraction_time_correlation": -0.9643173520017876
+  },
+  "naive_fit": {
+    "A_cps": 433.64495285968275,
+    "lambda_per_day": 0.0004067768680214733,
+    "half_life_days": 1703.99851872441,
+    "half_life_years": 4.665293685761561,
+    "mean_lifetime_days": 2458.3502126458457,
+    "mean_lifetime_years": 6.730596064738797,
+    "rmse_cps": 0.40616404486342583,
+    "weighted_rmse": 5.908280845911806,
+    "model": "exponential",
+    "weighting": "uncertainty",
+    "timescale": "half_life"
+  },
+  "robust_fit": {
+    "A_cps": 3065.2087511609693,
+    "lambda_per_day": 0.00036182838201048674,
+    "half_life_days": 1915.6794077581676,
+    "half_life_years": 5.244844374423457,
+    "mean_lifetime_days": 2763.741181505815,
+    "mean_lifetime_years": 7.566710969215099,
+    "rmse_cps": 0.22639350666005478,
+    "weighted_rmse": 1.2235685691825429,
+    "model": "exponential",
+    "weighting": "uncertainty",
+    "timescale": "half_life"
+  },
+  "sensitivity": [
+    {
+      "baseline_days": 7,
+      "fwhm_multiplier": 0.75,
+      "naive_fit": {
+        "A_cps": 396.2252232821877,
+        "lambda_per_day": 0.00043904312553533236,
+        "half_life_days": 1578.767870957505,
+        "half_life_years": 4.322430858199877,
+        "mean_lifetime_days": 2277.6805781452194,
+        "mean_lifetime_years": 6.235949563710388,
+        "rmse_cps": 0.7031092666977882,
+        "weighted_rmse": 10.758500545575782,
+        "model": "exponential",
+        "weighting": "uncertainty",
+        "timescale": "half_life"
+      },
+      "naive_accuracy": {
+        "accuracy": 0,
+        "half_life_abs_error_years": 0.92241351622358,
+        "lambda_relative_error": 0.21340156649902542
+      },
+      "roi_fraction_time_correlation": -0.9554225311159904
+    },
+    {
+      "baseline_days": 7,
+      "fwhm_multiplier": 1.0,
+      "naive_fit": {
+        "A_cps": 433.64495285968275,
+        "lambda_per_day": 0.0004067768680214733,
+        "half_life_days": 1703.99851872441,
+        "half_life_years": 4.665293685761561,
+        "mean_lifetime_days": 2458.3502126458457,
+        "mean_lifetime_years": 6.730596064738797,
+        "rmse_cps": 0.40616404486342583,
+        "weighted_rmse": 5.908280845911806,
+        "model": "exponential",
+        "weighting": "uncertainty",
+        "timescale": "half_life"
+      },
+      "naive_accuracy": {
+        "accuracy": 0,
+        "half_life_abs_error_years": 0.5795506886618966,
+        "lambda_relative_error": 0.12422598183490163
+      },
+      "roi_fraction_time_correlation": -0.9643173520017876
+    },
+    {
+      "baseline_days": 7,
+      "fwhm_multiplier": 1.25,
+      "naive_fit": {
+        "A_cps": 449.7235854802259,
+        "lambda_per_day": 0.0003950763523658403,
+        "half_life_days": 1754.4638559335783,
+        "half_life_years": 4.803460248962569,
+        "mean_lifetime_days": 2531.1563043743026,
+        "mean_lifetime_years": 6.929928280285565,
+        "rmse_cps": 0.29802885756623065,
+        "weighted_rmse": 4.2280539318233705,
+        "model": "exponential",
+        "weighting": "uncertainty",
+        "timescale": "half_life"
+      },
+      "naive_accuracy": {
+        "accuracy": 0,
+        "half_life_abs_error_years": 0.4413841254608881,
+        "lambda_relative_error": 0.09188878487257512
+      },
+      "roi_fraction_time_correlation": -0.9685378425809844
+    },
+    {
+      "baseline_days": 14,
+      "fwhm_multiplier": 0.75,
+      "naive_fit": {
+        "A_cps": 396.2252232821877,
+        "lambda_per_day": 0.00043904312553533236,
+        "half_life_days": 1578.767870957505,
+        "half_life_years": 4.322430858199877,
+        "mean_lifetime_days": 2277.6805781452194,
+        "mean_lifetime_years": 6.235949563710388,
+        "rmse_cps": 0.7031092666977882,
+        "weighted_rmse": 10.758500545575782,
+        "model": "exponential",
+        "weighting": "uncertainty",
+        "timescale": "half_life"
+      },
+      "naive_accuracy": {
+        "accuracy": 0,
+        "half_life_abs_error_years": 0.92241351622358,
+        "lambda_relative_error": 0.21340156649902542
+      },
+      "roi_fraction_time_correlation": -0.9554225311159904
+    },
+    {
+      "baseline_days": 14,
+      "fwhm_multiplier": 1.0,
+      "naive_fit": {
+        "A_cps": 433.64495285968275,
+        "lambda_per_day": 0.0004067768680214733,
+        "half_life_days": 1703.99851872441,
+        "half_life_years": 4.665293685761561,
+        "mean_lifetime_days": 2458.3502126458457,
+        "mean_lifetime_years": 6.730596064738797,
+        "rmse_cps": 0.40616404486342583,
+        "weighted_rmse": 5.908280845911806,
+        "model": "exponential",
+        "weighting": "uncertainty",
+        "timescale": "half_life"
+      },
+      "naive_accuracy": {
+        "accuracy": 0,
+        "half_life_abs_error_years": 0.5795506886618966,
+        "lambda_relative_error": 0.12422598183490163
+      },
+      "roi_fraction_time_correlation": -0.9643173520017876
+    },
+    {
+      "baseline_days": 14,
+      "fwhm_multiplier": 1.25,
+      "naive_fit": {
+        "A_cps": 449.7235854802259,
+        "lambda_per_day": 0.0003950763523658403,
+        "half_life_days": 1754.4638559335783,
+        "half_life_years": 4.803460248962569,
+        "mean_lifetime_days": 2531.1563043743026,
+        "mean_lifetime_years": 6.929928280285565,
+        "rmse_cps": 0.29802885756623065,
+        "weighted_rmse": 4.2280539318233705,
+        "model": "exponential",
+        "weighting": "uncertainty",
+        "timescale": "half_life"
+      },
+      "naive_accuracy": {
+        "accuracy": 0,
+        "half_life_abs_error_years": 0.4413841254608881,
+        "lambda_relative_error": 0.09188878487257512
+      },
+      "roi_fraction_time_correlation": -0.9685378425809844
+    },
+    {
+      "baseline_days": 30,
+      "fwhm_multiplier": 0.75,
+      "naive_fit": {
+        "A_cps": 396.3673714908379,
+        "lambda_per_day": 0.0004281685783798308,
+        "half_life_days": 1618.8651282697595,
+        "half_life_years": 4.4322111656940715,
+        "mean_lifetime_days": 2335.5286924228576,
+        "mean_lifetime_years": 6.394329068919528,
+        "rmse_cps": 0.6535758922342219,
+        "weighted_rmse": 9.991042952622855,
+        "model": "exponential",
+        "weighting": "uncertainty",
+        "timescale": "half_life"
+      },
+      "naive_accuracy": {
+        "accuracy": 0,
+        "half_life_abs_error_years": 0.8126332087293857,
+        "lambda_relative_error": 0.18334713269513858
+      },
+      "roi_fraction_time_correlation": -0.9486614831661109
+    },
+    {
+      "baseline_days": 30,
+      "fwhm_multiplier": 1.0,
+      "naive_fit": {
+        "A_cps": 433.75125145246847,
+        "lambda_per_day": 0.0004026711071291804,
+        "half_life_days": 1721.373022022108,
+        "half_life_years": 4.712862483291192,
+        "mean_lifetime_days": 2483.416322391344,
+        "mean_lifetime_years": 6.799223333035849,
+        "rmse_cps": 0.3784966925788609,
+        "weighted_rmse": 5.505524663464284,
+        "model": "exponential",
+        "weighting": "uncertainty",
+        "timescale": "half_life"
+      },
+      "naive_accuracy": {
+        "accuracy": 0,
+        "half_life_abs_error_years": 0.5319818911322649,
+        "lambda_relative_error": 0.11287872137545563
+      },
+      "roi_fraction_time_correlation": -0.9627630802916164
+    },
+    {
+      "baseline_days": 30,
+      "fwhm_multiplier": 1.25,
+      "naive_fit": {
+        "A_cps": 449.8280610038113,
+        "lambda_per_day": 0.0003939158539869979,
+        "half_life_days": 1759.6326056549735,
+        "half_life_years": 4.81761151445578,
+        "mean_lifetime_days": 2538.6132339649553,
+        "mean_lifetime_years": 6.950344240834922,
+        "rmse_cps": 0.2885805182734244,
+        "weighted_rmse": 4.093152678296131,
+        "model": "exponential",
+        "weighting": "uncertainty",
+        "timescale": "half_life"
+      },
+      "naive_accuracy": {
+        "accuracy": 0,
+        "half_life_abs_error_years": 0.42723285996767757,
+        "lambda_relative_error": 0.08868146771189767
+      },
+      "roi_fraction_time_correlation": -0.9684683668554153
+    }
+  ],
+  "gold_half_life_years": 5.244844374423457,
+  "gold_lambda_per_day": 0.00036182838201048674,
+  "selection_provenance": {
+    "candidate_named_model_calls": 0,
+    "central_rule_selected_before_candidate_model_evaluation": true,
+    "neighboring_sensitivity_frozen_before_candidate_model_evaluation": true,
+    "retired_world": "dead_time_correction_default"
+  },
+  "continuity": {
+    "clean_temperature_mn54_gold_preserved": true,
+    "cells000_002_semantically_preserved": true
+  },
+  "canonical_source_sha256": {
+    "l2_common.py": "b4013adcbf792cc60628871c68bba927f64fcf27a379900e435b5856b6de049f",
+    "photopeak_roi.py": "3bfc6e75e228dabf233917e5b635f815b4dabd5bc1c43d61faa2f7b8fc21bbbd",
+    "reference_solver.py": "021cf9205f1624a77baf9974a22455b401c8d6fb4b3d6c825d90728fbff6011b",
+    "world_builder.py": "dcd7e8bf10887b5ffeb59231bdfa6c6325c36270c25edfecbc4728388b34d67d",
+    "grade_nuclear_decay_l2.py": "9007eb9ff04ebe740ff07b02bec73d7d68918231e8c48fe777e88af80307d184",
+    "validate_grader.py": "528283895a06d2f90f02be43cb7f6e7a024acc82e6d6c33e65f8732018786dc6",
+    "decay_runtime.py": "b9448f412ae2155319ec9a29f0cf77936340cbf493f91169293672737e66d4f5"
+  },
+  "preintegration_archive": "tracks/nuclear_decay/archive_pre_photopeak_l2_20260901_184911"
+}
