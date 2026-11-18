@@ -28,6 +28,8 @@ def _git_root(directory):
 def _assert_private(path, label, owners):
     path = Path(path).resolve()
     owner = _git_root(path.parent if path.is_file() else path)
+    if owner is None:
+        return {'label': label, 'path': str(path), 'git': False}
     current = path if path.is_dir() else path.parent
     while current != current.parent and current != owner:
         marker = current / '.git'
@@ -36,8 +38,6 @@ def _assert_private(path, label, owners):
         current = current.parent
     if owner is not None and _git_root(owner.parent) is not None:
         raise ValueError('任务不能作为嵌套Git仓库：' + str(owner))
-    if owner is None:
-        return {'label': label, 'path': str(path), 'git': False}
     relative = str(path.relative_to(owner))
     ignored = subprocess.run(['git', '-C', str(owner), 'check-ignore', '--no-index', '--', relative],
                              capture_output=True, text=True)
@@ -98,6 +98,9 @@ def validate_registration(repo, info, directory, checkout=None):
             checks.append(_assert_private(repo / info['workspace'] / value, 'source', owners))
         if checkout:
             tree = Path(checkout).resolve()
+            checkout_owner = _git_root(tree)
+            if checkout_owner is not None and checkout_owner != _git_root(repo):
+                raise ValueError('执行副本须使用普通本地目录，不能建立独立Git仓库：' + str(tree))
             for key in ('workspace', 'docs', 'paper_reserved'):
                 if info.get(key):
                     checks.append(_assert_private(tree / info[key], 'checkout.' + key, owners))

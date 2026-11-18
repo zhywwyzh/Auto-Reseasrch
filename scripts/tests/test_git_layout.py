@@ -61,6 +61,25 @@ class SingleRepositoryTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'submodules'):
             check_git_scope.check_content(self.repo)
 
+    def test_former_execution_directory_with_auxiliary_files_is_not_a_git_repository(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            plain = Path(temporary)
+            cache = plain / '.git/editor-cache'
+            cache.mkdir(parents=True)
+            (cache / 'state.json').write_text('{"synthetic":true}')
+            result = boundary._assert_private(plain, 'checkout.workspace', set())
+            self.assertFalse(result['git'])
+
+    def test_external_execution_repository_is_rejected(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            outside = Path(temporary)
+            subprocess.run(['git', 'init', '-q', str(outside)], check=True)
+            info = {'id': 'SYNTHETIC-A', 'workspace': 'workspaces/private-example',
+                    'docs': 'docs/topics/private-example'}
+            with self.assertRaisesRegex(ValueError, '独立Git'):
+                boundary.validate_registration(self.repo, info,
+                    self.repo / info['workspace'] / 'runs/example', checkout=outside)
+
 
 if __name__ == '__main__':
     unittest.main()
