@@ -32,37 +32,43 @@ def verify(root, group=None):
     for row in lock['repositories']:
         relative = row['path']
         prefix = 'external/'
-        if not relative.startswith(prefix):
-            raise ValueError('Repository must be inside external/')
-        relative = relative[len(prefix):]
-        repo = safe_path(root, relative)
-        if group and relative.split('/')[0] != group:
+        if relative.startswith(prefix):
+            relative = relative[len(prefix):]
+            repo = safe_path(root, relative)
+            category = relative.split('/')[0]
+        elif relative.startswith('paper-review-ai/upstream/'):
+            repo = safe_path(root.parent, relative)
+            category = 'paper-review-ai'
+        else:
+            raise ValueError('Source must be inside an approved shared dependency directory')
+        if group and category != group:
             continue
         repos += 1
         for entry in row['files']:
             path = safe_path(repo, entry['path'])
             if not path.is_file():
-                failures.append(str(path.relative_to(root)) + ': missing')
+                failures.append(str(path) + ': missing')
                 continue
             raw = path.read_bytes()
             files += 1
             total += len(raw)
             if hashlib.sha256(raw).hexdigest() != entry['sha256']:
-                failures.append(str(path.relative_to(root)) + ': changed from recorded upstream source')
+                failures.append(str(path) + ': changed from recorded upstream source')
     if not repos:
         raise ValueError('No source repositories selected')
     # Scan all external directories, including ones not selected by the group.
     # Unlisted local data is allowed; independent Git management is not.
-    for parent, directories, names in os.walk(root, followlinks=False):
-        if '.git' in directories or '.git' in names:
-            failures.append(str((Path(parent) / '.git').relative_to(root)) + ': nested Git metadata')
-        directories[:] = [d for d in directories if d not in {'.git', 'node_modules', '.venv', '__pycache__'}]
+    for directory in (root, root.parent / 'paper-review-ai/upstream'):
+        for parent, directories, names in os.walk(directory, followlinks=False):
+            if '.git' in directories or '.git' in names:
+                failures.append(str(Path(parent) / '.git') + ': nested Git metadata')
+            directories[:] = [d for d in directories if d not in {'.git', 'node_modules', '.venv', '__pycache__'}]
     return {'repositories': repos, 'files_checked': files, 'bytes_checked': total, 'failures': failures}
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--group', choices=['autonomous-science', 'ai-paper-tools'])
+    parser.add_argument('--group', choices=['autonomous-science', 'ai-paper-tools', 'paper-review-ai'])
     args = parser.parse_args()
     try:
         result = verify(Path(__file__).resolve().parent, args.group)

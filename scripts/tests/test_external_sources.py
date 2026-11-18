@@ -58,6 +58,21 @@ class VendoredSourcesTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'No source repositories'):
             sources.verify(self.root, 'ai-paper-tools')
 
+    def test_review_tools_share_the_same_main_repository_manifest(self):
+        external = self.root / 'combined/external'
+        external.mkdir(parents=True)
+        review = external.parent / 'paper-review-ai/upstream/synthetic-review'
+        review.mkdir(parents=True)
+        raw = b'print("synthetic review tool")\n'
+        (review / 'main.py').write_bytes(raw)
+        lock = {'format': 1, 'mode': 'vendored-source', 'repositories': [{
+            'path': 'paper-review-ai/upstream/synthetic-review',
+            'files': [{'path': 'main.py', 'sha256': hashlib.sha256(raw).hexdigest()}]}]}
+        (external / 'sources.lock.json').write_text(json.dumps(lock))
+        result = sources.verify(external, 'paper-review-ai')
+        self.assertEqual(result['files_checked'], 1)
+        self.assertEqual(result['failures'], [])
+
 
 if __name__ == '__main__':
     unittest.main()

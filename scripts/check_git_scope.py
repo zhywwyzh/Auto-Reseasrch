@@ -74,8 +74,9 @@ def check_content(repo):
             raise ValueError('Unmerged index cannot be published')
         if mode == '120000':
             raise ValueError('Public source cannot contain a symlink: ' + name.decode())
-        if mode != '160000':
-            entries.append((name.decode(), oid))
+        if mode == '160000':
+            raise ValueError('Nested repositories/submodules cannot be published: ' + name.decode())
+        entries.append((name.decode(), oid))
     return content_violations(repo, entries)
 
 

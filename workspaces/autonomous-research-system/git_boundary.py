@@ -9,6 +9,7 @@ INSTRUCTION = (
     '本任务及其后续任务的全部研究内容只写入本地Git忽略区，包括代码、设计、原始资料、'
     '实验、结果、报告、稿件、审稿、授权和任务配置。不得把研究内容移入系统源码、公共文档或规则目录。'
     '只有可复用的智能系统实现、公共规则和通用工具可以进入Git；系统目录不是任务内容的上传豁免区。'
+    '不得为任务、实验、稿件或执行副本创建独立Git仓库、子模块或Git工作树；全部使用本地忽略目录。'
     '不得强制添加、提交或推送研究内容。修复系统代码时也不能把实际任务数据写进公共源码或测试。'
 )
 
@@ -27,6 +28,14 @@ def _git_root(directory):
 def _assert_private(path, label, owners):
     path = Path(path).resolve()
     owner = _git_root(path.parent if path.is_file() else path)
+    current = path if path.is_dir() else path.parent
+    while current != current.parent and current != owner:
+        marker = current / '.git'
+        if marker.exists() and not (marker.is_dir() and not marker.is_symlink() and not any(marker.iterdir())):
+            raise ValueError('任务只能使用本地忽略目录，不能建立独立Git仓库：' + str(current))
+        current = current.parent
+    if owner is not None and _git_root(owner.parent) is not None:
+        raise ValueError('任务不能作为嵌套Git仓库：' + str(owner))
     if owner is None:
         return {'label': label, 'path': str(path), 'git': False}
     relative = str(path.relative_to(owner))

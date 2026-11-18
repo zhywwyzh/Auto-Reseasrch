@@ -32,6 +32,8 @@ def inspect(repo, revision):
             paths.append(name)
             if mode == '120000':
                 failures.append((commit, name, 'symlink'))
+            elif mode == '160000':
+                failures.append((commit, name, 'nested repository/submodule'))
             elif kind == 'blob':
                 entries.append((name, oid))
         ignored = subprocess.run(['git', '-C', str(repo), 'check-ignore', '--no-index', '-z', '--stdin'],

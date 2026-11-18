@@ -4,7 +4,8 @@
 
 - `autonomous-science/`：自主科研相关项目。
 - `ai-paper-tools/upstream/`：论文写作与检查工具。
-- `sources.lock.json`：19 个上游项目的地址、固定提交、提交日期，以及纳入主仓库的文件 SHA-256 清单。
+- `sources.lock.json`：28 个上游项目的地址、固定提交、提交日期，以及纳入主仓库的文件 SHA-256 清单。
+- `../paper-review-ai/upstream/`：论文评审工具的公共源码，原有阅读与工具路径保留。
 - `.gitignore`：逐文件允许清单，默认拒绝未审查的新文件。
 
 克隆主仓库即可取得已纳入的源码，无须 `git submodule update` 或再次克隆上游。离线检查：

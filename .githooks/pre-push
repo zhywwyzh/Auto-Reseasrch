@@ -1,4 +1,5 @@
 #!/bin/sh
 set -eu
 python3 scripts/check_git_scope.py
+python3 scripts/check_git_layout.py
 python3 scripts/check_git_history.py --pre-push
