@@ -4,6 +4,7 @@ The agent edits a private source snapshot. The controller, not the agent, checks
 the diff, runs frozen tests, applies the patch and releases the original task.
 No new scientific acceptance, experiment budget or research job is granted.
 """
+import ast
 import execution_limits
 import hashlib
 import json
@@ -18,7 +19,7 @@ PHASE = 'code_repair'
 VERSION = 'agent-code-repair-v1'
 POLICY = {'enabled': True, 'version': VERSION, 'validation_timeout_seconds': 120}
 SOURCE_SUFFIXES = {'.py', '.sh', '.js', '.ts', '.tsx', '.jsx', '.json', '.toml', '.yaml', '.yml', '.md', '.html', '.css'}
-SKIP = {'runs', 'datasets', '.venv', '.git', 'node_modules', '__pycache__', 'artifacts', 'build'}
+SKIP = {'runs', 'datasets', '.venv', '.git', 'node_modules', '__pycache__', 'artifacts', 'build', '.aws', '.agents', '.codex'}
 CODE_SUFFIXES = {'.py', '.sh', '.js', '.ts', '.tsx', '.jsx'}
 
 
@@ -59,6 +60,13 @@ def roots(state):
     return [p for p in result if p.is_dir()]
 
 
+def snapshot_paths(root):
+    for directory, children, files in os.walk(root):
+        children[:] = sorted(child for child in children if child not in SKIP)
+        for name in sorted(files):
+            yield Path(directory) / name
+
+
 def snapshot(store, directory, controller_only=False):
     repo = Path(store.state()['repo']).resolve()
     candidate = directory / 'candidate'; candidate.mkdir(parents=True)
@@ -67,10 +75,8 @@ def snapshot(store, directory, controller_only=False):
     if controller_only:
         selected_roots = [p for p in selected_roots if p == repo / 'workspaces/autonomous-research-system']
     for root in selected_roots:
-        for path in sorted(root.rglob('*')):
+        for path in snapshot_paths(root):
             relative = path.relative_to(repo)
-            if any(part in SKIP for part in path.relative_to(root).parts):
-                continue
             if (not path.is_file() or path.is_symlink() or path.suffix not in SOURCE_SUFFIXES
                     or not path.resolve().is_relative_to(root.resolve())):
                 continue
@@ -85,10 +91,9 @@ def snapshot(store, directory, controller_only=False):
             target = candidate / relative; target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(path, target); total += size
             files[str(relative)] = {'sha256': digest(path), 'mode': path.stat().st_mode & 0o777,
-                                    'protected': 'tests' in relative.parts or path.name.startswith('test_')
-                                    or path.name in ('AGENTS.md', 'runtime_policy.py', 'research_assurance.py',
-                                         'research_quality.py', 'paper_workflow.py', 'ucs_paper_profile.py',
-                                         'bearing_paper_profile.py', 'manuscript_quality.py')}
+                                    'protected': path.name.endswith(('_profile.py', '_validator.py')) or 'tests' in relative.parts or path.name.startswith('test_')
+                                    or path.name in ('code_repair.py', 'git_boundary.py', 'AGENTS.md', 'runtime_policy.py', 'research_assurance.py',
+                                         'research_quality.py', 'paper_workflow.py', 'manuscript_quality.py')}
     for path in (repo/'AGENTS.md', repo/'workspaces/topics.json', repo/'.gitignore',
                  repo/'scripts/check_git_scope.py'):
         if path.is_file():
@@ -105,12 +110,119 @@ def snapshot(store, directory, controller_only=False):
             'original_repo': str(repo), 'source_bytes': total}
 
 
-def queue(store, failed, error, category, controller_incident=None):
+def repaired_since_diagnosis(store, task):
+    row = store.db.execute("""
+        SELECT type FROM events
+        WHERE (type='code_repair.verified' AND json_extract(payload,'$.failed_task')=?)
+           OR (type='self_repair.queued' AND json_extract(payload,'$.task_id')=?)
+        ORDER BY seq DESC LIMIT 1
+    """, (task['id'], task['id'])).fetchone()
+    return bool(row and row[0] == 'code_repair.verified')
+
+
+def diagnosed_technical_fault(store, task, error):
+    """A completed diagnostic may identify a code defect without a traceback."""
+    previous = store.db.execute("""
+        SELECT 1 FROM events WHERE type='self_repair.queued'
+        AND json_extract(payload,'$.task_id')=? LIMIT 1
+    """, (task['id'],)).fetchone()
+    if not previous:
+        return False
+    summary = error.casefold()
+    return any(term in summary for term in (
+        '代码缺陷', '兼容补丁', '接口不兼容', '校验器冲突', '写入范围的控制器',
+        '兼容修复', 'code defect', 'incompatible schema', 'controller write scope'))
+
+
+def controller_handoff(store, task):
+    """Only consume a source-checked handoff from this campaign's artifacts."""
+    verification = json.loads(task.get('verification') or '{}')
+    repo = Path(store.state()['repo']).resolve()
+    system = repo / 'workspaces/autonomous-research-system'
+    artifacts = (store.directory / 'artifacts').resolve()
+    patch_handoff = None
+    for ref in verification.get('sources', []):
+        if ref.get('status') != 'source_match_only':
+            continue
+        path = Path(ref.get('source', '')).resolve()
+        if not path.is_relative_to(artifacts) or (path.name != 'controller-handoff.json' and path.suffix != '.patch'):
+            continue
+        if not path.is_file() or path.stat().st_size > 100_000 or digest(path) != ref.get('sha256'):
+            continue
+        try:
+            if path.suffix == '.patch':
+                # Older executors cite a proposed unified diff in the original
+                # report, before they know the structured handoff format.
+                lines = path.read_text().splitlines()
+                if not any(line.startswith('@@ ') for line in lines):
+                    continue
+                headers = [line[4:].split('\t')[0] for line in lines if line.startswith('+++ ')]
+                if len(headers) != 1:
+                    continue
+                raw = headers[0].removeprefix('b/')
+                target = (repo / raw).resolve()
+                if target.parent == system and target.suffix == '.py' and target.is_file():
+                    patch_handoff = dict(target=str(target.relative_to(repo)), before=digest(target),
+                                         evidence=str(path), evidence_sha256=ref['sha256'])
+                continue
+            data = json.loads(path.read_text())
+        except (ValueError, UnicodeError):
+            continue
+        if not isinstance(data, dict) or data.get('blocker_kind') != 'controller_write_scope_required':
+            continue
+        raw = data.get('target')
+        if not isinstance(raw, str):
+            continue
+        target = (repo / raw).resolve()
+        if (target.parent != system or target.suffix != '.py' or not target.is_file()
+                or target.stat().st_size > 5_000_000
+                or digest(target) != data.get('expected_current_source_sha256')):
+            continue
+        return dict(target=str(target.relative_to(repo)), before=digest(target),
+                    evidence=str(path), evidence_sha256=ref['sha256'])
+    return patch_handoff
+
+
+def compatible_failure_guard(original, proposed):
+    """Permit one narrow normalization in an existing per-row rejection guard."""
+    try:
+        before, after = ast.parse(original), ast.parse(proposed)
+    except (ValueError, SyntaxError):
+        return False
+    for loop in ast.walk(before):
+        if not isinstance(loop, ast.For) or not isinstance(loop.target, ast.Name):
+            continue
+        row = loop.target.id
+        for guard, branch in zip(loop.body, loop.body[1:]):
+            if not (isinstance(guard, ast.If) and len(guard.body) == 1
+                    and isinstance(guard.body[0], ast.Raise) and not guard.orelse
+                    and isinstance(branch, ast.If) and branch.body
+                    and isinstance(branch.body[-1], ast.Continue) and not branch.orelse
+                    and ast.unparse(branch.test) == f"{row}['status'] != 'succeeded'"):
+                continue
+            test = guard.test
+            if not (isinstance(test, ast.Compare) and len(test.ops) == 1
+                    and isinstance(test.ops[0], ast.NotIn)
+                    and ast.unparse(test.left) == f"{row}.get('status')"
+                    and isinstance(test.comparators[0], ast.Tuple)):
+                continue
+            extra = (f"{row}.get('status') == 'failed' and {row}.get('reason') "
+                     f"and {row}.get('failure_class') == 'scientific_outcome' "
+                     f"and {row}.get('attempted') is not False")
+            guard.test = ast.parse(f"({ast.unparse(test)}) and not ({extra})", mode='eval').body
+            matches = ast.dump(before) == ast.dump(after)
+            guard.test = test
+            if matches:
+                return True
+    return False
+
+
+def queue(store, failed, error, category, controller_incident=None, handoff=None):
     """Called in the scheduler transaction, once per terminal failed operation."""
     import ars
     directory = store.directory / 'artifacts/code-repairs' / ars.uid()
     directory.mkdir(parents=True)
-    saved = snapshot(store, directory, controller_only=bool(controller_incident))
+    saved = snapshot(store, directory, controller_only=bool(controller_incident or handoff))
     instruction = ('你是本研究任务自动触发的代码修复执行器，不是重新执行失败任务。'
         '先读取code_repair上下文的原始异常、回执、源快照和冻结验收命令。'
         '在candidate中复现错误、定位根因、实际修改代码；保留原科学目标、数据、阈值与验收器。'
@@ -124,13 +236,20 @@ def queue(store, failed, error, category, controller_incident=None):
                         '不得改研究门槛、实验实现或原任务状态；检查固定运行副本与当前恢复内核的模块/API兼容。'
                         '固定执行端索引不得修改。故障编号：' + str(controller_incident) +
                         '\n固定执行端：' + json.dumps(store.state()['config'].get('system_runtime_pin', {}), ensure_ascii=False))
-    task_id = store.add_task('自动调用 agent 修复代码：' + failed['title'], instruction, PHASE, failed['id'], dedup=not bool(controller_incident))
+    if handoff:
+        instruction += ('\n控制器已核对交接证据，仅修改候选中的目标文件：' + handoff['target']
+                        + '。先读取 ' + handoff['evidence'] + '。此交接对受保护的结果profile仅允许以下例外：在已有逐行终态拒绝条件'
+                        "后附加 and not (row.get('status') == 'failed' and row.get('reason') and "
+                        "row.get('failure_class') == 'scientific_outcome' and row.get('attempted') is not False)，"
+                        'row使用原循环变量。保留后续失败处理、完整分母、既有测试及所有其他代码。')
+    task_id = store.add_task('自动调用 agent 修复代码：' + failed['title'], instruction, PHASE, failed['id'], dedup=False)
     if not task_id:
         raise ValueError('代码修复任务身份冲突')
     row = dict(version=VERSION, task_id=task_id, failed_task=failed['id'],
                failed_operation=failed.get('operation_id'), directory=str(directory),
                error=error, category=category, **saved)
     row['controller_incident']=controller_incident
+    row['handoff'] = handoff
     ars.atomic_json(directory/'session.json',row)
     ars.atomic_json(directory/'session.original.json',row)
     store.event('code_repair.queued',row)
@@ -168,8 +287,15 @@ def maybe_queue(store):
         if any(r['failed_task']==failed['id'] and r.get('failed_operation')==failed.get('operation_id') for r in previous):
             continue
         error=ars.task_error(failed);category=runtime_policy.classify(error)
-        if category not in ('implementation','environment'):
+        if category in ('uncertain_execution', 'authorization', 'provider_quota', 'external_evidence'):
             continue
+        handoff = controller_handoff(store, failed)
+        if handoff:
+            return queue(store, failed, error, 'controller_handoff', handoff=handoff)
+        if category not in ('implementation','environment'):
+            if not diagnosed_technical_fault(store, failed, error):
+                continue
+            category = 'diagnosed_implementation'
         # An unclassified blocked scientific question is not a code failure.
         return queue(store,failed,error,category)
     incident=store.db.execute("SELECT seq,payload FROM events WHERE type='system.repair_required' ORDER BY seq DESC LIMIT 1").fetchone()
@@ -228,7 +354,13 @@ def verify(store, task, result):
         if not path.is_file() or path.is_symlink():raise ValueError('修复不得删除原文件或使用符号链接：'+name)
         after=digest(path)
         if after==old['sha256']:continue
-        if old['protected'] or path.suffix not in CODE_SUFFIXES:
+        handoff = saved.get('handoff')
+        if handoff and (name != handoff['target'] or old['sha256'] != handoff['before']):
+            raise ValueError('修复变更超出已核对的控制器交接范围')
+        compatible = (handoff and not Path(name).name.startswith('test_')
+                      and Path(name).name.endswith(('_profile.py', '_validator.py'))
+                      and compatible_failure_guard((repo/name).read_bytes(), path.read_bytes()))
+        if (old['protected'] and not compatible) or path.suffix not in CODE_SUFFIXES:
             raise ValueError('修复修改了受保护测试、验证器或非代码文件：'+name)
         if digest(repo/name)!=old['sha256']:raise ValueError('原代码已被其他执行者修改，禁止覆盖：'+name)
         changes.append({'path':name,'before':old['sha256'],'after':after})
@@ -262,6 +394,8 @@ def verify(store, task, result):
     if store.state()['status'] in ('STOPPED_USER','STOPPED_BUDGET','COMPLETED'):
         raise ValueError('任务已经停止，候选补丁保留且不应用')
     for change in changes:
+        if digest(candidate/change['path']) != change['after']:
+            raise ValueError('复验期间候选补丁发生变化')
         if digest(repo/change['path'])!=change['before']:raise ValueError('复验期间原代码发生变化，禁止覆盖')
     for change in changes:
         target=repo/change['path'];temporary=target.with_name(target.name+'.repair-'+ars.uid())

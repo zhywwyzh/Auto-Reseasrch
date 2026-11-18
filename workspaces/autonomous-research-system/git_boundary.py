@@ -62,6 +62,16 @@ def validate_registration(repo, info, directory, checkout=None):
     """
     repo = Path(repo).resolve()
     owners = set()
+    # Shared directories may have a default-deny Git allowlist. A new file
+    # there can be ignored while still being outside every private task area.
+    if info.get('id') != 'ARS-DEMO' and _git_root(repo) is not None:
+        reserved = [repo / name for name in ('workspaces/autonomous-research-system',
+                    'docs/research', 'scripts', 'templates', 'external')]
+        destinations = [Path(directory)] + [repo / info[key] for key in
+                        ('workspace', 'docs', 'paper_reserved', 'notes') if info.get(key)]
+        for path in destinations:
+            if any(path.resolve().is_relative_to(shared) for shared in reserved):
+                raise ValueError('任务须位于本地Git忽略区，不能将研究写入共享目录：' + str(path))
     checks = [_assert_private(directory, 'run_directory', owners)]
     if info.get('id') != 'ARS-DEMO':
         required = ('workspace', 'docs')

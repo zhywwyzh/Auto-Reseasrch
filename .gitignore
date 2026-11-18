@@ -101,6 +101,7 @@
 !/workspaces/autonomous-research-system/tests/test_recovery_actions.py
 !/workspaces/autonomous-research-system/tests/test_research_registry.py
 !/workspaces/autonomous-research-system/tests/test_revision_workflow.py
+!/workspaces/autonomous-research-system/tests/test_controller_handoff.py
 !/workspaces/autonomous-research-system/tests/test_supervisor_faults.py
 !/workspaces/autonomous-research-system/tests/test_system_api.py
 !/workspaces/autonomous-research-system/tests/test_task_trace.py
