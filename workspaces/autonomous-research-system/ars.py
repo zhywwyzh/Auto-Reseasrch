@@ -785,8 +785,7 @@ def executor_argv(request, schema_path, output_path):
     if writable:
         argv += ['-c', 'sandbox_workspace_write.network_access=true']
     argv += ['exec', '--sandbox', 'workspace-write' if writable else 'read-only', '--json', '--output-schema', str(schema_path), '--output-last-message', str(output_path), '-C', request['context'].get('execution_workflow', {}).get('execution_directory', request['executor_directory'])]
-    if request['context'].get('code_repair'):
-        argv += ['--skip-git-repo-check']
+    argv += ['--skip-git-repo-check']
     if writable:
         for path in request['context']['execution_workflow']['write_scope']:
             Path(path).mkdir(parents=True, exist_ok=True)

@@ -100,6 +100,7 @@
 !/workspaces/autonomous-research-system/tests/test_execution_observation.py
 !/workspaces/autonomous-research-system/tests/test_execution_visibility.py
 !/workspaces/autonomous-research-system/tests/test_executor_auth.py
+!/workspaces/autonomous-research-system/tests/test_executor_directories.py
 !/workspaces/autonomous-research-system/tests/test_experiment_series.py
 !/workspaces/autonomous-research-system/tests/test_model_routing.py
 !/workspaces/autonomous-research-system/tests/test_platform_features.py

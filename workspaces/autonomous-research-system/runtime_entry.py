@@ -108,7 +108,10 @@ def install(root):
         return fn(store,task,operation_id,result,verification,recovery_mode)
     def argv(request,schema_path,output_path):
         fn=new_argv if request['context'].get('code_repair') else original_argv
-        return routing.apply_argv(fn(request,schema_path,output_path),request)
+        arguments=routing.apply_argv(fn(request,schema_path,output_path),request)
+        if '--skip-git-repo-check' not in arguments:
+            arguments.append('--skip-git-repo-check')
+        return arguments
     def advance(store):
         if store.state()['status'] in ('STOPPED_USER','STOPPED_BUDGET','COMPLETED','NEEDS_RECONCILIATION'):return
         with store.tx():
