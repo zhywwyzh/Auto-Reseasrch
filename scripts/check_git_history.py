@@ -55,6 +55,20 @@ def main():
         for line in sys.stdin:
             local_ref, local_sha, remote_ref, remote_sha = line.split()
             if set(local_sha) != {'0'}:
+                if not remote_ref.startswith(('refs/heads/', 'refs/tags/')):
+                    print('Git push rejected: internal snapshots and notes are local-only.', file=sys.stderr)
+                    return 1
+                peeled = subprocess.run(['git', '-C', str(args.repo), 'rev-parse', '--verify', local_sha + '^{commit}'],
+                                        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                if peeled.returncode:
+                    print('Git push rejected: only commit histories may be published.', file=sys.stderr)
+                    return 1
+                kind = subprocess.check_output(['git', '-C', str(args.repo), 'cat-file', '-t', local_sha], text=True).strip()
+                if kind == 'tag':
+                    annotation = subprocess.check_output(['git', '-C', str(args.repo), 'cat-file', 'tag', local_sha], text=True)
+                    if any(marker in annotation for marker in private_markers(args.repo)):
+                        print('Git push rejected: tag annotation contains private task content.', file=sys.stderr)
+                        return 1
                 normalized = ''.join(c for c in remote_ref.casefold() if c.isalnum())
                 if any(''.join(c for c in marker.casefold() if c.isalnum()) in normalized
                        for marker in private_markers(args.repo)):

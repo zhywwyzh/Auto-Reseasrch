@@ -73,6 +73,25 @@ class PublicationBoundaryTests(unittest.TestCase):
         self.git('commit', '-qm', 'EXAMPLE-PRIVATE-A synthetic research summary')
         self.assertTrue(any(path == '<commit-message>' for _, path, _ in history.inspect(self.repo, 'HEAD')[1]))
 
+    def test_internal_checkpoint_references_cannot_be_pushed(self):
+        self.git('commit', '-qm', 'Clean synthetic root')
+        oid = self.git('rev-parse', 'HEAD').decode().strip()
+        result = subprocess.run([sys.executable, history.__file__, '--repo', str(self.repo), '--pre-push'],
+                                input=f'refs/internal/checkpoint {oid} refs/internal/checkpoint {"0" * 40}\n',
+                                text=True, capture_output=True)
+        self.assertEqual(result.returncode, 1)
+        self.assertIn('local-only', result.stderr)
+
+    def test_tag_annotation_and_raw_tree_cannot_export_private_payloads(self):
+        self.git('commit', '-qm', 'Clean synthetic root')
+        self.git('tag', '-a', 'v-test', '-m', 'EXAMPLE-PRIVATE-A synthetic annotation')
+        objects = [(self.git('rev-parse', 'v-test').decode().strip(), 'refs/tags/v-test'),
+                   (self.git('rev-parse', 'HEAD^{tree}').decode().strip(), 'refs/heads/test-tree')]
+        for oid, reference in objects:
+            result = subprocess.run([sys.executable, history.__file__, '--repo', str(self.repo), '--pre-push'],
+                                    input=f'{reference} {oid} {reference} {"0" * 40}\n', text=True, capture_output=True)
+            self.assertEqual(result.returncode, 1)
+
 
 if __name__ == '__main__':
     unittest.main()
