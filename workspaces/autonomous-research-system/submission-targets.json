@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "targets": [
+    {
+      "id": "none",
+      "label": "不指定期刊或会议",
+      "kind": "none",
+      "description": "按当前研究问题开展分析和通用预审，不加载期刊专属要求。"
+    },
+    {
+      "id": "aas",
+      "label": "《自动化学报》",
+      "kind": "journal",
+      "description": "加载学报预审量表、仓库模板信息，以及已有的本课题写作样例。",
+      "template": "templates/acta-automatica-sinica/",
+      "review_profile": "docs/research/ai-paper-review/aas-review-profile.json",
+      "writing_samples": "docs/research/ai-paper-review/aas-writing-samples.json"
+    },
+    {
+      "id": "custom",
+      "label": "自定义期刊、会议或其他目标",
+      "kind": "custom",
+      "description": "保存本次目标名称；专属要求尚需核验，不套用自动化学报量表。"
+    }
+  ]
+}

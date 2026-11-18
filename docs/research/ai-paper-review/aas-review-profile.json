@@ -1,0 +1,117 @@
+{
+  "version": "aas-author-precheck-2026-11-11-v2-optional",
+  "target_journal": "自动化学报",
+  "confirmation": "用户于2026-11-11将自动化学报列为现有三课题的写作建议，随后明确改为每次运行的前端可选项。",
+  "template": "templates/acta-automatica-sinica/",
+  "template_rule": "用稿件副本，不修改模板原件或aas.cls；XeLaTeX实际编译并检查PDF后才更新编译状态。",
+  "status": "仅在本次运行选择自动化学报时接入量表与样例；外部评审工具尚未安装运行，没有本次模型评分结果。",
+  "execution_mode": "由运行所选Codex模型（本轮建议GPT-6.1 Sol）在既有critic/synthesize阶段执行量表适配预审；不是执行原AI Scientist、DeepReviewer或CMU程序，不声称获得其验证过的效果。",
+  "sources": [
+    {
+      "name": "The AI Scientist评分字段与量表",
+      "url": "https://raw.githubusercontent.com/SakanaAI/AI-Scientist/main/ai_scientist/perform_review.py",
+      "checked": "2026-11-11",
+      "locator": "template_instructions、neurips_form、perform_review",
+      "application": "借鉴分项量表思想；自行编写学报预审要求，不复制原提示词；不沿用NeurIPS录用阈值或Accept/Reject含义。"
+    },
+    {
+      "name": "DeepReviewer 2.0",
+      "url": "https://github.com/ResearAI/DeepReviewer-v2",
+      "checked": "2026-11-11",
+      "locator": "How It Works、Quick Start、Configuration",
+      "application": "深度预审候选；PDF解析、检索与模型服务需要单独适配，当前未连接。"
+    },
+    {
+      "name": "CMU Paper Reviewer",
+      "url": "https://github.com/prometheus-eval/cmu-paper-reviewer",
+      "checked": "2026-11-11",
+      "locator": "Experimenting with the CMU Paper Reviewer",
+      "application": "核心问题清单候选；可定义custom rubric。当前未连接其OCR/LLM/检索服务。"
+    }
+  ],
+  "official_policy": {
+    "url": "https://www.aas.net.cn/news/tgxz.htm",
+    "checked": "2026-11-11",
+    "locator": "III.1、III.5–8；IV.1–4；VI",
+    "summary": [
+      "作者须提供结构完整、论据可靠的中文稿件；初投稿PDF且可不用本刊模板；双盲需移除身份信息。",
+      "不得用AI生成稿件核心内容或改动原始数据、实验结果；辅助使用须核验并按要求说明工具、版本、时间、过程和作用。",
+      "本项目现有AI参与的方案和初稿不自动满足投稿条件；作者独立学术判断、使用记录与现行政策核验另列待办。"
+    ],
+    "boundary": "官方投稿要求与以下内部评分规则分开；AI分数不能解除期刊要求。"
+  },
+  "input_classification": [
+    "研究计划",
+    "未完整初稿",
+    "含实际结果的完整稿",
+    "综述完整稿"
+  ],
+  "dimensions": [
+    {
+      "id": "Originality",
+      "label": "原创性",
+      "scale": "1–4",
+      "criterion": "相对已核验近邻的明确差额；综述评跨文献综合增量。"
+    },
+    {
+      "id": "Soundness",
+      "label": "技术与论证可靠性",
+      "scale": "1–4",
+      "criterion": "定义、假设、推导及结论是否成立且有对应证据。"
+    },
+    {
+      "id": "Contribution",
+      "label": "贡献与研究价值",
+      "scale": "1–4",
+      "criterion": "已支持结果解决的重要问题；候选预期价值另标待验证。"
+    },
+    {
+      "id": "Presentation",
+      "label": "表达与组织",
+      "scale": "1–4",
+      "criterion": "问题、方法、证据、图表与局限是否连贯可读。"
+    },
+    {
+      "id": "Evidence",
+      "label": "证据与可复核性",
+      "scale": "1–4；本项目新增维度",
+      "criterion": "来源版本、数据、代码、成本、统计与失败记录；综述评检索与编码可追溯性。"
+    },
+    {
+      "id": "JournalFit",
+      "label": "学报适配",
+      "scale": "1–4；本项目新增维度",
+      "criterion": "目标读者、论文类型、中文技术叙述与格式；官方规则另外逐项核查。"
+    }
+  ],
+  "scale_anchors": {
+    "1": "已有证据显示重大缺陷",
+    "2": "存在实质缺口，需大修",
+    "3": "当前材料支持该维度，仍有明确限制",
+    "4": "该维度证据充分且论述扎实",
+    "null": "材料或阅读深度不足，附缺失原因；不能默认给高分，也不把未读当已证缺陷"
+  },
+  "overall": "仅在对应完整稿已实际读取且有足够依据时给1–10内部辅助总评；计划/不完整稿或关键证据不足时为null。不可映射录用概率或官方接收标准；不得用分项简单平均掩盖技术阻断。",
+  "confidence": "可另记1–5自报把握并说明依据，不等于校准概率、独立复核或科学验证。",
+  "issue_fields": [
+    "issue_id",
+    "稿件版本/哈希",
+    "章节/页码/公式或图表号",
+    "准确复述被评价主张",
+    "问题及证据/反证",
+    "严重性：阻断/实质/可选",
+    "最小修正或验证办法",
+    "不确定性",
+    "采纳/驳回/未决及理由",
+    "修改后复核结果"
+  ],
+  "workflow": [
+    "先识别输入阶段与确切版本，只读取本课题稿件/证据和共用方法。",
+    "先查正确性与证据，再按样例检查论证组织，最后给适用分项评分；每项有理由、定位和未知项。",
+    "记录最多5个最关键问题；意见无证据时降为疑问，不直接当缺陷。",
+    "阶段报告保存评分、问题清单和处理决定；修改后按同量表比较同一维度，记录模型/提示词/输入变化。",
+    "发现错误引用、无效定理或不支持的核心实验结论时保留阻断；不得只追逐总分、无限改写或自动投稿。"
+  ],
+  "output_instruction": "critic和synthesize报告增加“《自动化学报》阶段预审”段，写明稿件阶段、已读范围、rubric版本、执行方式、各维度分值或未评分原因、最多5条可定位问题、期刊要求待办和下一步；保存关键否决及未决项为候选记忆。没有完整稿时评价当前方案，不伪装成完整论文评分。",
+  "science_boundary": "所有分数都是模型意见；结构校验、多个会话一致或分数上升均不证明科学正确。不同工具的原始分不直接平均。"
+}

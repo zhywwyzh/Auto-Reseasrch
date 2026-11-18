@@ -1,0 +1,64 @@
+{
+  "name": "research",
+  "like": "neutral",
+  "mode": "both",
+  "settings": [
+    {
+      "thing": "font",
+      "value": "\"Noto Sans SC Variable\", \"Noto Sans CJK SC\", \"Microsoft YaHei\", sans-serif",
+      "source": "dial"
+    },
+    {
+      "thing": "text-size",
+      "value": "16",
+      "source": "dial"
+    },
+    {
+      "thing": "--text-body-leading",
+      "value": "1.75",
+      "source": "token"
+    },
+    {
+      "thing": "--text-supporting-size",
+      "value": "14px",
+      "source": "token"
+    },
+    {
+      "thing": "--text-supporting-leading",
+      "value": "1.65",
+      "source": "token"
+    },
+    {
+      "thing": "--text-heading-1-size",
+      "value": "30px",
+      "source": "token"
+    },
+    {
+      "thing": "--text-heading-2-size",
+      "value": "24px",
+      "source": "token"
+    },
+    {
+      "thing": "--text-heading-3-size",
+      "value": "20px",
+      "source": "token"
+    },
+    {
+      "thing": "accent",
+      "value": "#2563eb",
+      "source": "dial"
+    },
+    {
+      "thing": "neutral",
+      "value": "#64748b",
+      "source": "dial"
+    },
+    {
+      "thing": "corners",
+      "value": "medium",
+      "source": "dial"
+    }
+  ],
+  "lifted": [],
+  "palette": "de64d0308f37d5272bfde6e67a78980a12d93a3ec2554e4bc859a8052599496d"
+}
